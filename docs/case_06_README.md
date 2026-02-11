@@ -23,8 +23,7 @@ While attempting to recreate character "Shizuka" using minimal prompt without im
 
 ### The Emerged Character
 
-![Character Main](case_06/images/character_main.png)
-
+![Character Main](case_06/images/character_main.png)![Character Main](case_06/images/character_main.png)
 A completely different character was generated, but with:
 - ✅ Full identity consistency across multiple turns
 - ✅ Professional character design quality
