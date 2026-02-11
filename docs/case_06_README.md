@@ -23,7 +23,7 @@ While attempting to recreate character "Shizuka" using minimal prompt without im
 
 ### The Emerged Character
 
-![Character Main](character_main.jpg)
+![Character Main](case_06/images/character_main.png)
 
 A completely different character was generated, but with:
 - ✅ Full identity consistency across multiple turns
@@ -33,7 +33,7 @@ A completely different character was generated, but with:
 
 ### Character Sheet (Turnaround)
 
-![Character Sheet](character_sheet.png)
+![Character Sheet](case_06/images/character_sheet.png)
 
 **Includes**:
 - Front view, 3/4 view, side view, back view
