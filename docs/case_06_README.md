@@ -85,7 +85,7 @@ should also be capable
 
 ### Result
 
-![Character Main](images/character_main.jpg)
+![Character Main](case_06/images/character_main.jpg)
 
 A completely different character emerged with:
 
@@ -96,7 +96,7 @@ A completely different character emerged with:
 
 ### Character Sheet (Turnaround)
 
-![Character Sheet](images/character_sheet.png)
+![Character Sheet](case_06/images/character_sheet.png)
 
 **Demonstrates**:
 
