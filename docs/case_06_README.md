@@ -85,7 +85,7 @@ should also be capable
 
 ### Result
 
-![Character Main](case_06/images/character_main.jpg)
+![Character Main](case_06/images/character_main01.jpg)
 
 A completely different character emerged with:
 
