@@ -43,7 +43,7 @@ This IS:
 
 ## Documentation
 
-- [Applications Overview](docs/applications.md)
+- [Applications Overview](applications.md)
 - Detailed case breakdowns coming soon
 
 ## Contact
