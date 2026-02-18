@@ -1,5 +1,3 @@
-ChatGPT がやっと技術の GitHub での公開同意しました。下記修正案です。
-
 # Character Identity Protocol
 
 A governance framework for stabilizing character identity  
