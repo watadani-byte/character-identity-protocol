@@ -43,6 +43,7 @@ This IS:
 
 ## Documentation
 
+- [Technical Mechanism](technical_mechanism.md)
 - [Applications Overview](applications.md)
 - Detailed case breakdowns coming soon
 
