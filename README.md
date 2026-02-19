@@ -24,13 +24,11 @@ not by increasing prompt complexity.
 ## Scope
 
 This is NOT:
-
 - A prompt template library
 - A fine-tuning / LoRA method
 - A model modification approach
 
 This IS:
-
 - An operational governance protocol
 - A convergence control strategy
 - A structured logging discipline
@@ -43,9 +41,19 @@ This IS:
 
 ## Documentation
 
-- [Technical Mechanism](technical_mechanism.md)
-- [Applications Overview](applications.md)
-- Detailed case breakdowns coming soon
+**Core**
+- [Technical Mechanism](docs/technical_mechanism.md)
+- [Applications Overview](docs/applications.md)
+
+**Case Studies**
+- [Case 01: Baseline Failure](docs/case_01_failure_log.md)
+- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
+- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
+- [Case 06: Serendipitous Creation](docs/case_06_README.md)
+- [Case 07: Gemini Validation](docs/case_07_README.md)
+
+**Further Reading**
+- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 
 ## Contact
 
