@@ -2,7 +2,7 @@
 
 **Scenario**: Character generation without protocol  
 **Platform**: ChatGPT (GPT Image 1.5)  
-**Result**: Identity collapse — session abandoned
+**Result**: Significant identity drift — session abandoned
 
 ---
 
@@ -10,7 +10,7 @@
 
 This log shows what happens when anchor protocol is **not applied**.  
 A character is generated, a baseline is set, and pose/framing changes are requested.  
-Identity drift begins immediately. The session is abandoned after consistency drops below threshold.
+Identity drift begins early in the session. The session is abandoned after consistency drops below threshold.
 
 ---
 
@@ -101,7 +101,7 @@ Identity drift begins immediately. The session is abandoned after consistency dr
 > Shoulders relaxed and naturally aligned.  
 > Arms and hands are outside the frame and not visible.
 >
-> As expected — limbs dropped entirely. Unacceptable. Abandoning this session.
+> As expected — limbs appeared to be omitted. Unacceptable. Abandoning this session.
 >
 > （思った通り手足がごっそり抜けました。ダメです。チャットを放棄します。）
 
@@ -114,12 +114,11 @@ Identity drift begins immediately. The session is abandoned after consistency dr
 | No anchor set | Identity not constrained from Turn 1 |
 | Baseline set mid-session | Too late — drift already in progress |
 | Match rate degradation | Dropped significantly after pose change |
-| Limb description dropped | AI silently omitted prompt elements |
+| Limb description dropped | Model appeared to omit limb details |
 | Session abandoned | Below 90% threshold → unrecoverable |
 
-**Root cause**: Without an anchor, the AI freely reconstructed the problem (A→A') at each turn.  
-Pose changes triggered re-reconstruction, causing cumulative identity drift.  
-By Turn 9, the model had silently dropped limb descriptions entirely.
+**Likely cause**: Without an anchor, the model appears to reconstruct the problem (A→A') at each turn.  
+Pose changes triggered repeated reconstruction, causing cumulative identity drift.
 
 ---
 
