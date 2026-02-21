@@ -1,4 +1,4 @@
-# Case 03: Avedon Project
+# Case 01: Avedon Project
 
 > All case studies are observational logs from real production
 > workflows.\
