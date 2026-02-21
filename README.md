@@ -45,8 +45,8 @@ This IS:
 
 **Core**
 
-- [Technical Mechanism](docs/technical_mechanism.md)
-- [Applications Overview](docs/applications.md)
+- [Technical Mechanism](technical_mechanism.md)
+- [Applications Overview](applications.md)
 
 **Case Studies**
 
