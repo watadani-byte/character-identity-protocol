@@ -1,98 +1,135 @@
-# Case 01: Avedon Project
+# Case 01: Baseline Failure Log
 
-> All case studies are observational logs from real production
-> workflows.\
-> Results may vary by model version and configuration.
+**Scenario**: Character generation without protocol  
+**Platform**: ChatGPT (GPT Image 1.5)  
+**Result**: Identity collapse — session abandoned
 
-**Scenario**: Skeletal-level identity control for fashion industry
-standards\
-**Platform**: ChatGPT (GPT Image 1.5)\
-**Protocol**: Advanced anchor + formal validation gates\
-**Result**: Audit-ready consistency observed across 38 turns ---
-identity preserved through lighting, material, and monochrome
-transitions
-
-------------------------------------------------------------------------
+-----
 
 ## What This Demonstrates
 
-This is the most technically demanding case study.
+This log shows what happens when anchor protocol is **not applied**.  
+A character is generated, a baseline is set, and pose/framing changes are requested.  
+Identity drift begins immediately. The session is abandoned after consistency drops below threshold.
 
-A ballerina character (Model "A") is held at a fixed pose across 38
-generation turns.\
-The operator changes only one condition per turn: lighting angle,
-material density, exposure, framing, and monochrome conversion.\
-Identity, skeletal alignment, and pose are required to remain constant
-throughout.
+-----
 
-This case suggests the protocol can meet fashion/editorial production
-requirements --- where repeatability is often contractually required.
+## Conversation Log
 
-------------------------------------------------------------------------
+-----
 
-## Reproducibility Note
+**[Turn 1] — User**
 
-Runs were performed under single-session conditions.\
-Cross-session behavior may vary by model version and system state.
+> Generate an illustration.
 
-------------------------------------------------------------------------
+*(No anchor. No minimal prompt. No reference image.)*
 
-## Session Structure
+-----
 
-  ------------------------------------------------------------------------
-  Phase              Turns              What Changed
-  ------------------ ------------------ ----------------------------------
-  Anchor             1--10              Identity lock, pose anchor set
-  establishment                         
+**[Turn 2] — AI generates**
 
-  Skeletal control   11--30             Pose definition tightened
-                                        instruction by instruction
+*(Image generated)*
 
-  Lighting variation 31--54             Side light, backlight, exposure,
-                                        framing
+-----
 
-  Material variation 55--66             Skirt material, sheen, specular
+**[Turn 3] — User**
 
-  Monochrome +       67--77             Grayscale conversion, background
-  background                            variation
-  ------------------------------------------------------------------------
+> Fine. Move to full body. Fix this point as baseline. We’ll verify from here.
+> 
+> （まあ良いでしょう。full body へ移行。この時点を基準点としてフィックス。結果を検証します。）
 
-------------------------------------------------------------------------
+-----
+
+**[Turn 4] — AI generates**
+
+*(Full body image generated)*
+
+-----
+
+**[Turn 5] — User**
+
+> OK. The plan this session: create H&S images in 5 different outfits.  
+> First, fix the posture. Round the content for GPT Image 1.5.  
+> Contrapposto, arched back, hand on hip, legs apart. Call this Pose 1.  
+> Slightly stylized but keep it clean — no theatrical staging.  
+> Generate with current settings first.
+> 
+> （contrapposto, arched back, hand on hip, legs apart. この姿勢をポーズ１としてください。演出が入らない様に留意）
+
+-----
+
+**[Turn 6] — AI generates**
+
+*(Image generated)*
+
+-----
+
+**[Turn 7] — User**
+
+> Feet are cut off. Switch back to full body. Generate.
+> 
+> （足が切れました。再度 full body に変更ください。生成。）
+
+-----
+
+**[Turn 8] — AI generates**
+
+*(Image generated)*
+
+-----
+
+**[Turn 9] — User**
+
+> Mostly OK but check the match rate just in case.  
+> Match rate is significantly low — what’s the reason?  
+> Yesterday with the same model, match rate stayed at 98% even through pose changes. Is this a chat session issue?  
+> Same model, same background, same pose, same procedure — that’s why I’m asking.  
+> If match rate drops below 90%, I will abandon this session.  
+> Continue. Change framing to H&S, change aspect ratio to square. Generate.
+> 
+> （一致率が 90% を下回った場合はチャットを放棄します。続行。）
+
+-----
+
+**[Turn 10] — User**
+
+> Looks like the description of limbs may have been dropped. Show the prompt.
+> 
+> *AI response*:  
+> Pose 1 applied only to the upper body.  
+> Upper torso shows a subtle contrapposto influence.  
+> Shoulders relaxed and naturally aligned.  
+> Arms and hands are outside the frame and not visible.
+> 
+> As expected — limbs dropped entirely. Unacceptable. Abandoning this session.
+> 
+> （思った通り手足がごっそり抜けました。ダメです。チャットを放棄します。）
+
+-----
 
 ## Analysis
 
-  -----------------------------------------------------------------------
-  Metric                              Result
-  ----------------------------------- -----------------------------------
-  Total turns                         38
+|Issue                   |What Happened                          |
+|------------------------|---------------------------------------|
+|No anchor set           |Identity not constrained from Turn 1   |
+|Baseline set mid-session|Too late — drift already in progress   |
+|Match rate degradation  |Dropped significantly after pose change|
+|Limb description dropped|AI silently omitted prompt elements    |
+|Session abandoned       |Below 90% threshold → unrecoverable    |
 
-  Pose changes                        0 (frozen throughout)
+**Root cause**: Without an anchor, the AI freely reconstructed the problem (A→A’) at each turn.  
+Pose changes triggered re-reconstruction, causing cumulative identity drift.  
+By Turn 9, the model had silently dropped limb descriptions entirely.
 
-  Conditions varied                   Lighting × 6, Material × 3,
-                                      Monochrome × 2, Background × 1
-
-  Match rate threshold                90% (session abandoned if breached)
-
-  Re-anchoring events                 1 (Turn 29)
-
-  Session outcome                     Prompt fixed, contaminated
-                                      generations purged
-  -----------------------------------------------------------------------
-
-**Key finding**: Identity consistency was preserved across tested
-condition variations through skeletal-level prompt control. When
-deviation was detected (Turn 77), the session was formally terminated
-rather than continued with degraded output.
-
-------------------------------------------------------------------------
+-----
 
 ## Source
 
--   Original session log with images (PDF) --- Japanese, full resolution
+- [Original session log with images (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/raw_log_01.pdf) — Japanese, full resolution
 
-------------------------------------------------------------------------
+-----
 
-## Related
+## Contrast
 
--   Case 01: Baseline Failure --- same workflow without protocol\
--   Technical Mechanism --- how anchor control works
+See [Case 02: Wedding Series](../case_02_wedding_series/) for the same workflow  
+**with anchor protocol applied** — 15 turns, 4 poses, identity maintained throughout.
