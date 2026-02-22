@@ -6,14 +6,14 @@ This document clarifies the conditions under which the Character Identity Protoc
 
 ## Validation Scope Summary
 
-| Condition | Status | Notes |
-|-----------|--------|-------|
-| Single-session, same platform | ✅ Validated | Core use case. Cases 02, 03, 05, 06 |
-| Multi-session, same platform | ✅ Validated | Case 05 (Mira, 3 sessions) |
-| Cross-platform migration | ✅ Validated | Case 04 (SD → ChatGPT), Case 07 (ChatGPT → Gemini) |
-| Cross-model version (same platform) | ⚠️ Observed | Behavior shifts noted; not systematically tested |
-| Automated / API-based workflows | ❌ Not tested | Protocol designed for chatbot interaction |
-| Video / animation sequences | ❌ Not tested | Out of current scope |
+| Dimension | Supported | Notes |
+|-----------|-----------|-------|
+| Single Session | Yes | Stable under anchor governance. Cases 02, 03, 05, 06 |
+| Cross Session | Conditional | Requires anchor persistence. Case 05 |
+| Cross Model | Experimental | Validation documented in Case 07 |
+| Cross Platform | Experimental | Subject to reconstruction variance. Cases 04, 07 |
+
+*This protocol governs operational reproducibility, not deterministic regeneration.*
 
 ---
 
