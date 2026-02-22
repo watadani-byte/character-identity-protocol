@@ -14,6 +14,8 @@ In probabilistic generative systems, character identity is not
 guaranteed. This protocol treats identity as a controllable convergence
 process rather than a fragile prompt outcome.
 
+> *Other tools improve consistency. This protocol defines the standard for identity validation.*
+
 -----
 
 ## Overview
