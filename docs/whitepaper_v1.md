@@ -87,7 +87,7 @@ This framing forces the model to align strictly with the provided visual anchor 
 
 Successfully demonstrated in migrating a lost Stable Diffusion character into GPT Image 1.5, achieving high-fidelity recall despite fundamental architecture differences.
 
-*Full procedure documented in [Case 04: Cross-Platform Migration](case_04_migration_draft.md)*
+*Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
 ---
 
@@ -116,6 +116,8 @@ Production metrics observed across case studies:
 | Identity preservation | 40–60% failure rate | <5% failure rate |
 | Wasted generations | ~50% | <5% |
 | Cross-platform migration | Trial and error | Systematic procedure |
+
+*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. "Failure" = human-judged identity gate failure (FaceGate or SkeletonGate or ProportionGate). No automated measurement was used. Platform: ChatGPT (GPT Image 1.5) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
 ### Quality Gate Integration
 
