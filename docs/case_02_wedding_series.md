@@ -91,8 +91,7 @@ rather than a protocol failure.
 
 ## Source
 
--   Original session log with images (PDF) --- Japanese, full resolution
-    *(coming in next release)*
+-   [Original session log with images (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/Wedding_Series_Hana.pdf) --- Japanese, full resolution
 
 ------------------------------------------------------------------------
 
