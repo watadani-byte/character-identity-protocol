@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or reference this work, please cite it as below."
+title: "Character Identity Protocol"
+abstract: "An operational governance framework for stabilizing character identity in probabilistic generative AI systems through anchor-based convergence control."
+authors:
+  - family-names: "watadani-byte"
+version: "1.0"
+date-released: 2026-02-10
+url: "https://github.com/watadani-byte/character-identity-protocol"
+repository-code: "https://github.com/watadani-byte/character-identity-protocol"
+license: MIT
+keywords:
+  - generative AI
+  - character consistency
+  - identity drift
+  - anchor mechanism
+  - convergence control
+  - prompt engineering
+  - image generation
