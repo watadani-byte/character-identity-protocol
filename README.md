@@ -1,79 +1,106 @@
 # Character Identity Protocol
 
-A governance framework for stabilizing character identity  
-in probabilistic generative systems.  
-Anchor-based control of problem reconstruction in generative AI.
+A governance framework for stabilizing character identity\
+in probabilistic generative systems.
 
-## Core Innovation
+------------------------------------------------------------------------
 
-Minimal prompt + converged solution image  
-= Layer bypass + statistical convergence
+## Overview
 
-Identity stability is achieved by anchoring the reconstruction layer,  
-not by increasing prompt complexity.
+Character Identity Protocol is an operational governance method designed
+to stabilize character reconstruction in generative AI systems.
 
-## Validation
+It does **not** modify models, apply fine-tuning, or rely on LoRA
+training.\
+Instead, it anchors reconstruction behavior at the operational layer.
 
-6 production case studies demonstrating:
+Core principle:
 
-- Identity preservation
-- Cross-platform portability
-- Recovery from collapse
-- Professional character creation in ChatGPT
+> Minimal prompt + Converged solution image\
+> = Layer bypass + Statistical convergence
 
-## Scope
+Identity stability is achieved by anchoring the reconstruction layer.
 
-This is NOT:
-- A prompt template library
-- A fine-tuning / LoRA method
-- A model modification approach
+------------------------------------------------------------------------
 
-This IS:
-- An operational governance protocol
-- A convergence control strategy
-- A structured logging discipline
+## What This Is
 
-## Limitations
+-   An operational governance protocol\
+-   A convergence control strategy\
+-   A structured logging and evaluation discipline\
+-   A reproducibility-oriented workflow
 
-- Does not guarantee full determinism
-- Requires disciplined operational control
-- Designed for professional-grade workflows
+## What This Is Not
 
-## White Paper
+-   A prompt template library\
+-   A fine-tuning or LoRA method\
+-   A model modification technique\
+-   A closed-source system
 
-- [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+------------------------------------------------------------------------
 
-## Documentation
+## Quickstart
 
-**Core**
-- [Quickstart Guide](docs/quickstart.md)
-- [Technical Mechanism](technical_mechanism.md)
-- [Applications Overview](applications.md)
-- [Glossary](docs/glossary.md)
-- [Reproducibility Scope](docs/reproducibility_scope.md)
+1.  Prepare a converged anchor image.
+2.  Use a minimal prompt tied to that anchor.
+3.  Generate output while observing convergence behavior.
+4.  Apply Quality Gate evaluation.
+5.  If threshold drops below defined limit → Hard Abort & Rollback.
 
-**Case Studies**
-- [Case 01: Baseline Failure](docs/case_01_failure_log.md)
-- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
-- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
-- [Case 05: Mira Project](docs/case_05_mira_project.md)
-- [Case 06: Serendipitous Creation](docs/case_06_README.md)
-- [Case 07: Gemini Validation](docs/case_07_README.md)
+------------------------------------------------------------------------
 
-**Operational**
-- [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
+## Core Components
 
-**Further Reading**
-- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
-- [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
+-   Anchor Image
+-   Minimal Prompt
+-   Quality Gate
+-   Hard Abort Discipline
+-   Reconstruction Tracking (A → A')
+
+------------------------------------------------------------------------
+
+## Applications
+
+-   Character consistency in editorial workflows\
+-   Fashion and skeletal-level identity control\
+-   Cross-session reconstruction stability\
+-   Controlled variation experiments
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**Anchor Image**\
+A converged solution image used as a reconstruction stabilizer.
+
+**Convergence**\
+The statistical stabilization of output characteristics across turns.
+
+**Quality Gate**\
+Predefined identity validation criteria (face, skeletal alignment,
+proportion).
+
+**Hard Abort**\
+Immediate termination of generation when threshold violation is
+detected.
+
+------------------------------------------------------------------------
+
+## Contribution
+
+Open discussion is welcome via GitHub Issues.
+
+------------------------------------------------------------------------
+
+## License
+
+This project is licensed under the MIT License.\
+(You may replace this section with your preferred license.)
+
+------------------------------------------------------------------------
 
 ## Contact
 
-For research collaboration or professional inquiries,  
-please open a [GitHub Issue](https://github.com/watadani-byte/character-identity-protocol/issues) first.  
-If private discussion is required,  
-contact details will be provided upon request.
-
-## Status
-
-February 2026 — Initial public release
+For general discussion, please open a GitHub Issue.\
+For professional or research inquiries, contact details may be provided
+upon request.
