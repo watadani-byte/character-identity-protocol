@@ -16,6 +16,9 @@ process rather than a fragile prompt outcome.
 
 > *Other tools improve consistency. This protocol defines the standard for identity validation.*
 
+> *Most industry discussions aggregate incremental tool improvements.  
+> CIP defines an end-to-end operational discipline independent of any single model.*
+
 -----
 
 ## Overview
