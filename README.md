@@ -1,7 +1,15 @@
 # Character Identity Protocol
 
-A governance framework for stabilizing character identity\
-in probabilistic generative systems.
+A governance framework for stabilizing character identity in
+probabilistic generative systems.
+
+------------------------------------------------------------------------
+
+## Why This Matters
+
+In probabilistic generative systems, character identity is not
+guaranteed. This protocol treats identity as a controllable convergence
+process rather than a fragile prompt outcome.
 
 ------------------------------------------------------------------------
 
@@ -11,8 +19,9 @@ Character Identity Protocol is an operational governance method designed
 to stabilize character reconstruction in generative AI systems.
 
 It does **not** modify models, apply fine-tuning, or rely on LoRA
-training.\
-Instead, it anchors reconstruction behavior at the operational layer.
+training. Instead, it anchors reconstruction behavior at the operational
+layer, treating identity as a convergence problem rather than a prompt
+engineering problem.
 
 Core principle:
 
@@ -25,27 +34,29 @@ Identity stability is achieved by anchoring the reconstruction layer.
 
 ## What This Is
 
--   An operational governance protocol\
--   A convergence control strategy\
--   A structured logging and evaluation discipline\
+-   An operational governance protocol
+-   A convergence control strategy
+-   A structured logging and evaluation discipline
 -   A reproducibility-oriented workflow
 
 ## What This Is Not
 
--   A prompt template library\
--   A fine-tuning or LoRA method\
--   A model modification technique\
--   A closed-source system
+-   A prompt template library
+-   A fine-tuning or LoRA method
+-   A model modification technique
+-   A proprietary platform
 
 ------------------------------------------------------------------------
 
 ## Quickstart
 
-1.  Prepare a converged anchor image.
-2.  Use a minimal prompt tied to that anchor.
-3.  Generate output while observing convergence behavior.
-4.  Apply Quality Gate evaluation.
-5.  If threshold drops below defined limit → Hard Abort & Rollback.
+1.  Prepare a converged anchor image (previously stabilized identity).
+2.  Use a minimal prompt referencing only invariant attributes.
+3.  Generate 3--5 iterations and observe identity drift.
+4.  Apply Quality Gate (e.g., face match ≥ 90%, skeletal alignment
+    preserved).
+5.  If threshold drops below defined limit → Hard Abort & Rollback to
+    last stable anchor.
 
 ------------------------------------------------------------------------
 
@@ -61,10 +72,11 @@ Identity stability is achieved by anchoring the reconstruction layer.
 
 ## Applications
 
--   Character consistency in editorial workflows\
--   Fashion and skeletal-level identity control\
--   Cross-session reconstruction stability\
+-   Editorial production requiring identity stability
+-   Fashion pipelines requiring skeletal consistency
+-   Cross-session reconstruction stability
 -   Controlled variation experiments
+-   Cross-model portability validation
 
 ------------------------------------------------------------------------
 
@@ -77,12 +89,16 @@ A converged solution image used as a reconstruction stabilizer.
 The statistical stabilization of output characteristics across turns.
 
 **Quality Gate**\
-Predefined identity validation criteria (face, skeletal alignment,
-proportion).
+Predefined identity validation criteria (e.g., face similarity, skeletal
+alignment, proportion consistency).
 
 **Hard Abort**\
 Immediate termination of generation when threshold violation is
 detected.
+
+**Reconstruction (A → A')**\
+The probabilistic transformation process from input A to output A' in a
+generative system.
 
 ------------------------------------------------------------------------
 
@@ -103,6 +119,7 @@ detected.
 - [Case 01: Baseline Failure](docs/case_01_failure_log.md)
 - [Case 02: Wedding Series](docs/case_02_wedding_series.md)
 - [Case 03: Avedon Project](docs/case_03_avedon_project.md)
+- Case 04: Pending external verification
 - [Case 05: Mira Project](docs/case_05_mira_project.md)
 - [Case 06: Serendipitous Creation](docs/case_06_README.md)
 - [Case 07: Gemini Validation](docs/case_07_README.md)
@@ -124,13 +141,11 @@ Open discussion is welcome via GitHub Issues.
 
 ## License
 
-This project is licensed under the MIT License.\
-(You may replace this section with your preferred license.)
+This project is licensed under the MIT License.
 
 ------------------------------------------------------------------------
 
 ## Contact
 
-For general discussion, please open a GitHub Issue.\
-For professional or research inquiries, contact details may be provided
-upon request.
+For general discussion, please open a GitHub Issue. For professional or
+research inquiries, contact details may be provided upon request.
