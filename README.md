@@ -42,8 +42,8 @@ This IS:
 ## Documentation
 
 **Core**
-- [Technical Mechanism](docs/technical_mechanism.md)
-- [Applications Overview](docs/applications.md)
+- [Technical Mechanism](technical_mechanism.md)
+- [Applications Overview](applications.md)
 
 **Case Studies**
 - [Case 01: Baseline Failure](docs/case_01_failure_log.md)
