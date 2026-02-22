@@ -400,7 +400,9 @@ Session 2 was abandoned due to cumulative contamination — this is the correct 
 
 ## Source
 
-- Original session logs with images (PDF) — Japanese, full resolution *(coming in next release)*
+- [Mira Project — Initial Session (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/Mira_Project.pdf) — Japanese, full resolution
+- [Mira Project Update — Outfit Variation (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/Mira_Project_Update.pdf) — Japanese, full resolution
+- [Mira Pose Library (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/Mira_Pose_Library.pdf) — Japanese, full resolution
 
 ---
 
