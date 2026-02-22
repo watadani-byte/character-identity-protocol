@@ -93,8 +93,9 @@ detected.
 
 **Core**
 - [Quickstart Guide](docs/quickstart.md)
-- [Technical Mechanism](docs/technical_mechanism.md)
-- [Applications Overview](docs/applications.md)
+- [Technical Mechanism](technical_mechanism.md)
+- [Architecture Diagram](docs/architecture_diagram.md)
+- [Applications Overview](applications.md)
 - [Glossary](docs/glossary.md)
 - [Reproducibility Scope](docs/reproducibility_scope.md)
 
