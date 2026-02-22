@@ -106,6 +106,7 @@ generative system.
 
 **White Paper**
 - [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+- [Master Document — Consolidated Overview](docs/master_document.md)
 
 **Core**
 - [Quickstart Guide](docs/quickstart.md)
