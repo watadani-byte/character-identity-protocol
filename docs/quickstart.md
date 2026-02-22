@@ -1,0 +1,78 @@
+# Quickstart: Character Identity Protocol
+
+> This guide assumes you are working in a chatbot-based image generation environment (e.g., ChatGPT with GPT Image 1.5).
+
+---
+
+## What You Need
+
+1. **Anchor image** — the best output you have of the character. One image only. High identity, not a draft.
+2. **Minimal prompt** — factual attributes only. No adjectives, no mood words. Aim for under 30 words.
+3. **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across sessions.
+
+---
+
+## One-Turn Example
+
+```
+[Attach anchor image]
+
+Call Model "Hana". Generate.
+```
+
+That's it. The image does the work. The prompt confirms identity, not describes it.
+
+---
+
+## Basic Session Flow
+
+```
+1. Attach anchor image + minimal prompt → Generate
+2. Verify match rate (human judgment: face, skeleton, proportions)
+3. If confirmed → proceed with instructions
+4. If drift detected → re-anchor immediately (attach anchor image again)
+5. One change per turn (pose OR lighting OR outfit — not combined)
+6. Check match rate every turn
+```
+
+---
+
+## When to Abort
+
+Stop the session immediately if:
+
+- Face identity fails (different person)
+- Skeletal proportions shift significantly
+- Match rate drops below 90%
+
+Do **not** attempt progressive correction after failure.  
+Discard contaminated outputs. Re-anchor in a new session.
+
+---
+
+## Rollback Procedure
+
+```
+1. Stop generation
+2. Discard outputs from the failed turn onward
+3. Open new session
+4. Re-inject anchor image + minimal prompt
+5. Verify identity before proceeding
+```
+
+---
+
+## Common Mistakes
+
+| Mistake | Effect | Fix |
+|---------|--------|-----|
+| Verbose prompt with anchor | Optimization overrides anchor | Reduce to minimal prompt |
+| Changing multiple conditions in one turn | Compound drift | One change per turn only |
+| Continuing after identity failure | Contamination accumulates | Hard abort, re-anchor |
+| Using a draft image as anchor | Weak convergence baseline | Use highest-purity output only |
+| Not checking match rate every turn | Silent drift undetected | Verify every turn |
+
+---
+
+*For the full technical explanation, see [Technical Mechanism](technical_mechanism.md).*  
+*For stop-condition logic, see [Quality Gate Addendum](quality_gate_addendum.md).*
