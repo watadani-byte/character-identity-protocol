@@ -46,8 +46,11 @@ This IS:
 ## Documentation
 
 **Core**
+- [Quickstart Guide](docs/quickstart.md)
 - [Technical Mechanism](technical_mechanism.md)
 - [Applications Overview](applications.md)
+- [Glossary](docs/glossary.md)
+- [Reproducibility Scope](docs/reproducibility_scope.md)
 
 **Case Studies**
 - [Case 01: Baseline Failure](docs/case_01_failure_log.md)
