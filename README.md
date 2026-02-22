@@ -36,7 +36,7 @@ Core principle:
 > Minimal prompt + Converged solution image  
 > = Layer bypass + Statistical convergence
 
-Identity stability is achieved by anchoring the reconstruction layer.
+This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
 
 -----
 
@@ -61,10 +61,12 @@ Identity stability is achieved by anchoring the reconstruction layer.
 1. Prepare a converged anchor image (previously stabilized identity).
 1. Use a minimal prompt referencing only invariant attributes.
 1. Generate 3–5 iterations and observe identity drift.
-1. Apply Quality Gate (e.g., face match ≥ 90%, skeletal alignment
-   preserved).
-1. If threshold drops below defined limit → Hard Abort & Rollback to
-   last stable anchor.
+1. Apply Quality Gate:
+   
+   ```
+   PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+   ```
+1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
 
 -----
 
