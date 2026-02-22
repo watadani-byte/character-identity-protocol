@@ -133,6 +133,22 @@ generative system.
 
 ------------------------------------------------------------------------
 
+## Citation
+
+If referencing this protocol in academic or professional work:
+
+```bibtex
+@misc{character_identity_protocol_2026,
+  title={Character Identity Protocol: Operational Governance for Identity Convergence in Probabilistic Generative Systems},
+  author={Watadani},
+  year={2026},
+  note={GitHub Repository},
+  url={https://github.com/watadani-byte/character-identity-protocol}
+}
+```
+
+------------------------------------------------------------------------
+
 ## Contribution
 
 Open discussion is welcome via GitHub Issues.
