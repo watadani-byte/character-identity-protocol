@@ -29,7 +29,25 @@ requirements --- where repeatability is often contractually required.
 
 ------------------------------------------------------------------------
 
-## Reproducibility Note
+## Turn Accounting Clarification
+
+Terms used in this document:
+
+| Term | Definition |
+|------|-----------|
+| Generation turn | One user instruction + one AI image generation (a pair) |
+| Evaluation step | Human match rate assessment performed after each generation turn |
+| Stabilization checkpoint | Re-anchoring event — anchor image re-injected to recover convergence |
+
+**Numeric summary for this session:**
+- Total exchanges: 77 (39 user instructions + 38 AI generations)
+- Generation turns: 38
+- Evaluation steps: 38 (one per generation turn)
+- Stabilization checkpoints: 1 (Turn 29)
+
+These definitions apply consistently across this document, the whitepaper, and all README references.
+
+---
 
 Runs were performed under single-session conditions.\
 Cross-session behavior may vary by model version and system state.
