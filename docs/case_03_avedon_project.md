@@ -88,7 +88,7 @@ rather than continued with degraded output.
 
 ## Source
 
--   Original session log with images (PDF) --- Japanese, full resolution
+- [Original session log with images (PDF)](https://github.com/watadani-byte/character-identity-protocol/releases/download/v0.1/Avedon_Project.pdf) — Japanese, full resolution
 
 ------------------------------------------------------------------------
 
