@@ -69,8 +69,10 @@ This IS:
 
 ## Contact
 
-Questions, observations, and reproductions welcome.  
-Please use [GitHub Issues](https://github.com/watadani-byte/character-identity-protocol/issues) for feedback, reports, and discussion.
+For research collaboration or professional inquiries,  
+please open a [GitHub Issue](https://github.com/watadani-byte/character-identity-protocol/issues) first.  
+If private discussion is required,  
+contact details will be provided upon request.
 
 ## Status
 
