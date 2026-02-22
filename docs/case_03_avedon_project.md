@@ -4,13 +4,12 @@
 > workflows.\
 > Results may vary by model version and configuration.
 
-**Scenario**: Skeletal-level identity control for fashion industry
-standards\
-**Platform**: ChatGPT (GPT Image 1.5)\
-**Protocol**: Advanced anchor + formal validation gates\
-**Result**: Audit-ready consistency observed across 38 turns ---
-identity preserved through lighting, material, and monochrome
-transitions
+**Scenario**: Skeletal-level identity control for fashion industry standards  
+**Platform**: ChatGPT (GPT Image 1.5)  
+**Protocol**: Advanced anchor + formal validation gates  
+**Result**: Audit-ready consistency observed across 38 generation cycles (77 total exchanges) — identity preserved through lighting, material, and monochrome transitions
+
+*Turn counting: 77 total exchanges (39 user instructions + 38 AI generations). "38 turns" = 38 generation cycles.*
 
 ------------------------------------------------------------------------
 
@@ -64,7 +63,8 @@ Cross-session behavior may vary by model version and system state.
   -----------------------------------------------------------------------
   Metric                              Result
   ----------------------------------- -----------------------------------
-  Total turns                         38
+  Total turns                         38 generation cycles
+                                      (77 total exchanges)
 
   Pose changes                        0 (frozen throughout)
 
