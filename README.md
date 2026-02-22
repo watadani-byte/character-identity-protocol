@@ -66,6 +66,8 @@ This reduces interpretational drift by stabilizing reconstruction behavior at th
    ```
    PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
    ```
+   
+   If any gate fails, generation must stop immediately.
 1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
 
 -----
