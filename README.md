@@ -53,7 +53,7 @@ This IS:
 - [Case 07: Gemini Validation](docs/case_07_README.md)
 
 **Operational**
-- [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
+- [Quality Gate & Hard Abort Discipline](docs/Character_Identity_Protocol_Quality_Gate_Addendum.md)
 
 **Further Reading**
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
