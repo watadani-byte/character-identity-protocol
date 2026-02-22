@@ -119,6 +119,12 @@ Production metrics observed across case studies:
 
 *Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. "Failure" = human-judged identity gate failure (FaceGate or SkeletonGate or ProportionGate). No automated measurement was used. Platform: ChatGPT (GPT Image 1.5) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
+### Measurement Disclosure
+
+All percentage-based thresholds reported in this document are observational governance thresholds established through production workflow monitoring. They are not claims about internal model architecture, deterministic output guarantees, or statistically validated benchmarks.
+
+Match rate assessment is human-judged. No automated similarity metric was used. Results reflect single-operator observations under production conditions.
+
 ### Quality Gate Integration
 
 Production deployment requires formal stop-conditions.
