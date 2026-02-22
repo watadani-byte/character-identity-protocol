@@ -131,5 +131,5 @@ By Turn 9, the model had silently dropped limb descriptions entirely.
 
 ## Contrast
 
-See [Case 02: Wedding Series](../case_02_wedding_series/) for the same workflow  
+See [Case 02: Wedding Series]case_02_wedding_series/) for the same workflow  
 **with anchor protocol applied** — 15 turns, 4 poses, identity maintained throughout.
