@@ -39,6 +39,10 @@ This IS:
 - Requires disciplined operational control
 - Designed for professional-grade workflows
 
+## White Paper
+
+- [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+
 ## Documentation
 
 **Core**
