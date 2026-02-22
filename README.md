@@ -66,7 +66,8 @@ This IS:
 
 ## Contact
 
-[Your contact info]
+Questions, observations, and reproductions welcome.  
+Please use [GitHub Issues](https://github.com/watadani-byte/character-identity-protocol/issues) for feedback, reports, and discussion.
 
 ## Status
 
