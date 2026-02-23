@@ -24,6 +24,8 @@ Prompt + Anchor Image
    PASS     FAIL
     ↓          ↓
 Continue   Hard Abort
+
+Validated by Human Threshold (≈90%)
 ```
 
 -----
@@ -41,9 +43,9 @@ User Prompt (A)
           │
           ▼
 ┌─────────────────────┐
-│  Layer B             │  ← UNCONTROLLED
-│  Reconstruction A→A' │  Model rewrites the problem
-│  (Optimization)      │  Identity drift originates here
+│  Layer B             │  ← UNCONSTRAINED
+│  Reconstruction A→A' │  Identity drift emerges here
+│  (Optimization)      │
 └─────────┬───────────┘
           │
           ▼
@@ -66,8 +68,8 @@ Minimal Prompt (A)  +  Anchor Image ──────────────�
       │                                            │
       ▼                                            │
 ┌─────────────────────┐                           │
-│  Layer A             │  Low activation           │
-│  (Prompt parsing)    │  (minimal prompt)         │
+│  Layer A             │  Reduced interpretational │
+│  (Prompt parsing)    │  load (minimal prompt)    │
 └─────────┬───────────┘                           │
           │                                        │
           ▼                                        ▼
@@ -116,6 +118,8 @@ Layer B optimizes toward that prior rather than reconstructing freely.
 │  ProportionGate    │
 │             FAIL   │──→ HARD ABORT
 └───────────────────┘
+
+Validated by Human Threshold (≈90%)
 ```
 
 *See: [Quality Gate Addendum](quality_gate_addendum.md)*
