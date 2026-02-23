@@ -2,7 +2,31 @@
 
 This diagram shows the standard generation pipeline and where the anchor mechanism applies constraint.
 
----
+-----
+
+## Identity Validation Flow
+
+```
+Prompt + Anchor Image
+        ↓
+      Model
+        ↓
+      Output
+        ↓
+  ┌─────────────┐
+  │  Face Gate  │
+  │ Proportion  │
+  │    Gate     │
+  │  Skeleton   │
+  │    Gate     │
+  └─────────────┘
+        ↓
+   PASS     FAIL
+    ↓          ↓
+Continue   Hard Abort
+```
+
+-----
 
 ## Standard Pipeline (No Anchor)
 
@@ -33,7 +57,7 @@ User Prompt (A)
      (Unpredictable)
 ```
 
----
+-----
 
 ## With Anchor Mechanism
 
@@ -64,7 +88,7 @@ Minimal Prompt (A)  +  Anchor Image ──────────────�
      (Convergence preserved)
 ```
 
----
+-----
 
 ## Key Insight
 
@@ -76,7 +100,7 @@ Layer B optimizes toward that prior rather than reconstructing freely.
 > Optimization never disappears.  
 > It is redirected toward a validated baseline.
 
----
+-----
 
 ## Quality Gate Position
 
