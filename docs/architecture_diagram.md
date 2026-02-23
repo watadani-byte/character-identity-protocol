@@ -4,6 +4,18 @@ This diagram shows the standard generation pipeline and where the anchor mechani
 
 -----
 
+## Operational Summary (At a Glance)
+
+- **Input**: Minimal Prompt + Converged Anchor
+- **Process**: Model generation under constrained reconstruction
+- **Control**: Identity Validation via Face ∧ Skeleton ∧ Proportion Gates
+- **Policy**: FAIL → Immediate Hard Abort & Rollback
+- **Authority**: Final validation by human threshold (≈90%)
+
+> This protocol governs generation. It does not modify models.
+
+-----
+
 ## Identity Validation Flow
 
 ```
@@ -102,6 +114,9 @@ Layer B optimizes toward that prior rather than reconstructing freely.
 > Optimization never disappears.  
 > It is redirected toward a validated baseline.
 
+**Clarification:**  
+Layer A/B/C are conceptual abstractions for explanatory purposes. They do not imply access to or knowledge of proprietary model internals.
+
 -----
 
 ## Quality Gate Position
@@ -110,16 +125,33 @@ Layer B optimizes toward that prior rather than reconstructing freely.
      Output
         │
         ▼
-┌───────────────────┐
-│   Quality Gate     │
-│                    │
-│  FaceGate     PASS │──→ Continue
-│  SkeletonGate PASS │
-│  ProportionGate    │
-│             FAIL   │──→ HARD ABORT
-└───────────────────┘
+┌─────────────────────┐
+│    Quality Gate      │
+│                      │
+│  FaceGate        PASS│──→ Continue
+│  SkeletonGate    PASS│
+│  ProportionGate  FAIL│──→ HARD ABORT
+└─────────────────────┘
 
 Validated by Human Threshold (≈90%)
 ```
+
+### Gate Policy
+
+`PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate`
+
+- All gates must pass.
+- Any single failure triggers Hard Abort.
+- Rollback must revert to the last validated anchor.
+
+> The ≈90% threshold refers to human-judged identity stability, not an automated similarity metric.
+
+-----
+
+## Auditability
+
+Every generation decision (PASS / FAIL / Abort / Rollback) must be loggable and reproducible within session context.
+
+-----
 
 *See: [Quality Gate Addendum](quality_gate_addendum.md)*
