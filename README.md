@@ -59,17 +59,19 @@ This reduces interpretational drift by stabilizing reconstruction behavior at th
 
 ## Quickstart
 
-1. Prepare a converged anchor image (previously stabilized identity).
-1. Use a minimal prompt referencing only invariant attributes.
-1. Generate 3–5 iterations and observe identity drift.
-1. Apply Quality Gate:
-   
-   ```
-   PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
-   ```
-   
-   If any gate fails, generation must stop immediately.
-1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+1.  Prepare a converged anchor image (previously stabilized identity).
+2.  Use a minimal prompt referencing only invariant attributes.
+3.  Generate 3--5 iterations and observe identity drift.
+4.  Apply Quality Gate:
+
+    ```
+    PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+    ```
+
+    If any gate fails, generation must stop immediately.
+
+5.  If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+
 
 -----
 
