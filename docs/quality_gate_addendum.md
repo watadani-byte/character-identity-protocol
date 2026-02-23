@@ -1,93 +1,105 @@
-# Hard Abort Discipline Addendum
+# Quality Gate & Hard Abort Discipline
 
-## Character Identity Protocol -- Quality Gate Integration
+> This document formalizes the stop-conditions and validation logic used in production deployments of the Character Identity Protocol.
 
-This addendum formalizes the operational stop-conditions already present
-in the production logs.
+-----
 
-It does not modify the core protocol. It clarifies the non-negotiable
-enforcement layer.
+## Overview
 
-------------------------------------------------------------------------
+The Quality Gate is a mandatory validation checkpoint applied after every generation turn.
 
-## 1. Identity Validation Logic
+It is not a guideline — it is a hard operational constraint.
 
-Result = PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+-----
 
-Primary validation gates:
+## Gate Structure
 
--   FaceGate = HumanZoomFaceCheck(anchor, candidate)
--   SkeletonGate = HumanSkeletonCheck(anchor, candidate)
--   ProportionGate = HumanProportionCheck(anchor, candidate)
+All three gates must pass simultaneously:
 
-All three must pass simultaneously.
+```
+PASS = FaceGate ∧ SkeletonGate ∧ ProportionGate
+```
 
-If any gate fails, the generation is immediately rejected.
+|Gate          |What It Checks                            |
+|--------------|------------------------------------------|
+|FaceGate      |Facial identity consistency against anchor|
+|SkeletonGate  |Skeletal proportion and alignment         |
+|ProportionGate|Overall body proportion consistency       |
 
-IF ¬FaceGate → NG & STOP\
-IF ¬SkeletonGate → NG & STOP\
-IF ¬ProportionGate → NG & STOP
+If **any** gate fails → **Hard Abort**.
 
-No continuation is permitted after failure. No aesthetic compensation is
-allowed. No incremental drift is tolerated.
+-----
 
-This is a hard abort policy.
+## Hard Abort Protocol
 
-------------------------------------------------------------------------
+When a gate failure is detected:
 
-## 2. Human-Gated Validation (Intentional Design)
+1. **Stop generation immediately**
+1. **Do not attempt progressive correction**
+1. **Discard all outputs from the failed turn onward**
+1. **Open new session**
+1. **Re-inject anchor image + minimal prompt**
+1. **Verify identity before proceeding**
 
-All primary gates are human-validated.
+> The system is allowed to generate. It is not allowed to degrade.
 
-This is deliberate.
+-----
 
-The protocol prioritizes perceptual integrity over automated tolerance.
+## Match Rate Threshold
 
-If a trained human observer detects structural deviation, the session is
-halted.
+- **Minimum threshold**: 90% (human-judged)
+- **Measurement**: Visual comparison against anchor image by trained operator
+- **Automation**: None — human judgment only
 
-This prevents silent drift accumulation across iterative turns.
+> 90% = shipping threshold, not research metric.
 
-------------------------------------------------------------------------
+If match rate drops below 90%:
 
-## 3. Threshold Policy
+- Session is abandoned
+- Anchor image is discarded if contaminated
+- Chat log is discarded
 
-Operational threshold: 90% similarity minimum.
+-----
 
-If similarity falls below threshold:
+## Why No Progressive Correction
 
--   Session is halted
--   Anchor is revalidated
--   Contaminated generations are discarded
--   No progressive correction is attempted
+Progressive correction after identity failure leads to **contamination** — the accumulation of drift in the session context that cannot be reversed by prompt adjustment.
 
-Drift is treated as a structural fault, not as a stylistic variation.
+A session that has failed is not recoverable. It must be restarted.
 
-------------------------------------------------------------------------
+Attempting correction wastes generation budget and produces outputs that cannot be trusted.
 
-## 4. Auxiliary Logging (Non-Decisional)
+-----
 
-AuxLog = {pose_ok, composition_ok, lighting_shift_ok}
+## Session Contamination
 
-These fields exist for audit documentation only.
+Contamination occurs when:
 
-They do not influence PASS/FAIL determination.
+- Failed generations are not discarded
+- Generation continues after drift detection
+- Session length exceeds anchor stability range without re-anchoring
 
-Identity gates are the sole decision authority.
+**Contaminated sessions must be abandoned entirely.**
 
-------------------------------------------------------------------------
+Recommended re-anchoring frequency: every 10–15 turns.
 
-## 5. Philosophical Position
+-----
 
-Optimization does not disappear.
+## Philosophy
 
-It is redirected toward a validated baseline.
+This discipline is not artistic rigidity.
 
-The purpose of this protocol is not deterministic control. It is
-convergence containment.
+It is production governance.
 
-The system is allowed to generate. It is not allowed to degrade.
+In professional workflows — editorial, fashion, IP management — identity failure is not a style variation. It is a deliverable failure.
 
-------------------------------------------------------------------------
+The Hard Abort policy exists to prevent that failure from propagating.
 
-Status: Operational clarification of existing production workflow.
+-----
+
+## Relation to Other Documents
+
+- [Technical Mechanism](technical_mechanism.md) — why drift occurs
+- [Quickstart](quickstart.md) — operational flow including abort procedure
+- [Reproducibility Scope](reproducibility_scope.md) — known degradation conditions
+- [White Paper Section 5](whitepaper_v1.md) — governance and IP context
