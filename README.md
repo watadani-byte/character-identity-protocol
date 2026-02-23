@@ -8,6 +8,30 @@ probabilistic generative systems.
 
 -----
 
+## Character Identity Protocol in 30 Seconds
+
+**Problem:**  
+Generative models drift. Character identity collapses.
+
+**Solution:**  
+Anchor the converged solution.  
+Apply hard identity gates.  
+Abort immediately on deviation.
+
+**Result:**  
+Operational identity stability.
+
+-----
+
+## Intended Audience
+
+- AI labs researching generative consistency
+- IP owners requiring character identity guarantees
+- Fashion and editorial production pipelines
+- Enterprise governance and audit teams
+
+-----
+
 ## Why This Matters
 
 In probabilistic generative systems, character identity is not
