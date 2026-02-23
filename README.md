@@ -19,7 +19,6 @@ process rather than a fragile prompt outcome.
 > *Most industry discussions aggregate incremental tool improvements.  
 > CIP defines an end-to-end operational discipline independent of any single model.*
 
-
 -----
 
 ## Overview
@@ -59,19 +58,17 @@ This reduces interpretational drift by stabilizing reconstruction behavior at th
 
 ## Quickstart
 
-1.  Prepare a converged anchor image (previously stabilized identity).
-2.  Use a minimal prompt referencing only invariant attributes.
-3.  Generate 3--5 iterations and observe identity drift.
-4.  Apply Quality Gate:
-
-    ```
-    PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
-    ```
-
-    If any gate fails, generation must stop immediately.
-
-5.  If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
-
+1. Prepare a converged anchor image (previously stabilized identity).
+1. Use a minimal prompt referencing only invariant attributes.
+1. Generate 3–5 iterations and observe identity drift.
+1. Apply Quality Gate:
+   
+   ```
+   PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+   ```
+   
+   If any gate fails, generation must stop immediately.
+1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
 
 -----
 
@@ -114,6 +111,16 @@ detected.
 **Reconstruction (A → A’)**  
 The probabilistic transformation process from input A to output A’ in a
 generative system.
+
+-----
+
+## Reading Paths
+
+- **I just want the idea** (3 min) → README + [Glossary](docs/glossary.md)
+- **I want to run it** (10 min) → [Quickstart](docs/quickstart.md) + [Quality Gate](docs/quality_gate_addendum.md)
+- **I want the theory** (20 min) → [White Paper](docs/whitepaper_v1.md) + [Technical Mechanism](docs/technical_mechanism.md)
+- **I want proof** (30 min) → [Case 03](docs/case_03_avedon_project.md) + [Case 04](docs/case_04_shizuka.md)
+- **I want scope limits** → [Reproducibility Scope](docs/reproducibility_scope.md)
 
 -----
 
