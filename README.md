@@ -1,10 +1,47 @@
-# Character Identity Protocol
+# Character Identity Protocol (CIP)
+
+A governance protocol for stabilizing character identity
+in probabilistic generative systems.
+
+CIP does NOT modify models.
+It constrains reconstruction through anchor-based convergence control.
 
 > This is not a generation method.  
 > This is a character identity inspection protocol.
 
-A governance framework for stabilizing character identity in
-probabilistic generative systems.
+CIP enables reproducible character identity across generation turns,
+platforms, and condition changes —
+without fine-tuning, LoRA, or model modification.
+
+-----
+
+## Scope Clarification
+
+**This is NOT:**
+
+- A prompt template library
+- A fine-tuning method
+- A LoRA training technique
+- A model architecture modification
+
+**This IS:**
+
+- An operational governance protocol
+- A statistical convergence control framework
+- A validation discipline using structured gates
+
+-----
+
+## If You Are Evaluating This Repository
+
+If you are reviewing this for:
+
+- Enterprise evaluation
+- Research analysis
+- Risk / compliance review
+- Platform integration feasibility
+
+Please refer to: [Decision Pack](docs/decision_pack.md)
 
 -----
 
@@ -154,6 +191,7 @@ generative system.
 
 - [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
 - [Master Document — Consolidated Overview](docs/master_document.md)
+- [Decision Pack — Enterprise Evaluation](docs/decision_pack.md)
 
 **Core**
 
