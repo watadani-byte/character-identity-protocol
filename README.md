@@ -13,6 +13,9 @@ CIP enables reproducible character identity across generation turns,
 platforms, and condition changes —
 without fine-tuning, LoRA, or model modification.
 
+CIP treats identity not as a peripheral feature but as a first-class governance constraint for generative systems.
+It is designed for enterprise use cases where reproducibility, auditability, and compliance matter.
+
 -----
 
 ## Scope Clarification
