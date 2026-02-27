@@ -1,5 +1,9 @@
 # Character Identity Protocol (CIP)
 
+Originally proposed by Watadani (2026).
+
+This work is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+
 A governance protocol for stabilizing character identity
 in probabilistic generative systems.
 
