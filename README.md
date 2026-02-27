@@ -250,7 +250,13 @@ Open discussion is welcome via GitHub Issues.
 
 ## License
 
-This project is licensed under the MIT License.
+Character Identity Protocol (CIP)  
+Originally proposed by Watadani (2026)  
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+When referencing or implementing this protocol, please cite:  
+Watadani (2026), Character Identity Protocol (CIP)  
+https://github.com/watadani-byte/character-identity-protocol
 
 -----
 
