@@ -7,42 +7,60 @@ This work is licensed under the [Creative Commons Attribution 4.0 International 
 A governance protocol for stabilizing character identity
 in probabilistic generative systems.
 
+Generative systems can reproduce style, but they do not guarantee identity.
+
+Character Identity Protocol (CIP) governs reconstruction behavior, not model internals.
+It stabilizes identity through controlled convergence and re-convergence under validation gates.
+
 CIP does NOT modify models.
 It constrains reconstruction through anchor-based convergence control.
 
 > This is not a generation method.  
 > This is a character identity inspection protocol.
 
-CIP enables reproducible character identity across generation turns,
-platforms, and condition changes —
-without fine-tuning, LoRA, or model modification.
-
 CIP treats identity not as a peripheral feature but as a first-class governance constraint for generative systems.
 It is designed for enterprise use cases where reproducibility, auditability, and compliance matter.
 
------
+------------------------------------------------------------------------
+
+## From One-Off Outputs to Controlled Identity
+
+```
+BEFORE (one-off generation)
+
+Prompt → Model → Output
+                 └→ identity drift (uncontrolled)
+
+AFTER (CIP-controlled workflow)
+
+Minimal Prompt + Converged Anchor → Model → Output
+                                            ↓
+                               Identity Gates (Face ∧ Skeleton ∧ Proportion)
+                                            ↓
+                               PASS → Production Use
+                               FAIL → Hard Abort & Rollback
+```
+
+------------------------------------------------------------------------
 
 ## Scope Clarification
 
 **This is NOT:**
-
 - A prompt template library
 - A fine-tuning method
 - A LoRA training technique
 - A model architecture modification
 
 **This IS:**
-
 - An operational governance protocol
 - A statistical convergence control framework
 - A validation discipline using structured gates
 
------
+------------------------------------------------------------------------
 
 ## If You Are Evaluating This Repository
 
 If you are reviewing this for:
-
 - Enterprise evaluation
 - Research analysis
 - Risk / compliance review
@@ -50,7 +68,7 @@ If you are reviewing this for:
 
 Please refer to: [Decision Pack](docs/decision_pack.md)
 
------
+------------------------------------------------------------------------
 
 ## Character Identity Protocol in 30 Seconds
 
@@ -65,7 +83,7 @@ Abort immediately on deviation.
 **Result:**  
 Operational identity stability.
 
------
+------------------------------------------------------------------------
 
 ## Intended Audience
 
@@ -74,7 +92,7 @@ Operational identity stability.
 - Fashion and editorial production pipelines
 - Enterprise governance and audit teams
 
------
+------------------------------------------------------------------------
 
 ## Why This Matters
 
@@ -87,7 +105,7 @@ process rather than a fragile prompt outcome.
 > *Most industry discussions aggregate incremental tool improvements.  
 > CIP defines an end-to-end operational discipline independent of any single model.*
 
------
+------------------------------------------------------------------------
 
 ## Overview
 
@@ -106,81 +124,123 @@ Core principle:
 
 This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
 
------
+------------------------------------------------------------------------
+
+## Re-Convergence Principle
+
+CIP treats identity as a convergence problem rather than a prompt problem.
+
+Instead of depending on indefinite interface persistence,
+CIP stabilizes identity through bounded generation cycles:
+
+1. Converge to a stable reconstruction state
+2. Compress that state into an anchor
+3. Re-bind the anchor after environment reset
+4. Drive re-convergence under identity validation gates
+5. Continue only if constraints hold
+
+This approach does not assume theoretical infinity.
+It demonstrates controlled reconstruction continuity within probabilistic systems.
+
+------------------------------------------------------------------------
 
 ## What This Is
 
-- An operational governance protocol
-- A convergence control strategy
-- A structured logging and evaluation discipline
-- A reproducibility-oriented workflow
+-   An operational governance protocol
+-   A convergence control strategy
+-   A structured logging and evaluation discipline
+-   A reproducibility-oriented workflow
 
 ## What This Is Not
 
-- A prompt template library
-- A fine-tuning or LoRA method
-- A model modification technique
-- A proprietary platform
+-   A prompt template library
+-   A fine-tuning or LoRA method
+-   A model modification technique
+-   A proprietary platform
 
------
+------------------------------------------------------------------------
 
 ## Quickstart
 
-1. Prepare a converged anchor image (previously stabilized identity).
-1. Use a minimal prompt referencing only invariant attributes.
-1. Generate 3–5 iterations and observe identity drift.
-1. Apply Quality Gate:
-   
-   ```
-   PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
-   ```
-   
-   If any gate fails, generation must stop immediately.
-1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+1.  Prepare a converged anchor image (previously stabilized identity).
+2.  Use a minimal prompt referencing only invariant attributes.
+3.  Generate 3--5 iterations and observe identity drift.
+4.  Apply Quality Gate:
 
------
+    ```
+    PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+    ```
+
+    If any gate fails, generation must stop immediately.
+
+5.  If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+
+------------------------------------------------------------------------
 
 ## Core Components
 
-- Anchor Image
-- Minimal Prompt
-- Quality Gate
-- Hard Abort Discipline
-- Reconstruction Tracking (A → A’)
+-   Anchor Image
+-   Minimal Prompt
+-   Quality Gate
+-   Hard Abort Discipline
+-   Reconstruction Tracking (A → A')
 
------
+------------------------------------------------------------------------
 
 ## Applications
 
-- Editorial production requiring identity stability
-- Fashion pipelines requiring skeletal consistency
-- Cross-session reconstruction stability
-- Controlled variation experiments
-- Cross-model portability validation
+-   Editorial production requiring identity stability
+-   Fashion pipelines requiring skeletal consistency
+-   Controlled variation under identity lock
+-   Controlled variation experiments
+-   Cross-model portability validation
 
------
+------------------------------------------------------------------------
+
+## Cross-Cycle Reconstruction Continuity (Under Evaluation)
+
+Cross-cycle behavior is currently under evaluation.
+
+Preliminary observations indicate potential continuity signals
+following environment reset and anchor re-binding.
+
+Formal validation and expanded demonstrations are pending.
+
+------------------------------------------------------------------------
+
+## Terminology Clarification
+
+CIP does not depend on chat-specific session mechanics.
+
+The term "cycle" refers to a context-bound generation window
+within any interface or tool.
+
+The protocol operates on convergence and re-convergence principles,
+making it tool-agnostic in structure.
+
+------------------------------------------------------------------------
 
 ## Glossary
 
-**Anchor Image**  
+**Anchor Image**\
 A converged solution image used as a reconstruction stabilizer.
 
-**Convergence**  
+**Convergence**\
 The statistical stabilization of output characteristics across turns.
 
-**Quality Gate**  
+**Quality Gate**\
 Predefined identity validation criteria (e.g., face similarity, skeletal
 alignment, proportion consistency).
 
-**Hard Abort**  
+**Hard Abort**\
 Immediate termination of generation when threshold violation is
 detected.
 
-**Reconstruction (A → A’)**  
-The probabilistic transformation process from input A to output A’ in a
+**Reconstruction (A → A')**\
+The probabilistic transformation process from input A to output A' in a
 generative system.
 
------
+------------------------------------------------------------------------
 
 ## Reading Paths
 
@@ -190,18 +250,16 @@ generative system.
 - **I want proof** (30 min) → [Case 03](docs/case_03_avedon_project.md) + [Case 04](docs/case_04_shizuka.md)
 - **I want scope limits** → [Reproducibility Scope](docs/reproducibility_scope.md)
 
------
+------------------------------------------------------------------------
 
 ## Documentation
 
 **White Paper**
-
 - [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
 - [Master Document — Consolidated Overview](docs/master_document.md)
 - [Decision Pack — Enterprise Evaluation](docs/decision_pack.md)
 
 **Core**
-
 - [Quickstart Guide](docs/quickstart.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Architecture Diagram](docs/architecture_diagram.md)
@@ -210,25 +268,22 @@ generative system.
 - [Reproducibility Scope](docs/reproducibility_scope.md)
 
 **Case Studies**
-
 - [Case 01: Baseline Failure](docs/case_01_failure_log.md)
 - [Case 02: Wedding Series](docs/case_02_wedding_series.md)
 - [Case 03: Avedon Project](docs/case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — “Shizuka”](docs/case_04_shizuka.md)
+- [Case 04: Cross-Platform Migration — "Shizuka"](docs/case_04_shizuka.md)
 - [Case 05: Mira Project](docs/case_05_mira_project.md)
 - [Case 06: Serendipitous Creation](docs/case_06_README.md)
 - [Case 07: Gemini Validation](docs/case_07_README.md)
 
 **Operational**
-
 - [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
 
 **Further Reading**
-
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
 
------
+------------------------------------------------------------------------
 
 ## Citation
 
@@ -244,13 +299,13 @@ If referencing this protocol in academic or professional work:
 }
 ```
 
------
+------------------------------------------------------------------------
 
 ## Contribution
 
 Open discussion is welcome via GitHub Issues.
 
------
+------------------------------------------------------------------------
 
 ## License
 
@@ -262,7 +317,7 @@ When referencing or implementing this protocol, please cite:
 Watadani (2026), Character Identity Protocol (CIP)  
 https://github.com/watadani-byte/character-identity-protocol
 
------
+------------------------------------------------------------------------
 
 ## Contact
 
