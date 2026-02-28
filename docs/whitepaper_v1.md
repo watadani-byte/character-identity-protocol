@@ -41,6 +41,30 @@ Verbose prompts activate interpretation and optimization layers, causing the mod
 
 *See: [Technical Mechanism](technical_mechanism.md)*
 
+### Max Context Stability Threshold (MCST)
+
+In probabilistic generative systems, identity stability exists within a bounded convergence window.
+Beyond a certain accumulation of probabilistic drift, reconstruction reliability degrades.
+
+This boundary is defined as:
+
+**Max Context Stability Threshold (MCST)**
+
+MCST represents the upper bound of stable identity reconstruction within a single context-bound generation window.
+It is not a fixed numeric constant.
+
+Observed empirical ranges (e.g., ~40 turns in certain interfaces) are implementation-dependent and should be treated as indicative rather than prescriptive.
+
+MCST varies depending on:
+- Model architecture
+- Context window size
+- Sampling configuration
+- Prompt entropy
+- Output conditioning strength
+
+CIP does not depend on a fixed turn count.
+It operates by detecting and respecting the MCST boundary within any given system.
+
 ---
 
 ## 3. Core Implementation: The Anchor Mechanism
@@ -132,6 +156,66 @@ Production deployment requires formal stop-conditions.
 Identity gates (FaceGate ∧ SkeletonGate ∧ ProportionGate) must all pass simultaneously. Any failure triggers immediate session termination — not progressive correction.
 
 *See: [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)*
+
+### Illustrative Quantitative Gate Example (Non-Prescriptive)
+
+CIP defines Quality Gates structurally.
+However, implementations may operationalize gates using quantitative measures.
+
+Illustrative examples:
+
+**FaceGate:**
+- Feature embedding cosine similarity ≥ 0.85 relative to anchor reference.
+
+**SkeletonGate:**
+- Keypoint deviation within predefined tolerance band.
+
+**ProportionGate:**
+- Ratio deviation below defined variance threshold.
+
+These values are examples only.
+CIP does not mandate specific numeric thresholds.
+Threshold calibration must be system-specific and validated empirically.
+
+The purpose of quantitative gating is not aesthetic evaluation,
+but objective governance enforcement.
+
+### Anchor Re-binding Procedure
+
+When a Quality Gate violation occurs, CIP mandates immediate Hard Abort.
+
+Following abort, recovery must proceed through structured re-binding:
+
+1. Roll back to the last verified Converged Anchor.
+2. Reset contextual accumulation (environment reset).
+3. Re-inject the anchor as the primary reconstruction stabilizer.
+4. Reset sampling configuration if applicable (temperature, seed, guidance scale).
+5. Resume generation under full Gate enforcement.
+
+This prevents probabilistic noise propagation and ensures that drift does not compound across cycles.
+
+Re-binding is not an optional optimization.
+It is a governance requirement within the CIP framework.
+
+---
+
+## Bounded Generation Cycles (BGC)
+
+CIP stabilizes identity through Bounded Generation Cycles (BGC).
+
+A BGC consists of:
+
+- Convergence phase
+- Drift monitoring
+- Gate validation
+- Hard Abort (if triggered)
+- Anchor Re-binding
+- Re-convergence phase
+
+Stability is therefore chained, not assumed infinite.
+
+CIP does not pursue perpetual identity persistence.
+It enforces disciplined stability chaining through structured re-convergence.
 
 ---
 
