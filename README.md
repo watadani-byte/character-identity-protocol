@@ -139,6 +139,53 @@ CIP stabilizes identity through bounded generation cycles:
 This approach does not assume theoretical infinity.
 It demonstrates controlled reconstruction continuity within probabilistic systems.
 
+```
+Identity Stability
+↑
+│                ┌───────────────┐
+│                │   Cycle A     │
+│                │  Convergence  │
+│                └───────────────┘
+│                        │
+│                        │ (Probabilistic Drift Accumulation)
+│                        ▼
+│                ─────────────────────
+│                 Context Stability Threshold
+│                ─────────────────────
+│                        │
+│                        ▼
+│              Re-Binding / Re-Convergence
+│                        │
+│                ┌───────────────┐
+│                │   Cycle B     │
+│                │ Re-Converged  │
+│                └───────────────┘
+│
+└────────────────────────────────────────→ Time (Context-Bound Window)
+```
+
+> Stability is not infinite.  
+> Stability is chained through disciplined re-convergence.
+
+```
+[ Stable State A ]
+        │
+        ▼
+  Drift Accumulation
+        │
+        ▼
+[ Re-Convergence ]
+        │
+        ▼
+[ Stable State B ]
+        │
+        ▼
+[ Re-Convergence ]
+        │
+        ▼
+[ Stable State C ]
+```
+
 ------------------------------------------------------------------------
 
 ## What This Is
@@ -202,6 +249,14 @@ Preliminary observations indicate potential continuity signals
 following environment reset and anchor re-binding.
 
 Formal validation and expanded demonstrations are pending.
+
+```mermaid
+flowchart LR
+    A[Cycle A: Convergence Window] --> B[Drift Accumulation]
+    B --> C[Context Stability Threshold]
+    C --> D[Re-Binding / Re-Convergence]
+    D --> E[Cycle B: Re-Converged Window]
+```
 
 ------------------------------------------------------------------------
 
