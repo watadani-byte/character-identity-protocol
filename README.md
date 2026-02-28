@@ -6,11 +6,8 @@ This work is licensed under the [Creative Commons Attribution 4.0 International 
 
 A governance protocol for stabilizing character identity
 in probabilistic generative systems.
-
-Generative systems can reproduce style, but they do not guarantee identity.
-
-Character Identity Protocol (CIP) governs reconstruction behavior, not model internals.
-It stabilizes identity through controlled convergence and re-convergence under validation gates.
+CIP governs reconstruction behavior — not model internals —
+through controlled convergence and re-convergence under validation gates.
 
 CIP does NOT modify models.
 It constrains reconstruction through anchor-based convergence control.
@@ -100,7 +97,7 @@ In probabilistic generative systems, character identity is not
 guaranteed. This protocol treats identity as a controllable convergence
 process rather than a fragile prompt outcome.
 
-> *Other tools improve consistency. This protocol defines the standard for identity validation.*
+> *Other tools improve consistency. This protocol proposes a structured standard for identity validation.*
 
 > *Most industry discussions aggregate incremental tool improvements.  
 > CIP defines an end-to-end operational discipline independent of any single model.*
@@ -120,7 +117,7 @@ engineering problem.
 Core principle:
 
 > Minimal prompt + Converged solution image  
-> = Layer bypass + Statistical convergence
+> = Operational-layer constraint + Statistical convergence
 
 This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
 
