@@ -46,11 +46,11 @@ for enterprise evaluation, internal audit, and IP management purposes.
 
 CIP workflows produce a traceable chain of decisions that answers the core audit question:
 
-> *"Who approved what, under what constraints, and what happened when those constraints failed?"*
+> *“Who approved what, under what constraints, and what happened when those constraints failed?”*
 
 Each CIP session generates the following decision record:
 
-**Anchor Definition** — The convergence state selected as the identity baseline, with the rationale for selection (e.g., "last known high-identity state").
+**Anchor Definition** — The convergence state selected as the identity baseline, with the rationale for selection (e.g., “last known high-identity state”).
 
 **Gate Criteria** — The identity validation rules defined prior to generation, not derived post-hoc from outputs.
 
@@ -135,7 +135,7 @@ or compliance reviewers without requiring access to model internals.
 
 ## Vendor Independence and Governance Continuity
 
-A governance protocol that depends on a single vendor's platform is exposed to
+A governance protocol that depends on a single vendor’s platform is exposed to
 continuity risk: model deprecation, API changes, or vendor discontinuation can
 invalidate the entire identity management process.
 
@@ -181,18 +181,36 @@ A CIP record is not a claim of ownership, but a record of stewardship.
 
 Stewardship implies continuity of care, constraint discipline, and documented oversight across identity cycles.
 
+### Style-Defined IP Domains
+
+In anime, manga, illustration, game, and franchise animation industries,
+character identity is constituted not only by structural attributes
+but by the rendering regime itself — line weight, color quantization,
+shading abstraction, and texture ceiling.
+
+In these domains, CIP governance records serve an additional function:
+
+**Rendering regime documentation** — The anchor image defines the authorized style-layer identity. Gate records document that the rendering regime was enforced, not merely the structural attributes.
+
+**Zero-tolerance compliance record** — In franchise animation, serialized manga, and licensed character goods, style deviation is a brand obligation and in many cases a legal condition. CIP Hard Abort records document that deviation was halted at occurrence — not silently accepted or corrected post-hoc.
+
+**Style-layer stewardship** — For IP owners in style-defined domains, CIP provides evidence that the defined rendering regime was treated as a governance constraint, not an aesthetic preference.
+
+> Style consistency in these industries is not a preference.  
+> It is a brand obligation, a production standard, and in many cases a legal requirement.
+
 ### Due Care in AI-Governed Workflows
 
 CIP provides evidence that an organization exercised due care in managing
 AI-generated character identity — a consideration increasingly relevant
 in contexts where AI output similarity is subject to legal or contractual scrutiny.
 
-The argument is not: *"AI generated it, therefore we are not responsible."*
+The argument is not: *“AI generated it, therefore we are not responsible.”*
 
-The argument is: *"We applied a structured governance protocol, enforced
+The argument is: *“We applied a structured governance protocol, enforced
 explicit identity constraints, documented every gate evaluation, and halted
 generation immediately upon deviation. This constitutes the maximum
-available standard of identity management discipline at the operational layer."*
+available standard of identity management discipline at the operational layer.”*
 
 This framing supports internal compliance review, external audit response,
 and partnership due diligence processes where AI governance maturity is assessed.
@@ -203,16 +221,16 @@ These records do not substitute for IP registration, trademark filing, or legal 
 
 ## Explicit Governance Limits
 
-The following limits apply to CIP's governance claims and must be understood before
+The following limits apply to CIP’s governance claims and must be understood before
 citing CIP evidence in legal or compliance contexts.
 
-CIP operational evidence is **internal** in nature. It documents process integrity within an organization's own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
+CIP operational evidence is **internal** in nature. It documents process integrity within an organization’s own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
 
 CIP identity gates are **operationally defined**, not legally defined. FaceGate, SkeletonGate, and ProportionGate are human-designed evaluation criteria. Their thresholds are set by the practitioner, not by any external legal or regulatory standard.
 
 CIP does not address **model training data**. No inference should be drawn from CIP records about whether a character identity was derived from, or conflicts with, third-party training data.
 
-CIP's **cross-platform validation** is classified as Experimental. See [Reproducibility Scope](reproducibility_scope.md) for current validation status and known limitations.
+CIP’s **cross-platform validation** is classified as Experimental. See [Reproducibility Scope](reproducibility_scope.md) for current validation status and known limitations.
 
 > CIP governance value is internal — not adjudicative.  
 > For legal determinations, consult qualified legal counsel.
@@ -241,7 +259,7 @@ CIP's **cross-platform validation** is classified as Experimental. See [Reproduc
 - [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)
 - [Reproducibility Scope](reproducibility_scope.md)
 - [Case 03: Avedon Project](case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — "Shizuka"](case_04_shizuka.md)
+- [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
 - [Case 07: Gemini Validation](case_07_README.md)
 
 -----
