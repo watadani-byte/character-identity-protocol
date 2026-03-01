@@ -117,7 +117,7 @@ engineering problem.
 Core principle:
 
 > Minimal prompt + Converged solution image  
-> = Operational-layer constraint + Statistical convergence
+> = Documented operational constraint + Statistical convergence
 
 This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
 
