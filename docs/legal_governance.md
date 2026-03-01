@@ -224,7 +224,7 @@ These records do not substitute for IP registration, trademark filing, or legal 
 The following limits apply to CIP’s governance claims and must be understood before
 citing CIP evidence in legal or compliance contexts.
 
-CIP operational evidence is **internal** in nature. It documents process integrity within an organization’s own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
+CIP operational evidence is **internal and procedural** in nature. It documents process integrity within an organization’s own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
 
 CIP identity gates are **operationally defined**, not legally defined. FaceGate, SkeletonGate, and ProportionGate are human-designed evaluation criteria. Their thresholds are set by the practitioner, not by any external legal or regulatory standard.
 
