@@ -80,6 +80,8 @@ Abort immediately on deviation.
 **Result:**  
 Operational identity stability.
 
+> Identity is treated as a constraint, not a coincidence.
+
 ------------------------------------------------------------------------
 
 ## Intended Audience
