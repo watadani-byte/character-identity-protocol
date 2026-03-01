@@ -245,7 +245,7 @@ Identity Stability
 
 Cross-cycle behavior is currently under evaluation.
 
-Preliminary observations indicate potential continuity signals
+Preliminary operational observations indicate continuity signals
 following environment reset and anchor re-binding.
 
 Formal validation and expanded demonstrations are pending.
