@@ -46,11 +46,11 @@ for enterprise evaluation, internal audit, and IP management purposes.
 
 CIP workflows produce a traceable chain of decisions that answers the core audit question:
 
-> *“Who approved what, under what constraints, and what happened when those constraints failed?”*
+> *"Who approved what, under what constraints, and what happened when those constraints failed?"*
 
 Each CIP session generates the following decision record:
 
-**Anchor Definition** — The convergence state selected as the identity baseline, with the rationale for selection (e.g., “last known high-identity state”).
+**Anchor Definition** — The convergence state selected as the identity baseline, with the rationale for selection (e.g., "last known high-identity state").
 
 **Gate Criteria** — The identity validation rules defined prior to generation, not derived post-hoc from outputs.
 
@@ -111,11 +111,31 @@ under frameworks such as SOC 2 (availability and process integrity) and
 ISO 27001 (operational procedures and records management),
 though formal certification is outside the scope of this protocol.
 
+### Explainability Without Model Access
+
+CIP provides a practical alternative to explainable AI (XAI) requirements
+in contexts where model internals are inaccessible.
+
+Generative models operate as black boxes. Internal parameters, weights, and
+sampling behavior cannot be audited directly by end users or external reviewers.
+
+CIP addresses this gap at the operational layer:
+
+- Quality Gate records document **what criteria were applied** to each output
+- Hard Abort events document **when and why generation was terminated**
+- Anchor re-binding records document **how identity was recovered** after deviation
+
+This operational log constitutes an externally communicable account of generation
+governance — sufficient to explain output decisions to auditors, partners,
+or compliance reviewers without requiring access to model internals.
+
+> Where model explainability is unavailable, operational explainability is the governance standard.
+
 -----
 
 ## Vendor Independence and Governance Continuity
 
-A governance protocol that depends on a single vendor’s platform is exposed to
+A governance protocol that depends on a single vendor's platform is exposed to
 continuity risk: model deprecation, API changes, or vendor discontinuation can
 invalidate the entire identity management process.
 
@@ -161,22 +181,38 @@ A CIP record is not a claim of ownership, but a record of stewardship.
 
 Stewardship implies continuity of care, constraint discipline, and documented oversight across identity cycles.
 
+### Due Care in AI-Governed Workflows
+
+CIP provides evidence that an organization exercised due care in managing
+AI-generated character identity — a consideration increasingly relevant
+in contexts where AI output similarity is subject to legal or contractual scrutiny.
+
+The argument is not: *"AI generated it, therefore we are not responsible."*
+
+The argument is: *"We applied a structured governance protocol, enforced
+explicit identity constraints, documented every gate evaluation, and halted
+generation immediately upon deviation. This constitutes the maximum
+available standard of identity management discipline at the operational layer."*
+
+This framing supports internal compliance review, external audit response,
+and partnership due diligence processes where AI governance maturity is assessed.
+
 These records do not substitute for IP registration, trademark filing, or legal ownership documentation. They provide operational context that may support such processes.
 
 -----
 
 ## Explicit Governance Limits
 
-The following limits apply to CIP’s governance claims and must be understood before
+The following limits apply to CIP's governance claims and must be understood before
 citing CIP evidence in legal or compliance contexts.
 
-CIP operational evidence is **internal** in nature. It documents process integrity within an organization’s own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
+CIP operational evidence is **internal** in nature. It documents process integrity within an organization's own workflow. It does not constitute evidence admissible in legal proceedings without independent legal assessment.
 
 CIP identity gates are **operationally defined**, not legally defined. FaceGate, SkeletonGate, and ProportionGate are human-designed evaluation criteria. Their thresholds are set by the practitioner, not by any external legal or regulatory standard.
 
 CIP does not address **model training data**. No inference should be drawn from CIP records about whether a character identity was derived from, or conflicts with, third-party training data.
 
-CIP’s **cross-platform validation** is classified as Experimental. See [Reproducibility Scope](reproducibility_scope.md) for current validation status and known limitations.
+CIP's **cross-platform validation** is classified as Experimental. See [Reproducibility Scope](reproducibility_scope.md) for current validation status and known limitations.
 
 > CIP governance value is internal — not adjudicative.  
 > For legal determinations, consult qualified legal counsel.
@@ -205,7 +241,7 @@ CIP’s **cross-platform validation** is classified as Experimental. See [Reprod
 - [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)
 - [Reproducibility Scope](reproducibility_scope.md)
 - [Case 03: Avedon Project](case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
+- [Case 04: Cross-Platform Migration — "Shizuka"](case_04_shizuka.md)
 - [Case 07: Gemini Validation](case_07_README.md)
 
 -----
