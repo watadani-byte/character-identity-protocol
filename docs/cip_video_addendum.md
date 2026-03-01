@@ -166,7 +166,7 @@ CIP governance for video systems requires a three-layer identity model:
 |Layer 2: Morphological Identity        |Universal       |Temporal consistency across frames    |
 |Layer 3: Rendering / Stylistic Identity|Domain-dependent|Rendering regime gates (see below)    |
 
-In anime-dominant domains, **Layer 3 becomes foundational**.
+In style-defined domains, **Layer 3 becomes identity-defining**.
 A Layer 3 failure constitutes identity failure regardless of Layer 1 and 2 results.
 
 ### Proposed Rendering Regime Gates
