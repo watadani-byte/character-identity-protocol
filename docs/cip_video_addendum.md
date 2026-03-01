@@ -93,13 +93,17 @@ is constitutive of identity itself.
 
 A character whose face and skeleton are preserved but whose rendering
 has shifted from anime abstraction to semi-realism is not the same character
-in any operationally meaningful sense. The IP is broken. The brand is broken.
-The production pipeline is broken.
+in any operationally meaningful sense. The IP continuity is operationally compromised.
+The brand coherence is operationally compromised.
+The production pipeline is operationally compromised.
 
 Therefore, in style-defined identity systems:
 
 > Anime → Semi-real shift = Identity violation,  
 > not aesthetic variation.
+
+In stylized IP domains, recoverability does not change the decision rule.
+Deviation is a failure at occurrence — zero tolerance applies — even if later recovery is technically possible.
 
 -----
 
@@ -139,6 +143,8 @@ Therefore, in style-defined identity systems:
 
 ### Information Density Asymmetry
 
+For the purposes of this document, **information density** refers to the rendering regime’s effective detail, texture, and continuity complexity — as measured by the proposed metrics (texture entropy, gradient continuity, specular behavior, edge rendering characteristics). See [Glossary](glossary.md) for the canonical definition.
+
 The drift from low to high information density involves:
 
 - Addition of volumetric assumptions not present in the source
@@ -169,6 +175,18 @@ CIP governance for video systems requires a three-layer identity model:
 In style-defined domains, **Layer 3 becomes identity-defining**.
 A Layer 3 failure constitutes identity failure regardless of Layer 1 and 2 results.
 
+### RenderingRegimeGate: Composite Definition
+
+RenderingRegimeGate is a composite gate defined as:
+
+```
+RenderingRegimeGate ⇔ LineWeightGate ∧ AbstractionPreservationGate
+                     ∧ ColorQuantizationGate ∧ ShadingModelGate
+```
+
+Domain-specific modules MAY be added or removed by declared configuration.
+All active modules must pass for RenderingRegimeGate to return PASS.
+
 ### Proposed Rendering Regime Gates
 
 **LineWeightGate**
@@ -178,7 +196,8 @@ primary contour, secondary detail, tertiary texture.
 Collapse to uniform edge rendering signals regime drift.
 
 *Measurable indicator:* Edge width variance ratio (candidate vs. anchor).
-Threshold: deviation > 20% from anchor distribution → FAIL.
+Suggested baseline threshold: deviation > 20% from anchor distribution → FAIL.
+(Subject to domain calibration; anime and franchise domains may apply stricter thresholds.)
 
 **AbstractionPreservationGate**
 Measures preservation of the source domain’s abstraction level.
@@ -207,6 +226,9 @@ PBR-characteristic specular response not present in anchor → FAIL.
 **TemporalConsistencyGate** *(video-specific)*
 Measures frame-to-frame consistency of the above rendering properties.
 A single-frame pass is insufficient in video — drift accumulates across frames.
+
+TemporalConsistencyGate tracks the rolling stability of:
+`{line-weight stats, texture entropy, quantization profile, shading model indicators}` across frames.
 
 *Measurable indicator:* Rolling window variance of rendering regime metrics
 across N consecutive frames. Upward trend in information density → WARNING.
@@ -321,14 +343,14 @@ These questions are classified as **Experimental** pending formal validation.
 
 ## 8. Summary
 
-|Property            |Core CIP                                |Video Addendum                                 |
-|--------------------|----------------------------------------|-----------------------------------------------|
-|Primary failure mode|Structural drift                        |Rendering regime drift                         |
-|Gate architecture   |FaceGate ∧ SkeletonGate ∧ ProportionGate|+ RenderingRegimeGate ∧ TemporalConsistencyGate|
-|Style classification|Recoverable surface variation           |Domain-dependent; foundational in stylized IP  |
-|Hard Abort scope    |Single generation                       |Frame-level + segment rollback                 |
-|Domain configuration|Fixed                                   |Parameterized by domain declaration            |
-|Validation status   |Production-validated                    |Experimental                                   |
+|Property            |Core CIP                                                  |Video Addendum                                    |
+|--------------------|----------------------------------------------------------|--------------------------------------------------|
+|Primary failure mode|Structural drift                                          |Rendering regime drift                            |
+|Gate architecture   |FaceGate ∧ SkeletonGate ∧ ProportionGate                  |+ RenderingRegimeGate ∧ TemporalConsistencyGate   |
+|Style classification|Context-dependent; typically recoverable in static systems|Domain-dependent; identity-defining in stylized IP|
+|Hard Abort scope    |Single generation                                         |Frame-level + segment rollback                    |
+|Domain configuration|Fixed                                                     |Parameterized by domain declaration               |
+|Validation status   |Field-demonstrated                                        |Experimental                                      |
 
 -----
 
