@@ -104,6 +104,8 @@ process rather than a fragile prompt outcome.
 > *Most industry discussions aggregate incremental tool improvements.  
 > CIP defines an end-to-end operational discipline independent of any single model.*
 
+> *CIP does not fight the model's optimization. It uses it.*
+
 ------------------------------------------------------------------------
 
 ## Overview
