@@ -6,35 +6,37 @@ site_author: Watadani
 repo_name: watadani-byte/character-identity-protocol
 repo_url: https://github.com/watadani-byte/character-identity-protocol
 
+docs_dir: docs
+
 theme:
 name: material
 
 nav:
 
-- Home: README.md
-- Quickstart: docs/quickstart.md
-- White Paper: docs/whitepaper_v1.md
+- Home: index.md
+- Quickstart: quickstart.md
+- White Paper: whitepaper_v1.md
 - Case Studies:
-  - Case 01 — Failure Log: docs/case_01_failure_log.md
-  - Case 02 — Wedding Series: docs/case_02_wedding_series.md
-  - Case 03 — Avedon Project: docs/case_03_avedon_project.md
-  - Case 04 — Cross-Platform Migration: docs/case_04_shizuka.md
-  - Case 05 — Mira Project: docs/case_05_mira_project.md
-  - Case 06 — README: docs/case_06_README.md
-  - Case 07 — Gemini Validation: docs/case_07_README.md
+  - Case 01 — Failure Log: case_01_failure_log.md
+  - Case 02 — Wedding Series: case_02_wedding_series.md
+  - Case 03 — Avedon Project: case_03_avedon_project.md
+  - Case 04 — Cross-Platform Migration: case_04_shizuka.md
+  - Case 05 — Mira Project: case_05_mira_project.md
+  - Case 06 — README: case_06_README.md
+  - Case 07 — Gemini Validation: case_07_README.md
 - Documentation:
-  - Technical Mechanism: docs/technical_mechanism.md
-  - Quality Gate & Hard Abort: docs/quality_gate_addendum.md
-  - Video Addendum: docs/cip_video_addendum.md
-  - Reproducibility Scope: docs/reproducibility_scope.md
-  - Glossary: docs/glossary.md
+  - Technical Mechanism: technical_mechanism.md
+  - Quality Gate & Hard Abort: quality_gate_addendum.md
+  - Video Addendum: cip_video_addendum.md
+  - Reproducibility Scope: reproducibility_scope.md
+  - Glossary: glossary.md
 - Enterprise:
-  - Decision Pack: docs/decision_pack.md
-  - Legal Governance: docs/legal_governance.md
-  - Master Document: docs/master_document.md
+  - Decision Pack: decision_pack.md
+  - Legal Governance: legal_governance.md
+  - Master Document: master_document.md
 - Columns:
-  - Miracle Image: docs/column_miracle_image.md
-  - Production Notes: docs/column_production.md
+  - Miracle Image: column_miracle_image.md
+  - Production Notes: column_production.md
 
 plugins:
 
