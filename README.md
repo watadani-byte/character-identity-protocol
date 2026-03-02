@@ -11,7 +11,7 @@ through controlled convergence and re-convergence under validation gates.
 CIP does NOT modify models.
 It constrains reconstruction through anchor-based convergence control.
 
-CIP produces structured, audit-ready decision logs at the operational layer.
+CIP enables structured, audit-ready decision logging at the operational layer.
 
 > This is not a generation method.  
 > It is a character identity inspection protocol.
