@@ -1,4 +1,4 @@
-# Reproducibility Scope
+# Reproducibility Scope 
 
 This document clarifies the conditions under which the Character Identity Protocol has been validated, and the boundaries of current claims.
 
