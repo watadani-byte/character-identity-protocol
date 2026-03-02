@@ -39,7 +39,7 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 ## When to Abort
 
-Stop the session immediately if:
+**Abort the session immediately if:**
 
 - Face identity fails (different person)
 - Skeletal proportions shift significantly
