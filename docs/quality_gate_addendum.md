@@ -47,11 +47,11 @@ When a gate failure is detected:
 
 ## Match Rate Threshold
 
-- **Minimum threshold**: 90% (human-judged)
+- **Minimum threshold**: typically 90% (human-judged, context-dependent)
 - **Measurement**: Visual comparison against anchor image by trained operator
 - **Automation**: None — human judgment only
 
-> 90% = shipping threshold, not research metric.
+> 90% = operational shipping threshold, not a universal research metric.
 
 If match rate drops below 90%:
 
@@ -79,9 +79,9 @@ Contamination occurs when:
 - Generation continues after drift detection
 - Session length exceeds anchor stability range without re-anchoring
 
-**Contaminated sessions must be abandoned entirely.**
+**Contaminated cycles must be abandoned entirely.**
 
-Recommended re-anchoring frequency: every 10–15 turns.
+Re-anchoring frequency is context-dependent. See [Reproducibility Scope](reproducibility_scope.md) and [MCST definition](whitepaper_v1.md) for guidance.
 
 -----
 
@@ -91,7 +91,7 @@ This discipline is not artistic rigidity.
 
 It is production governance.
 
-In professional workflows — editorial, fashion, IP management — identity failure is not a style variation. It is a deliverable failure.
+In professional workflows — anime, game, manga, franchise animation, editorial, fashion, IP management — identity failure is not a style variation. It is a deliverable failure.
 
 The Hard Abort policy exists to prevent that failure from propagating.
 
