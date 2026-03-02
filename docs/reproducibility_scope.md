@@ -55,13 +55,13 @@ These are observational records, not controlled experiments.
 
 The protocol may perform below threshold under:
 
-|Condition                                                   |Risk Level|Notes                                       |
-|------------------------------------------------------------|----------|--------------------------------------------|
-|Large semantic transitions (e.g., outfit → hairstyle change)|Medium    |Re-anchor recommended                       |
-|Style domain shift (illustration → photorealistic)          |High      |Quality loss observed in Case 04            |
-|Extended cycles without re-anchoring                        |Medium    |Re-anchor frequency is context-dependent    |
-|Model version update                                        |Unknown   |Behavior shift detected in Case 05 Update   |
-|High-emotional expression change                            |Medium    |Case 02 — managed with mid-session re-anchor|
+|Condition                                                   |Risk Level                              |Notes                                       |
+|------------------------------------------------------------|----------------------------------------|--------------------------------------------|
+|Large semantic transitions (e.g., outfit → hairstyle change)|Medium                                  |Re-anchor recommended                       |
+|Style domain shift (illustration → photorealistic)          |High                                    |Quality loss observed in Case 04            |
+|Extended cycles without re-anchoring                        |Medium                                  |Re-anchor frequency is context-dependent    |
+|Model version update                                        |Unknown (insufficient longitudinal data)|Behavior shift detected in Case 05 Update   |
+|High-emotional expression change                            |Medium                                  |Case 02 — managed with mid-session re-anchor|
 
 -----
 
