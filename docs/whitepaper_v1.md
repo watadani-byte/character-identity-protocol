@@ -21,6 +21,14 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 ## 2. Theoretical Foundation: Convergence Behavior
 
+### Definition: Character Identity
+
+**Character identity** is the minimum structural and perceptual invariance required for a domain-competent observer to continuously judge successive reconstructions as the same character under production conditions.
+
+> *Operational note: Identity is governed through explicit validation constraints — gate criteria, threshold enforcement, and Hard Abort discipline — not asserted by descriptive claim alone.*
+
+-----
+
 ### The “Miracle Image” Phenomenon
 
 High-purity outputs that emerge within the latent space are defined as **solution states** rather than random accidents.
