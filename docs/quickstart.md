@@ -53,7 +53,7 @@ Discard contaminated outputs. Re-anchor in a new cycle.
 ## Rollback Procedure
 
 ```
-1. Stop generation
+1. Abort generation
 2. Discard outputs from the failed turn onward
 3. Open new cycle (new session or re-bound context)
 4. Re-inject anchor image + minimal prompt
