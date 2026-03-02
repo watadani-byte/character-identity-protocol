@@ -420,7 +420,8 @@ Planned scope:
 
 -----
 
-This repository currently represents the stable conceptual and governance layer (v1.1).
+This repository represents the stable conceptual and governance layer (v1.x series).
+v1.0 is the initial tagged snapshot; v1.1 reflects documentation refinement.
 
 -----
 
