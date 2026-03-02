@@ -67,7 +67,7 @@ If you are reviewing this for:
 - Risk / compliance review
 - Platform integration feasibility
 
-Please refer to: [Decision Pack](docs/decision_pack.md)
+Please refer to: [Decision Pack](decision_pack.md)
 
 -----
 
@@ -261,7 +261,7 @@ In style-defined domains, identity includes the rendering regime (line weight, q
 - Cross-model portability validation
 
 > In style-defined domains, drift from the defined rendering regime constitutes a failure at occurrence — regardless of recoverability.  
-> *See: [Video Addendum](docs/cip_video_addendum.md)*
+> *See: [Video Addendum](cip_video_addendum.md)*
 
 -----
 
@@ -320,11 +320,11 @@ generative system.
 
 ## Reading Paths
 
-- **I just want the idea** (3 min) → README + [Glossary](docs/glossary.md)
-- **I want to run it** (10 min) → [Quickstart](docs/quickstart.md) + [Quality Gate](docs/quality_gate_addendum.md)
-- **I want the theory** (20 min) → [White Paper](docs/whitepaper_v1.md) + [Technical Mechanism](docs/technical_mechanism.md)
-- **I want proof** (30 min) → [Case 03](docs/case_03_avedon_project.md) + [Case 04](docs/case_04_shizuka.md)
-- **I want scope limits** → [Reproducibility Scope](docs/reproducibility_scope.md)
+- **I just want the idea** (3 min) → README + [Glossary](glossary.md)
+- **I want to run it** (10 min) → [Quickstart](quickstart.md) + [Quality Gate](quality_gate_addendum.md)
+- **I want the theory** (20 min) → [White Paper](whitepaper_v1.md) + [Technical Mechanism](technical_mechanism.md)
+- **I want proof** (30 min) → [Case 03](case_03_avedon_project.md) + [Case 04](case_04_shizuka.md)
+- **I want scope limits** → [Reproducibility Scope](reproducibility_scope.md)
 
 -----
 
@@ -332,38 +332,38 @@ generative system.
 
 **White Paper**
 
-- [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
-- [Master Document — Consolidated Overview](docs/master_document.md)
-- [Decision Pack — Enterprise Evaluation](docs/decision_pack.md)
-- [Legal Governance & Operational Evidence Framework](docs/legal_governance.md)
+- [Character Identity Protocol v1.0](whitepaper_v1.md)
+- [Master Document — Consolidated Overview](master_document.md)
+- [Decision Pack — Enterprise Evaluation](decision_pack.md)
+- [Legal Governance & Operational Evidence Framework](legal_governance.md)
 
 **Core**
 
-- [Quickstart Guide](docs/quickstart.md)
-- [Technical Mechanism](docs/technical_mechanism.md)
-- [Architecture Diagram](docs/architecture_diagram.md)
-- [Applications Overview](docs/applications.md)
-- [Glossary](docs/glossary.md)
-- [Reproducibility Scope](docs/reproducibility_scope.md)
+- [Quickstart Guide](quickstart.md)
+- [Technical Mechanism](technical_mechanism.md)
+- [Architecture Diagram](architecture_diagram.md)
+- [Applications Overview](applications.md)
+- [Glossary](glossary.md)
+- [Reproducibility Scope](reproducibility_scope.md)
 
 **Case Studies**
 
-- [Case 01: Baseline Failure](docs/case_01_failure_log.md)
-- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
-- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — “Shizuka”](docs/case_04_shizuka.md)
-- [Case 05: Mira Project](docs/case_05_mira_project.md)
-- [Case 06: Serendipitous Creation](docs/case_06_README.md)
-- [Case 07: Gemini Validation](docs/case_07_README.md)
+- [Case 01: Baseline Failure](case_01_failure_log.md)
+- [Case 02: Wedding Series](case_02_wedding_series.md)
+- [Case 03: Avedon Project](case_03_avedon_project.md)
+- [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
+- [Case 05: Mira Project](case_05_mira_project.md)
+- [Case 06: Serendipitous Creation](case_06_README.md)
+- [Case 07: Gemini Validation](case_07_README.md)
 
 **Operational**
 
-- [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
+- [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)
 
 **Further Reading**
 
-- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
-- [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
+- [Miracle Images and Convergence Behavior](column_miracle_image.md)
+- [When AI Stops Being Art and Starts Becoming Production](column_production.md)
 
 -----
 
