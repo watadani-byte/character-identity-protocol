@@ -99,6 +99,7 @@ It governs output, not model internals.
 
 Applicable to:
 
+- Anime, manga, and franchise animation pipelines requiring rendering-regime stability
 - Fashion and editorial pipelines
 - Branded character systems
 - AI governance frameworks
@@ -113,7 +114,7 @@ CIP addresses two concerns that arise in enterprise AI governance:
 CIP provides documented evidence that identity management was conducted
 under explicit constraints, with structured gate enforcement and immediate
 termination upon deviation. This supports the position that the organization
-applied the maximum available standard of operational governance —
+applied a structured and documented standard of operational governance —
 not that AI output was accepted without oversight.
 
 **Operational explainability without model access:**
