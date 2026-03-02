@@ -69,14 +69,14 @@ Identity is stabilized by anchoring the reconstruction phase, not by increasing 
 
 ## 5. Demonstrated Capabilities
 
-|Capability                        |Status             |
-|----------------------------------|-------------------|
-|Character Creation                |Validated          |
-|Cross-Platform Portability        |Validated (Case 04)|
-|Pose Variation Under Identity Lock|Validated (Case 05)|
-|Lighting & Material Variation     |Validated          |
-|Collapse Recovery                 |Validated (Case 01)|
-|Multi-Turn Stability              |Validated (Case 03)|
+|Capability                        |Status                           |
+|----------------------------------|---------------------------------|
+|Character Creation                |Validated (documented case study)|
+|Cross-Platform Portability        |Validated (Case 04)              |
+|Pose Variation Under Identity Lock|Validated (Case 05)              |
+|Lighting & Material Variation     |Validated (documented case study)|
+|Collapse Recovery                 |Validated (Case 01)              |
+|Multi-Turn Stability              |Validated (Case 03)              |
 
 -----
 
@@ -86,8 +86,8 @@ CIP operates as:
 
 |Layer  |Function                 |
 |-------|-------------------------|
-|Layer A|Model                    |
-|Layer B|Reconstruction Control   |
+|Layer A|Generative Model         |
+|Layer B|Reconstruction Constraint|
 |Layer C|Validation Gates         |
 |Layer D|Human Threshold Authority|
 
