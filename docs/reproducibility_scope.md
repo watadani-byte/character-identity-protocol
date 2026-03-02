@@ -1,4 +1,4 @@
-# Reproducibility Scope 
+# Reproducibility Scope
 
 This document clarifies the conditions under which the Character Identity Protocol has been validated, and the boundaries of current claims.
 
@@ -74,6 +74,14 @@ The following have not been tested and represent open questions:
 - Long-term stability across model updates
 - Automated match rate measurement
 - Minimum anchor image quality threshold
+
+-----
+
+## Platform Compatibility
+
+CIP demonstrates enhanced convergence stability in generative systems that support reference-image-based partial editing mechanisms.
+
+On platforms lacking this structural capability, convergence control remains possible but may require additional stabilization constraints.
 
 -----
 
