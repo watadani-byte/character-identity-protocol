@@ -6,12 +6,12 @@ This document clarifies the conditions under which the Character Identity Protoc
 
 ## Validation Scope Summary
 
-|Dimension     |Supported   |Notes                                               |
-|--------------|------------|----------------------------------------------------|
-|Single Cycle  |Yes         |Stable under anchor governance. Cases 02, 03, 05, 06|
-|Cross Cycle   |Conditional |Requires anchor re-binding. Case 05                 |
-|Cross Model   |Experimental|Validation documented in Case 07                    |
-|Cross Platform|Experimental|Subject to reconstruction variance. Cases 04, 07    |
+|Dimension     |Supported                                         |Notes                                               |
+|--------------|--------------------------------------------------|----------------------------------------------------|
+|Single Cycle  |Yes                                               |Stable under anchor governance. Cases 02, 03, 05, 06|
+|Cross Cycle   |Conditional                                       |Requires anchor re-binding. Case 05                 |
+|Cross Model   |Experimental (observational case-based validation)|Validation documented in Case 07                    |
+|Cross Platform|Experimental (observational case-based validation)|Subject to reconstruction variance. Cases 04, 07    |
 
 *This protocol governs operational reproducibility, not deterministic regeneration.*
 
@@ -78,4 +78,4 @@ The following have not been tested and represent open questions:
 -----
 
 *Status: Observational records as of February 2026.*  
-*Independent replication reports welcome via [GitHub Issues](https://github.com/watadani-byte/character-identity-protocol/issues).*
+*Independent replication reports are welcome and encouraged via [GitHub Issues](https://github.com/watadani-byte/character-identity-protocol/issues).*
