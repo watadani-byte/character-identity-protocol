@@ -37,7 +37,7 @@ When a gate failure is detected:
 1. **Stop generation immediately**
 1. **Do not attempt progressive correction**
 1. **Discard all outputs from the failed turn onward**
-1. **Open new session**
+1. **Open new session (or fully reset environment)**
 1. **Re-inject anchor image + minimal prompt**
 1. **Verify identity before proceeding**
 
@@ -53,9 +53,9 @@ When a gate failure is detected:
 
 > 90% = operational shipping threshold, not a universal research metric.
 
-If match rate drops below 90%:
+If match rate drops below operational threshold:
 
-- Session is abandoned
+- Session is considered invalid and must be abandoned
 - Anchor image is discarded if contaminated
 - Chat log is discarded
 
