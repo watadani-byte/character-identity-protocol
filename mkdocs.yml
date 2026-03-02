@@ -8,19 +8,6 @@ repo_url: https://github.com/watadani-byte/character-identity-protocol
 
 theme:
 name: material
-palette:
-scheme: slate
-primary: black
-accent: white
-font:
-text: Inter
-code: JetBrains Mono
-features:
-- navigation.tabs
-- navigation.sections
-- navigation.top
-- toc.integrate
-- content.code.copy
 
 nav:
 
@@ -51,24 +38,15 @@ nav:
 
 markdown_extensions:
 
-- admonition
-- pymdownx.details
+- tables
+- toc:
+  permalink: true
 - pymdownx.superfences:
   custom_fences:
   - name: mermaid
   class: mermaid
   format: !!python/name:pymdownx.superfences.fence_code_format
-- pymdownx.highlight
-- pymdownx.inlinehilite
-- tables
-- toc:
-  permalink: true
 
 plugins:
 
 - search
-
-extra:
-social:
-- icon: fontawesome/brands/github
-link: https://github.com/watadani-byte/character-identity-protocol
