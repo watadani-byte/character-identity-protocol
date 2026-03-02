@@ -8,7 +8,7 @@
 
 1. **Anchor image** — the best output you have of the character. One image only. High identity, not a draft.
 1. **Minimal prompt** — factual attributes only. No adjectives, no mood words. Aim for under 30 words.
-1. **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles.
+1. **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
 
 -----
 
