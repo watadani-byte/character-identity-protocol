@@ -389,6 +389,41 @@ Open discussion is welcome via GitHub Issues.
 
 -----
 
+## Next Phase (Planned)
+
+### CIP Specification Draft (v0.x)
+
+A formalized specification layer is in preparation.
+
+Planned scope:
+
+- Normative terminology (SHALL / SHOULD / MAY)
+- Formal gate definitions
+- Conformance conditions
+- Re-binding requirements
+- Operational boundary clauses
+
+This draft will separate governance philosophy from normative specification language.
+
+-----
+
+### CIP Enterprise Pilot Framework
+
+An enterprise-focused documentation layer is also in development.
+
+Planned scope:
+
+- Audit-ready logging templates
+- Gate event recording schema
+- Operational risk mapping
+- Compliance alignment guidelines
+
+-----
+
+This repository currently represents the stable conceptual and governance layer (v1.1).
+
+-----
+
 ## License
 
 Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
