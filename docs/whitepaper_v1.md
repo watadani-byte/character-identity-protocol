@@ -248,7 +248,7 @@ The protocol has been validated across 6 production case studies:
 |04  |Cross-platform migration (SD → ChatGPT)|High-fidelity recovery observed under anchor-governed re-binding conditions|
 |05  |Multi-session, 5 outfits, 14 poses     |Library established                                                        |
 |06  |Minimal prompt only, no image anchor   |New consistent character emerged                                           |
-|07  |Cross-platform replication on Gemini   |High-consistency behavior confirmed                                        |
+|07  |Cross-platform replication on Gemini   |High-consistency behavior observed under gate-governed conditions          |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
