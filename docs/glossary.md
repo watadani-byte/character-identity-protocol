@@ -180,7 +180,7 @@ This classification rests on the industry standard that:
 
 - Rendering regime is constitutive of identity, not decorative
 - A recoverable failure is still a failure
-- Zero-tolerance applies to rendering regime deviation in IP-governed production
+- Zero-tolerance enforcement applies to rendering regime deviation in IP-governed production
 
 > Style Drift in anime, manga, game, and serialized IP contexts is not aesthetic variation.  
 > It is identity violation — and triggers Hard Abort under the same conditions as structural drift.
