@@ -1,0 +1,74 @@
+site_name: Character Identity Protocol (CIP)
+site_url: https://watadani-byte.github.io/character-identity-protocol/
+site_description: A governance protocol for stabilizing character identity in probabilistic generative systems.
+site_author: Watadani
+
+repo_name: watadani-byte/character-identity-protocol
+repo_url: https://github.com/watadani-byte/character-identity-protocol
+
+theme:
+name: material
+palette:
+scheme: slate
+primary: black
+accent: white
+font:
+text: Inter
+code: JetBrains Mono
+features:
+- navigation.tabs
+- navigation.sections
+- navigation.top
+- toc.integrate
+- content.code.copy
+
+nav:
+
+- Home: README.md
+- Quickstart: docs/quickstart.md
+- White Paper: docs/whitepaper_v1.md
+- Case Studies:
+  - Case 01 — Failure Log: docs/case_01_failure_log.md
+  - Case 02 — Wedding Series: docs/case_02_wedding_series.md
+  - Case 03 — Avedon Project: docs/case_03_avedon_project.md
+  - Case 04 — Cross-Platform Migration: docs/case_04_shizuka.md
+  - Case 05 — Mira Project: docs/case_05_mira_project.md
+  - Case 06 — README: docs/case_06_README.md
+  - Case 07 — Gemini Validation: docs/case_07_README.md
+- Documentation:
+  - Technical Mechanism: docs/technical_mechanism.md
+  - Quality Gate & Hard Abort: docs/quality_gate_addendum.md
+  - Video Addendum: docs/cip_video_addendum.md
+  - Reproducibility Scope: docs/reproducibility_scope.md
+  - Glossary: docs/glossary.md
+- Enterprise:
+  - Decision Pack: docs/decision_pack.md
+  - Legal Governance: docs/legal_governance.md
+  - Master Document: docs/master_document.md
+- Columns:
+  - Miracle Image: docs/column_miracle_image.md
+  - Production Notes: docs/column_production.md
+
+markdown_extensions:
+
+- admonition
+- pymdownx.details
+- pymdownx.superfences:
+  custom_fences:
+  - name: mermaid
+  class: mermaid
+  format: !!python/name:pymdownx.superfences.fence_code_format
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- tables
+- toc:
+  permalink: true
+
+plugins:
+
+- search
+
+extra:
+social:
+- icon: fontawesome/brands/github
+link: https://github.com/watadani-byte/character-identity-protocol
