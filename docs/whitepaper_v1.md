@@ -147,6 +147,8 @@ Statistically reducing randomized generation attempts, thereby minimizing genera
 
 Production metrics observed across case studies:
 
+*The following figures represent observational production-session averages and should not be interpreted as statistically validated benchmarks.*
+
 |Metric                  |Without Protocol   |With Protocol       |
 |------------------------|-------------------|--------------------|
 |Identity preservation   |40–60% failure rate|<5% failure rate    |
@@ -238,15 +240,15 @@ It enforces disciplined stability chaining through structured re-convergence.
 
 The protocol has been validated across 6 production case studies:
 
-|Case|Scenario                               |Result                             |
-|----|---------------------------------------|-----------------------------------|
-|01  |Baseline — no protocol                 |Identity collapse confirmed        |
-|02  |Wedding series, 4 emotional transitions|Identity maintained, 15 turns      |
-|03  |Skeletal control, fashion production   |Audit-ready consistency, 38 turns  |
-|04  |Cross-platform migration (SD → ChatGPT)|High-fidelity recovery confirmed   |
-|05  |Multi-session, 5 outfits, 14 poses     |Library established                |
-|06  |Minimal prompt only, no image anchor   |New consistent character emerged   |
-|07  |Cross-platform replication on Gemini   |High-consistency behavior confirmed|
+|Case|Scenario                               |Result                                                                     |
+|----|---------------------------------------|---------------------------------------------------------------------------|
+|01  |Baseline — no protocol                 |Identity collapse confirmed                                                |
+|02  |Wedding series, 4 emotional transitions|Identity maintained, 15 turns                                              |
+|03  |Skeletal control, fashion production   |Audit-ready consistency, 38 turns                                          |
+|04  |Cross-platform migration (SD → ChatGPT)|High-fidelity recovery observed under anchor-governed re-binding conditions|
+|05  |Multi-session, 5 outfits, 14 poses     |Library established                                                        |
+|06  |Minimal prompt only, no image anchor   |New consistent character emerged                                           |
+|07  |Cross-platform replication on Gemini   |High-consistency behavior confirmed                                        |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
