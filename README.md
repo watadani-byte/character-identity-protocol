@@ -385,7 +385,8 @@ If referencing this protocol in academic or professional work:
 
 ## Contribution
 
-Open discussion is welcome via GitHub Issues.
+Issues are open for clarification and technical discussion.
+Demonstration requests may be considered depending on scope and feasibility.
 
 -----
 
