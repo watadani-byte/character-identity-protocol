@@ -3,15 +3,15 @@
 > This document is intentionally observational.
 > Claims are based on repeated production workflows, not controlled experiments.
 
----
+-----
 
 ## Community Term and Working Definition
 
-What is often referred to in generative communities as a "miracle image" — a single frame that appears disproportionately finished and unusually striking — may correspond to a transient local optimum within the model's convergence landscape.
+What is often referred to in generative communities as a “miracle image” — a single frame that appears disproportionately finished and unusually striking — may correspond to a transient local optimum within the model’s convergence landscape.
 
 This document does not claim deterministic reproduction of such frames. Instead, it records operational observations made while attempting controlled continuation of high-quality outputs under constrained chatbot conditions.
 
----
+-----
 
 ## Observational Starting Point
 
@@ -19,7 +19,7 @@ During repeated image generation sessions, certain outputs consistently exhibite
 
 This suggested that the phenomenon was not purely prompt-surface driven.
 
----
+-----
 
 ## Interpretation vs. Convergence
 
@@ -34,7 +34,7 @@ Stabilization of interpretation does not necessarily preserve convergence positi
 
 In practice, many prompt-engineering approaches appear to improve interpretation clarity while leaving convergence drift largely unaddressed.
 
----
+-----
 
 ## Minimal Prompts as a Control Surface
 
@@ -47,7 +47,7 @@ Observed behavior:
 
 This suggests that, under certain conditions, prompt brevity may reduce additional optimization pressure rather than increase control through specificity.
 
----
+-----
 
 ## Anchor-Based Continuation (Operational Hypothesis)
 
@@ -58,11 +58,11 @@ The working hypothesis is not that the model is being forced, but that the searc
 > The issue was not interpretation.  
 > It was convergence.
 
----
+-----
 
 ## Relation to Broader Community Practices
 
-Much of what is described publicly as "character consistency" may, in some cases, be better understood as:
+Much of what is described publicly as “character consistency” may, in some cases, be better understood as:
 
 > repeated attempts to recover the perceptual quality of a highly successful single frame
 
@@ -77,11 +77,12 @@ Disentangling these layers may clarify why different tools appear to excel in di
 
 *Cross-platform convergence behavior under anchor-based workflows is documented in [Case 07: Gemini Validation](case_07_README.md).*
 
----
+-----
 
 ## Scope and Limits
 
 This note does not claim:
+
 - Deterministic seed recovery
 - Internal model access
 - Optimization bypass
@@ -91,7 +92,7 @@ Instead, it documents a practical pattern:
 > Optimization never disappears.  
 > It simply optimizes toward a different baseline.
 
----
+-----
 
 ## Practical Implications
 
@@ -103,8 +104,8 @@ If the hypothesis holds:
 
 Further controlled testing across multiple model families is required.
 
----
+-----
 
 *Status: Observational hypothesis under ongoing validation.*
 
-*For the operational protocol derived from these observations, see the [Character Identity Protocol](../README.md).*
+*For the operational protocol derived from these observations, see the [Character Identity Protocol](../index.md).*
