@@ -137,4 +137,4 @@ The difference defines the next stage of the industry.
 
 -----
 
-*For the operational framework referenced in this column, see the [Character Identity Protocol](../index.md).*
+*For the operational framework referenced in this column, see the [Character Identity Protocol](./).*
