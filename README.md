@@ -388,6 +388,8 @@ If referencing this protocol in academic or professional work:
 Issues are open for clarification and technical discussion.
 Demonstration requests may be considered depending on scope and feasibility.
 
+→ [Open an Issue](https://github.com/watadani-byte/character-identity-protocol/issues)
+
 -----
 
 ## Next Phase (Planned)
