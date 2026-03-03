@@ -108,4 +108,4 @@ Further controlled testing across multiple model families is required.
 
 *Status: Observational hypothesis under ongoing validation.*
 
-*For the operational protocol derived from these observations, see the [Character Identity Protocol](./).*
+*For the operational protocol derived from these observations, see the [Character Identity Protocol](/character-identity-protocol/).*
