@@ -7,6 +7,8 @@
 ## What You Need
 
 1. **Anchor image** — the best output you have of the character. One image only. High identity, not a draft.
+   
+   *Anchor selection is operator-owned: the anchor is simply the target image the operator wants to reproduce; CIP governs the process after anchor selection.*
 1. **Minimal prompt** — factual attributes only. No adjectives, no mood words. Aim for under 30 words.
 1. **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
 
