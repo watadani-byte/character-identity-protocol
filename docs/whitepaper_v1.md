@@ -268,4 +268,4 @@ It constrains outputs operationally.
 -----
 
 *Status: v1.0 — February 2026*  
-*Repository: [Character Identity Protocol](../README.md)*
+*Repository: [Character Identity Protocol](../index.md)*
