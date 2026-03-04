@@ -171,6 +171,20 @@ Identity gates (FaceGate ∧ SkeletonGate ∧ ProportionGate) must all pass simu
 
 *See: [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)*
 
+### Human-First Validation (ISO-Style Explainability)
+
+Operators often recognize identity coherence instantly — a holistic perceptual judgment that precedes analytical breakdown.
+
+Explanatory reasoning follows: proportion integrity, style coherence across face and body, age drift, exposure drift, and rendering regime deviation. This post-hoc articulation is not a weakness. It reflects trained operator perception operating ahead of metric decomposition.
+
+CIP treats quantitative metrics as verification and audit trace — not as the primary judge.
+
+**Decision rule:** Human PASS ∧ Metric PASS → Identity confirmed.
+
+This dual-pass structure avoids both failure modes: AI-only judgment (high automation risk) and human-only judgment (non-scalable, person-dependent). The human gate is first; the metric gate is the audit record.
+
+This design is consistent with ISO-aligned governance frameworks, where human authority and documented evidence coexist.
+
 ### Illustrative Quantitative Gate Example (Non-Prescriptive)
 
 CIP defines Quality Gates structurally.
