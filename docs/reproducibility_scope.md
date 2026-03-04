@@ -6,12 +6,12 @@ This document clarifies the conditions under which the Character Identity Protoc
 
 ## Validation Scope Summary
 
-|Dimension     |Supported                                         |Notes                                               |
-|--------------|--------------------------------------------------|----------------------------------------------------|
-|Single Cycle  |Yes                                               |Stable under anchor governance. Cases 02, 03, 05, 06|
-|Cross Cycle   |Conditional                                       |Requires anchor re-binding. Case 05                 |
-|Cross Model   |Experimental (observational case-based validation)|Validation documented in Case 07                    |
-|Cross Platform|Experimental (observational case-based validation)|Subject to reconstruction variance. Cases 04, 07    |
+|Dimension     |Supported                                         |Notes                                                |
+|--------------|--------------------------------------------------|-----------------------------------------------------|
+|Single Cycle  |Yes                                               |Stable under anchor governance. Cases 02, 03, 01B, 05|
+|Cross Cycle   |Conditional                                       |Requires anchor re-binding. Case 01B                 |
+|Cross Model   |Experimental (observational case-based validation)|Validation documented in Case 06                     |
+|Cross Platform|Experimental (observational case-based validation)|Subject to reconstruction variance. Cases 04, 06     |
 
 *This protocol governs operational reproducibility, not deterministic regeneration.*
 
@@ -23,8 +23,8 @@ This document clarifies the conditions under which the Character Identity Protoc
 |-----------------------|---------------------------------------------|
 |ChatGPT (GPT Image 1.5)|Primary development platform — all core cases|
 |Stable Diffusion       |Source platform for Case 04 migration        |
-|Gemini (Imagen 3)      |Cross-platform replication target — Case 07  |
-|DALL-E 3               |Case 06 (serendipitous creation)             |
+|Gemini (Imagen 3)      |Cross-platform replication target — Case 06  |
+|DALL-E 3               |Case 05 (serendipitous creation)             |
 
 -----
 
@@ -60,7 +60,7 @@ The protocol may perform below threshold under:
 |Large semantic transitions (e.g., outfit → hairstyle change)|Medium                                  |Re-anchor recommended                       |
 |Style domain shift (illustration → photorealistic)          |High                                    |Quality loss observed in Case 04            |
 |Extended cycles without re-anchoring                        |Medium                                  |Re-anchor frequency is context-dependent    |
-|Model version update                                        |Unknown (insufficient longitudinal data)|Behavior shift detected in Case 05 Update   |
+|Model version update                                        |Unknown (insufficient longitudinal data)|Behavior shift detected in Case 01B Update  |
 |High-emotional expression change                            |Medium                                  |Case 02 — managed with mid-session re-anchor|
 
 -----
