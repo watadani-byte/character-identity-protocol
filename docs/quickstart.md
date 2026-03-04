@@ -30,7 +30,7 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 ```
 1. Attach anchor image + minimal prompt → Generate
-2. Verify match rate (human judgment: face, skeleton, proportions)
+2. Verify match rate (human judgment: face, skeleton, proportions — relative to anchor)
 3. If confirmed → proceed with instructions
 4. If drift detected → re-anchor immediately (attach anchor image again)
 5. One change per turn (pose OR lighting OR outfit — not combined)
