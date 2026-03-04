@@ -70,6 +70,8 @@ Minimal Prompt + Converged Anchor → Model → Output
 - A statistical convergence control framework
 - A validation discipline using structured gates
 
+CIP is model-agnostic: it defines a conformance workflow, not a model capability claim.
+
 -----
 
 ## If You Are Evaluating This Repository
@@ -100,6 +102,8 @@ Anchor → Minimal Prompt → Quality Gates → BGC Loop
 Consistent character identity across sessions and platforms.
 
 > Identity is treated as a constraint, not a coincidence.
+
+> In CIP, the core verb is not *generate* — it is *recover*.
 
 -----
 
