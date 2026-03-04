@@ -50,7 +50,7 @@ Minimal Prompt + Converged Anchor → Model → Output
                                Identity Gates (Face ∧ Skeleton ∧ Proportion)
                                             ↓
                                PASS → Production Use
-                               FAIL → Hard Abort & Rollback
+                               FAIL → Hard Abort → Re-binding
 ```
 
 -----
@@ -119,6 +119,8 @@ Consistent character identity across sessions and platforms.
 -----
 
 ## Why This Matters
+
+CIP is a recovery protocol for identity — not a generation technique.
 
 In probabilistic generative systems, character identity is not
 guaranteed. This protocol treats identity as a controllable convergence
