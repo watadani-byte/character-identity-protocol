@@ -179,7 +179,9 @@ Explanatory reasoning follows: proportion integrity, style coherence across face
 
 CIP treats quantitative metrics as verification and audit trace — not as the primary judge.
 
-**Decision rule:** Human PASS ∧ Metric PASS → Identity confirmed.
+**Decision rule:**
+Human PASS → Metric verification
+Human PASS ∧ Metric PASS → Identity confirmed.
 
 This dual-pass structure avoids both failure modes: AI-only judgment (high automation risk) and human-only judgment (non-scalable, person-dependent). The human gate is first; the metric gate is the audit record.
 
