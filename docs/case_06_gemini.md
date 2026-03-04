@@ -35,10 +35,10 @@ Character seated at cafÃ© table by window:
 
 ### Four Consecutive Generations
 
-![Generation 1](image_01.png)
-![Generation 2](image_02.png)
-![Generation 3](image_03.png)
-![Generation 4](image_04.png)
+![Generation 1](case_07/images/image_01.png)
+![Generation 2](case_07/images/image_02.png)
+![Generation 3](case_07/images/image_03.png)
+![Generation 4](case_07/images/image_04.png)
 
 ### Consistency Analysis
 
