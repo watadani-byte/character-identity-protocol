@@ -5,7 +5,7 @@
 > This white paper reflects operational observations and validated production workflows.
 > It does not claim deterministic reproduction or internal model access.
 
----
+-----
 
 ## 1. Executive Summary
 
@@ -17,7 +17,7 @@ The Character Identity Protocol (CIP) defines a character not as a random output
 
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Quality Gate discipline.
 
----
+-----
 
 ## 2. Theoretical Foundation: Convergence Behavior
 
@@ -27,9 +27,9 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 > *Operational note: Identity is governed through explicit validation constraints — gate criteria, threshold enforcement, and Hard Abort discipline — not asserted by descriptive claim alone.*
 
----
+-----
 
-### The "Miracle Image" Phenomenon
+### The “Miracle Image” Phenomenon
 
 High-purity outputs that emerge within the latent space are defined as **solution states** rather than random accidents.
 
@@ -41,13 +41,13 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
 
-The convergence point is not forced — it is biased. The anchor supplies a high-density target state; the model's own optimization pressure does the rest.
+The convergence point is not forced — it is biased. The anchor supplies a high-density target state; the model’s own optimization pressure does the rest.
 
 ### Prompt Minimization Strategy
 
-Minimizing optimization pressure from the model's training priors by reducing prompt surface area.
+Minimizing optimization pressure from the model’s training priors by reducing prompt surface area.
 
-Verbose prompts activate interpretation and optimization layers, causing the model to "improve" input away from the intended state. Minimal prompts reduce this pressure, preserving convergence fidelity.
+Verbose prompts activate interpretation and optimization layers, causing the model to “improve” input away from the intended state. Minimal prompts reduce this pressure, preserving convergence fidelity.
 
 *See: [Technical Mechanism](technical_mechanism.md)*
 
@@ -66,6 +66,7 @@ It is not a fixed numeric constant.
 Observed empirical ranges (e.g., ~40 turns in certain interfaces) are implementation-dependent and should be treated as indicative rather than prescriptive.
 
 MCST varies depending on:
+
 - Model architecture
 - Context window size
 - Sampling configuration
@@ -75,7 +76,7 @@ MCST varies depending on:
 CIP does not depend on a fixed turn count.
 It operates by detecting and respecting the MCST boundary within any given system.
 
----
+-----
 
 ## 3. Core Implementation: The Anchor Mechanism
 
@@ -86,20 +87,21 @@ The highest-purity reference image serving as the ground truth for convergence.
 Not a reference or inspiration — a previously achieved solution state that the model is directed to recover.
 
 **2. Minimalist Prompting**  
-Reducing descriptive noise to maximize the model's focus on the anchor.  
+Reducing descriptive noise to maximize the model’s focus on the anchor.  
 Factual attributes only. No adjectives, no mood descriptors, no subjective terms.
 
 **3. Unique Identifier (UID)**  
 Assigning a stable linguistic token to the converged state.  
 Reduces cognitive and computational load in future sessions. Enables cross-session continuity without re-providing the full anchor each time.
 
----
+-----
 
 ## 4. Advanced Application: Cross-Platform Migration
 
-### 4.1 The "Lost Character" Problem
+### 4.1 The “Lost Character” Problem
 
 Identities often become lost due to:
+
 - Model architecture shifts (e.g., Stable Diffusion → DALL-E 3)
 - Session context expiration
 - Prompt drift across iterations
@@ -108,12 +110,12 @@ The original prompt no longer yields the same result. Increasing detail makes it
 
 ### 4.2 Solution: Recovery Framing
 
-**From "Recreation" to "Recovery"**
+**From “Recreation” to “Recovery”**
 
-By framing the request as recovery of a lost entity, the operator shifts the AI's optimization target.
+By framing the request as recovery of a lost entity, the operator shifts the AI’s optimization target.
 
-- "Recreate" → generate something similar → variation is acceptable
-- "Recover" → return to a specific prior state → convergence is required
+- “Recreate” → generate something similar → variation is acceptable
+- “Recover” → return to a specific prior state → convergence is required
 
 This framing biases the model toward alignment with the provided visual anchor rather than interpreting the prompt freely.
 
@@ -123,7 +125,7 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 *Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
----
+-----
 
 ## 5. Governance and IP Management
 
@@ -147,13 +149,13 @@ Production metrics observed across case studies:
 
 *The following figures represent observational production-session averages and should not be interpreted as statistically validated benchmarks.*
 
-| Metric | Without Protocol | With Protocol |
-|--------|-----------------|---------------|
-| Identity preservation | 40–60% failure rate | <5% failure rate |
-| Wasted generations | ~50% | <5% |
-| Cross-platform migration | Trial and error | Systematic procedure |
+|Metric                  |Without Protocol   |With Protocol       |
+|------------------------|-------------------|--------------------|
+|Identity preservation   |40–60% failure rate|<5% failure rate    |
+|Wasted generations      |~50%               |<5%                 |
+|Cross-platform migration|Trial and error    |Systematic procedure|
 
-*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. "Failure" = human-judged identity gate failure (FaceGate or SkeletonGate or ProportionGate). No automated measurement was used. Platform: ChatGPT (GPT Image 1.5) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
+*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. “Failure” = human-judged identity gate failure (FaceGate or SkeletonGate or ProportionGate). No automated measurement was used. Platform: ChatGPT (GPT Image 1.5) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
 ### Measurement Disclosure
 
@@ -185,7 +187,7 @@ This dual-pass structure avoids both failure modes: AI-only judgment (high autom
 
 This design is consistent with ISO-aligned governance frameworks, where human authority and documented evidence coexist.
 
-In practice, operators frequently recognize identity convergence instantly — a moment often described as "this is it." Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
+In practice, operators frequently recognize identity convergence instantly — a moment often described as “this is it.” Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
 
 CIP formalizes this operational reality. Holistic recognition triggers inspection; inspection produces the documented explanation required for governance.
 
@@ -199,12 +201,15 @@ However, implementations may operationalize gates using quantitative measures.
 Illustrative examples:
 
 **FaceGate:**
+
 - Feature embedding cosine similarity ≥ 0.85 relative to anchor reference.
 
 **SkeletonGate:**
+
 - Keypoint deviation within predefined tolerance band.
 
 **ProportionGate:**
+
 - Ratio deviation below defined variance threshold.
 
 These values are examples only.
@@ -221,17 +226,17 @@ When a Quality Gate violation occurs, CIP mandates immediate Hard Abort.
 Following abort, recovery must proceed through structured re-binding:
 
 1. Roll back to the last verified Converged Anchor.
-2. Reset contextual accumulation (environment reset).
-3. Re-inject the anchor as the primary reconstruction stabilizer.
-4. Reset sampling configuration if applicable (temperature, seed, guidance scale).
-5. Resume generation under full Gate enforcement.
+1. Reset contextual accumulation (environment reset).
+1. Re-inject the anchor as the primary reconstruction stabilizer.
+1. Reset sampling configuration if applicable (temperature, seed, guidance scale).
+1. Resume generation under full Gate enforcement.
 
 This prevents probabilistic noise propagation and ensures that drift does not compound across cycles.
 
 Re-binding is not an optional optimization.
 It is a governance requirement within the CIP framework.
 
----
+-----
 
 ## Bounded Generation Cycles (BGC)
 
@@ -262,38 +267,38 @@ Stability is therefore chained, not assumed infinite.
 CIP does not pursue perpetual identity persistence.
 It enforces disciplined stability chaining through structured re-convergence.
 
----
+-----
 
 ## 6. Validation
 
-The protocol has been validated across 6 production case studies:
+The protocol has been validated across the following production case studies:
 
-| Case | Scenario | Result |
-|------|----------|--------|
-| 01 | Baseline — no protocol | Identity collapse confirmed |
-| 02 | Wedding series, 4 emotional transitions | Identity maintained, 15 turns |
-| 03 | Skeletal control, fashion production | Audit-ready consistency, 38 turns |
-| 04 | Cross-platform migration (SD → ChatGPT) | High-fidelity recovery observed under anchor-governed re-binding conditions |
-| 05 | Multi-session, 5 outfits, 14 poses | Library established |
-| 06 | Minimal prompt only, no image anchor | New consistent character emerged |
-| 07 | Cross-platform replication on Gemini | High-consistency behavior observed under gate-governed conditions |
+|Case|Scenario                                             |Result                                                                     |
+|----|-----------------------------------------------------|---------------------------------------------------------------------------|
+|01A |Baseline — no protocol                               |Identity collapse confirmed                                                |
+|01B |Hard Abort, Re-binding, Re-convergence (Mira Project)|Full BGC cycle documented                                                  |
+|02  |Wedding series, 4 emotional transitions              |Identity maintained, 15 turns                                              |
+|03  |Skeletal control, fashion production                 |Audit-ready consistency, 38 turns                                          |
+|04  |Cross-platform migration (SD → ChatGPT)              |High-fidelity recovery observed under anchor-governed re-binding conditions|
+|05  |Minimal prompt only, no image anchor                 |New consistent character emerged                                           |
+|06  |Cross-platform replication on Gemini                 |High-consistency behavior observed under gate-governed conditions          |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
----
+-----
 
 ## 7. Conclusion
 
-> *"So she can find her way home."*
+> *“So she can find her way home.”*
 
 In the fluid and volatile landscape of generative AI, the Character Identity Protocol serves as a compass.
 
 By combining statistical convergence with rigorous operational framing, CIP establishes a practical standard for the management and preservation of character identities in production AI workflows.
 
-The protocol does not oppose the model's optimization dynamics.  
+The protocol does not oppose the model’s optimization dynamics.  
 It constrains outputs operationally.
 
----
+-----
 
 *Status: v1.0 — February 2026*  
 *Repository: [Character Identity Protocol](/character-identity-protocol/)*
