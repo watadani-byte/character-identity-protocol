@@ -23,7 +23,7 @@ While attempting to recreate character “Shizuka” using minimal prompt withou
 
 ### The Emerged Character
 
-![Character Main](case_06/images/character_main.png)
+![Character Main](case_06/images/character_main01.png)
 
 A completely different character was generated, but with:
 
