@@ -22,20 +22,20 @@
 Call Model "Hana". Generate.
 ```
 
+“Hana” is the UID used for recall, not a descriptive prompt.
+
 That’s it. The image does the work. The prompt confirms identity, not describes it.
 
 -----
 
 ## Basic Session Flow
 
-```
 1. Attach anchor image + minimal prompt → Generate
-2. Verify match rate (human judgment: face, skeleton, proportions — relative to anchor)
-3. If confirmed → proceed with instructions
-4. If drift detected → re-anchor immediately (attach anchor image again)
-5. One change per turn (pose OR lighting OR outfit — not combined)
-6. Check match rate every turn
-```
+1. Verify match rate (human judgment: face, skeleton, proportions — relative to anchor; “match rate” refers to identity similarity relative to the anchor image).
+1. If confirmed → proceed with instructions
+1. If drift detected → re-anchor immediately (attach anchor image again)
+1. One change per turn (pose OR lighting OR outfit — not combined)
+1. Check match rate every turn
 
 -----
 
@@ -45,7 +45,7 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 - Face identity fails (different person)
 - Skeletal proportions shift significantly
-- Match rate drops below operational threshold (typically 90%)
+- Match rate drops below operational threshold (typically ~90%)
 
 Do **not** attempt progressive correction after failure.  
 Discard contaminated outputs. Re-anchor in a new cycle.
@@ -77,4 +77,4 @@ Discard contaminated outputs. Re-anchor in a new cycle.
 -----
 
 *For the full technical explanation, see [Technical Mechanism](technical_mechanism.md).*  
-*For stop-condition logic, see [Quality Gate Addendum](quality_gate_addendum.md).*
+*For stop-condition logic, see [Identity Gates (Quality Gate Addendum)](quality_gate_addendum.md).*
