@@ -105,6 +105,8 @@ Consistent character identity across sessions and platforms.
 
 > In CIP, the core verb is not *generate* — it is *recover*.
 
+> *Recover* = re-converge to a previously validated identity state (the anchor), under gates.
+
 -----
 
 ## Intended Audience
@@ -249,7 +251,7 @@ Identity Stability
    ```
    
    If any gate fails, generation must stop immediately.
-1. If threshold drops below defined limit → **Hard Abort** → Re-binding to last stable anchor.
+1. If threshold drops below defined limit → **Hard Abort** → Re-bind to the last verified Converged Anchor.
 
 -----
 
