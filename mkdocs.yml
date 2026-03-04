@@ -11,18 +11,6 @@ docs_dir: docs
 theme:
 name: material
 
-markdown_extensions:
-
-- pymdownx.superfences:
-  custom_fences:
-  - name: mermaid
-  class: mermaid
-  format: !!python/name:pymdownx.superfences.fence_code_format
-
-extra_javascript:
-
-- https://unpkg.com/mermaid@10/dist/mermaid.min.js
-
 nav:
 
 - Home: index.md
@@ -30,7 +18,7 @@ nav:
 - White Paper: whitepaper_v1.md
 - Case Studies:
   - Case 01A — Baseline Failure: case_01_failure_log.md
-  - Case 01B — Mira Project (Hard Abort & Re-convergence): case_01b_mira_project.md
+  - Case 01B — Mira Project (Hard Abort and Re-convergence): case_01b_mira_project.md
   - Case 02 — Wedding Series: case_02_wedding_series.md
   - Case 03 — Avedon Project: case_03_avedon_project.md
   - Case 04 — Cross-Platform Migration: case_04_shizuka.md
