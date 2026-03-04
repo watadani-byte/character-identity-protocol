@@ -23,7 +23,7 @@ While attempting to recreate character “Shizuka” using minimal prompt withou
 
 ### The Emerged Character
 
-![Character Main](character_main.jpg)
+![Character Main](case_06/images/character_main.jpg)
 
 A completely different character was generated, but with:
 
@@ -34,7 +34,7 @@ A completely different character was generated, but with:
 
 ### Character Sheet (Turnaround)
 
-![Character Sheet](character_sheet.png)
+![Character Sheet](case_06/images/character_sheet.png)
 
 **Includes**:
 
