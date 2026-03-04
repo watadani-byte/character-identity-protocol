@@ -70,7 +70,20 @@ Minimal Prompt + Converged Anchor → Model → Output
 - A statistical convergence control framework
 - A validation discipline using structured gates
 
-CIP is model-agnostic: it defines a conformance workflow, not a model capability claim.
+CIP is model-agnostic: it defines a conformance workflow, not a model capability claim or a platform feature requirement.
+
+-----
+
+## Review Notes (Expected Questions)
+
+- **Does CIP claim determinism?**  
+  No. CIP is a governance workflow for *bounded* stability under gates within a context-bound window (cycle). It does not guarantee identical outputs.
+- **Is CIP just prompt engineering?**  
+  No. CIP is an operational conformance loop: Anchor → Minimal Prompt → Gates → Hard Abort → Re-binding → Re-convergence.
+- **What is the measurable claim?**  
+  CIP makes outcomes audit-ready: every PASS/FAIL is recorded as an operational audit trail (anchor ID, prompt hash, gate result, timestamp, operator).  
+  Human gate evaluation SHALL be primary; metrics MAY be added as verification.  
+  *Audit-ready = every PASS/FAIL is traceable to (anchor ID, prompt hash, gate result, timestamp, operator).*
 
 -----
 
@@ -96,7 +109,10 @@ AI image generation loses character identity over time.
 CIP stabilizes identity through anchor-based convergence and gate validation.
 
 **Mechanism**  
-Anchor → Minimal Prompt → Quality Gates → BGC Loop
+Anchor → Minimal Prompt → Identity Gates → Re-binding / Re-convergence loop
+
+> **Definition — Re-binding / Re-convergence loop**  
+> Re-attaching the last verified anchor after an environment reset, then re-stabilizing outputs under identity gates.
 
 **Result**  
 Consistent character identity across sessions and platforms.
@@ -105,7 +121,7 @@ Consistent character identity across sessions and platforms.
 
 > In CIP, the core verb is not *generate* — it is *recover*.
 
-> *Recover* = re-converge to a previously validated identity state (the anchor), under gates.
+> *Recover* = re-converge to a previously validated identity state (the anchor), under gates, until the identity constraints are met (PASS).
 
 -----
 
@@ -244,10 +260,10 @@ Identity Stability
 1. Prepare a converged anchor image (previously stabilized identity).
 1. Use a minimal prompt referencing only invariant attributes.
 1. Generate 3–5 iterations and observe identity drift relative to the anchor.
-1. Apply Quality Gate:
+1. Apply Identity Gates:
    
    ```
-   PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+   PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
    ```
    
    If any gate fails, generation must stop immediately.
@@ -259,7 +275,7 @@ Identity Stability
 
 - Anchor Image
 - Minimal Prompt
-- Quality Gate
+- Identity Gates
 - Hard Abort Discipline
 - Reconstruction Tracking (A → A’)
 
@@ -329,9 +345,10 @@ A converged solution image used as a reconstruction stabilizer.
 **Convergence**  
 The statistical stabilization of output characteristics across turns.
 
-**Quality Gate**  
-Predefined identity validation criteria (e.g., face similarity, skeletal
-alignment, proportion consistency).
+**Identity Gates**  
+Predefined identity validation criteria used to verify character identity
+(e.g., Face Gate, Skeleton Gate, Proportion Gate).
+Generation proceeds only when all gates PASS.
 
 **Hard Abort**  
 Immediate termination of generation when threshold violation is
@@ -373,11 +390,11 @@ generative system.
 
 **Case Studies**
 
-- [Case 01: Baseline Failure](case_01_failure_log.md)
+- [Case 01A: Baseline Failure](case_01_failure_log.md)
+- [Case 01B: Mira Project — Hard Abort and Re-convergence](case_01b_mira_project.md)
 - [Case 02: Wedding Series](case_02_wedding_series.md)
 - [Case 03: Avedon Project](case_03_avedon_project.md)
 - [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
-- [Case 01B: Mira Project — Hard Abort and Re-convergence](case_01b_mira_project.md)
 - [Case 05: Serendipitous Creation](case_05_serendipitous.md)
 - [Case 06: Gemini Validation](case_06_gemini.md)
 
@@ -389,6 +406,8 @@ generative system.
 
 - [Miracle Images and Convergence Behavior](column_miracle_image.md)
 - [When AI Stops Being Art and Starts Becoming Production](column_production.md)
+
+> **Note:** “Identity Gates” is the current term for the validation layer. “Quality Gate” remains as a legacy document and addendum title for continuity.
 
 -----
 
