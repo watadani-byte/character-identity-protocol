@@ -390,13 +390,13 @@ generative system.
 
 **Case Studies**
 
-- [Case 01A: Baseline Failure](case_01_failure_log.md)
-- [Case 01B: Mira Project — Hard Abort & Re-convergence](case_01b_mira_project.md)
-- [Case 02: Wedding Series](case_02_wedding_series.md)
-- [Case 03: Avedon Project](case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
-- [Case 05: Serendipitous Creation](case_05_serendipitous.md)
-- [Case 06: Gemini Validation](case_06_gemini.md)
+- [Case 01A: Baseline Failure](docs/case_01_failure_log.md)
+- [Case 01B: Mira Project — Hard Abort & Re-convergence](docs/case_01b_mira_project.md)
+- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
+- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
+- [Case 04: Cross-Platform Migration — “Shizuka”](docs/case_04_shizuka.md)
+- [Case 05: Serendipitous Creation](docs/case_05_serendipitous.md)
+- [Case 06: Gemini Validation](docs/case_06_gemini.md)
 
 **Operational**
 
