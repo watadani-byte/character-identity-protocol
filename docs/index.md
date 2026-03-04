@@ -21,7 +21,8 @@ CIP enables structured, audit-ready decision logging at the operational layer.
 ```mermaid
 flowchart TD
     A[Minimal Prompt + Converged Anchor] --> B[Generation]
-    B --> C[Identity Gates]
+    B --> C["Identity Gates
+(Face ∧ Skeleton ∧ Proportion)"]
     C -->|PASS| D[Production]
     C -->|FAIL| E[Hard Abort]
     E --> F[Re-binding]
