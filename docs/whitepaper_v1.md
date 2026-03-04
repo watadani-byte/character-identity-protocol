@@ -91,7 +91,7 @@ Reducing descriptive noise to maximize the model’s focus on the anchor.
 Factual attributes only. No adjectives, no mood descriptors, no subjective terms.
 
 **3. Unique Identifier (UID)**  
-Assigning a stable linguistic token to the converged state.  
+Assigning a stable linguistic token (UID) that refers to the converged identity state across sessions and prompts.
 Reduces cognitive and computational load in future sessions. Enables cross-session continuity without re-providing the full anchor each time.
 
 -----
@@ -267,21 +267,36 @@ Stability is therefore chained, not assumed infinite.
 CIP does not pursue perpetual identity persistence.
 It enforces disciplined stability chaining through structured re-convergence.
 
+### Conceptual Relationship: MCST, Anchor, and BGC
+
+```mermaid
+flowchart LR
+    A[Anchor\nConverged Reference] --> B[BGC\nBounded Generation Cycle]
+    B --> C{MCST\nStability Threshold}
+    C -->|Within threshold| B
+    C -->|Threshold exceeded| D[Hard Abort]
+    D --> E[Re-binding\nto Anchor]
+    E --> B
+```
+
+> *MCST defines when a cycle must end. The Anchor enables re-entry. BGC is the governed interval between them.*
+
 -----
 
 ## 6. Validation
 
-The protocol has been validated across the following production case studies:
+The protocol has been validated across the following production case groups:
 
-|Case|Scenario                                             |Result                                                                     |
-|----|-----------------------------------------------------|---------------------------------------------------------------------------|
-|01A |Baseline — no protocol                               |Identity collapse confirmed                                                |
-|01B |Hard Abort, Re-binding, Re-convergence (Mira Project)|Full BGC cycle documented                                                  |
-|02  |Wedding series, 4 emotional transitions              |Identity maintained, 15 turns                                              |
-|03  |Skeletal control, fashion production                 |Audit-ready consistency, 38 turns                                          |
-|04  |Cross-platform migration (SD → ChatGPT)              |High-fidelity recovery observed under anchor-governed re-binding conditions|
-|05  |Minimal prompt only, no image anchor                 |New consistent character emerged                                           |
-|06  |Cross-platform replication on Gemini                 |High-consistency behavior observed under gate-governed conditions          |
+|Case  |Scenario                                                                                |Result                                                                     |
+|------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+|**01**|**Baseline Failure → Recovery Cycle**                                                   |                                                                           |
+|01A   |Baseline — no protocol                                                                  |Identity collapse confirmed                                                |
+|01B   |Hard Abort, Re-binding, Re-convergence (production recovery cycle; demonstrated in Mira)|Full BGC cycle documented                                                  |
+|02    |Wedding series, 4 emotional transitions                                                 |Identity maintained, 15 turns                                              |
+|03    |Fashion production, skeletal control                                                    |Audit-ready consistency, 38 turns                                          |
+|04    |Cross-platform migration (SD → ChatGPT)                                                 |High-fidelity recovery observed under anchor-governed re-binding conditions|
+|05    |Minimal prompt emergence — no image anchor                                              |New consistent character emerged                                           |
+|06    |Gemini replication — cross-platform validation                                          |High-consistency behavior observed under gate-governed conditions          |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
@@ -290,6 +305,8 @@ The protocol has been validated across the following production case studies:
 ## 7. Conclusion
 
 > *“So she can find her way home.”*
+
+In this sense, CIP is not a generation technique but a recovery protocol for identity persistence in probabilistic generative systems.
 
 In the fluid and volatile landscape of generative AI, the Character Identity Protocol serves as a compass.
 
