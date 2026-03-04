@@ -16,6 +16,17 @@ CIP enables structured, audit-ready decision logging at the operational layer.
 > This is not a generation method.  
 > It is a character identity inspection protocol.
 
+```mermaid
+flowchart TD
+    A[Prompt + Anchor] --> B[Generation]
+    B --> C[Identity Gates]
+    C -->|PASS| D[Production]
+    C -->|FAIL| E[Hard Abort]
+    E --> F[Re-binding]
+    F --> G[Re-convergence]
+    G --> B
+```
+
 CIP treats identity not as a peripheral feature but as a first-class governance constraint for generative systems.
 It is designed for enterprise use cases where reproducibility, auditability, and compliance matter.
 
@@ -56,6 +67,378 @@ Minimal Prompt + Converged Anchor → Model → Output
 
 ------------------------------------------------------------------------
 
+## If You Are Evaluating This Repository
+
+If you are reviewing this for:
+- Enterprise evaluation
+- Research analysis
+- Risk / compliance review
+- Platform integration feasibility
+
+Please refer to: [Decision Pack](docs/decision_pack.md)
+
+------------------------------------------------------------------------
+
+## CIP in 30 Seconds
+
+**Problem**  
+AI image generation loses character identity over time.
+
+**Solution**  
+CIP stabilizes identity through anchor-based convergence and gate validation.
+
+**Mechanism**  
+Anchor → Minimal Prompt → Quality Gates → BGC Loop
+
+**Result**  
+Consistent character identity across sessions and platforms.
+
+> Identity is treated as a constraint, not a coincidence.
+
+------------------------------------------------------------------------
+
+## Intended Audience
+
+- AI labs researching generative consistency
+- IP owners requiring character identity guarantees
+- Anime, manga, illustration, and game production studios
+- Franchise animation and serialized IP management teams
+- Fashion and editorial production pipelines
+- Enterprise governance and audit teams
+
+------------------------------------------------------------------------
+
+## Why This Matters
+
+In probabilistic generative systems, character identity is not
+guaranteed. This protocol treats identity as a controllable convergence
+process rather than a fragile prompt outcome.
+
+> *Other tools improve consistency. This protocol proposes a structured standard for identity validation.*
+
+> *Most industry discussions aggregate incremental tool improvements.  
+> CIP defines an end-to-end operational discipline independent of any single model.*
+
+> *CIP does not oppose the model's optimization dynamics. It constrains outputs operationally.*
+
+------------------------------------------------------------------------
+
+## Overview
+
+Character Identity Protocol is an operational governance framework
+for stabilizing character reconstruction in generative AI systems.
+
+It does **not** modify models, apply fine-tuning, or rely on LoRA
+training. Instead, it anchors reconstruction behavior at the operational
+layer, treating identity as a convergence problem rather than a prompt
+engineering problem.
+
+Core principle:
+
+> Minimal prompt + Converged solution image  
+> = Documented operational constraint + Statistical convergence
+
+This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
+
+------------------------------------------------------------------------
+
+## Re-Convergence Principle
+
+CIP treats identity as a convergence problem rather than a prompt problem.
+
+Instead of depending on indefinite interface persistence,
+CIP stabilizes identity through bounded generation cycles:
+
+1. Converge to a stable reconstruction state
+2. Compress that state into an anchor
+3. Re-bind the anchor after environment reset
+4. Drive re-convergence under identity validation gates
+5. Continue only if constraints hold
+
+This approach does not assume theoretical infinity.
+It demonstrates controlled reconstruction continuity within probabilistic systems.
+
+```
+Identity Stability
+↑
+│                ┌───────────────┐
+│                │   Cycle A     │
+│                │  Convergence  │
+│                └───────────────┘
+│                        │
+│                        │ (Probabilistic Drift Accumulation)
+│                        ▼
+│                ─────────────────────
+│                 Context Stability Threshold
+│                ─────────────────────
+│                        │
+│                        ▼
+│              Re-Binding / Re-Convergence
+│                        │
+│                ┌───────────────┐
+│                │   Cycle B     │
+│                │ Re-Converged  │
+│                └───────────────┘
+│
+└────────────────────────────────────────→ Time (Context-Bound Window)
+```
+
+> Stability is not infinite.  
+> Stability is chained through disciplined re-convergence.
+
+```
+[ Stable State A ]
+        │
+        ▼
+  Drift Accumulation
+        │
+        ▼
+[ Re-Convergence ]
+        │
+        ▼
+[ Stable State B ]
+        │
+        ▼
+[ Re-Convergence ]
+        │
+        ▼
+[ Stable State C ]
+```
+
+------------------------------------------------------------------------
+
+## What This Is
+
+-   An operational governance protocol
+-   A convergence control strategy
+-   A structured logging and evaluation discipline
+-   A reproducibility-oriented workflow
+
+## What This Is Not
+
+-   A prompt template library
+-   A fine-tuning or LoRA method
+-   A model modification technique
+-   A proprietary platform
+
+------------------------------------------------------------------------
+
+## Quickstart
+
+1.  Prepare a converged anchor image (previously stabilized identity).
+2.  Use a minimal prompt referencing only invariant attributes.
+3.  Generate 3--5 iterations and observe identity drift.
+4.  Apply Quality Gate:
+
+    ```
+    PASS ⇔ FaceGate ∧ SkeletonGate ∧ ProportionGate
+    ```
+
+    If any gate fails, generation must stop immediately.
+
+5.  If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+
+------------------------------------------------------------------------
+
+## Core Components
+
+-   Anchor Image
+-   Minimal Prompt
+-   Quality Gate
+-   Hard Abort Discipline
+-   Reconstruction Tracking (A → A')
+
+------------------------------------------------------------------------
+
+## Style-Defined Identity Domains
+
+In style-defined domains, identity includes the rendering regime (line weight, quantization, shading abstraction), not only facial and structural similarity.
+
+## Applications
+
+**Style-defined identity domains (primary):**
+-   Anime, manga, and illustration production requiring rendering regime stability
+-   Game character pipelines requiring style-layer identity lock
+-   Franchise animation studios requiring zero-tolerance style consistency
+-   Serialized IP management across volumes, seasons, or platforms
+
+**General production pipelines:**
+-   Editorial production requiring identity stability
+-   Fashion pipelines requiring skeletal consistency
+-   Controlled variation under identity lock
+-   Cross-model portability validation
+
+> In style-defined domains, drift from the defined rendering regime constitutes a failure at occurrence — regardless of recoverability.  
+> *See: [Video Addendum](docs/cip_video_addendum.md)*
+
+------------------------------------------------------------------------
+
+## Cross-Cycle Reconstruction Continuity (Under Evaluation)
+
+Cross-cycle behavior is currently under formal validation.
+
+Preliminary operational observations indicate continuity signals
+following environment reset and anchor re-binding.
+
+Formal validation and expanded demonstrations are pending.
+
+```mermaid
+flowchart LR
+    A[Cycle A: Convergence Window] --> B[Drift Accumulation]
+    B --> C[Context Stability Threshold]
+    C --> D[Re-Binding / Re-Convergence]
+    D --> E[Cycle B: Re-Converged Window]
+```
+
+------------------------------------------------------------------------
+
+## Terminology Clarification
+
+CIP does not depend on chat-specific session mechanics.
+
+The term "cycle" refers to a context-bound generation window
+within any interface or tool.
+
+The protocol operates on convergence and re-convergence principles,
+making it tool-agnostic in structure.
+
+------------------------------------------------------------------------
+
+## Glossary
+
+**Anchor Image**\
+A converged solution image used as a reconstruction stabilizer.
+
+**Convergence**\
+The statistical stabilization of output characteristics across turns.
+
+**Quality Gate**\
+Predefined identity validation criteria (e.g., face similarity, skeletal
+alignment, proportion consistency).
+
+**Hard Abort**\
+Immediate termination of generation when threshold violation is
+detected.
+
+**Reconstruction (A → A')**\
+The probabilistic transformation process from input A to output A' in a
+generative system.
+
+------------------------------------------------------------------------
+
+## Reading Paths
+
+- **I just want the idea** (3 min) → README + [Glossary](docs/glossary.md)
+- **I want to run it** (10 min) → [Quickstart](docs/quickstart.md) + [Quality Gate](docs/quality_gate_addendum.md)
+- **I want the theory** (20 min) → [White Paper](docs/whitepaper_v1.md) + [Technical Mechanism](docs/technical_mechanism.md)
+- **I want proof** (30 min) → [Case 03](docs/case_03_avedon_project.md) + [Case 04](docs/case_04_shizuka.md)
+- **I want scope limits** → [Reproducibility Scope](docs/reproducibility_scope.md)
+
+------------------------------------------------------------------------
+
+## Documentation
+
+**White Paper**
+- [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+- [Master Document — Consolidated Overview](docs/master_document.md)
+- [Decision Pack — Enterprise Evaluation](docs/decision_pack.md)
+- [Legal Governance & Operational Evidence Framework](docs/legal_governance.md)
+
+**Core**
+- [Quickstart Guide](docs/quickstart.md)
+- [Technical Mechanism](docs/technical_mechanism.md)
+- [Architecture Diagram](docs/architecture_diagram.md)
+- [Applications Overview](docs/applications.md)
+- [Glossary](docs/glossary.md)
+- [Reproducibility Scope](docs/reproducibility_scope.md)
+
+**Case Studies**
+- [Case 01: Baseline Failure](docs/case_01_failure_log.md)
+- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
+- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
+- [Case 04: Cross-Platform Migration — "Shizuka"](docs/case_04_shizuka.md)
+- [Case 05: Mira Project](docs/case_05_mira_project.md)
+- [Case 06: Serendipitous Creation](docs/case_06_README.md)
+- [Case 07: Gemini Validation](docs/case_07_README.md)
+
+**Operational**
+- [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
+
+**Further Reading**
+- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
+- [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
+
+------------------------------------------------------------------------
+
+## Citation
+
+If referencing this protocol in academic or professional work:
+
+```bibtex
+@misc{character_identity_protocol_2026,
+  title={Character Identity Protocol: Operational Governance for Identity Convergence in Probabilistic Generative Systems},
+  author={Watadani},
+  year={2026},
+  note={GitHub Repository},
+  url={https://github.com/watadani-byte/character-identity-protocol}
+}
+```
+
+------------------------------------------------------------------------
+
+## Contribution
+
+Issues are open for clarification and technical discussion.
+Demonstration requests may be considered depending on scope and feasibility.
+
+→ [Open an Issue](https://github.com/watadani-byte/character-identity-protocol/issues)
+
+------------------------------------------------------------------------
+
+## Next Phase (Planned)
+
+### CIP Specification Draft (v0.x)
+
+A formalized specification layer is in preparation.
+
+Planned scope:
+- Normative terminology (SHALL / SHOULD / MAY)
+- Formal gate definitions
+- Conformance conditions
+- Re-binding requirements
+- Operational boundary clauses
+
+This draft will separate governance philosophy from normative specification language.
+
+---
+
+### CIP Enterprise Pilot Framework
+
+An enterprise-focused documentation layer is also in development.
+
+Planned scope:
+- Audit-ready logging templates
+- Gate event recording schema
+- Operational risk mapping
+- Compliance alignment guidelines
+
+---
+
+This repository represents the stable conceptual and governance layer (v1.x series).
+v1.0 is the initial tagged snapshot; v1.1 reflects documentation refinement.
+
+------------------------------------------------------------------------
+
+## License
+
+Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+------------------------------------------------------------------------
+
+## Contact
+
+For general discussion, please open a GitHub Issue. For professional or
+research inquiries, contact details may be provided upon request.
 ## If You Are Evaluating This Repository
 
 If you are reviewing this for:
