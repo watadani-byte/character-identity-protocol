@@ -247,7 +247,7 @@ Identity Stability
    ```
    
    If any gate fails, generation must stop immediately.
-1. If threshold drops below defined limit → **Hard Abort** & Rollback to last stable anchor.
+1. If threshold drops below defined limit → **Hard Abort** → Re-binding to the last stable anchor.
 
 -----
 
