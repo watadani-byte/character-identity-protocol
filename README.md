@@ -239,7 +239,7 @@ Identity Stability
 
 1. Prepare a converged anchor image (previously stabilized identity).
 1. Use a minimal prompt referencing only invariant attributes.
-1. Generate 3–5 iterations and observe identity drift.
+1. Generate 3–5 iterations and observe identity drift relative to the anchor.
 1. Apply Quality Gate:
    
    ```
