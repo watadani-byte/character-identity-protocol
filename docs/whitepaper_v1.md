@@ -161,7 +161,7 @@ Production metrics observed across case studies:
 
 All percentage-based thresholds reported in this document are observational governance thresholds established through production workflow monitoring. They are not claims about internal model architecture, deterministic output guarantees, or statistically validated benchmarks.
 
-Match rate assessment is human-judged. No automated similarity metric was used. Results reflect single-operator observations under production conditions.
+Match rate assessment in the reported case studies was human-judged; no automated similarity metric was used in those measurements. CIP itself permits quantitative verification layers, but they are presented as optional implementations and non-prescriptive examples in this document.
 
 ### Quality Gate Integration
 
@@ -190,6 +190,8 @@ This design is consistent with ISO-aligned governance frameworks, where human au
 In practice, operators frequently recognize identity convergence instantly — a moment often described as “this is it.” Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
 
 CIP formalizes this operational reality. Holistic recognition triggers inspection; inspection produces the documented explanation required for governance.
+
+Quantitative gates may be automated in future implementations, but CIP assigns final authority to the human gate under production risk.
 
 ### Illustrative Quantitative Gate Example (Non-Prescriptive)
 
