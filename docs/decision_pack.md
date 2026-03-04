@@ -73,7 +73,7 @@ Identity is stabilized by anchoring the reconstruction phase, not by increasing 
 |----------------------------------|---------------------------------|
 |Character Creation                |Validated (documented case study)|
 |Cross-Platform Portability        |Validated (Case 04)              |
-|Pose Variation Under Identity Lock|Validated (Case 05)              |
+|Pose Variation Under Identity Lock|Validated (Case 01B)             |
 |Lighting & Material Variation     |Validated (documented case study)|
 |Collapse Recovery                 |Validated (Case 01)              |
 |Multi-Turn Stability              |Validated (Case 03)              |
