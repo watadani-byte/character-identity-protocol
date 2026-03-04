@@ -122,6 +122,8 @@ Consistent character identity across sessions and platforms.
 
 CIP is a recovery protocol for identity — not a generation technique.
 
+CIP reframes identity from an output property to an operational invariant.
+
 In probabilistic generative systems, character identity is not
 guaranteed. This protocol treats identity as a controllable convergence
 process rather than a fragile prompt outcome.
