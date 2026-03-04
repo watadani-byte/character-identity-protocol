@@ -1,4 +1,4 @@
-# Case 01: Baseline Failure Log
+# Case 01A: Baseline Failure Log
 
 **Scenario**: Character generation without protocol  
 **Platform**: ChatGPT (GPT Image 1.5)  
@@ -131,5 +131,12 @@ By Turn 9, the model had silently dropped limb descriptions entirely.
 
 ## Contrast
 
-See [Case 02: Wedding Series](case_02_wedding_series.md) for the same workflow  
+See [Case 02: Wedding Series](../case_02_wedding_series/) for the same workflow  
 **with anchor protocol applied** — 15 turns, 4 poses, identity maintained throughout.
+
+-----
+
+## Related: Recovery
+
+This case documents the failure condition.
+For the subsequent Hard Abort and Re-convergence record, see [Case 01B: Mira Project](case_01b_mira_project.md).
