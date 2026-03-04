@@ -185,6 +185,10 @@ This dual-pass structure avoids both failure modes: AI-only judgment (high autom
 
 This design is consistent with ISO-aligned governance frameworks, where human authority and documented evidence coexist.
 
+In practice, operators frequently recognize identity convergence instantly — a moment often described as “this is it.” Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
+
+CIP formalizes this operational reality. Holistic recognition triggers inspection; inspection produces the documented explanation required for governance.
+
 ### Illustrative Quantitative Gate Example (Non-Prescriptive)
 
 CIP defines Quality Gates structurally.
