@@ -52,7 +52,7 @@ Discard contaminated outputs. Re-anchor in a new cycle.
 
 -----
 
-## Rollback Procedure
+## Hard Abort & Re-binding Procedure
 
 ```
 1. Abort generation
