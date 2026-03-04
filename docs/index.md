@@ -366,9 +366,9 @@ generative system.
 - [Case 02: Wedding Series](case_02_wedding_series.md)
 - [Case 03: Avedon Project](case_03_avedon_project.md)
 - [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
-- [Case 05: Mira Project](case_05_mira_project.md)
-- [Case 06: Serendipitous Creation](case_06_README.md)
-- [Case 07: Gemini Validation](case_07_README.md)
+- [Case 01B: Mira Project — Hard Abort and Re-convergence](case_01b_mira_project.md)
+- [Case 05: Serendipitous Creation](case_05_serendipitous.md)
+- [Case 06: Gemini Validation](case_06_gemini.md)
 
 **Operational**
 
