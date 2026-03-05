@@ -1,17 +1,44 @@
 # Character Identity Protocol (CIP)
 
-Character Identity Protocol (CIP) — 2026  
-Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Operational workflow to keep a character consistent across generations, sessions, and platforms.  
+*Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
-A governance protocol for stabilizing character identity
-in probabilistic generative systems.
-CIP governs reconstruction behavior — not model internals —
-through controlled convergence and re-convergence under validation gates.
+## The Problem CIP Solves
 
-CIP does NOT modify models.
-It constrains reconstruction through anchor-based convergence control.
+You generate an image of a character.
+It is exactly right — the face, the proportions, the presence.
 
-CIP enables structured, audit-ready decision logging at the operational layer.
+You try to generate the same character again.
+It is different.
+
+You try again.
+Different again.
+
+This is not a failure of skill. It is how generative AI works.
+
+Each generation is statistically independent.
+Even with the same prompt, the model may produce a different face,
+different proportions, or a different identity.
+
+CIP was created to solve this operational problem.
+
+It does not modify the model.
+It does not require fine-tuning.
+
+Instead, it anchors the converged result — the image that was right —
+and uses structured validation gates to maintain identity continuity
+across subsequent generations.
+
+When drift is detected, CIP stops the run immediately (Hard Abort)
+and re-binds the anchor before continuing.
+
+The result: character identity that is recoverable,
+auditable, and portable across platforms.
+
+-----
+
+CIP is an operational governance protocol for stabilizing character identity in probabilistic generative systems (anchor + gates + hard abort).  
+It governs reconstruction behavior at the operational layer — no fine-tuning, no model modification.
 
 > This is not a generation method.  
 > It is a character identity inspection protocol.
@@ -52,6 +79,37 @@ Minimal Prompt + Converged Anchor → Model → Output
                                PASS → Production Use
                                FAIL → Hard Abort → Re-binding
 ```
+
+-----
+
+## CIP in 30 Seconds
+
+**CIP lets you:**
+
+- Reproduce a character from a validated anchor
+- Continue generation without identity drift (bounded by gates)
+- Stop and recover immediately when drift appears (Hard Abort → Re-bind)
+
+**Problem**  
+AI image generation loses character identity over time.
+
+**Solution**  
+CIP stabilizes identity through anchor-based convergence and gate validation.
+
+**Mechanism**  
+Anchor → Minimal Prompt → Identity Gates → Re-binding / Re-convergence loop
+
+> **Definition — Re-binding / Re-convergence loop**  
+> Re-attaching the last verified anchor after an environment reset, then re-stabilizing outputs under identity gates.
+
+**Result**  
+Consistent character identity across sessions and platforms.
+
+> Identity is treated as a constraint, not a coincidence.
+
+> In CIP, the core verb is not *generate* — it is *recover*.
+
+> *Recover* = re-converge to a previously validated identity state (the anchor), under gates, until the identity constraints are met (PASS).
 
 -----
 
@@ -97,31 +155,6 @@ If you are reviewing this for:
 - Platform integration feasibility
 
 Please refer to: [Decision Pack](docs/decision_pack.md)
-
------
-
-## CIP in 30 Seconds
-
-**Problem**  
-AI image generation loses character identity over time.
-
-**Solution**  
-CIP stabilizes identity through anchor-based convergence and gate validation.
-
-**Mechanism**  
-Anchor → Minimal Prompt → Identity Gates → Re-binding / Re-convergence loop
-
-> **Definition — Re-binding / Re-convergence loop**  
-> Re-attaching the last verified anchor after an environment reset, then re-stabilizing outputs under identity gates.
-
-**Result**  
-Consistent character identity across sessions and platforms.
-
-> Identity is treated as a constraint, not a coincidence.
-
-> In CIP, the core verb is not *generate* — it is *recover*.
-
-> *Recover* = re-converge to a previously validated identity state (the anchor), under gates, until the identity constraints are met (PASS).
 
 -----
 
