@@ -1,6 +1,6 @@
 # White Paper: Character Identity Protocol (CIP) v1.0
 
-**A Framework for Statistical Convergence and Cross-Platform Portability of AI-Generated Identities**
+**A Governance Framework for Identity Convergence and Cross-Platform Portability in Generative Systems**
 
 > This white paper reflects operational observations and validated production workflows.
 > It does not claim deterministic reproduction or internal model access.
@@ -15,7 +15,9 @@ Conventional trial-and-error prompting lacks reproducibility and risks **Identit
 
 The Character Identity Protocol (CIP) defines a character not as a random output, but as a statistical **Convergence Point**. By utilizing the Anchor Mechanism, this protocol ensures the protection, recovery, and seamless migration of character identities across disparate AI platforms.
 
-In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Quality Gate discipline.
+CIP treats character identity not as a static feature match, but as a convergence state within the model’s reconstruction space that must be repeatedly recovered under operational constraints.
+
+In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
 -----
 
@@ -31,7 +33,7 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 ### The “Miracle Image” Phenomenon
 
-High-purity outputs that emerge within the latent space are defined as **solution states** rather than random accidents.
+High-purity outputs that emerge within the latent space may represent transient solution states rather than random accidents.
 
 These frames exhibit unusually high coherence — disproportionately finished relative to surrounding outputs. They represent transient local optima where user constraints and model priors align with unusual precision.
 
@@ -41,9 +43,9 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
 
-The convergence point is not forced — it is biased. The anchor supplies a high-density target state; the model’s own optimization pressure does the rest.
+The convergence point is not forced — it is biased. The anchor introduces a previously validated solution state that guides reconstruction toward a known stable region.
 
-### Prompt Minimization Strategy
+### Minimal Prompt Principle
 
 Minimizing optimization pressure from the model’s training priors by reducing prompt surface area.
 
@@ -60,7 +62,7 @@ This boundary is defined as:
 
 **Max Context Stability Threshold (MCST)**
 
-MCST represents the upper bound of stable identity reconstruction within a single context-bound generation window.
+MCST represents the operational upper bound of stable identity reconstruction within a single context-bound generation window.
 It is not a fixed numeric constant.
 
 Observed empirical ranges (e.g., ~40 turns in certain interfaces) are implementation-dependent and should be treated as indicative rather than prescriptive.
@@ -78,15 +80,153 @@ It operates by detecting and respecting the MCST boundary within any given syste
 
 -----
 
+-----
+
+## 2.6 Identity Drift Taxonomy
+
+Generative systems exhibit multiple modes of identity drift during iterative reconstruction.
+Understanding these drift modes is critical for operational governance, as different failure modes require different mitigation responses.
+
+CIP defines identity drift not as a single phenomenon but as a taxonomy of reconstruction deviations relative to the anchor state.
+
+The following categories represent the most commonly observed drift modes in production workflows.
+
+### 2.6.1 Facial Identity Drift
+
+**Definition**
+
+Deviation in facial structure or facial feature configuration relative to the anchor identity.
+
+Typical manifestations:
+
+- Eye shape or spacing changes
+- Jawline or cheekbone structure shifts
+- Nose bridge or mouth proportion changes
+- Age appearance drift
+
+**Operational impact**
+
+Facial drift typically results in immediate identity loss, even when body structure and style remain stable.
+For this reason, CIP assigns highest priority to Face Gate validation.
+
+### 2.6.2 Skeletal Drift
+
+**Definition**
+
+Changes in the underlying body structure or pose skeleton that alter the physical plausibility of the character relative to the anchor.
+
+Typical manifestations:
+
+- Shoulder width changes
+- Limb length variation
+- Pose articulation inconsistencies
+- Spine or hip alignment changes
+
+**Operational impact**
+
+Skeletal drift may not immediately break facial recognition but gradually destabilizes identity perception over multiple turns.
+CIP detects this failure mode through Skeleton Gate validation.
+
+### 2.6.3 Proportion Drift
+
+**Definition**
+
+Deviation in global body proportions relative to the anchor reference.
+
+Typical manifestations:
+
+- Head-to-body ratio changes
+- Torso-to-leg ratio variation
+- Bust or hip proportion shifts
+- Overall silhouette imbalance
+
+**Operational impact**
+
+Proportion drift often accumulates slowly across turns and may initially appear acceptable.
+However, once deviation exceeds perceptual thresholds, the character becomes visually distinct from the anchor identity.
+This drift mode is governed by the Proportion Gate.
+
+### 2.6.4 Rendering Regime Drift
+
+**Definition**
+
+Deviation in the rendering regime or stylistic representation of the character.
+
+Typical manifestations:
+
+- Line art thickness variation
+- Lighting regime shifts
+- Color palette deviation
+- Transition between stylized and semi-realistic regimes
+
+**Operational impact**
+
+In style-defined identity domains (e.g., anime or franchise animation), rendering regime stability forms part of the character identity.
+Significant regime drift can break identity continuity even when structural features remain consistent.
+CIP therefore treats rendering regime stability as part of identity validation under the same gate discipline.
+
+### 2.6.5 Contextual Drift
+
+**Definition**
+
+Gradual identity degradation caused by accumulated contextual influence across generation turns.
+
+Typical manifestations:
+
+- Progressive pose reinterpretation
+- Style blending from prior outputs
+- Feature averaging across generations
+- Entropic divergence from the anchor reference
+
+**Operational impact**
+
+Contextual drift is strongly correlated with context length and sampling entropy.
+This phenomenon motivates the concept of Max Context Stability Threshold (MCST) and the use of bounded generation cycles (BGC).
+
+### 2.6.6 Drift Interaction
+
+Drift modes rarely occur in isolation.
+In production environments, multiple drift categories often interact simultaneously.
+
+For example:
+
+```
+Contextual Drift
+        ↓
+Skeletal Drift
+        ↓
+Facial Drift
+        ↓
+Identity Loss
+```
+
+This cascading failure pattern is one of the primary reasons CIP enforces Hard Abort discipline rather than progressive correction.
+
+Once multiple drift modes interact, recovery through incremental prompt adjustments becomes unreliable.
+CIP mandates termination of the contaminated cycle and re-binding to the last verified anchor state.
+
+### 2.6.7 Operational Implications
+
+The drift taxonomy reinforces several core design principles of the CIP protocol:
+
+- Identity stability is multi-dimensional, not a single similarity score
+- Drift modes must be evaluated independently through identity gates
+- Progressive correction is unreliable once drift cascades begin
+- Recovery must therefore rely on anchor re-binding and controlled re-convergence
+
+This taxonomy provides a conceptual framework for understanding why identity governance requires structured operational control rather than purely prompt-based optimization.
+
+-----
+
 ## 3. Core Implementation: The Anchor Mechanism
 
 The protocol utilizes three pillars to lock identity:
 
-**1. Visual Anchor**  
+**1. Anchor Image**  
 The highest-purity reference image serving as the ground truth for convergence.  
 Not a reference or inspiration — a previously achieved solution state that the model is directed to recover.
 
-**2. Minimalist Prompting**  
+**2. Minimal Prompt**  
 Reducing descriptive noise to maximize the model’s focus on the anchor.  
 Factual attributes only. No adjectives, no mood descriptors, no subjective terms.
 
@@ -121,7 +261,7 @@ This framing biases the model toward alignment with the provided visual anchor r
 
 **Validation**
 
-Successfully demonstrated in migrating a lost Stable Diffusion character into GPT Image 1.5, achieving high-fidelity recall despite fundamental architecture differences.
+Successfully demonstrated in migrating a lost Stable Diffusion character into GPT Image 1, achieving high-fidelity recall despite fundamental architecture differences.
 
 *Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
@@ -155,7 +295,7 @@ Production metrics observed across case studies:
 |Wasted generations      |~50%               |<5%                 |
 |Cross-platform migration|Trial and error    |Systematic procedure|
 
-*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. “Failure” = human-judged identity gate failure (FaceGate or SkeletonGate or ProportionGate). No automated measurement was used. Platform: ChatGPT (GPT Image 1.5) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
+*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. “Failure” = human-judged identity gate failure (Face Gate or Skeleton Gate or Proportion Gate). No automated measurement was used. Platform: ChatGPT (GPT Image 1) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
 ### Measurement Disclosure
 
@@ -163,13 +303,13 @@ All percentage-based thresholds reported in this document are observational gove
 
 Match rate assessment in the reported case studies was human-judged; no automated similarity metric was used in those measurements. CIP itself permits quantitative verification layers, but they are presented as optional implementations and non-prescriptive examples in this document.
 
-### Quality Gate Integration
+### Identity Gates Integration
 
 Production deployment requires formal stop-conditions.
 
-Identity gates (FaceGate ∧ SkeletonGate ∧ ProportionGate) must all pass simultaneously. Any failure triggers immediate session termination — not progressive correction.
+Identity gates (Face Gate ∧ Skeleton Gate ∧ Proportion Gate) must all pass simultaneously. Any failure triggers immediate session termination — not progressive correction.
 
-*See: [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)*
+*See: [Identity Gates (Quality Gate Addendum)](quality_gate_addendum.md)*
 
 ### Human-First Validation (ISO-Style Explainability)
 
@@ -195,20 +335,20 @@ Quantitative gates may be automated in future implementations, but CIP assigns f
 
 ### Illustrative Quantitative Gate Example (Non-Prescriptive)
 
-CIP defines Quality Gates structurally.
+CIP defines Identity Gates structurally.
 However, implementations may operationalize gates using quantitative measures.
 
 Illustrative examples:
 
-**FaceGate:**
+**Face Gate:**
 
 - Feature embedding cosine similarity ≥ 0.85 relative to anchor reference.
 
-**SkeletonGate:**
+**Skeleton Gate:**
 
 - Keypoint deviation within predefined tolerance band.
 
-**ProportionGate:**
+**Proportion Gate:**
 
 - Ratio deviation below defined variance threshold.
 
@@ -221,7 +361,7 @@ but objective governance enforcement.
 
 ### Anchor Re-binding Procedure
 
-When a Quality Gate violation occurs, CIP mandates immediate Hard Abort.
+When an Identity Gate failure occurs, CIP mandates immediate Hard Abort.
 
 Following abort, recovery must proceed through structured re-binding:
 
@@ -240,7 +380,7 @@ It is a governance requirement within the CIP framework.
 
 ## Bounded Generation Cycles (BGC)
 
-CIP stabilizes identity through Bounded Generation Cycles (BGC).
+CIP stabilizes identity through bounded generation cycles (BGC), within which convergence is maintained and drift is actively contained.
 
 A BGC consists of:
 
