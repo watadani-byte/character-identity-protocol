@@ -51,7 +51,7 @@ It controls the conditions under which the model converges.**
 
 ```mermaid
 flowchart TD
-    A[Minimal Prompt + Converged Anchor] --> B[Generation]
+    A[Anchor Image + Minimal Prompt] --> B[Generation]
     B --> C["Identity Gates
 (Face ∧ Skeleton ∧ Proportion)"]
     C -->|PASS| D[Production]
