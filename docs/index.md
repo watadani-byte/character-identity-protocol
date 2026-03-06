@@ -1,11 +1,18 @@
 # Character Identity Protocol (CIP)
 
-Character Identity Protocol (CIP) is an operational governance protocol for stabilizing character identity in probabilistic generative systems.
-It provides a governance workflow that maintains character identity across generations, sessions, and platforms through anchors, validation gates, and controlled re-convergence cycles.
+**Character Identity Protocol (CIP)** is an operational governance protocol for stabilizing character identity in probabilistic generative systems such as image generation models.
+
+Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
+
+CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
+
+Instead of attempting to control the model itself, CIP controls the **conditions under which identity convergence occurs**.
 
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
-## The Problem CIP Solves
+-----
+
+## The Problem
 
 You generate an image of a character.
 It is exactly right — the face, the proportions, the presence.
@@ -18,36 +25,65 @@ Different again.
 
 This is not a failure of skill. It is how generative AI works.
 
-Each generation is statistically independent.
-Even with the same prompt, the model may produce a different face,
-different proportions, or a different identity.
+In generative image systems:
 
-CIP was created to manage this fundamental property of probabilistic generative systems at the operational layer.
+- The same prompt can produce different faces
+- Character proportions may drift over iterations
+- Identity consistency degrades across turns
+- Cross-platform reproduction becomes unreliable
 
-It does not modify the model.
-It does not require fine-tuning.
+This is not a prompt engineering failure.
+It is a property of **probabilistic generative systems**.
 
-Instead, it anchors the converged result — the image that was right —
-and uses structured validation gates to maintain identity continuity
-across subsequent generations.
+Each output is a new reconstruction sampled from the model’s learned distribution.
+Without operational control, **identity drift emerges naturally**.
 
-When drift is detected, CIP stops the run immediately (Hard Abort)
-and re-binds the anchor before continuing.
-
-The result: character identity that is recoverable,
-auditable, and portable across platforms.
+In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
+CIP addresses it at the operational governance layer.
 
 -----
 
-CIP governs reconstruction behavior at the operational layer through anchors, validation gates, and hard-abort discipline.
+## The CIP Approach
 
-**CIP does not try to control the model.  
+CIP treats character identity as a **convergence control problem**.
+
+Rather than enforcing strict instructions, the protocol aligns generation with the natural convergence behavior of the model.
+
+CIP introduces four operational elements:
+
+|Element       |Role                                            |
+|--------------|------------------------------------------------|
+|Anchor Image  |Previously validated identity reference         |
+|Minimal Prompt|Lightweight identity constraints                |
+|Identity Gates|Validation checks (Face ∧ Skeleton ∧ Proportion)|
+|Hard Abort    |Immediate termination when drift occurs         |
+
+Together these form a controlled generation loop.
+
+**CIP does not try to control the model.
 It controls the conditions under which the model converges.**
 
-> This is not a generation method.  
+> This is not a generation method.
 > It is a character identity governance protocol.
 
-**CIP Identity Stabilization Workflow**
+-----
+
+## Core Operational Loop
+
+```
+Anchor Image + Minimal Prompt
+        ↓
+Generation
+        ↓
+Identity Gates
+        ↓
+PASS → Accepted Output
+FAIL → Hard Abort → Re-bind Anchor → Re-converge
+```
+
+Identity is therefore **not assumed to persist**.
+
+Instead, it is **continuously recovered through controlled convergence cycles**.
 
 ```mermaid
 flowchart TD
@@ -60,9 +96,6 @@ flowchart TD
     F --> G[Re-convergence]
     G --> B
 ```
-
-CIP treats identity not as a peripheral feature but as a first-class governance constraint for generative systems.
-It is designed for enterprise use cases where reproducibility, auditability, and compliance matter.
 
 -----
 
@@ -86,9 +119,22 @@ Proportion Gate"]
 
 -----
 
-## Anchor-Guided Convergence Model
+## Why Anchors Work
 
-*How the anchor guides the model toward a stable identity state.*
+A previously generated image represents a **known converged solution** within the model’s output space.
+
+When supplied as a reference, the anchor acts as a convergence attractor.
+
+```
+Model Exploration
+        ↓
+Anchor Attraction
+        ↓
+Identity Convergence
+```
+
+The anchor does not override the model.
+It simply increases the probability that reconstruction returns to a previously validated identity state.
 
 ```mermaid
 flowchart TD
@@ -103,23 +149,43 @@ flowchart TD
 
 -----
 
-## From One-Off Outputs to Controlled Identity
+## Cycle-Based Stabilization
+
+Identity stability is not permanent in probabilistic systems.
+Instead it exists within bounded convergence windows.
 
 ```
-BEFORE (one-off generation)
-
-Prompt → Model → Output
-                 └→ identity drift (uncontrolled)
-
-AFTER (CIP-controlled workflow)
-
-Anchor Image + Minimal Prompt → Model → Output
-                                            ↓
-                               Identity Gates (Face ∧ Skeleton ∧ Proportion)
-                                            ↓
-                               PASS → Production Use
-                               FAIL → Hard Abort → Re-binding
+Cycle A → Drift → Re-binding → Cycle B
 ```
+
+CIP restores stability by periodically re-injecting the anchor and restarting the convergence process.
+
+```mermaid
+flowchart LR
+    A[Cycle A: Convergence Window] --> B[Drift Accumulation]
+    B --> C[Context Stability Threshold]
+    C --> D[Re-Binding / Re-Convergence]
+    D --> E[Cycle B: Re-Converged Window]
+```
+
+> Stability is not infinite.
+> Stability is chained through disciplined re-convergence.
+
+-----
+
+## Inference-Time Protocol
+
+CIP operates **entirely at inference time**.
+
+The protocol:
+
+- does not modify model weights
+- does not alter training data
+- does not access proprietary model internals
+
+Instead, it constrains reconstruction behavior through **input design and operational control**.
+
+This allows CIP to function across multiple platforms and closed-source systems.
 
 -----
 
@@ -144,209 +210,14 @@ CIP is model-agnostic: it defines a conformance workflow, not a model capability
 
 ## Review Notes (Expected Questions)
 
-- **Does CIP claim determinism?**  
+- **Does CIP claim determinism?**
   No. CIP is a governance workflow for *bounded* stability under gates within a context-bound window (cycle). It does not guarantee identical outputs.
-- **Is CIP just prompt engineering?**  
+- **Is CIP just prompt engineering?**
   No. CIP is an operational conformance loop: Anchor → Minimal Prompt → Gates → Hard Abort → Re-binding → Re-convergence.
-- **What is the measurable claim?**  
-  CIP makes outcomes audit-ready: every PASS/FAIL is recorded as an operational audit trail (anchor ID, prompt hash, gate result, timestamp, operator).  
-  Human gate evaluation SHALL be primary; metrics MAY be added as verification.  
+- **What is the measurable claim?**
+  CIP makes outcomes audit-ready: every PASS/FAIL is recorded as an operational audit trail (anchor ID, prompt hash, gate result, timestamp, operator).
+  Human gate evaluation SHALL be primary; metrics MAY be added as verification.
   *Audit-ready = every PASS/FAIL is traceable to (anchor ID, prompt hash, gate result, timestamp, operator).*
-
------
-
-## If You Are Evaluating This Repository
-
-If you are reviewing this for:
-
-- Enterprise evaluation
-- Research analysis
-- Risk / compliance review
-- Platform integration feasibility
-
-Please refer to: [Decision Pack](decision_pack.md)
-
------
-
-## CIP in 30 Seconds
-
-**CIP lets you:**
-
-- Reproduce a character from a validated anchor
-- Continue generation without identity drift (bounded by gates)
-- Stop and recover immediately when drift appears (Hard Abort → Re-bind)
-
-**Problem**  
-AI image generation loses character identity over time.
-
-**Solution**  
-CIP stabilizes identity through anchor-based convergence and gate validation.
-
-**Mechanism**  
-Anchor → Minimal Prompt → Identity Gates → Re-binding / Re-convergence loop
-
-> **Definition — Re-binding / Re-convergence loop**  
-> Re-attaching the last verified anchor after an environment reset, then re-stabilizing outputs under identity gates.
-
-**Result**  
-Consistent character identity across sessions and platforms.
-
-> Identity is treated as a constraint, not a coincidence.
-
-> In CIP, the core verb is not *generate* — it is *recover*.
-
-> *Recover* = re-converge to a previously validated identity state (the anchor), under gates, until the identity constraints are met (PASS).
-
------
-
-## Intended Audience
-
-- AI labs researching generative consistency
-- IP owners requiring character identity guarantees
-- Anime, manga, illustration, and game production studios
-- Franchise animation and serialized IP management teams
-- Fashion and editorial production pipelines
-- Enterprise governance and audit teams
-
------
-
-In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
-CIP addresses it at the operational governance layer.
-
------
-
-## Why This Matters
-
-CIP is a recovery protocol for identity — not a generation technique.
-
-CIP reframes identity from an output property to an operational invariant.
-
-In probabilistic generative systems, character identity is not
-guaranteed. This protocol treats identity as a controllable convergence
-process rather than a fragile prompt outcome.
-
-> *Other tools improve consistency. This protocol proposes a structured standard for identity validation.*
-
-> *Most industry discussions aggregate incremental tool improvements.  
-> CIP defines an end-to-end operational discipline independent of any single model.*
-
-> *CIP does not oppose the model’s optimization dynamics. It constrains outputs operationally.*
-
------
-
-## Overview
-
-Character Identity Protocol is an operational governance framework
-for stabilizing character reconstruction in generative AI systems.
-
-It does **not** modify models, apply fine-tuning, or rely on LoRA
-training. Instead, it anchors reconstruction behavior at the operational
-layer, treating identity as a convergence problem rather than a prompt
-engineering problem.
-
-Core principle:
-
-> Minimal prompt + Converged solution image  
-> = Documented operational constraint + Statistical convergence
-
-This reduces interpretational drift by stabilizing reconstruction behavior at the operational layer.
-
------
-
-## Re-Convergence Principle
-
-CIP treats identity as a convergence problem rather than a prompt problem.
-
-Instead of depending on indefinite interface persistence,
-CIP stabilizes identity through bounded generation cycles:
-
-1. Converge to a stable reconstruction state
-1. Compress that state into an anchor
-1. Re-bind the anchor after environment reset
-1. Drive re-convergence under identity validation gates
-1. Continue only if constraints hold
-
-This approach does not assume theoretical infinity.
-It demonstrates controlled reconstruction continuity within probabilistic systems.
-
-```
-Identity Stability
-↑
-│                ┌───────────────┐
-│                │   Cycle A     │
-│                │  Convergence  │
-│                └───────────────┘
-│                        │
-│                        │ (Probabilistic Drift Accumulation)
-│                        ▼
-│                ─────────────────────
-│                 Context Stability Threshold
-│                ─────────────────────
-│                        │
-│                        ▼
-│              Re-Binding / Re-Convergence
-│                        │
-│                ┌───────────────┐
-│                │   Cycle B     │
-│                │ Re-Converged  │
-│                └───────────────┘
-│
-└────────────────────────────────────────→ Time (Context-Bound Window)
-```
-
-> Stability is not infinite.  
-> Stability is chained through disciplined re-convergence.
-
-```
-[ Stable State A ]
-        │
-        ▼
-  Drift Accumulation
-        │
-        ▼
-[ Re-Convergence ]
-        │
-        ▼
-[ Stable State B ]
-        │
-        ▼
-[ Re-Convergence ]
-        │
-        ▼
-[ Stable State C ]
-```
-
------
-
-## What This Is
-
-- An operational governance protocol
-- A convergence control strategy
-- A structured logging and evaluation discipline
-- A reproducibility-oriented workflow
-
-## What This Is Not
-
-- A prompt template library
-- A fine-tuning or LoRA method
-- A model modification technique
-- A proprietary platform
-
------
-
-## Quickstart
-
-1. Prepare a converged anchor image (previously stabilized identity).
-1. Use a minimal prompt referencing only invariant attributes.
-1. Generate 3–5 iterations and observe identity drift relative to the anchor.
-1. Apply Identity Gates:
-   
-   ```
-   PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
-   ```
-   
-   If any gate fails, generation must stop immediately.
-1. If threshold drops below defined limit → **Hard Abort** → Re-binding to the last verified Converged Anchor.
 
 -----
 
@@ -354,10 +225,7 @@ Identity Stability
 
 CIP intentionally avoids highly specific prompt constraints.
 
-In many generative systems, overly precise instructions
-(e.g., exact measurements, rigid proportions, or tightly defined parameters)
-can push the model away from the statistical regions where stable reconstructions occur.
-
+Overly precise instructions can push the model away from the statistical regions where stable reconstructions occur.
 Instead, CIP favors minimal attribute descriptions that leave room for the model to converge naturally.
 
 **Example of rigid specification (often unstable):**
@@ -384,103 +252,45 @@ In practice this means:
 CIP therefore treats prompts as identity hints, not full character definitions.
 The anchor remains the primary stabilizer of identity.
 
-**Why This Works**
-
-Generative models tend to converge toward regions of the training distribution where examples are dense.
-Minimal prompts allow the model to search these regions freely, while the anchor image acts as the primary convergence attractor.
-
 ```
 Minimal Prompt → Model Exploration → Anchor Attraction → Convergence
 ```
 
 -----
 
-## Core Components
+## Who This Is For
 
-- Anchor Image
-- Minimal Prompt
-- Identity Gates
-- Hard Abort Discipline
-- Reconstruction Tracking (A → A’)
-
------
-
-## Style-Defined Identity Domains
-
-In style-defined domains, identity includes the rendering regime (line weight, quantization, shading abstraction), not only facial and structural similarity.
-
-## Applications
-
-**Style-defined identity domains (primary):**
-
-- Anime, manga, and illustration production requiring rendering regime stability
-- Game character pipelines requiring style-layer identity lock
-- Franchise animation studios requiring zero-tolerance style consistency
-- Serialized IP management across volumes, seasons, or platforms
-
-**General production pipelines:**
-
-- Editorial production requiring identity stability
-- Fashion pipelines requiring skeletal consistency
-- Controlled variation under identity lock
-- Cross-model portability validation
-
-> In style-defined domains, drift from the defined rendering regime constitutes a failure at occurrence — regardless of recoverability.  
-> *See: [Video Addendum](cip_video_addendum.md)*
+- AI labs researching generative consistency
+- IP owners requiring character identity guarantees
+- Anime, manga, illustration, and game production studios
+- Franchise animation and serialized IP management teams
+- Fashion and editorial production pipelines
+- Enterprise governance and audit teams
 
 -----
 
-## Cross-Cycle Reconstruction Continuity (Under Evaluation)
+## If You Are Evaluating This Repository
 
-Cross-cycle behavior is currently under formal validation.
+If you are reviewing this for:
 
-Preliminary operational observations indicate continuity signals
-following environment reset and anchor re-binding.
+- Enterprise evaluation
+- Research analysis
+- Risk / compliance review
+- Platform integration feasibility
 
-Formal validation and expanded demonstrations are pending.
-
-```mermaid
-flowchart LR
-    A[Cycle A: Convergence Window] --> B[Drift Accumulation]
-    B --> C[Context Stability Threshold]
-    C --> D[Re-Binding / Re-Convergence]
-    D --> E[Cycle B: Re-Converged Window]
-```
+Please refer to: [Decision Pack](decision_pack.md)
 
 -----
 
-## Terminology Clarification
+## Key Insight
 
-CIP does not depend on chat-specific session mechanics.
+Identity in generative systems does not persist automatically.
 
-The term “cycle” refers to a context-bound generation window
-within any interface or tool.
+**It must be recovered through controlled convergence.**
 
-The protocol operates on convergence and re-convergence principles,
-making it tool-agnostic in structure.
-
------
-
-## Glossary
-
-**Anchor Image**  
-A converged solution image used as a reconstruction stabilizer.
-
-**Convergence**  
-The statistical stabilization of output characteristics across turns.
-
-**Identity Gates**  
-Predefined identity validation criteria used to verify character identity
-(e.g., Face Gate, Skeleton Gate, Proportion Gate).
-Generation proceeds only when all gates PASS.
-
-**Hard Abort**  
-Immediate termination of generation when threshold violation is
-detected.
-
-**Reconstruction (A → A’)**  
-The probabilistic transformation process from input A to output A’ in a
-generative system.
+> In CIP, the core verb is not *generate* — it is *recover*.
+> 
+> *Recover* = re-converge to a previously validated identity state (the anchor), under gates, until the identity constraints are met (PASS).
 
 -----
 
@@ -515,7 +325,7 @@ generative system.
 **Case Studies**
 
 - [Case 01A: Baseline Failure](case_01_failure_log.md)
-- [Case 01B: Mira Project — Hard Abort and Re-convergence](case_01b_mira_project.md)
+- [Case 01B: Mira Project — Hard Abort & Re-convergence](case_01b_mira_project.md)
 - [Case 02: Wedding Series](case_02_wedding_series.md)
 - [Case 03: Avedon Project](case_03_avedon_project.md)
 - [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
@@ -573,10 +383,6 @@ Planned scope:
 - Conformance conditions
 - Re-binding requirements
 - Operational boundary clauses
-
-This draft will separate governance philosophy from normative specification language.
-
------
 
 ### CIP Enterprise Pilot Framework
 
