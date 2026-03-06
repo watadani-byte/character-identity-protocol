@@ -1,23 +1,33 @@
-# Decision Pack
+# Decision Pack — Character Identity Protocol
 
-## Character Identity Protocol (CIP)
+This document summarizes CIP for enterprise evaluation.
 
 -----
 
-## 1. What Problem Does CIP Solve?
+## Problem
 
-Generative models struggle with:
+Generative AI systems cannot guarantee character identity consistency.
 
-- Character identity drift across iterations
-- Cross-platform inconsistency
-- Pose or lighting changes breaking facial structure
-- Lack of reproducibility for professional pipelines
+Repeated generations produce drift in:
+
+- facial structure
+- body proportions
+- style characteristics
+
+This creates risks in production pipelines.
 
 CIP addresses identity as a convergence problem, not a prompt-engineering problem.
 
 -----
 
-## 2. Core Innovation
+## CIP Solution
+
+CIP introduces an operational governance protocol that stabilizes identity through:
+
+- Anchor-based reconstruction
+- Identity validation gates
+- Hard abort control
+- Re-convergence cycles
 
 ```
 Minimal Prompt
@@ -25,11 +35,26 @@ Minimal Prompt
 = Documented Operational Constraint + Statistical Convergence
 ```
 
-Identity is stabilized by anchoring the reconstruction phase, not by increasing prompt complexity.
+-----
+
+## Governance Layer
+
+CIP operates above the model layer.
+It governs generation acceptance policies rather than model behavior.
+
+It does not require:
+
+- model modification
+- fine-tuning
+- LoRA training
+- weight modification
+- API-level override
+
+Instead it governs **how outputs are accepted or rejected**.
 
 -----
 
-## 3. Operational Structure
+## Operational Structure
 
 **Input:**
 
@@ -49,7 +74,7 @@ Identity is stabilized by anchoring the reconstruction phase, not by increasing 
 **Failure Policy:**
 
 - Immediate Hard Abort
-- Rollback to last stable anchor
+- Re-binding to last verified Converged Anchor
 
 **Final Authority:**
 
@@ -57,17 +82,44 @@ Identity is stabilized by anchoring the reconstruction phase, not by increasing 
 
 -----
 
-## 4. What CIP Does NOT Require
+## Operational Benefits
 
-- Model fine-tuning
-- Dataset curation
-- LoRA training
-- Weight modification
-- API-level override
+CIP enables:
+
+- identity traceability
+- reproducible reconstruction cycles
+- auditable decision logs
+- cross-platform identity portability
 
 -----
 
-## 5. Demonstrated Capabilities
+## Audit Structure
+
+Each generation cycle produces an audit record:
+
+- anchor ID
+- prompt hash
+- gate results
+- timestamp
+- operator
+
+This creates a **verifiable operational history**.
+
+-----
+
+## Risk Mitigation
+
+CIP prevents uncontrolled identity drift by enforcing:
+
+```
+Hard Abort → Re-binding → Re-convergence
+```
+
+This ensures drift cannot propagate unnoticed.
+
+-----
+
+## Demonstrated Capabilities
 
 |Capability                        |Status                           |
 |----------------------------------|---------------------------------|
@@ -75,12 +127,12 @@ Identity is stabilized by anchoring the reconstruction phase, not by increasing 
 |Cross-Platform Portability        |Validated (Case 04)              |
 |Pose Variation Under Identity Lock|Validated (Case 01B)             |
 |Lighting & Material Variation     |Validated (documented case study)|
-|Collapse Recovery                 |Validated (Case 01)              |
+|Collapse Recovery                 |Validated (Case 01A)             |
 |Multi-Turn Stability              |Validated (Case 03)              |
 
 -----
 
-## 6. Evaluation Model
+## Evaluation Model
 
 CIP operates as:
 
@@ -95,18 +147,21 @@ It governs output, not model internals.
 
 -----
 
-## 7. Enterprise Relevance
+## Deployment Scope
 
-Applicable to:
+CIP is applicable to:
 
 - Anime, manga, and franchise animation pipelines requiring rendering-regime stability
-- Fashion and editorial pipelines
-- Branded character systems
+- Game character production
+- Fashion editorial generation
+- Serialized IP production
+- Enterprise creative workflows
 - AI governance frameworks
-- Model risk management
-- Compliance review processes
+- Model risk management and compliance review
 
-### For Legal and Compliance Teams
+-----
+
+## For Legal and Compliance Teams
 
 CIP addresses two concerns that arise in enterprise AI governance:
 
@@ -118,7 +173,7 @@ applied a structured and documented standard of operational governance —
 not that AI output was accepted without oversight.
 
 **Operational explainability without model access:**
-Where generative model internals are inaccessible, CIP Quality Gate records
+Where generative model internals are inaccessible, CIP Identity Gate records
 provide an externally communicable account of generation decisions.
 Gate criteria, PASS/FAIL outcomes, and Hard Abort events are logged
 at the operational layer — sufficient for audit, partner due diligence,
@@ -128,7 +183,7 @@ and compliance review without requiring model-level transparency.
 
 -----
 
-## 8. Open Questions (Future Work)
+## Open Questions (Future Work)
 
 - Automated similarity threshold measurement
 - Anchor clustering theory formalization
@@ -136,12 +191,10 @@ and compliance review without requiring model-level transparency.
 
 -----
 
-## 9. Contact / Evaluation Path
+## Contact / Evaluation Path
 
 If evaluating for research or enterprise use:
 
 Open an issue with tag: `[EVAL]`
-
-Or contact via listed profile channels.
 
 *See: [Reproducibility Scope](reproducibility_scope.md) for validation boundaries.*
