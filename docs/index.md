@@ -1,6 +1,6 @@
 # Character Identity Protocol (CIP)
 
-Character Identity Protocol (CIP) is an operational protocol for stabilizing character identity in probabilistic generative systems.
+Character Identity Protocol (CIP) is an operational governance protocol for stabilizing character identity in probabilistic generative systems.
 It provides a governance workflow that maintains character identity across generations, sessions, and platforms through anchors, validation gates, and controlled re-convergence cycles.
 
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
@@ -39,7 +39,7 @@ auditable, and portable across platforms.
 
 -----
 
-CIP governs reconstruction behavior at the operational layer through anchors, validation gates, and disciplined hard-abort control.
+CIP governs reconstruction behavior at the operational layer through anchors, validation gates, and hard-abort discipline.
 
 **CIP does not try to control the model.  
 It controls the conditions under which the model converges.**
@@ -66,6 +66,43 @@ It is designed for enterprise use cases where reproducibility, auditability, and
 
 -----
 
+## CIP Operational Architecture
+
+*CIP governs generation acceptance through identity validation gates and hard-abort recovery cycles.*
+
+```mermaid
+flowchart LR
+    A["Anchor Image + Minimal Prompt"] --> B[Generation Engine]
+    B --> C["Identity Gates
+Face Gate
+Skeleton Gate
+Proportion Gate"]
+    C -->|PASS| D[Accepted Output]
+    C -->|FAIL| E[Hard Abort]
+    E --> F[Re-binding]
+    F --> G[Re-convergence]
+    G --> B
+```
+
+-----
+
+## Anchor-Guided Convergence Model
+
+*How the anchor guides the model toward a stable identity state.*
+
+```mermaid
+flowchart TD
+    A[Training Distribution] --> B[Model Exploration]
+    B --> C[Anchor Attraction]
+    C --> D[Convergence]
+    D --> E{Identity Gates}
+    E -->|PASS| F[Accepted Output]
+    E -->|FAIL| G[Hard Abort → Re-binding]
+    G --> B
+```
+
+-----
+
 ## From One-Off Outputs to Controlled Identity
 
 ```
@@ -76,7 +113,7 @@ Prompt → Model → Output
 
 AFTER (CIP-controlled workflow)
 
-Minimal Prompt + Converged Anchor → Model → Output
+Anchor Image + Minimal Prompt → Model → Output
                                             ↓
                                Identity Gates (Face ∧ Skeleton ∧ Proportion)
                                             ↓
@@ -170,6 +207,11 @@ Consistent character identity across sessions and platforms.
 - Franchise animation and serialized IP management teams
 - Fashion and editorial production pipelines
 - Enterprise governance and audit teams
+
+-----
+
+In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
+CIP addresses it at the operational governance layer.
 
 -----
 
