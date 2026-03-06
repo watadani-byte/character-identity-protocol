@@ -1,16 +1,59 @@
-# Quickstart: Character Identity Protocol
+# Quickstart — Character Identity Protocol (CIP)
 
-> This guide assumes you are working in an image generation environment with anchor image support (e.g., ChatGPT with GPT Image 1.5, Gemini, or equivalent).
+This guide explains the minimal workflow required to run CIP.
+
+CIP does not attempt to control the model.
+It controls the operational conditions under which identity converges.
+
+The protocol uses three elements:
+
+- Anchor Image
+- Minimal Prompt
+- Identity Gates
+
+> This guide assumes you are working in an image generation environment with anchor image support (e.g., ChatGPT with GPT Image 1, Gemini, or equivalent).
 
 -----
 
-## What You Need
+## Step 1 — Select an Anchor
 
-1. **Anchor image** — the best output you have of the character. One image only. High identity, not a draft.
-   
-   *Anchor selection is operator-owned: the anchor is simply the target image the operator wants to reproduce; CIP governs the process after anchor selection.*
-1. **Minimal prompt** — factual attributes only. No adjectives, no mood words. Aim for under 30 words.
-1. **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
+Choose a **converged image** that represents the correct character identity.
+
+The anchor should be:
+
+- visually stable
+- clearly identifiable
+- not a draft or exploratory result
+
+This image becomes the **identity reference**.
+
+*Anchor selection is operator-owned: the anchor is the target image the operator wants to reproduce. CIP governs the process after anchor selection.*
+
+-----
+
+## Step 2 — Write a Minimal Prompt
+
+The prompt should describe **only invariant attributes**.
+
+Avoid precise numeric constraints.
+
+**Example (unstable):**
+
+- 8-head body ratio
+- exact height specification
+- precise numeric constraints
+
+**Example (stable):**
+
+- small head relative to height
+- long limbs
+- modest chest
+- full thighs
+
+The goal is **not precise control**.
+The goal is to allow the model to explore its distribution while the anchor attracts convergence.
+
+Assign a **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
 
 -----
 
@@ -28,31 +71,43 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 -----
 
-## Basic Session Flow
+## Step 3 — Generate Iterations
 
-1. Attach anchor image + minimal prompt → Generate
-1. Verify match rate (human judgment: face, skeleton, proportions — relative to anchor; “match rate” refers to identity similarity relative to the anchor image).
-1. If confirmed → proceed with instructions
-1. If drift detected → re-anchor immediately (attach anchor image again)
-1. One change per turn (pose OR lighting OR outfit — not combined)
-1. Check match rate every turn
+Generate a small batch of outputs (3–5).
+
+Compare them to the anchor.
+
+Verify identity similarity relative to the anchor (human judgment: face, skeleton, proportions).
+
+Apply only one change per turn (pose OR lighting OR outfit — not combined).
+Verify identity similarity every turn.
 
 -----
 
-## When to Abort
+## Step 4 — Apply Identity Gates
+
+Identity must pass three checks:
+
+```
+PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
+```
+
+If any gate fails, generation must stop immediately.
 
 **Abort the session immediately if:**
 
 - Face identity fails (different person)
 - Skeletal proportions shift significantly
-- Match rate drops below operational threshold (typically ~90%)
+- Identity similarity drops below the operational threshold (typically ~90%)
 
-Do **not** attempt progressive correction after failure.  
+Do **not** attempt progressive correction after failure.
 Discard contaminated outputs. Re-anchor in a new cycle.
 
 -----
 
-## Hard Abort & Re-binding Procedure
+## Step 5 — Hard Abort & Re-Binding
+
+If drift occurs:
 
 ```
 1. Abort generation
@@ -62,17 +117,38 @@ Discard contaminated outputs. Re-anchor in a new cycle.
 5. Verify identity before proceeding
 ```
 
+This restores identity convergence.
+
 -----
 
 ## Common Mistakes
 
-|Mistake                                 |Effect                       |Fix                           |
-|----------------------------------------|-----------------------------|------------------------------|
-|Verbose prompt with anchor              |Optimization overrides anchor|Reduce to minimal prompt      |
-|Changing multiple conditions in one turn|Compound drift               |One change per turn only      |
-|Continuing after identity failure       |Contamination accumulates    |Hard abort, re-anchor         |
-|Using a draft image as anchor           |Weak convergence baseline    |Use highest-purity output only|
-|Not checking match rate every turn      |Silent drift undetected      |Verify every turn             |
+|Mistake                                    |Effect                       |Fix                                  |
+|-------------------------------------------|-----------------------------|-------------------------------------|
+|Verbose prompt with anchor                 |Optimization overrides anchor|Reduce to minimal prompt             |
+|Changing multiple conditions in one turn   |Compound drift               |One change per turn only             |
+|Continuing after identity failure          |Contamination accumulates    |Hard abort, re-anchor                |
+|Using a draft image as anchor              |Weak convergence baseline    |Use highest-purity output only       |
+|Not checking identity similarity every turn|Silent drift undetected      |Verify identity similarity every turn|
+
+-----
+
+## Summary
+
+CIP stabilizes identity through a simple operational loop:
+
+```
+Anchor → Minimal Prompt → Generation → Identity Gates
+```
+
+If drift occurs:
+
+```
+Hard Abort → Re-bind → Re-converge
+```
+
+Identity is not generated.
+Identity is **recovered**.
 
 -----
 
