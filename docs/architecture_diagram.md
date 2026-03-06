@@ -25,7 +25,7 @@ flowchart TD
 
 **Key insight:**  
 The anchor does not bypass model optimization.  
-It supplies a high-density prior — a previously validated solution state.  
+It introduces a previously validated solution state that attracts reconstruction toward a known stable region.  
 The model optimizes toward that prior rather than reconstructing freely.
 
 -----
@@ -156,8 +156,8 @@ Minimal Prompt  +  Anchor Image ──────────────┐
           ↓                                    ↓
 ┌─────────────────────────────────────────────┐
 │  Reconstruction A → A'                       │
-│  Anchor biases solution space                │  ← Operationally constrained
-│  toward prior convergence point              │
+│  Anchor guides reconstruction                │  ← Operationally constrained
+│  toward a previously converged solution state│
 └─────────┬───────────────────────────────────┘
           ↓
      Output converges toward Anchor
@@ -170,6 +170,54 @@ Minimal Prompt  +  Anchor Image ──────────────┐
 
 **Clarification:**  
 Language Layer / Reconstruction / Execution are conceptual abstractions for explanatory purposes. They do not imply knowledge of proprietary model internals.
+
+-----
+
+## 6. Identity Drift Timeline
+
+*How identity similarity degrades over turns and how CIP intervenes.*
+
+```mermaid
+flowchart TD
+    T1["Turn 1
+Identity: PASS ✓"] --> T2["Turn 2
+Identity: PASS ✓"]
+    T2 --> T3["Turn 3
+Identity: PASS ✓"]
+    T3 --> T4["Turn 4
+Identity: Degrading"]
+    T4 --> T5["Turn 5
+Identity: FAIL ✗"]
+    T5 --> HA[Hard Abort]
+    HA --> RB[Re-binding
+Anchor re-injected]
+    RB --> C1["Cycle B — Turn 1
+Identity: PASS ✓"]
+    C1 --> C2["Cycle B — Turn 2
+Identity: PASS ✓"]
+    C2 --> C3["Cycle B — Turn 3
+Identity: PASS ✓"]
+```
+
+**Key insight:**  
+Identity similarity is not maintained indefinitely.  
+It degrades gradually through stochastic drift.  
+CIP detects failure at the gate level and immediately re-binds the anchor.
+
+```
+High  ┤  ████ ████ ████ ░░░░
+      │
+      │                      FAIL
+Low   ┤                        │
+      │                        ↓
+      │                  Hard Abort
+      │                        ↓
+High  ┤                  Re-binding
+      │                        │
+      │              ████ ████ ████ ░░░░
+      └─────────────────────────────────→ Turns
+           Cycle A             Cycle B
+```
 
 -----
 
