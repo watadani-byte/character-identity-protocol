@@ -1,6 +1,8 @@
 # Character Identity Protocol (CIP)
 
-Operational workflow to keep a character consistent across generations, sessions, and platforms.  
+Character Identity Protocol (CIP) is an operational protocol for stabilizing character identity in probabilistic generative systems.
+It provides a governance workflow that maintains character identity across generations, sessions, and platforms through anchors, validation gates, and controlled re-convergence cycles.
+
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
 ## The Problem CIP Solves
@@ -20,7 +22,7 @@ Each generation is statistically independent.
 Even with the same prompt, the model may produce a different face,
 different proportions, or a different identity.
 
-CIP was created to solve this operational problem.
+CIP was created to manage this fundamental property of probabilistic generative systems at the operational layer.
 
 It does not modify the model.
 It does not require fine-tuning.
@@ -37,11 +39,13 @@ auditable, and portable across platforms.
 
 -----
 
-CIP is an operational governance protocol for stabilizing character identity in probabilistic generative systems (anchor + gates + hard abort).  
-It governs reconstruction behavior at the operational layer — no fine-tuning, no model modification.
+CIP governs reconstruction behavior at the operational layer through anchors, validation gates, and disciplined hard-abort control.
+
+**CIP does not try to control the model.  
+It controls the conditions under which the model converges.**
 
 > This is not a generation method.  
-> It is a character identity inspection protocol.
+> It is a character identity governance protocol.
 
 **CIP Identity Stabilization Workflow**
 
@@ -301,6 +305,51 @@ Identity Stability
    
    If any gate fails, generation must stop immediately.
 1. If threshold drops below defined limit → **Hard Abort** → Re-binding to the last verified Converged Anchor.
+
+-----
+
+## Minimal Prompt Principle
+
+CIP intentionally avoids highly specific prompt constraints.
+
+In many generative systems, overly precise instructions
+(e.g., exact measurements, rigid proportions, or tightly defined parameters)
+can push the model away from the statistical regions where stable reconstructions occur.
+
+Instead, CIP favors minimal attribute descriptions that leave room for the model to converge naturally.
+
+**Example of rigid specification (often unstable):**
+
+- 8-head body ratio
+- exact height specification
+- precise numeric constraints
+
+**Example of minimal attribute description:**
+
+- small head relative to height
+- long limbs
+- modest chest
+- full thighs
+
+The second form allows the model to search within its learned distribution more freely and often leads to more stable convergence toward the anchor.
+
+In practice this means:
+
+- Prompts describe invariant traits, not exact measurements
+- Prompts remain short and abstract
+- The anchor image carries the majority of identity information
+
+CIP therefore treats prompts as identity hints, not full character definitions.
+The anchor remains the primary stabilizer of identity.
+
+**Why This Works**
+
+Generative models tend to converge toward regions of the training distribution where examples are dense.
+Minimal prompts allow the model to search these regions freely, while the anchor image acts as the primary convergence attractor.
+
+```
+Minimal Prompt → Model Exploration → Anchor Attraction → Convergence
+```
 
 -----
 
