@@ -77,7 +77,7 @@ Generate a small batch of outputs (3–5).
 
 Compare them to the anchor.
 
-Verify identity similarity relative to the anchor (human judgment: face, skeleton, proportions).
+Verify identity similarity against the anchor (human judgment: face, skeleton, proportions).
 
 Apply only one change per turn (pose OR lighting OR outfit — not combined).
 Verify identity similarity every turn.
@@ -85,6 +85,8 @@ Verify identity similarity every turn.
 -----
 
 ## Step 4 — Apply Identity Gates
+
+The protocol defines the validation gates. The exact similarity threshold is an operational parameter.
 
 Identity must pass three checks:
 
@@ -98,7 +100,7 @@ If any gate fails, generation must stop immediately.
 
 - Face identity fails (different person)
 - Skeletal proportions shift significantly
-- Identity similarity drops below the operational threshold (typically ~90%)
+- Identity similarity drops below the operational threshold (operator-defined; ~90% is commonly used in demonstrations)
 
 Do **not** attempt progressive correction after failure.
 Discard contaminated outputs. Re-anchor in a new cycle.
