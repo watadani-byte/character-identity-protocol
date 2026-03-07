@@ -47,11 +47,11 @@ When a gate failure is detected:
 
 ## Match Rate Threshold
 
-- **Minimum threshold**: typically 90% (human-judged, context-dependent)
+- **Similarity threshold**: operator-defined (values around ~90% are commonly used in demonstrations; exact threshold depends on project tolerance)
 - **Measurement**: Visual comparison against anchor image by trained operator
 - **Automation**: None — human judgment only
 
-> 90% = operational shipping threshold, not a universal research metric.
+> ~90% = commonly used demonstration threshold; the protocol defines the validation mechanism, not the numeric value.
 
 If match rate drops below operational threshold:
 
