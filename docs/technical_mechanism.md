@@ -1,6 +1,6 @@
 # Technical Mechanism — Character Identity Protocol
 
-CIP treats character identity as a **convergence control problem**
+CIP treats character identity as a recoverable convergence state within the model’s reconstruction space.
 within probabilistic generative systems.
 
 -----
