@@ -13,7 +13,7 @@ The primary challenge in deploying generative AI for creative and corporate work
 
 Conventional trial-and-error prompting lacks reproducibility and risks **Identity Loss** during model updates or session terminations.
 
-The Character Identity Protocol (CIP) defines a character not as a random output, but as a statistical **Convergence Point**. By utilizing the Anchor Mechanism, this protocol ensures the protection, recovery, and seamless migration of character identities across disparate AI platforms.
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
 
 CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
 
@@ -459,3 +459,10 @@ It constrains outputs operationally.
 
 *Status: v1.0 — February 2026*  
 *Repository: [Character Identity Protocol](/character-identity-protocol/)*
+
+-----
+
+## Appendices
+
+- [Appendix A — Operational Terminology](whitepaper_appendices.md#appendix-a--operational-terminology)
+- [Appendix B — Operational Characteristics of Modern Image Generation Systems](whitepaper_appendices.md#appendix-b--operational-characteristics-of-modern-image-generation-systems)
