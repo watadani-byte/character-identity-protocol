@@ -100,7 +100,7 @@ PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
 
 All gates must pass. Any single failure triggers Hard Abort.
 
-> The ≈90% threshold refers to human-judged identity similarity relative to the anchor — not an automated metric.
+> The similarity threshold is operator-defined. The ≈90% value used in demonstrations refers to human-judged identity similarity relative to the anchor — not an automated metric or fixed protocol requirement.
 
 -----
 
