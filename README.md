@@ -8,9 +8,16 @@ CIP addresses this operational problem by introducing a structured workflow buil
 
 Instead of attempting to control the model itself, CIP controls the **conditions under which identity convergence occurs**.
 
+CIP is not a prompting technique. It is an operational protocol for stabilizing identity reconstruction in probabilistic generative systems, using anchor-based convergence, identity gates, and hard-abort recovery cycles.
+
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
+For the theoretical framework and full protocol description, see the White Paper:  
+[White Paper: Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+
 -----
+
+The following section explains why character identity is inherently unstable in generative systems.
 
 ## The Problem
 
@@ -138,7 +145,7 @@ It simply increases the probability that reconstruction returns to a previously 
 
 ```mermaid
 flowchart TD
-    A[Training Distribution] --> B[Model Exploration]
+    A[Learned Distribution] --> B[Model Exploration]
     B --> C[Anchor Attraction]
     C --> D[Convergence]
     D --> E{Identity Gates}
@@ -282,6 +289,8 @@ Please refer to: [Decision Pack](docs/decision_pack.md)
 
 -----
 
+CIP reframes character identity from a static output property to a recoverable convergence state.
+
 ## Key Insight
 
 Identity in generative systems does not persist automatically.
@@ -296,11 +305,14 @@ Identity in generative systems does not persist automatically.
 
 ## Reading Paths
 
-- **I just want the idea** (3 min) → README + [Glossary](docs/glossary.md)
-- **I want to run it** (10 min) → [Quickstart](docs/quickstart.md) + [Quality Gate](docs/quality_gate_addendum.md)
-- **I want the theory** (20 min) → [White Paper](docs/whitepaper_v1.md) + [Technical Mechanism](docs/technical_mechanism.md)
-- **I want proof** (30 min) → [Case 03](docs/case_03_avedon_project.md) + [Case 04](docs/case_04_shizuka.md)
-- **I want scope limits** → [Reproducibility Scope](docs/reproducibility_scope.md)
+**Researchers / Technical Review**  
+[White Paper](docs/whitepaper_v1.md) → [Technical Mechanism](docs/technical_mechanism.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
+
+**Practitioners**  
+[Quickstart](docs/quickstart.md) → [Architecture Diagram](docs/architecture_diagram.md) → [Case Studies](docs/case_01_failure_log.md)
+
+**Enterprise / Governance**  
+[Decision Pack](docs/decision_pack.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
 
 -----
 
