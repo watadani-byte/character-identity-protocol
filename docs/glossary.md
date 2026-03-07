@@ -98,7 +98,7 @@ Evaluated across three dimensions:
 - **SkeletonGate** — skeletal proportion and alignment
 - **ProportionGate** — overall body proportion
 
-Operational threshold: **typically 90% minimum** (context-dependent).  
+The similarity threshold is operator-defined. Values around ~90% are commonly used in demonstrations, but the exact threshold depends on project tolerance and operational requirements.
 Below threshold → session abort.
 
 Match rate is a human judgment, not an automated metric.
