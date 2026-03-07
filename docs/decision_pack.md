@@ -76,9 +76,9 @@ Instead it governs **how outputs are accepted or rejected**.
 - Immediate Hard Abort
 - Re-binding to last verified Converged Anchor
 
-**Final Authority:**
+**Human Gate Validation Authority:**
 
-- Human threshold validation (≈90% similarity)
+- Human threshold validation (operator-defined; values around ≈90% are commonly used in demonstrations, depending on project tolerance)
 
 -----
 
