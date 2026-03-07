@@ -15,7 +15,7 @@ Conventional trial-and-error prompting lacks reproducibility and risks **Identit
 
 The Character Identity Protocol (CIP) defines a character not as a random output, but as a statistical **Convergence Point**. By utilizing the Anchor Mechanism, this protocol ensures the protection, recovery, and seamless migration of character identities across disparate AI platforms.
 
-CIP treats character identity not as a static feature match, but as a convergence state within the model’s reconstruction space that must be repeatedly recovered under operational constraints.
+CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
 
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
