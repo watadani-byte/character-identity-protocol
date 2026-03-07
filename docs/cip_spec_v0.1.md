@@ -100,7 +100,7 @@ PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
 
 **3.2.5** Generation SHALL proceed only when all gates return PASS.
 
-**3.2.6** Operational practice suggests a similarity threshold of approximately 90%, as assessed by human judgment. Operators SHOULD document any deviation from this threshold.
+**3.2.6** The similarity threshold is operator-defined. Operational practice commonly uses approximately 90% as assessed by human judgment, but the exact value depends on project tolerance and operational requirements. Operators SHOULD document the threshold selected.
 
 **3.2.7** The threshold MAY be adjusted by the operator for specific production contexts, provided the adjustment is documented.
 
@@ -248,22 +248,22 @@ Partial conformance MAY be declared with explicit documentation of which require
 
 ## Appendix A — Normative Summary
 
-|Requirement                                   |Level    |
-|----------------------------------------------|---------|
-|Anchor must be a validated converged output   |SHALL    |
-|Anchor selection is operator-owned            |SHALL    |
-|Minimal prompt describes invariant traits only|SHALL    |
-|Numeric constraints in prompts                |SHALL NOT|
-|All three gates evaluated after each output   |SHALL    |
-|Gate evaluation is human-primary              |SHALL    |
-|Generation proceeds only when all gates PASS  |SHALL    |
-|Hard Abort on any gate FAIL                   |SHALL    |
-|No incremental correction after gate FAIL     |SHALL NOT|
-|Re-bind last validated anchor after Hard Abort|SHALL    |
-|Audit record maintained per cycle             |SHALL    |
-|Automated metrics as supplementary only       |MAY      |
-|Re-anchoring every 10–15 turns                |SHOULD   |
-|Threshold approximately 90%                   |SHOULD   |
+|Requirement                                    |Level    |
+|-----------------------------------------------|---------|
+|Anchor must be a validated converged output    |SHALL    |
+|Anchor selection is operator-owned             |SHALL    |
+|Minimal prompt describes invariant traits only |SHALL    |
+|Numeric constraints in prompts                 |SHALL NOT|
+|All three gates evaluated after each output    |SHALL    |
+|Gate evaluation is human-primary               |SHALL    |
+|Generation proceeds only when all gates PASS   |SHALL    |
+|Hard Abort on any gate FAIL                    |SHALL    |
+|No incremental correction after gate FAIL      |SHALL NOT|
+|Re-bind last validated anchor after Hard Abort |SHALL    |
+|Audit record maintained per cycle              |SHALL    |
+|Automated metrics as supplementary only        |MAY      |
+|Re-anchoring every 10–15 turns                 |SHOULD   |
+|Operator-defined threshold SHOULD be documented|SHOULD   |
 
 -----
 
