@@ -37,7 +37,7 @@ High-purity outputs that emerge within the latent space may represent transient 
 
 These frames exhibit unusually high coherence — disproportionately finished relative to surrounding outputs. They represent transient local optima where user constraints and model priors align with unusual precision.
 
-*See: [Miracle Images and Convergence Behavior](column_miracle_image.md)*
+*See: [Miracle Images and Convergence Behavior](column_miracle_image.md) — [Character Identity Drift in Generative AI](column_identity_drift.md)*
 
 ### Controlled Convergence
 
