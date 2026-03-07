@@ -138,3 +138,5 @@ The difference defines the next stage of the industry.
 -----
 
 *For the operational framework referenced in this column, see the [Character Identity Protocol](/character-identity-protocol/).*
+
+*See also: [Character Identity Drift in Generative AI](column_identity_drift.md)*
