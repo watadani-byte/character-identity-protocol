@@ -8,9 +8,16 @@ CIP addresses this operational problem by introducing a structured workflow buil
 
 Instead of attempting to control the model itself, CIP controls the **conditions under which identity convergence occurs**.
 
+CIP is not a prompting technique. It is an operational protocol for stabilizing identity reconstruction in probabilistic generative systems, using anchor-based convergence, identity gates, and hard-abort recovery cycles.
+
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
+For the theoretical framework and full protocol description, see the White Paper:  
+[White Paper: Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+
 -----
+
+The following section explains why character identity is inherently unstable in generative systems.
 
 ## The Problem
 
@@ -138,7 +145,7 @@ It simply increases the probability that reconstruction returns to a previously 
 
 ```mermaid
 flowchart TD
-    A[Training Distribution] --> B[Model Exploration]
+    A[Learned Distribution] --> B[Model Exploration]
     B --> C[Anchor Attraction]
     C --> D[Convergence]
     D --> E{Identity Gates}
@@ -278,9 +285,11 @@ If you are reviewing this for:
 - Risk / compliance review
 - Platform integration feasibility
 
-Please refer to: [Decision Pack](decision_pack.md)
+Please refer to: [Decision Pack](docs/decision_pack.md)
 
 -----
+
+CIP reframes character identity from a static output property to a recoverable convergence state.
 
 ## Key Insight
 
@@ -296,11 +305,14 @@ Identity in generative systems does not persist automatically.
 
 ## Reading Paths
 
-- **I just want the idea** (3 min) → README + [Glossary](glossary.md)
-- **I want to run it** (10 min) → [Quickstart](quickstart.md) + [Quality Gate](quality_gate_addendum.md)
-- **I want the theory** (20 min) → [White Paper](whitepaper_v1.md) + [Technical Mechanism](technical_mechanism.md)
-- **I want proof** (30 min) → [Case 03](case_03_avedon_project.md) + [Case 04](case_04_shizuka.md)
-- **I want scope limits** → [Reproducibility Scope](reproducibility_scope.md)
+**Researchers / Technical Review**  
+[White Paper](docs/whitepaper_v1.md) → [Technical Mechanism](docs/technical_mechanism.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
+
+**Practitioners**  
+[Quickstart](docs/quickstart.md) → [Architecture Diagram](docs/architecture_diagram.md) → [Case Studies](docs/case_01_failure_log.md)
+
+**Enterprise / Governance**  
+[Decision Pack](docs/decision_pack.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
 
 -----
 
@@ -308,38 +320,38 @@ Identity in generative systems does not persist automatically.
 
 **White Paper**
 
-- [Character Identity Protocol v1.0](whitepaper_v1.md)
-- [Master Document — Consolidated Overview](master_document.md)
-- [Decision Pack — Enterprise Evaluation](decision_pack.md)
-- [Legal Governance & Operational Evidence Framework](legal_governance.md)
+- [Character Identity Protocol v1.0](docs/whitepaper_v1.md)
+- [Master Document — Consolidated Overview](docs/master_document.md)
+- [Decision Pack — Enterprise Evaluation](docs/decision_pack.md)
+- [Legal Governance & Operational Evidence Framework](docs/legal_governance.md)
 
 **Core**
 
-- [Quickstart Guide](quickstart.md)
-- [Technical Mechanism](technical_mechanism.md)
-- [Architecture Diagram](architecture_diagram.md)
-- [Applications Overview](applications.md)
-- [Glossary](glossary.md)
-- [Reproducibility Scope](reproducibility_scope.md)
+- [Quickstart Guide](docs/quickstart.md)
+- [Technical Mechanism](docs/technical_mechanism.md)
+- [Architecture Diagram](docs/architecture_diagram.md)
+- [Applications Overview](docs/applications.md)
+- [Glossary](docs/glossary.md)
+- [Reproducibility Scope](docs/reproducibility_scope.md)
 
 **Case Studies**
 
-- [Case 01A: Baseline Failure](case_01_failure_log.md)
-- [Case 01B: Mira Project — Hard Abort & Re-convergence](case_01b_mira_project.md)
-- [Case 02: Wedding Series](case_02_wedding_series.md)
-- [Case 03: Avedon Project](case_03_avedon_project.md)
-- [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)
-- [Case 05: Serendipitous Creation](case_05_serendipitous.md)
-- [Case 06: Gemini Validation](case_06_gemini.md)
+- [Case 01A: Baseline Failure](docs/case_01_failure_log.md)
+- [Case 01B: Mira Project — Hard Abort & Re-convergence](docs/case_01b_mira_project.md)
+- [Case 02: Wedding Series](docs/case_02_wedding_series.md)
+- [Case 03: Avedon Project](docs/case_03_avedon_project.md)
+- [Case 04: Cross-Platform Migration — “Shizuka”](docs/case_04_shizuka.md)
+- [Case 05: Serendipitous Creation](docs/case_05_serendipitous.md)
+- [Case 06: Gemini Validation](docs/case_06_gemini.md)
 
 **Operational**
 
-- [Quality Gate & Hard Abort Discipline](quality_gate_addendum.md)
+- [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
 
 **Further Reading**
 
-- [Miracle Images and Convergence Behavior](column_miracle_image.md)
-- [When AI Stops Being Art and Starts Becoming Production](column_production.md)
+- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
+- [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
 
 > **Note:** “Identity Gates” is the current term for the validation layer. “Quality Gate” remains as a legacy document and addendum title for continuity.
 
