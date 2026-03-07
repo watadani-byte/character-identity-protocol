@@ -54,7 +54,7 @@ CIP addresses it at the operational governance layer.
 
 CIP treats character identity as a **convergence control problem**.
 
-In other words, CIP does not attempt to generate identity — it recovers it.
+In other words, CIP does not attempt to generate identity; it recovers it.
 
 Rather than enforcing strict instructions, the protocol aligns generation with the natural convergence behavior of the model.
 
@@ -66,6 +66,8 @@ CIP introduces four operational elements:
 |Minimal Prompt|Lightweight identity constraints                |
 |Identity Gates|Validation checks (Face ∧ Skeleton ∧ Proportion)|
 |Hard Abort    |Immediate termination when drift occurs         |
+
+Identity Gates are evaluated by the operator (typically a human reviewer), with optional metric-based verification.
 
 Together these form a controlled generation loop.
 
