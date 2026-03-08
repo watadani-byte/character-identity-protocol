@@ -68,6 +68,8 @@ So the moment a pose changed, the character often changed as well.
 
 Below is an example of what creators often wanted to achieve: the same character appearing across multiple poses and gestures.
 
+![Pose 1](06.png) ![Pose 2](07.png) ![Pose 3](08.png) ![Pose 4](09.png)
+
 *Example: the same character appearing across multiple poses and gestures. Without identity stability, sequences like this often collapse into different characters.*
 
 -----
