@@ -1,6 +1,6 @@
 # Character Identity Protocol (CIP)
 
-**Character Identity Protocol (CIP)** is an operational governance protocol for stabilizing character identity in probabilistic generative systems such as image generation models.
+**Character Identity Protocol (CIP)** is an operational governance framework for stabilizing character identity in probabilistic generative systems such as image generation models.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
