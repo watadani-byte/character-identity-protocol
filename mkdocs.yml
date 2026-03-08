@@ -37,6 +37,7 @@ nav:
     - Miracle Image: column_miracle_image.md
     - Production Notes: column_production.md
     - Identity Drift: column_identity_drift.md
+    - Before Consistent Characters: column_before_consistent_characters.md
 
 plugins:
   - search
