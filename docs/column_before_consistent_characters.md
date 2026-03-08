@@ -144,3 +144,5 @@ In probabilistic generative systems, identity does not persist by accident.
 -----
 
 *See also: [Character Identity Drift in Generative AI](column_identity_drift.md) — [Miracle Images and Convergence Behavior](column_miracle_image.md) — [White Paper](whitepaper_v1.md)*
+
+The following section introduces the operational framework that emerged from these observations: the Character Identity Protocol (CIP).
