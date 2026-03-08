@@ -68,7 +68,7 @@ So the moment a pose changed, the character often changed as well.
 
 ![Example 1](04.PNG) ![Example 2](05.PNG)
 
-*Images from the author’s own library. Without identity stability, the same character may appear differently across generations.*
+*Images from the author’s own library. Character originally created in ChatGPT and migrated to Gemini. Without identity stability, the same character may appear differently across generations.*
 
 -----
 
