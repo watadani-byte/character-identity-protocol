@@ -9,35 +9,34 @@ repo_url: https://github.com/watadani-byte/character-identity-protocol
 docs_dir: docs
 
 theme:
-name: material
+  name: material
 
 nav:
-
-- Home: index.md
-- Quickstart: quickstart.md
-- White Paper: whitepaper_v1.md
-- Case Studies:
-  - Case 01A — Baseline Failure: case_01_failure_log.md
-  - Case 01B — Mira Project (Hard Abort and Re-convergence): case_01b_mira_project.md
-  - Case 02 — Wedding Series: case_02_wedding_series.md
-  - Case 03 — Avedon Project: case_03_avedon_project.md
-  - Case 04 — Cross-Platform Migration: case_04_shizuka.md
-  - Case 05 — Serendipitous Creation: case_05_serendipitous.md
-  - Case 06 — Gemini Validation: case_06_gemini.md
-- Documentation:
-  - Technical Mechanism: technical_mechanism.md
-  - Quality Gate & Hard Abort: quality_gate_addendum.md
-  - Video Addendum: cip_video_addendum.md
-  - Reproducibility Scope: reproducibility_scope.md
-  - Glossary: glossary.md
-- Enterprise:
-  - Decision Pack: decision_pack.md
-  - Legal Governance: legal_governance.md
-  - Master Document: master_document.md
-- Columns:
-  - Miracle Image: column_miracle_image.md
-  - Production Notes: column_production.md
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - White Paper: whitepaper_v1.md
+  - Case Studies:
+    - Case 01A — Baseline Failure: case_01_failure_log.md
+    - Case 01B — Mira Project (Hard Abort and Re-convergence): case_01b_mira_project.md
+    - Case 02 — Wedding Series: case_02_wedding_series.md
+    - Case 03 — Avedon Project: case_03_avedon_project.md
+    - Case 04 — Cross-Platform Migration: case_04_shizuka.md
+    - Case 05 — Serendipitous Creation: case_05_serendipitous.md
+    - Case 06 — Gemini Validation: case_06_gemini.md
+  - Documentation:
+    - Technical Mechanism: technical_mechanism.md
+    - Quality Gate & Hard Abort: quality_gate_addendum.md
+    - Video Addendum: cip_video_addendum.md
+    - Reproducibility Scope: reproducibility_scope.md
+    - Glossary: glossary.md
+  - Enterprise:
+    - Decision Pack: decision_pack.md
+    - Legal Governance: legal_governance.md
+    - Master Document: master_document.md
+  - Columns:
+    - Miracle Image: column_miracle_image.md
+    - Production Notes: column_production.md
+    - Identity Drift: column_identity_drift.md
 
 plugins:
-
-- search
+  - search
