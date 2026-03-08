@@ -84,7 +84,9 @@ Looking back, this was essentially the first form of what would later become the
 
 ![Pose 1](../06.png) ![Pose 2](../07.png) ![Pose 3](../08.png) ![Pose 4](../09.png)
 
-*Author example: this sequence reflects an unusual workflow for its time. Rather than focusing on reproducing a single “miracle shot”, the workflow treated the character as a continuing presence across multiple poses and scenes.*
+*Example: identity continuity across scenes. Images from the author’s own library, provided as a clear illustrative example of the concept.*
+
+*Early users often aimed to reproduce a successful “miracle shot”. In this workflow, that reproduction becomes the starting point for generating further scenes with the same character.*
 
 -----
 
