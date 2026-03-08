@@ -1,7 +1,6 @@
 # Technical Mechanism — Character Identity Protocol
 
-CIP treats character identity as a recoverable convergence state within the model’s reconstruction space.
-within probabilistic generative systems.
+CIP treats character identity as a recoverable convergence state within the model’s reconstruction space in probabilistic generative systems.
 
 -----
 
@@ -205,7 +204,7 @@ Important clarification:
 
 - The image is **not** used as inspiration
 - It functions as a **high-information constraint**
-- It represents a known converged solution in the model’s output space
+- It represents a validated convergence state within the model’s output space
 
 Minimal prompts allow the model to explore its training distribution
 without forcing unstable constraints.
