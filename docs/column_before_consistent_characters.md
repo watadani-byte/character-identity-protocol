@@ -66,11 +66,15 @@ Each generation is a new reconstruction.
 
 So the moment a pose changed, the character often changed as well.
 
+Below is an example of what creators often wanted to achieve: the same character appearing across multiple poses and gestures.
+
+*Example: the same character appearing across multiple poses and gestures. Without identity stability, sequences like this often collapse into different characters.*
+
 -----
 
 ## An Unusual Workflow
 
-My own workflow at the time was somewhat unusual.
+My own workflow at the time was somewhat unusual and probably not representative of typical community practice.
 
 While many creators tried to stabilize characters through increasingly detailed prompts, I moved in the opposite direction.
 
@@ -96,6 +100,10 @@ These approaches generally worked by either:
 - injecting additional signals into the generation process
 
 While effective in many cases, they often required model-level intervention or platform-specific features.
+
+These solutions improved identity stability, but they were often tied to specific tools, training pipelines, or platform features.
+
+However, these methods addressed identity stability through model control or feature-specific mechanisms, rather than through a general operational workflow.
 
 -----
 
@@ -144,5 +152,3 @@ In probabilistic generative systems, identity does not persist by accident.
 -----
 
 *See also: [Character Identity Drift in Generative AI](column_identity_drift.md) — [Miracle Images and Convergence Behavior](column_miracle_image.md) — [White Paper](whitepaper_v1.md)*
-
-The following section introduces the operational framework that emerged from these observations: the Character Identity Protocol (CIP).
