@@ -86,7 +86,7 @@ From that point on, the goal was no longer to regenerate the character, but to l
 
 Looking back, this was essentially the first form of what would later become the anchor concept.
 
-![Pose 1](06.png) ![Pose 2](07.png) ![Pose 3](08.png) ![Pose 4](../09.png)
+![Pose 1](06.png) ![Pose 2](07.png) ![Pose 3](08.png) ![Pose 4](09.png)
 
 *Example: identity continuity across scenes. Images from the author’s own library, provided as a clear illustrative example of the concept.*
 
