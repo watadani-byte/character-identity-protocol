@@ -66,12 +66,6 @@ Each generation is a new reconstruction.
 
 So the moment a pose changed, the character often changed as well.
 
-Below is an example of what creators often wanted to achieve: the same character appearing across multiple poses and gestures.
-
-![Pose 1](06.png) ![Pose 2](07.png) ![Pose 3](08.png) ![Pose 4](09.png)
-
-*Example: the same character appearing across multiple poses and gestures. Without identity stability, sequences like this often collapse into different characters.*
-
 -----
 
 ## An Unusual Workflow
@@ -87,6 +81,10 @@ Instead, I treated that image itself as the character.
 From that point on, the goal was no longer to regenerate the character, but to let that same character appear in different poses, gestures, and emotions.
 
 Looking back, this was essentially the first form of what would later become the anchor concept.
+
+![Pose 1](../06.png) ![Pose 2](../07.png) ![Pose 3](../08.png) ![Pose 4](../09.png)
+
+*Author example: this sequence reflects an unusual workflow for its time. Rather than focusing on reproducing a single “miracle shot”, the workflow treated the character as a continuing presence across multiple poses and scenes.*
 
 -----
 
