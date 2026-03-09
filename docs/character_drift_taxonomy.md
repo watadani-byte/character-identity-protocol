@@ -12,6 +12,8 @@ This phenomenon can be understood as **character drift**.
 
 This document provides a taxonomy of common drift types observed in practice and explains their underlying statistical causes.
 
+The observations described here focus on character-centric image generation workflows.
+
 -----
 
 ## Drift Types
@@ -120,6 +122,8 @@ These high-density regions represent the model’s statistical “common sense.�
 As a result, unusual prompts or unstable conditions often lead the generation back toward more common visual patterns.
 
 This statistical regression explains many forms of character drift observed in generative image systems.
+
+In practice, this means that unstable generations often converge toward visually common patterns present in the training data.
 
 -----
 
