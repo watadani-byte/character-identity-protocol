@@ -22,7 +22,7 @@ The observations described here focus on character-centric image generation work
 
 Identity Drift occurs when a generated character becomes a different individual despite identical prompts.
 
-![Identity Drift - Before](10.jpeg) ![Identity Drift - After](11.jpeg)
+![Identity Drift - Before](10.PNG) ![Identity Drift - After](11.PNG)
 
 *The visual identity of the character changes even though the prompt remains constant.*
 
@@ -32,7 +32,7 @@ Identity Drift occurs when a generated character becomes a different individual 
 
 Age Drift occurs when the perceived age of a character changes because contextual cues such as clothing or pose activate different statistical associations in the training distribution.
 
-![Age Drift - Before](20.png) ![Age Drift - After](21.png)
+![Age Drift - Before](20.PNG) ![Age Drift - After](21.PNG)
 
 *Clothing and expression may shift the statistical interpretation of age.*
 
@@ -42,7 +42,7 @@ Age Drift occurs when the perceived age of a character changes because contextua
 
 Eye Color Drift occurs when eye color varies across generations because color attributes are represented as probabilistic clusters rather than discrete values.
 
-![Eye Color Drift - Before](18.jpeg) ![Eye Color Drift - After](19.jpeg)
+![Eye Color Drift - Before](18.PNG) ![Eye Color Drift - After](19.PNG)
 
 *Color categories such as brown, amber, and hazel often exist within the same statistical cluster.*
 
@@ -52,7 +52,7 @@ Eye Color Drift occurs when eye color varies across generations because color at
 
 Proportion Drift occurs when skeletal proportions change because body geometry is inferred from statistical body-type clusters rather than fixed parameters.
 
-![Proportion Drift - Before](14.jprg) ![Proportion Drift - After](15.jpeg)
+![Proportion Drift - Before](14.PNG) ![Proportion Drift - After](15.PNG)
 
 *Body geometry is not fixed and may converge toward different body-type clusters.*
 
@@ -62,7 +62,7 @@ Proportion Drift occurs when skeletal proportions change because body geometry i
 
 Style Drift occurs when rendering shifts toward a different visual style, often because models regress toward higher-density stylistic regions such as photorealism.
 
-![Style Drift - Before](12.jpeg) ![Style Drift - After](13.jpeg)
+![Style Drift - Before](12.PNG) ![Style Drift - After](13.PNG)
 
 *Photographic imagery typically dominates training distributions, making stylistic regression common.*
 
@@ -72,7 +72,7 @@ Style Drift occurs when rendering shifts toward a different visual style, often 
 
 Background Drift occurs when environmental context changes because background elements are weak constraints compared to the primary subject.
 
-![Background Drift - Before](16.jpeg) ![Background Drift - After](17.jpeg)
+![Background Drift - Before](16.PNG) ![Background Drift - After](17.PNG)
 
 *Backgrounds are often treated as secondary context and therefore change easily.*
 
@@ -82,7 +82,7 @@ Background Drift occurs when environmental context changes because background el
 
 Rendering Collapse occurs when structural coherence breaks down during image reconstruction, producing distorted anatomy or unstable geometry.
 
-![Rendering Collapse - Before](22.png) ![Rendering Collapse - After](23.png)
+![Rendering Collapse - Before](22.PNG) ![Rendering Collapse - After](23.PNG)
 
 *Certain structures such as hands, glasses, or background figures are particularly unstable.*
 
