@@ -29,6 +29,7 @@ This article summarizes several operational observations about generative image 
 ## Identity Drift Triggers (Observed)
 
 In practice, identity drift often becomes noticeable when certain visual attributes change significantly.
+These changes may occur even when the textual prompt remains unchanged.
 
 Common examples include:
 
@@ -48,7 +49,7 @@ Because generative models reconstruct images probabilistically, such variations 
 
 Generative AI systems behave fundamentally differently from deterministic software.
 
-The following assumptions are useful when operating such systems.
+The following assumptions summarize common operational observations when working with generative image systems.
 
 -----
 
@@ -141,6 +142,28 @@ During repeated generations, removing unnecessary details and compressing prompt
 
 -----
 
+## Attribute Ordering for Character Stability
+
+When prompts describe many attributes simultaneously, the order in which information appears can influence how the model prioritizes visual reconstruction.
+
+In practice, placing core identity attributes earlier in the prompt often improves stability.
+
+A commonly effective ordering is:
+
+1. Character identifier
+1. Physical identity traits (body structure, hairstyle)
+1. Pose and gaze direction
+1. Clothing and expression
+1. Scene or background elements
+
+This ordering prioritizes identity-defining traits before contextual elements.
+
+If background descriptions or stylistic details dominate the prompt, the model may allocate more reconstruction capacity to those elements, increasing the risk of identity drift.
+
+For this reason, stable character generation workflows often describe **identity first and environment later**.
+
+-----
+
 ## Practical Considerations
 
 When attempting to maintain character consistency, the following observations are often useful:
@@ -163,7 +186,7 @@ Understanding these operational characteristics helps explain why consistent cha
 
 Rather than relying solely on increasingly detailed prompts, stable workflows often require a combination of prompt discipline, visual verification, and external control mechanisms.
 
-Recognizing these constraints can significantly improve practical workflows when working with generative image systems.
+Recognizing these constraints can significantly improve practical workflows in generative image systems and help explain why operational control frameworks such as CIP may be necessary.
 
 -----
 
