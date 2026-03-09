@@ -360,6 +360,7 @@ Identity in generative systems does not persist automatically.
 - [When AI Stops Being Art and Starts Becoming Production](docs/column_production.md)
 - [Character Identity Drift in Generative AI — From Sakuga Collapse to CIP](docs/column_identity_drift.md)
 - [Before Consistent Characters](docs/column_before_consistent_characters.md)
+- [Identity Drift in Generative Image Models — A Practical Explanation](docs/column_identity_drift_practical.md)
 
 > **Note:** “Identity Gates” is the current term for the validation layer. “Quality Gate” remains as a legacy document and addendum title for continuity.
 
