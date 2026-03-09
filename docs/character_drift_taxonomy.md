@@ -22,7 +22,7 @@ The observations described here focus on character-centric image generation work
 
 Identity Drift occurs when a generated character becomes a different individual despite identical prompts.
 
-![Identity Drift - Before](10.PNG) ![Identity Drift - After](11.PNG)
+![Identity Drift - Before]10.JPEG) ![Identity Drift - After](11.JPEG)
 
 *The visual identity of the character changes even though the prompt remains constant.*
 
@@ -52,7 +52,7 @@ Eye Color Drift occurs when eye color varies across generations because color at
 
 Proportion Drift occurs when skeletal proportions change because body geometry is inferred from statistical body-type clusters rather than fixed parameters.
 
-![Proportion Drift - Before](14.PNG) ![Proportion Drift - After](15.PNG)
+![Proportion Drift - Before](14.PNG) ![Proportion Drift - After](15.JPEG)
 
 *Body geometry is not fixed and may converge toward different body-type clusters.*
 
@@ -62,7 +62,7 @@ Proportion Drift occurs when skeletal proportions change because body geometry i
 
 Style Drift occurs when rendering shifts toward a different visual style, often because models regress toward higher-density stylistic regions such as photorealism.
 
-![Style Drift - Before](12.PNG) ![Style Drift - After](13.PNG)
+![Style Drift - Before](12.JPEG) ![Style Drift - After](13.JPEG)
 
 *Photographic imagery typically dominates training distributions, making stylistic regression common.*
 
