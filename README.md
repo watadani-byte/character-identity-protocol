@@ -1,12 +1,14 @@
 # Character Identity Protocol (CIP)
 
-**Character Identity Protocol (CIP)** is an operational governance framework for stabilizing character identity in probabilistic generative systems.
+**Character Identity Protocol (CIP)** is an operational governance framework
+for stabilizing character identity in probabilistic generative systems.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
 CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
 
-Instead of attempting to control the model itself, CIP controls the **conditions under which identity convergence occurs**.
+**CIP does not attempt to control the model itself.
+It controls the conditions under which identity convergence occurs.**
 
 CIP is not a prompting technique. It is an operational protocol for stabilizing identity reconstruction in probabilistic generative systems, using anchor-based convergence, identity gates, and hard-abort recovery cycles.
 
@@ -54,6 +56,9 @@ CIP addresses it at the operational governance layer.
 
 ## The CIP Approach
 
+Operationally, this governance layer functions as a convergence control protocol
+applied during inference.
+
 CIP treats character identity as a **convergence control problem**.
 
 In other words, CIP does not attempt to generate identity; it recovers it.
@@ -73,8 +78,8 @@ Identity Gates are evaluated by the operator (typically a human reviewer), with 
 
 Together these form a controlled generation loop.
 
-**CIP does not try to control the model.
-It controls the conditions under which the model converges.**
+**CIP does not attempt to control the model itself.
+It controls the conditions under which identity convergence occurs.**
 
 > This is not a generation method.
 > It is a character identity governance protocol.
@@ -137,6 +142,8 @@ Proportion Gate"]
 ## Why Anchors Work
 
 A previously generated image represents a **known converged solution** within the model’s output space.
+
+In probabilistic generative systems, previously converged states tend to act as attractors in the reconstruction process.
 
 When supplied as a reference, the anchor acts as a convergence attractor within the model’s reconstruction space.
 
