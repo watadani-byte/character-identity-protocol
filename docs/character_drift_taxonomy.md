@@ -5,7 +5,7 @@
 
 -----
 
-Generative image models do not reproduce images deterministically.
+Generative image models often fail to reproduce the same character consistently.
 Even when prompts remain identical, generated characters may change across generations.
 
 This phenomenon can be understood as **character drift**.
@@ -58,7 +58,7 @@ Proportion Drift occurs when skeletal proportions change because body geometry i
 
 ### 5. Style Drift
 
-Style Drift occurs when rendering shifts toward a different visual style, often because the model regresses toward higher-density stylistic regions such as photorealism.
+Style Drift occurs when rendering shifts toward a different visual style, often because models regress toward higher-density stylistic regions such as photorealism.
 
 <!-- [Image: Style Drift comparison] -->
 
@@ -88,6 +88,8 @@ Rendering Collapse occurs when structural coherence breaks down during image rec
 
 ## Taxonomy
 
+The following taxonomy summarizes common forms of character drift observed in generative image workflows.
+
 ```
 Character Drift
 │
@@ -100,7 +102,7 @@ Character Drift
 └─ Rendering Collapse
 ```
 
-Most drift events occur when generation shifts toward high-density regions of the training distribution.
+Most forms of character drift occur when generation shifts toward high-density regions of the training distribution.
 
 -----
 
@@ -124,6 +126,7 @@ This statistical regression explains many forms of character drift observed in g
 ## Core Observation
 
 > Generative models are most stable in high-density regions of the training distribution.
+> When generation becomes uncertain, outputs tend to regress toward those regions.
 
 This statistical tendency explains many forms of character drift.
 
