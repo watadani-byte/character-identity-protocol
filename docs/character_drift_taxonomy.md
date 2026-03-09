@@ -22,7 +22,7 @@ The observations described here focus on character-centric image generation work
 
 Identity Drift occurs when a generated character becomes a different individual despite identical prompts.
 
-![Identity Drift - Before]10.JPEG) ![Identity Drift - After](11.JPEG)
+![Identity Drift - Before](10.JPEG) ![Identity Drift - After](11.JPEG)
 
 *The visual identity of the character changes even though the prompt remains constant.*
 
