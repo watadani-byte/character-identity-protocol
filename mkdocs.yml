@@ -38,6 +38,7 @@ nav:
     - Production Notes: column_production.md
     - Identity Drift: column_identity_drift.md
     - Before Consistent Characters: column_before_consistent_characters.md
+    - Identity Drift in Generative Image Models: column_identity_drift_practical.md
 
 plugins:
   - search
