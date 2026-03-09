@@ -1,6 +1,6 @@
 # Character Identity Protocol (CIP)
 
-**Character Identity Protocol (CIP)** is an operational governance framework for stabilizing character identity in probabilistic generative systems such as image generation models.
+**Character Identity Protocol (CIP)** is an operational governance framework for stabilizing character identity in probabilistic generative systems.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
@@ -44,6 +44,8 @@ It is a property of **probabilistic generative systems**.
 
 Each output is a new reconstruction sampled from the model’s learned distribution.
 Without operational control, **identity drift emerges naturally**.
+
+CIP was designed to operationally control this reconstruction behavior.
 
 In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
 CIP addresses it at the operational governance layer.
@@ -103,7 +105,7 @@ flowchart TD
     A[Anchor Image + Minimal Prompt] --> B[Generation]
     B --> C["Identity Gates
 (Face ∧ Skeleton ∧ Proportion)"]
-    C -->|PASS| D[Production]
+    C -->|PASS| D[Accepted Output]
     C -->|FAIL| E[Hard Abort]
     E --> F[Re-binding]
     F --> G[Re-convergence]
@@ -136,7 +138,7 @@ Proportion Gate"]
 
 A previously generated image represents a **known converged solution** within the model’s output space.
 
-When supplied as a reference, the anchor acts as a convergence attractor.
+When supplied as a reference, the anchor acts as a convergence attractor within the model’s reconstruction space.
 
 ```
 Model Exploration
