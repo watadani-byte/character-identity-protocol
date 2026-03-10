@@ -119,6 +119,38 @@ PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
 
 -----
 
+## Entropy Transitions
+
+Identity drift often occurs when generation conditions shift abruptly from low-entropy states to high-entropy states.
+
+In stable character generation, the system operates within a constrained reconstruction region where identity features remain consistent.
+
+This region behaves as a low-entropy zone, where variation between generations is limited.
+
+However, large changes to prompts, pose, composition, or structure increase the entropy of the generation process.
+
+These changes expand the search space within the model’s distribution, increasing the probability of identity deviation.
+
+Repeated retries within such high-entropy states typically amplify divergence rather than restore identity stability.
+
+For this reason, CIP treats uncontrolled entropy transitions as a primary cause of identity drift and limits them through controlled generation steps and identity validation.
+
+-----
+
+## Identity Drift as Process Contamination
+
+In production-oriented workflows, identity drift behaves similarly to process contamination in manufacturing systems.
+
+Once drift occurs, continuing the generation cycle tends to propagate divergence rather than recover the original identity.
+
+Repeated retries often produce further variations instead of restoring the intended character.
+
+This behavior is analogous to contamination in industrial production lines, where continuing the process after contamination spreads defects across subsequent outputs.
+
+CIP therefore treats identity drift not as a recoverable iteration error but as a process integrity failure.
+
+-----
+
 ## Hard Abort and Re-Binding
 
 When drift exceeds acceptable limits, CIP applies a Hard Abort rule.
