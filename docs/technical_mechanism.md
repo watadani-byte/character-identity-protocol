@@ -1,6 +1,8 @@
 # Technical Mechanism — Character Identity Protocol
 
-CIP treats character identity as a recoverable convergence state within the model’s reconstruction space in probabilistic generative systems.
+CIP treats character identity as an inference-time control problem rather than a prompting problem.
+
+Within probabilistic generative systems, identity is treated as a recoverable convergence state in the model’s reconstruction space.
 
 -----
 
@@ -97,28 +99,6 @@ This phenomenon is referred to in CIP as **identity drift**.
 
 -----
 
-## Gate-Based Operational Control
-
-CIP does not attempt to eliminate drift at the model level.
-
-Instead, it introduces operational validation gates that evaluate identity similarity after each generation step.
-
-The three core validation gates are:
-
-```
-Face Gate
-Skeleton Gate
-Proportion Gate
-```
-
-Generation proceeds only when all gates pass:
-
-```
-PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
-```
-
------
-
 ## Entropy Transitions
 
 Identity drift often occurs when generation conditions shift abruptly from low-entropy states to high-entropy states.
@@ -151,6 +131,28 @@ CIP therefore treats identity drift not as a recoverable iteration error but as 
 
 -----
 
+## Gate-Based Operational Control
+
+CIP does not attempt to eliminate drift at the model level.
+
+Instead, it introduces operational validation gates that evaluate identity similarity after each generation step.
+
+The three core validation gates are:
+
+```
+Face Gate
+Skeleton Gate
+Proportion Gate
+```
+
+Generation proceeds only when all gates pass:
+
+```
+PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
+```
+
+-----
+
 ## Hard Abort and Re-Binding
 
 When drift exceeds acceptable limits, CIP applies a Hard Abort rule.
@@ -165,6 +167,8 @@ Abort
 ```
 
 This prevents progressive contamination of identity across iterations.
+
+If any gate fails, generation must stop immediately — drift propagation is prevented by design, not by retry.
 
 -----
 
@@ -308,32 +312,6 @@ Stability is therefore **chained** through repeated re-convergence cycles, rathe
 Periodic re-anchoring restores the convergence attractor and resets drift accumulation.
 
 Operational observations suggest that re-binding after multiple turns can significantly improve identity stability in production workflows (observed: every 10–15 turns).
-
------
-
-## Operational Identity Gates
-
-CIP introduces operational validation gates:
-
-```
-Face Gate
-Skeleton Gate
-Proportion Gate
-```
-
-Generation continues only if all gates PASS.
-
-This converts identity verification into an **auditable event**.
-
------
-
-## Hard Abort Discipline
-
-If any gate fails, generation must stop immediately.
-
-This prevents drift propagation.
-
-The anchor is then re-bound and convergence restarts.
 
 -----
 
