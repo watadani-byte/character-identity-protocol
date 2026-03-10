@@ -3,11 +3,11 @@
 > This article is observational and reflective in nature.
 > Statements about generative model behavior are based on operational practice rather than controlled laboratory measurement.
 
------
+---
 
 ## The Early Days
 
-In the early days of generative image AI, creators often talked about generating “the same character.”
+In the early days of generative image AI, creators often talked about generating "the same character."
 
 On forums like Reddit, people experimented with many techniques:
 
@@ -26,9 +26,9 @@ Creators gradually discovered something frustrating:
 
 > Prompts describe appearance — they do not preserve identity.
 
------
+---
 
-## The “Miracle Shot”
+## The "Miracle Shot"
 
 Most creators eventually experienced the same moment.
 
@@ -42,10 +42,10 @@ The next day, you try the same prompt again.
 
 The character is gone.
 
-The community often described this as “losing the character.”
+The community often described this as "losing the character."
 In practice, it was the loss of identity continuity.
 
------
+---
 
 ## What Artists Actually Wanted
 
@@ -66,11 +66,11 @@ Each generation is a new reconstruction.
 
 So the moment a pose changed, the character often changed as well.
 
-![Example 1](04.PNG) ![Example 2](05.PNG)
+![Example 1](images/04.PNG) ![Example 2](images/05.PNG)
 
-*Images from the author’s own library. Character originally created in ChatGPT and migrated to Gemini. Without identity stability, the same character may appear differently across generations.*
+*Images from the author's own library. Character originally created in ChatGPT and migrated to Gemini. Without identity stability, the same character may appear differently across generations.*
 
------
+---
 
 ## An Unusual Workflow
 
@@ -78,7 +78,7 @@ My own workflow at the time was somewhat unusual and probably not representative
 
 While many creators tried to stabilize characters through increasingly detailed prompts, I moved in the opposite direction.
 
-Once a generation produced the “right” character, I stopped trying to recreate it with text.
+Once a generation produced the "right" character, I stopped trying to recreate it with text.
 
 Instead, I treated that image itself as the character.
 
@@ -86,19 +86,19 @@ From that point on, the goal was no longer to regenerate the character, but to l
 
 Looking back, this was essentially the first form of what would later become the anchor concept.
 
-![Pose 1](06.png) ![Pose 2](07.png) ![Pose 3](08.png) ![Pose 4](09.png)
+![Pose 1](images/06.png) ![Pose 2](images/07.png) ![Pose 3](images/08.png) ![Pose 4](images/09.png)
 
-*Example: identity continuity across scenes. Images from the author’s own library, provided as a clear illustrative example of the concept.*
+*Example: identity continuity across scenes. Images from the author's own library, provided as a clear illustrative example of the concept.*
 
-*Early users often aimed to reproduce a successful “miracle shot”. In this workflow, that reproduction becomes the starting point for generating further scenes with the same character.*
+*Early users often aimed to reproduce a successful "miracle shot". In this workflow, that reproduction becomes the starting point for generating further scenes with the same character.*
 
------
+---
 
 ## Community Solutions
 
 Over time, the community explored several technical solutions to the same problem.
 
-Techniques such as LoRA training, DreamBooth, seed control, and reference-image features (like Midjourney’s `--cref`) all attempted to stabilize identity.
+Techniques such as LoRA training, DreamBooth, seed control, and reference-image features (like Midjourney's `--cref`) all attempted to stabilize identity.
 
 These approaches generally worked by either:
 
@@ -111,15 +111,15 @@ These solutions improved identity stability, but they were often tied to specifi
 
 However, these methods addressed identity stability through model control or feature-specific mechanisms, rather than through a general operational workflow.
 
------
+---
 
-## From “Same Character” to Identity Governance
+## From "Same Character" to Identity Governance
 
 A different possibility gradually became clear.
 
 Instead of trying to recreate the character through prompts, what if the correct image itself became the reference?
 
-The moment the “right character” appears, that image becomes the anchor.
+The moment the "right character" appears, that image becomes the anchor.
 
 Not a prompt.
 Not a description.
@@ -147,7 +147,7 @@ Even small changes in pose, lighting, or composition can cause identity drift.
 
 CIP therefore treats identity not as a stylistic detail, but as a governance constraint applied to the generation process.
 
------
+---
 
 ## The Core Principle
 
@@ -155,6 +155,6 @@ In probabilistic generative systems, identity does not persist by accident.
 
 **It must be governed.**
 
------
+---
 
 *See also: [Character Identity Drift in Generative AI](column_identity_drift.md) — [Miracle Images and Convergence Behavior](column_miracle_image.md) — [White Paper](whitepaper_v1.md)*
