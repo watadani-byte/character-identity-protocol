@@ -2,8 +2,12 @@
 
 This guide explains the minimal workflow required to run CIP.
 
+CIP treats character identity as a convergence control problem.
+
 CIP does not attempt to control the model.
 It controls the operational conditions under which identity converges.
+
+CIP operates entirely at inference time and requires no model modification.
 
 The protocol uses three elements:
 
@@ -73,11 +77,11 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 ## Step 3 — Generate Iterations
 
-Generate a small batch of outputs (3–5).
+Generate a small batch of outputs (3–5 outputs per turn is typical in demonstrations).
 
 Compare them to the anchor.
 
-Verify identity similarity against the anchor (human judgment: face, skeleton, proportions).
+Verify identity similarity against the anchor (human evaluation of Face Gate, Skeleton Gate, and Proportion Gate).
 
 Apply only one change per turn (pose OR lighting OR outfit — not combined).
 Verify identity similarity every turn.
@@ -114,9 +118,10 @@ If drift occurs:
 ```
 1. Abort generation
 2. Discard outputs from the failed turn onward
-3. Open new cycle (new session or re-bound context)
-4. Re-inject anchor image + minimal prompt
-5. Verify identity before proceeding
+3. Treat the current generation process as contaminated
+4. Open new cycle (new session or re-bound context)
+5. Re-inject anchor image + minimal prompt
+6. Verify identity before proceeding
 ```
 
 This restores identity convergence.
