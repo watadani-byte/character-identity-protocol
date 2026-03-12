@@ -126,9 +126,8 @@ Character Drift
 ├─ Style Drift
 ├─ Background Drift
 ├─ Rendering Collapse
-├─ Structure Drift
-├─ Angle Drift
-└─ Attribute Drift
+├─ Attribute Drift
+└─ Angle Drift
 ```
 
 ### Behavioral Drift (Model Behavior)
