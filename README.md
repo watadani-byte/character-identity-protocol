@@ -178,9 +178,7 @@ Proportion Gate"]
 
 A previously generated image represents a **known converged solution** within the model’s output space.
 
-In probabilistic generative systems, previously converged states tend to act as attractors in the reconstruction process.
-
-When supplied as a reference, the anchor acts as a convergence attractor within the model’s reconstruction space.
+When supplied as a reference, the anchor increases the probability that reconstruction returns to a previously validated identity state.
 
 ```
 Model Exploration
