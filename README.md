@@ -5,6 +5,8 @@ for stabilizing character identity in probabilistic generative systems.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
+Even under identical conditions, generative systems reconstruct outputs rather than reproduce them exactly (A → A′).
+
 CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
 
 **CIP does not attempt to control the model itself.
@@ -199,6 +201,19 @@ flowchart TD
     D --> E{Identity Gates}
     E -->|PASS| F[Accepted Output]
     E -->|FAIL| G[Hard Abort → Re-binding]
+    G --> B
+```
+
+*CIP core mechanism: latent sampling, identity drift, and anchor re-attraction.*
+
+```mermaid
+flowchart TD
+    A[Latent Distribution] --> B[Sampling]
+    B --> C[A′ — Reconstructed Output]
+    C --> D{Identity Drift?}
+    D -->|No drift| E[Accepted Output]
+    D -->|Drift detected| F[Hard Abort]
+    F --> G[Anchor Re-attraction]
     G --> B
 ```
 
