@@ -68,9 +68,16 @@ Additional remarks or hypotheses.
 
 ## Observed Drift (Under Investigation)
 
-This section intentionally starts empty.
+This section collects drift phenomena that are currently under investigation.
 
-New observations will be added as they are confirmed during practical workflows.
+Entries may include:
+
+- provisional drift types
+- composite drift behaviors
+- edge cases not covered by the taxonomy
+- experimental observations
+
+New observations will be added here as they are confirmed during practical workflows.
 
 -----
 
