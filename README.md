@@ -243,6 +243,20 @@ flowchart LR
 
 -----
 
+## Failure Condition
+
+CIP may legitimately produce no acceptable output.
+
+If identity gates fail and identity cannot be restored within the current cycle, the correct operational result is:
+
+> No acceptable output could be produced under the current conditions.
+
+This is not a system error. It is the expected behavior of a governed probabilistic workflow — rejecting outputs that do not satisfy identity constraints is the protocol working as intended.
+
+In such cases, the operator should re-evaluate the anchor, generation conditions, or prompt before restarting the cycle.
+
+-----
+
 ## Inference-Time Protocol
 
 CIP operates **entirely at inference time**.
