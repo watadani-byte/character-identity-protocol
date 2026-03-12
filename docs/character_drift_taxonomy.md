@@ -96,6 +96,10 @@ Attribute Drift occurs when a character attribute gradually disappears from the 
 
 This form of drift is particularly subtle because it accumulates silently as prompts are simplified over time.
 
+![Attribute Drift - Before](images/26.PNG) ![Attribute Drift - After](images/27.PNG)
+
+*A character attribute present in early generations gradually disappears as prompts are simplified, and the model reverts to a default representation.*
+
 -----
 
 ### 9. Angle Drift
@@ -111,6 +115,14 @@ This often appears as:
 - sudden composition change
 
 In some cases, the transition frame may produce a visually striking result — often described by artists as a “miracle shot.”
+
+![Angle Drift - Before](images/24.PNG) ![Angle Drift - After](images/25.PNG)
+
+*The intended camera angle collapses into a more common and statistically stable framing.*
+
+-----
+
+## Taxonomy
 
 The following taxonomy summarizes common forms of character drift observed in generative image workflows.
 
@@ -130,7 +142,7 @@ Character Drift
 └─ Angle Drift
 ```
 
-### Behavioral Drift (Model Behavior)
+### Behavioral Drift (Generation Behavior)
 
 ```
 Behavioral Drift
@@ -140,10 +152,10 @@ Behavioral Drift
 └─ Prompt Compression Drift — attributes omitted over turns regress to defaults
 ```
 
-### Cross-AI Drift (Broader Systems)
+### Cross-System Drift (Broader AI Systems)
 
 ```
-Cross-AI Drift
+Cross-System Drift
 │
 ├─ Semantic Drift       — meaning of prompt shifts across platforms or sessions
 ├─ Temporal Drift       — identity degrades over extended generation cycles
