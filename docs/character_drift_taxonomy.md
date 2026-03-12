@@ -3,7 +3,7 @@
 > This document is observational and technical in nature.
 > Statements about generative model behavior are based on operational practice rather than controlled laboratory measurement.
 
----
+-----
 
 Generative image models often fail to reproduce the same character consistently.
 Even when prompts remain identical, generated characters may change across generations.
@@ -14,7 +14,7 @@ This document provides a taxonomy of common drift types observed in practice and
 
 The observations described here focus on character-centric image generation workflows.
 
----
+-----
 
 ## Drift Types
 
@@ -26,7 +26,7 @@ Identity Drift occurs when a generated character becomes a different individual 
 
 *The visual identity of the character changes even though the prompt remains constant.*
 
----
+-----
 
 ### 2. Age Drift
 
@@ -36,7 +36,7 @@ Age Drift occurs when the perceived age of a character changes because contextua
 
 *Clothing and expression may shift the statistical interpretation of age.*
 
----
+-----
 
 ### 3. Eye Color Drift
 
@@ -46,7 +46,7 @@ Eye Color Drift occurs when eye color varies across generations because color at
 
 *Color categories such as brown, amber, and hazel often exist within the same statistical cluster.*
 
----
+-----
 
 ### 4. Proportion Drift
 
@@ -56,7 +56,7 @@ Proportion Drift occurs when skeletal proportions change because body geometry i
 
 *Body geometry is not fixed and may converge toward different body-type clusters.*
 
----
+-----
 
 ### 5. Style Drift
 
@@ -66,7 +66,7 @@ Style Drift occurs when rendering shifts toward a different visual style, often 
 
 *Photographic imagery typically dominates training distributions, making stylistic regression common.*
 
----
+-----
 
 ### 6. Background Drift
 
@@ -76,7 +76,7 @@ Background Drift occurs when environmental context changes because background el
 
 *Backgrounds are often treated as secondary context and therefore change easily.*
 
----
+-----
 
 ### 7. Rendering Collapse
 
@@ -86,7 +86,7 @@ Rendering Collapse occurs when structural coherence breaks down during image rec
 
 *Certain structures such as hands, glasses, or background figures are particularly unstable.*
 
----
+-----
 
 ## Taxonomy
 
@@ -106,7 +106,7 @@ Character Drift
 
 Most forms of character drift occur when generation shifts toward high-density regions of the training distribution.
 
----
+-----
 
 ## Training Distribution Density
 
@@ -117,7 +117,7 @@ Generative models reconstruct images from learned statistical distributions.
 
 When the generation process becomes uncertain, the model tends to shift toward regions of the distribution where training examples are dense.
 
-These high-density regions represent the model's statistical "common sense."
+These high-density regions represent the model’s statistical “common sense.”
 
 As a result, unusual prompts or unstable conditions often lead the generation back toward more common visual patterns.
 
@@ -125,7 +125,7 @@ This statistical regression explains many forms of character drift observed in g
 
 In practice, this means that unstable generations often converge toward visually common patterns present in the training data.
 
----
+-----
 
 ## Core Observation
 
@@ -134,6 +134,6 @@ In practice, this means that unstable generations often converge toward visually
 
 This statistical tendency explains many forms of character drift.
 
----
+-----
 
-*See also: [Identity Drift in Generative Image Models](column_identity_drift_practical.md) — [Character Identity Drift in Generative AI](column_identity_drift.md) — [White Paper](whitepaper_v1.md)*
+*See also: [Identity Drift in Generative Image Models](column_identity_drift_practical.md) — [Character Identity Drift in Generative AI](column_identity_drift.md) — [White Paper](whitepaper_v1.md) — [Appendix: Observed Drift Phenomena](drift_observations.md)*
