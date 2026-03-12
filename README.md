@@ -189,7 +189,7 @@ Identity Convergence
 ```
 
 The anchor does not override the model.
-It simply increases the probability that reconstruction returns to a previously validated identity state.
+It biases reconstruction toward a previously validated identity state.
 
 ```mermaid
 flowchart TD
