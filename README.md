@@ -1,7 +1,9 @@
 # Character Identity Protocol (CIP)
 
-**Character Identity Protocol (CIP)** is an operational governance framework
-for stabilizing character identity in probabilistic generative systems.
+**Character Identity Protocol (CIP)** is an operational governance protocol
+that stabilizes character identity in probabilistic generative systems
+by controlling identity convergence through anchors, validation gates,
+and hard-abort recovery cycles.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
@@ -88,6 +90,8 @@ Without operational control, **identity drift emerges naturally**.
 
 CIP was designed to operationally control this reconstruction behavior.
 
+CIP addresses the operational problem of identity drift in probabilistic generative systems by introducing a validation-governed convergence loop.
+
 In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
 CIP addresses it at the operational governance layer.
 
@@ -127,7 +131,9 @@ CIP defines the validation gates. The similarity threshold is an operator-define
 
 -----
 
-## Core Operational Loop
+## Core Operational Loop — The CIP Convergence Loop
+
+The CIP convergence loop is the central operational mechanism of the protocol:
 
 ```
 Anchor Image + Minimal Prompt
