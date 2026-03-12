@@ -5,6 +5,8 @@ for stabilizing character identity in probabilistic generative systems.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
+This variability is not noise to eliminate, but a property the protocol must govern.
+
 Even under identical conditions, generative systems may occasionally produce slightly different outputs across generations (A → A′).
 
 CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
