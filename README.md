@@ -5,7 +5,7 @@ for stabilizing character identity in probabilistic generative systems.
 
 Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
 
-Even under identical conditions, generative systems reconstruct outputs rather than reproduce them exactly (A → A′).
+Even under identical conditions, generative systems may occasionally produce slightly different outputs across generations (A → A′).
 
 CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
 
@@ -180,23 +180,23 @@ Proportion Gate"]
 
 A previously generated image represents a **known converged solution** within the model’s output space.
 
-When supplied as a reference, the anchor increases the probability that reconstruction returns to a previously validated identity state.
+When supplied as a reference, the anchor increases the probability that generation returns toward a previously validated identity state.
 
 ```
 Model Exploration
         ↓
-Anchor Attraction
+Anchor Guidance
         ↓
 Identity Convergence
 ```
 
 The anchor does not override the model.
-It biases reconstruction toward a previously validated identity state.
+It guides generation toward a previously validated identity state.
 
 ```mermaid
 flowchart TD
     A[Learned Distribution] --> B[Model Exploration]
-    B --> C[Anchor Attraction]
+    B --> C[Anchor Guidance]
     C --> D[Convergence]
     D --> E{Identity Gates}
     E -->|PASS| F[Accepted Output]
@@ -204,16 +204,16 @@ flowchart TD
     G --> B
 ```
 
-*CIP core mechanism: latent sampling, identity drift, and anchor re-attraction.*
+*CIP core mechanism: probabilistic sampling, identity drift, and anchor-guided re-convergence.*
 
 ```mermaid
 flowchart TD
-    A[Latent Distribution] --> B[Sampling]
-    B --> C[A′ — Reconstructed Output]
+    A[Learned Distribution] --> B[Sampling]
+    B --> C[A′ — Generated Output]
     C --> D{Identity Drift?}
     D -->|No drift| E[Accepted Output]
     D -->|Drift detected| F[Hard Abort]
-    F --> G[Anchor Re-attraction]
+    F --> G[Anchor-guided Re-convergence]
     G --> B
 ```
 
@@ -323,7 +323,7 @@ CIP therefore treats prompts as identity hints, not full character definitions.
 The anchor remains the primary stabilizer of identity.
 
 ```
-Minimal Prompt → Model Exploration → Anchor Attraction → Convergence
+Minimal Prompt → Model Exploration → Anchor Guidance → Convergence
 ```
 
 -----
