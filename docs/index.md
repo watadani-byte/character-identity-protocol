@@ -19,6 +19,38 @@ For the theoretical framework and full protocol description, see the White Paper
 
 -----
 
+## Generative AI Mental Model
+
+Generative image models do not retrieve or reproduce images from memory.
+They reconstruct outputs by sampling from a probability distribution learned during training.
+
+This means that even with identical inputs, outputs may vary.
+Identity is not preserved automatically — it must be actively maintained.
+
+```
+Training Distribution
+        ↓
+Probabilistic Generation
+        ↓
+Identity Drift / Structural Drift
+        ↓
+User Intervention
+        ↓
+Character Identity Protocol (CIP)
+```
+
+Because generation is probabilistic, small changes in prompt, pose, or context can cause the model to reconstruct a different identity.
+This is not a failure — it is the natural behavior of these systems.
+
+CIP addresses this by operating at the **operational layer**, between the user and the model.
+It does not modify the model itself.
+Instead, it governs the conditions under which generation is allowed to continue:
+controlling anchor references, validating identity gates, and triggering hard aborts when drift is detected.
+
+> CIP stabilizes identity by governing generation conditions — not by modifying the model.
+
+-----
+
 The following section explains why character identity is inherently unstable in generative systems.
 
 ## The Problem
