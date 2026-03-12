@@ -41,6 +41,7 @@ nav:
     - Identity Drift in Generative Image Models: column_identity_drift_practical.md
     - Generative Character Drift — Technical Overview: column_character_drift_technical.md
     - Character Drift Taxonomy: character_drift_taxonomy.md
+    - Observed Drift Phenomena: drift_observations.md
 
 plugins:
   - search
