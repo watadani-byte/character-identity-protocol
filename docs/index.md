@@ -49,6 +49,9 @@ controlling anchor references, validating identity gates, and triggering hard ab
 
 > CIP stabilizes identity by governing generation conditions — not by modifying the model.
 
+In practice, drift appears in multiple forms such as identity drift, proportion drift, style drift, and angle drift.
+A detailed taxonomy is provided in the [Character Drift Taxonomy](docs/character_drift_taxonomy.md) document.
+
 -----
 
 The following section explains why character identity is inherently unstable in generative systems.
