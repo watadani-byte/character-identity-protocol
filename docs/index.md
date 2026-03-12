@@ -32,7 +32,7 @@ Training Distribution
         ↓
 Probabilistic Generation
         ↓
-Identity Drift / Structural Drift
+Character Drift
         ↓
 User Intervention
         ↓
