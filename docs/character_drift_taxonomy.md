@@ -88,9 +88,33 @@ Rendering Collapse occurs when structural coherence breaks down during image rec
 
 -----
 
-## Taxonomy
+### 8. Attribute Drift
+
+Attribute Drift occurs when a character attribute gradually disappears from the prompt and the model regresses toward a default representation from the training distribution.
+
+**Example:** long legs → attribute omitted over turns → short-leg default reconstruction
+
+This form of drift is particularly subtle because it accumulates silently as prompts are simplified over time.
+
+-----
+
+### 9. Angle Drift
+
+Angle Drift occurs when the model abandons the intended camera angle due to structural constraints or pose complexity.
+
+When the requested composition becomes statistically unstable, the model may revert to a more common camera framing.
+
+This often appears as:
+
+- loss of intended camera angle
+- unintended framing
+- sudden composition change
+
+In some cases, the transition frame may produce a visually striking result — often described by artists as a “miracle shot.”
 
 The following taxonomy summarizes common forms of character drift observed in generative image workflows.
+
+### Core Drift (Image Generation)
 
 ```
 Character Drift
@@ -101,7 +125,30 @@ Character Drift
 ├─ Proportion Drift
 ├─ Style Drift
 ├─ Background Drift
-└─ Rendering Collapse
+├─ Rendering Collapse
+├─ Structure Drift
+├─ Angle Drift
+└─ Attribute Drift
+```
+
+### Behavioral Drift (Model Behavior)
+
+```
+Behavioral Drift
+│
+├─ Fixation Drift       — model locks onto a recurring visual pattern and resists prompt updates
+├─ Context Drift        — identity changes as session context shifts
+└─ Prompt Compression Drift — attributes omitted over turns regress to defaults
+```
+
+### Cross-AI Drift (Broader Systems)
+
+```
+Cross-AI Drift
+│
+├─ Semantic Drift       — meaning of prompt shifts across platforms or sessions
+├─ Temporal Drift       — identity degrades over extended generation cycles
+└─ Constraint Drift     — operational constraints erode over iterative use
 ```
 
 Most forms of character drift occur when generation shifts toward high-density regions of the training distribution.
