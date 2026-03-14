@@ -42,6 +42,7 @@ nav:
     - Generative Character Drift — Technical Overview: column_character_drift_technical.md
     - Character Drift Taxonomy: character_drift_taxonomy.md
     - Observed Drift Phenomena: drift_observations.md
+    - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
 
 plugins:
   - search
