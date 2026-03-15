@@ -281,6 +281,24 @@ This allows CIP to function across multiple platforms and closed-source systems.
 
 -----
 
+## Scope and Future Direction
+
+CIP is currently focused on character identity stabilization in image generation workflows.
+
+However, the protocol is not limited to image prompting practice alone.
+
+Its underlying mechanisms — anchor-based convergence, identity validation gates, and hard-abort recovery — address a broader class of problems: maintaining a defined identity state across repeated probabilistic generation cycles.
+
+Future directions may include:
+
+- identity-sensitive generative pipelines beyond image generation
+- agent-based systems where behavioral consistency requires verification
+- operational AI governance frameworks requiring auditable identity constraints
+
+These directions remain open research questions. CIP documents the operational layer; formal extension to other domains is outside the current scope.
+
+-----
+
 ## Scope Clarification
 
 **This is NOT:**
