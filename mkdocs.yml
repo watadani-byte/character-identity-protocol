@@ -44,6 +44,7 @@ nav:
     - Observed Drift Phenomena: drift_observations.md
     - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
+    - Writing Prompts for Image Generation: column_image_prompt_structure.md
 
 plugins:
   - search
