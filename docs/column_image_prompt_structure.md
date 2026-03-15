@@ -115,6 +115,14 @@ Clear and structured prompts make it easier for the model to reconstruct the int
 
 -----
 
+## Character Consistency Changes Prompt Design
+
+GPT Image, Stable Diffusion, and Midjourney are general image generation systems.
+They can support character consistency through references, editing workflows, or additional techniques, but they do not inherently guarantee persistent character identity across generations.
+Therefore, when the goal is character consistency rather than single-image quality, prompt design and prompt order must change.
+
+-----
+
 ## Character Generation Prompt
 
 When generating a consistent character, the order of information can influence stability.
