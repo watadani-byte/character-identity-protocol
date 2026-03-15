@@ -46,6 +46,7 @@ nav:
     - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
+    - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
 
 plugins:
   - search
