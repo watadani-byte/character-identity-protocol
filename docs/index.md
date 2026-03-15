@@ -444,6 +444,7 @@ Identity in generative systems does not persist automatically.
 - [Character Drift Taxonomy](docs/character_drift_taxonomy.md)
 - [How Generative AI Actually Behaves](docs/column_how_generative_ai_behaves.md)
 - [A Simple Structure for Writing Prompts](docs/column_prompt_structure.md)
+- [Writing Prompts for Image Generation](docs/column_image_prompt_structure.md)
 
 > **Note:** “Identity Gates” is the current term for the validation layer. “Quality Gate” remains as a legacy document and addendum title for continuity.
 
