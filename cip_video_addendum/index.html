@@ -1,0 +1,2248 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/cip_video_addendum/">
+      
+      
+        <link rel="prev" href="../quality_gate_addendum/">
+      
+      
+        <link rel="next" href="../reproducibility_scope/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Video Addendum - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cip-video-addendum-temporal-and-rendering-layer-considerations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Video Addendum
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Studies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Case Studies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project (Hard Abort and Re-convergence)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-statement-style-drift-as-primary-identity-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Problem Statement: Style Drift as Primary Identity Failure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-style-layer-primacy-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Style-Layer Primacy Problem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Style-Layer Primacy Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-classification-static-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prior Classification (Static CIP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-fails-in-stylized-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Fails in Stylized Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-density-asymmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information Density Asymmetry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-extended-gate-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extended Gate Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Extended Gate Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renderingregimegate-composite-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RenderingRegimeGate: Composite Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposed-rendering-regime-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Rendering Regime Gates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-hard-abort-conditions-for-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Hard Abort Conditions for Video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-domain-parameterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Domain Parameterization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-governance-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Governance Implications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Governance Implications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-production-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Production Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-ip-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For IP Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-open-questions-for-further-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Open Questions for Further Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-statement-style-drift-as-primary-identity-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Problem Statement: Style Drift as Primary Identity Failure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-style-layer-primacy-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The Style-Layer Primacy Problem
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. The Style-Layer Primacy Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-classification-static-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prior Classification (Static CIP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-this-fails-in-stylized-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why This Fails in Stylized Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information-density-asymmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Information Density Asymmetry
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-extended-gate-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Extended Gate Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Extended Gate Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#renderingregimegate-composite-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RenderingRegimeGate: Composite Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proposed-rendering-regime-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Rendering Regime Gates
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-hard-abort-conditions-for-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Hard Abort Conditions for Video
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-domain-parameterization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Domain Parameterization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-governance-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Governance Implications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Governance Implications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-production-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Production Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-ip-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For IP Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-open-questions-for-further-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Open Questions for Further Validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cip-video-addendum-temporal-and-rendering-layer-considerations">CIP Video Addendum: Temporal and Rendering Layer Considerations</h1>
+<blockquote>
+<p>This document does not modify the core CIP framework.<br />
+It extends gate architecture for time-dependent generative systems.</p>
+</blockquote>
+<p>Originally proposed by Watadani (2026).<br />
+Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+<hr />
+<h2 id="scope">Scope</h2>
+<p>Core CIP governs identity stability in static image generation systems.
+This addendum addresses the additional failure modes that emerge in
+<strong>video and time-dependent generative systems</strong>, with particular focus on
+stylized and anime-defined identity domains.</p>
+<p>The gate architecture extends as follows:</p>
+<pre><code>Core CIP Gates (Static Image)
+│
+│  FaceGate ∧ SkeletonGate ∧ ProportionGate
+│
+↓
+Video Extension Gates (This Document)
+│
+│  RenderingRegimeGate ∧ TemporalConsistencyGate
+│
+↓
+Domain-Parameterized Gates (Anime / Stylized IP)
+│
+│  LineWeightGate ∧ AbstractionPreservationGate ∧ ColorQuantizationGate
+</code></pre>
+<hr />
+<h2 id="1-problem-statement-style-drift-as-primary-identity-failure">1. Problem Statement: Style Drift as Primary Identity Failure</h2>
+<p>In static image generation, stylistic variation is often recoverable.
+The structural gates — face, skeleton, proportion — remain the primary
+identity constraints because style can be re-anchored in the next cycle.</p>
+<p>In video generation systems, this assumption does not hold.</p>
+<p>Video models operate under a distinct optimization pressure:</p>
+<ul>
+<li>Temporal coherence requires frame-to-frame consistency</li>
+<li>Volumetric depth reconstruction increases texture resolution over time</li>
+<li>Ambiguity in abstracted forms resolves toward physical realism</li>
+<li>Information density accumulates directionally</li>
+</ul>
+<p>The result is a well-observed drift pattern:</p>
+<pre><code>Anime abstraction (low information density)
+        ↓
+Semi-realistic rendering (moderate information density)
+        ↓
+Photorealistic rendering (high information density)
+</code></pre>
+<p>This drift is <strong>directional and accumulative</strong>.
+Unlike random variation, it cannot be corrected by simply re-anchoring
+at the next cycle — the model’s temporal optimization actively resists
+reverting to lower information density states.</p>
+<blockquote>
+<p>In video systems, style drift is frequently non-recoverable in practice.</p>
+</blockquote>
+<hr />
+<h2 id="2-the-style-layer-primacy-problem">2. The Style-Layer Primacy Problem</h2>
+<h3 id="prior-classification-static-cip">Prior Classification (Static CIP)</h3>
+<p>In earlier CIP discussions, style shift was tentatively classified as
+“recoverable surface variation” — secondary to structural identity.</p>
+<p>This classification rests on three assumptions:</p>
+<ol>
+<li>Structural identity is primary</li>
+<li>Style is a surface property</li>
+<li>Information density changes are reversible</li>
+</ol>
+<h3 id="why-this-fails-in-stylized-domains">Why This Fails in Stylized Domains</h3>
+<p>In anime and stylized serialized media, these assumptions do not hold.</p>
+<p><strong>Style is not decoration.</strong>
+In anime-defined character identity, the rendering regime —
+line weight, color quantization, shading abstraction, texture ceiling —
+is constitutive of identity itself.</p>
+<p>A character whose face and skeleton are preserved but whose rendering
+has shifted from anime abstraction to semi-realism is not the same character
+in any operationally meaningful sense. The IP continuity is operationally compromised.
+The brand coherence is operationally compromised.
+The production pipeline is operationally compromised.</p>
+<p>Therefore, in style-defined identity systems:</p>
+<blockquote>
+<p>Anime → Semi-real shift = Identity violation,<br />
+not aesthetic variation.</p>
+</blockquote>
+<p>In stylized IP domains, recoverability does not change the decision rule.
+Deviation is a failure at occurrence — zero tolerance applies — even if later recovery is technically possible.</p>
+<hr />
+<blockquote>
+<p><strong>Industry Note — Anime, Manga, Illustration, Game, and Serialized IP Domains</strong></p>
+<p>In static image generation, anime-style drift toward photorealistic rendering
+is a common and well-known occurrence. Because information is preserved in the
+output — not destroyed — re-anchoring in the next cycle can typically restore
+the target rendering regime in technical terms.</p>
+<p>However, recoverability is an operational property, not an acceptance criterion.</p>
+<p>In anime, manga, illustration, game, and serialized IP industries,
+any drift from the defined rendering regime constitutes a failure
+at the point of occurrence — regardless of whether correction is possible
+in a subsequent cycle.</p>
+<p><strong>A recoverable failure is still a failure.</strong></p>
+<p>IP owners in style-defined domains apply zero-tolerance standards
+to rendering regime deviation:</p>
+<ul>
+<li>Franchise animation studios do not permit frame-level style deviation</li>
+<li>Serialized manga publishers maintain strict visual consistency across volumes</li>
+<li>Game studios treat character rendering regime as a brand and contract obligation</li>
+<li>Licensed character goods require style fidelity as a legal condition</li>
+</ul>
+<p>Style consistency in these industries is not a preference.
+It is a brand obligation, a production standard, and in many cases a legal requirement.</p>
+<p>CIP video governance is designed to meet this standard:
+detect deviation at occurrence, halt immediately, and roll back.
+The goal is not to recover from drift.
+The goal is to prevent drift from being accepted in the first place.</p>
+</blockquote>
+<hr />
+<h3 id="information-density-asymmetry">Information Density Asymmetry</h3>
+<p>For the purposes of this document, <strong>information density</strong> refers to the rendering regime’s effective detail, texture, and continuity complexity — as measured by the proposed metrics (texture entropy, gradient continuity, specular behavior, edge rendering characteristics). See <a href="../glossary/">Glossary</a> for the canonical definition.</p>
+<p>The drift from low to high information density involves:</p>
+<ul>
+<li>Addition of volumetric assumptions not present in the source</li>
+<li>Implicit material modeling (subsurface scattering, specular behavior)</li>
+<li>Texture inflation beyond the abstraction ceiling</li>
+<li>Collapse of deliberate line abstraction into photorealistic edge rendering</li>
+</ul>
+<p>These are not neutral transformations. They represent the model
+imposing a physical-world interpretation onto a non-physical design system.</p>
+<p>Reversal requires the model to actively discard information it has generated —
+a structurally harder operation than generating it in the first place.</p>
+<hr />
+<h2 id="3-extended-gate-architecture">3. Extended Gate Architecture</h2>
+<h3 id="layer-model">Layer Model</h3>
+<p>CIP governance for video systems requires a three-layer identity model:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Domain</th>
+<th>Gates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer 1: Structural Identity</td>
+<td>Universal</td>
+<td>FaceGate, SkeletonGate, ProportionGate</td>
+</tr>
+<tr>
+<td>Layer 2: Morphological Identity</td>
+<td>Universal</td>
+<td>Temporal consistency across frames</td>
+</tr>
+<tr>
+<td>Layer 3: Rendering / Stylistic Identity</td>
+<td>Domain-dependent</td>
+<td>Rendering regime gates (see below)</td>
+</tr>
+</tbody>
+</table>
+<p>In style-defined domains, <strong>Layer 3 becomes identity-defining</strong>.
+A Layer 3 failure constitutes identity failure regardless of Layer 1 and 2 results.</p>
+<h3 id="renderingregimegate-composite-definition">RenderingRegimeGate: Composite Definition</h3>
+<p>RenderingRegimeGate is a composite gate defined as:</p>
+<pre><code>RenderingRegimeGate ⇔ LineWeightGate ∧ AbstractionPreservationGate
+                     ∧ ColorQuantizationGate ∧ ShadingModelGate
+</code></pre>
+<p>Domain-specific modules MAY be added or removed by declared configuration.
+All active modules must pass for RenderingRegimeGate to return PASS.</p>
+<h3 id="proposed-rendering-regime-gates">Proposed Rendering Regime Gates</h3>
+<p><strong>LineWeightGate</strong>
+Measures preservation of deliberate line weight distribution.
+Anime abstraction depends on controlled line weight hierarchy —
+primary contour, secondary detail, tertiary texture.
+Collapse to uniform edge rendering signals regime drift.</p>
+<p><em>Measurable indicator:</em> Edge width variance ratio (candidate vs. anchor).
+Suggested baseline threshold: deviation &gt; 20% from anchor distribution → FAIL.
+(Subject to domain calibration; anime and franchise domains may apply stricter thresholds.)</p>
+<p><strong>AbstractionPreservationGate</strong>
+Measures preservation of the source domain’s abstraction level.
+Anime forms deliberately omit detail that photorealistic rendering would include.
+This gate detects addition of non-source detail classes.</p>
+<p><em>Measurable indicator:</em> Texture entropy ceiling.
+If texture entropy in candidate exceeds anchor ceiling by defined threshold → FAIL.</p>
+<p><strong>ColorQuantizationGate</strong>
+Anime color design uses deliberate quantization — limited palette, flat fills,
+controlled cel-shading. Drift toward photorealistic rendering introduces
+continuous tone gradients that violate source quantization intent.</p>
+<p><em>Measurable indicator:</em> Unique color cluster count and gradient continuity index.
+Deviation from anchor quantization profile → FAIL.</p>
+<p><strong>ShadingModelGate</strong>
+Anime shading is stylized and non-physically-based.
+Drift toward physically-based rendering (PBR) introduces lighting behavior
+inconsistent with the source design system.</p>
+<p><em>Measurable indicator:</em> Shadow edge hardness and specular distribution profile.
+PBR-characteristic specular response not present in anchor → FAIL.</p>
+<p><strong>TemporalConsistencyGate</strong> <em>(video-specific)</em>
+Measures frame-to-frame consistency of the above rendering properties.
+A single-frame pass is insufficient in video — drift accumulates across frames.</p>
+<p>TemporalConsistencyGate tracks the rolling stability of:
+<code>{line-weight stats, texture entropy, quantization profile, shading model indicators}</code> across frames.</p>
+<p><em>Measurable indicator:</em> Rolling window variance of rendering regime metrics
+across N consecutive frames. Upward trend in information density → WARNING.
+Threshold breach → FAIL.</p>
+<hr />
+<h2 id="4-hard-abort-conditions-for-video">4. Hard Abort Conditions for Video</h2>
+<p>Core CIP Hard Abort triggers on gate failure and rolls back to the last
+validated anchor. In video systems, this requires extension:</p>
+<p><strong>Frame-level abort:</strong> If any rendering regime gate fails on a single frame,
+generation must halt. Continuing will accumulate drift into subsequent frames.</p>
+<p><strong>Trend-based abort:</strong> If temporal consistency metrics show a sustained
+upward trend in information density across frames — even without a threshold
+breach — a WARNING must be issued and generation reviewed before continuing.</p>
+<p><strong>Segment rollback:</strong> On abort, rollback applies to the entire generation segment
+from the last validated anchor frame, not merely the failing frame.</p>
+<pre><code>Validated Anchor Frame
+        ↓
+Frame N:   PASS
+Frame N+1: PASS
+Frame N+2: PASS (WARNING: trend detected)
+Frame N+3: FAIL → Hard Abort
+                → Rollback to Validated Anchor Frame
+                → Do not retain N, N+1, N+2
+</code></pre>
+<hr />
+<h2 id="5-domain-parameterization">5. Domain Parameterization</h2>
+<p>A key contribution of this addendum is the concept of
+<strong>domain-parameterized gate architecture</strong>.</p>
+<p>Not all identity systems assign equal weight to the three layers.
+CIP governance must be configurable by domain.</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Layer 1 Weight</th>
+<th>Layer 3 Weight</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enterprise character IP (photorealistic)</td>
+<td>Primary</td>
+<td>Secondary</td>
+<td>Style recoverable</td>
+</tr>
+<tr>
+<td>Anime / stylized serialized IP</td>
+<td>Co-primary</td>
+<td><strong>Foundational</strong></td>
+<td>Style = identity</td>
+</tr>
+<tr>
+<td>Fashion editorial (CIP core use case)</td>
+<td>Primary</td>
+<td>Secondary</td>
+<td>Style varies by intent</td>
+</tr>
+<tr>
+<td>Brand mascot (stylized)</td>
+<td>Co-primary</td>
+<td><strong>Foundational</strong></td>
+<td>Style = brand</td>
+</tr>
+</tbody>
+</table>
+<p>Domain configuration must be declared at session initialization
+and recorded in the session log as part of the governance record.</p>
+<hr />
+<h2 id="6-governance-implications">6. Governance Implications</h2>
+<h3 id="for-production-pipelines">For Production Pipelines</h3>
+<p>Style instability in video systems is typically the first wall production teams
+encounter. It manifests before structural drift becomes visible — because the
+rendering regime collapses before facial features destabilize.</p>
+<p>CIP video governance therefore requires monitoring to begin at the rendering
+layer, not the structural layer.</p>
+<blockquote>
+<p>Style governance is not aesthetic preference.<br />
+It is operational continuity control.</p>
+</blockquote>
+<h3 id="for-ip-management">For IP Management</h3>
+<p>In style-defined IP systems, stylistic drift constitutes:</p>
+<ul>
+<li>Serialized storytelling continuity failure</li>
+<li>IP identity violation</li>
+<li>Production pipeline incompatibility</li>
+<li>Brand coherence breakdown</li>
+</ul>
+<p>CIP video governance provides the operational record to document:</p>
+<ul>
+<li>That style constraints were defined prior to generation</li>
+<li>That drift was detected and halted rather than silently accepted</li>
+<li>That rollback was executed to the last validated style-stable state</li>
+</ul>
+<p>This record supports the same stewardship framing established in
+<a href="../legal_governance/">CIP and Enterprise Governance</a>:
+not a claim of ownership, but a record of governance intent.</p>
+<hr />
+<h2 id="7-open-questions-for-further-validation">7. Open Questions for Further Validation</h2>
+<p>The following areas require empirical validation before production adoption:</p>
+<p><strong>Entropy ceiling calibration</strong> — What threshold values for texture entropy
+reliably distinguish anime abstraction from semi-realistic drift across
+different animation styles (e.g., shounen vs. josei vs. moe)?</p>
+<p><strong>Trend detection sensitivity</strong> — How many frames constitute a meaningful
+upward trend signal vs. normal frame-to-frame variation?</p>
+<p><strong>Cross-model rendering regime transfer</strong> — Can an anchor from one video model
+constrain rendering regime in a different video model? (Analogous to Case 04
+cross-platform migration, but applied to rendering regime rather than structural identity.)</p>
+<p><strong>Recovery feasibility boundary</strong> — At what point in a drift sequence does
+recovery become statistically infeasible? Is there a measurable point of no return?</p>
+<p>These questions are classified as <strong>Experimental</strong> pending formal validation.</p>
+<hr />
+<h2 id="8-summary">8. Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Core CIP</th>
+<th>Video Addendum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary failure mode</td>
+<td>Structural drift</td>
+<td>Rendering regime drift</td>
+</tr>
+<tr>
+<td>Gate architecture</td>
+<td>FaceGate ∧ SkeletonGate ∧ ProportionGate</td>
+<td>+ RenderingRegimeGate ∧ TemporalConsistencyGate</td>
+</tr>
+<tr>
+<td>Style classification</td>
+<td>Context-dependent; typically recoverable in static systems</td>
+<td>Domain-dependent; identity-defining in stylized IP</td>
+</tr>
+<tr>
+<td>Hard Abort scope</td>
+<td>Single generation</td>
+<td>Frame-level + segment rollback</td>
+</tr>
+<tr>
+<td>Domain configuration</td>
+<td>Fixed</td>
+<td>Parameterized by domain declaration</td>
+</tr>
+<tr>
+<td>Validation status</td>
+<td>Field-demonstrated</td>
+<td>Experimental</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-documents">Related Documents</h2>
+<ul>
+<li><a href="../README.md">Character Identity Protocol — Core</a></li>
+<li><a href="../technical_mechanism/">Technical Mechanism</a></li>
+<li><a href="../quality_gate_addendum/">Quality Gate &amp; Hard Abort Discipline</a></li>
+<li><a href="../legal_governance/">CIP and Enterprise Governance</a></li>
+<li><a href="../reproducibility_scope/">Reproducibility Scope</a></li>
+</ul>
+<hr />
+<p><em>Character Identity Protocol — Video Addendum</em><br />
+<em>Originally proposed by Watadani (2026)</em><br />
+<em>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

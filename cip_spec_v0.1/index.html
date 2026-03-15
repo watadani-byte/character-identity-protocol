@@ -1,0 +1,2084 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/cip_spec_v0.1/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>CIP Specification — Draft v0.1 - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cip-specification-draft-v01" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CIP Specification — Draft v0.1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case Studies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Case Studies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project (Hard Abort and Re-convergence)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Enterprise
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Enterprise
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preamble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preamble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-anchor-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Anchor Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Anchor Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-anchor-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Anchor Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-anchor-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Anchor Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-anchor-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Anchor Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-minimal-prompt-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Minimal Prompt Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Minimal Prompt Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-prompt-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Prompt Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-prompt-stability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Prompt Stability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-identity-gate-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Identity Gate Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Identity Gate Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-gate-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Gate Definitions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-gate-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Gate Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-gate-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Gate Results
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-hard-abort-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Hard Abort Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Hard Abort Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-abort-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Abort Trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-abort-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Abort Procedure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-re-binding-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Re-Binding Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Re-Binding Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-re-binding-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Re-Binding Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-re-binding-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Re-Binding Procedure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-re-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Re-Convergence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cycle-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cycle Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Cycle Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-cycle-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Cycle Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-cycle-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Cycle Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-cycle-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Cycle Frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-audit-record-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Audit Record Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Audit Record Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-audit-record-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Audit Record Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-required-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Required Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-audit-record-retention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Audit Record Retention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-operational-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Operational Boundaries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Operational Boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-platform-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Platform Independence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-human-authority" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Human Authority
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-conformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Conformance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-normative-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A — Normative Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B — Glossary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cip-specification-draft-v01">CIP Specification — Draft v0.1</h1>
+<p>Character Identity Protocol (CIP) — Operational Governance Specification</p>
+<p><em>Status: Draft — v0.1</em><br />
+<em>Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> — 2026</em></p>
+<hr />
+<h2 id="preamble">Preamble</h2>
+<p>This document defines normative requirements for conformant implementation of the Character Identity Protocol (CIP).</p>
+<p>The key words “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, and “MAY” in this document are to be interpreted as described in <a href="https://www.rfc-editor.org/rfc/rfc2119">RFC 2119</a> and <a href="https://www.rfc-editor.org/rfc/rfc8174">RFC 8174</a>:</p>
+<ul>
+<li><strong>SHALL</strong> — an absolute requirement for conformance</li>
+<li><strong>SHALL NOT</strong> — an absolute prohibition for conformance</li>
+<li><strong>SHOULD</strong> — recommended; deviation requires justification</li>
+<li><strong>SHOULD NOT</strong> — not recommended; adoption requires justification</li>
+<li><strong>MAY</strong> — permitted but optional</li>
+</ul>
+<p>This specification governs the operational layer only.<br />
+It does not govern model internals, training procedures, or proprietary system behavior.</p>
+<hr />
+<h2 id="1-anchor-requirements">1. Anchor Requirements</h2>
+<h3 id="11-anchor-definition">1.1 Anchor Definition</h3>
+<p>An <strong>Anchor</strong> is a previously generated output image that has been validated as a stable identity reference.</p>
+<h3 id="12-anchor-selection">1.2 Anchor Selection</h3>
+<p><strong>1.2.1</strong> The anchor SHALL represent a converged identity state — an output that has been verified against identity criteria.</p>
+<p><strong>1.2.2</strong> The anchor SHALL NOT be a draft, exploratory, or unvalidated output.</p>
+<p><strong>1.2.3</strong> The anchor SHOULD be the highest-purity output available for the target identity.</p>
+<p><strong>1.2.4</strong> Anchor selection SHALL be operator-owned. CIP governs the workflow after anchor selection.</p>
+<h3 id="13-anchor-storage">1.3 Anchor Storage</h3>
+<p><strong>1.3.1</strong> The anchor SHALL be retained in a form that allows re-injection into the generation workflow.</p>
+<p><strong>1.3.2</strong> The anchor SHOULD be associated with a unique identifier (UID) for consistent reference across cycles and sessions.</p>
+<p><strong>1.3.3</strong> Anchor metadata SHOULD include: anchor ID, creation timestamp, and identity gate results at time of validation.</p>
+<hr />
+<h2 id="2-minimal-prompt-requirements">2. Minimal Prompt Requirements</h2>
+<h3 id="21-prompt-design">2.1 Prompt Design</h3>
+<p><strong>2.1.1</strong> The minimal prompt SHALL describe only invariant identity attributes of the character.</p>
+<p><strong>2.1.2</strong> The minimal prompt SHALL NOT include precise numeric constraints (e.g., exact measurements, rigid proportions) that may reduce the model’s ability to locate stable reconstruction regions.</p>
+<p><strong>2.1.3</strong> The minimal prompt SHOULD remain short and abstract — sufficient to identify the character, not to fully specify it.</p>
+<p><strong>2.1.4</strong> The minimal prompt SHOULD describe traits rather than measurements (e.g., “small head relative to height” rather than “8-head body ratio”).</p>
+<p><strong>2.1.5</strong> The anchor image SHALL carry the primary identity information. The prompt MAY serve as an auxiliary constraint only.</p>
+<h3 id="22-prompt-stability">2.2 Prompt Stability</h3>
+<p><strong>2.2.1</strong> The core minimal prompt SHOULD remain stable across cycles for the same identity.</p>
+<p><strong>2.2.2</strong> Modifications to the minimal prompt across cycles SHOULD be documented as part of the operational audit record.</p>
+<hr />
+<h2 id="3-identity-gate-requirements">3. Identity Gate Requirements</h2>
+<h3 id="31-gate-definitions">3.1 Gate Definitions</h3>
+<p>A conformant CIP implementation SHALL include the following three identity gates:</p>
+<table>
+<thead>
+<tr>
+<th>Gate</th>
+<th>Evaluation Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Face Gate</td>
+<td>Facial identity similarity relative to anchor</td>
+</tr>
+<tr>
+<td>Skeleton Gate</td>
+<td>Skeletal structure and body proportion consistency relative to anchor</td>
+</tr>
+<tr>
+<td>Proportion Gate</td>
+<td>Overall body proportion consistency relative to anchor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-gate-evaluation">3.2 Gate Evaluation</h3>
+<p><strong>3.2.1</strong> All three gates SHALL be evaluated after each generation output.</p>
+<p><strong>3.2.2</strong> Gate evaluation SHALL be human-primary. Human judgment SHALL be the authoritative evaluation method.</p>
+<p><strong>3.2.3</strong> Automated similarity metrics MAY be used as supplementary verification but SHALL NOT replace human gate evaluation.</p>
+<p><strong>3.2.4</strong> The pass condition SHALL be:</p>
+<pre><code>PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
+</code></pre>
+<p><strong>3.2.5</strong> Generation SHALL proceed only when all gates return PASS.</p>
+<p><strong>3.2.6</strong> The similarity threshold is operator-defined. Operational practice commonly uses approximately 90% as assessed by human judgment, but the exact value depends on project tolerance and operational requirements. Operators SHOULD document the threshold selected.</p>
+<p><strong>3.2.7</strong> The threshold MAY be adjusted by the operator for specific production contexts, provided the adjustment is documented.</p>
+<h3 id="33-gate-results">3.3 Gate Results</h3>
+<p><strong>3.3.1</strong> Each gate evaluation SHALL produce a result of PASS or FAIL.</p>
+<p><strong>3.3.2</strong> Gate results SHALL be recorded as part of the operational audit record.</p>
+<hr />
+<h2 id="4-hard-abort-requirements">4. Hard Abort Requirements</h2>
+<h3 id="41-abort-trigger">4.1 Abort Trigger</h3>
+<p><strong>4.1.1</strong> A Hard Abort SHALL be triggered immediately when any identity gate returns FAIL.</p>
+<p><strong>4.1.2</strong> A Hard Abort SHALL NOT be deferred, delayed, or bypassed.</p>
+<p><strong>4.1.3</strong> Incremental correction after a gate failure SHALL NOT be attempted. The generation cycle SHALL be terminated.</p>
+<h3 id="42-abort-procedure">4.2 Abort Procedure</h3>
+<p><strong>4.2.1</strong> Upon Hard Abort, the operator SHALL:</p>
+<ol>
+<li>Terminate the current generation cycle immediately</li>
+<li>Discard all outputs from the failed turn onward</li>
+<li>Record the Hard Abort event in the operational audit record</li>
+</ol>
+<p><strong>4.2.2</strong> The Hard Abort event SHALL be logged with: timestamp, turn number, gate that triggered abort, and anchor ID in use.</p>
+<hr />
+<h2 id="5-re-binding-requirements">5. Re-Binding Requirements</h2>
+<h3 id="51-re-binding-definition">5.1 Re-Binding Definition</h3>
+<p><strong>Re-binding</strong> is the process of re-injecting the last validated anchor into a new generation cycle following a Hard Abort or session reset.</p>
+<h3 id="52-re-binding-procedure">5.2 Re-Binding Procedure</h3>
+<p><strong>5.2.1</strong> Following a Hard Abort, the operator SHALL re-bind the last validated anchor before resuming generation.</p>
+<p><strong>5.2.2</strong> Re-binding SHALL use the anchor that was validated most recently prior to the abort event.</p>
+<p><strong>5.2.3</strong> The re-bound cycle SHALL be treated as a new convergence cycle (Cycle N+1).</p>
+<p><strong>5.2.4</strong> Generation SHALL NOT resume from a contaminated or partially drifted state.</p>
+<h3 id="53-re-convergence">5.3 Re-Convergence</h3>
+<p><strong>5.3.1</strong> Following re-binding, the operator SHALL verify that identity gates pass before treating outputs as production-ready.</p>
+<p><strong>5.3.2</strong> Re-convergence SHOULD be confirmed within the first 1–3 outputs of the new cycle.</p>
+<hr />
+<h2 id="6-cycle-requirements">6. Cycle Requirements</h2>
+<h3 id="61-cycle-definition">6.1 Cycle Definition</h3>
+<p>A <strong>cycle</strong> is a bounded context window within which identity convergence is maintained under CIP governance.</p>
+<p>A cycle begins at anchor injection and ends at Hard Abort, session reset, or operator-initiated closure.</p>
+<h3 id="62-cycle-boundaries">6.2 Cycle Boundaries</h3>
+<p><strong>6.2.1</strong> Each cycle SHALL begin with anchor re-injection and minimal prompt confirmation.</p>
+<p><strong>6.2.2</strong> CIP SHALL NOT assume indefinite identity persistence across cycles.</p>
+<p><strong>6.2.3</strong> Operators SHOULD treat each cycle as an independent convergence window, with identity verified at the start of each cycle.</p>
+<h3 id="63-cycle-frequency">6.3 Cycle Frequency</h3>
+<p><strong>6.3.1</strong> Re-anchoring SHOULD be performed periodically within extended generation sessions.</p>
+<p><strong>6.3.2</strong> Based on operational observations, re-anchoring SHOULD be performed after every 10–15 generation turns, though this MAY vary by context.</p>
+<hr />
+<h2 id="7-audit-record-requirements">7. Audit Record Requirements</h2>
+<h3 id="71-audit-record-definition">7.1 Audit Record Definition</h3>
+<p>A <strong>CIP audit record</strong> is a log of operational decisions made during a generation cycle.</p>
+<h3 id="72-required-fields">7.2 Required Fields</h3>
+<p><strong>7.2.1</strong> A conformant CIP audit record SHALL include the following fields for each generation event:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anchor ID</td>
+<td>Identifier of the anchor in use</td>
+</tr>
+<tr>
+<td>Prompt hash or identifier</td>
+<td>Stable reference to the minimal prompt used</td>
+</tr>
+<tr>
+<td>Gate result</td>
+<td>PASS or FAIL for each gate (Face, Skeleton, Proportion)</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>Time of evaluation</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Identity of the operator performing evaluation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>7.2.2</strong> Hard Abort events SHALL be recorded as distinct entries in the audit record.</p>
+<p><strong>7.2.3</strong> Re-binding events SHALL be recorded as distinct entries in the audit record.</p>
+<h3 id="73-audit-record-retention">7.3 Audit Record Retention</h3>
+<p><strong>7.3.1</strong> Audit records SHOULD be retained for the duration of the production workflow.</p>
+<p><strong>7.3.2</strong> Audit records MAY be used to support compliance review, partner due diligence, or internal governance reporting.</p>
+<hr />
+<h2 id="8-operational-boundaries">8. Operational Boundaries</h2>
+<h3 id="81-scope">8.1 Scope</h3>
+<p><strong>8.1.1</strong> CIP governs reconstruction behavior at the operational layer only.</p>
+<p><strong>8.1.2</strong> CIP SHALL NOT claim to control model internals, training distributions, or proprietary system behavior.</p>
+<p><strong>8.1.3</strong> CIP SHALL NOT guarantee deterministic output reproduction.</p>
+<h3 id="82-platform-independence">8.2 Platform Independence</h3>
+<p><strong>8.2.1</strong> CIP SHOULD be implementable across multiple generative platforms without platform-specific modification.</p>
+<p><strong>8.2.2</strong> CIP SHALL NOT depend on platform-specific features, session persistence mechanisms, or proprietary APIs.</p>
+<h3 id="83-human-authority">8.3 Human Authority</h3>
+<p><strong>8.3.1</strong> Human judgment SHALL be the final authority for all gate evaluations and abort decisions.</p>
+<p><strong>8.3.2</strong> Automated systems MAY assist in gate evaluation but SHALL NOT override human judgment.</p>
+<hr />
+<h2 id="9-conformance">9. Conformance</h2>
+<p>A workflow is considered <strong>CIP-conformant</strong> if and only if all SHALL requirements defined in this specification are satisfied.</p>
+<p>A workflow is considered <strong>CIP-recommended</strong> when it additionally satisfies all SHOULD requirements.</p>
+<p>Partial conformance MAY be declared with explicit documentation of which requirements are satisfied.</p>
+<hr />
+<h2 id="appendix-a-normative-summary">Appendix A — Normative Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anchor must be a validated converged output</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Anchor selection is operator-owned</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Minimal prompt describes invariant traits only</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Numeric constraints in prompts</td>
+<td>SHALL NOT</td>
+</tr>
+<tr>
+<td>All three gates evaluated after each output</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Gate evaluation is human-primary</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Generation proceeds only when all gates PASS</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Hard Abort on any gate FAIL</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>No incremental correction after gate FAIL</td>
+<td>SHALL NOT</td>
+</tr>
+<tr>
+<td>Re-bind last validated anchor after Hard Abort</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Audit record maintained per cycle</td>
+<td>SHALL</td>
+</tr>
+<tr>
+<td>Automated metrics as supplementary only</td>
+<td>MAY</td>
+</tr>
+<tr>
+<td>Re-anchoring every 10–15 turns</td>
+<td>SHOULD</td>
+</tr>
+<tr>
+<td>Operator-defined threshold SHOULD be documented</td>
+<td>SHOULD</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-b-glossary">Appendix B — Glossary</h2>
+<p><strong>Anchor</strong> — A previously validated output image used as the identity reference for a generation cycle.</p>
+<p><strong>Convergence</strong> — The statistical stabilization of output characteristics relative to the anchor.</p>
+<p><strong>Cycle</strong> — A bounded context window within which identity convergence is maintained under CIP governance.</p>
+<p><strong>Face Gate</strong> — Identity validation check targeting facial similarity relative to the anchor.</p>
+<p><strong>Hard Abort</strong> — Immediate termination of a generation cycle upon gate failure.</p>
+<p><strong>Identity Drift</strong> — The gradual degradation of identity similarity across generation turns.</p>
+<p><strong>Identity Gates</strong> — The set of three operational validation gates: Face Gate, Skeleton Gate, Proportion Gate.</p>
+<p><strong>Minimal Prompt</strong> — An auxiliary text constraint describing only invariant identity attributes.</p>
+<p><strong>Proportion Gate</strong> — Identity validation check targeting overall body proportion consistency relative to the anchor.</p>
+<p><strong>Re-binding</strong> — Re-injection of the last validated anchor into a new generation cycle.</p>
+<p><strong>Re-convergence</strong> — The process of re-establishing identity stability following re-binding.</p>
+<p><strong>Skeleton Gate</strong> — Identity validation check targeting skeletal structure and body proportion consistency relative to the anchor.</p>
+<hr />
+<p><em>This specification is draft v0.1. Formal gate definitions, conformance testing procedures, and quantitative threshold specifications are planned for subsequent versions.</em></p>
+<p><em>See: <a href="../technical_mechanism/">Technical Mechanism</a> for theoretical framing.</em><br />
+<em>See: <a href="../decision_pack/">Decision Pack</a> for enterprise evaluation.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
