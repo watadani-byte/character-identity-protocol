@@ -1,36 +1,46 @@
 # Character Identity Protocol — Documentation
 
-This is the documentation site for the **Character Identity Protocol (CIP)**.
+This documentation covers the **Character Identity Protocol (CIP)**, an operational governance protocol for stabilizing character identity in probabilistic generative systems.
 
-CIP is an operational governance protocol for stabilizing character identity in probabilistic generative systems.
-
-→ For the research-facing overview, see the [GitHub README](https://github.com/watadani-byte/character-identity-protocol)
+→ For the project overview and research context, see the [GitHub README](https://github.com/watadani-byte/character-identity-protocol)
 
 -----
 
 ## Who This Documentation Is For
 
+This documentation may be useful for:
+
 **General users**
 People working with generative image systems who want to understand why characters change across generations and how to maintain consistency.
 
-**Researchers and technical reviewers**
-People evaluating CIP as an operational framework, reviewing the theoretical basis, or examining the specification and case studies.
+**Researchers**
+People studying identity drift, probabilistic reconstruction behavior, and inference-time control in generative systems.
 
 **Governance and operational teams**
-People assessing CIP for enterprise deployment, compliance, or audit-ready workflows.
+People assessing CIP for enterprise deployment, audit-ready workflows, or reproducibility requirements.
 
 -----
 
 ## Start Here by Goal
 
-|Goal                                        |Start with                                                                       |
-|--------------------------------------------|---------------------------------------------------------------------------------|
-|I want to understand how generative AI works|[How Generative AI Actually Behaves](column_how_generative_ai_behaves.md)        |
-|I want to write better prompts              |[A Simple Structure for Writing Prompts](column_prompt_structure.md)             |
-|I want to understand why characters change  |[Character Identity Drift](column_identity_drift.md)                             |
-|I want to try CIP immediately               |[Getting Started](getting_started.md) → [Quickstart](quickstart.md)              |
-|I want the theory and specification         |[Technical Mechanism](technical_mechanism.md) → [CIP Spec v0.1](cip_spec_v0.1.md)|
-|I want enterprise / governance material     |[White Paper](whitepaper_v1.md) → [Decision Pack](decision_pack.md)              |
+|Goal                                 |Start with                                                                       |
+|-------------------------------------|---------------------------------------------------------------------------------|
+|Understand how generative AI works   |[How Generative AI Actually Behaves](column_how_generative_ai_behaves.md)        |
+|Write better prompts                 |[A Simple Structure for Writing Prompts](column_prompt_structure.md)             |
+|Understand why characters change     |[Character Identity Drift](column_identity_drift.md)                             |
+|Try CIP immediately                  |[Getting Started](getting_started.md) → [Quickstart](quickstart.md)              |
+|Read the theory and specification    |[Technical Mechanism](technical_mechanism.md) → [CIP Spec v0.1](cip_spec_v0.1.md)|
+|Evaluate for enterprise or governance|[White Paper](whitepaper_v1.md) → [Decision Pack](decision_pack.md)              |
+
+-----
+
+## Research Entry
+
+For readers approaching CIP from a research perspective, the recommended entry sequence is:
+
+[Technical Mechanism](technical_mechanism.md) → [Character Drift Taxonomy](character_drift_taxonomy.md) → [CIP Specification v0.1](cip_spec_v0.1.md) → [White Paper](whitepaper_v1.md)
+
+These documents cover the operational model, drift classification, normative requirements, and the theoretical framework.
 
 -----
 
