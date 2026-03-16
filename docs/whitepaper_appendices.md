@@ -299,7 +299,7 @@ Typical tasks in this stage include retouching, compositing, and preparation for
 
 ### Orchestration and Workflow Governance
 
-Pipeline orchestration and workflow governance may be supported by agentic systems capable of coordinating tools and maintaining operational records (e.g., ChatGPT or Gemini with tool-use capabilities).
+Pipeline orchestration and workflow governance may be supported by agentic systems capable of coordinating tools and maintaining operational records (e.g., ChatGPT, Claude, or Gemini with tool-use capabilities).
 
 Such systems can coordinate across pipeline stages, trigger re-binding events when necessary, and maintain audit logs of identity gate outcomes.
 
