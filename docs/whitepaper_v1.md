@@ -21,6 +21,66 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 ---
 
+## 2.7 Related Work and Research Context
+
+### Overview
+
+Research on character consistency in generative AI systems has developed across three broad categories: model-centric approaches, prompt-centric approaches, and stage-based or asset-first pipelines. CIP does not belong primarily to any of these categories. Instead, it introduces an operational governance framing that treats character identity as a recoverable convergence state rather than a static output property. This section situates CIP within the existing research landscape and identifies key points of conceptual difference.
+
+---
+
+### Model-Centric Approaches
+
+The majority of academic work on character consistency attempts to stabilize identity by modifying model behavior or conditioning mechanisms at the parameter or architecture level. Representative techniques include LoRA-based identity training, ControlNet-based structural conditioning, IP-Adapter identity embedding, and DreamBooth-style fine-tuning.
+
+These approaches share a common assumption: that character consistency can be achieved by encoding identity features directly into model parameters or conditioning channels. They are often effective within a single model and deployment context, but they carry limitations in cross-platform scenarios and typically require access to model internals or training infrastructure.
+
+CIP does not modify model parameters or conditioning mechanisms. It operates entirely at inference time and is compatible with closed-source systems. This distinguishes CIP from model-centric approaches not as a competing technique but as an orthogonal operational layer.
+
+---
+
+### Prompt-Centric Approaches
+
+Industry guidance and production workflows frequently rely on structured prompts — sometimes referred to as "master prompts" — that explicitly enumerate character attributes in text form. The intent is to stabilize outputs through linguistic constraints and prompt discipline.
+
+Prompt-centric approaches are accessible and require no model modification, but their effectiveness is constrained by the nature of prompt interpretation in generative systems. Prompts are semantically compressed during interpretation; fine distinctions in prompt content do not reliably translate to corresponding differences in visual output. As CIP's Minimal Prompt Principle observes, increasing prompt complexity can destabilize generation by pushing reconstruction into sparse regions of the model's training distribution.
+
+CIP acknowledges prompt design as one input within a broader governance workflow but does not treat prompt optimization as a primary identity stabilization mechanism.
+
+---
+
+### Stage-Based and Asset-First Pipelines
+
+Some recent research and production practice proposes multi-stage pipelines in which narrative or visual content is decomposed into structured components — for example, script, character assets, and scene composition — before generation. In these frameworks, visual anchors or reference images may be used to guide generation.
+
+These approaches share partial operational similarities with CIP in their use of reference assets. However, in most cases visual anchors are treated as static conditioning inputs rather than dynamically governed identity states. The concept of an explicit governance loop — including identity validation gates, hard-abort conditions, and re-convergence cycles — is generally not present.
+
+---
+
+### Partially Related Frameworks
+
+Several practices in professional production and AI research share partial conceptual overlap with CIP.
+
+**Master Character Profiles** and character bibles in animation and game production define canonical views and attribute constraints for consistent character representation. These serve a governance function analogous to CIP's anchor and gate mechanisms, though they are designed for human artist workflows rather than generative AI pipelines.
+
+**Asset-first generative pipelines** in recent research explore inference-only approaches in which structured visual assets guide generation without training-time modification. This framing shares CIP's inference-time orientation but does not introduce explicit identity validation or failure-condition logic.
+
+**AI governance frameworks** in the alignment and safety research community treat model behavior as a governance problem requiring structured oversight. These frameworks operate at a different level of abstraction — typically concerning model-level behavioral constraints rather than visual identity stabilization — but share the governance-oriented framing that distinguishes CIP from purely technical approaches.
+
+---
+
+### How CIP Differs
+
+CIP's primary conceptual contribution is not a new generation technique but a reframing of the character consistency problem. Rather than attempting to eliminate probabilistic variability through model modification or prompt optimization, CIP treats generative systems as inherently probabilistic environments and introduces an operational governance layer designed to function within those constraints.
+
+The key framing shift is from **character generation** to **character recovery**. In most generative workflows, each output is treated as an independent generation event. CIP instead treats character identity as a latent convergence state that may drift across generation cycles and must be recovered through structured governance mechanisms when drift is detected.
+
+This perspective introduces a production-oriented approach analogous to quality gate systems in software engineering pipelines: identity is not assumed to persist but is continuously validated, and failure conditions — identity drift beyond defined thresholds — trigger structured recovery rather than continued sampling.
+
+CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
+
+---
+
 ## 2. Theoretical Foundation: Convergence Behavior
 
 ### Definition: Character Identity
