@@ -271,11 +271,9 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
 
-This configuration is not presented as universal or permanent.
-Tool availability, platform capabilities, and API policies evolve rapidly.
-The operational layers described here are intended to remain meaningful independent of any specific vendor combination.
+This configuration is not presented as universal or permanent. Tool availability, platform capabilities, and API policies evolve rapidly. The operational layers described here are intended to remain meaningful independent of any specific vendor combination.
 
-A representative present-day pipeline may be organized across five functional stages.
+A representative contemporary pipeline may be organized across five functional stages.
 
 ### Reference Generation
 
@@ -291,7 +289,7 @@ Anchor finalization is performed within composable or highly controllable genera
 
 Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
 
-This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, recovery mechanisms such as hard-abort conditions may be triggered.
+This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, recovery mechanisms such as hard-abort mechanisms may be triggered.
 
 ### Production Post-Processing
 
