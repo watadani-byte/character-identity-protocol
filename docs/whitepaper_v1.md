@@ -258,7 +258,7 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 ---
 
-## 4b. A Representative Cross-Platform Production Pipeline
+## 4.1 A Representative Cross-Platform Production Pipeline
 
 The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
 
@@ -280,7 +280,7 @@ Anchor finalization is performed within composable or highly controllable genera
 
 Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
 
-This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, recovery mechanisms such as hard-abort mechanisms may be triggered.
+This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, Hard Abort may be triggered to terminate the contaminated cycle and initiate re-convergence.
 
 ### Production Post-Processing
 
@@ -577,7 +577,7 @@ Generative models do not self-correct identity drift through continued sampling.
 
 ### Q4. Can Identity Gates be automated?
 
-Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity consistency — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP does not specify a fixed similarity threshold; this remains an operator-defined parameter.
+Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity consistency — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP permits quantitative support layers, but final authority remains with the human validation gate unless an implementation explicitly defines otherwise.
 
 ---
 
@@ -689,4 +689,4 @@ Cross-platform character persistence under CIP therefore depends on the anchor a
 
 This property is particularly relevant for production workflows that span multiple tools — for example, initial character development in one system, iterative scene generation in another, and final post-processing in a third. CIP provides the governance layer that maintains identity continuity across these transitions.
 
-The operational implication for IP asset management is significant. Character identity assets in generative AI production environments are not defined by a prompt or a model configuration, but by a validated anchor image and the governance protocol that governs its use. This reframes character asset management from a prompt engineering problem to an operational governance problem — one that CIP is specifically designed to address.
+The operational implication for IP asset management is significant. Character identity assets in generative AI production environments are not defined by a prompt or a model configuration, but by a validated anchor image and the governance protocol that governs its use. This reframes character asset management in generative systems from a prompt engineering problem into an operational governance problem — the problem space CIP is designed to govern.
