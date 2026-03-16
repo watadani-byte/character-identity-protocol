@@ -5,7 +5,7 @@
 > This white paper reflects operational observations and validated production workflows.
 > It does not claim deterministic reproduction or internal model access.
 
----
+-----
 
 ## 1. Executive Summary
 
@@ -13,13 +13,13 @@ The primary challenge in deploying generative AI for creative and corporate work
 
 Conventional trial-and-error prompting lacks reproducibility and risks **Identity Loss** during model updates or session terminations.
 
-The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point within the model's reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
 
-CIP reframes character identity from a static output property to a recoverable convergence state within the model's reconstruction space — one that must be repeatedly recovered under operational constraints.
+CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
 
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
----
+-----
 
 ## 2.7 Related Work and Research Context
 
@@ -27,7 +27,38 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 Research on character consistency in generative AI systems has developed across three broad categories: model-centric approaches, prompt-centric approaches, and stage-based or asset-first pipelines. CIP does not belong primarily to any of these categories. Instead, it introduces an operational governance framing that treats character identity as a recoverable convergence state rather than a static output property. This section situates CIP within the existing research landscape and identifies key points of conceptual difference.
 
----
+-----
+
+### Figure 1 — Research Positioning: CIP as an Orthogonal Governance Layer
+
+```mermaid
+flowchart TB
+    subgraph MODEL["Model-Centric Approaches"]
+        M1[LoRA]
+        M2[ControlNet]
+        M3[IP-Adapter]
+        M4[DreamBooth]
+    end
+
+    subgraph PROMPT["Prompt-Centric Approaches"]
+        P1[Structured Prompts]
+        P2[Master Prompts]
+    end
+
+    subgraph CIP_LAYER["CIP — Operational Governance Layer"]
+        C1[Anchor Management]
+        C2[Identity Validation Gates]
+        C3[Hard Abort Recovery]
+        C4[Cross-Platform Re-convergence]
+    end
+
+    MODEL -.->|operates within| CIP_LAYER
+    PROMPT -.->|operates within| CIP_LAYER
+```
+
+*Figure 1. CIP operates as an orthogonal governance layer relative to model-centric and prompt-centric approaches. Model modifications and prompt strategies remain valid within CIP-governed workflows; the protocol governs identity validation and recovery conditions independently of the generation mechanism employed.*
+
+-----
 
 ### Model-Centric Approaches
 
@@ -37,17 +68,17 @@ These approaches share a common assumption: that character consistency can be ac
 
 CIP does not modify model parameters or conditioning mechanisms. It operates entirely at inference time and is compatible with closed-source systems. This distinguishes CIP from model-centric approaches not as a competing technique but as an orthogonal operational layer.
 
----
+-----
 
 ### Prompt-Centric Approaches
 
-Industry guidance and production workflows frequently rely on structured prompts — sometimes referred to as "master prompts" — that explicitly enumerate character attributes in text form. The intent is to stabilize outputs through linguistic constraints and prompt discipline.
+Industry guidance and production workflows frequently rely on structured prompts — sometimes referred to as “master prompts” — that explicitly enumerate character attributes in text form. The intent is to stabilize outputs through linguistic constraints and prompt discipline.
 
-Prompt-centric approaches are accessible and require no model modification, but their effectiveness is constrained by the nature of prompt interpretation in generative systems. Prompts are semantically compressed during interpretation; fine distinctions in prompt content do not reliably translate to corresponding differences in visual output. As CIP's Minimal Prompt Principle observes, increasing prompt complexity can destabilize generation by pushing reconstruction into sparse regions of the model's training distribution.
+Prompt-centric approaches are accessible and require no model modification, but their effectiveness is constrained by the nature of prompt interpretation in generative systems. Prompts are semantically compressed during interpretation; fine distinctions in prompt content do not reliably translate to corresponding differences in visual output. As CIP’s Minimal Prompt Principle observes, increasing prompt complexity can destabilize generation by pushing reconstruction into sparse regions of the model’s training distribution.
 
 CIP acknowledges prompt design as one input within a broader governance workflow but does not treat prompt optimization as a primary identity stabilization mechanism.
 
----
+-----
 
 ### Stage-Based and Asset-First Pipelines
 
@@ -55,23 +86,23 @@ Some recent research and production practice proposes multi-stage pipelines in w
 
 These approaches share partial operational similarities with CIP in their use of reference assets. However, in most cases visual anchors are treated as static conditioning inputs rather than dynamically governed identity states. The concept of an explicit governance loop — including identity validation gates, hard-abort conditions, and re-convergence cycles — is generally not present.
 
----
+-----
 
 ### Partially Related Frameworks
 
 Several practices in professional production and AI research share partial conceptual overlap with CIP.
 
-**Master Character Profiles** and character bibles in animation and game production define canonical views and attribute constraints for consistent character representation. These serve a governance function analogous to CIP's anchor and gate mechanisms, though they are designed for human artist workflows rather than generative AI pipelines.
+**Master Character Profiles** and character bibles in animation and game production define canonical views and attribute constraints for consistent character representation. These serve a governance function analogous to CIP’s anchor and gate mechanisms, though they are designed for human artist workflows rather than generative AI pipelines.
 
-**Asset-first generative pipelines** in recent research explore inference-only approaches in which structured visual assets guide generation without training-time modification. This framing shares CIP's inference-time orientation but does not introduce explicit identity validation or failure-condition logic.
+**Asset-first generative pipelines** in recent research explore inference-only approaches in which structured visual assets guide generation without training-time modification. This framing shares CIP’s inference-time orientation but does not introduce explicit identity validation or failure-condition logic.
 
 **AI governance frameworks** in the alignment and safety research community treat model behavior as a governance problem requiring structured oversight. These frameworks operate at a different level of abstraction — typically concerning model-level behavioral constraints rather than visual identity stabilization — but share the governance-oriented framing that distinguishes CIP from purely technical approaches.
 
----
+-----
 
 ### How CIP Differs
 
-CIP's primary conceptual contribution is not a new generation technique but a reframing of the character consistency problem. Rather than attempting to eliminate probabilistic variability through model modification or prompt optimization, CIP treats generative systems as inherently probabilistic environments and introduces an operational governance layer designed to function within those constraints.
+CIP’s primary conceptual contribution is not a new generation technique but a reframing of the character consistency problem. Rather than attempting to eliminate probabilistic variability through model modification or prompt optimization, CIP treats generative systems as inherently probabilistic environments and introduces an operational governance layer designed to function within those constraints.
 
 The key framing shift is from **character generation** to **character recovery**. In most generative workflows, each output is treated as an independent generation event. CIP instead treats character identity as a latent convergence state that may drift across generation cycles and must be recovered through structured governance mechanisms when drift is detected.
 
@@ -79,7 +110,7 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
----
+-----
 
 ## 2. Theoretical Foundation: Convergence Behavior
 
@@ -89,9 +120,9 @@ CIP therefore occupies a position in the research landscape that is distinct fro
 
 > *Operational note: Identity is governed through explicit validation constraints — gate criteria, threshold enforcement, and Hard Abort discipline — not asserted by descriptive claim alone.*
 
----
+-----
 
-### The "Miracle Image" Phenomenon
+### The “Miracle Image” Phenomenon
 
 High-purity outputs that emerge within the latent space may represent transient solution states rather than random accidents.
 
@@ -107,9 +138,9 @@ The convergence point is not forced — it is biased. The anchor introduces a pr
 
 ### Minimal Prompt Principle
 
-Minimizing optimization pressure from the model's training priors by reducing prompt surface area.
+Minimizing optimization pressure from the model’s training priors by reducing prompt surface area.
 
-Verbose prompts activate interpretation and optimization layers, causing the model to "improve" input away from the intended state. Minimal prompts reduce this pressure, preserving convergence fidelity.
+Verbose prompts activate interpretation and optimization layers, causing the model to “improve” input away from the intended state. Minimal prompts reduce this pressure, preserving convergence fidelity.
 
 *See: [Technical Mechanism](technical_mechanism.md)*
 
@@ -128,6 +159,7 @@ It is not a fixed numeric constant.
 Observed empirical ranges (e.g., ~40 turns in certain interfaces) are implementation-dependent and should be treated as indicative rather than prescriptive.
 
 MCST varies depending on:
+
 - Model architecture
 - Context window size
 - Sampling configuration
@@ -137,7 +169,7 @@ MCST varies depending on:
 CIP does not depend on a fixed turn count.
 It operates by detecting and respecting the MCST boundary within any given system.
 
----
+-----
 
 ## 2.6 Identity Drift Taxonomy
 
@@ -155,6 +187,7 @@ The following categories represent the most commonly observed drift modes in pro
 Deviation in facial structure or facial feature configuration relative to the anchor identity.
 
 Typical manifestations:
+
 - Eye shape or spacing changes
 - Jawline or cheekbone structure shifts
 - Nose bridge or mouth proportion changes
@@ -172,6 +205,7 @@ For this reason, CIP assigns highest priority to Face Gate validation.
 Changes in the underlying body structure or pose skeleton that alter the physical plausibility of the character relative to the anchor.
 
 Typical manifestations:
+
 - Shoulder width changes
 - Limb length variation
 - Pose articulation inconsistencies
@@ -189,6 +223,7 @@ CIP detects this failure mode through Skeleton Gate validation.
 Deviation in global body proportions relative to the anchor reference.
 
 Typical manifestations:
+
 - Head-to-body ratio changes
 - Torso-to-leg ratio variation
 - Bust or hip proportion shifts
@@ -207,6 +242,7 @@ This drift mode is governed by the Proportion Gate.
 Deviation in the rendering regime or stylistic representation of the character.
 
 Typical manifestations:
+
 - Line art thickness variation
 - Lighting regime shifts
 - Color palette deviation
@@ -225,6 +261,7 @@ CIP therefore treats rendering regime stability as part of identity validation u
 Gradual identity degradation caused by accumulated contextual influence across generation turns.
 
 Typical manifestations:
+
 - Progressive pose reinterpretation
 - Style blending from prior outputs
 - Feature averaging across generations
@@ -268,7 +305,32 @@ The drift taxonomy reinforces several core design principles of the CIP protocol
 
 This taxonomy provides a conceptual framework for understanding why identity governance requires structured operational control rather than purely prompt-based optimization.
 
----
+-----
+
+### Figure 2 — Identity Drift Mechanism and CIP Gate Mitigations
+
+```mermaid
+flowchart TD
+    FD[Face Drift] --> II[Identity Instability]
+    SD[Skeleton Drift] --> II
+    PD[Proportion Drift] --> II
+    II --> CC[Character Collapse]
+
+    FD -.->|mitigated by| FG[Face Gate]
+    SD -.->|mitigated by| SG[Skeleton Gate]
+    PD -.->|mitigated by| PG[Proportion Gate]
+
+    FG --> PASS{All Gates Pass?}
+    SG --> PASS
+    PG --> PASS
+
+    PASS -->|Yes| AO[Accepted Output]
+    PASS -->|No| HA[Hard Abort → Re-binding]
+```
+
+*Figure 2. Identity drift can occur independently across facial, skeletal, and proportional dimensions. CIP addresses each drift channel through a corresponding identity validation gate. When any gate fails, Hard Abort is triggered to prevent drift from cascading into character collapse.*
+
+-----
 
 ## 3. Core Implementation: The Anchor Mechanism
 
@@ -279,20 +341,21 @@ The highest-purity reference image serving as the ground truth for convergence.
 Not a reference or inspiration — a previously achieved solution state that the model is directed to recover.
 
 **2. Minimal Prompt**  
-Reducing descriptive noise to maximize the model's focus on the anchor.  
+Reducing descriptive noise to maximize the model’s focus on the anchor.  
 Factual attributes only. No adjectives, no mood descriptors, no subjective terms.
 
 **3. Unique Identifier (UID)**  
 Assigning a stable linguistic token (UID) that refers to the converged identity state across sessions and prompts.
 Reduces cognitive and computational load in future sessions. Enables cross-session continuity without re-providing the full anchor each time.
 
----
+-----
 
 ## 4. Advanced Application: Cross-Platform Migration
 
-### 4.1 The "Lost Character" Problem
+### 4.1 The “Lost Character” Problem
 
 Identities often become lost due to:
+
 - Model architecture shifts (e.g., Stable Diffusion → DALL-E 3)
 - Session context expiration
 - Prompt drift across iterations
@@ -301,12 +364,12 @@ The original prompt no longer yields the same result. Increasing detail makes it
 
 ### 4.2 Solution: Recovery Framing
 
-**From "Recreation" to "Recovery"**
+**From “Recreation” to “Recovery”**
 
-By framing the request as recovery of a lost entity, the operator shifts the AI's optimization target.
+By framing the request as recovery of a lost entity, the operator shifts the AI’s optimization target.
 
-- "Recreate" → generate something similar → variation is acceptable
-- "Recover" → return to a specific prior state → convergence is required
+- “Recreate” → generate something similar → variation is acceptable
+- “Recover” → return to a specific prior state → convergence is required
 
 This framing biases the model toward alignment with the provided visual anchor rather than interpreting the prompt freely.
 
@@ -316,7 +379,7 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 *Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
----
+-----
 
 ## 4.1 A Representative Cross-Platform Production Pipeline
 
@@ -397,7 +460,7 @@ flowchart TD
 
 *Note: Vendor names shown are examples only. The primary contribution is the CIP governance layer, which remains applicable as individual tools evolve.*
 
----
+-----
 
 ### Architectural Implication
 
@@ -412,7 +475,42 @@ CIP defines an operational structure for:
 
 This structure remains applicable even as individual tools are replaced, extended, or evolve over time.
 
----
+-----
+
+### Figure 3 — Representative Cross-Platform Production Pipeline under CIP Governance
+
+```mermaid
+flowchart TD
+    GOV["CIP Governance Layer
+    ────────────────────────────
+    Anchor Management · Identity Gates · Hard Abort · Re-convergence"]
+
+    S1["Stage 1\nReference Generation\n(e.g., Midjourney)"]
+    S2["Stage 2\nAnchor Finalization\n(e.g., ComfyUI)"]
+    S3["Stage 3\nSequential Scene Generation\n(e.g., GPT Image 1.5 / Nano Banana)"]
+    GATE{"Identity Validation Gates\nFace ∧ Skeleton ∧ Proportion"}
+    HA["Hard Abort\n→ Re-binding\n→ Re-convergence"]
+    S4["Stage 4\nProduction Post-Processing\n(e.g., Adobe Photoshop / Firefly)"]
+    S5["Stage 5\nOrchestration & Workflow Governance\n(e.g., ChatGPT / Claude / Gemini)"]
+
+    GOV -.->|governs| S3
+    GOV -.->|governs| GATE
+    GOV -.->|governs| HA
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> GATE
+    GATE -->|PASS| S4
+    GATE -->|FAIL| HA
+    HA -->|Re-converge| S3
+    S4 --> S5
+    S5 -.->|coordinates| S2
+    S5 -.->|coordinates| S3
+```
+
+*Figure 3. A representative cross-platform production pipeline under CIP governance. Vendor names are illustrative examples only. The primary contribution is the CIP governance layer, which governs identity validation, hard-abort enforcement, and re-convergence independently of the specific tools employed at each stage.*
+
+-----
 
 ## 5. Governance and IP Management
 
@@ -436,13 +534,13 @@ Production metrics observed across case studies:
 
 *The following figures represent observational production-session averages and should not be interpreted as statistically validated benchmarks.*
 
-| Metric | Without Protocol | With Protocol |
-|--------|-----------------|---------------|
-| Identity preservation | 40–60% failure rate | <5% failure rate |
-| Wasted generations | ~50% | <5% |
-| Cross-platform migration | Trial and error | Systematic procedure |
+|Metric                  |Without Protocol   |With Protocol       |
+|------------------------|-------------------|--------------------|
+|Identity preservation   |40–60% failure rate|<5% failure rate    |
+|Wasted generations      |~50%               |<5%                 |
+|Cross-platform migration|Trial and error    |Systematic procedure|
 
-*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. "Failure" = human-judged identity gate failure (Face Gate or Skeleton Gate or Proportion Gate). No automated measurement was used. Platform: ChatGPT (GPT Image 1) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
+*Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. “Failure” = human-judged identity gate failure (Face Gate or Skeleton Gate or Proportion Gate). No automated measurement was used. Platform: ChatGPT (GPT Image 1) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
 ### Measurement Disclosure
 
@@ -474,7 +572,7 @@ This dual-pass structure avoids both failure modes: AI-only judgment (high autom
 
 This design is consistent with ISO-aligned governance frameworks, where human authority and documented evidence coexist.
 
-In practice, operators frequently recognize identity convergence instantly — a moment often described as "this is it." Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
+In practice, operators frequently recognize identity convergence instantly — a moment often described as “this is it.” Detailed reasoning follows afterwards: proportion integrity, silhouette balance, face/body style coherence, and rendering regime stability.
 
 CIP formalizes this operational reality. Holistic recognition triggers inspection; inspection produces the documented explanation required for governance.
 
@@ -488,12 +586,15 @@ However, implementations may operationalize gates using quantitative measures.
 Illustrative examples:
 
 **Face Gate:**
+
 - Feature embedding cosine similarity ≥ 0.85 relative to anchor reference.
 
 **Skeleton Gate:**
+
 - Keypoint deviation within predefined tolerance band.
 
 **Proportion Gate:**
+
 - Ratio deviation below defined variance threshold.
 
 These values are examples only.
@@ -510,17 +611,17 @@ When an Identity Gate failure occurs, CIP mandates immediate Hard Abort.
 Following abort, recovery must proceed through structured re-binding:
 
 1. Roll back to the last verified Converged Anchor.
-2. Reset contextual accumulation (environment reset).
-3. Re-inject the anchor as the primary reconstruction stabilizer.
-4. Reset sampling configuration if applicable (temperature, seed, guidance scale).
-5. Resume generation under full Gate enforcement.
+1. Reset contextual accumulation (environment reset).
+1. Re-inject the anchor as the primary reconstruction stabilizer.
+1. Reset sampling configuration if applicable (temperature, seed, guidance scale).
+1. Resume generation under full Gate enforcement.
 
 This prevents probabilistic noise propagation and ensures that drift does not compound across cycles.
 
 Re-binding is not an optional optimization.
 It is a governance requirement within the CIP framework.
 
----
+-----
 
 ## Bounded Generation Cycles (BGC)
 
@@ -565,30 +666,60 @@ flowchart LR
 
 > *MCST defines when a cycle must end. The Anchor enables re-entry. BGC is the governed interval between them.*
 
----
+-----
+
+### Figure 4 — Probabilistic Drift Accumulation and MCST
+
+```mermaid
+flowchart LR
+    subgraph BGC1["BGC — Cycle A"]
+        T1[Turn 1] --> T2[Turn 2]
+        T2 --> T3[Turn N]
+        T3 --> MCST{MCST\nApproached?}
+    end
+
+    subgraph RECOVERY["Hard Abort & Re-binding"]
+        HA[Hard Abort]
+        RB[Anchor Re-binding]
+    end
+
+    subgraph BGC2["BGC — Cycle B"]
+        T4[Turn 1] --> T5[Turn 2]
+        T5 --> T6[Turn N]
+    end
+
+    MCST -->|No — within threshold| T3
+    MCST -->|Yes — drift risk increases| HA
+    HA --> RB
+    RB --> BGC2
+```
+
+*Figure 4. Identity stability exists within bounded generation windows. As generation turns accumulate, probabilistic drift increases. When the Max Context Stability Threshold is approached, CIP mandates Hard Abort and anchor re-binding to initiate a new bounded generation cycle. Stability is maintained through disciplined cycle chaining rather than assumed persistence.*
+
+-----
 
 ## 6. Validation
 
 The protocol has been validated across the following production case groups:
 
-| Case | Scenario | Result |
-|------|----------|--------|
-| **01** | **Baseline Failure → Recovery Cycle** | |
-| 01A | Baseline — no protocol | Identity collapse confirmed |
-| 01B | Hard Abort, Re-binding, Re-convergence (production recovery cycle; demonstrated in Mira) | Full BGC cycle documented |
-| 02 | Wedding series, 4 emotional transitions | Identity maintained, 15 turns |
-| 03 | Fashion production, skeletal control | Audit-ready consistency, 38 turns |
-| 04 | Cross-platform migration (SD → ChatGPT) | High-fidelity recovery observed under anchor-governed re-binding conditions |
-| 05 | Minimal prompt emergence — no image anchor | New consistent character emerged |
-| 06 | Gemini replication — cross-platform validation | High-consistency behavior observed under gate-governed conditions |
+|Case  |Scenario                                                                                |Result                                                                     |
+|------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+|**01**|**Baseline Failure → Recovery Cycle**                                                   |                                                                           |
+|01A   |Baseline — no protocol                                                                  |Identity collapse confirmed                                                |
+|01B   |Hard Abort, Re-binding, Re-convergence (production recovery cycle; demonstrated in Mira)|Full BGC cycle documented                                                  |
+|02    |Wedding series, 4 emotional transitions                                                 |Identity maintained, 15 turns                                              |
+|03    |Fashion production, skeletal control                                                    |Audit-ready consistency, 38 turns                                          |
+|04    |Cross-platform migration (SD → ChatGPT)                                                 |High-fidelity recovery observed under anchor-governed re-binding conditions|
+|05    |Minimal prompt emergence — no image anchor                                              |New consistent character emerged                                           |
+|06    |Gemini replication — cross-platform validation                                          |High-consistency behavior observed under gate-governed conditions          |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
----
+-----
 
 ## 7. Conclusion
 
-> *"So she can find her way home."*
+> *“So she can find her way home.”*
 
 In this sense, CIP is not a generation technique but a recovery protocol for identity persistence in probabilistic generative systems.
 
@@ -596,15 +727,15 @@ In the fluid and volatile landscape of generative AI, the Character Identity Pro
 
 By combining statistical convergence with rigorous operational framing, CIP establishes a practical standard for the management and preservation of character identities in production AI workflows.
 
-The protocol does not oppose the model's optimization dynamics.  
+The protocol does not oppose the model’s optimization dynamics.  
 It constrains outputs operationally.
 
----
+-----
 
 *Status: v1.0 — February 2026*  
 *Repository: [Character Identity Protocol](/character-identity-protocol/)*
 
----
+-----
 
 ## Appendices
 
@@ -613,7 +744,7 @@ It constrains outputs operationally.
 - [Appendix C — Frequently Asked Questions about CIP](#appendix-c--frequently-asked-questions-about-cip)
 - [Appendix D — Character Concept and IP Asset Management](#appendix-d--character-concept-and-ip-asset-management)
 
----
+-----
 
 ## Appendix C — Frequently Asked Questions about CIP
 
@@ -621,73 +752,73 @@ It constrains outputs operationally.
 
 No. CIP is an operational governance protocol. It defines a structured workflow — including anchor management, identity validation gates, and hard-abort recovery cycles — that governs the conditions under which generation is allowed to continue. Prompt design is one input to this workflow, but CIP is not reducible to prompt engineering. Its function persists regardless of prompt content.
 
----
+-----
 
 ### Q2. How is CIP different from LoRA or fine-tuning?
 
 LoRA and fine-tuning modify model weights to encode identity or style during training. CIP operates entirely at inference time and does not modify the model in any way. It constrains generation behavior through input design and operational control — anchor references, minimal prompts, and identity validation — without accessing or altering internal model parameters.
 
----
+-----
 
 ### Q3. Why are Hard Abort cycles required?
 
 Generative models do not self-correct identity drift through continued sampling. Once drift occurs, repeated retries within the same generation state tend to propagate divergence rather than restore the intended identity. Hard Abort terminates the contaminated cycle immediately and initiates a re-convergence sequence from the last validated anchor state. This prevents progressive identity degradation across outputs.
 
----
+-----
 
 ### Q4. Can Identity Gates be automated?
 
 Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity consistency — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP permits quantitative support layers, but final authority remains with the human validation gate unless an implementation explicitly defines otherwise.
 
----
+-----
 
 ### Q5. Does CIP guarantee deterministic reproduction?
 
 No. Generative systems are probabilistic by design. CIP does not claim or require deterministic reproduction. Its goal is bounded convergence — producing outputs that satisfy defined identity constraints within acceptable variation, not exact pixel-level replication. The protocol governs when outputs are accepted or rejected, not whether they are identical.
 
----
+-----
 
 ### Q6. Is CIP dependent on a specific model or vendor?
 
 No. CIP is model-agnostic and platform-agnostic. It defines an operational governance layer that can be applied to any generative system capable of accepting anchor image references and producing iterative outputs. Case studies have validated the protocol across multiple platforms including Stable Diffusion, ChatGPT (GPT Image 1), and Gemini (Imagen 3).
 
----
+-----
 
 ### Q7. How does CIP relate to prompt engineering?
 
-Prompt engineering focuses on optimizing text inputs to influence model outputs. CIP treats prompts as one input within a broader governance loop. The Minimal Prompt Principle — a core CIP design choice — deliberately reduces prompt complexity to avoid pushing the model into sparse, unstable regions of its training distribution. CIP's stability derives primarily from anchor-based convergence, not from prompt optimization.
+Prompt engineering focuses on optimizing text inputs to influence model outputs. CIP treats prompts as one input within a broader governance loop. The Minimal Prompt Principle — a core CIP design choice — deliberately reduces prompt complexity to avoid pushing the model into sparse, unstable regions of its training distribution. CIP’s stability derives primarily from anchor-based convergence, not from prompt optimization.
 
----
+-----
 
 ### Q8. How does cross-platform migration work under CIP?
 
 Cross-platform migration in CIP relies on the anchor image as the primary identity carrier. Because the anchor encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity Gates are re-applied in the new environment to confirm that convergence has been achieved. This process does not require model-level alignment between platforms.
 
----
+-----
 
 ### Q9. Why are minimal prompts recommended?
 
-Highly detailed prompts may push generation into sparse regions of the model's training distribution, where reconstruction becomes unstable and drift is more likely. Minimal prompts — describing only invariant identity attributes — allow the model to explore its learned distribution more freely while the anchor image guides convergence. This combination produces more stable identity reconstruction than verbose prompting alone.
+Highly detailed prompts may push generation into sparse regions of the model’s training distribution, where reconstruction becomes unstable and drift is more likely. Minimal prompts — describing only invariant identity attributes — allow the model to explore its learned distribution more freely while the anchor image guides convergence. This combination produces more stable identity reconstruction than verbose prompting alone.
 
----
+-----
 
 ### Q10. How does CIP interact with agentic orchestration systems?
 
 Agentic systems — such as ChatGPT, Claude, or Gemini with tool-use capabilities — can operate as orchestration layers within a CIP-governed pipeline. In this role they may coordinate tool calls across pipeline stages, monitor identity gate outcomes, trigger re-binding events when drift is detected, and maintain audit records of gate decisions. CIP defines the governance constraints; the agentic system executes coordination within those constraints.
 
----
+-----
 
 ### Q11. What is the Max Context Stability Threshold (MCST)?
 
 The MCST is the operational upper bound on generation cycle length before identity stability degrades beyond acceptable limits. It is not a fixed value but an operator-determined parameter based on observed drift accumulation in a given workflow. When the MCST is approached, re-binding — re-introducing the anchor and restarting the convergence cycle — is performed to restore identity stability.
 
----
+-----
 
 ### Q12. What distinguishes CIP from general image consistency workflows?
 
 Most image consistency approaches focus on producing visually similar outputs through prompt reuse, seed control, or model-specific features. CIP introduces an explicit governance layer: identity is not assumed to persist but is continuously validated and recovered through structured cycles. The key distinction is the presence of defined failure conditions — Hard Abort and re-convergence — that treat identity drift as a process integrity failure rather than an acceptable output variation.
 
----
+-----
 
 ## Appendix D — Character Concept and IP Asset Management
 
@@ -699,7 +830,7 @@ Character identity in this sense is defined by a set of invariant attributes: ph
 
 The management of character identity in professional production environments therefore involves explicit governance: style guides, character bibles, reference sheets, and art direction reviews that ensure outputs conform to the established identity standard. This governance is largely implicit in traditional pipelines, where human artists internalize identity standards through training and review processes.
 
----
+-----
 
 ### D.2 Identity Stability in Traditional Production Pipelines
 
@@ -709,7 +840,7 @@ The key property of traditional pipelines is deterministic reproducibility withi
 
 This model assumes human creative labor as the primary production mechanism. When generative AI systems are introduced into the production pipeline, this assumption no longer holds.
 
----
+-----
 
 ### D.3 Generative Systems and Identity Instability
 
@@ -721,7 +852,7 @@ For IP-based character assets, this behavior creates significant operational ris
 
 Prompt-based approaches to identity stability — attempting to encode all relevant character attributes in a text description — have proven insufficient in practice. Prompts are interpreted and compressed by the model before generation; fine distinctions in prompt content do not reliably translate to corresponding differences in visual output. The prompt describes appearance; it does not preserve identity.
 
----
+-----
 
 ### D.4 Identity Governance in Probabilistic Systems
 
@@ -737,7 +868,7 @@ The governance framework introduced by CIP operates through three mechanisms.
 
 Together these mechanisms constitute an operational governance layer that can be applied to any generative system capable of accepting anchor image references. CIP does not replace creative design or artistic direction; it provides the operational infrastructure within which creative outputs can be generated while maintaining identity governance standards.
 
----
+-----
 
 ### D.5 CIP and Cross-Platform Character Persistence
 
