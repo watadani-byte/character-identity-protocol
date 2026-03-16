@@ -562,3 +562,78 @@ It constrains outputs operationally.
 
 - [Appendix A — Operational Terminology](whitepaper_appendices.md#appendix-a--operational-terminology)
 - [Appendix B — Operational Characteristics of Modern Image Generation Systems](whitepaper_appendices.md#appendix-b--operational-characteristics-of-modern-image-generation-systems)
+- [Appendix C — Frequently Asked Questions about CIP](#appendix-c--frequently-asked-questions-about-cip)
+
+-----
+
+## Appendix C — Frequently Asked Questions about CIP
+
+### Q1. Is CIP a prompting technique?
+
+No. CIP is an operational governance protocol. It defines a structured workflow — including anchor management, identity validation gates, and hard-abort recovery cycles — that governs the conditions under which generation is allowed to continue. Prompt design is one input to this workflow, but CIP is not reducible to prompt engineering. Its function persists regardless of prompt content.
+
+-----
+
+### Q2. How is CIP different from LoRA or fine-tuning?
+
+LoRA and fine-tuning modify model weights to encode identity or style during training. CIP operates entirely at inference time and does not modify the model in any way. It constrains generation behavior through input design and operational control — anchor references, minimal prompts, and identity validation — without accessing or altering internal model parameters.
+
+-----
+
+### Q3. Why are Hard Abort cycles required?
+
+Generative models do not self-correct identity drift through continued sampling. Once drift occurs, repeated retries within the same generation state tend to propagate divergence rather than restore the intended identity. Hard Abort terminates the contaminated cycle immediately and initiates a re-convergence sequence from the last validated anchor state. This prevents progressive identity degradation across outputs.
+
+-----
+
+### Q4. Can Identity Gates be automated?
+
+Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity consistency — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP does not specify a fixed similarity threshold; this remains an operator-defined parameter.
+
+-----
+
+### Q5. Does CIP guarantee deterministic reproduction?
+
+No. Generative systems are probabilistic by design. CIP does not claim or require deterministic reproduction. Its goal is bounded convergence — producing outputs that satisfy defined identity constraints within acceptable variation, not exact pixel-level replication. The protocol governs when outputs are accepted or rejected, not whether they are identical.
+
+-----
+
+### Q6. Is CIP dependent on a specific model or vendor?
+
+No. CIP is model-agnostic and platform-agnostic. It defines an operational governance layer that can be applied to any generative system capable of accepting anchor image references and producing iterative outputs. Case studies have validated the protocol across multiple platforms including Stable Diffusion, ChatGPT (GPT Image 1), and Gemini (Imagen 3).
+
+-----
+
+### Q7. How does CIP relate to prompt engineering?
+
+Prompt engineering focuses on optimizing text inputs to influence model outputs. CIP treats prompts as one input within a broader governance loop. The Minimal Prompt Principle — a core CIP design choice — deliberately reduces prompt complexity to avoid pushing the model into sparse, unstable regions of its training distribution. CIP’s stability derives primarily from anchor-based convergence, not from prompt optimization.
+
+-----
+
+### Q8. How does cross-platform migration work under CIP?
+
+Cross-platform migration in CIP relies on the anchor image as the primary identity carrier. Because the anchor encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity Gates are re-applied in the new environment to confirm that convergence has been achieved. This process does not require model-level alignment between platforms.
+
+-----
+
+### Q9. Why are minimal prompts recommended?
+
+Highly detailed prompts may push generation into sparse regions of the model’s training distribution, where reconstruction becomes unstable and drift is more likely. Minimal prompts — describing only invariant identity attributes — allow the model to explore its learned distribution more freely while the anchor image guides convergence. This combination produces more stable identity reconstruction than verbose prompting alone.
+
+-----
+
+### Q10. How does CIP interact with agentic orchestration systems?
+
+Agentic systems — such as ChatGPT, Claude, or Gemini with tool-use capabilities — can operate as orchestration layers within a CIP-governed pipeline. In this role they may coordinate tool calls across pipeline stages, monitor identity gate outcomes, trigger re-binding events when drift is detected, and maintain audit records of gate decisions. CIP defines the governance constraints; the agentic system executes coordination within those constraints.
+
+-----
+
+### Q11. What is the Max Context Stability Threshold (MCST)?
+
+The MCST is the operational upper bound on generation cycle length before identity stability degrades beyond acceptable limits. It is not a fixed value but an operator-determined parameter based on observed drift accumulation in a given workflow. When the MCST is approached, re-binding — re-introducing the anchor and restarting the convergence cycle — is performed to restore identity stability.
+
+-----
+
+### Q12. What distinguishes CIP from general image consistency workflows?
+
+Most image consistency approaches focus on producing visually similar outputs through prompt reuse, seed control, or model-specific features. CIP introduces an explicit governance layer: identity is not assumed to persist but is continuously validated and recovered through structured cycles. The key distinction is the presence of defined failure conditions — Hard Abort and re-convergence — that treat identity drift as a process integrity failure rather than an acceptable output variation.
