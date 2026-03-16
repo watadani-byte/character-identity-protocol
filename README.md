@@ -299,6 +299,18 @@ These directions remain open research questions. CIP documents the operational l
 
 -----
 
+## Cross-Platform Pipeline
+
+CIP is designed to govern identity stability across platforms, not within a single tool.
+
+A representative production pipeline spans reference generation, anchor finalization, sequential generation, post-processing, and agent orchestration — each stage connected by the same identity validation layer.
+
+The specific tools change; the operational protocol remains.
+
+> CIP defines the operational governance layer — anchor management, identity gates, and hard-abort recovery — that remains applicable across generative platforms as individual tools evolve.
+
+-----
+
 ## Scope Clarification
 
 **This is NOT:**
