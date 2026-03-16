@@ -79,8 +79,6 @@ It operates by detecting and respecting the MCST boundary within any given syste
 
 ---
 
----
-
 ## 2.6 Identity Drift Taxonomy
 
 Generative systems exhibit multiple modes of identity drift during iterative reconstruction.
