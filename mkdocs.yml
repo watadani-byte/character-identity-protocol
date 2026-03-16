@@ -30,6 +30,7 @@ nav:
     - Video Addendum: cip_video_addendum.md
     - Reproducibility Scope: reproducibility_scope.md
     - Glossary: glossary.md
+    - CIP Terminology Mapping: cip_terminology_mapping.md
   - Enterprise:
     - Decision Pack: decision_pack.md
     - Legal Governance: legal_governance.md
