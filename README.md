@@ -462,6 +462,7 @@ Identity in generative systems does not persist automatically.
 **Operational**
 
 - [Quality Gate & Hard Abort Discipline](docs/quality_gate_addendum.md)
+- [CIP Terminology Mapping](docs/cip_terminology_mapping.md)
 
 **Further Reading**
 
