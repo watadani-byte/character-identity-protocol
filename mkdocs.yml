@@ -2,6 +2,60 @@ site_name: Character Identity Protocol (CIP)
 site_url: https://watadani-byte.github.io/character-identity-protocol/
 site_description: A governance protocol for stabilizing character identity in probabilistic generative systems.
 site_author: Watadani
+site_name: Character Identity Protocol (CIP)
+site_url: https://watadani-byte.github.io/character-identity-protocol/
+site_description: A governance protocol for stabilizing character identity in probabilistic generative systems.
+site_author: Watadani
+
+repo_name: watadani-byte/character-identity-protocol
+repo_url: https://github.com/watadani-byte/character-identity-protocol
+
+docs_dir: docs
+
+theme:
+  name: material
+
+nav:
+  - Getting Started: getting_started.md
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - White Paper: whitepaper_v1.md
+  - Case Studies:
+    - Case 01A — Baseline Failure: case_01_failure_log.md
+    - Case 01B — Mira Project (Hard Abort and Re-convergence): case_01b_mira_project.md
+    - Case 02 — Wedding Series: case_02_wedding_series.md
+    - Case 03 — Avedon Project: case_03_avedon_project.md
+    - Case 04 — Cross-Platform Migration: case_04_shizuka.md
+    - Case 05 — Serendipitous Creation: case_05_serendipitous.md
+    - Case 06 — Gemini Validation: case_06_gemini.md
+  - Documentation:
+    - Technical Mechanism: technical_mechanism.md
+    - Quality Gate & Hard Abort: quality_gate_addendum.md
+    - Video Addendum: cip_video_addendum.md
+    - Reproducibility Scope: reproducibility_scope.md
+    - Glossary: glossary.md
+    - CIP Terminology Mapping: cip_terminology_mapping.md
+    - CIP vs Existing Methods: cip_vs_existing_methods.md
+  - Enterprise:
+    - Decision Pack: decision_pack.md
+    - Legal Governance: legal_governance.md
+    - Master Document: master_document.md
+  - Columns:
+    - Miracle Image: column_miracle_image.md
+    - Production Notes: column_production.md
+    - Identity Drift: column_identity_drift.md
+    - Before Consistent Characters: column_before_consistent_characters.md
+    - Identity Drift in Generative Image Models: column_identity_drift_practical.md
+    - Generative Character Drift — Technical Overview: column_character_drift_technical.md
+    - Character Drift Taxonomy: character_drift_taxonomy.md
+    - Observed Drift Phenomena: drift_observations.md
+    - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
+    - A Simple Structure for Writing Prompts: column_prompt_structure.md
+    - Writing Prompts for Image Generation: column_image_prompt_structure.md
+    - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
+
+plugins:
+  - search
 
 repo_name: watadani-byte/character-identity-protocol
 repo_url: https://github.com/watadani-byte/character-identity-protocol
