@@ -269,21 +269,97 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 ## 4b. A Representative Cross-Platform Production Pipeline
 
-The following describes one practical implementation path for CIP-governed character identity stabilization under the current generative AI ecosystem. It is not presented as a universal or permanent configuration. Tool availability, platform capabilities, and API policies evolve rapidly; the operational layers described here are intended to remain meaningful independently of any specific vendor combination.
+The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
 
-A representative present-day pipeline may be organized across five functional stages.
+This configuration is not presented as universal or permanent. Tool availability, platform capabilities, and API policies evolve rapidly. The operational layers described here are intended to remain meaningful independent of any specific vendor combination.
 
-**Reference generation** is handled by systems optimized for visual diversity and aesthetic exploration — where the initial character reference space is surveyed and candidate anchor images are identified. This stage is not governed by CIP directly; it produces the inputs from which anchor selection occurs.
+A representative contemporary pipeline may be organized across five functional stages.
 
-**Anchor finalization** is performed in composable or controllable generation environments — where candidate images are conditioned, evaluated against skeletal and proportion constraints, and prepared as stable, validated anchor inputs for downstream cycles.
+### Reference Generation
 
-**Sequential scene generation** is delegated to inference-capable systems that accept anchor references and minimal prompts as inputs. This stage operates under full CIP governance: identity gates are applied after each generation cycle, and hard-abort conditions are enforced when drift is detected.
+Reference generation is handled by systems optimized for visual diversity and aesthetic exploration (e.g., Midjourney). At this stage the initial character reference space is explored and candidate anchor images are identified.
 
-**Production post-processing** is handled by downstream tools operating outside the CIP generation loop, where identity has already been validated. This stage addresses retouching, compositing, and format preparation.
+This stage is not directly governed by CIP. Instead, it produces the candidate inputs from which anchors are later selected.
 
-**Orchestration and workflow governance** may be supported by agentic systems capable of coordinating across pipeline stages, triggering re-binding events, and maintaining audit records of gate outcomes.
+### Anchor Finalization
 
-The lasting contribution of this architecture is not the specific vendor combination, which reflects present-day tool availability, but the protocol layer itself: a defined operational structure for anchor management, identity validation, hard-abort enforcement, and cross-platform re-convergence that remains applicable as individual tools are replaced or extended.
+Anchor finalization is performed within composable or highly controllable generation environments (e.g., ComfyUI). In this stage candidate images may be conditioned, evaluated against skeletal and proportion constraints, and prepared as stable validated anchor inputs for downstream cycles.
+
+### Sequential Scene Generation
+
+Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
+
+This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, recovery mechanisms such as hard-abort mechanisms may be triggered.
+
+### Production Post-Processing
+
+Production post-processing is handled by downstream creative tools (e.g., Adobe Photoshop, Adobe Firefly, or related production software). These tools operate outside the CIP generation loop, where identity has already been validated.
+
+Typical tasks in this stage include retouching, compositing, and preparation for final output.
+
+### Orchestration and Workflow Governance
+
+Pipeline orchestration and workflow governance may be supported by agentic systems capable of coordinating tools and maintaining operational records (e.g., ChatGPT, Claude, or Gemini with tool-use capabilities).
+
+Such systems can coordinate across pipeline stages, trigger re-binding events when necessary, and maintain audit logs of identity gate outcomes.
+
+### Pipeline Diagram
+
+*Figure 1. Representative Cross-Platform Production Pipeline under CIP Governance*
+
+```mermaid
+flowchart TD
+    GOV["CIP Governance Layer
+    ─────────────────────────────
+    Anchor Management · Identity Gates · Hard Abort · Re-convergence"]
+
+    S1["Stage 1: Reference Generation
+    (e.g., Midjourney)"]
+    S2["Stage 2: Anchor Finalization
+    (e.g., ComfyUI)"]
+    S3["Stage 3: Sequential Scene Generation
+    (e.g., GPT Image 1.5 / Nano Banana)"]
+    GATE{"Identity Validation Gates
+    Face ∧ Skeleton ∧ Proportion"}
+    ABORT["Hard Abort
+    → Re-binding
+    → Re-convergence"]
+    S4["Stage 4: Production Post-Processing
+    (e.g., Adobe products)"]
+    S5["Stage 5: Orchestration / Workflow Governance
+    (e.g., ChatGPT / Claude / Gemini)"]
+
+    GOV -.->|governs| S3
+    GOV -.->|governs| GATE
+    GOV -.->|governs| ABORT
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> GATE
+    GATE -->|PASS| S4
+    GATE -->|FAIL — drift detected| ABORT
+    ABORT -->|Re-converge| S3
+    S4 --> S5
+    S5 -.->|coordinates & audits| S2
+    S5 -.->|coordinates & audits| S3
+```
+
+*Note: Vendor names shown are examples only. The primary contribution is the CIP governance layer, which remains applicable as individual tools evolve.*
+
+-----
+
+### Architectural Implication
+
+The lasting contribution of this architecture is not the specific vendor combination, which reflects present-day tool availability. Rather, it is the protocol layer itself.
+
+CIP defines an operational structure for:
+
+- anchor management
+- identity validation
+- hard-abort enforcement
+- cross-platform re-convergence
+
+This structure remains applicable even as individual tools are replaced, extended, or evolve over time.
 
 -----
 
