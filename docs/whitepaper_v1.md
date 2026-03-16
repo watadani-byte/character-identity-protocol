@@ -267,6 +267,26 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 -----
 
+## 4b. A Representative Cross-Platform Production Pipeline
+
+The following describes one practical implementation path for CIP-governed character identity stabilization under the current generative AI ecosystem. It is not presented as a universal or permanent configuration. Tool availability, platform capabilities, and API policies evolve rapidly; the operational layers described here are intended to remain meaningful independently of any specific vendor combination.
+
+A representative present-day pipeline may be organized across five functional stages.
+
+**Reference generation** is handled by systems optimized for visual diversity and aesthetic exploration — where the initial character reference space is surveyed and candidate anchor images are identified. This stage is not governed by CIP directly; it produces the inputs from which anchor selection occurs.
+
+**Anchor finalization** is performed in composable or controllable generation environments — where candidate images are conditioned, evaluated against skeletal and proportion constraints, and prepared as stable, validated anchor inputs for downstream cycles.
+
+**Sequential scene generation** is delegated to inference-capable systems that accept anchor references and minimal prompts as inputs. This stage operates under full CIP governance: identity gates are applied after each generation cycle, and hard-abort conditions are enforced when drift is detected.
+
+**Production post-processing** is handled by downstream tools operating outside the CIP generation loop, where identity has already been validated. This stage addresses retouching, compositing, and format preparation.
+
+**Orchestration and workflow governance** may be supported by agentic systems capable of coordinating across pipeline stages, triggering re-binding events, and maintaining audit records of gate outcomes.
+
+The lasting contribution of this architecture is not the specific vendor combination, which reflects present-day tool availability, but the protocol layer itself: a defined operational structure for anchor management, identity validation, hard-abort enforcement, and cross-platform re-convergence that remains applicable as individual tools are replaced or extended.
+
+-----
+
 ## 5. Governance and IP Management
 
 ### Brand Integrity
