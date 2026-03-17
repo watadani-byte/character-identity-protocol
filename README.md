@@ -251,33 +251,7 @@ Proportion Gate"]
 
 ## Why Anchors Work
 
-A previously generated image represents a **known converged solution** within the model’s output space.
-
-When supplied as a reference, the anchor increases the probability that generation returns toward a previously validated identity state.
-
-```
-Model Exploration
-        ↓
-Anchor Guidance
-        ↓
-Identity Convergence
-```
-
-The anchor does not override the model.
-It guides generation toward a previously validated identity state.
-
-```mermaid
-flowchart TD
-    A[Learned Distribution] --> B[Model Exploration]
-    B --> C[Anchor Guidance]
-    C --> D[Convergence]
-    D --> E{Identity Gates}
-    E -->|PASS| F[Accepted Output]
-    E -->|FAIL| G[Hard Abort → Re-binding]
-    G --> B
-```
-
-*CIP core mechanism: probabilistic sampling, identity drift, and anchor-guided re-convergence.*
+A previously generated image represents a **known converged solution** within the model’s output space. When supplied as a reference, the anchor guides generation toward a previously validated identity state.
 
 ```mermaid
 flowchart TD
@@ -290,29 +264,21 @@ flowchart TD
     G --> B
 ```
 
+*CIP core mechanism: probabilistic sampling, identity drift, and anchor-guided re-convergence.*
+
+→ [Technical Mechanism](docs/technical_mechanism.md)
+
 -----
 
 ## Cycle-Based Stabilization
 
-Identity stability is not permanent in probabilistic systems.
-Instead it exists within bounded convergence windows.
+Identity stability exists within bounded convergence windows. CIP restores stability by re-injecting the anchor at cycle boundaries.
 
 ```
 Cycle A → Drift → Re-binding → Cycle B
 ```
 
-CIP restores stability by periodically re-injecting the anchor and restarting the convergence process.
-
-```mermaid
-flowchart LR
-    A[Cycle A: Convergence Window] --> B[Drift Accumulation]
-    B --> C[Context Stability Threshold]
-    C --> D[Re-Binding / Re-Convergence]
-    D --> E[Cycle B: Re-Converged Window]
-```
-
-> Stability is not infinite.
-> Stability is chained through disciplined re-convergence.
+> Stability is chained through disciplined re-convergence — not assumed to persist indefinitely.
 
 -----
 
@@ -320,29 +286,19 @@ flowchart LR
 
 CIP may legitimately produce no acceptable output.
 
-If identity gates fail and identity cannot be restored within the current cycle, the correct operational result is:
+If identity gates fail and identity cannot be restored within the current cycle:
 
 > No acceptable output could be produced under the current conditions.
 
-This is not a system error. It is the expected behavior of a governed probabilistic workflow — rejecting outputs that do not satisfy identity constraints is the protocol working as intended.
-
-In such cases, the operator should re-evaluate the anchor, generation conditions, or prompt before restarting the cycle.
+This is the expected behavior of a governed probabilistic workflow — not a system error.
 
 -----
 
 ## Inference-Time Protocol
 
-CIP operates **entirely at inference time**.
+CIP operates **entirely at inference time** and does not modify model weights, training data, or internal architecture.
 
-The protocol:
-
-- does not modify model weights
-- does not alter training data
-- does not access proprietary model internals
-
-Instead, it constrains reconstruction behavior through **input design and operational control**.
-
-This allows CIP to function across multiple platforms and closed-source systems.
+It constrains generation behavior through **input design and operational control**, making it compatible with closed-source systems.
 
 -----
 
@@ -575,33 +531,9 @@ Demonstration requests may be considered depending on scope and feasibility.
 
 ## Next Phase (Planned)
 
-### CIP Specification Draft (v0.x)
-
-A formalized specification layer is in preparation.
-
-Planned scope:
-
-- Normative terminology (SHALL / SHOULD / MAY)
-- Formal gate definitions
-- Conformance conditions
-- Re-binding requirements
-- Operational boundary clauses
-
-### CIP Enterprise Pilot Framework
-
-An enterprise-focused documentation layer is also in development.
-
-Planned scope:
-
-- Audit-ready logging templates
-- Gate event recording schema
-- Operational risk mapping
-- Compliance alignment guidelines
-
------
+A formal specification layer (normative terminology, gate definitions, conformance conditions) and an enterprise pilot framework (audit templates, compliance guidelines) are in preparation.
 
 This repository represents the stable conceptual and governance layer (v1.x series).
-v1.0 is the initial tagged snapshot; v1.1 reflects documentation refinement.
 
 -----
 
