@@ -13,20 +13,39 @@ The system operates on the principle that generative models do not solve a given
 
 -----
 
+## Operational Objective
+
+CIP is not designed to improve generation quality.
+
+Its purpose is to ensure:
+
+- **Identity consistency** — outputs converge to a defined identity state
+- **Reproducibility of outputs** — generation cycles produce auditable, verifiable results
+- **Operational controllability** — the generation process is governed by explicit rules
+- **Failure detectability** — drift and collapse states are detected and terminated
+
+CIP transforms generative systems from uncontrolled probabilistic processes into manageable and governable systems.
+
+This makes CIP applicable not only to creative workflows, but also to enterprise environments requiring risk control, auditability, and identity assurance.
+
+-----
+
 ## Level 0 — Framework
 
 **CIP (Character Identity Protocol)**
 
 A multi-layer system for controlling, observing, restoring, and terminating identity states.
 
-|Layer    |Function                                |
-|---------|----------------------------------------|
-|Level 1  |Reconstruction Model (A → A′ → B′)      |
-|Level 2  |Control Target (A′)                     |
-|Level 3  |Control Theory (Anchor Model)           |
-|Level 4  |Anchor Re-Convergence Method            |
-|Level 4.5|Observation & Evaluation                |
-|Level 5  |Safety Mechanism (Hard Abort / Rollback)|
+|Layer    |Function                                  |
+|---------|------------------------------------------|
+|Level −1 |Operational Objective (governance purpose)|
+|Level 0  |Framework (CIP structure)                 |
+|Level 1  |Reconstruction Model (A → A′ → B′)        |
+|Level 2  |Control Target (A′)                       |
+|Level 3  |Control Theory (Anchor Model)             |
+|Level 4  |Anchor Re-Convergence Method              |
+|Level 4.5|Observation & Evaluation                  |
+|Level 5  |Safety Mechanism (Hard Abort / Rollback)  |
 
 -----
 
