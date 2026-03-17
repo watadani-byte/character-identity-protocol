@@ -71,7 +71,7 @@ CIP continuously:
 |Reconstruction Model (A → A′ → B′)|Drift originates from reconstruction, not randomness                |
 |Anchor Model                      |Low-entropy reference that constrains A′                            |
 |Control Rules                     |Single command · Single state transition · Decompose complex changes|
-|Anchor Re-Convergence             |Restores A′ to anchor-constrained state                             |
+|Anchor Re-Convergence Method      |Restores A′ to anchor-constrained state                             |
 |Observation Layer                 |Identity Score · Consistency Score · Drift Score                    |
 |Safety Mechanism                  |Hard Abort · Rollback to last stable state                          |
 
@@ -158,8 +158,6 @@ Each output is a new reconstruction sampled from the model’s learned distribut
 Without operational control, **identity drift emerges naturally**.
 
 CIP was designed to operationally control this reconstruction behavior.
-
-CIP addresses the operational problem of identity drift in probabilistic generative systems by introducing a validation-governed convergence loop.
 
 In image generation communities, this problem is often discussed as character consistency, identity preservation, or consistent character generation.
 CIP addresses it at the operational governance layer.
@@ -530,9 +528,10 @@ Demonstration requests may be considered depending on scope and feasibility.
 
 -----
 
-## Next Phase (Planned)
+## Next Phase
 
-A formal specification layer (normative terminology, gate definitions, conformance conditions) and an enterprise pilot framework (audit templates, compliance guidelines) are in preparation.
+- Formal specification layer (normative terminology, gate definitions, conformance conditions)
+- Enterprise pilot framework (audit templates, compliance guidelines)
 
 This repository represents the stable conceptual and governance layer (v1.x series).
 
