@@ -250,7 +250,7 @@ Proportion Gate"]
 
 ## Why Anchors Work
 
-A previously generated image represents a **known converged solution** within the model’s output space. When supplied as a reference, the anchor guides generation toward a previously validated identity state.
+A previously generated image represents a **known converged solution** within the model’s output space. When supplied as a reference, the anchor guides generation toward a previously validated identity state. CIP guides generation toward high-density regions of the model’s learned distribution, where stable identity reconstruction is more likely to occur.
 
 ```mermaid
 flowchart TD
