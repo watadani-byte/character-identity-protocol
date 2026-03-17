@@ -75,6 +75,28 @@ This reconstruction process is the primary cause of identity drift.
 A′ = f(A, Context, Optimization Pressure)
 ```
 
+### Internal Structure of A′ (Conceptual)
+
+A′ consists of multiple latent components:
+
+- **Identity** — character, face, personality
+- **Structure** — pose, composition
+- **Style** — rendering, visual regime
+- **Contextual constraints** — session context, environmental signals
+
+Drift may occur independently in each component.
+Control mechanisms must target these components explicitly.
+
+### Control Target Clarification
+
+All control mechanisms operate on A′, not A.
+
+- Anchor constrains the reconstruction space of A′
+- Control rules limit degrees of freedom in A′ transformation
+- Re-convergence modifies A′ toward anchor-constrained regions
+
+Therefore, A′ is the sole controllable entity in the system.
+
 ### States
 
 |State|Description|
