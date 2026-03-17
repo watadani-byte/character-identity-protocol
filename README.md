@@ -289,6 +289,8 @@ Only an output that passes all identity gates becomes an anchor.
 
 This formation step is not optional. Without a validated anchor, the CIP governance loop cannot begin.
 
+This step defines the entry condition of the protocol.
+
 -----
 
 ## Cycle-Based Stabilization
