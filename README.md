@@ -269,6 +269,28 @@ flowchart TD
 
 -----
 
+## Anchor Formation
+
+Anchors are not assumed to exist.
+They are created through a controlled one-shot convergence process.
+
+```
+Minimal Prompt + Generation
+        ↓
+Identity Gates (Face ∧ Skeleton ∧ Proportion)
+        ↓
+PASS → Anchor established
+FAIL → Discard and retry
+```
+
+Only an output that passes all identity gates becomes an anchor.
+
+> **Anchor = validated convergence state**
+
+This formation step is not optional. Without a validated anchor, the CIP governance loop cannot begin.
+
+-----
+
 ## Cycle-Based Stabilization
 
 Identity stability exists within bounded convergence windows. CIP restores stability by re-injecting the anchor at cycle boundaries.
