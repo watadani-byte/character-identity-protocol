@@ -1,27 +1,17 @@
 # Character Identity Protocol (CIP)
 
-**Character Identity Protocol (CIP)** is an operational governance protocol
-that stabilizes character identity in probabilistic generative systems
-by controlling identity convergence through anchors, validation gates,
-and hard-abort recovery cycles.
+AI does not execute your input.
+It reconstructs it.
 
-Generative models do not produce deterministic outputs. Even with identical prompts, the same character may appear different across generations.
+```
+A → A′ → B′
+```
 
-This variability is not noise to eliminate, but a property the protocol must govern.
+This is why identity drifts.
 
-Even under identical conditions, generative systems may occasionally produce slightly different outputs across generations (A → A′).
-
-CIP addresses this operational problem by introducing a structured workflow built around anchors, minimal prompts, and identity validation gates.
-
-**CIP does not attempt to control the model itself.
-It controls the conditions under which identity convergence occurs.**
-
-CIP is not a prompting technique. It is an operational protocol for stabilizing identity reconstruction in probabilistic generative systems, using anchor-based convergence, identity gates, and hard-abort recovery cycles.
+**CIP controls A′.**
 
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
-
-For the theoretical framework and full protocol description, see the White Paper:  
-[White Paper: Character Identity Protocol v1.0](docs/whitepaper_v1.md)
 
 -----
 
@@ -94,7 +84,9 @@ CIP **is**:
 
 > A governance-layer protocol for managing identity in generative systems.
 
-→ [Complete Specification](docs/cip_complete_spec.md) — [Technical Mechanism](docs/technical_mechanism.md)
+→ [Complete Specification](docs/cip_complete_spec.md)  
+→ [Technical Mechanism](docs/technical_mechanism.md)  
+→ [White Paper](docs/whitepaper_v1.md)
 
 -----
 
