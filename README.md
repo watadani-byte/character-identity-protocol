@@ -11,6 +11,10 @@ This is why identity drifts.
 
 **CIP controls A′.**
 
+Character Identity Protocol (CIP) is a governance-layer protocol
+for stabilizing identity in probabilistic generative systems
+by controlling reconstruction, validation, re-convergence, and abort conditions.
+
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
 -----
@@ -185,9 +189,6 @@ CIP introduces four operational elements:
 Identity Gates are evaluated by the operator (typically a human reviewer), with optional metric-based verification.
 
 Together these form a controlled generation loop.
-
-**CIP does not attempt to control the model itself.
-It controls the conditions under which identity convergence occurs.**
 
 > This is not a generation method.
 > It is a character identity governance protocol.
@@ -442,13 +443,13 @@ Identity in generative systems does not persist automatically.
 ## Reading Paths
 
 **Researchers / Technical Review**  
-[White Paper](docs/whitepaper_v1.md) → [Technical Mechanism](docs/technical_mechanism.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
+[White Paper](docs/whitepaper_v1.md) → [Technical Mechanism](docs/technical_mechanism.md) → [Complete Specification](docs/cip_complete_spec.md)
 
 **Practitioners**  
 [Quickstart](docs/quickstart.md) → [Architecture Diagram](docs/architecture_diagram.md) → [Case Studies](docs/case_01_failure_log.md)
 
 **Enterprise / Governance**  
-[Decision Pack](docs/decision_pack.md) → [Specification v0.1](docs/cip_spec_v0.1.md)
+[Decision Pack](docs/decision_pack.md) → [Complete Specification](docs/cip_complete_spec.md)
 
 -----
 
