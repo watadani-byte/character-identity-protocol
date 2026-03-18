@@ -130,6 +130,24 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 *See: [Miracle Images and Convergence Behavior](column_miracle_image.md) — [Character Identity Drift in Generative AI](column_identity_drift.md)*
 
+### Operational Definition of A′ (Reconstructed State)
+
+Within the CIP framework, A′ represents the internally reconstructed problem state derived from user input A.
+
+A′ is not directly observable.
+However, it can be inferred through output behavior (B′) and its deviation from the anchor reference.
+
+Operationally, A′ is defined as:
+
+- the latent reconstruction state conditioned by prompt, anchor, and context
+- the immediate precursor to output generation (B′)
+- the control target within the CIP loop
+
+CIP does not control output directly.
+It constrains A′ indirectly through anchor injection, prompt entropy reduction, and identity validation gates.
+
+Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by maintaining A′ within a bounded convergence region relative to the anchor.
+
 ### Controlled Convergence
 
 A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
