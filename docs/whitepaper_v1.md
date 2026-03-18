@@ -23,9 +23,9 @@ These results suggest that identity stability in generative systems is fundament
 
 ## 1. Executive Summary
 
-The primary challenge in deploying generative AI for creative and corporate workflows is **Identity Drift** — the loss of visual and behavioral consistency across generation turns, sessions, and platforms.
+The primary engineering challenge in deploying generative AI for production workflows is **Identity Drift** — the systematic divergence of reconstructed identity states (A′) across generation turns, sessions, and platforms.
 
-Conventional trial-and-error prompting lacks reproducibility and risks **Identity Loss** during model updates or session terminations.
+Conventional prompt-based approaches lack defined control targets, validation logic, and recovery conditions, resulting in non-reproducible outputs and undetected **Identity Loss** during model updates or session terminations.
 
 The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
 
@@ -186,7 +186,7 @@ Under this interpretation, CIP stabilizes identity by maintaining A′ within a 
 
 Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
 
-It describes how reconstruction behavior becomes biased toward a specific identity region, narrowing the effective probability density of generation under anchor constraints.
+It describes how A′ reconstruction behavior becomes biased toward anchor-proximate identity regions, narrowing the effective sampling range under anchor constraints. Under this interpretation, Controlled Convergence is an observable property of CIP-governed reconstruction, not an independent control mechanism.
 
 The convergence point is not forced — it is biased. The anchor introduces a previously validated solution state that guides reconstruction toward a known stable region.
 
@@ -414,7 +414,7 @@ The formation process is operationally supported by:
 - Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
 - Multi-view expansion (generating a character sheet to distribute identity across reconstruction perspectives)
 
-This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the governance loop. Without a validated anchor, the CIP protocol cannot begin.
+This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the reconstruction control loop. Without a validated anchor — an output that has passed all identity gates — the CIP protocol cannot begin. This is the operational definition of the reconstruction control entry boundary.
 
 ### Convergence Interpretation: Density-Guided Reconstruction
 
@@ -438,6 +438,29 @@ It guides the model back toward statistically stable identity regions.
 This mechanism explains why anchor-based re-convergence is more effective than prompt-based refinement in restoring identity consistency.
 
 *Note: “Controlled convergence”, “density-guided reconstruction”, and “anchor-based convergence” describe layered aspects of the same underlying behavior: steering reconstruction toward high-density, anchor-proximate regions of the reconstruction space. They are not competing mechanisms.*
+
+### Operational Definition: High-Density Latent Anchoring (HDLA)
+
+CIP operationally biases reconstruction toward high-density regions of the model’s reconstruction space.
+
+This is achieved through the combined application of:
+
+**1. Anchor Injection**
+A validated anchor image is supplied as the primary conditioning reference, biasing A′ reconstruction toward a previously stable identity state.
+
+**2. Prompt Entropy Minimization**
+Descriptive tokens are reduced to invariant attributes only, minimizing divergence in A → A′ reconstruction and preventing optimization pressure from displacing the anchor constraint.
+
+**3. Identifier Binding**
+A stable symbolic token (UID) is used to reinforce identity recall across reconstruction cycles, increasing the probability that subsequent generations converge toward the same identity state.
+
+**4. Multi-View Constraint Distribution**
+Identity is expanded across multiple views (front, side, back), distributing identity constraints across reconstruction perspectives and increasing overall reconstruction stability.
+
+These steps do not directly access internal model representations.
+Instead, they **indirectly constrain sampling trajectories**, increasing the probability that A′ is reconstructed within high-density, identity-consistent regions of the reconstruction space.
+
+This behavior is referred to as **High-Density Latent Anchoring (HDLA)** — an operational mechanism distinct from direct model conditioning or parameter modification.
 
 -----
 
