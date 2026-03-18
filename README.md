@@ -11,6 +11,12 @@ This is why identity drifts.
 
 **CIP controls A′.**
 
+```
+Core Model:     A → A′ → B′  (Reconstruction Control Model, RCM)
+Control Target: A′  (reconstructed state)
+Key Mechanisms: Anchor constraint · Identity gates · Hard Abort & Re-convergence
+```
+
 Character Identity Protocol (CIP) is a governance-layer protocol
 for stabilizing identity in probabilistic generative systems
 by controlling reconstruction, validation, re-convergence, and abort conditions.
