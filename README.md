@@ -293,6 +293,59 @@ This step defines the entry condition of the protocol.
 
 -----
 
+## Anchor Convergence (Operational Method)
+
+CIP introduces an operational method called **Anchor Convergence**.
+
+This method enables identity stabilization using:
+
+- A single high-density sample (one-shot)
+- Minimal prompt structure
+- Identifier binding (naming)
+- Multi-view expansion (character sheet)
+
+### Core Idea
+
+Generative models do not store identity.
+
+Instead, identity must be re-converged from a stable region in latent space.
+
+Anchor Convergence forces this process by:
+
+1. Selecting a high-coherence sample
+1. Binding it to a symbolic identifier
+1. Reducing prompt entropy (minimal prompt)
+1. Expanding identity across multiple views
+1. Re-invoking the identity under controlled conditions
+
+### Pipeline
+
+```
+High-Density Sample
+→ Identifier (Name)
+→ Minimal Prompt
+→ Character Sheet Expansion
+→ Re-Convergence
+```
+
+### Key Properties
+
+- Does not require model fine-tuning (LoRA-free)
+- Works across sessions (reset-tolerant)
+- Increases recall probability of identity
+- Reduces drift in A → A′ → B′ transformation
+
+### Position in CIP
+
+Anchor Convergence operates at:
+
+- Level 3: Control Theory (latent targeting)
+- Level 4: Execution Method (operational workflow)
+
+This method targets high-density regions in the training distribution, where reconstruction probability is maximized. This behavior is referred to as **High-Density Latent Anchoring**.
+
+-----
+
 ## Cycle-Based Stabilization
 
 Identity stability exists within bounded convergence windows. CIP restores stability by re-injecting the anchor at cycle boundaries.
