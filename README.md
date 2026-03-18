@@ -78,14 +78,14 @@ Failure response:  Hard Abort → Re-binding → Re-convergence
 
 ### Key Components
 
-|Component                         |Role                                                                         |
-|----------------------------------|-----------------------------------------------------------------------------|
-|Reconstruction Model (A → A′ → B′)|Drift originates from reconstruction, not randomness                         |
-|Anchor Model                      |Low-entropy reference that constrains A′                                     |
-|Operational Heuristics            |Single command per turn · Single state transition · Decompose complex changes|
-|Anchor Re-Convergence Method      |Restores A′ to anchor-constrained state                                      |
-|Output Observation Layer          |Human review and optional metric verification against anchor                 |
-|Safety Mechanism                  |Hard Abort · Rollback to last stable state                                   |
+|Component                          |Role                                                                         |
+|-----------------------------------|-----------------------------------------------------------------------------|
+|Reconstruction Model (A → A′ → B′) |Drift originates from reconstruction, not randomness                         |
+|Anchor Model                       |Low-entropy reference that constrains A′                                     |
+|Operational Heuristics             |Single command per turn · Single state transition · Decompose complex changes|
+|Anchor Re-Convergence Method (ARCM)|Restores A′ to anchor-constrained state                                      |
+|Output Observation Layer           |Human review and optional metric verification against anchor                 |
+|Safety Mechanism                   |Hard Abort · Rollback to last stable state                                   |
 
 -----
 
@@ -306,7 +306,7 @@ This step defines the entry condition of the protocol.
 
 -----
 
-## Anchor Convergence (Operational Method)
+## Anchor Re-Convergence Method (ARCM)
 
 CIP introduces an operational method called **Anchor Convergence**.
 
