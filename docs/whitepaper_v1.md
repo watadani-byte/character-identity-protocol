@@ -33,6 +33,8 @@ CIP reframes character identity from a static output property to a recoverable c
 
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
+CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). These three components constitute the core technical architecture of the protocol.
+
 -----
 
 ## 2.1 Related Work and Research Context
@@ -202,14 +204,16 @@ Subject to: Hard Abort condition when drift exceeds gate threshold
 
 CIP is structured as a multi-layer system spanning conceptual, control-theoretic, operational, and governance layers.
 
-|Layer  |Name                |Content                                                                                   |
-|-------|--------------------|------------------------------------------------------------------------------------------|
-|Level 0|Worldview Layer     |Character Identity Protocol (CIP)                                                         |
-|Level 1|Phenomenon Model    |Reconstruction Control Model (RCM): A → A′ → B′                                           |
-|Level 2|Control Target      |Reconstructed State A′                                                                    |
-|Level 3|Control Theory Layer|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
-|Level 4|Execution Method    |Anchor Re-Convergence Method (ARCM)                                                       |
-|Level 5|Governance Layer    |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
+The control-theoretic layer of CIP is referred to as **Reconstruction Convergence Control (RCC)** — the operational realization of bounded A′ control through anchor constraints, identity gates, and Hard Abort enforcement.
+
+|Layer  |Name                      |Content                                                                                   |
+|-------|--------------------------|------------------------------------------------------------------------------------------|
+|Level 0|Worldview Layer           |Character Identity Protocol (CIP)                                                         |
+|Level 1|Phenomenon Model          |Reconstruction Control Model (RCM): A → A′ → B′                                           |
+|Level 2|Control Target            |Reconstructed State A′                                                                    |
+|Level 3|Control Theory Layer (RCC)|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
+|Level 4|Execution Method          |Anchor Re-Convergence Method (ARCM)                                                       |
+|Level 5|Governance Layer          |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
 
 This layered structure allows CIP to function simultaneously as a research model, an engineering control system, and an operational governance protocol.
 
@@ -217,9 +221,9 @@ The architecture is designed so that each layer is independently reviewable, ope
 
 ### Controlled Convergence
 
-Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
+Controlled Convergence is a descriptive term for reconstruction behavior observed under CIP governance — specifically, the narrowing of effective sampling range toward anchor-proximate identity regions. It is not a control method implemented by the protocol; it is an emergent property of ARCM and HDLA operating together.
 
-It describes how A′ reconstruction behavior becomes biased toward anchor-proximate identity regions, narrowing the effective sampling range under anchor constraints. Under this interpretation, Controlled Convergence is an observable property of CIP-governed reconstruction, not an independent control mechanism.
+*Note: The primary control-theoretic term is Reconstruction Convergence Control (RCC). “Controlled Convergence” is retained as a supporting descriptive term.*
 
 The convergence point is not forced — it is biased. The anchor introduces a previously validated solution state that guides reconstruction toward a known stable region.
 
