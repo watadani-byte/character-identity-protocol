@@ -124,7 +124,7 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
-Accordingly, CIP may be understood as an **inference-time governance framework**: a protocol that governs reconstruction, validation, recovery, and failure handling during inference rather than modifying the model itself.
+Accordingly, CIP may be understood as an **inference-time reconstruction control framework**: a protocol that governs reconstruction, validation, recovery, and failure handling during inference rather than modifying the model itself.
 
 -----
 
@@ -163,6 +163,8 @@ CIP does not control output directly.
 It constrains A′ indirectly through anchor injection, prompt entropy reduction, and identity validation gates.
 
 Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by maintaining A′ within a bounded convergence region relative to the anchor.
+
+We refer to this formulation — A → A′ → B′ — as the **Reconstruction Control Model (RCM)**. RCM provides the theoretical basis for treating identity drift as a reconstruction control problem rather than a prompt engineering or output filtering problem.
 
 ### Control-Theoretic Interpretation
 
@@ -916,7 +918,7 @@ It constrains outputs operationally.
 
 ### Implication: Inference-Time Governance
 
-CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time governance problem.
+CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time reconstruction control problem.
 
 This implies that future improvements in generative reliability may be achieved not only through model scaling or training, but through structured operational control applied during inference.
 
