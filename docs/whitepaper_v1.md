@@ -110,6 +110,8 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
+Accordingly, CIP may be understood as an **inference-time governance framework**: a protocol that governs reconstruction, validation, recovery, and failure handling during inference rather than modifying the model itself.
+
 -----
 
 ## 2. Theoretical Foundation: Convergence Behavior
