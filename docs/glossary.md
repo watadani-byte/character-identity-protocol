@@ -19,9 +19,23 @@ The image is **not** an artistic reference or stylistic inspiration. It is a rec
 
 ## Anchor Mechanism
 
-The operational procedure of providing an anchor image alongside a minimal prompt to constrain generation toward a prior convergence state.
+The protocol-level stabilizing principle by which a validated anchor image is introduced as a high-information conditioning signal to bias reconstruction toward a previously achieved identity state.
 
 Distinct from image-to-image (which encourages variation) and seed fixing (which primarily controls initial noise sampling).
+
+-----
+
+## Anchor Convergence
+
+The operational workflow for forming and re-establishing an anchor. Includes: high-density sample selection, identity gate validation, identifier binding, minimal prompt reduction, and multi-view expansion. Constitutes the entry condition of the CIP governance loop.
+
+Distinct from Anchor Mechanism: Anchor Mechanism is the stabilizing principle; Anchor Convergence is the formation and re-convergence workflow.
+
+-----
+
+## Identity Recall Probability
+
+An operational likelihood that subsequent generation cycles converge toward the same identity state as the anchor. Increased by identifier binding, multi-view expansion, and minimal prompt discipline. Not a mathematical probability but a qualitative indicator of reconstruction stability.
 
 -----
 
