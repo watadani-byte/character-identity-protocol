@@ -348,6 +348,20 @@ Factual attributes only. No adjectives, no mood descriptors, no subjective terms
 Assigning a stable linguistic token (UID) that refers to the converged identity state across sessions and prompts.
 Reduces cognitive and computational load in future sessions. Enables cross-session continuity without re-providing the full anchor each time.
 
+### Anchor Formation
+
+Anchors are not assumed to exist prior to protocol execution. They must be formed through a controlled convergence process.
+
+A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
+
+The formation process is operationally supported by:
+
+- Identifier binding (assigning a UID to the validated sample)
+- Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
+- Multi-view expansion (generating a character sheet to distribute identity across latent perspectives)
+
+This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the governance loop. Without a validated anchor, the CIP protocol cannot begin.
+
 -----
 
 ## 4. Advanced Application: Cross-Platform Migration
@@ -788,6 +802,8 @@ High-Density Sample
 Anchor Convergence is a valid operational mechanism for stabilizing identity in probabilistic generative systems.
 
 This demonstrates that CIP functions as a reproducible protocol, not merely a conceptual framework.
+
+The workflow described in this section corresponds directly to the Shizuka case study (Case 04), in which a validated high-density sample was assigned a unique identifier, subjected to minimal prompt reduction, and expanded into a multi-view character sheet. This sequence produced stable identity re-convergence across sessions — without model fine-tuning or image-to-image re-anchoring. The case demonstrates that identifier binding combined with character sheet expansion substantially increases identity recall probability across generation cycles.
 
 -----
 
