@@ -190,6 +190,23 @@ Under this interpretation, CIP stabilizes identity by maintaining A′ within a 
 
 CIP can therefore be interpreted as a **bounded stochastic control system over A′**: one in which the control objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
 
+### CIP Layered Architecture
+
+CIP is structured as a multi-layer system spanning conceptual, control-theoretic, operational, and governance layers.
+
+|Layer  |Name                |Content                                                                                   |
+|-------|--------------------|------------------------------------------------------------------------------------------|
+|Level 0|Worldview Layer     |Character Identity Protocol (CIP)                                                         |
+|Level 1|Phenomenon Model    |Reconstruction Control Model (RCM): A → A′ → B′                                           |
+|Level 2|Control Target      |Reconstructed State A′                                                                    |
+|Level 3|Control Theory Layer|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
+|Level 4|Execution Method    |Anchor Re-convergence Method (ARM)                                                        |
+|Level 5|Governance Layer    |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
+
+This layered structure allows CIP to function simultaneously as a research model, an engineering control system, and an operational governance protocol.
+
+The architecture is designed so that each layer is independently reviewable, operationally enforceable, and compatible with third-party audit — making CIP suitable for research publication, enterprise deployment, and standardization pathways.
+
 ### Controlled Convergence
 
 Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
