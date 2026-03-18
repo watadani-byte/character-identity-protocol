@@ -170,7 +170,7 @@ Under this interpretation, CIP stabilizes identity by maintaining A′ within a 
 
 Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
 
-A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
+It describes how reconstruction behavior becomes biased toward a specific identity region, narrowing the effective probability density of generation under anchor constraints.
 
 The convergence point is not forced — it is biased. The anchor introduces a previously validated solution state that guides reconstruction toward a known stable region.
 
@@ -404,7 +404,7 @@ This process is referred to in CIP as **Anchor Convergence** and constitutes the
 
 Anchor Convergence can be interpreted as a density-guided reconstruction process.
 
-High-quality anchor images correspond to high-density regions within the model’s learned distribution — regions where identity reconstruction is statistically stable.
+High-quality anchor images correspond to high-density regions within the model’s learned distribution — regions where identity reconstruction is statistically stable. (The term “learned distribution” is used here as an operational abstraction of reconstruction behavior, not a claim about internal model representation.)
 
 The Anchor Convergence procedure operates by:
 
