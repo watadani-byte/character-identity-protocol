@@ -180,6 +180,8 @@ CIP addresses it at the operational governance layer.
 
 CIP operates as an inference-time reconstruction control framework.
 
+In CIP, **control** refers to the technical constraint of A′ (the reconstructed state); **governance** refers to the operational enforcement of validation, failure handling, and recovery.
+
 CIP treats character identity as a **reconstruction control problem**: A′, the internally reconstructed state, is the control target — not the model, and not the output directly.
 
 In other words, CIP does not attempt to generate identity; it recovers it.
