@@ -512,7 +512,7 @@ flowchart TD
 
 -----
 
-## 5. Governance and IP Management
+## 4.2 Governance and IP Management
 
 ### Brand Integrity
 
@@ -695,6 +695,99 @@ flowchart LR
 ```
 
 *Figure 4. Identity stability exists within bounded generation windows. As generation turns accumulate, probabilistic drift increases. When the Max Context Stability Threshold is approached, CIP mandates Hard Abort and anchor re-binding to initiate a new bounded generation cycle. Stability is maintained through disciplined cycle chaining rather than assumed persistence.*
+
+-----
+
+## 5. Experimental Validation: Anchor Convergence Protocol
+
+This section demonstrates the operational validity of the Character Identity Protocol (CIP) through a practical reconstruction workflow.
+
+### 5.1 Objective
+
+To validate that character identity can be:
+
+- Stabilized from a single high-quality sample
+- Reconstructed across generations
+- Converted into a reusable identity anchor
+
+### 5.2 Initial Condition (High-Density Sample)
+
+A single image was generated that exhibited strong identity coherence (hereafter referred to as the “high-density latent sample”).
+
+This image serves as the initial anchor point.
+
+### 5.3 Step 1: Identifier Assignment
+
+A unique identifier was assigned to the character:
+
+- Name: Shiraishi Shizuka
+
+This step converts the image from a visual sample into a symbolic anchor.
+
+### 5.4 Step 2: Minimal Prompt Reduction
+
+The generation prompt was reduced to a minimal form:
+
+- Identity is referenced primarily via the assigned name
+- Descriptive tokens are minimized
+
+This enforces:
+
+- Single-command constraint
+- Reduced ambiguity in A → A′ transformation
+
+### 5.5 Step 3: Anchor Expansion (Character Sheet)
+
+A multi-view character sheet was generated:
+
+- Front view
+- Side view
+- Back view
+
+This step distributes the identity across multiple latent perspectives, increasing reconstruction stability.
+
+### 5.6 Step 4: Re-Invocation Test
+
+The character was regenerated using:
+
+- The assigned identifier
+- Minimal prompt structure
+
+Result:
+
+- Identity consistency significantly improved
+- Drift reduced compared to non-anchored generation
+
+### 5.7 Observations
+
+The following properties were observed:
+
+- Identity convergence can be induced without model modification
+- A single high-quality sample is sufficient to initialize an anchor
+- Multi-view expansion stabilizes reconstruction across latent space
+- Naming (identifier binding) significantly improves recall probability
+
+### 5.8 Interpretation
+
+This experiment supports the hypothesis that:
+
+> Character identity is not stored as a fixed entity, but can be re-converged through controlled reconstruction conditions.
+
+The process can be described as:
+
+```
+High-Density Sample
+→ Identifier Binding
+→ Minimal Prompt Enforcement
+→ Multi-View Expansion
+→ Stable Re-Convergence
+```
+
+### 5.9 Conclusion
+
+Anchor Convergence is a valid operational mechanism for stabilizing identity in probabilistic generative systems.
+
+This demonstrates that CIP functions as a reproducible protocol, not merely a conceptual framework.
 
 -----
 
