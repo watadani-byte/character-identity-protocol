@@ -148,6 +148,21 @@ It constrains A′ indirectly through anchor injection, prompt entropy reduction
 
 Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by maintaining A′ within a bounded convergence region relative to the anchor.
 
+### Control-Theoretic Interpretation
+
+CIP can be interpreted as a closed-loop control system:
+
+|Component          |Role                           |
+|-------------------|-------------------------------|
+|Controlled variable|A′ (reconstructed state)       |
+|Reference signal   |Anchor                         |
+|Controller         |Minimal Prompt + Identity Gates|
+|Disturbance        |Probabilistic drift            |
+|Observer           |Output (B′) and gate evaluation|
+|Control action     |Hard Abort and Re-binding      |
+
+Under this interpretation, CIP stabilizes identity by maintaining A′ within a bounded convergence region relative to the anchor.
+
 ### Controlled Convergence
 
 A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
