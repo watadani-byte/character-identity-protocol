@@ -146,6 +146,12 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 *See: [Miracle Images and Convergence Behavior](column_miracle_image.md) — [Character Identity Drift in Generative AI](column_identity_drift.md)*
 
+### Terminology: Control and Governance in CIP
+
+In CIP, “control” refers to the technical constraint of the reconstructed state (A′), while “governance” refers to the operational enforcement of validation, failure handling, and recovery.
+
+These are complementary layers: control defines what is constrained and how; governance defines when constraints are enforced, when failures are declared, and what recovery path is taken.
+
 ### Operational Definition of A′ (Reconstructed State)
 
 Within the CIP framework, A′ represents the internally reconstructed problem state derived from user input A.
@@ -420,7 +426,7 @@ This process is referred to in CIP as **Anchor Convergence** and constitutes the
 
 Anchor Convergence can be interpreted as a density-guided reconstruction process.
 
-High-quality anchor images correspond to high-density regions within the model’s learned distribution — regions where identity reconstruction is statistically stable. (The term “learned distribution” is used here as an operational abstraction of reconstruction behavior, not a claim about internal model representation.)
+High-quality anchor images correspond to high-density regions within the model’s reconstruction space — regions where identity reconstruction is statistically stable. (The term “learned distribution” is used here as a supporting abstraction for reconstruction behavior, not a claim about internal model representation.)
 
 The Anchor Convergence procedure operates by:
 
@@ -442,6 +448,8 @@ This mechanism explains why anchor-based re-convergence is more effective than p
 ### Operational Definition: High-Density Latent Anchoring (HDLA)
 
 CIP operationally biases reconstruction toward high-density regions of the model’s reconstruction space.
+
+This operational effect — biasing reconstruction toward high-density, identity-consistent regions through indirect constraint of sampling trajectories — is referred to in CIP as **High-Density Latent Anchoring (HDLA)**.
 
 This is achieved through the combined application of:
 
