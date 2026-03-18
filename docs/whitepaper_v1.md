@@ -893,6 +893,12 @@ By combining statistical convergence with rigorous operational framing, CIP esta
 The protocol does not oppose the model’s optimization dynamics.  
 It constrains outputs operationally.
 
+### Implication: Inference-Time Governance
+
+CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time governance problem.
+
+This implies that future improvements in generative reliability may be achieved not only through model scaling or training, but through structured operational control applied during inference.
+
 -----
 
 *Status: v1.0 — February 2026*  
