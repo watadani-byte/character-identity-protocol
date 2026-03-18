@@ -190,6 +190,14 @@ Under this interpretation, CIP stabilizes identity by maintaining A′ within a 
 
 CIP can therefore be interpreted as a **bounded stochastic control system over A′**: one in which the control objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
 
+**Objective Function (Operational)**
+
+```
+Maximize: identity similarity to anchor under gate constraints
+Minimize: drift accumulation across reconstruction cycles
+Subject to: Hard Abort condition when drift exceeds gate threshold
+```
+
 ### CIP Layered Architecture
 
 CIP is structured as a multi-layer system spanning conceptual, control-theoretic, operational, and governance layers.
@@ -200,7 +208,7 @@ CIP is structured as a multi-layer system spanning conceptual, control-theoretic
 |Level 1|Phenomenon Model    |Reconstruction Control Model (RCM): A → A′ → B′                                           |
 |Level 2|Control Target      |Reconstructed State A′                                                                    |
 |Level 3|Control Theory Layer|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
-|Level 4|Execution Method    |Anchor Re-convergence Method (ARM)                                                        |
+|Level 4|Execution Method    |Anchor Re-Convergence Method (ARCM)                                                       |
 |Level 5|Governance Layer    |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
 
 This layered structure allows CIP to function simultaneously as a research model, an engineering control system, and an operational governance protocol.
@@ -439,7 +447,7 @@ The formation process is operationally supported by:
 - Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
 - Multi-view expansion (generating a character sheet to distribute identity across reconstruction perspectives)
 
-This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the reconstruction control loop. Without a validated anchor — an output that has passed all identity gates — the CIP protocol cannot begin. This is the operational definition of the reconstruction control entry boundary.
+This process is referred to in CIP as the **Anchor Re-Convergence Method (ARCM)** and constitutes the entry condition of the reconstruction control loop. Without a validated anchor — an output that has passed all identity gates — the CIP protocol cannot begin. This is the operational definition of the reconstruction control entry boundary.
 
 ### Convergence Interpretation: Density-Guided Reconstruction
 
@@ -464,9 +472,11 @@ This mechanism explains why anchor-based re-convergence is more effective than p
 
 *Note: “Controlled convergence”, “density-guided reconstruction”, and “anchor-based convergence” describe layered aspects of the same underlying behavior: steering reconstruction toward high-density, anchor-proximate regions of the reconstruction space. They are not competing mechanisms.*
 
-### Operational Definition: High-Density Latent Anchoring (HDLA)
+### High-Density Latent Anchoring (HDLA) — Formal Definition
 
 **HDLA is defined as an operational biasing mechanism that increases the probability of reconstruction convergence toward high-density, identity-consistent regions of the reconstruction space through indirect constraint of sampling trajectories.**
+
+HDLA targets high-density regions of the reconstruction space to maximize reconstruction probability and stability. This is the operational explanation for why anchor-based re-convergence is more effective than prompt-based refinement.
 
 CIP operationally biases reconstruction toward high-density regions of the model’s reconstruction space.
 
