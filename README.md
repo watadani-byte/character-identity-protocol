@@ -17,9 +17,9 @@ Control Target: A′  (reconstructed state)
 Key Mechanisms: Anchor constraint · Identity gates · Hard Abort & Re-convergence
 ```
 
-Character Identity Protocol (CIP) is an inference-time reconstruction control framework
-that stabilizes identity in probabilistic generative systems
-by constraining the reconstructed state A′ through anchor injection, validation gates, Hard Abort conditions, and bounded re-convergence cycles.
+Character Identity Protocol (CIP) is an inference-time reconstruction control framework implemented as an operational governance layer.
+
+It stabilizes identity in probabilistic generative systems by constraining the reconstructed state A′ through anchor injection, validation gates, Hard Abort conditions, and bounded re-convergence cycles.
 
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
@@ -68,18 +68,24 @@ CIP continuously:
 - Restores identity when drift occurs
 - Terminates invalid states
 
+```
+Control target:    A′  (reconstructed state)
+Validation rule:   Identity Gates (Face ∧ Skeleton ∧ Proportion)
+Failure response:  Hard Abort → Re-binding → Re-convergence
+```
+
 -----
 
 ### Key Components
 
-|Component                         |Role                                                                |
-|----------------------------------|--------------------------------------------------------------------|
-|Reconstruction Model (A → A′ → B′)|Drift originates from reconstruction, not randomness                |
-|Anchor Model                      |Low-entropy reference that constrains A′                            |
-|Control Rules                     |Single command · Single state transition · Decompose complex changes|
-|Anchor Re-Convergence Method      |Restores A′ to anchor-constrained state                             |
-|Observation Layer                 |Identity Score · Consistency Score · Drift Score                    |
-|Safety Mechanism                  |Hard Abort · Rollback to last stable state                          |
+|Component                         |Role                                                                         |
+|----------------------------------|-----------------------------------------------------------------------------|
+|Reconstruction Model (A → A′ → B′)|Drift originates from reconstruction, not randomness                         |
+|Anchor Model                      |Low-entropy reference that constrains A′                                     |
+|Operational Heuristics            |Single command per turn · Single state transition · Decompose complex changes|
+|Anchor Re-Convergence Method      |Restores A′ to anchor-constrained state                                      |
+|Output Observation Layer          |Human review and optional metric verification against anchor                 |
+|Safety Mechanism                  |Hard Abort · Rollback to last stable state                                   |
 
 -----
 
