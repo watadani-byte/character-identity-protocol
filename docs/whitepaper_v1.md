@@ -188,6 +188,8 @@ CIP can be interpreted as a closed-loop control system:
 
 Under this interpretation, CIP stabilizes identity by maintaining A′ within a bounded convergence region relative to the anchor.
 
+CIP can therefore be interpreted as a **bounded stochastic control system over A′**: one in which the control objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
+
 ### Controlled Convergence
 
 Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
@@ -446,6 +448,8 @@ This mechanism explains why anchor-based re-convergence is more effective than p
 *Note: “Controlled convergence”, “density-guided reconstruction”, and “anchor-based convergence” describe layered aspects of the same underlying behavior: steering reconstruction toward high-density, anchor-proximate regions of the reconstruction space. They are not competing mechanisms.*
 
 ### Operational Definition: High-Density Latent Anchoring (HDLA)
+
+**HDLA is defined as an operational biasing mechanism that increases the probability of reconstruction convergence toward high-density, identity-consistent regions of the reconstruction space through indirect constraint of sampling trajectories.**
 
 CIP operationally biases reconstruction toward high-density regions of the model’s reconstruction space.
 
@@ -916,6 +920,12 @@ The workflow described in this section corresponds directly to the Shizuka case 
 -----
 
 ## 6. Validation
+
+**Reproducibility Definition**
+
+CIP defines reproducibility not as identical output replication, but as reproducible PASS/FAIL outcomes under identical anchor, prompt, and gate conditions.
+
+Under this definition, a workflow is reproducible if: given the same anchor, the same minimal prompt, and the same identity gate criteria, the classification outcome (PASS or FAIL) is consistently determinable — even when the generated images differ in non-identity-defining attributes.
 
 The protocol has been validated across the following production case groups:
 
