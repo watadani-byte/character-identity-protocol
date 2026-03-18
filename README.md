@@ -528,6 +528,34 @@ Identity in generative systems does not persist automatically.
 
 -----
 
+## Already Familiar with SD, Midjourney, or AI Research?
+
+CIP is not an extension of these — it is an orthogonal inference-time reconstruction control layer that governs when outputs are valid, when they must be rejected, and how identity is recovered.
+
+→ [Terminology Mapping](docs/cip_terminology_mapping.md) — [CIP vs Existing Methods](docs/cip_vs_existing_methods.md)
+
+-----
+
+## Coming from Stable Diffusion, Midjourney, or AI Research?
+
+CIP is not a variant, extension, or summary of existing approaches.
+
+It operates as an orthogonal inference-time reconstruction control layer that can be applied alongside LoRA, ControlNet, structured prompting, or any model-centric method — without replacing them.
+
+CIP defines:
+
+- **what is controlled**: reconstructed state A′
+- **when outputs are valid**: Identity Gates (Face ∧ Skeleton ∧ Proportion)
+- **when outputs must be rejected**: Hard Abort conditions
+- **how identity is recovered**: Re-binding and Re-convergence
+
+For terminology mapping across Stable Diffusion, Midjourney, academic research, and IP production contexts:
+
+→ [CIP Terminology Mapping](docs/cip_terminology_mapping.md)  
+→ [CIP vs Existing Methods](docs/cip_vs_existing_methods.md)
+
+-----
+
 ## Reading Paths
 
 **Researchers / Technical Review**  
