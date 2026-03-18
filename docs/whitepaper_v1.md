@@ -13,7 +13,7 @@ The primary challenge in deploying generative AI for creative and corporate work
 
 Conventional trial-and-error prompting lacks reproducibility and risks **Identity Loss** during model updates or session terminations.
 
-The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
 
 CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
 
@@ -154,14 +154,15 @@ Thus, identity stabilization in CIP is achieved not by enforcing output similari
 
 CIP can be interpreted as a closed-loop control system:
 
-|Component          |Role                           |
-|-------------------|-------------------------------|
-|Controlled variable|A′ (reconstructed state)       |
-|Reference signal   |Anchor                         |
-|Controller         |Minimal Prompt + Identity Gates|
-|Disturbance        |Probabilistic drift            |
-|Observer           |Output (B′) and gate evaluation|
-|Control action     |Hard Abort and Re-binding      |
+|Component          |Role                             |
+|-------------------|---------------------------------|
+|Controlled variable|A′ (reconstructed state)         |
+|Reference signal   |Anchor                           |
+|Control input      |Minimal Prompt + Anchor injection|
+|Decision logic     |Identity Gates (validation layer)|
+|Disturbance        |Probabilistic drift              |
+|Observer           |Output (B′) + evaluation process |
+|Control action     |Hard Abort and Re-binding        |
 
 Under this interpretation, CIP stabilizes identity by maintaining A′ within a bounded convergence region relative to the anchor.
 
@@ -387,11 +388,11 @@ Reduces cognitive and computational load in future sessions. Enables cross-sessi
 
 Anchors are not assumed to exist prior to protocol execution. They must be formed through a controlled convergence process.
 
-A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
+A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence (*the degree to which an output’s identity features are internally consistent and stable across reconstruction dimensions*) — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
 
 The formation process is operationally supported by:
 
-- Identifier binding (assigning a UID to the validated sample)
+- Identifier binding (assigning a UID to the validated sample, which increases identity recall probability — *the likelihood that subsequent generation cycles converge toward the same identity state*)
 - Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
 - Multi-view expansion (generating a character sheet to distribute identity across latent perspectives)
 
@@ -417,6 +418,8 @@ In this sense, CIP does not create identity.
 It guides the model back toward statistically stable identity regions.
 
 This mechanism explains why anchor-based re-convergence is more effective than prompt-based refinement in restoring identity consistency.
+
+*Note: “Controlled convergence”, “density-guided reconstruction”, and “anchor-based convergence” describe layered aspects of the same underlying behavior: steering reconstruction toward high-density, anchor-proximate regions of the reconstruction space. They are not competing mechanisms.*
 
 -----
 
