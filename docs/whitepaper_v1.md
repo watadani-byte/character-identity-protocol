@@ -124,7 +124,7 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
-Accordingly, CIP may be understood as an **inference-time reconstruction control framework**: a protocol that governs reconstruction, validation, recovery, and failure handling during inference rather than modifying the model itself.
+Accordingly, CIP may be understood as an **inference-time reconstruction control framework implemented as an operational governance layer**: a protocol that constrains A′ reconstruction technically, and enforces PASS/FAIL validation, Hard Abort, and recovery operationally — all during inference, without modifying the model itself.
 
 -----
 
