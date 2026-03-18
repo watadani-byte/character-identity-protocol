@@ -21,7 +21,7 @@ In style-defined identity domains (e.g., anime and franchise animation), renderi
 
 -----
 
-## 2.7 Related Work and Research Context
+## 2.1 Related Work and Research Context
 
 ### Overview
 
@@ -104,7 +104,7 @@ Several practices in professional production and AI research share partial conce
 
 CIP’s primary conceptual contribution is not a new generation technique but a reframing of the character consistency problem. Rather than attempting to eliminate probabilistic variability through model modification or prompt optimization, CIP treats generative systems as inherently probabilistic environments and introduces an operational governance layer designed to function within those constraints.
 
-The key framing shift is from **character generation** to **character recovery**. In most generative workflows, each output is treated as an independent generation event. CIP instead treats character identity as a latent convergence state that may drift across generation cycles and must be recovered through structured governance mechanisms when drift is detected.
+The key framing shift is from **character generation** to **character recovery**. In most generative workflows, each output is treated as an independent generation event. CIP instead treats character identity as a reconstruction convergence state that may drift across generation cycles and must be recovered through structured governance mechanisms when drift is detected.
 
 This perspective introduces a production-oriented approach analogous to quality gate systems in software engineering pipelines: identity is not assumed to persist but is continuously validated, and failure conditions — identity drift beyond defined thresholds — trigger structured recovery rather than continued sampling.
 
@@ -114,7 +114,7 @@ Accordingly, CIP may be understood as an **inference-time governance framework**
 
 -----
 
-## 2. Theoretical Foundation: Convergence Behavior
+## 2.2 Theoretical Foundation: Convergence Behavior
 
 ### Definition: Character Identity
 
@@ -141,7 +141,7 @@ However, it can be inferred through output behavior (B′) and its deviation fro
 
 Operationally, A′ is defined as:
 
-- the latent reconstruction state conditioned by prompt, anchor, and context
+- the reconstruction state conditioned by prompt, anchor, and context
 - the immediate precursor to output generation (B′)
 - the control target within the CIP loop
 
@@ -207,7 +207,7 @@ It operates by detecting and respecting the MCST boundary within any given syste
 
 -----
 
-## 2.6 Identity Drift Taxonomy
+## 2.3 Identity Drift Taxonomy
 
 Generative systems exhibit multiple modes of identity drift during iterative reconstruction.
 Understanding these drift modes is critical for operational governance, as different failure modes require different mitigation responses.
@@ -388,11 +388,11 @@ Reduces cognitive and computational load in future sessions. Enables cross-sessi
 
 Anchors are not assumed to exist prior to protocol execution. They must be formed through a controlled convergence process.
 
-A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence (*the degree to which an output’s identity features are internally consistent and stable across reconstruction dimensions*) — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
+A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence (*the degree to which identity-defining features remain internally consistent across reconstruction dimensions*) — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
 
 The formation process is operationally supported by:
 
-- Identifier binding (assigning a UID to the validated sample, which increases identity recall probability — *the likelihood that subsequent generation cycles converge toward the same identity state*)
+- Identifier binding (assigning a UID to the validated sample, which increases identity recall probability — *an operational likelihood that subsequent generation cycles converge toward the same identity state*)
 - Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
 - Multi-view expansion (generating a character sheet to distribute identity across latent perspectives)
 
@@ -409,7 +409,7 @@ The Anchor Convergence procedure operates by:
 - selecting a high-density latent sample (anchor)
 - reducing input entropy through minimal prompting
 - binding the sample to a stable identifier
-- distributing identity constraints across multiple latent perspectives (multi-view expansion)
+- distributing identity constraints across multiple view-conditioned reconstruction perspectives (multi-view expansion)
 
 These steps do not enforce a deterministic solution.
 Instead, they bias reconstruction toward regions of the latent space where identity stability is naturally more likely to occur.
@@ -837,7 +837,7 @@ The following properties were observed:
 
 - Identity convergence can be induced without model modification
 - A single high-quality sample is sufficient to initialize an anchor
-- Multi-view expansion stabilizes reconstruction across latent space
+- Multi-view expansion stabilizes reconstruction across multiple view-conditioned perspectives
 - Naming (identifier binding) significantly improves recall probability
 
 ### 5.8 Interpretation
@@ -942,7 +942,7 @@ Generative models do not self-correct identity drift through continued sampling.
 
 ### Q4. Can Identity Gates be automated?
 
-Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity consistency — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP permits quantitative support layers, but final authority remains with the human validation gate unless an implementation explicitly defines otherwise.
+Identity Gates define the validation criteria — face similarity, skeletal proportion, and overall identity continuity — against the anchor reference. Human evaluation is the primary gate authority in CIP. Metric-based verification may be added as an auxiliary layer, but automated metrics cannot fully substitute for human perceptual judgment of identity equivalence. CIP permits quantitative support layers, but final authority remains with the human validation gate unless an implementation explicitly defines otherwise.
 
 -----
 
@@ -1036,7 +1036,7 @@ The governance framework introduced by CIP operates through three mechanisms.
 
 **Anchor-based convergence** uses a previously validated image — the anchor — as the primary identity reference for subsequent generations. The anchor encodes visual identity in a form that the generative model can use as a conditioning signal, significantly increasing the probability that outputs converge toward the intended identity state. This replaces text-based identity encoding with image-based identity encoding, which is more robust under probabilistic reconstruction.
 
-**Identity validation gates** introduce explicit evaluation checkpoints into the generation workflow. After each generation cycle, outputs are evaluated against the anchor reference across defined criteria: facial similarity, skeletal proportion, and overall identity consistency. This converts identity verification from an implicit review process into an auditable operational event with defined pass and fail conditions.
+**Identity validation gates** introduce explicit evaluation checkpoints into the generation workflow. After each generation cycle, outputs are evaluated against the anchor reference across defined criteria: facial similarity, skeletal proportion, and overall identity continuity. This converts identity verification from an implicit review process into an auditable operational event with defined pass and fail conditions.
 
 **Hard abort and re-convergence** treat identity drift as a process integrity failure rather than a correctable iteration error. When validation fails, the current generation cycle is terminated immediately and a re-convergence sequence is initiated from the last validated anchor state. This prevents progressive identity degradation across outputs and maintains the integrity of the production pipeline.
 
