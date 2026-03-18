@@ -1,9 +1,23 @@
 # White Paper: Character Identity Protocol (CIP) v1.0
 
-**A Governance Framework for Identity Convergence and Cross-Platform Portability in Generative Systems**
+**Inference-Time Governance for Identity Convergence in Generative Systems**
 
 > This white paper reflects operational observations and validated production workflows.
 > It does not claim deterministic reproduction or internal model access.
+
+-----
+
+## Abstract
+
+Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — address this problem at the model or input level, but do not introduce explicit identity validation or failure-condition logic into the generation workflow.
+
+This paper introduces the Character Identity Protocol (CIP), an inference-time governance framework for identity stabilization in probabilistic generative systems. CIP treats character identity not as a static output property but as a recoverable convergence state — one that must be continuously governed through structured operational mechanisms. The protocol operates by controlling A′, the internally reconstructed problem state derived from user input, rather than the model itself or the generated output directly.
+
+CIP defines a closed-loop governance architecture consisting of: anchor-based convergence (biasing reconstruction toward high-density, identity-stable regions of the reconstruction space), identity validation gates (Face Gate, Skeleton Gate, Proportion Gate), Hard Abort discipline (immediate termination upon identity drift detection), and bounded re-convergence cycles.
+
+The protocol is implemented entirely at inference time, requires no model modification, and is compatible with closed-source generative systems. Validation across multiple production workflows — including cross-platform identity migration and multi-turn character consistency — demonstrates that CIP functions as a reproducible governance protocol rather than a prompting heuristic.
+
+This work suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time governance problem — and that structured operational control applied during inference may represent a productive direction for improving generative reliability in production environments.
 
 -----
 
