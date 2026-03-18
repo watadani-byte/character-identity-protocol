@@ -362,6 +362,27 @@ The formation process is operationally supported by:
 
 This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the governance loop. Without a validated anchor, the CIP protocol cannot begin.
 
+### Convergence Interpretation: Density-Guided Reconstruction
+
+Anchor Convergence can be interpreted as a density-guided reconstruction process.
+
+High-quality anchor images correspond to high-density regions within the model’s learned distribution — regions where identity reconstruction is statistically stable.
+
+The Anchor Convergence procedure operates by:
+
+- selecting a high-density latent sample (anchor)
+- reducing input entropy through minimal prompting
+- binding the sample to a stable identifier
+- distributing identity constraints across multiple latent perspectives (multi-view expansion)
+
+These steps do not enforce a deterministic solution.
+Instead, they bias reconstruction toward regions of the latent space where identity stability is naturally more likely to occur.
+
+In this sense, CIP does not create identity.
+It guides the model back toward statistically stable identity regions.
+
+This mechanism explains why anchor-based re-convergence is more effective than prompt-based refinement in restoring identity consistency.
+
 -----
 
 ## 4. Advanced Application: Cross-Platform Migration
