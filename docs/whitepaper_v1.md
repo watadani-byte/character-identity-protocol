@@ -126,7 +126,7 @@ Accordingly, CIP may be understood as an **inference-time governance framework**
 
 ### The “Miracle Image” Phenomenon
 
-High-purity outputs that emerge within the latent space may represent transient solution states rather than random accidents.
+High-purity outputs that emerge within the reconstruction space may represent transient solution states rather than random accidents.
 
 These frames exhibit unusually high coherence — disproportionately finished relative to surrounding outputs. They represent transient local optima where user constraints and model priors align with unusual precision.
 
@@ -167,6 +167,8 @@ CIP can be interpreted as a closed-loop control system:
 Under this interpretation, CIP stabilizes identity by maintaining A′ within a bounded convergence region relative to the anchor.
 
 ### Controlled Convergence
+
+Controlled Convergence is a descriptive interpretation of reconstruction behavior under CIP governance, not a control method implemented by the protocol itself.
 
 A methodology to narrow the probability density of generation, directing the AI to converge on a specific identity space rather than diverging into variations.
 
@@ -216,7 +218,7 @@ CIP defines identity drift not as a single phenomenon but as a taxonomy of recon
 
 The following categories represent the most commonly observed drift modes in production workflows.
 
-### 2.6.1 Facial Identity Drift
+### 2.3.1 Facial Identity Drift
 
 **Definition**
 
@@ -234,7 +236,7 @@ Typical manifestations:
 Facial drift typically results in immediate identity loss, even when body structure and style remain stable.
 For this reason, CIP assigns highest priority to Face Gate validation.
 
-### 2.6.2 Skeletal Drift
+### 2.3.2 Skeletal Drift
 
 **Definition**
 
@@ -252,7 +254,7 @@ Typical manifestations:
 Skeletal drift may not immediately break facial recognition but gradually destabilizes identity perception over multiple turns.
 CIP detects this failure mode through Skeleton Gate validation.
 
-### 2.6.3 Proportion Drift
+### 2.3.3 Proportion Drift
 
 **Definition**
 
@@ -271,7 +273,7 @@ Proportion drift often accumulates slowly across turns and may initially appear 
 However, once deviation exceeds perceptual thresholds, the character becomes visually distinct from the anchor identity.
 This drift mode is governed by the Proportion Gate.
 
-### 2.6.4 Rendering Regime Drift
+### 2.3.4 Rendering Regime Drift
 
 **Definition**
 
@@ -290,7 +292,7 @@ In style-defined identity domains (e.g., anime or franchise animation), renderin
 Significant regime drift can break identity continuity even when structural features remain consistent.
 CIP therefore treats rendering regime stability as part of identity validation under the same gate discipline.
 
-### 2.6.5 Contextual Drift
+### 2.3.5 Contextual Drift
 
 **Definition**
 
@@ -308,7 +310,7 @@ Typical manifestations:
 Contextual drift is strongly correlated with context length and sampling entropy.
 This phenomenon motivates the concept of Max Context Stability Threshold (MCST) and the use of bounded generation cycles (BGC).
 
-### 2.6.6 Drift Interaction
+### 2.3.6 Drift Interaction
 
 Drift modes rarely occur in isolation.
 In production environments, multiple drift categories often interact simultaneously.
@@ -330,7 +332,7 @@ This cascading failure pattern is one of the primary reasons CIP enforces Hard A
 Once multiple drift modes interact, recovery through incremental prompt adjustments becomes unreliable.
 CIP mandates termination of the contaminated cycle and re-binding to the last verified anchor state.
 
-### 2.6.7 Operational Implications
+### 2.3.7 Operational Implications
 
 The drift taxonomy reinforces several core design principles of the CIP protocol:
 
@@ -388,13 +390,13 @@ Reduces cognitive and computational load in future sessions. Enables cross-sessi
 
 Anchors are not assumed to exist prior to protocol execution. They must be formed through a controlled convergence process.
 
-A valid anchor is produced by selecting a high-density latent sample — a generation that exhibits strong identity coherence (*the degree to which identity-defining features remain internally consistent across reconstruction dimensions*) — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
+A valid anchor is produced by selecting a high-density reconstruction sample — a generation that exhibits strong identity coherence (*the degree to which identity-defining features remain internally consistent across reconstruction dimensions*) — and subjecting it to identity gate validation. Only outputs that pass all gates (Face ∧ Skeleton ∧ Proportion) qualify as anchors.
 
 The formation process is operationally supported by:
 
 - Identifier binding (assigning a UID to the validated sample, which increases identity recall probability — *an operational likelihood that subsequent generation cycles converge toward the same identity state*)
 - Minimal prompt reduction (reducing descriptive entropy to stabilize A → A′ transformation)
-- Multi-view expansion (generating a character sheet to distribute identity across latent perspectives)
+- Multi-view expansion (generating a character sheet to distribute identity across reconstruction perspectives)
 
 This process is referred to in CIP as **Anchor Convergence** and constitutes the entry condition of the governance loop. Without a validated anchor, the CIP protocol cannot begin.
 
@@ -406,13 +408,13 @@ High-quality anchor images correspond to high-density regions within the model�
 
 The Anchor Convergence procedure operates by:
 
-- selecting a high-density latent sample (anchor)
+- selecting a high-density reconstruction sample (anchor)
 - reducing input entropy through minimal prompting
 - binding the sample to a stable identifier
 - distributing identity constraints across multiple view-conditioned reconstruction perspectives (multi-view expansion)
 
 These steps do not enforce a deterministic solution.
-Instead, they bias reconstruction toward regions of the latent space where identity stability is naturally more likely to occur.
+Instead, they bias reconstruction toward regions of the reconstruction space where identity stability is naturally more likely to occur.
 
 In this sense, CIP does not create identity.
 It guides the model back toward statistically stable identity regions.
@@ -785,7 +787,7 @@ To validate that character identity can be:
 
 ### 5.2 Initial Condition (High-Density Sample)
 
-A single image was generated that exhibited strong identity coherence (hereafter referred to as the “high-density latent sample”).
+A single image was generated that exhibited strong identity coherence (hereafter referred to as the “high-density reconstruction sample”).
 
 This image serves as the initial anchor point.
 
@@ -817,7 +819,7 @@ A multi-view character sheet was generated:
 - Side view
 - Back view
 
-This step distributes the identity across multiple latent perspectives, increasing reconstruction stability.
+This step distributes the identity across multiple reconstruction perspectives, increasing reconstruction stability.
 
 ### 5.6 Step 4: Re-Invocation Test
 
