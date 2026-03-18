@@ -17,9 +17,9 @@ Control Target: A′  (reconstructed state)
 Key Mechanisms: Anchor constraint · Identity gates · Hard Abort & Re-convergence
 ```
 
-Character Identity Protocol (CIP) is a governance-layer protocol
-for stabilizing identity in probabilistic generative systems
-by controlling reconstruction, validation, re-convergence, and abort conditions.
+Character Identity Protocol (CIP) is an inference-time reconstruction control framework
+that stabilizes identity in probabilistic generative systems
+by constraining the reconstructed state A′ through anchor injection, validation gates, Hard Abort conditions, and bounded re-convergence cycles.
 
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
@@ -92,7 +92,7 @@ CIP is **not**:
 
 CIP **is**:
 
-> A governance-layer protocol for managing identity in generative systems.
+> An inference-time reconstruction control framework that makes identity drift operationally detectable, auditable, and recoverable.
 
 → [Complete Specification](docs/cip_complete_spec.md)  
 → [Technical Mechanism](docs/technical_mechanism.md)  
@@ -172,14 +172,13 @@ CIP addresses it at the operational governance layer.
 
 ## The CIP Approach
 
-Operationally, this governance layer functions as a convergence control protocol
-applied during inference.
+CIP operates as an inference-time reconstruction control framework.
 
-CIP treats character identity as a **convergence control problem**.
+CIP treats character identity as a **reconstruction control problem**: A′, the internally reconstructed state, is the control target — not the model, and not the output directly.
 
 In other words, CIP does not attempt to generate identity; it recovers it.
 
-Rather than enforcing strict instructions, the protocol aligns generation with the natural convergence behavior of the model.
+Rather than modifying the model or filtering outputs, the protocol constrains A′ reconstruction within anchor-defined boundaries during inference.
 
 CIP introduces four operational elements:
 
@@ -194,8 +193,8 @@ Identity Gates are evaluated by the operator (typically a human reviewer), with 
 
 Together these form a controlled generation loop.
 
-> This is not a generation method.
-> It is a character identity governance protocol.
+> CIP is not a generation method, a prompt technique, or a model modification.
+> It is an inference-time reconstruction control framework with defined control targets, validation logic, failure conditions, and recovery paths.
 
 CIP defines the validation gates. The similarity threshold is an operator-defined parameter.
 
@@ -203,7 +202,7 @@ CIP defines the validation gates. The similarity threshold is an operator-define
 
 ## Core Operational Loop — The CIP Convergence Loop
 
-The CIP convergence loop is the central operational mechanism of the protocol:
+The CIP reconstruction control loop defines the operational cycle governing identity reconstruction, validation, and recovery:
 
 ```
 Anchor Image + Minimal Prompt
@@ -218,7 +217,7 @@ FAIL → Hard Abort → Re-bind Anchor → Re-converge
 
 Identity is therefore **not assumed to persist**.
 
-Instead, it is **continuously recovered through controlled convergence cycles**.
+Instead, it is **continuously governed through bounded reconstruction control cycles** — each cycle producing an auditable PASS or FAIL outcome.
 
 ```mermaid
 flowchart TD
