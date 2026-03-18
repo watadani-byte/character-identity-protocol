@@ -1132,7 +1132,7 @@ The governance framework introduced by CIP operates through three mechanisms.
 
 Together these mechanisms constitute an operational governance layer that can be applied to any generative system capable of accepting anchor image references. CIP does not replace creative design or artistic direction; it provides the operational infrastructure within which creative outputs can be generated while maintaining identity governance standards.
 
------
+----- 
 
 ### D.5 CIP and Cross-Platform Character Persistence
 
