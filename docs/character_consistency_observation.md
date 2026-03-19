@@ -3,7 +3,7 @@
 > This article presents observations and working hypotheses.
 > It does not claim to describe definitive behavior of any specific model or system.
 
-*If you are looking for a more intuitive, experiment-first explanation, see the companion article.*
+*If you are looking for a more intuitive, experiment-first explanation, see the [companion article](why_character_changes.md). A runnable [A/B Comparison Workflow (JSON)](workflow_ab_character_consistency.json) is also available.*
 
 -----
 
