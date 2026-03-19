@@ -28,7 +28,7 @@ Run both setups. Compare the results.
 
 You may notice something.
 
-*(A simple workflow for this test is provided below.)*
+→ [Download the A/B Comparison Workflow (JSON)](workflow_ab_character_consistency.json)
 
 -----
 
