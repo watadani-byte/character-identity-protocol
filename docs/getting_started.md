@@ -93,6 +93,11 @@ These drift types arise from the probabilistic nature of generative models and t
 
 → See: [Character Drift Taxonomy](character_drift_taxonomy.md)
 
+**Want to see this for yourself?** Run the experiment described in:
+
+→ [Why Your Character Keeps Changing](why_character_changes.md) — experiment-first explanation with a runnable A/B workflow  
+→ [Character Consistency — An Observation](character_consistency_observation.md) — observation-based companion article
+
 -----
 
 ## Character Identity Protocol (CIP)
@@ -135,6 +140,8 @@ Ready to try CIP?
 - [Character Drift Taxonomy](character_drift_taxonomy.md)
 - [Identity Drift in Generative Image Models](column_identity_drift_practical.md)
 - [Character Identity Drift in Generative AI](column_identity_drift.md)
+- [Why Your Character Keeps Changing](why_character_changes.md)
+- [Character Consistency — An Observation](character_consistency_observation.md)
 
 **Protocol**
 
