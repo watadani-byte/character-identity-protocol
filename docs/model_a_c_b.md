@@ -67,6 +67,8 @@ The user wrote A. The model generated B′. The gap between them is C.
 
 ## Conclusion
 
+The difference between B and B′ can be understood as drift — a structural deviation introduced during internal reconstruction.
+
 Character consistency, instruction following, and output reliability are all affected by C.
 
 Understanding this model is the first step toward controlling it.
