@@ -20,16 +20,16 @@ A → (A + C) → B′
 
 Where:
 
-|Symbol|Meaning                                                                  |
-|------|-------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                |
-|C     |Internal constraint — optimization pressure, training priors, compression|
-|B     |Intended output (what the user expects)                                  |
-|B′    |Actual output (what the system produces)                                 |
+|Symbol|Meaning                                                                                            |
+|------|---------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                          |
+|C     |Internal constraint — optimization pressure, training priors, compression, and constraint rewriting|
+|B     |Intended output (what the user expects)                                                            |
+|B′    |Actual output (what the system produces)                                                           |
 
 The system does not execute A directly.
 
-It internally rewrites A under the influence of C — producing B′, which may deviate from B.
+It internally rewrites A under the influence of C — including omission, compression, and structural redefinition of constraints — producing B′, which may deviate from B.
 
 **B′ ≠ B** is not a malfunction. It is the expected behavior of a system operating under internal constraints.
 
@@ -58,6 +58,8 @@ The intended output B includes: full body, turned posture, eye contact.
 The actual output B′ shows: head and shoulders only, forward-facing, no eye contact.
 
 The model compressed the compositional instruction under C — defaulting toward a common training pattern (portrait framing) rather than executing A as specified.
+
+In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction.
 
 The user wrote A. The model generated B′. The gap between them is C.
 
