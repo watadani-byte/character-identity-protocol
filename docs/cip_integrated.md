@@ -52,7 +52,11 @@ The input A includes limb and pose constraints.
 
 The output B′ removes limb information and defaults to portrait framing.
 
-This is not omission. Limb and pose information are structurally excluded during the A → (A + C) → B′ reconstruction.
+This is not omission.
+
+Limb and pose information were structurally removed during the reconstruction process.
+
+The transformation occurred at the A → (A + C) stage, not at the output stage.
 
 C acted on A. B′ reflects C, not A.
 
@@ -79,7 +83,7 @@ Decision logic:
 
 - Generative AI does not execute instructions — it reinterprets them.
 - Every input is subject to constraint rewriting.
-- Problem reconstruction must be prevented, not corrected.
+- Problem reconstruction must be prevented, not corrected, as reconstruction rewrites A under C.
 
 **Anchor rules:**
 
