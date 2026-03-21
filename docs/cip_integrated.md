@@ -75,6 +75,16 @@ Decision logic:
 |Large      |Anchor|
 |Critical   |Purge |
 
+### Distribution Anchoring
+
+Distribution Anchoring is a technique that intentionally aligns generation inputs toward high-density regions of the model’s training distribution — regions where C naturally produces stable, convergent outputs.
+
+By positioning A within these regions, the rewriting pressure of C is reduced, and B′ deviates less from B.
+
+This does not control C directly; it shapes the conditions under which C operates.
+
+**Intuition:** Guide the input toward where the model naturally wants to go, so C rewrites less.
+
 -----
 
 ## 5. Operational Governance
