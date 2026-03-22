@@ -23,6 +23,10 @@ Character Identity Protocol (CIP) is an inference-time reconstruction control fr
 
 It stabilizes identity in probabilistic generative systems by constraining the reconstructed state A′ through anchor injection, validation gates, Hard Abort conditions, and bounded re-convergence cycles.
 
+> This repository is under active documentation development.
+> For a structured reading experience, please use the
+> [GitHub Pages navigation](https://watadani-byte.github.io/character-identity-protocol/).
+
 *Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — 2026*
 
 -----
