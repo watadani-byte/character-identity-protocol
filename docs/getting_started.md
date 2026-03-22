@@ -38,6 +38,10 @@ A (user input)
 → B′ (generated output)
 ```
 
+A′ is shaped by internal constraints (C) — including training priors, optimization pressure, and compression — which is why B′ may deviate from what A intended.
+
+→ See: [Core Model — A → (A + C) → B′](model_a_c_b.md)
+
 Because generation is probabilistic, identical inputs may not produce identical outputs.
 Results can vary between generations and drift over time.
 
