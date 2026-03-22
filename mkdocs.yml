@@ -13,6 +13,9 @@ theme:
 
 nav:
 
+  # ─── Whitepaper (Top-level) ───────────────────────────────────
+  - Whitepaper: whitepaper_v1.md
+
   # ─── 1. Start Here ───────────────────────────────────────────
   - Start Here:
     - Home: index.md
@@ -28,22 +31,27 @@ nav:
     - Character Consistency — An Observation: character_consistency_observation.md
     - Reproducibility Scope: reproducibility_scope.md
 
-  # ─── 3. Protocol Spec ────────────────────────────────────────
-  - Protocol Spec:
+  # ─── 3. Protocol / Architecture ──────────────────────────────
+  - Protocol / Architecture:
+    - Architecture Diagram: architecture_diagram.md
     - CIP Specification v0.1: cip_spec_v0.1.md
     - CIP Complete Specification: cip_complete_spec.md
     - CIP Integrated: cip_integrated.md
     - Quality Gate & Hard Abort: quality_gate_addendum.md
-    # 将来統合候補: Character_Identity_Protocol_Quality_Gate_Addendum.md (内容確認後に統合検討)
+    # 将来統合候補: Character_Identity_Protocol_Quality_Gate_Addendum.md
     - Quality Gate Addendum (Legacy): Character_Identity_Protocol_Quality_Gate_Addendum.md
     - Video Addendum: cip_video_addendum.md
-
-  # ─── 4. Architecture / Workflow ──────────────────────────────
-  - Architecture / Workflow:
-    - Architecture Diagram: architecture_diagram.md
     - Master Document: master_document.md
-    # workflow_ab_character_consistency.json はMkDocsのnav対象外（JSONはページ非対応）
-    # 記事 why_character_changes.md 内のリンクから直接ダウンロード可能
+    # workflow_ab_character_consistency.json はnav対象外（JSON非対応）
+    # why_character_changes.md 内リンクからダウンロード可
+
+  # ─── 4. Analysis / Taxonomy ──────────────────────────────────
+  - Analysis / Taxonomy:
+    - Character Drift Taxonomy: character_drift_taxonomy.md
+    - Generative Character Drift — Technical Overview: column_character_drift_technical.md
+    - Applications: applications.md
+    - Legal Governance: legal_governance.md
+    - CIP vs Existing Methods: cip_vs_existing_methods.md
 
   # ─── 5. Cases ────────────────────────────────────────────────
   - Cases:
@@ -55,22 +63,14 @@ nav:
     - Case 05 — Serendipitous Creation: case_05_serendipitous.md
     - Case 06 — Gemini Validation: case_06_gemini.md
 
-  # ─── 6. Analysis / Taxonomy ──────────────────────────────────
-  - Analysis / Taxonomy:
-    - Character Drift Taxonomy: character_drift_taxonomy.md
-    - Generative Character Drift — Technical Overview: column_character_drift_technical.md
-    - Applications: applications.md
-    - Legal Governance: legal_governance.md
-    - CIP vs Existing Methods: cip_vs_existing_methods.md
-
-  # ─── 7. Practical Guides ─────────────────────────────────────
+  # ─── 6. Practical Guides ─────────────────────────────────────
   - Practical Guides:
     - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
     - Decision Pack: decision_pack.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
 
-  # ─── 8. Columns ──────────────────────────────────────────────
+  # ─── 7. Columns ──────────────────────────────────────────────
   - Columns:
     - Before Consistent Characters: column_before_consistent_characters.md
     - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
@@ -79,16 +79,12 @@ nav:
     - Miracle Image: column_miracle_image.md
     - Production Notes: column_production.md
 
-  # ─── 9. Reference ────────────────────────────────────────────
+  # ─── 8. Reference ────────────────────────────────────────────
   - Reference:
     - Glossary: glossary.md
     - CIP Terminology Mapping: cip_terminology_mapping.md
     - White Paper Appendices: whitepaper_appendices.md
     # google0f9816b22fa83f81.html はSearch Console認証用のためnav除外
-
-  # ─── 10. Whitepaper ──────────────────────────────────────────
-  - Whitepaper:
-    - White Paper v1.0: whitepaper_v1.md
 
 plugins:
   - search
