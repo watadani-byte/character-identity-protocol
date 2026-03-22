@@ -12,46 +12,83 @@ theme:
   name: material
 
 nav:
-  - Getting Started: getting_started.md
-  - Home: index.md
-  - Quickstart: quickstart.md
-  - White Paper: whitepaper_v1.md
-  - Case Studies:
+
+  # ─── 1. Start Here ───────────────────────────────────────────
+  - Start Here:
+    - Home: index.md
+    - Getting Started: getting_started.md
+    - Quickstart: quickstart.md
+
+  # ─── 2. Core Concepts ────────────────────────────────────────
+  - Core Concepts:
+    - Core Model (A→C→B′): model_a_c_b.md
+    - Technical Mechanism: technical_mechanism.md
+    - Why Your Character Keeps Changing: why_character_changes.md
+    - Observed Drift Phenomena: drift_observations.md
+    - Character Consistency — An Observation: character_consistency_observation.md
+    - Reproducibility Scope: reproducibility_scope.md
+
+  # ─── 3. Protocol Spec ────────────────────────────────────────
+  - Protocol Spec:
+    - CIP Specification v0.1: cip_spec_v0.1.md
+    - CIP Complete Specification: cip_complete_spec.md
+    - CIP Integrated: cip_integrated.md
+    - Quality Gate & Hard Abort: quality_gate_addendum.md
+    # 将来統合候補: Character_Identity_Protocol_Quality_Gate_Addendum.md (内容確認後に統合検討)
+    - Quality Gate Addendum (Legacy): Character_Identity_Protocol_Quality_Gate_Addendum.md
+    - Video Addendum: cip_video_addendum.md
+
+  # ─── 4. Architecture / Workflow ──────────────────────────────
+  - Architecture / Workflow:
+    - Architecture Diagram: architecture_diagram.md
+    - Master Document: master_document.md
+    # workflow_ab_character_consistency.json はMkDocsのnav対象外（JSONはページ非対応）
+    # 記事 why_character_changes.md 内のリンクから直接ダウンロード可能
+
+  # ─── 5. Cases ────────────────────────────────────────────────
+  - Cases:
     - Case 01A — Baseline Failure: case_01_failure_log.md
-    - Case 01B — Mira Project (Hard Abort and Re-convergence): case_01b_mira_project.md
+    - Case 01B — Mira Project: case_01b_mira_project.md
     - Case 02 — Wedding Series: case_02_wedding_series.md
     - Case 03 — Avedon Project: case_03_avedon_project.md
     - Case 04 — Cross-Platform Migration: case_04_shizuka.md
     - Case 05 — Serendipitous Creation: case_05_serendipitous.md
     - Case 06 — Gemini Validation: case_06_gemini.md
-  - Documentation:
-    - Technical Mechanism: technical_mechanism.md
-    - Quality Gate & Hard Abort: quality_gate_addendum.md
-    - Video Addendum: cip_video_addendum.md
-    - Reproducibility Scope: reproducibility_scope.md
-    - Glossary: glossary.md
-    - CIP Terminology Mapping: cip_terminology_mapping.md
-    - CIP vs Existing Methods: cip_vs_existing_methods.md
-    - CIP Complete Specification: cip_complete_spec.md
-  - Enterprise:
-    - Decision Pack: decision_pack.md
-    - Legal Governance: legal_governance.md
-    - Master Document: master_document.md
-  - Columns:
-    - Miracle Image: column_miracle_image.md
-    - Production Notes: column_production.md
-    - Identity Drift: column_identity_drift.md
-    - Before Consistent Characters: column_before_consistent_characters.md
-    - Identity Drift in Generative Image Models: column_identity_drift_practical.md
-    - Generative Character Drift — Technical Overview: column_character_drift_technical.md
+
+  # ─── 6. Analysis / Taxonomy ──────────────────────────────────
+  - Analysis / Taxonomy:
     - Character Drift Taxonomy: character_drift_taxonomy.md
-    - Observed Drift Phenomena: drift_observations.md
-    - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
+    - Generative Character Drift — Technical Overview: column_character_drift_technical.md
+    - Applications: applications.md
+    - Legal Governance: legal_governance.md
+    - CIP vs Existing Methods: cip_vs_existing_methods.md
+
+  # ─── 7. Practical Guides ─────────────────────────────────────
+  - Practical Guides:
+    - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
+    - Decision Pack: decision_pack.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
-    - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
-    - Why Your Character Keeps Changing: why_character_changes.md
-    - Character Consistency — An Observation: character_consistency_observation.md
+
+  # ─── 8. Columns ──────────────────────────────────────────────
+  - Columns:
+    - Before Consistent Characters: column_before_consistent_characters.md
+    - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
+    - Character Identity Drift: column_identity_drift.md
+    - Identity Drift in Generative Image Models: column_identity_drift_practical.md
+    - Miracle Image: column_miracle_image.md
+    - Production Notes: column_production.md
+
+  # ─── 9. Reference ────────────────────────────────────────────
+  - Reference:
+    - Glossary: glossary.md
+    - CIP Terminology Mapping: cip_terminology_mapping.md
+    - White Paper Appendices: whitepaper_appendices.md
+    # google0f9816b22fa83f81.html はSearch Console認証用のためnav除外
+
+  # ─── 10. Whitepaper ──────────────────────────────────────────
+  - Whitepaper:
+    - White Paper v1.0: whitepaper_v1.md
 
 plugins:
   - search
