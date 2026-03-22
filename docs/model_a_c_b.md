@@ -33,6 +33,8 @@ It internally rewrites A under the influence of C — including omission, compre
 
 **B′ ≠ B** is not a malfunction. It is the expected behavior of a system operating under internal constraints.
 
+> **Note on notation:** In the CIP technical documentation, the internally rewritten state is also referred to as A′ (A-prime), where A′ = A + C. The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → B′ explains *why* the rewriting occurs; A → A′ → B′ describes *what* the internal state is.
+
 -----
 
 ## Why C Must Be Introduced
