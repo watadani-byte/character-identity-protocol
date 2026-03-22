@@ -158,6 +158,8 @@ These are complementary layers: control defines what is constrained and how; gov
 
 Within the CIP framework, A′ represents the internally reconstructed problem state derived from user input A.
 
+A′ can be understood as A + C, where C is the internal constraint acting on A — including optimization pressure, training priors, compression, and constraint rewriting. The notation A → A′ → B′ describes the internal state; the notation A → (A + C) → B′ explains why that state deviates from the original input.
+
 A′ is not directly observable.
 However, it can be inferred through output behavior (B′) and its deviation from the anchor reference.
 
@@ -1132,7 +1134,7 @@ The governance framework introduced by CIP operates through three mechanisms.
 
 Together these mechanisms constitute an operational governance layer that can be applied to any generative system capable of accepting anchor image references. CIP does not replace creative design or artistic direction; it provides the operational infrastructure within which creative outputs can be generated while maintaining identity governance standards.
 
------ 
+-----
 
 ### D.5 CIP and Cross-Platform Character Persistence
 
