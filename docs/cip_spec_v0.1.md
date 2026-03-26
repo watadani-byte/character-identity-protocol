@@ -299,3 +299,156 @@ Partial conformance MAY be declared with explicit documentation of which require
 
 *See: [Technical Mechanism](technical_mechanism.md) for theoretical framing.*  
 *See: [Decision Pack](decision_pack.md) for enterprise evaluation.*
+
+-----
+
+## Appendix — Measurement Extension
+
+### From Theory to Implementation
+
+C (internal constraint) cannot be directly observed.
+
+CIP therefore does not measure C directly.
+It measures C’s observable effect: the deviation between the anchor and the generated output.
+
+-----
+
+### Identity Distance
+
+Total identity distance is defined as:
+
+```
+D_total = w1 * D_face + w2 * D_skeleton + w3 * D_proportion
+```
+
+|Component   |Definition               |
+|------------|-------------------------|
+|D_face      |Facial embedding distance|
+|D_skeleton  |Pose / joint deviation   |
+|D_proportion|Body ratio difference    |
+|w1, w2, w3  |Operator-defined weights |
+
+Identity distance is the observable effect of C acting on A. It is not an arbitrary metric — it is a measurement of how far B′ has drifted from the anchor under constraint C.
+
+-----
+
+### Threshold Design
+
+CIP defines two operational thresholds:
+
+|Threshold|Level            |Meaning                |
+|---------|-----------------|-----------------------|
+|T1 (Soft)|Minor deviation  |Acceptable with caution|
+|T2 (Hard)|Identity collapse|Must reject            |
+
+-----
+
+### Gate Logic
+
+```
+if D_total < T1        → PASS
+if T1 ≤ D_total < T2   → WARNING
+if D_total ≥ T2        → FAIL
+```
+
+Threshold values T1 and T2 are operator-defined parameters.
+
+-----
+
+### Cumulative Drift
+
+Drift accumulates across generations:
+
+```
+Drift_n = Σ D_total(i)  for i = 1 to n
+```
+
+Cumulative drift increases with generation count. CIP’s re-binding and Hard Abort mechanisms are designed to interrupt this accumulation before identity collapse.
+
+-----
+
+### Key Principle
+
+> We do not measure C directly.
+> We measure how far B′ has drifted from the anchor.
+
+-----
+
+### Integration with CIP Loop
+
+```
+Generate → Measure D_total → Compare to T1 / T2 → Gate → Accept / Reject
+```
+
+C is unobservable. Drift is measurable. Identity can be governed through thresholds.
+
+-----
+
+## Appendix — Constraint Dynamics (Non-Normative)
+
+*This appendix is non-normative. It provides a theoretical interpretation of C and drift for readers seeking deeper conceptual understanding. Implementors may treat this section as optional context.*
+
+### Distributional Gravity
+
+C is not arbitrary.
+
+The dominant component of C is the statistical structure of the training distribution.
+
+During internal reconstruction, the system is pulled toward high-density regions of the distribution.
+
+This creates a consistent effect:
+
+> Regression toward familiar patterns
+
+C therefore behaves as a form of **distributional gravity** — a systematic bias toward outputs that are statistically common within the model’s learned distribution.
+
+-----
+
+### Entropy of C
+
+C is not a fixed constraint.
+
+It is a probabilistic field that includes sampling variability.
+
+Even with identical input A:
+
+- A′ may differ
+- B′ may differ
+
+C contains entropy.
+
+Drift is therefore both:
+
+- **Directional** — pulled toward high-density regions of the distribution
+- **Stochastic** — subject to sampling variability
+
+-----
+
+### Anchor as Counter-Force
+
+The anchor functions as a counter-force to distributional gravity.
+
+- C pulls toward high-density regions
+- The anchor constrains toward a specific identity
+
+Identity stability emerges from the balance between these forces.
+
+CIP operates by reinforcing the anchor constraint and rejecting outputs where distributional gravity dominates.
+
+-----
+
+### Interpretation
+
+Generative output can be understood as the result of a force equilibrium:
+
+|Force                     |Direction                           |
+|--------------------------|------------------------------------|
+|Distributional gravity (C)|Toward statistically common patterns|
+|Anchor constraint         |Toward a specific validated identity|
+
+-----
+
+### Key Insight
+
+> CIP does not eliminate drift.
+> It governs drift under probabilistic constraints.
