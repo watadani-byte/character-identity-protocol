@@ -2,7 +2,7 @@
 
 Most people assume generative AI works like this:
 
-> A → B
+A → B
 
 You provide an input. The system produces the intended output.
 
@@ -12,89 +12,80 @@ This model is incorrect.
 
 ## The Correct Model
 
-What actually happens is:
-
-```
-A → (A + C) → B′
-```
+A → (A + C) → A′ → B′
 
 Where:
 
-|Symbol|Meaning                                                                                            |
-|------|---------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                          |
-|C     |Internal constraint — optimization pressure, training priors, compression, and constraint rewriting|
-|B     |Intended output (what the user expects)                                                            |
-|B′    |Actual output (what the system produces)                                                           |
+A: User input  
+C: Internal constraint  
+A′: Internally reconstructed input  
+B: Intended output  
+B′: Actual output  
 
 The system does not execute A directly.
 
-It internally rewrites A under the influence of C — including omission, compression, and structural redefinition of constraints — producing B′, which may deviate from B.
+It rewrites A under C, producing A′, which becomes B′.
 
-**B′ ≠ B** is not a malfunction. It is the expected behavior of a system operating under internal constraints.
-
-> **Note on notation:** In the CIP technical documentation, the internally rewritten state is also referred to as A′ (A-prime), where A′ = A + C. The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → B′ explains *why* the rewriting occurs; A → A′ → B′ describes *what* the internal state is.
+B′ ≠ B is expected behavior.
 
 -----
 
 ## Why C Must Be Introduced
 
-Without C, the model cannot explain observed behavior.
+C explains why outputs differ from intent.
 
-Generative systems are trained to optimize across a large distribution of inputs. When they receive A, they do not treat it as a fixed specification. They interpret it — compressing, reweighting, and reconstructing it — according to patterns learned during training.
+The system interprets input using learned statistical patterns.
 
-This interpretation process is C.
-
-C is not visible to the user. It cannot be directly controlled. But it is always present, and it always shapes B′.
-
-## The Structure of C
-
-C is not arbitrary.
-
-The dominant component of C is the statistical structure of the training distribution.
-
-During internal rewriting, the system is pulled toward:
-
-→ High-density regions of the learned distribution
-
-This creates a consistent tendency:
-
-→ Regression toward familiar, frequently observed patterns
-
-In other words:
-
-C acts as a form of "distributional gravity"
-
-- Rare or complex constraints are weakened  
-- Common patterns are reinforced  
-- Unique features are normalized  
-
-This is why outputs tend to converge toward "typical" representations rather than faithfully executing A.
+C is always present and shapes A′ and B′.
 
 -----
 
-## A Concrete Example
+## The Structure of C
 
-A user prompts a text-to-image model with:
+C is dominated by training data distribution.
 
-> “A woman looking over her shoulder at the camera.”
+→ High-density regions pull outputs
 
-The intended output B includes: full body, turned posture, eye contact.
+This creates:
 
-The actual output B′ shows: head and shoulders only, forward-facing, no eye contact.
+→ Regression toward familiar patterns
 
-The model compressed the compositional instruction under C — defaulting toward a common training pattern (portrait framing) rather than executing A as specified.
+C acts as distributional gravity.
 
-In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction.
+-----
 
-The user wrote A. The model generated B′. The gap between them is C.
+## Entropy of C
+
+C is probabilistic, not fixed.
+
+Same input produces variation.
+
+→ C contains entropy.
+
+-----
+
+## Identity Drift as Regression
+
+Drift is not random.
+
+→ It is regression toward the mean.
+
+Drift is convergence to the wrong target.
+
+-----
+
+## Anchor as Counter-Gravity
+
+Anchor resists distributional gravity.
+
+→ Stability = balance of forces
 
 -----
 
 ## Conclusion
 
-The difference between B and B′ can be understood as drift — a structural deviation introduced during internal reconstruction.
+Generation is not creation.
 
-Character consistency, instruction following, and output reliability are all affected by C.
+→ It is navigation.
 
-Understanding this model is the first step toward controlling it.
+Understanding this enables control.
