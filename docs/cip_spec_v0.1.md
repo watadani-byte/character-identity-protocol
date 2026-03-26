@@ -240,6 +240,8 @@ A **CIP audit record** is a log of operational decisions made during a generatio
 
 A workflow is considered **CIP-conformant** if and only if all SHALL requirements defined in this specification are satisfied.
 
+Conformance MAY include measurement-based validation using identity distance models as defined in Appendix C.
+
 A workflow is considered **CIP-recommended** when it additionally satisfies all SHOULD requirements.
 
 Partial conformance MAY be declared with explicit documentation of which requirements are satisfied.
@@ -302,7 +304,9 @@ Partial conformance MAY be declared with explicit documentation of which require
 
 -----
 
-## Appendix — Measurement Extension
+## Appendix C — Measurement Model (Informative)
+
+*This appendix defines an operational measurement model for CIP implementations. It is informative but intended for standardization in future versions.*
 
 ### From Theory to Implementation
 
@@ -384,7 +388,7 @@ C is unobservable. Drift is measurable. Identity can be governed through thresho
 
 -----
 
-## Appendix — Constraint Dynamics (Non-Normative)
+## Appendix D — Constraint Dynamics (Non-Normative)
 
 *This appendix is non-normative. It provides a theoretical interpretation of C and drift for readers seeking deeper conceptual understanding. Implementors may treat this section as optional context.*
 
