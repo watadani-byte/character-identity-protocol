@@ -552,7 +552,7 @@ It defines a governance structure that determines whether outputs are accepted, 
 The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
 
 CIP operates as a closed-loop identity control system,
-where generation and validation are inseparable components.
+in which generation and validation are inseparable components.
 
 This configuration is not presented as universal or permanent. Tool availability, platform capabilities, and API policies evolve rapidly. The operational layers described here are intended to remain meaningful independent of any specific vendor combination.
 
@@ -646,7 +646,7 @@ This structure remains applicable even as individual tools are replaced, extende
 
 -----
 
-### Figure 3 — Representative Cross-Platform Production Pipeline under CIP Governance
+### Figure 4 — Representative Cross-Platform Production Pipeline under CIP Governance
 
 ```mermaid
 flowchart TD
@@ -677,7 +677,7 @@ flowchart TD
     S5 -.->|coordinates| S3
 ```
 
-*Figure 3. A representative cross-platform production pipeline under CIP governance. Vendor names are illustrative examples only. The primary contribution is the CIP governance layer, which governs identity validation, hard-abort enforcement, and re-convergence independently of the specific tools employed at each stage.*
+*Figure 4. A representative cross-platform production pipeline under CIP governance. Vendor names are illustrative examples only. The primary contribution is the CIP governance layer, which governs identity validation, hard-abort enforcement, and re-convergence independently of the specific tools employed at each stage.*
 
 -----
 
@@ -856,7 +856,7 @@ flowchart LR
 
 -----
 
-### Figure 4 — Probabilistic Drift Accumulation and MCST
+### Figure 5 — Probabilistic Drift Accumulation and MCST
 
 ```mermaid
 flowchart LR
@@ -882,7 +882,7 @@ flowchart LR
     RB --> BGC2
 ```
 
-*Figure 4. Identity stability exists within bounded generation windows. As generation turns accumulate, probabilistic drift increases. When the Max Context Stability Threshold is approached, CIP mandates Hard Abort and anchor re-binding to initiate a new bounded generation cycle. Stability is maintained through disciplined cycle chaining rather than assumed persistence.*
+*Figure 5. Identity stability exists within bounded generation windows. As generation turns accumulate, probabilistic drift increases. When the Max Context Stability Threshold is approached, CIP mandates Hard Abort and anchor re-binding to initiate a new bounded generation cycle. Stability is maintained through disciplined cycle chaining rather than assumed persistence.*
 
 -----
 
