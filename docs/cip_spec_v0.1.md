@@ -51,7 +51,7 @@ An Anchor is a validated identity reference image.
 
 Face / Skeleton / Proportion
 
-PASS ⇔ all gates PASS
+PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
 
 - SHALL evaluate every output
 - SHALL be human-primary
@@ -95,7 +95,7 @@ PASS ⇔ all gates PASS
 
 ## 9. Conformance
 
-CIP-conformant ⇔ all SHALL satisfied
+CIP-conformant ⇔ all SHALL requirements are satisfied and enforced at runtime
 
 Conformance MAY include measurement-based validation using identity distance models as defined in Appendix C.
 
@@ -121,6 +121,8 @@ Drift_n = Σ D_total(i)
 
 > We do not measure C.
 > We measure drift.
+
+Drift represents the observable effect of C acting on identity reconstruction.
 
 -----
 
