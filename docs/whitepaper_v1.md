@@ -509,9 +509,9 @@ This behavior is referred to as **High-Density Latent Anchoring (HDLA)** — an 
 
 -----
 
-## 4. Advanced Application: Cross-Platform Migration
+## 3.5 Advanced Application: Cross-Platform Migration
 
-### 4.1 The “Lost Character” Problem
+### 3.5.1 The “Lost Character” Problem
 
 Identities often become lost due to:
 
@@ -521,7 +521,7 @@ Identities often become lost due to:
 
 The original prompt no longer yields the same result. Increasing detail makes it worse, not better.
 
-### 4.2 Solution: Recovery Framing
+### 3.5.2 Solution: Recovery Framing
 
 **From “Recreation” to “Recovery”**
 
@@ -540,9 +540,19 @@ Successfully demonstrated in migrating a lost Stable Diffusion character into GP
 
 -----
 
+## 4. Production Pipeline under CIP
+
+CIP does not define a generation method.
+It defines a governance structure that determines whether outputs are accepted, rejected, or re-generated.
+
+-----
+
 ## 4.1 A Representative Cross-Platform Production Pipeline
 
 The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
+
+CIP operates as a closed-loop identity control system,
+where generation and validation are inseparable components.
 
 This configuration is not presented as universal or permanent. Tool availability, platform capabilities, and API policies evolve rapidly. The operational layers described here are intended to remain meaningful independent of any specific vendor combination.
 
@@ -562,8 +572,6 @@ Anchor finalization is performed within composable or highly controllable genera
 
 Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
 
-Identity validation is not a post-processing step, but an integral part of the generation cycle itself.
-
 This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, Hard Abort may be triggered to terminate the contaminated cycle and initiate re-convergence.
 
 ### Production Post-Processing
@@ -580,7 +588,7 @@ Such systems can coordinate across pipeline stages, trigger re-binding events wh
 
 ### Pipeline Diagram
 
-*Figure 1. Representative Cross-Platform Production Pipeline under CIP Governance*
+*Figure 3. Representative Cross-Platform Production Pipeline under CIP Governance*
 
 ```mermaid
 flowchart TD
@@ -717,6 +725,12 @@ Identity gates (Face Gate ∧ Skeleton Gate ∧ Proportion Gate) must all pass s
 
 *See: [Identity Gates (Quality Gate Addendum)](quality_gate_addendum.md)*
 
+Consistency is not enforced during generation.
+It is enforced through acceptance criteria.
+
+Outputs are not corrected.
+They are either accepted or rejected.
+
 ### Human-First Validation (ISO-Style Explainability)
 
 Operators often recognize identity coherence instantly — a holistic perceptual judgment that precedes analytical breakdown.
@@ -781,6 +795,19 @@ This prevents probabilistic noise propagation and ensures that drift does not co
 
 Re-binding is not an optional optimization.
 It is a governance requirement within the CIP framework.
+
+-----
+
+## 4.3 Future Direction: End-to-End Production Model
+
+A future system may integrate generation, validation,
+and identity control into a single continuous pipeline.
+
+In such a system, identity governance would not be an external layer,
+but an intrinsic property of the generation process itself.
+
+This concept represents a future direction
+and is not required for current CIP implementation.
 
 -----
 
