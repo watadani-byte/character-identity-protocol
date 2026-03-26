@@ -507,6 +507,8 @@ Instead, they **indirectly constrain sampling trajectories**, increasing the pro
 
 This behavior is referred to as **High-Density Latent Anchoring (HDLA)** — an operational mechanism distinct from direct model conditioning or parameter modification.
 
+In this document, “high-density regions” refers to regions of the reconstruction space where identity reconstruction is statistically stable and repeatedly recoverable under anchor-constrained conditions.
+
 -----
 
 ## 3.5 Advanced Application: Cross-Platform Migration
@@ -999,7 +1001,7 @@ The protocol has been validated across the following production case groups:
 |02    |Wedding series, 4 emotional transitions                                                 |Identity maintained, 15 turns                                              |
 |03    |Fashion production, skeletal control                                                    |Audit-ready consistency, 38 turns                                          |
 |04    |Cross-platform migration (SD → ChatGPT)                                                 |High-fidelity recovery observed under anchor-governed re-binding conditions|
-|05    |Minimal prompt emergence — no image anchor                                              |New consistent character emerged                                           |
+|05    |Minimal prompt emergence — no image anchor (under constrained conditions)               |New consistent character emerged                                           |
 |06    |Gemini replication — cross-platform validation                                          |High-consistency behavior observed under gate-governed conditions          |
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
