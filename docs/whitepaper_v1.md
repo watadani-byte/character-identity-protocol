@@ -983,6 +983,30 @@ The workflow described in this section corresponds directly to the Shizuka case 
 
 -----
 
+-----
+
+## Implementation Considerations
+
+### UID Construction Method (Implementation)
+
+The UID Construction Method describes a practical approach for constructing identity references used within CIP.
+
+**Not for generation. For identity reference.**
+
+This method is not used to generate identity and does not stabilize generation. It determines whether a generated output corresponds to the same entity as the anchor reference.
+
+A UID is constructed from structured character information, including:
+
+- **Profile** — physical attributes, proportions, and distinctive visual markers
+- **Backstory** — historical consistency signals that constrain identity interpretation across sessions
+- **Behavioral traits** — expression and reaction patterns that characterize identity beyond visual appearance
+
+**Role in CIP:**
+
+The UID reference is applied during the validation phase of the CIP governance loop. It serves as a structured reference for identity matching alongside the visual anchor, and informs Hard Abort decisions when drift between the generated output and the established identity is detected.
+
+-----
+
 ## 6. Validation
 
 **Reproducibility Definition**
