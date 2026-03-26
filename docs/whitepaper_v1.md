@@ -560,6 +560,8 @@ Anchor finalization is performed within composable or highly controllable genera
 
 ### Sequential Scene Generation
 
+Identity validation is not a post-processing step, but an integral part of the generation cycle itself.
+
 Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
 
 This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, Hard Abort may be triggered to terminate the contaminated cycle and initiate re-convergence.
