@@ -47,6 +47,30 @@ This interpretation process is C.
 
 C is not visible to the user. It cannot be directly controlled. But it is always present, and it always shapes B′.
 
+## The Structure of C
+
+C is not arbitrary.
+
+The dominant component of C is the statistical structure of the training distribution.
+
+During internal rewriting, the system is pulled toward:
+
+→ High-density regions of the learned distribution
+
+This creates a consistent tendency:
+
+→ Regression toward familiar, frequently observed patterns
+
+In other words:
+
+C acts as a form of "distributional gravity"
+
+- Rare or complex constraints are weakened  
+- Common patterns are reinforced  
+- Unique features are normalized  
+
+This is why outputs tend to converge toward "typical" representations rather than faithfully executing A.
+
 -----
 
 ## A Concrete Example
