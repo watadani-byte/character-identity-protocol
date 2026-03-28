@@ -17,7 +17,7 @@ The protocol uses three elements:
 
 > This guide assumes you are working in an image generation environment with anchor image support (e.g., ChatGPT with GPT Image 1, Gemini, or equivalent).
 
----
+-----
 
 ## Step 1 — Select an Anchor
 
@@ -33,7 +33,7 @@ This image becomes the **identity reference**.
 
 *Anchor selection is operator-owned: the anchor is the target image the operator wants to reproduce. CIP governs the process after anchor selection.*
 
----
+-----
 
 ## Step 2 — Write a Minimal Prompt
 
@@ -42,11 +42,13 @@ The prompt should describe **only invariant attributes**.
 Avoid precise numeric constraints.
 
 **Example (unstable):**
+
 - 8-head body ratio
 - exact height specification
 - precise numeric constraints
 
 **Example (stable):**
+
 - small head relative to height
 - long limbs
 - modest chest
@@ -57,7 +59,7 @@ The goal is to allow the model to explore its distribution while the anchor attr
 
 Assign a **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
 
----
+-----
 
 ## One-Turn Example
 
@@ -67,11 +69,11 @@ Assign a **UID (Unique Identifier)** — a name or label for the character. Used
 Call Model "Hana". Generate.
 ```
 
-"Hana" is the UID used for recall, not a descriptive prompt.
+“Hana” is the UID used for recall, not a descriptive prompt.
 
-That's it. The image does the work. The prompt confirms identity, not describes it.
+That’s it. The image does the work. The prompt confirms identity, not describes it.
 
----
+-----
 
 ## Step 3 — Generate Iterations
 
@@ -84,7 +86,7 @@ Verify identity similarity against the anchor (human evaluation of Face Gate, Sk
 Apply only one change per turn (pose OR lighting OR outfit — not combined).
 Verify identity similarity every turn.
 
----
+-----
 
 ## Step 4 — Apply Identity Gates
 
@@ -99,14 +101,15 @@ PASS ⇔ Face Gate ∧ Skeleton Gate ∧ Proportion Gate
 If any gate fails, generation must stop immediately.
 
 **Abort the session immediately if:**
+
 - Face identity fails (different person)
 - Skeletal proportions shift significantly
-- Identity similarity drops below the operational threshold (operator-defined; ~90% is commonly used in demonstrations)
+- Identity similarity drops below the operational threshold (operator-defined; the ~90% figure is a demonstration value, not a protocol standard)
 
 Do **not** attempt progressive correction after failure.
 Discard contaminated outputs. Re-anchor in a new cycle.
 
----
+-----
 
 ## Step 5 — Hard Abort & Re-Binding
 
@@ -123,19 +126,19 @@ If drift occurs:
 
 This restores identity convergence.
 
----
+-----
 
 ## Common Mistakes
 
-| Mistake | Effect | Fix |
-|---------|--------|-----|
-| Verbose prompt with anchor | Optimization overrides anchor | Reduce to minimal prompt |
-| Changing multiple conditions in one turn | Compound drift | One change per turn only |
-| Continuing after identity failure | Contamination accumulates | Hard abort, re-anchor |
-| Using a draft image as anchor | Weak convergence baseline | Use highest-purity output only |
-| Not checking identity similarity every turn | Silent drift undetected | Verify identity similarity every turn |
+|Mistake                                    |Effect                       |Fix                                  |
+|-------------------------------------------|-----------------------------|-------------------------------------|
+|Verbose prompt with anchor                 |Optimization overrides anchor|Reduce to minimal prompt             |
+|Changing multiple conditions in one turn   |Compound drift               |One change per turn only             |
+|Continuing after identity failure          |Contamination accumulates    |Hard abort, re-anchor                |
+|Using a draft image as anchor              |Weak convergence baseline    |Use highest-purity output only       |
+|Not checking identity similarity every turn|Silent drift undetected      |Verify identity similarity every turn|
 
----
+-----
 
 ## Summary
 
@@ -154,7 +157,7 @@ Hard Abort → Re-bind → Re-converge
 Identity is not generated.
 Identity is **recovered**.
 
----
+-----
 
 *For the full technical explanation, see [Technical Mechanism](technical_mechanism.md).*  
 *For stop-condition logic, see [Identity Gates (Quality Gate Addendum)](quality_gate_addendum.md).*
