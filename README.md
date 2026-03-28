@@ -2,7 +2,9 @@
 
 Generative AI does not preserve identity.
 
-Each generation is a new reconstruction. The same prompt produces different faces, different proportions, different presence. Identity drifts — not because of error, but because of how these systems work.
+The same prompt produces different people.
+
+CIP introduces a protocol to control it.
 
 CIP is a protocol for controlling identity in probabilistic generative systems. It operates entirely at inference time, requires no model modification, and is compatible with closed-source platforms.
 
@@ -30,7 +32,10 @@ This is not a prompt failure. It is the expected behavior of a probabilistic sys
 
 -----
 
-## What CIP Does
+## From Generation to Control
+
+This is not a generation problem.
+It is a control problem.
 
 ```
 Conventional:
@@ -61,8 +66,8 @@ Control Target: A′  (reconstructed state)
 Key Operations: Anchor · Gates · Hard Abort · Re-convergence
 ```
 
-CIP is not generating better images.
-It is controlling identity in a probabilistic system.
+CIP does not improve generation.
+It makes identity a controlled variable.
 
 -----
 
