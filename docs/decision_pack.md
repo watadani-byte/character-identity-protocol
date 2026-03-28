@@ -78,7 +78,7 @@ Instead it governs **how outputs are accepted or rejected**.
 
 **Human Gate Validation Authority:**
 
-- Human threshold validation (operator-defined; values around ≈90% are commonly used in demonstrations, depending on project tolerance)
+- Human threshold validation (operator-defined; the ~90% figure is a demonstration value, not a protocol standard)
 
 -----
 
