@@ -130,7 +130,7 @@ Stabilization checkpoints: 1
 Conditions varied: - Lighting (6 variations) - Material (3 variations) -
 Monochrome (2 variations) - Background (1 variation)
 
-Match threshold: Human-judged ≥ 90% (operator-defined for this session; not a fixed protocol requirement)  
+Match threshold: Human-judged, operator-defined (the ~90% figure used in this session is a demonstration value, not a protocol standard)  
 Session terminated upon threshold breach.
 
 Result: Identity preserved across controlled condition variation.
