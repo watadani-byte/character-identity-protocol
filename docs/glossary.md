@@ -106,14 +106,17 @@ beautiful, elegant, mysterious Japanese woman with flowing black hair...
 
 A human-assessed similarity score between the anchor image and a generated output.
 
+Match rate is not an identity verification metric. It is an **early warning indicator for character drift** — a signal that degradation may be beginning before full collapse occurs.
+
 Evaluated across three dimensions:
 
 - **FaceGate** — facial identity consistency
 - **SkeletonGate** — skeletal proportion and alignment
 - **ProportionGate** — overall body proportion
 
-The similarity threshold is operator-defined. Values around ~90% are commonly used in demonstrations, but the exact threshold depends on project tolerance and operational requirements.
-Below threshold → session abort.
+The similarity threshold is operator-defined. The ~90% figure is a demonstration value only — it is not a protocol standard. Treating it as a fixed threshold is a misapplication of this protocol.
+
+> Match rate measures the **risk of drift**, not the **fact of identity**.
 
 Match rate is a human judgment, not an automated metric.
 
