@@ -6,7 +6,7 @@ The same prompt produces different people.
 
 CIP introduces a protocol to control it.
 
-CIP is a protocol for controlling identity in probabilistic generative systems. It operates entirely at inference time, requires no model modification, and is compatible with closed-source platforms.
+CIP is a protocol for controlling identity in probabilistic generative systems — operating entirely at inference time, without model modification.
 
 ```
 A (input) → A′ (reconstructed) → B′ (output)
