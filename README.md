@@ -69,6 +69,9 @@ Key Operations: Anchor · Gates · Hard Abort · Re-convergence
 CIP does not improve generation.
 It makes identity a controlled variable.
 
+This is not a prompt technique.
+It is a control protocol.
+
 -----
 
 ## Documentation
