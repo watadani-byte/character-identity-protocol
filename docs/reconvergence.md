@@ -9,7 +9,7 @@ It terminates the process and restores a known-valid state.
 
 ## Retry vs. Re-Convergence
 
-This distinction is fundamental.
+This distinction defines the difference between uncontrolled generation and controlled systems.
 
 ```
 Conventional (Retry):
