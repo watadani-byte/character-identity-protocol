@@ -51,13 +51,19 @@ When a gate failure is detected:
 - **Measurement**: Visual comparison against anchor image by trained operator
 - **Automation**: None — human judgment only
 
-> ~90% = commonly used demonstration threshold; the protocol defines the validation mechanism, not the numeric value.
+> ⚠️ The ~90% figure originated as a demonstration value. It is not a protocol standard. Treating it as a fixed threshold is a misapplication of this document.
 
-If match rate drops below operational threshold:
+### Purpose of Match Rate Measurement
 
-- Session is considered invalid and must be abandoned
-- Anchor image is discarded if contaminated
-- Chat log is discarded
+The match rate is not an identity verification metric.
+
+It is an **early warning indicator for character drift** — a signal that degradation may be beginning before full collapse occurs.
+
+A declining match rate does not mean the character has failed. It means the system is approaching a condition where failure becomes likely.
+
+The appropriate response to a low match rate is increased operator attention — not automatic rejection.
+
+> Match rate measures the **risk of drift**, not the **fact of identity**.
 
 -----
 
