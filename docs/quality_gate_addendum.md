@@ -71,6 +71,60 @@ Operator intuition is a valid trigger for inspection. It is not a substitute for
 
 -----
 
+## Design Memo — Match Rate Computation Scope
+
+> Non-normative internal note — No immediate specification change.
+
+### Background
+
+Current protocol position:
+
+- Match rate is an auxiliary indicator
+- Operator judgment has final authority
+- Gate evaluation supersedes numerical similarity
+
+However, computation conditions for match rate are not yet standardized.
+
+### Concern
+
+Without defined comparison conditions:
+
+- Measurements may vary between sessions
+- Cross-operator consistency may degrade
+- External reviewers may misinterpret score meaning
+
+### Design Principle (Provisional)
+
+If formalized in the future, match rate computation SHOULD:
+
+- Be anchor-relative
+- Control for pose and lighting when feasible
+- Specify comparison region (e.g., facial bounding area)
+- Avoid model-dependent hard coupling
+- Explicitly remain subordinate to gate evaluation
+
+> Match rate MUST NOT override documented operator gate decision.
+
+### Deferred Decision
+
+No immediate formalization required.
+
+Standardization may be introduced during:
+
+- Enterprise deployment phase
+- Automation integration phase
+- Cross-team operator expansion
+
+### Risk Reminder
+
+Over-specification risks:
+
+- Transforming governance into score-optimization
+- Undermining model-agnostic design
+- Creating false sense of objectivity
+
+-----
+
 ## Why No Progressive Correction
 
 Progressive correction after identity failure leads to **contamination** — the accumulation of drift in the session context that cannot be reversed by prompt adjustment.
