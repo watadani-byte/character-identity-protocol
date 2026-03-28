@@ -52,18 +52,22 @@ When a gate failure is detected:
 - **Automation**: None — human judgment only
 
 > ⚠️ The ~90% figure originated as a demonstration value. It is not a protocol standard. Treating it as a fixed threshold is a misapplication of this document.
+> 
+> ⚠️ Match rate is an indicator of drift risk — not a proof of identity. A passing match rate does not confirm identity. A failing match rate does not automatically constitute identity failure.
 
 ### Purpose of Match Rate Measurement
 
 The match rate is not an identity verification metric.
 
-It is an **early warning indicator for character drift** — a signal that degradation may be beginning before full collapse occurs.
+It is an **early warning indicator for character collapse** — a signal that degradation may be beginning before full identity failure occurs.
 
 A declining match rate does not mean the character has failed. It means the system is approaching a condition where failure becomes likely.
 
-The appropriate response to a low match rate is increased operator attention — not automatic rejection.
+The appropriate response to a low match rate is increased operator attention and inspection — not automatic rejection.
 
 > Match rate measures the **risk of drift**, not the **fact of identity**.
+
+Operator intuition is a valid trigger for inspection. It is not a substitute for documented gate evaluation.
 
 -----
 
