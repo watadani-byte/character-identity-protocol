@@ -183,6 +183,38 @@ and compliance review without requiring model-level transparency.
 
 -----
 
+## Hard Abort Threshold Guidance
+
+This section provides provisional guidance for operators deciding when to trigger Hard Abort.
+
+### Decision Framework
+
+Hard Abort is mandatory on any Identity Gate FAIL. The following table provides additional guidance for borderline situations where operator judgment is required.
+
+|Condition                                          |Recommended Action                               |
+|---------------------------------------------------|-------------------------------------------------|
+|Any single gate FAIL (Face / Skeleton / Proportion)|Hard Abort — mandatory                           |
+|Match rate declining across 2+ consecutive turns   |Increase inspection frequency                    |
+|Match rate below operator threshold (e.g. ~80–90%) |Consider proactive Hard Abort before gate failure|
+|Operator intuition flags identity degradation      |Trigger inspection; Hard Abort if confirmed      |
+|Context length approaching MCST boundary           |Proactive re-binding recommended                 |
+|Multiple drift types occurring simultaneously      |Hard Abort — cascading failure risk              |
+
+### Threshold Calibration Guidance
+
+Thresholds are operator-defined and deployment-specific. The following factors should inform calibration:
+
+- **Risk tolerance**: IP production workflows warrant stricter thresholds than exploratory workflows
+- **Platform characteristics**: Structural evaluation models (e.g. GPT-5.3-style) may require lower numeric thresholds than perceptual models
+- **Session length**: Longer sessions accumulate drift; lower thresholds are advisable
+- **Character complexity**: Characters with distinctive features (e.g. glasses, unusual hair) may require stricter face gate evaluation
+
+> ⚠️ No fixed numeric threshold is mandated by CIP. Threshold values must be validated empirically per deployment context.
+
+*See: [Quality Gate & Hard Abort](quality_gate_addendum.md) — [CIP Specification v0.1](cip_spec_v0.1.md)*
+
+-----
+
 ## Open Questions (Future Work)
 
 - Automated similarity threshold measurement
