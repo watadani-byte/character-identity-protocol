@@ -69,6 +69,23 @@ The appropriate response to a low match rate is increased operator attention and
 
 Operator intuition is a valid trigger for inspection. It is not a substitute for documented gate evaluation.
 
+### Model-Specific Threshold Guidance (Provisional)
+
+Identity consistency scores are evaluation-framework-dependent.
+Perceptual evaluation and structural evaluation may yield
+significantly different results for identical image pairs.
+This is not measurement error — it reflects the nature of
+identity as a perceptual construct.
+
+|Evaluation Type                 |Characteristics                           |Recommended Threshold|
+|--------------------------------|------------------------------------------|---------------------|
+|Perceptual (e.g., GPT-5.2-style)|Impression-based, human-like judgment     |≥ 0.90               |
+|Structural (e.g., GPT-5.3-style)|Fine-grained, conservative, diff-sensitive|≥ 0.80               |
+
+
+> ⚠️ These are provisional operational guidelines, not protocol
+> standards. Threshold must be calibrated per deployment context.
+
 -----
 
 ## Design Memo — Match Rate Computation Scope
@@ -102,6 +119,66 @@ If formalized in the future, match rate computation SHOULD:
 - Specify comparison region (e.g., facial bounding area)
 - Avoid model-dependent hard coupling
 - Explicitly remain subordinate to gate evaluation
+
+### Evaluation Framework Reference
+
+Two evaluation approaches have been operationally observed:
+
+**Perceptual Evaluation (GPT-5.2-style)**
+
+Simulated Perceptual Score =
+0.40 × Face Impression
+
+- 0.25 × Hair Consistency
+- 0.15 × Iconic Features (e.g. glasses)
+- 0.10 × Vibe Consistency
+- 0.10 × Context Robustness
+
+- 0.05 × Style Drift
+- 0.05 × Proportion Drift
+
+Characteristics:
+
+- Weighted toward overall impression
+- Tolerant of fine-grained differences
+- Closest to human same-person recognition
+
+Score interpretation:
+
+|Score |Interpretation              |
+|------|----------------------------|
+|0.95+ |Near-identical              |
+|0.90+ |Recognized as same character|
+|0.80+ |Possible match              |
+|< 0.80|Divergent                   |
+
+-----
+
+**Structural Evaluation (GPT-5.3-style)**
+
+Evaluation dimensions:
+
+- Facial structure (contour, eyes, ratio)
+- Skeletal proportion
+- Color stability
+- Style consistency
+- Fine details (hands, symmetry, placement)
+
+Characteristics:
+
+- Detects fine-grained differences
+- Conservative (strict) matching
+- Higher penalty weighting
+
+Recommended threshold for this evaluation type: ≥ 0.80
+
+-----
+
+> ⚠️ These evaluation frameworks are operationally observed
+> references, not vendor specifications.
+> CIP does not mandate either framework.
+> Selection should be based on deployment context and
+> operator judgment.
 
 > Match rate MUST NOT override documented operator gate decision.
 
