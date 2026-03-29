@@ -69,6 +69,8 @@ nav:
     - Decision Pack: decision_pack.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
+    - Re-Convergence — Identity Recovery: reconvergence.md
+    - Protocol Template: protocol_template.md
 
   # ─── 7. Columns ──────────────────────────────────────────────
   - Columns:
@@ -78,6 +80,7 @@ nav:
     - Identity Drift in Generative Image Models: column_identity_drift_practical.md
     - Miracle Image: column_miracle_image.md
     - Production Notes: column_production.md
+    - Persistent Anchor Layer (PAL): column_pal.md
 
   # ─── 8. Reference ────────────────────────────────────────────
   - Reference:
