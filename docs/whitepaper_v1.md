@@ -635,6 +635,10 @@ flowchart TD
 
 ### Architectural Implication
 
+> For cross-session and cross-platform implementation of
+> anchor persistence, see:
+> [Column: Persistent Anchor Layer (PAL)](column_pal.md)
+
 The lasting contribution of this architecture is not the specific vendor combination, which reflects present-day tool availability. Rather, it is the protocol layer itself.
 
 CIP defines an operational structure for:
