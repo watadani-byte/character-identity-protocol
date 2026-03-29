@@ -130,6 +130,27 @@ It is a control protocol.
 
 -----
 
+## Contributing — Platform Implementation Examples
+
+CIP is designed as an open governance standard.
+
+One area where community contribution is particularly valuable:
+
+**PAL implementation examples on new platforms**
+
+As new AI platforms emerge — including domain-specific LLMs, video generation systems, and multimodal agents — documenting how PAL maps to their persistent layer features helps CIP grow as a platform-agnostic standard.
+
+If you have implemented or observed PAL-like behavior on a platform not yet documented, contributions are welcome:
+
+- Open an [Issue](https://github.com/watadani-byte/character-identity-protocol/issues) describing the platform and feature
+- Reference the [PAL column](docs/column_pal.md) and [Architecture Diagram](docs/architecture_diagram.md) for formatting guidance
+- Include: platform name, persistent layer feature, mapping to PAL / HDLA / ARCM layers
+
+> CIP provides the governance framework.
+> The community provides the platform coverage.
+
+-----
+
 ## License
 
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
