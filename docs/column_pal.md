@@ -89,5 +89,71 @@ professional domains.
 
 -----
 
+## Platform Implementation Examples
+
+PAL is a platform-agnostic concept.
+The following examples illustrate how PAL maps to
+existing features across major AI platforms.
+
+### ChatGPT — Library Feature
+
+Structured documents (e.g., UID + anchor image as PDF)
+registered in the Library function as a persistent
+identity reference layer across sessions.
+
+### Claude — Project Files
+
+Files uploaded to a Claude Project persist across
+conversations, functioning as a continuously available
+anchor reference layer without re-injection per session.
+
+### Gemini — Three-Layer Implementation
+
+Gemini’s architecture enables a particularly structured
+PAL implementation across three layers:
+
+|Layer           |Gemini Feature        |Role                                            |
+|----------------|----------------------|------------------------------------------------|
+|**PAL (Infra)** |Context Caching       |Physical persistence of identity; cost reduction|
+|**HDLA (Data)** |Gems / Reference Files|High-density feature anchoring in latent space  |
+|**ARCM (Logic)**|System Instructions   |Re-convergence logic enforcement                |
+
+**Context Caching (PAL Infrastructure)**
+
+Gemini 1.5 Pro’s Context Caching allows UID, anchor images,
+and CIP protocol documents to be registered server-side
+and retained across sessions (hours to days).
+
+This enables immediate restoration of a deeply anchored
+identity state at the start of each new session —
+without re-injecting the full source material each time.
+
+**Gems / Reference Files (HDLA)**
+
+Consumer-facing Gemini Advanced supports Gems —
+custom Gemini instances with uploaded knowledge files.
+Registering CIP whitepaper and anchor materials as
+Gem knowledge creates a persistent HDLA layer that
+loads automatically at conversation start.
+
+**System Instructions (ARCM)**
+
+Re-convergence logic can be enforced through
+Gemini’s System Instructions, directing the model
+to treat the cached anchor as the primary identity
+reference at all times.
+
+### Cross-Platform Implication
+
+The consistent mapping of PAL across ChatGPT, Claude,
+and Gemini suggests that persistent anchor layering
+is an emergent capability of modern AI platform
+architecture — not a platform-specific feature.
+
+CIP provides the governance framework.
+PAL operationalizes it across platforms.
+
+-----
+
 *Status: Observational hypothesis — February 2026*  
 *Related: [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md)*
