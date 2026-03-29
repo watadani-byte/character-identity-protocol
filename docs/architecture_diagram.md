@@ -240,3 +240,64 @@ High  ┤                  Re-binding
 
 *See: [Technical Mechanism](technical_mechanism.md) for theoretical framing.*  
 *See: [Quality Gate Addendum](quality_gate_addendum.md) for gate definitions.*
+
+## 7. Persistent Anchor Layer (PAL) — Cross-Platform Architecture
+
+PAL extends CIP’s inference-time anchoring into cross-session infrastructure.
+
+### PAL Layer Hierarchy
+
+```
+PAL (Persistent Anchor Layer)
+  └── HDLA (High-Density Latent Anchoring)
+        └── ARCM (Anchor Re-Convergence Method)
+```
+
+### Platform Mapping
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  PAL — Cross-Platform View                  │
+├──────────────┬──────────────────────┬───────────────────────┤
+│   Platform   │    PAL Feature       │   CIP Layer           │
+├──────────────┼──────────────────────┼───────────────────────┤
+│  ChatGPT     │  Library (PDF/files) │  PAL Infrastructure   │
+├──────────────┼──────────────────────┼───────────────────────┤
+│  Claude      │  Project Files       │  PAL Infrastructure   │
+├──────────────┼──────────────────────┼───────────────────────┤
+│  Gemini      │  Context Caching     │  PAL Infrastructure   │
+│              │  Gems / Ref Files    │  HDLA                 │
+│              │  System Instructions │  ARCM Logic           │
+└──────────────┴──────────────────────┴───────────────────────┘
+```
+
+### Session Lifecycle with PAL
+
+```mermaid
+flowchart TD
+    PAL["PAL — Persistent Anchor Layer
+    (Library / Project Files / Context Cache)"]
+    
+    S1[Session Start]
+    LOAD[Load Anchor + UID from PAL]
+    GEN[Generate]
+    GATE{Identity Gates}
+    PASS[Accept Output]
+    ABORT[Hard Abort]
+    REBIND[Re-bind from PAL]
+    END[Session End]
+
+    PAL -->|provides anchor| S1
+    S1 --> LOAD
+    LOAD --> GEN
+    GEN --> GATE
+    GATE -->|PASS| PASS
+    GATE -->|FAIL| ABORT
+    ABORT --> REBIND
+    REBIND -->|anchor restored from PAL| GEN
+    PASS --> END
+```
+
+*PAL eliminates full re-injection at session start and provides a stable anchor recovery source across Hard Abort cycles.*
+
+*See: [Column: Persistent Anchor Layer (PAL)](column_pal.md)*
