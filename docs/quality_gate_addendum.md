@@ -126,16 +126,16 @@ Two evaluation approaches have been operationally observed:
 
 **Perceptual Evaluation (GPT-5.2-style)**
 
+```
 Simulated Perceptual Score =
-0.40 × Face Impression
-
-- 0.25 × Hair Consistency
-- 0.15 × Iconic Features (e.g. glasses)
-- 0.10 × Vibe Consistency
-- 0.10 × Context Robustness
-
+  0.40 × Face Impression
++ 0.25 × Hair Consistency
++ 0.15 × Iconic Features (e.g. glasses)
++ 0.10 × Vibe Consistency
++ 0.10 × Context Robustness
 - 0.05 × Style Drift
 - 0.05 × Proportion Drift
+```
 
 Characteristics:
 
