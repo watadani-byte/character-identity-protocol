@@ -87,6 +87,7 @@ It is a control protocol.
 - [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md)
 
 **Protocol**
 
@@ -100,6 +101,12 @@ It is a control protocol.
 - [Case 01B: Mira Project](docs/case_01b_mira_project.md)
 - [Case 04: Cross-Platform Migration](docs/case_04_shizuka.md)
 - [All Cases →](docs/case_01_failure_log.md)
+
+**Columns**
+
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md)
+- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
+- [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 
 **Reference**
 
