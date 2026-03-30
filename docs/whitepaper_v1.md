@@ -1209,3 +1209,370 @@ Cross-platform character persistence under CIP therefore depends on the anchor a
 This property is particularly relevant for production workflows that span multiple tools — for example, initial character development in one system, iterative scene generation in another, and final post-processing in a third. CIP provides the governance layer that maintains identity continuity across these transitions.
 
 The operational implication for IP asset management is significant. Character identity assets in generative AI production environments are not defined by a prompt or a model configuration, but by a validated anchor image and the governance protocol that governs its use. This reframes character asset management in generative systems from a prompt engineering problem into an operational governance problem — the problem space CIP is designed to govern.
+
+-----
+
+## Appendix E — Implementation Schema (JSON/YAML Specification)
+
+This appendix provides reference schema definitions for
+implementing CIP-governed workflows programmatically.
+
+These schemas are non-normative reference examples.
+Implementations may extend or adapt them to suit
+deployment context.
+
+-----
+
+### E.1 Identity Schema
+
+Defines the structure of a CIP identity asset (UID + anchor).
+
+**JSON**
+
+```json
+{
+  "cip_identity": {
+    "uid": "shiraishi_shizuka_v1",
+    "version": "1.0",
+    "created": "2026-02-01",
+    "anchor": {
+      "image_ref": "assets/shizuka_anchor_v1.png",
+      "view": "front",
+      "validated": true,
+      "gate_results": {
+        "face_gate": "PASS",
+        "skeleton_gate": "PASS",
+        "proportion_gate": "PASS"
+      }
+    },
+    "profile": {
+      "age_appearance": "mid-20s",
+      "hair": {
+        "color": "#6B3F2A",
+        "length": "long",
+        "style": "high_ponytail"
+      },
+      "eyes": {
+        "color": "#4A2E1A",
+        "shape": "soft_almond"
+      },
+      "skin_tone": "#F0D5B8",
+      "build": "slim",
+      "distinctive_features": [
+        "thin_gold_frame_glasses",
+        "small_gold_stud_earrings"
+      ]
+    },
+    "body_proportion": {
+      "head_to_body_ratio": "1:7.5",
+      "shoulder_width": "narrow",
+      "silhouette": "slim_hourglass"
+    },
+    "rendering_constraints": {
+      "style": "anime",
+      "line_art": "thin",
+      "facial_whitening": false,
+      "color_temperature": "warm_neutral"
+    },
+    "minimal_prompt": "Shiraishi Shizuka, long dark brown hair in high ponytail, dark brown eyes, thin gold-framed round glasses, slim figure, anime style"
+  }
+}
+```
+
+**YAML**
+
+```yaml
+cip_identity:
+  uid: shiraishi_shizuka_v1
+  version: "1.0"
+  created: "2026-02-01"
+
+  anchor:
+    image_ref: assets/shizuka_anchor_v1.png
+    view: front
+    validated: true
+    gate_results:
+      face_gate: PASS
+      skeleton_gate: PASS
+      proportion_gate: PASS
+
+  profile:
+    age_appearance: mid-20s
+    hair:
+      color: "#6B3F2A"
+      length: long
+      style: high_ponytail
+    eyes:
+      color: "#4A2E1A"
+      shape: soft_almond
+    skin_tone: "#F0D5B8"
+    build: slim
+    distinctive_features:
+      - thin_gold_frame_glasses
+      - small_gold_stud_earrings
+
+  body_proportion:
+    head_to_body_ratio: "1:7.5"
+    shoulder_width: narrow
+    silhouette: slim_hourglass
+
+  rendering_constraints:
+    style: anime
+    line_art: thin
+    facial_whitening: false
+    color_temperature: warm_neutral
+
+  minimal_prompt: >
+    Shiraishi Shizuka, long dark brown hair in high ponytail,
+    dark brown eyes, thin gold-framed round glasses,
+    slim figure, anime style
+```
+
+-----
+
+### E.2 Context Schema
+
+Defines the structure of a CIP session context,
+including gate history and MCST tracking.
+
+**JSON**
+
+```json
+{
+  "cip_context": {
+    "session_id": "session_20260201_001",
+    "uid_ref": "shiraishi_shizuka_v1",
+    "created": "2026-02-01T09:00:00Z",
+    "turn_count": 0,
+    "mcst_boundary": 40,
+    "last_verified_anchor": {
+      "image_ref": "assets/shizuka_anchor_v1.png",
+      "verified_at_turn": 0
+    },
+    "gate_history": [],
+    "status": "active"
+  }
+}
+```
+
+**YAML**
+
+```yaml
+cip_context:
+  session_id: session_20260201_001
+  uid_ref: shiraishi_shizuka_v1
+  created: "2026-02-01T09:00:00Z"
+
+  turn_count: 0
+  mcst_boundary: 40
+
+  last_verified_anchor:
+    image_ref: assets/shizuka_anchor_v1.png
+    verified_at_turn: 0
+
+  gate_history: []
+
+  status: active
+```
+
+**Gate History Entry (per turn)**
+
+```json
+{
+  "turn": 5,
+  "output_ref": "outputs/turn_005.png",
+  "gate_results": {
+    "face_gate": "PASS",
+    "skeleton_gate": "PASS",
+    "proportion_gate": "PASS"
+  },
+  "overall": "PASS",
+  "operator": "human",
+  "timestamp": "2026-02-01T09:25:00Z"
+}
+```
+
+```yaml
+turn: 5
+output_ref: outputs/turn_005.png
+gate_results:
+  face_gate: PASS
+  skeleton_gate: PASS
+  proportion_gate: PASS
+overall: PASS
+operator: human
+timestamp: "2026-02-01T09:25:00Z"
+```
+
+-----
+
+### E.3 Hard Abort Event Schema
+
+Records a Hard Abort event for audit purposes.
+
+**JSON**
+
+```json
+{
+  "hard_abort_event": {
+    "session_id": "session_20260201_001",
+    "turn": 12,
+    "trigger": "face_gate_fail",
+    "output_ref": "outputs/turn_012_discarded.png",
+    "action": "session_terminated",
+    "rebind_anchor": "assets/shizuka_anchor_v1.png",
+    "timestamp": "2026-02-01T10:15:00Z",
+    "operator": "human"
+  }
+}
+```
+
+**YAML**
+
+```yaml
+hard_abort_event:
+  session_id: session_20260201_001
+  turn: 12
+  trigger: face_gate_fail
+  output_ref: outputs/turn_012_discarded.png
+  action: session_terminated
+  rebind_anchor: assets/shizuka_anchor_v1.png
+  timestamp: "2026-02-01T10:15:00Z"
+  operator: human
+```
+
+-----
+
+### E.4 ASC Conditions Schema
+
+Defines the Anchor-Sufficient Convergence (ASC) condition,
+specifying which generation tools are explicitly disabled.
+
+**JSON**
+
+```json
+{
+  "asc_conditions": {
+    "uid": "shiraishi_shizuka_v1",
+    "pal_registered": true,
+    "required": {
+      "same_uid": true,
+      "pal_anchor": true
+    },
+    "disabled": {
+      "controlnet": true,
+      "openpose": true,
+      "seed_fixed": false,
+      "lora": true,
+      "model_finetuning": true
+    },
+    "sd_seed_policy": {
+      "mode": "random",
+      "note": "Seed is not fixed under ASC. Identity is maintained by anchor, not seed."
+    },
+    "observed_result": "same_character",
+    "validation_status": "observational"
+  }
+}
+```
+
+**YAML**
+
+```yaml
+asc_conditions:
+  uid: shiraishi_shizuka_v1
+  pal_registered: true
+
+  required:
+    same_uid: true
+    pal_anchor: true
+
+  disabled:
+    controlnet: true
+    openpose: true
+    seed_fixed: false
+    lora: true
+    model_finetuning: true
+
+  sd_seed_policy:
+    mode: random
+    note: >
+      Seed is not fixed under ASC.
+      Identity is maintained by anchor, not seed.
+
+  observed_result: same_character
+  validation_status: observational
+```
+
+-----
+
+### E.5 PAL Asset Schema
+
+Defines the structure of a PAL-registered identity asset,
+including platform mapping.
+
+**JSON**
+
+```json
+{
+  "pal_asset": {
+    "uid_ref": "shiraishi_shizuka_v1",
+    "asset_type": "identity_anchor_pdf",
+    "asset_ref": "pal/shizuka_pal_asset_v1.pdf",
+    "registered_platforms": [
+      {
+        "platform": "chatgpt",
+        "feature": "file_library",
+        "status": "registered"
+      },
+      {
+        "platform": "claude",
+        "feature": "project_files",
+        "status": "registered"
+      },
+      {
+        "platform": "gemini",
+        "feature": "context_caching",
+        "status": "registered"
+      }
+    ],
+    "validation_status": "observational",
+    "created": "2026-02-01"
+  }
+}
+```
+
+**YAML**
+
+```yaml
+pal_asset:
+  uid_ref: shiraishi_shizuka_v1
+  asset_type: identity_anchor_pdf
+  asset_ref: pal/shizuka_pal_asset_v1.pdf
+
+  registered_platforms:
+    - platform: chatgpt
+      feature: file_library
+      status: registered
+    - platform: claude
+      feature: project_files
+      status: registered
+    - platform: gemini
+      feature: context_caching
+      status: registered
+
+  validation_status: observational
+  created: "2026-02-01"
+```
+
+-----
+
+> ⚠️ These schemas are reference examples only.
+> CIP does not mandate specific field names,
+> data formats, or implementation structures.
+> Implementations should adapt these schemas
+> to their deployment context and toolchain.
+
+*See: [Glossary](glossary.md) for term definitions.*  
+*See: [Column: PAL](column_pal.md) for PAL specification.*  
+*See: [Quality Gate Addendum](quality_gate_addendum.md) for gate definitions.*
