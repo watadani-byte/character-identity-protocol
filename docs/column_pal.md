@@ -73,6 +73,38 @@ This column documents the observation for future investigation.
 
 -----
 
+### Anchor-Sufficient Convergence (ASC)
+
+Operational experience with PAL has produced an observed
+convergence condition termed
+Anchor-Sufficient Convergence (ASC).
+
+Under ASC, character identity is maintained using only:
+
+|Condition            |Status      |
+|---------------------|------------|
+|Same UID             |Required    |
+|PAL-registered anchor|Required    |
+|ControlNet           |Not required|
+|OpenPose             |Not required|
+|Seed control         |Not required|
+|LoRA                 |Not required|
+|Model fine-tuning    |Not required|
+
+This condition suggests that when PAL is properly
+configured, the anchor asset alone is sufficient to
+maintain character identity across sessions, platforms,
+and generation cycles.
+
+> The anchor is sufficient. The tools are optional.
+
+ASC remains an observational finding.
+Systematic validation has not yet been conducted.
+
+*See: [Glossary — ASC](glossary.md)*
+
+-----
+
 ## Broader Applicability
 
 PAL is not limited to character identity workflows.
