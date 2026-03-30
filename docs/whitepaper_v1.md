@@ -1072,6 +1072,7 @@ This implies that future improvements in generative reliability may be achieved 
 - [Appendix C — Frequently Asked Questions about CIP](#appendix-c--frequently-asked-questions-about-cip)
 - [Appendix D — Character Concept and IP Asset Management](#appendix-d--character-concept-and-ip-asset-management)
 - [Appendix E — Implementation Schema (JSON/YAML Specification)](#appendix-e--implementation-schema-jsonyaml-specification)
+- [Appendix F — Visual Drift Detection Checklist](#appendix-f--visual-drift-detection-checklist)
 
 -----
 
@@ -1577,3 +1578,167 @@ pal_asset:
 *See: [Glossary](glossary.md) for term definitions.*  
 *See: [Column: PAL](column_pal.md) for PAL specification.*  
 *See: [Quality Gate Addendum](quality_gate_addendum.md) for gate definitions.*
+
+-----
+
+## Appendix F — Visual Drift Detection Checklist
+
+This appendix provides a structured visual checklist
+for human operators to assess identity gate outcomes.
+
+These criteria support Hard Abort decisions by making
+drift detection explicit, repeatable, and auditable.
+
+> This checklist is a human judgment aid.
+> It does not replace operator expertise.
+> Final gate authority remains with the trained operator.
+
+-----
+
+### F.1 Face Gate — Visual Checklist
+
+Evaluate against the anchor image.
+Flag any item that shows observable change.
+
+**Structural**
+
+- [ ] Eye shape is consistent with anchor
+- [ ] Eye spacing is consistent with anchor
+- [ ] Jawline and chin contour match anchor
+- [ ] Cheekbone structure matches anchor
+- [ ] Nose bridge width and profile match anchor
+- [ ] Mouth width and lip proportion match anchor
+
+**Age and Expression**
+
+- [ ] Age appearance is consistent (no youth/age drift)
+- [ ] Resting expression matches anchor character baseline
+- [ ] Skin texture and smoothness are consistent
+
+**Rendering**
+
+- [ ] Facial skin tone matches anchor color temperature
+- [ ] No abrupt brightness shift between face and neck
+- [ ] Eye rendering style is consistent (not more/less detailed)
+
+> Face Gate: FAIL if any structural item is flagged.
+> Expression and rendering items are advisory.
+
+-----
+
+### F.2 Skeleton Gate — Visual Checklist
+
+**Proportion**
+
+- [ ] Shoulder width matches anchor
+- [ ] Upper arm length is consistent
+- [ ] Forearm and hand proportion match anchor
+- [ ] Torso length is consistent
+- [ ] Hip width matches anchor
+- [ ] Leg length proportion matches anchor
+
+**Alignment**
+
+- [ ] Spine curvature is plausible and consistent
+- [ ] Hip and shoulder alignment are natural
+- [ ] No limb length asymmetry beyond anchor baseline
+
+> Skeleton Gate: FAIL if two or more proportion items
+> are flagged, or if any alignment item shows
+> significant deviation.
+
+-----
+
+### F.3 Proportion Gate — Visual Checklist
+
+**Global Proportion**
+
+- [ ] Head-to-body ratio matches anchor
+- [ ] Torso-to-leg ratio matches anchor
+- [ ] Overall silhouette shape matches anchor
+
+**Silhouette**
+
+- [ ] Character outline is recognizable as same individual
+- [ ] No significant mass redistribution from anchor
+
+> Proportion Gate: FAIL if head-to-body ratio or
+> overall silhouette shows observable deviation.
+
+-----
+
+### F.4 Rendering Regime Gate — Visual Checklist
+
+*Applies in style-defined identity domains:
+anime, manga, game, franchise animation.*
+
+**Line and Detail**
+
+- [ ] Line art weight is consistent with anchor
+- [ ] Level of detail matches anchor rendering regime
+- [ ] No drift toward photorealism or hyper-detail
+
+**Color and Lighting**
+
+- [ ] Color palette is consistent with anchor
+- [ ] Color temperature matches anchor
+- [ ] Lighting regime is consistent (flat/cel/gradient)
+- [ ] No unexpected shadow complexity increase
+
+**Texture**
+
+- [ ] Skin texture rendering matches anchor style
+- [ ] Hair rendering style is consistent
+- [ ] No material rendering drift (e.g., fabric becoming
+  more physically simulated)
+
+> Rendering Regime Gate: FAIL if line weight,
+> color temperature, or detail level show
+> observable drift from anchor.
+> In style-defined IP domains, rendering drift
+> is classified as identity failure.
+
+-----
+
+### F.5 Composite Drift Indicators
+
+The following patterns suggest cascading drift
+and should trigger immediate Hard Abort:
+
+- [ ] Two or more gates showing borderline results
+- [ ] Match rate declining across 2+ consecutive turns
+- [ ] Operator intuition flagging “something feels different”
+  before analytical breakdown
+- [ ] Style drift co-occurring with any structural drift
+- [ ] Context length approaching MCST boundary
+  with any gate showing borderline results
+
+> When composite indicators are present,
+> do not wait for full gate failure.
+> Proactive Hard Abort is recommended.
+
+-----
+
+### F.6 Checklist Usage Notes
+
+**Before each gate evaluation:**
+Load the anchor image side by side with the output.
+Do not evaluate from memory.
+
+**Evaluation order:**
+
+1. Holistic impression (operator intuition)
+1. Face Gate items
+1. Skeleton Gate items
+1. Proportion Gate items
+1. Rendering Regime items (if applicable)
+1. Composite indicators
+
+**Documentation:**
+Record flagged items in the gate history entry.
+A gate FAIL must include at least one flagged item
+as the documented trigger.
+
+*See: [Quality Gate Addendum](quality_gate_addendum.md)*  
+*See: [Glossary — Hard Abort](glossary.md)*  
+*See: [Appendix E — Implementation Schema](#appendix-e--implementation-schema-jsonyaml-specification)*
