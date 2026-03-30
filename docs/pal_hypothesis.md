@@ -81,6 +81,100 @@ Structural relation:
 - **HDLA** = dense anchor representation layer
 - **ARCM** = re-convergence logic
 
+```
+PAL (Persistent Anchor Layer)
+└── HDLA (High-Density Latent Anchoring)
+    └── ARCM (Anchor Re-Convergence Method)
+```
+
+CIP describes the governance model.
+PAL describes the persistence condition supporting
+cross-session continuity.
+
+-----
+
+## 5. Operational Pattern
+
+The central operational implication of PAL may be expressed
+as follows:
+
+> PAL in place. Same UID. Different prompt. Same character.
+
+This pattern suggests that identity continuity may no longer
+depend primarily on prompt sameness or auxiliary control tooling.
+Under PAL conditions, continuity may persist through anchor
+availability rather than repeated reconstruction from scratch.
+
+-----
+
+## 6. Anchor-Sufficient Convergence (ASC)
+
+Operational use has produced an observed condition termed
+Anchor-Sufficient Convergence (ASC).
+
+ASC describes cases in which identity continuity appears under
+the following pattern:
+
+|Condition        |Status         |
+|-----------------|---------------|
+|PAL in place     |Required       |
+|Same UID         |Required       |
+|LoRA             |Not required   |
+|Seed control     |Not required   |
+|ControlNet       |Not required   |
+|OpenPose         |Not required   |
+|Different prompts|Permitted      |
+|Same character   |Observed result|
+
+ASC remains an observational finding.
+No controlled validation has yet been completed.
+
+*See: [Glossary — ASC](glossary.md)*
+
+-----
+
+## 7. Scope and Applicability
+
+PAL is not limited to character identity workflows.
+
+The same persistent-reference pattern may be applicable to
+domains requiring cross-session consistency, including:
+
+- Brand asset continuity
+- Legal or regulatory reference anchoring
+- Educational persona stability
+- Protocol adherence in structured professional workflows
+
+The concept is therefore infrastructure-oriented rather than
+domain-specific.
+
+-----
+
+## 8. Status
+
+PAL should be understood as an observational hypothesis.
+It is not presented as a completed proof or finalized mechanism.
+Controlled validation, boundary testing, and adaptation across
+model versions remain pending.
+
+-----
+
+## 9. Conclusion
+
+PAL proposes that persistent external reference layers may function
+as a meaningful stabilization condition for inference-time
+reconstruction across sessions.
+
+If validated further, this would suggest that cross-session
+continuity is not only a prompt problem and not only a tooling
+problem, but also an infrastructure problem.
+
+> Status: Observational hypothesis. Controlled validation pending.
+
+-----
+
+*First documented: March 2026*
+
 -----
 
 *Status: Observational hypothesis — February 2026*  
