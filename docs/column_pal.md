@@ -51,8 +51,8 @@ mechanisms may continue to operate across sessions.
 
 ```
 PAL (Persistent Anchor Layer)
-  └── HDLA (High-Density Latent Anchoring)
-        └── ARCM (Anchor Re-Convergence Method)
+└── HDLA (High-Density Latent Anchoring)
+    └── ARCM (Anchor Re-Convergence Method)
 ```
 
 If supported by further validation, PAL would extend CIP’s
