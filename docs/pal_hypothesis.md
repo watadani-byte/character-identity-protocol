@@ -173,9 +173,6 @@ problem, but also an infrastructure problem.
 
 -----
 
-*First documented: March 2026*
-
------
-
-*Status: Observational hypothesis — February 2026*  
+*Status: Observational hypothesis*  
+*First documented: March 2026*  
 *Related: [Column: PAL](column_pal.md) — [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md)*
