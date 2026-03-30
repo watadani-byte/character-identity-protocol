@@ -17,8 +17,9 @@ improve reconstruction consistency when anchor materials are
 repeatedly available across sessions.
 
 When appropriately structured, these layers do not function merely
-as document storage. They may influence model response patterns in ways consistent with persistent conditioning,
-shaping reconstruction behavior across sessions without direct model modification.
+as document storage. They may influence model response patterns in
+ways consistent with persistent conditioning, shaping reconstruction
+behavior across sessions without direct model modification.
 
 -----
 
