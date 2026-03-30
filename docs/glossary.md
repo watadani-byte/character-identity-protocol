@@ -4,6 +4,45 @@ Core terms used throughout the documentation.
 
 -----
 
+## Anchor-Sufficient Convergence (ASC)
+
+A convergence condition in which character identity is
+maintained across generations using only a PAL-registered
+anchor asset and a stable UID — without requiring
+ControlNet, OpenPose, seed control, LoRA, or model
+fine-tuning.
+
+**Formal conditions:**
+
+|Condition            |Status      |
+|---------------------|------------|
+|Same UID             |Required    |
+|PAL-registered anchor|Required    |
+|ControlNet           |Not required|
+|OpenPose             |Not required|
+|Seed control         |Not required|
+|LoRA                 |Not required|
+|Model fine-tuning    |Not required|
+
+**Implication:**
+
+ASC demonstrates that identity is not a property of
+generation tools — it is a property of the anchor.
+
+When PAL is properly configured, the anchor asset alone
+is sufficient to maintain character identity across
+sessions, platforms, and generation cycles.
+
+> The anchor is sufficient. The tools are optional.
+
+**Related:**
+
+- [Persistent Anchor Layer (PAL)](column_pal.md)
+- [High-Density Latent Anchoring (HDLA)](whitepaper_v1.md)
+- [Anchor Re-Convergence Method (ARCM)](whitepaper_v1.md)
+
+-----
+
 ## Anchor
 
 ```
