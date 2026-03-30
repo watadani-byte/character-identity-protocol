@@ -72,6 +72,8 @@ It makes identity a controlled variable.
 This is not a prompt technique.
 It is a control protocol.
 
+> CIP governs identity. PAL sustains it.
+
 -----
 
 ## Repository Structure
@@ -136,7 +138,8 @@ character-identity-protocol/
 - [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md)
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 
 **Protocol**
 
@@ -153,7 +156,8 @@ character-identity-protocol/
 
 **Columns**
 
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md)
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 
