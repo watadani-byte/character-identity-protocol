@@ -960,6 +960,9 @@ The following properties were observed:
 - A single high-quality sample is sufficient to initialize an anchor
 - Multi-view expansion stabilizes reconstruction across multiple view-conditioned perspectives
 - Naming (identifier binding) significantly improves recall probability
+- Under PAL-governed conditions, identity convergence has been observed without ControlNet, OpenPose, seed control, or LoRA — using only a stable UID and a PAL-registered anchor asset. This condition is termed **Anchor-Sufficient Convergence (ASC)**.
+
+*See: [Glossary — ASC](glossary.md) — [Column: PAL](column_pal.md)*
 
 ### 5.8 Interpretation
 
