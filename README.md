@@ -74,6 +74,55 @@ It is a control protocol.
 
 -----
 
+## Repository Structure
+
+```
+character-identity-protocol/
+├── README.md
+├── LICENSE
+│
+├── docs/
+│   ├── whitepaper_v1.md
+│   ├── cip_spec_v0.1.md
+│   ├── getting_started.md
+│   ├── glossary.md
+│   ├── quality_gate_addendum.md
+│   ├── architecture_diagram.md
+│   ├── technical_mechanism.md
+│   ├── reconvergence.md
+│   ├── model_a_c_b.md
+│   ├── protocol_template.md
+│   ├── whitepaper_appendices.md
+│   │
+│   ├── cases/
+│   │   ├── case_01_failure_log.md
+│   │   ├── case_01b_mira_project.md
+│   │   └── case_04_shizuka.md
+│   │
+│   ├── columns/
+│   │   ├── column_pal.md
+│   │   ├── column_miracle_image.md
+│   │   └── column_identity_drift.md
+│   │
+│   ├── schemas/
+│   │   ├── identity_schema.json
+│   │   ├── identity_schema.yaml
+│   │   ├── context_schema.json
+│   │   ├── context_schema.yaml
+│   │   ├── hard_abort_event.json
+│   │   └── asc_conditions.yaml
+│   │
+│   └── assets/
+│       ├── README.md
+│       ├── sample_uid_template.md
+│       └── sample_minimal_prompt_template.md
+│
+└── cip-enterprise-layer/
+    └── (see separate repository)
+```
+
+-----
+
 ## Documentation
 
 **Start Here**
