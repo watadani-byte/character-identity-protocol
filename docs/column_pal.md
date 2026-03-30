@@ -17,10 +17,8 @@ improve reconstruction consistency when anchor materials are
 repeatedly available across sessions.
 
 When appropriately structured, these layers do not function merely
-as document storage. They may influence model response patterns in
-a manner consistent with persistent conditioning effects,
-shaping reconstruction behavior across sessions without direct
-model modification.
+as document storage. They may influence model response patterns in ways consistent with persistent conditioning,
+shaping reconstruction behavior across sessions without direct model modification.
 
 -----
 
@@ -123,11 +121,11 @@ re-injection each session.
 Gemini’s architecture enables a particularly structured PAL
 implementation. The following mappings are conceptual:
 
-|Layer           |Gemini Feature        |Role                                                         |
-|----------------|----------------------|-------------------------------------------------------------|
-|**PAL (Infra)** |Context Caching       |Persistent availability of identity materials across sessions|
-|**HDLA (Data)** |Gems / Reference Files|Structured anchor reference for reconstruction conditioning  |
-|**ARCM (Logic)**|System Instructions   |Operational enforcement of re-convergence behavior           |
+|Layer           |Gemini Feature        |Role                                                          |
+|----------------|----------------------|--------------------------------------------------------------|
+|**PAL (Infra)** |Context Caching       |Persistent availability of identity materials across sessions |
+|**HDLA (Data)** |Gems / Reference Files|High-density anchor references for reconstruction conditioning|
+|**ARCM (Logic)**|System Instructions   |Operational enforcement of re-convergence behavior            |
 
 Context caching provides persistent reusable context at the API
 layer, while Gems or reference files and system instructions may
