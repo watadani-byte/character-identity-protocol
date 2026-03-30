@@ -112,8 +112,8 @@ availability rather than repeated reconstruction from scratch.
 Operational use has produced an observed condition termed
 Anchor-Sufficient Convergence (ASC).
 
-ASC describes cases in which identity continuity appears under
-the following pattern:
+ASC describes an observed convergence condition in which
+identity continuity appears under the following pattern:
 
 |Condition        |Status         |
 |-----------------|---------------|
@@ -140,6 +140,7 @@ PAL is not limited to character identity workflows.
 The same persistent-reference pattern may be applicable to
 domains requiring cross-session consistency, including:
 
+- Character and IP continuity in creative production
 - Brand asset continuity
 - Legal or regulatory reference anchoring
 - Educational persona stability
@@ -161,8 +162,8 @@ model versions remain pending.
 
 ## 9. Conclusion
 
-PAL proposes that persistent external reference layers may function
-as a meaningful stabilization condition for inference-time
+PAL proposes that persistent external reference layers may
+act as a meaningful stabilization condition for inference-time
 reconstruction across sessions.
 
 If validated further, this would suggest that cross-session
