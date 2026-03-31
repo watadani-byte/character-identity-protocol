@@ -397,6 +397,10 @@ The drift taxonomy reinforces several core design principles of the CIP protocol
 - Drift modes must be evaluated independently through identity gates
 - Progressive correction is unreliable once drift cascades begin
 - Recovery must therefore rely on anchor re-binding and controlled re-convergence
+- Archetype Drift may pass structural gate evaluation
+  while failing at the identity register level —
+  requiring human judgment beyond feature comparison
+  (see: Section 2.3.8)
 
 This taxonomy provides a conceptual framework for understanding why identity governance requires structured operational control rather than purely prompt-based optimization.
 
@@ -531,6 +535,12 @@ flowchart TD
 ```
 
 *Figure 2. Identity drift can occur independently across facial, skeletal, and proportional dimensions. CIP addresses each drift channel through a corresponding identity validation gate. When any gate fails, Hard Abort is triggered to prevent drift from cascading into character collapse.*
+
+*Note: Archetype Drift (Section 2.3.8) is not represented
+in this diagram. It operates at the identity register level
+rather than the structural feature level, and cannot be
+captured by Face Gate, Skeleton Gate, or Proportion Gate
+evaluation alone.*
 
 -----
 
