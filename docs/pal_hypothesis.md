@@ -4,6 +4,11 @@
 
 -----
 
+> Persistent reference availability as a
+> cross-session stabilization condition.
+
+-----
+
 ## Abstract
 
 Persistent Anchor Layer (PAL) is a proposed infrastructure concept
@@ -112,8 +117,8 @@ availability rather than repeated reconstruction from scratch.
 Operational use has produced an observed condition termed
 Anchor-Sufficient Convergence (ASC).
 
-ASC describes an observed convergence condition in which
-identity continuity appears under the following pattern:
+ASC describes an observed convergence condition under which
+identity continuity appears in the following pattern:
 
 |Condition        |Status         |
 |-----------------|---------------|
@@ -174,6 +179,6 @@ problem, but also an infrastructure problem.
 
 -----
 
-*Status: Observational hypothesis*  
 *First documented: March 2026*  
+*Status: Observational hypothesis*  
 *Related: [Column: PAL](column_pal.md) — [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md)*
