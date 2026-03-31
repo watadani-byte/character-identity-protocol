@@ -104,7 +104,10 @@ character-identity-protocol/
 │   ├── columns/
 │   │   ├── column_pal.md
 │   │   ├── column_miracle_image.md
-│   │   └── column_identity_drift.md
+│   │   ├── column_identity_drift.md
+│   │   └── column_translation_loss.md
+│   │
+│   ├── pal_hypothesis.md
 │   │
 │   ├── schemas/
 │   │   ├── identity_schema.json
