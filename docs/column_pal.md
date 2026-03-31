@@ -2,6 +2,9 @@
 
 *An Emerging Infrastructure Hypothesis for Cross-Session Identity Stabilization*
 
+> Persistent reference availability as a
+> cross-session stabilization condition.
+
 -----
 
 ## Observation
