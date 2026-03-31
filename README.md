@@ -105,7 +105,8 @@ character-identity-protocol/
 │   │   ├── column_pal.md
 │   │   ├── column_miracle_image.md
 │   │   ├── column_identity_drift.md
-│   │   └── column_translation_loss.md
+│   │   ├── column_translation_loss.md
+│   │   └── column_reconstruction_durability.md
 │   │
 │   ├── pal_hypothesis.md
 │   │
@@ -118,6 +119,9 @@ character-identity-protocol/
 │   │   └── asc_conditions.yaml
 │   │
 │   └── assets/
+│       ├── images/
+│       │   ├── .gitkeep
+│       │   └── rieko_anchor_v1.jpg.JPEG
 │       ├── README.md
 │       ├── sample_uid_template.md
 │       └── sample_minimal_prompt_template.md
@@ -164,6 +168,7 @@ character-identity-protocol/
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 - [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
+- [Reconstruction Durability and Identity Longevity](docs/column_reconstruction_durability.md)
 
 **Reference**
 
