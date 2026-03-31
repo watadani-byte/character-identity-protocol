@@ -137,6 +137,9 @@ The central operational implication of PAL:
 
 > PAL in place. Same UID. Different prompt. Same character.
 
+This shorthand expresses the recurring operational pattern
+PAL is intended to describe, not a universal guarantee.
+
 This pattern suggests that identity continuity may no longer
 depend primarily on prompt sameness or auxiliary control tooling.
 
@@ -158,16 +161,16 @@ Anchor-Sufficient Convergence (ASC).
 ASC describes an observed convergence condition under which
 identity continuity appears in the following pattern:
 
-|Condition        |Status         |
-|-----------------|---------------|
-|PAL in place     |Required       |
-|Same UID         |Required       |
-|LoRA             |Not required   |
-|Seed control     |Not required   |
-|ControlNet       |Not required   |
-|OpenPose         |Not required   |
-|Different prompts|Permitted      |
-|Same character   |Observed result|
+|Condition        |Status                        |
+|-----------------|------------------------------|
+|PAL in place     |Required                      |
+|Same UID         |Required                      |
+|LoRA             |Not required                  |
+|Seed control     |Not required                  |
+|ControlNet       |Not required                  |
+|OpenPose         |Not required                  |
+|Different prompts|Permitted                     |
+|Same character   |Operationally observed outcome|
 
 **What ASC does not claim:**
 ASC does not claim that PAL causes identity persistence
@@ -242,6 +245,9 @@ The practical implication would be significant:
 > infrastructure design rather than model modification —
 > making it accessible on closed-source platforms
 > where parameter-level intervention is not possible.
+
+This implication remains provisional
+and requires controlled testing.
 
 > Status: Observational hypothesis. Controlled validation pending.
 
