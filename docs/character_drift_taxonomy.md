@@ -122,6 +122,37 @@ In some cases, the transition frame may produce a visually striking result — o
 
 -----
 
+### 10. Archetype Drift
+
+Archetype Drift occurs when a generated character retains partial
+visual continuity with the anchor identity while shifting toward
+a stronger nearby archetype in the model’s reconstruction space.
+
+Unlike facial collapse or structural degradation, Archetype Drift
+is a directional failure: visual features remain substantially
+intact, but the identity interpretation consistency — the social
+register, personality impression, and role identity — shifts
+toward a more dominant nearby template.
+
+This is captured by the phrase: **same face, different person.**
+
+Archetype Drift is particularly difficult to detect because:
+
+- Structural gates (Face, Skeleton, Proportion) may all pass
+- The drift accumulates gradually across turns or sessions
+- Individual outputs may appear acceptable in isolation
+
+Detection requires evaluation at the identity register level —
+assessing social impression, expressive register, and role
+identity consistency against the anchor UID definition.
+
+Archetype Drift is especially significant in multi-scene,
+multi-session, and video generation workflows.
+
+*See: [White Paper — Section 2.3.8](whitepaper_v1.md) — [Glossary — Archetype Drift](glossary.md)*
+
+-----
+
 ## Taxonomy
 
 The following taxonomy summarizes common forms of character drift observed in generative image workflows.
@@ -139,7 +170,8 @@ Character Drift
 ├─ Background Drift
 ├─ Rendering Collapse
 ├─ Attribute Drift
-└─ Angle Drift
+├─ Angle Drift
+└─ Archetype Drift  — identity register shifts toward dominant nearby archetype
 ```
 
 ### Behavioral Drift (Generation Behavior)
