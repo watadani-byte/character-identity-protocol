@@ -6,6 +6,8 @@ Core terms used throughout the documentation.
 
 ## Anchor-Sufficient Convergence (ASC)
 
+> Same UID. Different prompt. Same character.
+
 A convergence condition in which character identity is
 maintained across generations using only a PAL-registered
 anchor asset and a stable UID — without requiring
