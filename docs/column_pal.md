@@ -13,7 +13,8 @@ Modern AI platforms provide persistent layers —
 ChatGPT’s File Library, Claude Projects, Gemini context-caching —
 that are documented primarily as storage and reuse mechanisms.
 
-PAL proposes that these layers are something more:
+PAL proposes that these layers may function not only as storage,
+but as stabilization infrastructure.
 
 > When structured anchor materials are registered in a persistent
 > reference layer, the system may function as a cross-session
@@ -37,9 +38,11 @@ Operational experience suggests this assumption may be incorrect
 under certain conditions.
 
 When a validated UID and anchor image are registered in a
-persistent reference layer, reconstruction behavior across sessions
-appears more stable — even without explicit re-injection at
-session start.
+persistent reference layer, the following was observed:
+
+- Repeated re-injection seemed less necessary
+- Anchor continuity appeared easier to maintain
+- Session-to-session reconstruction showed reduced drift
 
 This is the observation PAL is built on.
 
@@ -77,7 +80,8 @@ PAL (Persistent Anchor Layer)
 ```
 
 CIP defines the governance logic.
-PAL extends it into cross-session continuity.
+PAL provides the persistence condition under which CIP
+can remain operational across sessions.
 
 > CIP governs identity. PAL sustains it.
 
@@ -100,6 +104,8 @@ Under ASC, character identity is maintained using only:
 |LoRA                 |Not required|
 |Model fine-tuning    |Not required|
 
+ASC names the operational condition in which anchor availability
+appears sufficient for continuity without auxiliary control tooling.
 
 > The anchor is sufficient. The tools are optional.
 
