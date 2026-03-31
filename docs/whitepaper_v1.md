@@ -1182,6 +1182,13 @@ This implies that future improvements in generative reliability may be achieved 
 - [Appendix D — Character Concept and IP Asset Management](#appendix-d--character-concept-and-ip-asset-management)
 - [Appendix E — Implementation Schema (JSON/YAML Specification)](#appendix-e--implementation-schema-jsonyaml-specification)
 - [Appendix F — Visual Drift Detection Checklist](#appendix-f--visual-drift-detection-checklist)
+  - F.1 Face Gate
+  - F.2 Skeleton Gate
+  - F.3 Proportion Gate
+  - F.4 Rendering Regime Gate
+  - F.5 Composite Drift Indicators
+  - F.6 Checklist Usage Notes
+  - F.7 Archetype Drift
 
 -----
 
@@ -1851,3 +1858,56 @@ as the documented trigger.
 *See: [Quality Gate Addendum](quality_gate_addendum.md)*  
 *See: [Glossary — Hard Abort](glossary.md)*  
 *See: [Appendix E — Implementation Schema](#appendix-e--implementation-schema-jsonyaml-specification)*
+
+-----
+
+### F.7 Archetype Drift — Visual Checklist
+
+*Applies when structural gates pass but identity register
+consistency is in question.*
+
+This checklist addresses a failure mode that structural
+gate evaluation cannot reliably detect: a generated character
+that retains visual continuity while drifting toward a
+stronger nearby archetype in the model’s reconstruction space.
+
+Archetype Drift produces outputs that pass Face Gate,
+Skeleton Gate, and Proportion Gate, yet no longer carry
+the same identity interpretation consistency as the anchor.
+
+> Same face, different person.
+
+**Identity Register**
+
+- [ ] Social impression is consistent with anchor UID definition
+- [ ] Personality register matches anchor character baseline
+- [ ] Role identity is consistent across outputs
+- [ ] Expressive weight distribution matches anchor
+
+**Drift Indicators**
+
+- [ ] Character feels warmer or cooler than anchor
+- [ ] Character feels more generic or archetypal than anchor
+- [ ] Character feels like a different social role
+  despite recognizable visual features
+- [ ] Cumulative impression across multiple outputs has shifted
+  even if individual outputs appear acceptable
+
+> Archetype Drift: FAIL if identity register shifts
+> toward a recognizable social archetype
+> while structural features remain intact.
+> This failure mode requires human judgment —
+> it cannot be detected by structural gate evaluation alone.
+
+**Recommended response:**
+
+When Archetype Drift is suspected, compare the output not
+only against the anchor image but against the anchor UID
+definition — specifically the social register, personality
+description, and role identity fields.
+
+If the UID definition does not yet include identity register
+attributes, this checklist serves as a prompt to extend it.
+
+*See: [Archetype Drift — Taxonomy](whitepaper_v1.md#238-archetype-drift)*  
+*See: [Glossary — Archetype Drift](glossary.md)*
