@@ -83,6 +83,7 @@ nav:
     - Persistent Anchor Layer (PAL): column_pal.md
     - PAL Hypothesis (Technical): pal_hypothesis.md
     - Translation Loss and the YAML-First Principle: column_translation_loss.md
+    - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
 
   # ─── 8. Reference ────────────────────────────────────────────
   - Reference:
