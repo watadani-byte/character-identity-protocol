@@ -2,8 +2,6 @@
 
 *An Emerging Infrastructure Hypothesis for Cross-Session Identity Stabilization*
 
------
-
 > Persistent reference availability as a
 > cross-session stabilization condition.
 
@@ -13,32 +11,46 @@
 
 Persistent Anchor Layer (PAL) is a proposed infrastructure concept
 for cross-session identity stabilization in generative AI systems.
+
 The hypothesis is that persistently available anchor materials —
-such as a validated UID and associated anchor asset — may improve
+a validated UID and associated anchor asset — may improve
 reconstruction continuity across sessions without direct model
-modification. PAL is framed as an inference-time persistence
-condition rather than a training-time intervention. This document
-records the hypothesis as an observational model. Controlled
-validation remains pending.
+modification.
+
+PAL is framed as an inference-time persistence condition,
+not a training-time intervention and not a parameter-level
+modification of any kind.
+
+This document records the hypothesis as an observational model.
+Controlled validation remains pending.
 
 -----
 
 ## 1. Problem Statement
 
-Generative systems frequently exhibit identity drift across sessions.
-A character established in one session may reappear in later sessions
-with altered facial structure, proportions, styling, or overall
-recognizability. In operational terms, session reset often implies
-practical identity loss.
+Generative systems exhibit identity drift across sessions.
 
-This document proposes PAL as a conceptual response to that
-failure mode.
+A character established in one session may reappear in later
+sessions with altered facial structure, proportions, styling,
+or overall recognizability.
+
+In operational terms: session reset implies practical identity loss.
+
+The standard response is re-injection — providing the full anchor
+materials at the start of each new session.
+
+PAL proposes a different framing:
+
+> If anchor materials remain persistently available across sessions,
+> session reset may no longer imply identity loss.
+
+This document examines that hypothesis.
 
 -----
 
 ## 2. Definition
 
-Persistent Anchor Layer (PAL) refers to an external persistence
+**Persistent Anchor Layer (PAL)** refers to an external persistence
 layer in which validated identity materials remain continuously
 available across sessions.
 
@@ -49,28 +61,47 @@ These materials may include:
 - Structured identity documents
 - Platform-level reference assets
 
-PAL does not imply model-side storage of identity as an internal
-weight update. It instead refers to an infrastructure condition
-in which anchor materials remain available at inference time
-through persistent file, project, caching, or reference systems.
+**What PAL is not:**
+
+PAL does not describe model-side storage of identity.
+PAL does not describe parameter-level modification.
+PAL does not describe fine-tuning, LoRA, or checkpoint injection.
+
+PAL describes an infrastructure condition:
+anchor materials remain available at inference time through
+persistent file, project, caching, or reference systems.
+
+The stabilization effect, if it exists, occurs at the
+inference layer — not at the training or parameter layer.
 
 -----
 
 ## 3. Hypothesis
 
-When a validated UID and anchor asset are registered in a persistent
-reference layer, reconstruction behavior may become more stable
-across sessions.
+**Operational hypothesis:**
+When a validated UID and anchor asset are registered in a
+persistent reference layer, reconstruction behavior may become
+more stable across sessions.
 
-Operationally, PAL may contribute to:
+**Proposed mechanism:**
+Persistent availability of anchor materials at inference time
+may reduce the reconstruction gap that normally opens after
+session reset — not by modifying the model, but by ensuring
+that the conditioning inputs remain consistently available.
 
-- Improved identity recall
+**Observed indicators:**
+
+- Improved identity recall across sessions
 - Stronger convergence toward anchor conditions
 - Reduced practical identity loss after session reset
 
-This effect may be analogous in outcome to lightweight stabilization
-methods, while differing entirely in mechanism. PAL is therefore
-not equivalent to LoRA, checkpointing, or fine-tuning.
+**Important distinction:**
+The proposed effect is analogous in outcome to lightweight
+stabilization methods such as LoRA or checkpointing.
+It is not analogous in mechanism.
+
+PAL operates through input persistence, not parameter encoding.
+These are fundamentally different intervention points.
 
 -----
 
@@ -96,19 +127,26 @@ CIP describes the governance model.
 PAL describes the persistence condition supporting
 cross-session continuity.
 
+> CIP governs identity. PAL sustains it.
+
 -----
 
 ## 5. Operational Pattern
 
-The central operational implication of PAL may be expressed
-as follows:
+The central operational implication of PAL:
 
 > PAL in place. Same UID. Different prompt. Same character.
 
 This pattern suggests that identity continuity may no longer
 depend primarily on prompt sameness or auxiliary control tooling.
+
 Under PAL conditions, continuity may persist through anchor
 availability rather than repeated reconstruction from scratch.
+
+**Clarification:**
+This is an operationally observed pattern, not a validated
+causal claim. The mechanism by which persistent availability
+produces this effect is not yet established.
 
 -----
 
@@ -131,8 +169,14 @@ identity continuity appears in the following pattern:
 |Different prompts|Permitted      |
 |Same character   |Observed result|
 
+**What ASC does not claim:**
+ASC does not claim that PAL causes identity persistence
+through any specific mechanism.
+ASC describes a pattern of observed operational outcomes
+under conditions where PAL is in place.
+
 ASC remains an observational finding.
-No controlled validation has yet been completed.
+No controlled validation has been completed.
 
 *See: [Glossary — ASC](glossary.md)*
 
@@ -151,17 +195,34 @@ domains requiring cross-session consistency, including:
 - Educational persona stability
 - Protocol adherence in structured professional workflows
 
-The concept is therefore infrastructure-oriented rather than
+The concept is infrastructure-oriented rather than
 domain-specific.
+
+**Scope boundary:**
+PAL addresses inference-time persistence conditions.
+It does not address training-time consistency,
+model-level identity encoding, or parameter-level stability.
+Those remain separate problem domains.
 
 -----
 
 ## 8. Status
 
-PAL should be understood as an observational hypothesis.
-It is not presented as a completed proof or finalized mechanism.
-Controlled validation, boundary testing, and adaptation across
-model versions remain pending.
+**Observational basis:**
+Operational use of persistent file and project features
+across current AI platforms.
+
+**Validation status:**
+No controlled validation has been completed.
+Boundary conditions, failure modes, and platform-specific
+variation have not been systematically tested.
+
+**Claim level:**
+PAL is an infrastructure hypothesis.
+It is not a proven mechanism.
+It is not a vendor specification.
+Platform mappings described in related documents are
+conceptual interpretations, not vendor-confirmed behaviors.
 
 -----
 
@@ -172,8 +233,15 @@ act as a meaningful stabilization condition for inference-time
 reconstruction across sessions.
 
 If validated further, this would suggest that cross-session
-continuity is not only a prompt problem and not only a tooling
+continuity is not only a prompt problem, not only a tooling
 problem, but also an infrastructure problem.
+
+The practical implication would be significant:
+
+> Identity persistence may be achievable through
+> infrastructure design rather than model modification —
+> making it accessible on closed-source platforms
+> where parameter-level intervention is not possible.
 
 > Status: Observational hypothesis. Controlled validation pending.
 
