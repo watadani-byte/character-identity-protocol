@@ -10,6 +10,7 @@ reproduction and validation of the Character Identity Protocol.
 |Shizuka — Anchor Image + UID|—                                            |Rights confirmation pending|
 |Mira — Anchor Image + UID   |—                                            |Rights confirmation pending|
 |Rieko — Anchor Image        |docs/assets/images/rieko_anchor_v1.jpg.JPEG  |Available                  |
+|Rieko — UID (YAML)          |docs/assets/rieko_uid_v1.yaml                |Available                  |
 |UID Template                |docs/assets/sample_uid_template.md           |Available                  |
 |Minimal Prompt Template     |docs/assets/sample_minimal_prompt_template.md|Available                  |
 
