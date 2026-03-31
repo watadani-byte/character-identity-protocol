@@ -160,6 +160,7 @@ character-identity-protocol/
 - [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
+- [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
 
 **Reference**
 
