@@ -42,7 +42,7 @@ persistent reference layer, the following was observed:
 
 - Repeated re-injection seemed less necessary
 - Anchor continuity appeared easier to maintain
-- Session-to-session reconstruction showed reduced drift
+- Session-to-session reconstruction appeared more stable
 
 This is the observation PAL is built on.
 
