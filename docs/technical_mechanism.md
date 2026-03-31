@@ -465,3 +465,63 @@ The anchor mechanism has been validated across production case studies, includin
 
 *Validation was conducted in production workflows, not controlled laboratory conditions.  
 Systematic cross-platform testing remains an open research direction.*
+
+-----
+
+## PAL → HDLA → ARCM → ASC: Operational Relationship
+
+The following diagram shows the operational relationship
+between PAL, HDLA, ARCM, and ASC within the CIP framework.
+
+```
+PAL (Persistent Anchor Layer)
+│
+│  Provides the persistence infrastructure:
+│  anchor materials remain available across sessions
+│
+└── HDLA (High-Density Latent Anchoring)
+    │
+    │  Operationalizes anchor materials:
+    │  biases reconstruction toward high-density,
+    │  identity-consistent regions
+    │
+    └── ARCM (Anchor Re-Convergence Method)
+        │
+        │  Executes re-convergence:
+        │  structured recovery from last verified anchor state
+        │
+        └── ASC (Anchor-Sufficient Convergence)
+            │
+            │  Observed outcome:
+            │  identity continuity maintained using only
+            │  PAL + UID, without auxiliary control tooling
+            │
+            └── Same character. Different prompt. Same session or not.
+```
+
+### Layer Roles
+
+|Layer|Type          |Role                                       |
+|-----|--------------|-------------------------------------------|
+|PAL  |Infrastructure|Anchor materials persist across sessions   |
+|HDLA |Mechanism     |Reconstruction biased toward anchor        |
+|ARCM |Execution     |Re-convergence from verified anchor state  |
+|ASC  |Observation   |Identity continuity without auxiliary tools|
+
+### Key Distinctions
+
+**PAL is not HDLA.**
+PAL describes where anchor materials live.
+HDLA describes how they influence reconstruction.
+
+**ARCM is not PAL.**
+ARCM is the re-convergence procedure.
+PAL is the persistence infrastructure that makes
+re-convergence possible across sessions.
+
+**ASC is not a mechanism.**
+ASC is an observed operational condition —
+a pattern of outcomes under PAL-governed conditions.
+It is not a claim about causation.
+
+*See: [Column: PAL](column_pal.md) — [PAL Hypothesis Document](pal_hypothesis.md) — [Glossary](glossary.md)*
