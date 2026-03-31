@@ -5,12 +5,13 @@ reproduction and validation of the Character Identity Protocol.
 
 ## Status
 
-|Asset                       |Status                     |
-|----------------------------|---------------------------|
-|Shizuka — Anchor Image + UID|Rights confirmation pending|
-|Mira — Anchor Image + UID   |Rights confirmation pending|
-|UID Template                |Available                  |
-|Minimal Prompt Template     |Available                  |
+|Asset                       |Path                                         |Status                     |
+|----------------------------|---------------------------------------------|---------------------------|
+|Shizuka — Anchor Image + UID|—                                            |Rights confirmation pending|
+|Mira — Anchor Image + UID   |—                                            |Rights confirmation pending|
+|Rieko — Anchor Image        |docs/assets/images/rieko_anchor_v1.jpg.JPEG  |Available                  |
+|UID Template                |docs/assets/sample_uid_template.md           |Available                  |
+|Minimal Prompt Template     |docs/assets/sample_minimal_prompt_template.md|Available                  |
 
 
 > Verification assets will be published upon rights confirmation.
