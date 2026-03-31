@@ -74,6 +74,27 @@ Distinct from Anchor Mechanism: Anchor Mechanism is the stabilizing principle; A
 
 -----
 
+## Infrastructure Condition
+
+Within the PAL framework, an infrastructure condition refers
+to the deployment state in which anchor materials remain
+available at inference time through persistent file, project,
+caching, or reference systems.
+
+Infrastructure condition describes the implementation layer
+of PAL — how anchor materials are made available.
+
+Distinct from stabilization condition, which describes
+the functional effect of that availability.
+
+> PAL is an infrastructure condition.
+> Its functional effect is a stabilization condition.
+
+*See: [Stabilization Condition](glossary.md#stabilization-condition)*
+*See: [PAL Hypothesis Document](pal_hypothesis.md)*
+
+-----
+
 ## Identity Recall Probability
 
 An operational likelihood that subsequent generation cycles converge toward the same identity state as the anchor. Increased by identifier binding, multi-view expansion, and minimal prompt discipline. Not a mathematical probability but a qualitative indicator of reconstruction stability.
@@ -232,6 +253,33 @@ Match rate is a human judgment, not an automated metric.
 
 -----
 
+## Persistently Available
+
+Within the CIP and PAL frameworks, “persistently available”
+describes anchor materials that remain accessible across
+session boundaries through platform-level persistence features.
+
+**What this means operationally:**
+
+- The materials remain available at the start of a new session
+  without explicit re-injection by the operator
+- Access is provided through persistent file, project,
+  caching, or reference systems
+- Availability persists across session resets
+
+**What this does not mean:**
+
+- Continuously loaded into active memory
+- Technically permanent or immutable storage
+- Parameter-level encoding within the model
+
+The term refers to operational availability across sessions,
+not to any specific technical implementation of persistence.
+
+*See: [Persistent Anchor Layer (PAL)](column_pal.md)*
+
+-----
+
 ## Quality Gate
 
 The set of validation conditions that must all pass before a generation is accepted.
@@ -290,6 +338,34 @@ Caused by:
 - Optimization pressure from verbose prompts
 - Session context degradation
 - Insufficient anchoring frequency
+
+-----
+
+## Stabilization Condition
+
+Within the PAL framework, a stabilization condition refers
+to the functional effect produced when anchor materials
+are persistently available at inference time.
+
+Stabilization condition describes what PAL does —
+it may improve reconstruction consistency across sessions
+by maintaining anchor availability.
+
+Distinct from infrastructure condition, which describes
+how PAL is implemented.
+
+**Usage guidance:**
+
+- Use “stabilization condition” when describing
+  the functional effect of PAL
+- Use “infrastructure condition” when describing
+  the implementation layer of PAL
+
+> PAL is framed as an inference-time stabilization condition,
+> not a training-time intervention.
+
+*See: [Infrastructure Condition](glossary.md#infrastructure-condition)*
+*See: [PAL Hypothesis Document](pal_hypothesis.md)*
 
 -----
 
