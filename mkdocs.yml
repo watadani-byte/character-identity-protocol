@@ -82,6 +82,7 @@ nav:
     - Production Notes: column_production.md
     - Persistent Anchor Layer (PAL): column_pal.md
     - PAL Hypothesis (Technical): pal_hypothesis.md
+    - Translation Loss and the YAML-First Principle: column_translation_loss.md
 
   # ─── 8. Reference ────────────────────────────────────────────
   - Reference:
