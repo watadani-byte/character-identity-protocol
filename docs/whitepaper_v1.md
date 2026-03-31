@@ -402,6 +402,113 @@ This taxonomy provides a conceptual framework for understanding why identity gov
 
 -----
 
+### 2.3.8 Archetype Drift
+
+**Definition**
+
+Archetype Drift is a character drift phenomenon in which a
+generated character retains partial visual continuity with
+the anchor identity while shifting toward a stronger nearby
+archetype within the model’s reconstruction space.
+
+The result is a character that may appear visually similar
+at a surface level — sharing facial structure, hair, or
+rendering style — yet no longer carries the same identity
+interpretation consistency. The social impression, personality
+register, or role identity shifts in ways that are not captured
+by structural gate evaluation alone.
+
+Archetype Drift is not facial collapse.
+It is not random corruption.
+It is a directional drift — the character moves toward a
+denser, more dominant nearby attractor in the model’s
+learned distribution.
+
+The failure mode is therefore subtle: the output passes
+visual inspection at the feature level, yet fails at the
+person level.
+
+> Same face, different person.
+
+**Mechanism**
+
+Generative models organize their reconstruction space around
+regions of high training density. These regions often correspond
+to recognizable social archetypes — the approachable professional,
+the cool intellectual, the warm caregiver, and similar broadly
+represented identity clusters.
+
+When a character’s identity is positioned near such a region,
+stochastic drift across generation cycles may cause the
+reconstruction to gradually migrate toward that attractor.
+The model does not invent a new character. It reinterprets
+the existing one through the lens of a nearby, more dominant
+template.
+
+The visual markers — face shape, hair, rendering style — may
+remain substantially intact. What changes is how the model
+weights the relational, expressive, and social dimensions of
+the character. The character becomes more like the archetype
+and less like themselves.
+
+This process is particularly difficult to detect because:
+
+- Structural gates evaluate feature similarity,
+  not identity register
+- The drift accumulates gradually across turns or sessions
+- Each individual output may appear acceptable in isolation
+
+**Operational Significance**
+
+Archetype Drift becomes critical in workflows requiring
+sustained character continuity across multiple scenes,
+sessions, or generative cycles — particularly in video
+generation, serialized narrative production, and franchise
+IP management.
+
+In still-image workflows, a single output that has drifted
+toward an archetype may pass quality review because its visual
+features remain recognizable. However, across a sequence of
+outputs — especially when combined with variation in pose,
+expression, lighting, or scene context — the cumulative effect
+becomes visible as a shift in who the character is, not merely
+how they look.
+
+For video generation, this failure mode is especially
+significant. Motion reinterpretation across frames compounds
+archetype attraction. A character who begins a sequence with
+a specific social register may end it as a noticeably different
+person — not through abrupt visual discontinuity, but through
+gradual identity reinterpretation.
+
+Archetype Drift therefore requires evaluation at the identity
+register level, not only at the structural feature level.
+
+**Relation to PAL**
+
+PAL addresses cross-session identity persistence by keeping
+anchor materials continuously available at inference time.
+
+For Archetype Drift specifically, PAL’s role is preventive
+rather than corrective. By maintaining a validated anchor —
+including not only the visual reference but also the structured
+UID definition — PAL reduces the probability that the model’s
+reconstruction will migrate toward a nearby archetype across
+sessions.
+
+However, PAL does not fully eliminate Archetype Drift risk.
+Within a single session, drift toward a dominant archetype
+can still accumulate through stochastic sampling and contextual
+influence. This suggests that Archetype Drift detection may
+require an additional evaluation dimension beyond the current
+Face Gate, Skeleton Gate, and Proportion Gate structure —
+specifically, an assessment of identity register consistency
+across outputs.
+
+*See: [Identity Drift Taxonomy](whitepaper_v1.md#23-identity-drift-taxonomy) — [PAL Hypothesis Document](pal_hypothesis.md) — [Glossary](glossary.md)*
+
+-----
+
 ### Figure 2 — Identity Drift Mechanism and CIP Gate Mitigations
 
 ```mermaid
