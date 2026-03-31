@@ -7,6 +7,8 @@
 
 -----
 
+> Identity continuity as an inference-time governance problem.
+
 ## Abstract
 
 Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — primarily operate at the level of model parameters or input specification, and do not explicitly control the reconstruction process that produces outputs during inference.
