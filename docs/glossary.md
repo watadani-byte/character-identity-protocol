@@ -4,6 +4,44 @@ Core terms used throughout the documentation.
 
 -----
 
+## Archetype Drift
+
+A character drift phenomenon in which a generated character
+retains partial visual continuity with the anchor identity
+while shifting toward a stronger nearby archetype in the
+model’s reconstruction space. Archetype Drift is distinct
+from facial collapse or structural degradation. It is a
+directional failure: the character’s visual features remain
+substantially intact, but the identity interpretation
+consistency — the social register, personality impression,
+and role identity — shifts toward a more dominant nearby
+template. The result is captured by the phrase
+same face, different person.
+
+As an example: a character defined as a reserved, precise
+intellectual may drift across generation cycles toward a
+warmer, more approachable register — not through any single
+dramatic change, but through gradual reweighting of expressive
+and social dimensions. The face remains recognizable.
+The person does not.
+
+Archetype Drift is particularly significant in multi-scene,
+multi-session, and video generation workflows, where cumulative
+drift across outputs can produce a character who is visually
+continuous but identity-discontinuous. Standard structural
+gates — Face Gate, Skeleton Gate, Proportion Gate — may not
+detect this failure mode, as they evaluate feature similarity
+rather than identity register.
+
+Detection of Archetype Drift may require evaluation beyond
+structural feature comparison, including assessment of social
+impression, expressive register, and role identity consistency
+against the anchor UID definition.
+
+*See: [Identity Drift Taxonomy — Archetype Drift](whitepaper_v1.md) — [PAL Hypothesis Document](pal_hypothesis.md)*
+
+-----
+
 ## Anchor-Sufficient Convergence (ASC)
 
 > Same UID. Different prompt. Same character.
