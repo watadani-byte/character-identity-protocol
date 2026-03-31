@@ -90,6 +90,75 @@ The protocol does not force convergence — it biases the search space toward a 
 
 -----
 
+## Convergence Recoverability
+
+> The ability of a character identity to be repeatedly
+> reconstructed as the same identity under variation,
+> reinterpretation, and context change — without requiring
+> strong external stabilization.
+
+Convergence Recoverability is distinct from:
+
+- **Match rate** — a single-generation similarity score
+- **Identity gate PASS** — a binary validation outcome
+- **LoRA consistency** — constraint-enforced similarity
+
+It describes a character-level property of the identity itself,
+not of the control mechanism applied to it.
+
+Characters with high Convergence Recoverability tend to share:
+
+- sufficient distinctiveness (clear identity markers)
+- without reconstruction overload (not pushed into sparse regions)
+- style-identity separation (style does not compete with identity)
+
+**Related:**
+
+- [Reconstruction Durability](glossary.md#reconstruction-durability-rd)
+- [Column: Reconstruction Durability](column_reconstruction_durability.md)
+- [High-Density Latent Anchoring (HDLA)](whitepaper_v1.md)
+
+-----
+
+## Reconstruction Durability (RD)
+
+> A character-level property describing the likelihood that
+> identity can be repeatedly recovered across generation cycles
+> without external stabilization, determined by the character’s
+> position within the model’s high-density reconstruction regions.
+
+Reconstruction Durability is the combined property of:
+
+- high Convergence Recoverability
+- positioning in high-density reconstruction regions
+- style-identity separation
+
+**Key distinction:**
+Reconstruction Durability is not a property of the control method.
+It is a property of how the character was formed.
+
+**Design implication:**
+
+```
+Character Formation (RD)
+  └── CIP Governance
+        └── PAL Persistence
+              └── ASC Conditions
+```
+
+A character designed for high Reconstruction Durability
+requires less governance overhead, produces more stable anchors,
+and exhibits higher Convergence Recoverability across
+platforms and model versions.
+
+**Related:**
+
+- [Convergence Recoverability](glossary.md#convergence-recoverability)
+- [Column: Reconstruction Durability](column_reconstruction_durability.md)
+- [Anchor-Sufficient Convergence (ASC)](glossary.md#anchor-sufficient-convergence-asc)
+
+-----
+
 ## Reconstruction (A→A’)
 
 The internal process by which a generative model interprets a prompt and reformulates it into a generation target.
