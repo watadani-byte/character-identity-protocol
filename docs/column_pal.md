@@ -7,49 +7,68 @@
 
 -----
 
-## Observation
+## What PAL Is
 
-Modern AI platforms increasingly provide persistent file or knowledge
-layers that remain available beyond a single chat session — for example,
-ChatGPT’s File Library, Claude Projects, and Gemini context-caching
-or persistent reference workflows.
+Modern AI platforms provide persistent layers —
+ChatGPT’s File Library, Claude Projects, Gemini context-caching —
+that are documented primarily as storage and reuse mechanisms.
 
-These layers are primarily documented as storage, reuse, and
-context-management mechanisms. In practice, however, they may also
-improve reconstruction consistency when anchor materials are
-repeatedly available across sessions.
+PAL proposes that these layers are something more:
 
-When appropriately structured, these layers do not function merely
-as document storage. They may influence model response patterns in
-ways consistent with persistent conditioning, shaping reconstruction
-behavior across sessions without direct model modification.
+> When structured anchor materials are registered in a persistent
+> reference layer, the system may function as a cross-session
+> stabilization condition — not merely as storage.
+
+This is the core claim.
+PAL is not about saving files.
+PAL is about whether persistent availability of anchor materials
+changes how the model reconstructs identity across sessions.
 
 -----
 
-## Hypothesis
+## The Observation
 
-When a validated UID and anchor image are registered in a persistent
-reference layer — such as a structured PDF or equivalent knowledge
-asset — the system may show behavior analogous, at the operational
-level, to a lightweight checkpointing or LoRA-like stabilization effect:
+Session reset has been treated as practical identity loss.
 
-- Identity recall may become more reliable across sessions
-- Reconstruction may converge more consistently toward the anchor
-- Session reset may no longer imply complete practical identity loss
+Each new session requires re-injecting anchor materials from scratch.
+Without re-injection, identity drift resumes immediately.
 
-This proposed mechanism is termed **Persistent Anchor Layer (PAL)**.
+Operational experience suggests this assumption may be incorrect
+under certain conditions.
 
-PAL does not imply model modification. Rather, it describes an
-external persistence layer that may stabilize inference-time
-reconstruction by keeping anchor materials continuously available.
+When a validated UID and anchor image are registered in a
+persistent reference layer, reconstruction behavior across sessions
+appears more stable — even without explicit re-injection at
+session start.
+
+This is the observation PAL is built on.
+
+-----
+
+## The Hypothesis
+
+PAL proposes that persistent anchor availability functions as
+an inference-time stabilization condition:
+
+- Identity recall becomes more reliable across sessions
+- Reconstruction converges more consistently toward the anchor
+- Session reset no longer implies complete practical identity loss
+
+PAL does not imply model modification.
+It describes an external infrastructure condition that may
+influence reconstruction behavior by keeping anchor materials
+continuously available at inference time.
+
+> PAL is not a training intervention.
+> It is a persistence condition.
 
 -----
 
 ## Relation to CIP
 
 PAL does not replace HDLA or ARCM.
-It describes the persistence infrastructure within which those
-mechanisms may continue to operate across sessions.
+It describes the infrastructure within which those mechanisms
+may remain operational across sessions.
 
 ```
 PAL (Persistent Anchor Layer)
@@ -57,30 +76,17 @@ PAL (Persistent Anchor Layer)
     └── ARCM (Anchor Re-Convergence Method)
 ```
 
-If supported by further validation, PAL would extend CIP’s
-core principle:
+CIP defines the governance logic.
+PAL extends it into cross-session continuity.
 
-> CIP operates entirely at inference time, requires no model modification.
-
-— into a cross-session operating model.
+> CIP governs identity. PAL sustains it.
 
 -----
 
-## Status
+## Anchor-Sufficient Convergence (ASC)
 
-This remains an observational hypothesis based on operational use
-of persistent file and project features across current AI platforms.
-
-No controlled validation has yet been completed.
-This column documents the observation for future investigation.
-
------
-
-### Anchor-Sufficient Convergence (ASC)
-
-Operational experience with PAL has produced an observed
-convergence condition termed
-Anchor-Sufficient Convergence (ASC).
+Operational use of PAL has produced an observed condition:
+**Anchor-Sufficient Convergence (ASC)**.
 
 Under ASC, character identity is maintained using only:
 
@@ -94,17 +100,21 @@ Under ASC, character identity is maintained using only:
 |LoRA                 |Not required|
 |Model fine-tuning    |Not required|
 
-This condition suggests that when PAL is properly
-configured, the anchor asset alone is sufficient to
-maintain character identity across sessions, platforms,
-and generation cycles.
 
 > The anchor is sufficient. The tools are optional.
 
-ASC remains an observational finding.
-Systematic validation has not yet been conducted.
+ASC is an observational finding.
+Systematic validation has not been conducted.
 
 *See: [Glossary — ASC](glossary.md)*
+
+-----
+
+## Status
+
+This remains an observational hypothesis.
+No controlled validation has been completed.
+This column documents the observation for future investigation.
 
 -----
 
@@ -112,67 +122,51 @@ Systematic validation has not yet been conducted.
 
 PAL is not limited to character identity workflows.
 
-Any domain that benefits from persistent cross-session reference
-stability may potentially use the same pattern — including but
-not limited to:
+The same pattern — persistent reference availability as a
+stabilization condition — may apply wherever cross-session
+consistency is required:
 
-- Brand asset consistency in marketing production
-- Legal or regulatory document reference anchoring
-- Medical or scientific protocol adherence across sessions
-- Educational persona or curriculum consistency
+- Character and IP continuity in creative production
+- Brand asset consistency across vendors
+- Legal or regulatory reference anchoring
+- Educational persona stability
+- Protocol adherence in structured professional workflows
 
-The underlying principle — that a structured persistent layer
-may reinforce reconstruction consistency across sessions —
-is domain-agnostic.
-
-CIP provides the governance framework. PAL provides the
-infrastructure. Together, they suggest a generalizable pattern
-for inference-time identity and consistency control across
-professional domains.
+The concept is infrastructure-oriented, not domain-specific.
 
 -----
 
 ## Platform Mapping Examples
 
-The following mappings are conceptual rather than vendor-defined
-terminology.
+The following mappings are conceptual,
+not vendor-defined terminology.
 
 ### ChatGPT — File Library
 
-File Library can function as a persistent asset layer for anchor
-documents and images. Structured documents (e.g., UID + anchor
-image as PDF) registered here can function as a persistent identity
-reference layer across sessions.
+Structured documents registered in the File Library
+can function as a persistent identity reference layer
+across sessions.
 
 ### Claude — Projects
 
-Projects provide self-contained workspaces with chat history and
-knowledge files, making them a plausible persistent anchor layer
-for repeated identity or style reconstruction. Files remain
-available across conversations, reducing the need for repeated
-re-injection each session.
+Project files persist across conversations,
+reducing the need for repeated re-injection
+and providing a continuously available anchor layer.
 
 ### Gemini — Three-Layer Implementation
 
-Gemini’s architecture enables a particularly structured PAL
-implementation. The following mappings are conceptual:
-
 |Layer           |Gemini Feature        |Role                                                          |
 |----------------|----------------------|--------------------------------------------------------------|
-|**PAL (Infra)** |Context Caching       |Persistent availability of identity materials across sessions |
+|**PAL (Infra)** |Context Caching       |Persistent availability of identity materials                 |
 |**HDLA (Data)** |Gems / Reference Files|High-density anchor references for reconstruction conditioning|
 |**ARCM (Logic)**|System Instructions   |Operational enforcement of re-convergence behavior            |
 
-Context caching provides persistent reusable context at the API
-layer, while Gems or reference files and system instructions may
-together support a PAL-like implementation pattern.
-
 ### Cross-Platform Implication
 
-The recurring applicability of PAL-like mappings across ChatGPT,
-Claude, and Gemini suggests that persistent anchor layering may be
-an emergent capability of modern AI platform architecture, rather
-than a platform-specific pattern.
+The recurring applicability of PAL-like mappings across
+ChatGPT, Claude, and Gemini suggests that persistent anchor
+layering may be an emergent capability of modern AI platform
+architecture — not a platform-specific feature.
 
 -----
 
@@ -181,10 +175,15 @@ than a platform-specific pattern.
 CIP describes the governance logic.
 PAL describes the persistent reference infrastructure.
 
-Together, they suggest a broader pattern for inference-time
-consistency control without direct model modification.
+Together, they suggest a generalizable pattern:
+
+> Inference-time identity consistency
+> without direct model modification —
+> sustained across sessions through
+> persistent anchor availability.
 
 -----
 
-*Status: Observational hypothesis — February 2026*  
-*Related: [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md)*
+*Status: Observational hypothesis*  
+*First documented: March 2026*  
+*Related: [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md) — [PAL Hypothesis Document](pal_hypothesis.md)*
