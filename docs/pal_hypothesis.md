@@ -9,20 +9,107 @@
 
 ## Abstract
 
-Persistent Anchor Layer (PAL) is a proposed infrastructure concept
-for cross-session identity stabilization in generative AI systems.
+Persistent Anchor Layer (PAL) is a proposed
+infrastructure concept for cross-session
+stabilization in generative AI systems.
 
-The hypothesis is that persistently available anchor materials —
-a validated UID and associated anchor asset — may improve
-reconstruction continuity across sessions without direct model
+The hypothesis is that persistently available
+anchor materials — a validated UID and associated
+anchor asset — may improve reconstruction
+continuity across sessions without direct model
 modification.
 
-PAL is framed as an inference-time persistence condition,
-not a training-time intervention and not a parameter-level
-modification of any kind.
+PAL is framed as an inference-time persistence
+condition, not a training-time intervention and
+not a parameter-level modification of any kind.
 
-This document records the hypothesis as an observational model.
-Controlled validation remains pending.
+Observations from operational workflows suggest
+that persistent anchor availability may help
+suppress identity drift, role drift, and
+culturally bounded reconstruction drift.
+These observations are not validated through
+controlled experimentation and should be treated
+as preliminary.
+
+If the PAL hypothesis is valid, it does not reduce
+the need for governance. It increases it. A more
+effective persistence condition is also a more
+consequential one — and consequential mechanisms
+require accountable governance frameworks.
+
+This document records the hypothesis as an
+observational model and governance-oriented
+risk framing. Controlled validation remains pending.
+
+-----
+
+## Misuse Risks and Governance Warning
+
+This document describes a governance-oriented
+risk framing for the PAL hypothesis.
+
+It is not an operational guide.
+It is not an exploitation guide.
+It does not provide methods for misusing
+AI persistence mechanisms.
+
+The risks described in this document are included
+because understanding misuse potential is a
+prerequisite for designing adequate governance.
+
+> Describing a risk is not endorsing it.
+> It is a precondition for governing it.
+
+**This document does not provide:**
+
+- Concrete methods for attacking AI systems
+- Operational procedures for contaminating
+  anchor libraries
+- Guidance for circumventing AI governance systems
+- Methods for exploiting persistence mechanisms
+  in high-impact or high-authority environments
+
+**This document does provide:**
+
+- A conceptual risk framing
+- Governance recommendations
+- Contamination risk awareness
+- Library governance requirements
+- Defensive operational guidance
+
+Readers who identify misuse potential beyond
+what is described here are encouraged to engage
+with the governance frameworks referenced in
+this document rather than act on that potential.
+
+-----
+
+## Status Note
+
+The following table summarizes the validation
+status of claims made in this document.
+
+|Section|Content                                 |Status                                         |
+|-------|----------------------------------------|-----------------------------------------------|
+|1–8    |Core PAL hypothesis                     |Observational. Controlled validation pending.  |
+|6      |ASC conditions                          |Observational finding. Not validated.          |
+|9      |Library governance requirements         |Precautionary model. Not empirically derived.  |
+|10     |Normative and cultural frame persistence|Observational. Mechanism not established.      |
+|11     |PAL as inference-time bias condition    |Theoretical extension. Not validated.          |
+|12     |Security and high-impact risks          |Precautionary framing. Not empirically derived.|
+|13     |Limitations                             |Documented.                                    |
+
+**No claims in this document are:**
+
+- Vendor-confirmed
+- Validated through controlled experimentation
+- Guaranteed to generalize across platforms
+- Claims about internal model architecture
+
+All mechanism descriptions are proposed
+explanatory models, not confirmed causal accounts.
+
+> Controlled validation pending across all sections.
 
 -----
 
