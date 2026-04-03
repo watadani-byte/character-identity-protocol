@@ -845,7 +845,7 @@ PAL introduces a new governable variable into that process.
 This section presents a theoretical implication
 derived from operational observations.
 
-The claim that PAL constitutes a new C is:
+The claim that PAL may introduce a C-like external condition is:
 
 - Conceptually grounded in the CIP reconstruction model
 - Consistent with observations of cultural frame drift suppression
