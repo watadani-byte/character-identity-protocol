@@ -405,6 +405,11 @@ significantly beyond image generation workflows —
 into any AI system where identity, role, or normative
 consistency must be maintained across sessions.
 
+The scope of normative drift risk extends beyond
+individual workflows — into organizational,
+institutional, and critical infrastructure deployments
+where AI behavioral consistency is a governance requirement.
+
 -----
 
 ### 10.6 Status
@@ -522,3 +527,226 @@ Content governance is the operator’s responsibility.
 > a critical operational requirement.
 
 *See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
+
+-----
+
+## 11. PAL as an Inference-Time Bias Condition
+
+### 11.1 A Deeper Implication
+
+PAL has been framed as an infrastructure condition —
+a persistence layer that keeps anchor materials
+available at inference time.
+
+However, a deeper implication must be acknowledged:
+
+> PAL may not merely persist identity materials.
+> It may act as a new source of C —
+> an inference-time bias condition that shapes
+> the reconstruction process itself.
+
+This requires careful examination.
+
+-----
+
+### 11.2 The C Layer in CIP
+
+Within the CIP framework, the reconstruction process
+is modeled as:
+
+```
+A → (A + C) → B′
+```
+
+Where:
+
+- **A** = user input
+- **C** = internal constraint acting on A
+  (optimization pressure, training priors,
+  compression, constraint rewriting)
+- **B′** = generated output
+
+C is not directly observable.
+C is not directly controllable.
+C is the primary source of identity drift.
+
+CIP governs identity by constraining A′ indirectly —
+through anchor injection, prompt entropy reduction,
+and identity validation gates.
+
+-----
+
+### 11.3 PAL as a New C
+
+When PAL registers a UID and anchor asset in a
+persistent reference layer, it introduces materials
+that remain available at inference time across sessions.
+
+The observation in Section 10 suggests that these
+materials may suppress cultural frame drift, role drift,
+and normative drift — not only visual identity drift.
+
+If this observation is accurate, PAL is doing more
+than persisting files.
+
+It may be introducing a persistent external constraint
+that shapes the model’s reconstruction trajectory —
+functionally analogous to C, but originating outside
+the model.
+
+```
+Without PAL:
+A → (A + C_model) → B′
+
+With PAL:
+A → (A + C_model + C_PAL) → B′
+
+Where C_PAL = inference-time bias introduced
+              by persistently available anchor materials
+```
+
+In CIP terms:
+
+> PAL may constitute a new C —
+> an externally injected inference-time bias condition
+> that reshapes reconstruction behavior across sessions.
+
+-----
+
+### 11.4 How This Differs from Model Modification
+
+This must be distinguished carefully from
+parameter-level model modification.
+
+|                  |Model modification        |PAL as C                             |
+|------------------|--------------------------|-------------------------------------|
+|Intervention point|Training / parameter layer|Inference time                       |
+|Persistence       |Encoded in weights        |External persistent layer            |
+|Reversibility     |Requires retraining       |Removable by purging anchor          |
+|Scope             |Affects all outputs       |Affects outputs conditioned on anchor|
+|Mechanism         |Weight modification       |Input conditioning                   |
+
+PAL does not modify model weights.
+PAL does not access internal model representations.
+
+However, its effect on reconstruction behavior —
+if the observations in Section 10 are accurate —
+may be functionally similar in outcome to a
+lightweight conditioning intervention.
+
+> PAL operates through input persistence.
+> Its effect may be analogous to a bias condition
+> at the reconstruction layer.
+> These are different mechanisms with potentially
+> similar operational outcomes.
+
+-----
+
+### 11.5 Implications for Governance
+
+If PAL constitutes a new C, the governance implications
+are significant.
+
+**What is being governed is not only identity.**
+It is the reconstruction bias itself.
+
+A well-formed C_PAL stabilizes intended behavior.
+A contaminated C_PAL stabilizes unintended behavior —
+with the same persistence and the same depth of influence.
+
+This extends the scope of Library Governance
+(Section 10.7) beyond content purity:
+
+> The operator is not only responsible for
+> what is in the anchor library.
+> The operator is responsible for
+> what bias the anchor library introduces
+> into the reconstruction process.
+
+This is a stronger claim than content governance alone.
+It implies that anchor library design is a form of
+reconstruction bias design.
+
+The scope of this responsibility extends beyond
+individual deployments — into organizational,
+institutional, and critical infrastructure contexts
+where AI behavioral consistency is a governance requirement.
+
+-----
+
+### 11.6 Implications for CIP
+
+If PAL constitutes a new C, this has implications
+for the CIP framework itself.
+
+CIP currently treats C as:
+
+- internal to the model
+- not directly observable
+- not directly controllable
+
+PAL suggests that:
+
+- C can be partially shaped from outside the model
+- External persistence layers may function as
+  inference-time bias injectors
+- The boundary between “external input” and
+  “internal reconstruction constraint” may be
+  less fixed than CIP currently assumes
+
+This is not a contradiction of CIP.
+It is an extension of CIP’s reconstruction model
+into the persistence layer.
+
+```
+CIP Reconstruction Control Model (extended):
+
+A → (A + C_model + C_PAL) → B′
+
+Where:
+  C_model = internal model constraint (not directly controllable)
+  C_PAL   = external persistence-layer bias (operator-governed)
+```
+
+CIP governs the reconstruction process.
+PAL introduces a new governable variable into that process.
+
+> ai-identity-governance exists precisely because
+> C_PAL must be governed.
+
+-----
+
+### 11.7 Status and Caution
+
+This section presents a theoretical implication
+derived from operational observations.
+
+The claim that PAL constitutes a new C is:
+
+- Conceptually grounded in the CIP reconstruction model
+- Consistent with observations of cultural frame drift suppression
+- Not yet validated through controlled experimentation
+
+This section is recorded as a theoretical extension
+for further investigation.
+
+**Caution:**
+
+The framing of PAL as an inference-time bias condition
+increases the perceived power of the mechanism.
+
+This power cuts both ways:
+
+- A well-governed C_PAL is a significant stabilization tool
+- A poorly governed C_PAL is a significant risk vector
+
+The stronger this mechanism is, the more critical
+the governance requirements in Section 10.7 become.
+
+> Status: Theoretical extension.
+> Controlled validation pending.
+> Handle with care.
+
+*See: [Section 10.7 — Library Governance](pal_hypothesis.md)*  
+*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*  
+*See: [CIP Reconstruction Control Model](whitepaper_v1.md)*
