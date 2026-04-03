@@ -37,9 +37,9 @@ effective persistence condition is also a more
 consequential one — and consequential mechanisms
 require accountable governance frameworks.
 
-This document records the hypothesis as an
-observational model and governance-oriented
-risk framing. Controlled validation remains pending.
+This document records PAL as an observational hypothesis
+and a governance-oriented risk framing for further evaluation.
+Controlled validation remains pending.
 
 -----
 
@@ -729,9 +729,9 @@ anchor materials
 
 In CIP terms:
 
-> PAL may constitute a new C —
-> an externally injected inference-time bias condition
-> that reshapes reconstruction behavior across sessions.
+> PAL may constitute a C-like external condition —
+> an inference-time influence that may reshape
+> reconstruction behavior across sessions.
 
 -----
 
@@ -958,8 +958,8 @@ function or authorization, PAL’s normative
 persistence mechanism may stabilize that
 misrepresentation across sessions.
 
-This may produce systems that persistently
-respond as if they hold authority or capabilities
+This may contribute to systems responding across sessions
+as if they hold authority or capabilities
 they do not actually possess.
 
 **Governance response:**
