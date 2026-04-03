@@ -111,8 +111,6 @@ It is a control protocol.
 
 **Columns**
 
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
-- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 - [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
@@ -129,9 +127,9 @@ It is a control protocol.
 ## Attribution and Priority Note
 
 The term **Persistent Anchor Layer (PAL)** and its formulation as an
-infrastructure hypothesis for cross-session stabilization and
-governance risk were first named and documented by Hitoshi Watadani
-in March 2026 in this repository.
+infrastructure hypothesis for cross-session stabilization were first
+named and documented by Hitoshi Watadani in March 2026 in this
+repository.
 
 To the author’s knowledge, this repository contains the first explicit
 articulation of PAL as a distinct governance-oriented concept.
