@@ -22,6 +22,19 @@ CIP controls A′.
 
 -----
 
+## Attribution and Priority Note
+
+The term **Persistent Anchor Layer (PAL)** and its formulation as an
+infrastructure hypothesis for cross-session stabilization and
+governance risk were first named and documented by Hitoshi Watadani
+in March 2026 in this repository.
+
+To the author’s knowledge, this constitutes the first explicit
+articulation of PAL as a distinct governance-oriented concept.
+If you use this concept in your work, citation is appreciated.
+
+-----
+
 ## The Problem
 
 You generate a character. It is exactly right.
@@ -159,6 +172,7 @@ character-identity-protocol/
 - [Case 01A: Baseline Failure](docs/case_01_failure_log.md)
 - [Case 01B: Mira Project](docs/case_01b_mira_project.md)
 - [Case 04: Cross-Platform Migration](docs/case_04_shizuka.md)
+- [Case: PAL Contamination — Unintended Library Accumulation](docs/cases/case_pal_contamination_01.md)
 - [All Cases →](docs/case_01_failure_log.md)
 
 **Columns**
