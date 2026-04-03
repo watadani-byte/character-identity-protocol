@@ -22,19 +22,6 @@ CIP controls A′.
 
 -----
 
-## Attribution and Priority Note
-
-The term **Persistent Anchor Layer (PAL)** and its formulation as an
-infrastructure hypothesis for cross-session stabilization and
-governance risk were first named and documented by Hitoshi Watadani
-in March 2026 in this repository.
-
-To the author’s knowledge, this repository contains the first explicit
-articulation of PAL as a distinct governance-oriented concept.
-If you use this concept in your work, citation is appreciated.
-
------
-
 ## The Problem
 
 You generate a character. It is exactly right.
@@ -89,6 +76,66 @@ It is a control protocol.
 
 > CIP should be read not as a denial of misuse risk,
 > but as a governance response to it.
+
+-----
+
+## Documentation
+
+**Start Here**
+
+- [Getting Started](docs/getting_started.md)
+- [White Paper](docs/whitepaper_v1.md)
+- [CIP Specification v0.1](docs/cip_spec_v0.1.md)
+
+**Core Concepts**
+
+- [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
+- [Technical Mechanism](docs/technical_mechanism.md)
+- [Re-Convergence — Identity Recovery](docs/reconvergence.md)
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
+
+**Protocol**
+
+- [Architecture Diagram](docs/architecture_diagram.md)
+- [Quality Gate & Hard Abort](docs/quality_gate_addendum.md)
+- [Protocol Template](docs/protocol_template.md)
+
+**Cases**
+
+- [Case 01A: Baseline Failure](docs/cases/case_01_failure_log.md)
+- [Case 01B: Mira Project](docs/cases/case_01b_mira_project.md)
+- [Case 04: Cross-Platform Migration](docs/cases/case_04_shizuka.md)
+- [Case: PAL Contamination — Unintended Library Accumulation](docs/cases/case_pal_contamination_01.md)
+- [All Cases →](docs/cases/case_01_failure_log.md)
+
+**Columns**
+
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
+- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
+- [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
+- [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
+- [Reconstruction Durability and Identity Longevity](docs/column_reconstruction_durability.md)
+
+**Reference**
+
+- [Glossary](docs/glossary.md)
+- [CIP vs Existing Methods](docs/cip_vs_existing_methods.md)
+- [Decision Pack](docs/decision_pack.md)
+
+-----
+
+## Attribution and Priority Note
+
+The term **Persistent Anchor Layer (PAL)** and its formulation as an
+infrastructure hypothesis for cross-session stabilization and
+governance risk were first named and documented by Hitoshi Watadani
+in March 2026 in this repository.
+
+To the author’s knowledge, this repository contains the first explicit
+articulation of PAL as a distinct governance-oriented concept.
+If you use this concept in your work, citation is appreciated.
 
 -----
 
@@ -150,53 +197,6 @@ character-identity-protocol/
 └── cip-enterprise-layer/
     └── (see separate repository)
 ```
-
------
-
-## Documentation
-
-**Start Here**
-
-- [Getting Started](docs/getting_started.md)
-- [White Paper](docs/whitepaper_v1.md)
-- [CIP Specification v0.1](docs/cip_spec_v0.1.md)
-
-**Core Concepts**
-
-- [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
-- [Technical Mechanism](docs/technical_mechanism.md)
-- [Re-Convergence — Identity Recovery](docs/reconvergence.md)
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
-- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
-
-**Protocol**
-
-- [Architecture Diagram](docs/architecture_diagram.md)
-- [Quality Gate & Hard Abort](docs/quality_gate_addendum.md)
-- [Protocol Template](docs/protocol_template.md)
-
-**Cases**
-
-- [Case 01A: Baseline Failure](docs/cases/case_01_failure_log.md)
-- [Case 01B: Mira Project](docs/cases/case_01b_mira_project.md)
-- [Case 04: Cross-Platform Migration](docs/cases/case_04_shizuka.md)
-- [Case: PAL Contamination — Unintended Library Accumulation](docs/cases/case_pal_contamination_01.md)
-- [All Cases →](docs/cases/case_01_failure_log.md)
-
-**Columns**
-
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
-- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
-- [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
-- [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
-- [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
-- [Reconstruction Durability and Identity Longevity](docs/column_reconstruction_durability.md)
-
-**Reference**
-
-- [Glossary](docs/glossary.md)
-- [CIP vs Existing Methods](docs/cip_vs_existing_methods.md)
-- [Decision Pack](docs/decision_pack.md)
 
 -----
 
