@@ -766,8 +766,8 @@ lightweight conditioning intervention.
 
 ### 11.5 Implications for Governance
 
-If PAL constitutes a new C, the governance implications
-are significant.
+If PAL introduces a C-like external condition,
+the governance implications are significant.
 
 **What is being governed is not only identity.**
 It is the reconstruction bias itself.
@@ -828,7 +828,8 @@ A → (A + C_model + C_PAL) → B′
 
 Where:
   C_model = internal model constraint (not directly controllable)
-  C_PAL   = external persistence-layer bias (operator-governed)
+  C_PAL   = hypothesized external persistence-layer influence
+            (operator-governed if present)
 ```
 
 CIP governs the reconstruction process.
