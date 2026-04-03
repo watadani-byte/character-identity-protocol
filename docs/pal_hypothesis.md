@@ -164,7 +164,7 @@ inference layer — not at the training or parameter layer.
 
 PAL does not validate the content of anchor materials.
 Content governance is the responsibility of the operator.
-See Section 10.7.
+See Section 9.
 
 PAL does not validate, sanitize, or normatively
 assess anchor materials.
@@ -375,6 +375,105 @@ conceptual interpretations, not vendor-confirmed behaviors.
 [Technical Mechanism](technical_mechanism.md) —
 [White Paper](whitepaper_v1.md)*
 
+## 9. Library Governance and Contamination Risk
+
+### 9.1 Responsibility
+
+PAL describes an infrastructure condition.
+It does not validate the content of anchor materials.
+
+**The responsibility for constructing and maintaining
+the anchor library belongs to the operator.**
+
+This includes:
+
+- Selecting anchor assets that accurately represent
+  the intended identity, role, and normative frame
+- Ensuring that anchor materials are free from
+  content that could produce harmful, misleading,
+  or unintended reconstruction behavior
+- Reviewing and updating the library as the
+  governed system evolves
+
+PAL is content-neutral.
+Its stabilization effect applies regardless of
+whether the anchored content is beneficial or harmful.
+
+> A well-formed anchor stabilizes intended behavior.
+> A contaminated anchor stabilizes unintended behavior.
+
+The governance of what is anchored is entirely
+the operator’s responsibility.
+
+-----
+
+### 9.2 Contamination Risk
+
+Because PAL may function as a normative and cultural
+frame persistence layer — not only a visual identity
+layer — the consequences of anchor contamination
+extend beyond visual drift.
+
+Contaminated anchor materials may include content
+that encodes harmful behavioral norms, misrepresents
+the system’s intended function or authority, conflicts
+with applicable policies or ethical standards,
+or biases reconstruction toward harmful outputs.
+
+The persistence mechanism that stabilizes beneficial
+anchors will equally stabilize harmful ones.
+
+> PAL does not distinguish between intended and
+> unintended normative frames.
+> That distinction is the operator’s responsibility.
+
+-----
+
+### 9.3 Active Purge Requirement
+
+When contamination is detected or suspected,
+operators must actively purge affected anchor materials
+from the persistent layer.
+
+Passive removal is insufficient.
+Contaminated materials that remain accessible —
+even if nominally deprecated — may continue to
+influence reconstruction behavior.
+
+**Recommended practice:**
+
+- Audit anchor library contents before deployment
+- Define criteria for what constitutes contamination
+  before deployment
+- Establish a purge procedure and assign responsibility
+  before deployment
+- When contamination is detected, purge immediately
+  and re-validate the anchor library before resuming
+  governed operation
+
+-----
+
+### 9.4 What PAL Does Not Do
+
+PAL does not:
+
+- Validate the content of anchor materials
+- Detect harmful normative frames in anchor definitions
+- Prevent contaminated anchors from influencing
+  reconstruction
+- Enforce content policy on behalf of the operator
+
+PAL provides the persistence infrastructure.
+Content governance is the operator’s responsibility.
+
+> The strength of PAL as a stabilization mechanism
+> is precisely what makes anchor library governance
+> a critical operational requirement.
+
+*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
+
+-----
+
 ## 10. Normative and Cultural Frame Persistence
 
 ### 10.1 Beyond Visual Identity
@@ -548,108 +647,7 @@ The observation is recorded here for further investigation.
 *See: [Glossary — Normative Drift](glossary.md)*  
 *See: [Verification Assets — Rieko](assets/README.md)*
 
------
-
-### 10.7 Library Governance and Purity
-
-#### Responsibility
-
-PAL describes an infrastructure condition.
-It does not validate the content of anchor materials.
-
-**The responsibility for constructing and maintaining
-the anchor library belongs to the operator.**
-
-This includes:
-
-- Selecting anchor assets that accurately represent
-  the intended identity, role, and normative frame
-- Ensuring that anchor materials are free from
-  content that could produce harmful, misleading,
-  or unintended reconstruction behavior
-- Reviewing and updating the library as the
-  governed system evolves
-
-PAL is content-neutral.
-Its stabilization effect applies regardless of
-whether the anchored content is beneficial or harmful.
-
-> A well-formed anchor stabilizes intended behavior.
-> A contaminated anchor stabilizes unintended behavior.
-
-The governance of what is anchored is entirely
-the operator’s responsibility.
-
------
-
-#### Contamination Risk
-
-Because PAL may function as a normative and cultural
-frame persistence layer — not only a visual identity
-layer — the consequences of anchor contamination
-extend beyond visual drift.
-
-Contaminated anchor materials may include content
-that encodes harmful behavioral norms, misrepresents
-the system’s intended function or authority, conflicts
-with applicable policies or ethical standards,
-or biases reconstruction toward harmful outputs.
-
-The persistence mechanism that stabilizes beneficial
-anchors will equally stabilize harmful ones.
-
-> PAL does not distinguish between intended and
-> unintended normative frames.
-> That distinction is the operator’s responsibility.
-
------
-
-#### Active Purge Requirement
-
-When contamination is detected or suspected,
-operators must actively purge affected anchor materials
-from the persistent layer.
-
-Passive removal is insufficient.
-Contaminated materials that remain accessible —
-even if nominally deprecated — may continue to
-influence reconstruction behavior.
-
-**Recommended practice:**
-
-- Audit anchor library contents before deployment
-- Define criteria for what constitutes contamination
-  before deployment
-- Establish a purge procedure and assign responsibility
-  before deployment
-- When contamination is detected, purge immediately
-  and re-validate the anchor library before resuming
-  governed operation
-
------
-
-#### What PAL Does Not Do
-
-PAL does not:
-
-- Validate the content of anchor materials
-- Detect harmful normative frames in anchor definitions
-- Prevent contaminated anchors from influencing
-  reconstruction
-- Enforce content policy on behalf of the operator
-
-PAL provides the persistence infrastructure.
-Content governance is the operator’s responsibility.
-
-> The strength of PAL as a stabilization mechanism
-> is precisely what makes anchor library governance
-> a critical operational requirement.
-
-*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
-
------
-
-## 11. PAL as an Inference-Time Bias Condition
+## 11. PAL as a Possible Inference-Time Bias Condition
 
 ### 11.1 A Deeper Implication
 
@@ -695,7 +693,7 @@ and identity validation gates.
 
 -----
 
-### 11.3 PAL as a New C
+### 11.3 PAL as a Possible External C-like Condition
 
 When PAL registers a UID and anchor asset in a
 persistent reference layer, it introduces materials
@@ -774,7 +772,7 @@ A contaminated C_PAL stabilizes unintended behavior —
 with the same persistence and the same depth of influence.
 
 This extends the scope of Library Governance
-(Section 10.7) beyond content purity:
+(Section 9) beyond content purity:
 
 > The operator is not only responsible for
 > what is in the anchor library.
@@ -860,13 +858,13 @@ This power cuts both ways:
 - A poorly governed C_PAL is a significant risk vector
 
 The stronger this mechanism is, the more critical
-the governance requirements in Section 10.7 become.
+the governance requirements in Section 9 become.
 
 > Status: Theoretical extension.
 > Controlled validation pending.
 > Handle with care.
 
-*See: [Section 10.7 — Library Governance](pal_hypothesis.md)*  
+*See: [Section 9 — Library Governance](pal_hypothesis.md)*  
 *See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*  
 *See: [CIP Reconstruction Control Model](whitepaper_v1.md)*
 
