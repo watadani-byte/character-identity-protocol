@@ -165,34 +165,79 @@ PAL does not validate the content of anchor materials.
 Content governance is the responsibility of the operator.
 See Section 10.7.
 
+PAL does not validate, sanitize, or normatively
+assess anchor materials.
+Any continuity benefit, if present, is separable
+from the question of whether the persistent materials
+are safe, correct, policy-compliant, or
+appropriately governed.
+
+The stronger PAL’s stabilization effect may be,
+the more consequential the governance of its
+anchor library becomes.
+
 -----
 
 ## 3. Hypothesis
 
 **Operational hypothesis:**
-When a validated UID and anchor asset are registered in a
-persistent reference layer, reconstruction behavior may become
-more stable across sessions.
+When a validated UID and anchor asset are registered
+in a persistent reference layer, reconstruction
+behavior may become more stable across sessions.
+
+This is a hypothesis, not a confirmed finding.
+It is based on operational observations and has not
+been subjected to controlled experimentation.
 
 **Proposed mechanism:**
-Persistent availability of anchor materials at inference time
-may reduce the reconstruction gap that normally opens after
-session reset — not by modifying the model, but by ensuring
-that the conditioning inputs remain consistently available.
+Persistent availability of anchor materials at
+inference time may reduce the reconstruction gap
+that normally opens after session reset — not by
+modifying the model, but by ensuring that the
+conditioning inputs remain consistently available.
+
+This proposed mechanism is not vendor-confirmed.
+It is an explanatory model offered to account for
+observed behavior. Alternative explanations
+may exist.
 
 **Observed indicators:**
 
-- Improved identity recall across sessions
-- Stronger convergence toward anchor conditions
-- Reduced practical identity loss after session reset
+The following patterns have been observed in
+operational workflows:
 
-**Important distinction:**
-The proposed effect is analogous in outcome to lightweight
-stabilization methods such as LoRA or checkpointing.
+- Apparent improvement in identity recall
+  across sessions
+- Apparent stronger convergence toward
+  anchor conditions
+- Apparent reduction in practical identity loss
+  after session reset
+
+These observations are preliminary.
+They have not been validated through controlled
+experimentation. They should not be treated as
+proof of the proposed mechanism.
+
+**Validation status:**
+
+No controlled validation has been completed.
+Boundary conditions, failure modes, and
+platform-specific variation have not been
+systematically tested.
+
+The proposed effect is described as analogous
+in outcome to lightweight stabilization methods
+such as LoRA or checkpointing.
 It is not analogous in mechanism.
 
-PAL operates through input persistence, not parameter encoding.
-These are fundamentally different intervention points.
+PAL operates through input persistence,
+not parameter encoding.
+These are fundamentally different intervention
+points — even if operational outcomes appear
+similar under certain conditions.
+
+> This section describes a hypothesis.
+> It does not describe a proven mechanism.
 
 -----
 
@@ -215,10 +260,13 @@ PAL (Persistent Anchor Layer)
 ```
 
 CIP describes the governance model.
-PAL describes the persistence condition supporting
-cross-session continuity.
+PAL describes a possible persistence condition
+that may support cross-session continuity
+within which CIP mechanisms remain operational.
 
-> CIP governs identity. PAL sustains it.
+> CIP governs identity conditions.
+> PAL may sustain the persistence context
+> in which they remain operational.
 
 -----
 
