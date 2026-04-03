@@ -367,13 +367,13 @@ It is not a vendor specification.
 Platform mappings described in related documents are
 conceptual interpretations, not vendor-confirmed behaviors.
 
------
-
-## *First documented: March 2026*  
+*First documented: March 2026*  
 *Status: Observational hypothesis*  
 *Related: [Column: PAL](column_pal.md) —
 [Technical Mechanism](technical_mechanism.md) —
 [White Paper](whitepaper_v1.md)*
+
+-----
 
 ## 9. Library Governance and Contamination Risk
 
@@ -489,11 +489,11 @@ otherwise prone to drift across sessions.
 This extends the scope of PAL beyond visual identity
 stabilization into a broader class of persistence problems:
 
-|Domain          |Drift Type             |PAL Effect                                         |
-|----------------|-----------------------|---------------------------------------------------|
-|Image generation|Cultural frame drift   |Suppresses Westernization of non-Western characters|
-|Support AI      |Role drift / tone drift|Maintains assistant role and interactional register|
-|Control AI      |Normative drift        |Sustains behavioral rules and decision priorities  |
+|Domain          |Drift Type             |PAL Effect                                                                     |
+|----------------|-----------------------|-------------------------------------------------------------------------------|
+|Image generation|Cultural frame drift   |May suppress Westernization of non-Western characters under observed conditions|
+|Support AI      |Role drift / tone drift|May help maintain assistant role and interactional register                    |
+|Control AI      |Normative drift        |May help sustain behavioral rules and decision priorities                      |
 
 -----
 
@@ -562,10 +562,11 @@ Across four outputs, the following were maintained:
 ![Rieko Wedding PAL — Output 3](assets/images/rieko_wedding_pal_03.PNG)
 ![Rieko Wedding PAL — Output 4](assets/images/rieko_wedding_pal_04.PNG)
 
-Cultural frame drift was suppressed.
+Under these conditions, cultural frame drift
+appeared to be suppressed.
 The character remained recognizably within
 the Japanese anime aesthetic frame defined
-by the anchor UID.
+by the anchor UID across the observed outputs.
 
 **Implication:**
 PAL persistence of the UID and anchor asset
@@ -597,17 +598,20 @@ that is otherwise prone to contextual reinterpretation.
 In both cases, the underlying mechanism is the same:
 
 > Persistent availability of a structured anchor
-> definition reduces the probability that reconstruction
-> migrates toward the model’s statistical defaults.
+> definition may reduce the probability that
+> reconstruction migrates toward the model’s
+> statistical defaults — under conditions where
+> the PAL hypothesis holds.
 
 -----
 
 ### 10.5 Revised Scope of PAL
 
-In light of these observations, PAL should be understood
-not merely as an identity persistence layer, but as:
+If the PAL hypothesis is valid, PAL may be
+understood not merely as an identity persistence
+layer, but as:
 
-> A governance infrastructure for normative
+> A possible governance infrastructure for normative
 > and culturally bounded reconstruction.
 
 The full scope of PAL persistence includes:
