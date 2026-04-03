@@ -100,6 +100,7 @@ It is a control protocol.
 - [Architecture Diagram](docs/architecture_diagram.md)
 - [Quality Gate & Hard Abort](docs/quality_gate_addendum.md)
 - [Protocol Template](docs/protocol_template.md)
+- [PAL Operations Manual](docs/pal_operations_manual_v0.1.md) — *File management, versioning, and continuity operations*
 
 **Cases**
 
