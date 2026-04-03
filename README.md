@@ -115,7 +115,8 @@ character-identity-protocol/
 │   ├── cases/
 │   │   ├── case_01_failure_log.md
 │   │   ├── case_01b_mira_project.md
-│   │   └── case_04_shizuka.md
+│   │   ├── case_04_shizuka.md
+│   │   └── case_pal_contamination_01.md
 │   │
 │   ├── columns/
 │   │   ├── column_pal.md
@@ -204,7 +205,7 @@ character-identity-protocol/
 ```bibtex
 @misc{character_identity_protocol_2026,
   title={Character Identity Protocol: Operational Governance for Identity Convergence in Probabilistic Generative Systems},
-  author={Watadani},
+  author={Hitoshi Watadani},
   year={2026},
   note={GitHub Repository},
   url={https://github.com/watadani-byte/character-identity-protocol}
