@@ -890,3 +890,274 @@ the governance requirements in Section 10.7 become.
 *See: [Section 10.7 — Library Governance](pal_hypothesis.md)*  
 *See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*  
 *See: [CIP Reconstruction Control Model](whitepaper_v1.md)*
+
+-----
+
+## 12. Security, Policy, and High-Impact Deployment Risks
+
+### 12.1 Scope of This Section
+
+This section describes precautionary risk framings
+for PAL deployments in high-impact or high-authority
+environments.
+
+It does not provide operational guidance for
+exploiting these risks.
+It does not describe attack methods or procedures.
+It describes risk categories to inform governance
+design.
+
+> This section is a precautionary framing.
+> It is not an operational threat model.
+
+-----
+
+### 12.2 Elevated Risk in High-Impact Environments
+
+If the PAL hypothesis is valid, its effects may
+be more consequential in environments where
+AI behavioral consistency has direct operational,
+institutional, or policy implications.
+
+Such environments may include:
+
+- Organizational decision-support systems
+- Institutional communication or advisory systems
+- Regulated domain deployments
+- Systems operating under legal or compliance frameworks
+- Educational or guidance systems at scale
+
+In these environments, the difference between
+intended and unintended normative persistence
+may have consequences beyond individual interactions.
+
+This does not mean PAL should not be used in
+such environments.
+It means governance requirements are elevated
+in proportion to the potential impact of
+unintended behavioral persistence.
+
+-----
+
+### 12.3 Policy-Violation Amplification Risk
+
+If anchor materials contain content that is
+inconsistent with applicable policies, regulations,
+or ethical standards, PAL’s persistence mechanism
+may amplify that inconsistency across sessions.
+
+A single policy-violating anchor document,
+if registered in the persistent layer, may
+persistently bias reconstruction behavior in
+ways that are difficult to detect and reverse.
+
+This risk is not unique to PAL.
+It applies to any persistence mechanism that
+influences AI reconstruction behavior.
+
+PAL makes this risk more explicit precisely because
+it proposes a mechanism for cross-session persistence.
+
+**Governance response:**
+
+- Policy compliance review of all anchor materials
+  before registration
+- Defined criteria for policy-violating content
+- Active purge procedures for non-compliant materials
+
+-----
+
+### 12.4 Role and Authority Misrepresentation Risk
+
+If anchor materials define a role or authority
+that is inconsistent with the system’s actual
+function or authorization, PAL’s normative
+persistence mechanism may stabilize that
+misrepresentation across sessions.
+
+This may produce systems that persistently
+respond as if they hold authority or capabilities
+they do not actually possess.
+
+**Governance response:**
+
+- Role definition review before anchor registration
+- Explicit boundaries on authority claims
+  in anchor materials
+- Periodic re-validation of role definitions
+  against actual system authorization
+
+-----
+
+### 12.5 Contamination Propagation Risk
+
+In deployments where anchor materials are
+shared, copied, or distributed across multiple
+system instances, contaminated anchor materials
+may propagate their bias conditions to
+multiple systems simultaneously.
+
+This is conceptually analogous to supply-chain
+risk in software systems:
+a contaminated dependency can affect all
+systems that rely on it.
+
+The propagation risk is proportional to the
+degree of anchor material sharing across
+system instances.
+
+**Governance response:**
+
+- Provenance tracking for anchor materials
+- Review processes before anchor material distribution
+- Isolation of contaminated materials before purge
+
+-----
+
+### 12.6 Governance Principle for High-Impact Deployments
+
+The governance principle for high-impact deployments
+follows directly from the PAL hypothesis:
+
+> If PAL may stabilize behavioral norms
+> across sessions without model modification,
+> then the governance of what is stabilized
+> is as important as the governance of
+> model behavior itself.
+
+In high-impact environments, anchor library
+governance is not an optional operational
+consideration. It is a primary governance
+requirement.
+
+> The existence of misuse risk does not
+> weaken CIP or PAL as concepts.
+> It is one reason governance frameworks
+> like CIP are necessary.
+
+-----
+
+## 13. Limitations and Validation Status
+
+### 13.1 What Has Not Been Validated
+
+The following claims in this document have not
+been validated through controlled experimentation:
+
+- That PAL produces cross-session stabilization
+  effects through the proposed mechanism
+- That persistent anchor availability reduces
+  identity drift in a causally attributable way
+- That cultural frame drift suppression observed
+  in Section 10.3 is caused by PAL
+- That normative drift suppression in support AI
+  or control AI contexts is achievable through
+  PAL-equivalent persistence
+- That C_PAL constitutes a measurable
+  inference-time bias condition
+
+All of the above are hypotheses or observational
+findings. They have not been confirmed.
+
+-----
+
+### 13.2 Platform and Vendor Limitations
+
+All observations described in this document
+were made using specific platforms at specific
+points in time.
+
+Platform behaviors change.
+API policies change.
+Persistent layer features change.
+
+No claims in this document are vendor-confirmed.
+No claims are guaranteed to generalize across
+platforms, model versions, or deployment contexts.
+
+Platform mappings described in related documents
+are conceptual interpretations, not confirmed
+architectural descriptions.
+
+-----
+
+### 13.3 Boundary Conditions Not Tested
+
+The following boundary conditions have not
+been systematically tested:
+
+- The point at which PAL effects, if any, degrade
+- Failure modes under adversarial conditions
+- Platform-specific variation in persistence behavior
+- The effect of anchor material quality on outcomes
+- The relationship between anchor material volume
+  and stabilization effect
+- Long-term drift under PAL-governed conditions
+
+-----
+
+### 13.4 Alternative Explanations
+
+The observations described in this document
+may have alternative explanations that do not
+involve the proposed PAL mechanism.
+
+Observed behavioral consistency across sessions
+may be attributable to:
+
+- Model-internal consistency mechanisms
+- Prompt design effects unrelated to persistence
+- Session initialization patterns
+- Platform-specific caching behaviors
+  unrelated to anchor materials
+
+The PAL hypothesis is one possible explanation.
+It is not the only possible explanation.
+
+-----
+
+### 13.5 What This Document Claims and Does Not Claim
+
+**This document claims:**
+
+- Operational observations suggest persistent
+  anchor availability may improve reconstruction
+  consistency
+- These observations warrant further investigation
+- Governance frameworks are necessary regardless
+  of whether the PAL mechanism is confirmed
+- Contamination risk exists and requires
+  precautionary governance
+
+**This document does not claim:**
+
+- PAL is a proven mechanism
+- PAL effects are guaranteed or universal
+- PAL operates through a confirmed causal pathway
+- Any vendor has confirmed PAL-consistent behavior
+- CIP or PAL provide complete solutions to
+  AI governance challenges
+
+-----
+
+### 13.6 Validation Priorities
+
+If controlled validation of the PAL hypothesis
+is pursued, the following areas are most important:
+
+- Controlled cross-session identity consistency
+  measurement with and without persistent anchors
+- Platform-controlled experiments isolating
+  anchor persistence as a variable
+- Systematic testing of normative drift
+  suppression in conversational AI contexts
+- Measurement of C_PAL effect magnitude
+  across different anchor material types
+
+These validation priorities are offered to support
+future research, not to imply that such validation
+has been conducted.
+
+> Status: All validation priorities listed here
+> remain open research directions.
+> No controlled validation has been completed.
