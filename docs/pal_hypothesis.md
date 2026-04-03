@@ -799,8 +799,8 @@ where AI behavioral consistency is a governance requirement.
 
 ### 11.6 Implications for CIP
 
-If PAL constitutes a new C, this has implications
-for the CIP framework itself.
+If PAL introduces a C-like external condition,
+this has implications for the CIP framework itself.
 
 CIP currently treats C as:
 
