@@ -134,7 +134,11 @@ character-identity-protocol/
 │   └── assets/
 │       ├── images/
 │       │   ├── .gitkeep
-│       │   └── rieko_anchor_v1.jpg.JPEG
+│       │   ├── rieko_anchor_v1.jpg.JPEG
+│       │   ├── rieko_wedding_pal_01.PNG
+│       │   ├── rieko_wedding_pal_02.PNG
+│       │   ├── rieko_wedding_pal_03.PNG
+│       │   └── rieko_wedding_pal_04.PNG
 │       ├── README.md
 │       ├── sample_uid_template.md
 │       └── sample_minimal_prompt_template.md
