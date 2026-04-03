@@ -149,6 +149,35 @@ The protocol does not force convergence — it biases the search space toward a 
 
 -----
 
+## Cultural Frame Drift
+
+A form of identity drift in which a generated output
+migrates toward the dominant cultural or aesthetic
+conventions of the model’s training distribution,
+away from the culturally bounded definition of
+the anchor identity.
+
+Cultural Frame Drift is particularly observable when
+a character defined within a minority visual culture —
+such as a Japanese anime aesthetic — is generated in
+contexts where the training distribution is heavily
+weighted toward a different cultural convention.
+
+The drift does not necessarily produce structural
+identity failure as detected by Face Gate, Skeleton Gate,
+or Proportion Gate. It may instead manifest as a shift
+in facial impression, expressive register, or stylistic
+rendering that moves the output away from its culturally
+defined anchor.
+
+PAL may suppress Cultural Frame Drift by keeping the
+culturally bounded anchor definition persistently
+available at inference time.
+
+*See: [PAL Hypothesis — Section 10](pal_hypothesis.md)*
+
+-----
+
 ## Convergence Recoverability
 
 > The ability of a character identity to be repeatedly
@@ -271,6 +300,34 @@ beautiful, elegant, mysterious Japanese woman with flowing black hair...
 
 -----
 
+## Library Contamination
+
+A condition in which anchor materials registered
+in a persistent reference layer contain content
+that produces harmful, misleading, or unintended
+reconstruction behavior.
+
+Because PAL may function as a normative and cultural
+frame persistence layer, contaminated anchor materials
+may stabilize harmful normative frames rather than
+intended ones.
+
+Library Contamination requires active purge of
+affected materials. Passive removal or deprecation
+is insufficient, as accessible materials may continue
+to influence reconstruction behavior.
+
+The operator is responsible for anchor library
+governance, contamination detection, and purge procedures.
+
+> PAL does not validate anchor content.
+> The operator does.
+
+*See: [PAL Hypothesis — Section 10.7](pal_hypothesis.md)*  
+*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
+
+-----
+
 ## Match Rate
 
 A human-assessed similarity score between the anchor image and a generated output.
@@ -288,6 +345,33 @@ The similarity threshold is operator-defined. The ~90% figure is a demonstration
 > Match rate measures the **risk of drift**, not the **fact of identity**.
 
 Match rate is a human judgment, not an automated metric.
+
+-----
+
+## Normative Drift
+
+A form of drift in which an AI system’s behavioral
+rules, decision priorities, or role definition shift
+across sessions — away from the anchored normative
+frame and toward the model’s statistical defaults.
+
+Normative Drift is not limited to image generation.
+It may occur in conversational AI, agentic systems,
+and any AI deployment where behavioral consistency
+across sessions is operationally required.
+
+Unlike structural identity drift, Normative Drift
+may not be detectable through visual gate evaluation.
+It requires assessment of behavioral posture,
+role consistency, and interactional register
+across outputs.
+
+PAL may suppress Normative Drift by keeping a
+structured role and behavioral anchor persistently
+available at inference time.
+
+*See: [PAL Hypothesis — Section 10](pal_hypothesis.md)*  
+*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
 
 -----
 
