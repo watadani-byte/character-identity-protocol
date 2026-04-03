@@ -29,7 +29,7 @@ infrastructure hypothesis for cross-session stabilization and
 governance risk were first named and documented by Hitoshi Watadani
 in March 2026 in this repository.
 
-To the author’s knowledge, this constitutes the first explicit
+To the author’s knowledge, this repository contains the first explicit
 articulation of PAL as a distinct governance-oriented concept.
 If you use this concept in your work, citation is appreciated.
 
@@ -74,7 +74,7 @@ Identity is not assumed to persist. It is continuously validated and recovered.
 ## Core Model
 
 ```
-Core Model:     A → A′ → B′  (Reconstruction Control Model)
+Core Model:     A → (A + C) → B′  (Reconstruction Control Model)
 Control Target: A′  (reconstructed state)
 Key Operations: Anchor · Gates · Hard Abort · Re-convergence
 ```
@@ -86,6 +86,9 @@ This is not a prompt technique.
 It is a control protocol.
 
 > CIP governs identity. PAL sustains it.
+
+> CIP should be read not as a denial of misuse risk,
+> but as a governance response to it.
 
 -----
 
@@ -173,11 +176,11 @@ character-identity-protocol/
 
 **Cases**
 
-- [Case 01A: Baseline Failure](docs/case_01_failure_log.md)
-- [Case 01B: Mira Project](docs/case_01b_mira_project.md)
-- [Case 04: Cross-Platform Migration](docs/case_04_shizuka.md)
+- [Case 01A: Baseline Failure](docs/cases/case_01_failure_log.md)
+- [Case 01B: Mira Project](docs/cases/case_01b_mira_project.md)
+- [Case 04: Cross-Platform Migration](docs/cases/case_04_shizuka.md)
 - [Case: PAL Contamination — Unintended Library Accumulation](docs/cases/case_pal_contamination_01.md)
-- [All Cases →](docs/case_01_failure_log.md)
+- [All Cases →](docs/cases/case_01_failure_log.md)
 
 **Columns**
 
