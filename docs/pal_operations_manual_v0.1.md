@@ -184,7 +184,7 @@ Triggers:
 - Replacement of core operational logic
 - Acceptance criteria model change
 
-Example: `v1.0 → v2.0`
+Example: `v1.0.0 → v2.0.0`
 
 ### 7.2 Minor Version Change
 
@@ -198,7 +198,7 @@ Triggers:
 - Anti-drift coverage expanded
 - Delta lexicon refined
 
-Example: `v0.1 → v0.2`
+Example: `v0.1.0 → v0.2.0`
 
 ### 7.3 Patch Version Change
 
