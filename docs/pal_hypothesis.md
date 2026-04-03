@@ -344,6 +344,11 @@ Across four outputs, the following were maintained:
   (restrained smile, downward or soft gaze) ✓
 - Skin tone consistency within warm neutral range ✓
 
+![Rieko Wedding PAL — Output 1](assets/images/rieko_wedding_pal_01.PNG)
+![Rieko Wedding PAL — Output 2](assets/images/rieko_wedding_pal_02.PNG)
+![Rieko Wedding PAL — Output 3](assets/images/rieko_wedding_pal_03.PNG)
+![Rieko Wedding PAL — Output 4](assets/images/rieko_wedding_pal_04.PNG)
+
 Cultural frame drift was suppressed.
 The character remained recognizably within
 the Japanese anime aesthetic frame defined
