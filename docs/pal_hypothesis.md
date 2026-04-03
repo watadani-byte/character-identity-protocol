@@ -75,7 +75,7 @@ prerequisite for designing adequate governance.
 - Governance recommendations
 - Contamination risk awareness
 - Library governance requirements
-- Defensive operational guidance
+- Defensive governance guidance
 
 Readers who identify misuse potential beyond
 what is described here are encouraged to engage
@@ -89,16 +89,16 @@ this document rather than act on that potential.
 The following table summarizes the validation
 status of claims made in this document.
 
-|Section|Content                                 |Status                                         |
-|-------|----------------------------------------|-----------------------------------------------|
-|1–8    |Core PAL hypothesis                     |Observational. Controlled validation pending.  |
-|6      |ASC conditions                          |Observational finding. Not validated.          |
-|9      |Library governance requirements         |Precautionary model. Not empirically derived.  |
-|10     |Normative and cultural frame persistence|Observational. Mechanism not established.      |
-|11     |PAL as inference-time bias condition    |Theoretical extension. Not validated.          |
-|12     |Security and high-impact risks          |Precautionary framing. Not empirically derived.|
-|13     |Limitations                             |Documented.                                    |
-|14     |Conclusion                              |Governance requirements stated.                |
+|Section |Content                                      |Status                                         |
+|--------|---------------------------------------------|-----------------------------------------------|
+|1–5, 7–8|Core PAL hypothesis and scope                |Observational. Controlled validation pending.  |
+|6       |ASC conditions                               |Observational finding. Not validated.          |
+|9       |Library governance requirements              |Precautionary model. Not empirically derived.  |
+|10      |Normative and cultural frame persistence     |Observational. Mechanism not established.      |
+|11      |PAL as possible inference-time bias condition|Theoretical extension. Not validated.          |
+|12      |Security and high-impact risks               |Precautionary framing. Not empirically derived.|
+|13      |Limitations                                  |Documented.                                    |
+|14      |Conclusion                                   |Governance requirements stated.                |
 
 **No claims in this document are:**
 
@@ -569,12 +569,12 @@ the Japanese anime aesthetic frame defined
 by the anchor UID across the observed outputs.
 
 **Implication:**
-PAL persistence of the UID and anchor asset
-appears to have suppressed drift toward Western
-aesthetic defaults — not only preserving visual
-feature similarity, but preserving the culturally
-bounded reconstruction conditions that define
-the character’s identity.
+Persistent availability of the UID and anchor asset
+appears to have reduced drift toward Western
+aesthetic defaults under the observed conditions —
+not only preserving visual feature similarity,
+but preserving the culturally bounded reconstruction
+conditions that define the character’s identity.
 
 -----
 
@@ -662,8 +662,8 @@ available at inference time.
 However, a deeper implication must be acknowledged:
 
 > PAL may not merely persist identity materials.
-> It may act as a new source of C —
-> an inference-time bias condition that shapes
+> It may introduce a C-like external influence —
+> an inference-time condition that shapes
 > the reconstruction process itself.
 
 This requires careful examination.
@@ -722,8 +722,9 @@ A → (A + C_model) → B′
 With PAL:
 A → (A + C_model + C_PAL) → B′
 
-Where C_PAL = inference-time bias introduced
-              by persistently available anchor materials
+Where C_PAL denotes a hypothesized inference-time
+influence associated with persistently available
+anchor materials
 ```
 
 In CIP terms:
@@ -771,9 +772,10 @@ are significant.
 **What is being governed is not only identity.**
 It is the reconstruction bias itself.
 
-A well-formed C_PAL stabilizes intended behavior.
-A contaminated C_PAL stabilizes unintended behavior —
-with the same persistence and the same depth of influence.
+A well-formed C_PAL may stabilize intended behavior.
+A contaminated C_PAL may stabilize unintended behavior —
+potentially with similar persistence and depth of influence,
+if the C_PAL hypothesis holds.
 
 This extends the scope of Library Governance
 (Section 9) beyond content purity:
@@ -928,9 +930,9 @@ or ethical standards, PAL’s persistence mechanism
 may amplify that inconsistency across sessions.
 
 A single policy-violating anchor document,
-if registered in the persistent layer, may
-persistently bias reconstruction behavior in
-ways that are difficult to detect and reverse.
+if persistently registered and repeatedly referenced,
+may bias reconstruction behavior across sessions
+in ways that are difficult to detect and reverse.
 
 This risk is not unique to PAL.
 It applies to any persistence mechanism that
@@ -1180,6 +1182,9 @@ Sections 9 through 13 are real:
 - Session reset does not resolve library contamination
 - Governance frameworks are necessary now,
   not after validation
+
+CIP should therefore be read not as a denial
+of misuse risk, but as a governance response to it.
 
 The existence of misuse risk does not weaken CIP.
 It is one reason CIP is necessary.
