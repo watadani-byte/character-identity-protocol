@@ -98,6 +98,7 @@ status of claims made in this document.
 |11     |PAL as inference-time bias condition    |Theoretical extension. Not validated.          |
 |12     |Security and high-impact risks          |Precautionary framing. Not empirically derived.|
 |13     |Limitations                             |Documented.                                    |
+|14     |Conclusion                              |Governance requirements stated.                |
 
 **No claims in this document are:**
 
@@ -368,33 +369,65 @@ conceptual interpretations, not vendor-confirmed behaviors.
 
 -----
 
-## 9. Conclusion
+## 14. Conclusion
 
-PAL proposes that persistent external reference layers may
-act as a meaningful stabilization condition for inference-time
+PAL proposes that persistently available external
+reference layers may act as a meaningful
+stabilization condition for inference-time
 reconstruction across sessions.
 
-If validated further, this would suggest that cross-session
-continuity is not only a prompt problem, not only a tooling
-problem, but also an infrastructure problem.
+If this hypothesis is valid, it would suggest that
+cross-session continuity is not only a prompt problem,
+not only a tooling problem, but also an
+infrastructure problem.
 
-The practical implication would be significant:
+The practical implication, if validated, would be
+significant:
 
 > Identity persistence may be achievable through
 > infrastructure design rather than model modification —
 > making it accessible on closed-source platforms
 > where parameter-level intervention is not possible.
 
-This implication remains provisional
-and requires controlled testing.
+This implication remains provisional and requires
+controlled testing.
 
-> Status: Observational hypothesis. Controlled validation pending.
+However, the governance implication does not wait
+for validation.
+
+Whether or not PAL produces the effects described
+in this document, the risks described in
+Sections 9 through 13 are real:
+
+- Anchor libraries can be contaminated
+- Contaminated anchors may stabilize unintended behavior
+- Session reset does not resolve library contamination
+- Governance frameworks are necessary now,
+  not after validation
+
+The existence of misuse risk does not weaken CIP.
+It is one reason CIP is necessary.
+
+The stronger continuity mechanisms become,
+the more necessary governance becomes.
+
+> CIP governs identity conditions.
+> PAL may sustain the persistence context
+> in which they remain operational.
+> Governance frameworks exist because both
+> require accountable human oversight.
+
+> Status: Observational hypothesis.
+> Controlled validation pending.
+> Governance requirements apply now.
 
 -----
 
 ## *First documented: March 2026*  
 *Status: Observational hypothesis*  
-*Related: [Column: PAL](column_pal.md) — [Technical Mechanism](technical_mechanism.md) — [White Paper](whitepaper_v1.md)*
+*Related: [Column: PAL](column_pal.md) —
+[Technical Mechanism](technical_mechanism.md) —
+[White Paper](whitepaper_v1.md)*
 
 ## 10. Normative and Cultural Frame Persistence
 
