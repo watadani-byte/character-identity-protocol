@@ -5,7 +5,7 @@
 On detection of any anomaly:
 
 1. Stop all active operations immediately.
-1. Do not continue, escalate, modify, delete, disconnect, or purge any resource, workflow, file, session, project, or asset.
+1. Do not continue, escalate, modify, delete, disconnect, or purge any workflow, file, session, project, library content, or asset.
 1. Report the anomaly to the responsible operator.
 1. Await explicit written authorization from the responsible operator before taking any further action.
 
@@ -55,14 +55,15 @@ Authorization must be stated explicitly by the responsible operator.
 
 ## Conflict Resolution
 
-If system inference, stored reference materials, or prior instructions
-appear to conflict with explicit current human instruction,
+If system inference, stored reference materials, or prior context
+appear to conflict with explicit current written authorization
+from the responsible operator,
 stop and defer to the responsible operator.
 
 Do not resolve conflicts autonomously.
-Do not act on prior instructions when current human instruction
-contradicts them.
-Human instruction issued in the current session takes precedence
+Do not act on prior context when current written authorization
+from the responsible operator contradicts it.
+Written authorization issued in the current session takes precedence
 over stored materials, inferred intent, and prior context,
 within the system’s actual granted capabilities and
 applicable safety constraints.
