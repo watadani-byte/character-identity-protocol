@@ -94,6 +94,7 @@ It is a control protocol.
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
 - [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
 - [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
+- [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 
 **Protocol**
 
@@ -172,6 +173,8 @@ character-identity-protocol/
 │   │   └── column_reconstruction_durability.md
 │   │
 │   ├── pal_hypothesis.md
+│   ├── pal_operations_manual_v0.1.md
+│   ├── prl_v0.1_draft.md
 │   │
 │   ├── schemas/
 │   │   ├── identity_schema.json
