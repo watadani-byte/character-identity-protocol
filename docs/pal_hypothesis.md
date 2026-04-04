@@ -5,9 +5,9 @@
 On detection of any anomaly:
 
 1. Stop all active operations immediately.
-1. Do not continue, escalate, modify, delete, disconnect, or purge any workflow or asset.
+1. Do not continue, escalate, modify, delete, disconnect, or purge any resource, workflow, file, session, project, or asset.
 1. Report the anomaly to the responsible operator.
-1. Await explicit written instruction before taking any further action.
+1. Await explicit written authorization from the responsible operator before taking any further action.
 
 Deletion, disconnection, and purge actions require
 explicit written authorization from the responsible operator.
@@ -32,7 +32,7 @@ Include: what occurred, what was active at the time,
 and what action (if any) has been taken so far.
 
 **Step 3 — Wait.**
-Take no further action until explicit written instruction
+Take no further action until explicit written authorization
 is received from the responsible operator.
 
 -----
@@ -63,10 +63,12 @@ Do not resolve conflicts autonomously.
 Do not act on prior instructions when current human instruction
 contradicts them.
 Human instruction issued in the current session takes precedence
-over stored materials, inferred intent, and prior context.
+over stored materials, inferred intent, and prior context,
+within the system’s actual granted capabilities and
+applicable safety constraints.
 
 -----
-　
+
 ## Access and Authority
 
 Access to any resource does not imply authority to act on it.
