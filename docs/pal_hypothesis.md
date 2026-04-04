@@ -451,6 +451,16 @@ influence reconstruction behavior.
   and re-validate the anchor library before resuming
   governed operation
 
+Operational anomaly handling — including stop,
+report, and authorization requirements for purge actions —
+is defined separately in the
+[Anomaly Response Protocol](https://github.com/watadani-byte/ai-identity-governance/blob/main/anomaly_response_protocol.md).
+
+Detection of suspected contamination does not authorize
+autonomous purge by the AI system.
+Purge actions require explicit written authorization
+from the responsible operator.
+
 -----
 
 ### 9.4 What PAL Does Not Do
@@ -1021,7 +1031,7 @@ requirement.
 > It is one reason governance frameworks
 > like CIP are necessary.
 
-*See: [Anomaly Response Protocol](https://github.com/watadani-byte/ai-identity-governance/blob/main/anomaly_response_protocol.md)*
+*See: [Anomaly Response Protocol — ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance/blob/main/anomaly_response_protocol.md)*
 
 -----
 
