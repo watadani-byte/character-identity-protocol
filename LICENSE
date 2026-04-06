@@ -13,3 +13,24 @@ Under the following terms:
   but not in any way that suggests the licensor endorses you or your use.
 
 Full license text: https://creativecommons.org/licenses/by/4.0/
+
+---
+
+## Scope Limitation
+
+Schema and specification files located in
+docs/schemas/ are not covered by this license.
+
+All rights reserved — 2026 Hitoshi Watadani.
+
+Viewing, citation, and conceptual reference
+of schema files are permitted.
+The following are not permitted without
+written permission:
+
+- Implementation based on these specifications
+- Redistribution of modified versions
+- Commercial deployment based on these specifications
+- Derivative works for commercial use
+
+See docs/schemas/README.md for details.
