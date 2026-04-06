@@ -111,7 +111,8 @@ It makes identity a controlled variable.
 This is not a prompt technique.
 It is a control protocol.
 
-> CIP governs identity. PAL sustains it.
+> CIP governs identity. PAL sustains it
+> across sessions where persistence conditions are available.
 
 > CIP should be read not as a denial of misuse risk,
 > but as a governance response to it.
@@ -131,15 +132,18 @@ It is a control protocol.
 - [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
-- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
-- [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 
 **Protocol**
 
 - [Architecture Diagram](docs/architecture_diagram.md)
 - [Quality Gate & Hard Abort](docs/quality_gate_addendum.md)
 - [Protocol Template](docs/protocol_template.md)
+
+**Related Frameworks**
+
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
+- [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 - [PAL Operations Manual](docs/pal_operations_manual_v0.1.md) — *File management, versioning, and continuity operations*
 
 **Cases**
