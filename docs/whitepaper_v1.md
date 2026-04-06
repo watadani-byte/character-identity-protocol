@@ -23,6 +23,112 @@ These results suggest that identity stability in generative systems is fundament
 
 -----
 
+## The Problem of Apparent Coherence
+
+### 1. An Operationally Fragmented Field
+
+Character consistency in generative AI is not
+a fully unified technical problem.
+
+Many useful elements exist in partial form.
+Reference images, prompt templates, anchor reuse,
+versioned assets, quality checks, retry workflows,
+and platform-specific persistence features
+are all in active use across various workflows.
+
+The problem is not the absence of these elements.
+The problem is their relationship to each other.
+These components exist as isolated practices
+rather than as parts of an explicit,
+closed, and governable control system.
+Governance boundaries are unclear.
+Responsibility for identity drift is unassigned.
+Recovery from failure lacks a defined structure.
+The field is operationally fragmented,
+even when its outputs appear consistent.
+
+### 2. Summary Assimilation
+
+A secondary problem significantly complicates
+the development of this field.
+
+When AI systems are asked to summarize, abstract,
+or reformulate observations about character consistency,
+they tend to absorb those observations into
+pre-existing explanatory frames.
+Partially developed operational practices
+are described as established method components.
+Unresolved control problems are presented
+as already-solved workflow questions.
+Apparent coherence is produced
+where genuine fragmentation exists.
+
+This repository introduces the term
+**Summary Assimilation** to name this tendency:
+
+> Summary Assimilation is the tendency of AI systems
+> to absorb immature but significant observations
+> into pre-existing explanatory frames
+> during summarization, abstraction, or reformulation,
+> thereby reducing the visibility
+> of genuinely novel distinctions.
+
+Summary Assimilation is not a failure of accuracy
+in the narrow sense.
+The absorbed descriptions are often locally correct.
+The problem is that absorption
+reduces the visibility of unresolved problems
+and makes the field appear more unified
+and more governable than it actually is.
+As a result, genuinely important but still-unnamed distinctions
+disappear before they can be examined,
+named, or addressed.
+
+### 3. CIP as a Response
+
+The Character Identity Protocol (CIP) is an attempt
+to respond to both of these problems.
+
+The first response is structural:
+CIP attempts to define the missing governance structure
+as an explicit control framework —
+one with defined anchors, identity gates,
+hard abort conditions, re-convergence logic,
+and operator-level responsibility boundaries.
+
+The second response is terminological:
+CIP introduces explicit names for distinctions
+that would otherwise be assimilated
+into existing explanatory frames before
+they can be examined as distinct problems.
+This includes terms such as
+identity drift, anchor-sufficient convergence,
+the persistent anchor layer, and hard abort.
+
+The contribution CIP claims is not novelty
+at the level of base technology.
+The underlying components it draws on —
+reference images, prompt conditioning,
+versioned assets — are already in use.
+
+The contribution is closer to:
+identifying an operational domain
+that lacks a unified control framework,
+naming the structural distinctions
+that a governance-oriented account requires,
+and reframing character consistency
+as a control and governance problem
+rather than a generation quality problem.
+
+Whether or not this reframing proves durable,
+the problem it responds to is real:
+apparent coherence can conceal
+unresolved control and governance problems,
+and AI-assisted summarization
+can make that concealment systematic.
+
+-----
+
 ## 1. Executive Summary
 
 The primary engineering challenge in deploying generative AI for production workflows is **Identity Drift** — the systematic divergence of reconstructed identity states (A′) across generation turns, sessions, and platforms.
