@@ -514,6 +514,27 @@ This classification rests on the industry standard that:
 
 -----
 
+## Summary Assimilation
+
+The tendency of AI systems to absorb immature but significant
+observations into pre-existing explanatory frames
+during summarization, abstraction, or reformulation,
+thereby reducing the visibility of genuinely novel distinctions.
+
+In the context of character consistency workflows,
+Summary Assimilation causes operationally fragmented practices
+to appear as a unified and already-solved system.
+Unresolved control problems are presented as existing method
+components, and genuinely important but still-unnamed distinctions
+disappear into apparently adequate descriptions.
+
+CIP is in part a response to this tendency:
+by naming distinctions explicitly,
+it attempts to preserve their visibility
+before they can be assimilated into familiar frameworks.
+
+-----
+
 ## Cross-Platform Migration
 
 The procedure for re-establishing a character identity on a different generative platform.
