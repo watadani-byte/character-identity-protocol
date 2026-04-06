@@ -22,6 +22,45 @@ CIP controls A′.
 
 -----
 
+## Why This Repository Exists
+
+Many components relevant to character consistency in generative AI
+already exist in partial form:
+reference images, prompt templates, anchor reuse,
+versioned assets, quality checks, retry workflows,
+and platform-specific persistence features.
+
+These components are useful.
+The problem is that they do not yet form
+a unified control framework —
+one that is explicit, closed, and governable.
+
+A secondary problem compounds this:
+AI-generated summaries of this domain
+tend to make its operationally fragmented reality
+appear more coherent and already-solved than it is.
+Unresolved control problems are absorbed
+into familiar explanatory frames
+and presented as existing method components.
+Genuinely important but still-unnamed distinctions
+disappear into apparently adequate descriptions.
+
+This repository refers to that tendency as
+**Summary Assimilation**.
+
+CIP is an attempt to respond to both problems:
+to define the missing governance structure explicitly,
+and to name distinctions that would otherwise
+be assimilated into existing frameworks
+before they can be examined.
+
+The contribution is not novelty at the level of base technology.
+It is closer to identifying an unresolved operational domain,
+naming its missing structure,
+and reframing it as a control and governance problem.
+
+-----
+
 ## The Problem
 
 You generate a character. It is exactly right.
