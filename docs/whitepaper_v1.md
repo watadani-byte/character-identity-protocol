@@ -23,6 +23,22 @@ These results suggest that identity stability in generative systems is fundament
 
 -----
 
+## 1. Executive Summary
+
+The primary engineering challenge in deploying generative AI for production workflows is **Identity Drift** — the systematic divergence of reconstructed identity states (A′) across generation turns, sessions, and platforms.
+
+Conventional prompt-based approaches lack defined control targets, validation logic, and recovery conditions, resulting in non-reproducible outputs and undetected **Identity Loss** during model updates or session terminations.
+
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
+
+CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
+
+In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
+
+CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). These three components constitute the core technical architecture of the protocol.
+
+-----
+
 ## Operational Fragmentation, Apparent Coherence, and the Need for CIP
 
 ### 1. An Operationally Fragmented Field
@@ -126,22 +142,6 @@ apparent coherence can conceal
 unresolved control and governance problems,
 and AI-assisted summarization
 can make that concealment systematic.
-
------
-
-## 1. Executive Summary
-
-The primary engineering challenge in deploying generative AI for production workflows is **Identity Drift** — the systematic divergence of reconstructed identity states (A′) across generation turns, sessions, and platforms.
-
-Conventional prompt-based approaches lack defined control targets, validation logic, and recovery conditions, resulting in non-reproducible outputs and undetected **Identity Loss** during model updates or session terminations.
-
-The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
-
-CIP reframes character identity from a static output property to a recoverable convergence state within the model’s reconstruction space — one that must be repeatedly recovered under operational constraints.
-
-In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
-
-CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). These three components constitute the core technical architecture of the protocol.
 
 -----
 
