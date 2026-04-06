@@ -89,16 +89,17 @@ this document rather than act on that potential.
 The following table summarizes the validation
 status of claims made in this document.
 
-|Section |Content                                      |Status                                         |
-|--------|---------------------------------------------|-----------------------------------------------|
-|1–5, 7–8|Core PAL hypothesis and scope                |Observational. Controlled validation pending.  |
-|6       |ASC conditions                               |Observational finding. Not validated.          |
-|9       |Library governance requirements              |Precautionary model. Not empirically derived.  |
-|10      |Normative and cultural frame persistence     |Observational. Mechanism not established.      |
-|11      |PAL as possible inference-time bias condition|Theoretical extension. Not validated.          |
-|12      |Security and high-impact risks               |Precautionary framing. Not empirically derived.|
-|13      |Limitations                                  |Documented.                                    |
-|14      |Conclusion                                   |Governance requirements stated.                |
+|Section |Content                                      |Status                                                                                              |
+|--------|---------------------------------------------|----------------------------------------------------------------------------------------------------|
+|1–5, 7–8|Core PAL hypothesis and scope                |Observational. Controlled validation pending.                                                       |
+|6       |ASC conditions                               |Observational finding. Not validated.                                                               |
+|9       |Library governance requirements              |Precautionary model. Not empirically derived.                                                       |
+|10      |Normative and cultural frame persistence     |Observational. Mechanism not established.                                                           |
+|11      |PAL as possible inference-time bias condition|Theoretical extension. Not validated.                                                               |
+|12      |Security and high-impact risks               |Precautionary framing. Not empirically derived.                                                     |
+|13      |Limitations                                  |Documented.                                                                                         |
+|14      |Conclusion                                   |Governance requirements stated.                                                                     |
+|15      |Staged scope expansion                       |Conceptual extension. Base observation is operational. Extensions are hypothetical or precautionary.|
 
 **No claims in this document are:**
 
