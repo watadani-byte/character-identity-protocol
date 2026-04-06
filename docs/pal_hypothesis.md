@@ -1218,3 +1218,200 @@ the more necessary governance becomes.
 > Governance requirements apply now.
 
 -----
+
+## 15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization
+
+### 15.1 Starting Point
+
+At the narrowest level, PAL describes a single operational
+observation: when a validated anchor asset and a stable UID
+remain persistently available across sessions, drift in visual
+identity reconstruction appears to be reduced.
+
+This observation is not a claim about internal model
+architecture. It does not assert that the model stores identity.
+It asserts only that the availability of anchor materials at
+inference time — through file systems, project contexts, or
+platform-level persistence features — appears to be associated
+with more stable reconstruction outcomes across session
+boundaries.
+
+This is the base claim. It is observational, not validated
+through controlled experiment. Everything that follows is an
+extension of this claim, and the evidentiary status changes
+at each step.
+
+-----
+
+### 15.2 What Is Actually Being Stabilized?
+
+The immediate interpretation of the observation might be:
+the anchor keeps the face looking the same.
+
+This matters because it is not quite accurate, or at least
+not complete. What the anchor does — if the observation holds —
+is constrain the reconstruction condition that produces the
+visual output. The anchor is not inserted directly into the
+output. It conditions the inference-time process that generates
+the output.
+
+This distinction is conceptually significant. If PAL were only
+stabilizing a surface appearance, its scope would be narrow and
+its governance implications modest. But if PAL is stabilizing
+the reconstruction condition itself — the inferential context
+from which outputs are generated — then the scope of what it
+may be stabilizing is broader than any single visual feature.
+
+The next question, then, is whether reconstruction conditions
+include anything beyond visual surface form.
+
+-----
+
+### 15.3 What Does a Reconstruction Condition Contain?
+
+A reconstruction condition in a generative system includes
+not only visual specifications but also contextual signals
+that shape how inputs are interpreted and how outputs are
+generated. These signals may include role definitions,
+behavioral registers, cultural framing, and normative
+expectations that are encoded — implicitly or explicitly —
+in the anchor materials.
+
+This is not a theoretical invention. It follows directly from
+how generative systems work. When an anchor document includes
+a character description that specifies not only visual
+attributes but also personality, role, or interactional
+register, those specifications become part of the
+reconstruction context. They influence the statistical
+weighting of possible outputs.
+
+If PAL stabilizes reconstruction conditions, and if those
+conditions include non-visual elements, then PAL may
+stabilize those non-visual elements as well.
+
+This does not yet establish that PAL stabilizes role or tone
+in practice. It establishes that there is no principled
+boundary within the reconstruction condition that would
+prevent this. The visual and non-visual are not cleanly
+separable within the inference-time context.
+
+-----
+
+### 15.4 Observational Extension to Non-Visual Domains
+
+At this point, the argument moves from logical implication
+to observational extension.
+
+In operational use, persistent anchor materials that include
+role definitions and behavioral registers appear to contribute
+to more consistent interactional behavior across sessions.
+This has been observed in support AI contexts — where tone,
+stance, and relational register appear more stable when
+structured behavioral anchors are persistently available —
+and in image generation workflows where cultural frame drift
+appears to be suppressed by anchors that encode culturally
+bounded reconstruction conditions.
+
+These observations are preliminary. They are not controlled
+experiments. They do not establish causal mechanisms. They
+suggest that the stabilization effect of PAL may extend to
+role, tone, and cultural framing — but this should be treated
+as a working hypothesis rather than a confirmed finding.
+
+If that interpretation is correct, then PAL’s scope is wider
+than visual identity persistence. It is a persistence condition
+for reconstruction contexts, and those contexts may include
+normative, behavioral, and cultural dimensions.
+
+-----
+
+### 15.5 Scope Extension and Its Conditions
+
+Given the above, PAL may be relevant to a broader class of
+applications than image generation alone. These include:
+
+**Support AI**: where interactional consistency across
+sessions — tone, role, relational register — is operationally
+required.
+
+**Control AI**: where behavioral rules and decision priorities
+must remain consistent across sessions without being
+reinterpreted by contextual drift.
+
+**Culturally bounded reconstruction**: where outputs must
+remain within a defined cultural or aesthetic frame, not
+because visual similarity is required, but because the
+cultural register is constitutive of the identity being
+maintained.
+
+In each case, the extension of PAL’s applicability follows
+the same logic: if the reconstruction condition includes the
+relevant dimension, and if PAL stabilizes reconstruction
+conditions, then PAL may contribute to stability in that
+dimension.
+
+This does not establish equivalence between these
+applications. Each has its own operational characteristics,
+failure modes, and governance requirements. The point is
+that the category of things PAL may stabilize is wider than
+initially apparent — and this widening is a consequence of
+the original concept, not an addition to it.
+
+-----
+
+### 15.6 Governance Implications
+
+The governance implication is not that PAL is proven to
+stabilize role or normative frame. It is that if PAL does
+stabilize these dimensions, then the governance requirements
+intensify accordingly.
+
+A persistence condition for visual identity carries governance
+obligations: the anchor library must be governed, contamination
+must be detected, rollback must be possible. These requirements
+are already non-trivial.
+
+A persistence condition for role, normative frame, or
+behavioral register carries the same requirements — but the
+consequences of contamination are more diffuse and harder to
+detect. A contaminated visual anchor produces visually
+inconsistent outputs. A contaminated behavioral or normative
+anchor may produce behaviorally consistent but normatively
+problematic outputs — outputs that appear stable while
+stabilizing the wrong thing.
+
+What follows from this is not a new set of principles.
+The same principles apply: the operator is responsible for
+what is anchored; PAL does not validate content; contaminated
+anchors must be purged; session reset does not clear
+persistent layer contamination. These principles were stated
+in the context of visual identity governance. They apply
+with equal or greater force in non-visual domains.
+
+The broader claim, stated carefully, is this: to the extent
+that PAL stabilizes reconstruction conditions beyond visual
+surface, the governance of what is anchored becomes a broader
+and more consequential responsibility than a purely visual
+framing would suggest.
+
+-----
+
+### 15.7 Evidentiary Status Summary
+
+|Claim                                                            |Status                                                                |
+|-----------------------------------------------------------------|----------------------------------------------------------------------|
+|PAL reduces drift in visual reconstruction across sessions       |Observational — not controlled                                        |
+|PAL stabilizes reconstruction conditions, not just visual surface|Logical implication of how generative systems work                    |
+|PAL may stabilize role, tone, and cultural framing               |Working hypothesis — observationally suggested, not validated         |
+|Governance requirements intensify as scope widens                |Precautionary governance framing — follows from the hypothesis if true|
+|PAL introduces a C-like external bias condition                  |Theoretical extension — consistent with observations, not confirmed   |
+
+
+> Status: Staged conceptual extension.
+> Base observation is operational.
+> Extensions are hypothetical or precautionary.
+> Controlled validation pending across all extended claims.
+
+*See: [Section 9 — Library Governance](pal_hypothesis.md#9-library-governance-and-contamination-risk)*  
+*See: [Section 11 — PAL as Inference-Time Bias Condition](pal_hypothesis.md#11-pal-as-a-possible-inference-time-bias-condition)*  
+*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
