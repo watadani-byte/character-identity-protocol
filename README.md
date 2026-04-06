@@ -39,11 +39,11 @@ A secondary problem compounds this:
 AI-generated summaries of this domain
 tend to make its operationally fragmented reality
 appear more coherent and already-solved than it is.
-Unresolved control problems are absorbed
-into familiar explanatory frames
-and presented as existing method components.
-Genuinely important but still-unnamed distinctions
-disappear into apparently adequate descriptions.
+Unresolved control problems are absorbed into familiar
+explanatory frames and begin to appear as if they were
+already established method components.
+Still-unnamed but important distinctions
+can disappear in the process.
 
 This repository refers to that tendency as
 **Summary Assimilation**.
