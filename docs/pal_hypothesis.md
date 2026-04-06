@@ -1278,8 +1278,9 @@ behavioral registers, cultural framing, and normative
 expectations that are encoded — implicitly or explicitly —
 in the anchor materials.
 
-This is not an arbitrary theoretical addition. It follows directly from
-how generative systems work. When an anchor document includes
+This is not an arbitrary theoretical addition. It follows from a standard interpretation of how
+generative systems construct outputs from
+conditioned inputs. When an anchor document includes
 a character description that specifies not only visual
 attributes but also personality, role, or interactional
 register, those specifications become part of the
@@ -1404,7 +1405,7 @@ framing would suggest.
 |Claim                                                            |Status                                                                |
 |-----------------------------------------------------------------|----------------------------------------------------------------------|
 |PAL reduces drift in visual reconstruction across sessions       |Observational — not controlled                                        |
-|PAL stabilizes reconstruction conditions, not just visual surface|Logical implication of how generative systems work                    |
+|PAL stabilizes reconstruction conditions, not just visual surface|Conceptual implication of conditioned reconstruction framing          |
 |PAL may stabilize role, tone, and cultural framing               |Working hypothesis — observationally suggested, not validated         |
 |Governance requirements intensify as scope widens                |Precautionary governance framing — follows from the hypothesis if true|
 |PAL introduces a C-like external bias condition                  |Theoretical extension — consistent with observations, not confirmed   |
