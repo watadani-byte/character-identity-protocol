@@ -1278,7 +1278,7 @@ behavioral registers, cultural framing, and normative
 expectations that are encoded — implicitly or explicitly —
 in the anchor materials.
 
-This is not a theoretical invention. It follows directly from
+This is not an arbitrary theoretical addition. It follows directly from
 how generative systems work. When an anchor document includes
 a character description that specifies not only visual
 attributes but also personality, role, or interactional
@@ -1306,10 +1306,11 @@ to observational extension.
 In operational use, persistent anchor materials that include
 role definitions and behavioral registers appear to contribute
 to more consistent interactional behavior across sessions.
-This has been observed in support AI contexts — where tone,
-stance, and relational register appear more stable when
-structured behavioral anchors are persistently available —
-and in image generation workflows where cultural frame drift
+This has been observed in limited operational contexts —
+including support AI workflows where tone, stance, and
+relational register appear more stable when structured
+behavioral anchors are persistently available, and in
+image generation workflows where cultural frame drift
 appears to be suppressed by anchors that encode culturally
 bounded reconstruction conditions.
 
@@ -1354,9 +1355,10 @@ dimension.
 This does not establish equivalence between these
 applications. Each has its own operational characteristics,
 failure modes, and governance requirements. The point is
-that the category of things PAL may stabilize is wider than
-initially apparent — and this widening is a consequence of
-the original concept, not an addition to it.
+that the class of reconstruction properties
+PAL may affect is wider than initially apparent — and this
+widening is a consequence of the original concept,
+not an addition to it.
 
 -----
 
