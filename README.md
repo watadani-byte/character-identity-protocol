@@ -167,14 +167,22 @@ It is a control protocol.
 
 ## Attribution and Priority Note
 
-The term **Persistent Anchor Layer (PAL)** and its formulation as an
-infrastructure hypothesis for cross-session stabilization were first
-named and documented by Hitoshi Watadani in March 2026 in this
-repository.
+The term **Persistent Anchor Layer (PAL)** and its formulation
+as an infrastructure hypothesis for cross-session stabilization
+were first named and documented by Hitoshi Watadani
+in March 2026 in this repository.
 
-To the author’s knowledge, this repository contains the first explicit
-articulation of PAL as a distinct governance-oriented concept.
-If you use this concept in your work, citation is appreciated.
+To the author’s knowledge, this repository contains
+the earliest explicit documentation of:
+
+- **PAL** as a distinct governance-oriented concept,
+- **CIP** as an inference-time identity control framework, and
+- **Summary Assimilation** as a term for the loss of
+  still-unnamed distinctions through AI summarization.
+
+If you build on these concepts or use this terminology
+in your own work,
+appropriate attribution is requested and appreciated.
 
 -----
 
