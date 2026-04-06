@@ -23,7 +23,7 @@ These results suggest that identity stability in generative systems is fundament
 
 -----
 
-## The Problem of Apparent Coherence
+## Operational Fragmentation, Apparent Coherence, and the Need for CIP
 
 ### 1. An Operationally Fragmented Field
 
