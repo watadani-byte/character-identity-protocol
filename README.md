@@ -278,4 +278,20 @@ If you have implemented or observed PAL-like behavior on a platform not yet docu
 
 ## License
 
-Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+**Documentation, concepts, cases, and governance files**
+(`docs/`, `README.md`, `LICENSE`):
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+You may read, share, and adapt with attribution.
+
+**Schema and specification files** (`docs/schemas/`):
+All rights reserved — 2026.
+
+Viewing, citation, and conceptual reference are permitted.
+The following are not permitted without written permission:
+
+- Implementation based on these specifications
+- Redistribution of modified versions
+- Commercial deployment based on these specifications
+- Derivative works for commercial use
+
+*See LICENSE for full terms.*
