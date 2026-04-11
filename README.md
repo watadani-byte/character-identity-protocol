@@ -148,11 +148,13 @@ It is a control protocol.
 
 **Cases**
 
-- [Case 01A: Baseline Failure](docs/cases/case_01_failure_log.md)
-- [Case 01B: Mira Project](docs/cases/case_01b_mira_project.md)
-- [Case 04: Cross-Platform Migration](docs/cases/case_04_shizuka.md)
-- [Case: PAL Contamination — Unintended Library Accumulation](docs/cases/case_pal_contamination_01.md)
-- [All Cases →](docs/cases/case_01_failure_log.md)
+- [Case 01A: Baseline Failure](docs/case_01_failure_log.md)
+- [Case 01B: Mira Project](docs/case_01b_mira_project.md)
+- [Case 04: Cross-Platform Migration](docs/case_04_shizuka.md)
+- [Case: PAL Contamination — Unintended Library Accumulation](docs/case_pal_contamination_01.md)
+- [Case 05: Serendipitous Creation](docs/case_05_serendipitous.md)
+- [Case 06: Cross-Platform Validation (Gemini)](docs/case_06_gemini.md)
+- [All Cases →](docs/case_01_failure_log.md)
 
 **Columns**
 
@@ -210,11 +212,19 @@ character-identity-protocol/
 │   ├── protocol_template.md
 │   ├── whitepaper_appendices.md
 │   │
-│   ├── cases/
-│   │   ├── case_01_failure_log.md
-│   │   ├── case_01b_mira_project.md
-│   │   ├── case_04_shizuka.md
-│   │   └── case_pal_contamination_01.md
+│   ├── case_01_failure_log.md
+│   ├── case_01b_mira_project.md
+│   ├── case_02_wedding_series.md
+│   ├── case_03_avedon_project.md
+│   ├── case_04_shizuka.md
+│   ├── case_pal_contamination_01.md
+│   ├── case_05_serendipitous.md
+│   ├── case_06_gemini.md
+│   │
+│   ├── case_06/
+│   │   └── images/
+│   ├── case_07/
+│   │   └── images/
 │   │
 │   ├── columns/
 │   │   ├── column_pal.md
