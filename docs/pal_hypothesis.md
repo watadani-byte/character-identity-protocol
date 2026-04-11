@@ -481,6 +481,13 @@ Content governance is the operator’s responsibility.
 > is precisely what makes anchor library governance
 > a critical operational requirement.
 
+These functions — monitoring, enforcement,
+escalation, and governance decision —
+are within the scope of
+Anchor Preservation Governance (APG).
+
+*See: [Glossary — APG](https://github.com/watadani-byte/pal-lab/blob/main/docs/glossary.md)*
+
 *See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
 
 -----
@@ -1398,8 +1405,15 @@ surface, the governance of what is anchored becomes a broader
 and more consequential responsibility than a purely visual
 framing would suggest.
 
+The governance structure responsible for preserving
+anchor-defined continuity conditions under operational
+pressure is referred to as
+Anchor Preservation Governance (APG).
+
+*See: [Glossary — APG](https://github.com/watadani-byte/pal-lab/blob/main/docs/glossary.md)*
+
 -----
-　
+
 ### 15.7 Evidentiary Status Summary
 
 |Claim                                                            |Status                                                                |
