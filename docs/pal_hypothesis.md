@@ -481,10 +481,13 @@ Content governance is the operator’s responsibility.
 > is precisely what makes anchor library governance
 > a critical operational requirement.
 
+APG is the governance structure responsible for
+preserving anchor integrity under operational
+pressure when PAL is in place.
+
 These functions — monitoring, enforcement,
 escalation, and governance decision —
-are within the scope of
-Anchor Preservation Governance (APG).
+are within the scope of APG.
 
 *See: [Glossary — APG](https://github.com/watadani-byte/pal-lab/blob/main/docs/glossary.md)*
 
@@ -674,6 +677,9 @@ The observation is recorded here for further investigation.
 ## 11. PAL as a Possible Inference-Time Bias Condition
 
 ### 11.1 A Deeper Implication
+
+> This section is a theoretical extension of the
+> PAL hypothesis, not part of the base PAL definition.
 
 PAL has been framed as an infrastructure condition —
 a persistence layer that keeps anchor materials
