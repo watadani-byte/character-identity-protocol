@@ -1235,6 +1235,18 @@ the more necessary governance becomes.
 
 ## 15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization
 
+> This section is a meta-level reading guide
+> for Sections 10 and 11.
+> It does not introduce new claims.
+> It organizes the staged logic of scope expansion
+> so that the evidentiary status of each step
+> remains readable.
+> 
+> Section 10 documents observed scope widening.
+> Section 11 presents a theoretical model of the mechanism.
+> Section 15 explains how those two moves relate
+> and what their combined evidentiary status implies.
+
 ### 15.1 Starting Point
 
 At the narrowest level, PAL describes a single operational
