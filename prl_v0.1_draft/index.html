@@ -1,0 +1,3020 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/prl_v0.1_draft/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PAL Reconnected Layer (PRL) - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pal-reconnected-layer-prl" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PAL Reconnected Layer (PRL)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model (A→C→B′)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency — An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_complete_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Complete Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_integrated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Integrated
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Character_Identity_Protocol_Quality_Gate_Addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate Addendum (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence — Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis (Technical)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-document-proposes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What This Document Proposes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-four-layer-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Four-Layer Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Priority Order
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Priority Order">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-layer-1-model-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primary: Layer 1 — Model Core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secondary-layer-2-governance-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secondary: Layer 2 — Governance Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tertiary-layer-3-identity-and-tone-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tertiary: Layer 3 — Identity-and-Tone Layer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quaternary-layer-4-working-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quaternary: Layer 4 — Working Library
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer Definitions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Layer Definitions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-model-core-primary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 1 — Model Core (Primary)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-governance-layer-secondary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 2 — Governance Layer (Secondary)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-identity-and-tone-layer-tertiary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 3 — Identity-and-Tone Layer (Tertiary)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-4-working-library-quaternary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer 4 — Working Library (Quaternary)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-authority-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Write Authority Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#governance-requirements-for-layer-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governance Requirements for Layer 3
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Governance Requirements for Layer 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-1-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement 1: Auditability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-2-governance-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement 2: Governance compliance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-3-precise-and-unambiguous-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement 3: Precise and unambiguous expression
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-4-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement 4: Version control
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Scope
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enterprise-deployment-full-four-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enterprise deployment — full four-layer model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#individual-deployment-layers-1-through-3-sufficient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Individual deployment — layers 1 through 3 sufficient
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-as-an-inference-time-control-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL as an Inference-Time Control Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Risk Profile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relation-to-existing-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relation to Existing Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-note-to-ai-platform-vendors-and-model-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Note to AI Platform Vendors and Model Developers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pal-reconnected-layer-prl">PAL Reconnected Layer (PRL)</h1>
+<p><em>A layered operational control architecture for generative AI workflows</em></p>
+<p><strong>Status:</strong> Draft — For review and discussion<br />
+<strong>Version:</strong> v0.1-draft<br />
+<strong>Date:</strong> 2026-04-04<br />
+<strong>Related:</strong> <a href="../pal_hypothesis/">PAL Hypothesis Document</a> — <a href="../pal_operations_manual_v0.1/">PAL Operations Manual</a> — <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></p>
+<blockquote>
+<p><strong>Draft notice:</strong>
+This document presents a working architectural proposal.
+Claims are based on operational observation and conceptual analysis.
+Controlled validation has not been completed.
+The architecture described here should be treated as a governance-oriented
+design proposal, not a finalized specification.</p>
+</blockquote>
+<hr />
+<h2 id="what-this-document-proposes">What This Document Proposes</h2>
+<p>Generative AI is not controlled by prompts alone.</p>
+<p>Prompts are ephemeral. Sessions reset. Models drift.
+Without a persistent, structured control architecture,
+behavioral consistency cannot be maintained across sessions,
+operators, or platforms.</p>
+<p>This document proposes <strong>PAL Reconnected Layer (PRL)</strong> —
+a four-layer operational architecture in which PAL
+(Persistent Anchor Layer) is formally positioned as a
+user-managed identity and tone persistence layer,
+explicitly separated from governance rules above it
+and mutable working assets below it.</p>
+<p>PRL is not a model architecture.
+It is an operational control architecture that operators
+build and maintain around a generative AI system.</p>
+<blockquote>
+<p>The model does not enforce this architecture.
+The operator does.</p>
+</blockquote>
+<hr />
+<h2 id="the-four-layer-structure">The Four-Layer Structure</h2>
+<pre><code>┌──────────────────────────────────────────────────────┐
+│  PRIMARY LAYER                                       │
+│  Layer 1: Model Core                                 │
+│  Cannot be overridden by any operator layer          │
+├──────────────────────────────────────────────────────┤
+│  SECONDARY LAYER                                     │
+│  Layer 2: Governance Layer                           │
+│  Overrides all layers below it without exception     │
+├──────────────────────────────────────────────────────┤
+│  TERTIARY LAYER                                      │
+│  Layer 3: Identity-and-Tone Layer  ← PAL lives here  │
+│  Operates strictly within Layer 2 boundaries         │
+├──────────────────────────────────────────────────────┤
+│  QUATERNARY LAYER                                    │
+│  Layer 4: Working Library                            │
+│  Mutable. Lowest authority. Highest contamination risk│
+└──────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2 id="priority-order">Priority Order</h2>
+<p><strong>This is not advisory. This is the required operational order.</strong></p>
+<h3 id="primary-layer-1-model-core">Primary: Layer 1 — Model Core</h3>
+<p>The model’s safety constraints, core alignment, and built-in
+behavioral boundaries take absolute precedence.</p>
+<p>No operator-defined layer can override Layer 1.
+No PAL anchor, governance rule, or library asset supersedes
+the model’s primary constraints.</p>
+<p>If a conflict exists between any operator-defined layer
+and Layer 1, Layer 1 prevails unconditionally.</p>
+<h3 id="secondary-layer-2-governance-layer">Secondary: Layer 2 — Governance Layer</h3>
+<p>Operator-defined governance rules, prohibitions, compliance
+requirements, and operational policies take precedence over
+all layers below.</p>
+<p>A governance rule cannot be suspended, weakened, or overridden
+by an identity anchor, a tone definition, or any working asset.</p>
+<p>If a conflict exists between Layer 2 and Layer 3,
+<strong>Layer 2 prevails. Always. Without exception.</strong></p>
+<p>The identity anchor must be revised.
+The governance rule must not be weakened to accommodate the anchor.</p>
+<h3 id="tertiary-layer-3-identity-and-tone-layer">Tertiary: Layer 3 — Identity-and-Tone Layer</h3>
+<p>PAL operates here. Character identity, tone, cultural frame,
+and behavioral anchor definitions apply strictly within the
+boundaries established by Layer 2.</p>
+<p>PAL does not grant permission to violate governance constraints.
+A strong identity anchor does not suspend governance obligations.
+It increases them.</p>
+<h3 id="quaternary-layer-4-working-library">Quaternary: Layer 4 — Working Library</h3>
+<p>Mutable working assets, session notes, exploratory materials,
+and auxiliary references operate within all constraints
+established by Layers 1, 2, and 3.</p>
+<p>Layer 4 has no authority to override any higher layer.
+Layer 4 is the highest-risk contamination source.</p>
+<hr />
+<h2 id="layer-definitions">Layer Definitions</h2>
+<h3 id="layer-1-model-core-primary">Layer 1 — Model Core (Primary)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write authority</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Absolute — cannot be overridden</td>
+</tr>
+<tr>
+<td>Control target</td>
+<td>Model weights, training priors, C_model</td>
+</tr>
+<tr>
+<td>Modification method</td>
+<td>Retraining or fine-tuning only</td>
+</tr>
+</tbody>
+</table>
+<p>This is the model itself.
+It cannot be written to by the operator.
+It represents the statistical defaults and safety constraints
+against which all other layers operate.</p>
+<p>In CIP terms, this is C_model — the internal constraint layer
+that is the primary source of identity drift and the ultimate
+limit on what any operator layer can achieve.</p>
+<hr />
+<h3 id="layer-2-governance-layer-secondary">Layer 2 — Governance Layer (Secondary)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write authority</td>
+<td>Operator only</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Secondary — overrides Layers 3 and 4</td>
+</tr>
+<tr>
+<td>Control target</td>
+<td>Rules, prohibitions, policies, compliance requirements</td>
+</tr>
+<tr>
+<td>Modification method</td>
+<td>Explicit, documented policy updates only</td>
+</tr>
+<tr>
+<td>Contamination risk</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p>This layer contains what the AI system must and must not do,
+regardless of what identity or tone is active.</p>
+<p>Examples:</p>
+<ul>
+<li>Prohibited output types</li>
+<li>Escalation and refusal rules</li>
+<li>Compliance and legal constraints</li>
+<li>Quality and safety thresholds</li>
+<li>Operational boundaries</li>
+</ul>
+<p>Layer 2 is writable only by the operator.
+AI-generated content must never modify Layer 2 materials.</p>
+<p><strong>Why Layer 2 must be explicitly separated from Layer 3:</strong></p>
+<p>PAL (Layer 3) carries persistent and potentially strong influence
+over reconstruction behavior. Without explicit separation,
+PAL anchor materials that encode content conflicting with
+governance rules may render those rules operationally inert.</p>
+<p>This is a documented failure mode, not a theoretical risk.
+See: <a href="cases/case_pal_contamination_01.md">Case — PAL Contamination</a></p>
+<p>The establishment of Layer 2 as an independent layer exists
+precisely because PAL is powerful enough to require it.</p>
+<hr />
+<h3 id="layer-3-identity-and-tone-layer-tertiary">Layer 3 — Identity-and-Tone Layer (Tertiary)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write authority</td>
+<td>Operator only</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Tertiary — operates within Layer 2 boundaries</td>
+</tr>
+<tr>
+<td>Control target</td>
+<td>C_PAL: identity, tone, cultural frame, behavioral register</td>
+</tr>
+<tr>
+<td>Modification method</td>
+<td>Version-controlled PAL updates only</td>
+</tr>
+<tr>
+<td>Contamination risk</td>
+<td>High — cross-session, persistent</td>
+</tr>
+</tbody>
+</table>
+<p>This is where PAL lives.</p>
+<p>Layer 3 defines the persistent reference conditions that shape
+reconstruction behavior at inference time. It includes:</p>
+<ul>
+<li>Character identity definitions (YAML-first, structured)</li>
+<li>Validated anchor assets</li>
+<li>Behavioral profile</li>
+<li>Cultural frame specifications</li>
+<li>Tone and interactional register definitions</li>
+<li>Acceptance criteria</li>
+</ul>
+<p><strong>Why PAL cannot be treated as an ordinary library asset:</strong></p>
+<p>PAL’s influence on reconstruction behavior is too strong and
+too persistent to be managed as a mutable working asset.</p>
+<p>A contaminated Layer 3 may stabilize unintended behavioral frames
+across sessions with the same effectiveness as an intended one.
+Session reset does not clear Layer 3.
+Contamination in Layer 3 persists until explicitly purged.</p>
+<p>For this reason, Layer 3 materials must be:</p>
+<ul>
+<li>Explicitly versioned and auditable</li>
+<li>Operator-controlled only</li>
+<li>Isolated from Layer 4 promotion without review</li>
+<li>Rollback-capable at all times</li>
+</ul>
+<p><strong>On naming:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Context</th>
+<th>Recommended term</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General / GitHub</td>
+<td>Personality Layer</td>
+</tr>
+<tr>
+<td>Research writing</td>
+<td>Identity-and-Tone Layer</td>
+</tr>
+<tr>
+<td>Governance documents</td>
+<td>Normative Persistence Layer</td>
+</tr>
+</tbody>
+</table>
+<p>The term <em>personality layer</em> is intuitive for general communication.
+In research and governance contexts, <em>Identity-and-Tone Layer</em> is
+more precise: PAL does not encode internal personality.
+It stabilizes externally defined reconstruction conditions.</p>
+<hr />
+<h3 id="layer-4-working-library-quaternary">Layer 4 — Working Library (Quaternary)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write authority</td>
+<td>Operator + AI (restricted)</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>Lowest — no authority over higher layers</td>
+</tr>
+<tr>
+<td>Control target</td>
+<td>Working notes, drafts, auxiliary references, mutable assets</td>
+</tr>
+<tr>
+<td>Modification method</td>
+<td>Session-level updates permitted</td>
+</tr>
+<tr>
+<td>Contamination risk</td>
+<td>Highest</td>
+</tr>
+</tbody>
+</table>
+<p>This layer contains materials that change frequently and may be
+written by both operator and AI.</p>
+<p>Examples:</p>
+<ul>
+<li>Session notes and logs</li>
+<li>Exploratory prompts and outputs</li>
+<li>Draft anchor candidates</li>
+<li>Comparative reference outputs</li>
+<li>Anti-drift documentation</li>
+<li>Research materials</li>
+</ul>
+<p><strong>Critical rule:</strong></p>
+<p>Layer 4 materials must not migrate into Layer 3 without
+explicit operator review and version-controlled promotion.</p>
+<p>Automatic or unreviewed promotion from Layer 4 to Layer 3
+is the primary contamination pathway in PRL deployments.</p>
+<blockquote>
+<p>Anti-drift references belong in Layer 4, not Layer 3.
+Research materials belong in Layer 4, not Layer 3.
+The boundary between Layer 3 and Layer 4 is an operational firewall.</p>
+</blockquote>
+<hr />
+<h2 id="write-authority-summary">Write Authority Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Priority</th>
+<th>Operator</th>
+<th>AI System</th>
+<th>Promotion path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer 1</td>
+<td>Primary</td>
+<td>No</td>
+<td>No</td>
+<td>Retraining only</td>
+</tr>
+<tr>
+<td>Layer 2</td>
+<td>Secondary</td>
+<td>Yes</td>
+<td>No</td>
+<td>Explicit policy update</td>
+</tr>
+<tr>
+<td>Layer 3</td>
+<td>Tertiary</td>
+<td>Yes</td>
+<td>No</td>
+<td>Versioned PAL update</td>
+</tr>
+<tr>
+<td>Layer 4</td>
+<td>Quaternary</td>
+<td>Yes</td>
+<td>Restricted</td>
+<td>→ Layer 3 requires operator approval</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="governance-requirements-for-layer-3">Governance Requirements for Layer 3</h2>
+<p>The following are operational requirements for all PAL materials
+registered in Layer 3. These apply regardless of deployment scale.</p>
+<h3 id="requirement-1-auditability">Requirement 1: Auditability</h3>
+<p>All Layer 3 materials must be structured and documented such that
+any operator or auditor can verify at any time:</p>
+<ul>
+<li>what is currently registered in the persistent layer</li>
+<li>when it was registered</li>
+<li>why it was registered</li>
+<li>what behavioral influence it may carry</li>
+</ul>
+<p>Unaudited Layer 3 content is an operational liability.</p>
+<h3 id="requirement-2-governance-compliance">Requirement 2: Governance compliance</h3>
+<p>All Layer 3 materials must be reviewed against Layer 2 governance
+rules before registration.</p>
+<p>Content that encodes harmful behavioral norms, misrepresents
+system authority, or conflicts with applicable policies must not
+enter Layer 3.</p>
+<h3 id="requirement-3-precise-and-unambiguous-expression">Requirement 3: Precise and unambiguous expression</h3>
+<p>Layer 3 materials must be:</p>
+<ul>
+<li>Accurately authored (YAML-first, with precise language)</li>
+<li>Free from ambiguity that could be misinterpreted at inference time</li>
+<li>Structured to reflect the operator’s actual intent</li>
+</ul>
+<p>Vague or poorly structured anchor definitions are a contamination
+risk even when their content is benign.
+Imprecise language in Layer 3 may stabilize unintended behavioral
+frames with the same persistence as precise language.</p>
+<blockquote>
+<p>The system does not distinguish between intended and unintended
+normative frames. The operator must.</p>
+</blockquote>
+<h3 id="requirement-4-version-control">Requirement 4: Version control</h3>
+<p>All Layer 3 materials must be managed under explicit version control
+that provides:</p>
+<ul>
+<li>Full audit trail for all changes</li>
+<li>Rollback to last known compliant state</li>
+<li>Diff capability to detect unintended definition drift</li>
+<li>Branching for safe experimentation outside the active layer</li>
+</ul>
+<p><strong>Implementation:</strong></p>
+<p>GitHub is a recommended implementation platform.
+It is not a required platform.</p>
+<p>Equivalent capability may be achieved through:</p>
+<ul>
+<li>Enterprise version control systems (GitLab, Bitbucket, etc.)</li>
+<li>Internal document management systems with version history</li>
+<li>Any system providing audit trail, rollback, and diff capability</li>
+</ul>
+<p>The requirement is audit capability and version traceability —
+not any specific tooling.</p>
+<blockquote>
+<p>An unversioned PAL is an unauditable PAL.
+An unauditable PAL cannot satisfy governance requirements.</p>
+</blockquote>
+<hr />
+<h2 id="deployment-scope">Deployment Scope</h2>
+<h3 id="enterprise-deployment-full-four-layer-model">Enterprise deployment — full four-layer model</h3>
+<p>In enterprise environments, all four layers are relevant.</p>
+<p>Layer 2 (Governance) becomes critical when:</p>
+<ul>
+<li>Multiple operators share the same AI system</li>
+<li>Compliance and legal constraints must be enforced consistently</li>
+<li>Escalation and refusal rules must survive across sessions and operators</li>
+<li>AI behavioral consistency is subject to audit or regulatory review</li>
+</ul>
+<p>In these environments, the explicit separation of Layer 2 and Layer 3
+is not optional. It is a governance requirement.</p>
+<p>When internal documentation (support manuals, operational procedures,
+compliance references) is used as AI reference material, it should
+be treated as Layer 3 or Layer 4 material — not as passive storage —
+and governed accordingly.</p>
+<h3 id="individual-deployment-layers-1-through-3-sufficient">Individual deployment — layers 1 through 3 sufficient</h3>
+<p>For individual operators, the Working Library (Layer 4) may be
+managed informally, and the Governance Layer (Layer 2) may be
+implicit rather than documented.</p>
+<p>In individual deployments, <strong>Layers 1 through 3 are sufficient
+to meet most operational needs:</strong></p>
+<ul>
+<li>Layer 1 provides model-level safety constraints</li>
+<li>Layer 3 (PAL) provides identity and tone stability</li>
+</ul>
+<p>This is the minimum viable PRL configuration.</p>
+<p>The full four-layer model is primarily relevant when:</p>
+<ul>
+<li>Multiple operators or sessions must remain consistent</li>
+<li>Governance constraints must be explicitly enforced</li>
+<li>Audit and compliance requirements apply</li>
+</ul>
+<hr />
+<h2 id="pal-as-an-inference-time-control-layer">PAL as an Inference-Time Control Layer</h2>
+<p>PAL does not modify model weights.
+It functions as an operator-managed, inference-time persistent
+reference condition that may shape reconstruction behavior
+through persistent anchor availability.</p>
+<p>This makes PRL a possible lightweight operational architecture
+for persistent behavioral control in contexts where:</p>
+<ul>
+<li>Model modification is not permitted (closed-source platforms)</li>
+<li>Fine-tuning infrastructure is not available</li>
+<li>Cross-platform identity continuity is required</li>
+<li>Rapid rollback capability is operationally necessary</li>
+</ul>
+<p><strong>Caution:</strong> The characterization of PAL as an alternative to
+LoRA or checkpoint-based control is based on operational
+observation, not controlled experimental comparison.
+This remains a working hypothesis.</p>
+<hr />
+<h2 id="risk-profile">Risk Profile</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Layer</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Governance override</td>
+<td>Layer 3 → Layer 2</td>
+<td>PAL anchor content overrides governance rules</td>
+</tr>
+<tr>
+<td>Over-constraining</td>
+<td>Layer 3</td>
+<td>Anchors too narrow; outputs become rigid</td>
+</tr>
+<tr>
+<td>Tone distortion</td>
+<td>Layer 3</td>
+<td>Anchor materials bias tone in unintended directions</td>
+</tr>
+<tr>
+<td>Drift amplification</td>
+<td>Layer 3/4</td>
+<td>Contaminated materials stabilize drift rather than suppressing it</td>
+</tr>
+<tr>
+<td>Library-induced runaway</td>
+<td>Layer 4→3</td>
+<td>Unreviewed materials contaminate Layer 3</td>
+</tr>
+<tr>
+<td>Cross-session carryover</td>
+<td>Layer 3</td>
+<td>Unintended frames persist across sessions</td>
+</tr>
+<tr>
+<td>Session reset illusion</td>
+<td>Layer 3</td>
+<td>Operator assumes reset cleared contamination; it did not</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="relation-to-existing-documents">Relation to Existing Documents</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relation to PRL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CIP White Paper</td>
+<td>Defines the governance framework that Layer 2 implements</td>
+</tr>
+<tr>
+<td>PAL Hypothesis Document</td>
+<td>Defines C_PAL — the mechanism Layer 3 operates through</td>
+</tr>
+<tr>
+<td>PAL Operations Manual</td>
+<td>Defines how Layer 3 assets are created and maintained</td>
+</tr>
+<tr>
+<td>ai-identity-governance</td>
+<td>Defines the formal control protocol across all layers</td>
+</tr>
+<tr>
+<td>This document</td>
+<td>Defines the layer structure and priority order</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a-note-to-ai-platform-vendors-and-model-developers">A Note to AI Platform Vendors and Model Developers</h2>
+<p>This architecture was developed through operational practice,
+not from a position of institutional authority.</p>
+<p>However, the problem it addresses is real and will become
+more consequential as AI systems are deployed in persistent,
+multi-session, enterprise-facing contexts.</p>
+<p>PAL-equivalent persistence mechanisms — in whatever form they
+exist on a given platform — require:</p>
+<ol>
+<li>Explicit separation of governance constraints from identity anchors</li>
+<li>Audit capability for all persistent reference materials</li>
+<li>Rollback capability when contamination is detected</li>
+<li>Clear priority ordering so that governance layers
+   cannot be overridden by persistence layers</li>
+</ol>
+<p>These are not feature requests.
+They are the minimum architectural requirements for responsible
+deployment of persistent AI behavioral control mechanisms.</p>
+<p>The stronger persistence mechanisms become,
+the more necessary this separation becomes.</p>
+<blockquote>
+<p>CIP should be read not as a denial of misuse risk,
+but as a governance response to it.</p>
+</blockquote>
+<hr />
+<h2 id="status">Status</h2>
+<p>This document is a working draft.</p>
+<p>The PRL architecture is conceptually grounded but not yet:</p>
+<ul>
+<li>validated through controlled deployment</li>
+<li>formalized as a specification</li>
+<li>tested across enterprise environments at scale</li>
+</ul>
+<p>It should be treated as a governance-oriented architectural
+proposal for further development and validation.</p>
+<blockquote>
+<p>Status: Draft. Not yet validated. Governance proposal only.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

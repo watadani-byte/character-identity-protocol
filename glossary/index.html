@@ -1,0 +1,3218 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/glossary/">
+      
+      
+        <link rel="prev" href="../column_reconstruction_durability/">
+      
+      
+        <link rel="next" href="../cip_terminology_mapping/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Glossary - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#glossary-character-identity-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Glossary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model (A→C→B′)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency — An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_complete_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Complete Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_integrated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Integrated
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Character_Identity_Protocol_Quality_Gate_Addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate Addendum (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence — Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis (Technical)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#archetype-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Archetype Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-sufficient-convergence-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor-Sufficient Convergence (ASC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor Convergence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infrastructure Condition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-recall-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Recall Probability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-convergence-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence / Convergence Point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cultural-frame-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cultural Frame Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-recoverability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence Recoverability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-durability-rd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Durability (RD)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-aa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction (A→A’)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-a-layer-b-layer-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer A / Layer B / Layer C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-contamination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library Contamination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Match Rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normative-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normative Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistently-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persistently Available
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-abort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard Abort
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contamination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contamination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uid-unique-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UID (Unique Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stabilization-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stabilization Condition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#style-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Style Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-assimilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Assimilation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-platform-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Platform Migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#archetype-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Archetype Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-sufficient-convergence-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor-Sufficient Convergence (ASC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anchor-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anchor Convergence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infrastructure Condition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-recall-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Recall Probability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-convergence-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence / Convergence Point
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cultural-frame-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cultural Frame Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convergence-recoverability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convergence Recoverability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-durability-rd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction Durability (RD)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reconstruction-aa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reconstruction (A→A’)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer-a-layer-b-layer-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer A / Layer B / Layer C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#minimal-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-contamination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library Contamination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#match-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Match Rate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#normative-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Normative Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#persistently-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persistently Available
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quality Gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hard-abort" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard Abort
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contamination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contamination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uid-unique-identifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UID (Unique Identifier)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stabilization-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stabilization Condition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#style-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Style Drift
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-assimilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Assimilation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-platform-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Platform Migration
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="glossary-character-identity-protocol">Glossary: Character Identity Protocol</h1>
+<p>Core terms used throughout the documentation.</p>
+<hr />
+<h2 id="archetype-drift">Archetype Drift</h2>
+<p>A character drift phenomenon in which a generated character
+retains partial visual continuity with the anchor identity
+while shifting toward a stronger nearby archetype in the
+model’s reconstruction space. Archetype Drift is distinct
+from facial collapse or structural degradation. It is a
+directional failure: the character’s visual features remain
+substantially intact, but the identity interpretation
+consistency — the social register, personality impression,
+and role identity — shifts toward a more dominant nearby
+template. The result is captured by the phrase
+same face, different person.</p>
+<p>As an example: a character defined as a reserved, precise
+intellectual may drift across generation cycles toward a
+warmer, more approachable register — not through any single
+dramatic change, but through gradual reweighting of expressive
+and social dimensions. The face remains recognizable.
+The person does not.</p>
+<p>Archetype Drift is particularly significant in multi-scene,
+multi-session, and video generation workflows, where cumulative
+drift across outputs can produce a character who is visually
+continuous but identity-discontinuous. Standard structural
+gates — Face Gate, Skeleton Gate, Proportion Gate — may not
+detect this failure mode, as they evaluate feature similarity
+rather than identity register.</p>
+<p>Detection of Archetype Drift may require evaluation beyond
+structural feature comparison, including assessment of social
+impression, expressive register, and role identity consistency
+against the anchor UID definition.</p>
+<p><em>See: <a href="../whitepaper_v1/">Identity Drift Taxonomy — Archetype Drift</a> — <a href="../pal_hypothesis/">PAL Hypothesis Document</a></em></p>
+<hr />
+<h2 id="anchor-sufficient-convergence-asc">Anchor-Sufficient Convergence (ASC)</h2>
+<blockquote>
+<p>Same UID. Different prompt. Same character.</p>
+</blockquote>
+<p>A convergence condition in which character identity is
+maintained across generations using only a PAL-registered
+anchor asset and a stable UID — without requiring
+ControlNet, OpenPose, seed control, LoRA, or model
+fine-tuning.</p>
+<p><strong>Formal conditions:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same UID</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>PAL-registered anchor</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>ControlNet</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>OpenPose</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>Seed control</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>Model fine-tuning</td>
+<td>Not required</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implication:</strong></p>
+<p>ASC demonstrates that identity is not a property of
+generation tools — it is a property of the anchor.</p>
+<p>When PAL is properly configured, the anchor asset alone
+is sufficient to maintain character identity across
+sessions, platforms, and generation cycles.</p>
+<blockquote>
+<p>The anchor is sufficient. The tools are optional.</p>
+</blockquote>
+<p><strong>Related:</strong></p>
+<ul>
+<li><a href="../column_pal/">Persistent Anchor Layer (PAL)</a></li>
+<li><a href="../whitepaper_v1/">High-Density Latent Anchoring (HDLA)</a></li>
+<li><a href="../whitepaper_v1/">Anchor Re-Convergence Method (ARCM)</a></li>
+</ul>
+<hr />
+<h2 id="anchor">Anchor</h2>
+<pre><code>Anchor = Minimal Prompt + Previously Converged Output Image
+</code></pre>
+<p>A previously generated image that represents a known, high-quality solution state.<br />
+Used as a constraint to bias future generation toward the same convergence point.</p>
+<p>The image is <strong>not</strong> an artistic reference or stylistic inspiration. It is a record of a solution the model has already found.</p>
+<hr />
+<h2 id="anchor-mechanism">Anchor Mechanism</h2>
+<p>The protocol-level stabilizing principle by which a validated anchor image is introduced as a high-information conditioning signal to bias reconstruction toward a previously achieved identity state.</p>
+<p>Distinct from image-to-image (which encourages variation) and seed fixing (which primarily controls initial noise sampling).</p>
+<hr />
+<h2 id="anchor-convergence">Anchor Convergence</h2>
+<p>The operational workflow for forming and re-establishing an anchor. Includes: high-density sample selection, identity gate validation, identifier binding, minimal prompt reduction, and multi-view expansion. Constitutes the entry condition of the CIP governance loop.</p>
+<p>Distinct from Anchor Mechanism: Anchor Mechanism is the stabilizing principle; Anchor Convergence is the formation and re-convergence workflow.</p>
+<hr />
+<h2 id="infrastructure-condition">Infrastructure Condition</h2>
+<p>Within the PAL framework, an infrastructure condition refers
+to the deployment state in which anchor materials remain
+available at inference time through persistent file, project,
+caching, or reference systems.</p>
+<p>Infrastructure condition describes the implementation layer
+of PAL — how anchor materials are made available.</p>
+<p>Distinct from stabilization condition, which describes
+the functional effect of that availability.</p>
+<blockquote>
+<p>PAL is an infrastructure condition.
+Its functional effect is a stabilization condition.</p>
+</blockquote>
+<p><em>See: <a href="./#stabilization-condition">Stabilization Condition</a></em>
+<em>See: <a href="../pal_hypothesis/">PAL Hypothesis Document</a></em></p>
+<hr />
+<h2 id="identity-recall-probability">Identity Recall Probability</h2>
+<p>An operational likelihood that subsequent generation cycles converge toward the same identity state as the anchor. Increased by identifier binding, multi-view expansion, and minimal prompt discipline. Not a mathematical probability but a qualitative indicator of reconstruction stability.</p>
+<hr />
+<h2 id="convergence-convergence-point">Convergence / Convergence Point</h2>
+<p>The state at which a generative model’s output stabilizes into a coherent, consistent result.</p>
+<p>A “convergence point” is a location in the model’s solution space where identity, structure, and rendering align with unusual precision.</p>
+<p>The protocol does not force convergence — it biases the search space toward a previously achieved convergence point.</p>
+<hr />
+<h2 id="cultural-frame-drift">Cultural Frame Drift</h2>
+<p>A form of identity drift in which a generated output
+migrates toward the dominant cultural or aesthetic
+conventions of the model’s training distribution,
+away from the culturally bounded definition of
+the anchor identity.</p>
+<p>Cultural Frame Drift is particularly observable when
+a character defined within a minority visual culture —
+such as a Japanese anime aesthetic — is generated in
+contexts where the training distribution is heavily
+weighted toward a different cultural convention.</p>
+<p>The drift does not necessarily produce structural
+identity failure as detected by Face Gate, Skeleton Gate,
+or Proportion Gate. It may instead manifest as a shift
+in facial impression, expressive register, or stylistic
+rendering that moves the output away from its culturally
+defined anchor.</p>
+<p>PAL may suppress Cultural Frame Drift by keeping the
+culturally bounded anchor definition persistently
+available at inference time.</p>
+<p><em>See: <a href="../pal_hypothesis/">PAL Hypothesis — Section 10</a></em></p>
+<hr />
+<h2 id="convergence-recoverability">Convergence Recoverability</h2>
+<blockquote>
+<p>The ability of a character identity to be repeatedly
+reconstructed as the same identity under variation,
+reinterpretation, and context change — without requiring
+strong external stabilization.</p>
+</blockquote>
+<p>Convergence Recoverability is distinct from:</p>
+<ul>
+<li><strong>Match rate</strong> — a single-generation similarity score</li>
+<li><strong>Identity gate PASS</strong> — a binary validation outcome</li>
+<li><strong>LoRA consistency</strong> — constraint-enforced similarity</li>
+</ul>
+<p>It describes a character-level property of the identity itself,
+not of the control mechanism applied to it.</p>
+<p>Characters with high Convergence Recoverability tend to share:</p>
+<ul>
+<li>sufficient distinctiveness (clear identity markers)</li>
+<li>without reconstruction overload (not pushed into sparse regions)</li>
+<li>style-identity separation (style does not compete with identity)</li>
+</ul>
+<p><strong>Related:</strong></p>
+<ul>
+<li><a href="./#reconstruction-durability-rd">Reconstruction Durability</a></li>
+<li><a href="../column_reconstruction_durability/">Column: Reconstruction Durability</a></li>
+<li><a href="../whitepaper_v1/">High-Density Latent Anchoring (HDLA)</a></li>
+</ul>
+<hr />
+<h2 id="reconstruction-durability-rd">Reconstruction Durability (RD)</h2>
+<blockquote>
+<p>A character-level property describing the likelihood that
+identity can be repeatedly recovered across generation cycles
+without external stabilization, determined by the character’s
+position within the model’s high-density reconstruction regions.</p>
+</blockquote>
+<p>Reconstruction Durability is the combined property of:</p>
+<ul>
+<li>high Convergence Recoverability</li>
+<li>positioning in high-density reconstruction regions</li>
+<li>style-identity separation</li>
+</ul>
+<p><strong>Key distinction:</strong>
+Reconstruction Durability is not a property of the control method.
+It is a property of how the character was formed.</p>
+<p><strong>Design implication:</strong></p>
+<pre><code>Character Formation (RD)
+  └── CIP Governance
+        └── PAL Persistence
+              └── ASC Conditions
+</code></pre>
+<p>A character designed for high Reconstruction Durability
+requires less governance overhead, produces more stable anchors,
+and exhibits higher Convergence Recoverability across
+platforms and model versions.</p>
+<p><strong>Related:</strong></p>
+<ul>
+<li><a href="./#convergence-recoverability">Convergence Recoverability</a></li>
+<li><a href="../column_reconstruction_durability/">Column: Reconstruction Durability</a></li>
+<li><a href="./#anchor-sufficient-convergence-asc">Anchor-Sufficient Convergence (ASC)</a></li>
+</ul>
+<hr />
+<h2 id="reconstruction-aa">Reconstruction (A→A’)</h2>
+<p>The internal process by which a generative model interprets a prompt and reformulates it into a generation target.</p>
+<pre><code>User prompt (A) → Model's internal reformulation (A') → Generation
+</code></pre>
+<p>This stage is:</p>
+<ul>
+<li>Invisible to the user</li>
+<li>Not directly controllable</li>
+<li>The primary source of identity drift</li>
+</ul>
+<p>The anchor mechanism constrains A→A’ by supplying a high-information prior.</p>
+<hr />
+<h2 id="layer-a-layer-b-layer-c">Layer A / Layer B / Layer C</h2>
+<p>A theoretical abstraction of the generation process — not a claim about proprietary architecture.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Language interpretation</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Reconstruction / optimization</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Execution (latent sampling and rendering)</td>
+</tr>
+</tbody>
+</table>
+<p>Verbose prompts activate Layers A and B more strongly.<br />
+Minimal prompts reduce pressure on Layers A and B, allowing the anchor to dominate.</p>
+<hr />
+<h2 id="minimal-prompt">Minimal Prompt</h2>
+<p>A prompt containing only factual, identity-defining attributes — no adjectives, no mood descriptors, no compositional instructions.</p>
+<p>Purpose: to reduce optimization pressure from the model’s training priors, preserving the convergence state established by the anchor.</p>
+<p>Example:</p>
+<pre><code>Japanese woman, black hair, brown eyes, 168cm, slender
+</code></pre>
+<p>Not:</p>
+<pre><code>beautiful, elegant, mysterious Japanese woman with flowing black hair...
+</code></pre>
+<hr />
+<h2 id="library-contamination">Library Contamination</h2>
+<p>A condition in which anchor materials registered
+in a persistent reference layer contain content
+that produces harmful, misleading, or unintended
+reconstruction behavior.</p>
+<p>Because PAL may function as a normative and cultural
+frame persistence layer, contaminated anchor materials
+may stabilize harmful normative frames rather than
+intended ones.</p>
+<p>Library Contamination requires active purge of
+affected materials. Passive removal or deprecation
+is insufficient, as accessible materials may continue
+to influence reconstruction behavior.</p>
+<p>The operator is responsible for anchor library
+governance, contamination detection, and purge procedures.</p>
+<blockquote>
+<p>PAL does not validate anchor content.
+The operator does.</p>
+</blockquote>
+<p><em>See: <a href="../pal_hypothesis/">PAL Hypothesis — Section 10.7</a></em><br />
+<em>See: <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></em></p>
+<hr />
+<h2 id="match-rate">Match Rate</h2>
+<p>A human-assessed similarity score between the anchor image and a generated output.</p>
+<p>Match rate is not an identity verification metric. It is an <strong>early warning indicator for character drift</strong> — a signal that degradation may be beginning before full collapse occurs.</p>
+<p>Evaluated across three dimensions:</p>
+<ul>
+<li><strong>FaceGate</strong> — facial identity consistency</li>
+<li><strong>SkeletonGate</strong> — skeletal proportion and alignment</li>
+<li><strong>ProportionGate</strong> — overall body proportion</li>
+</ul>
+<p>The similarity threshold is operator-defined. The ~90% figure is a demonstration value only — it is not a protocol standard. Treating it as a fixed threshold is a misapplication of this protocol.</p>
+<blockquote>
+<p>Match rate measures the <strong>risk of drift</strong>, not the <strong>fact of identity</strong>.</p>
+</blockquote>
+<p>Match rate is a human judgment, not an automated metric.</p>
+<hr />
+<h2 id="normative-drift">Normative Drift</h2>
+<p>A form of drift in which an AI system’s behavioral
+rules, decision priorities, or role definition shift
+across sessions — away from the anchored normative
+frame and toward the model’s statistical defaults.</p>
+<p>Normative Drift is not limited to image generation.
+It may occur in conversational AI, agentic systems,
+and any AI deployment where behavioral consistency
+across sessions is operationally required.</p>
+<p>Unlike structural identity drift, Normative Drift
+may not be detectable through visual gate evaluation.
+It requires assessment of behavioral posture,
+role consistency, and interactional register
+across outputs.</p>
+<p>PAL may suppress Normative Drift by keeping a
+structured role and behavioral anchor persistently
+available at inference time.</p>
+<p><em>See: <a href="../pal_hypothesis/">PAL Hypothesis — Section 10</a></em><br />
+<em>See: <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></em></p>
+<hr />
+<h2 id="persistently-available">Persistently Available</h2>
+<p>Within the CIP and PAL frameworks, “persistently available”
+describes anchor materials that remain accessible across
+session boundaries through platform-level persistence features.</p>
+<p><strong>What this means operationally:</strong></p>
+<ul>
+<li>The materials remain available at the start of a new session
+  without explicit re-injection by the operator</li>
+<li>Access is provided through persistent file, project,
+  caching, or reference systems</li>
+<li>Availability persists across session resets</li>
+</ul>
+<p><strong>What this does not mean:</strong></p>
+<ul>
+<li>Continuously loaded into active memory</li>
+<li>Technically permanent or immutable storage</li>
+<li>Parameter-level encoding within the model</li>
+</ul>
+<p>The term refers to operational availability across sessions,
+not to any specific technical implementation of persistence.</p>
+<p><em>See: <a href="../column_pal/">Persistent Anchor Layer (PAL)</a></em></p>
+<hr />
+<h2 id="quality-gate">Quality Gate</h2>
+<p>The set of validation conditions that must all pass before a generation is accepted.</p>
+<pre><code>PASS = FaceGate ∧ SkeletonGate ∧ ProportionGate
+</code></pre>
+<p>If any gate fails → hard abort.<br />
+No progressive correction permitted.</p>
+<p><em>See: <a href="../quality_gate_addendum/">Quality Gate Addendum</a></em></p>
+<hr />
+<h2 id="hard-abort">Hard Abort</h2>
+<p>The mandatory stop condition triggered when any quality gate fails.</p>
+<p>The session is terminated. Contaminated outputs are discarded.<br />
+No continuation, no correction, no exception.</p>
+<hr />
+<h2 id="contamination">Contamination</h2>
+<p>The accumulation of identity drift in a session’s context, caused by:</p>
+<ul>
+<li>Failed generations that were not discarded</li>
+<li>Continued generation after drift detection</li>
+<li>Excessive session length without re-anchoring</li>
+</ul>
+<p>Contaminated sessions cannot be recovered by prompt adjustment.<br />
+They must be abandoned and restarted with a clean anchor.</p>
+<hr />
+<h2 id="uid-unique-identifier">UID (Unique Identifier)</h2>
+<p>A stable name or label assigned to a character’s converged state.</p>
+<p>Purpose: enables cross-session recall without re-providing the full anchor each time.<br />
+Example: “Model Hana”, “Model A”, “Shizuka”</p>
+<p>The UID corresponds to a specific converged visual state — not assigned arbitrarily.</p>
+<hr />
+<h2 id="identity-drift">Identity Drift</h2>
+<p>The gradual deviation of generated outputs from the established character identity across turns.</p>
+<p>Caused by:</p>
+<ul>
+<li>Reconstruction variability (A→A’) accumulating across turns</li>
+<li>Optimization pressure from verbose prompts</li>
+<li>Session context degradation</li>
+<li>Insufficient anchoring frequency</li>
+</ul>
+<hr />
+<h2 id="stabilization-condition">Stabilization Condition</h2>
+<p>Within the PAL framework, a stabilization condition refers
+to the functional effect produced when anchor materials
+are persistently available at inference time.</p>
+<p>Stabilization condition describes what PAL does —
+it may improve reconstruction consistency across sessions
+by maintaining anchor availability.</p>
+<p>Distinct from infrastructure condition, which describes
+how PAL is implemented.</p>
+<p><strong>Usage guidance:</strong></p>
+<ul>
+<li>Use “stabilization condition” when describing
+  the functional effect of PAL</li>
+<li>Use “infrastructure condition” when describing
+  the implementation layer of PAL</li>
+</ul>
+<blockquote>
+<p>PAL is framed as an inference-time stabilization condition,
+not a training-time intervention.</p>
+</blockquote>
+<p><em>See: <a href="./#infrastructure-condition">Infrastructure Condition</a></em>
+<em>See: <a href="../pal_hypothesis/">PAL Hypothesis Document</a></em></p>
+<hr />
+<h2 id="style-drift">Style Drift</h2>
+<p>The deviation of generated outputs from the defined rendering regime — line weight, color quantization, shading abstraction, texture ceiling — toward a higher information density state (typically: anime abstraction → semi-realistic → photorealistic).</p>
+<p>Style Drift is technically distinct from structural Identity Drift.</p>
+<p>In general production contexts, style drift may be recoverable through re-anchoring in a subsequent cycle.</p>
+<p><strong>In style-defined identity domains — anime, manga, illustration, game, and franchise animation — style drift is classified as a failure at the point of occurrence, regardless of recoverability.</strong></p>
+<p>This classification rests on the industry standard that:</p>
+<ul>
+<li>Rendering regime is constitutive of identity, not decorative</li>
+<li>A recoverable failure is still a failure</li>
+<li>Zero-tolerance enforcement applies to rendering regime deviation in IP-governed production</li>
+</ul>
+<blockquote>
+<p>Style Drift in anime, manga, game, and serialized IP contexts is not aesthetic variation.<br />
+It is identity violation — and triggers Hard Abort under the same conditions as structural drift.</p>
+</blockquote>
+<p><em>See: <a href="../cip_video_addendum/">Video Addendum — Style-Layer Primacy Problem</a></em></p>
+<hr />
+<h2 id="summary-assimilation">Summary Assimilation</h2>
+<p>The tendency of AI systems to absorb immature but significant
+observations into pre-existing explanatory frames
+during summarization, abstraction, or reformulation,
+thereby reducing the visibility of genuinely novel distinctions.</p>
+<p>In the context of character consistency workflows,
+Summary Assimilation causes operationally fragmented practices
+to appear as a unified and already-solved system.
+Unresolved control problems are presented as existing method
+components, and genuinely important but still-unnamed distinctions
+disappear into apparently adequate descriptions.</p>
+<p>CIP is in part a response to this tendency:
+by naming distinctions explicitly,
+it attempts to preserve their visibility
+before they can be assimilated into familiar frameworks.</p>
+<hr />
+<h2 id="cross-platform-migration">Cross-Platform Migration</h2>
+<p>The procedure for re-establishing a character identity on a different generative platform.</p>
+<p>The anchor image functions as a platform-agnostic identity record.<br />
+The character’s convergence state can be recovered on any system capable of image-guided generation.</p>
+<p><em>See: <a href="../case_04_shizuka/">Case 04: Cross-Platform Migration — “Shizuka”</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
