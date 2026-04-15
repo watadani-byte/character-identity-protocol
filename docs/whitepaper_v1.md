@@ -797,9 +797,11 @@ Anchor finalization is performed within composable or highly controllable genera
 
 ### Sequential Scene Generation
 
-Sequential scene generation is delegated to inference-capable generation systems that accept anchor references and minimal prompts as inputs (e.g., GPT Image 1.5 or Nano Banana).
+Sequential scene generation is delegated to inference-capable generation systems capable of preserving a validated anchor image as a stable reference point while performing minimal-difference updates across successive generations.
 
 This stage operates under full CIP governance. After each generation cycle, identity validation gates are applied. When drift is detected, Hard Abort may be triggered to terminate the contaminated cycle and initiate re-convergence.
+
+In the tested implementation described in this paper, this requirement was satisfied by the GPT Image series. Other systems may become suitable as their reference-preservation and sequential update capabilities improve.
 
 ### Production Post-Processing
 
@@ -828,7 +830,7 @@ flowchart TD
     S2["Stage 2: Anchor Finalization
     (e.g., ComfyUI)"]
     S3["Stage 3: Sequential Scene Generation
-    (e.g., GPT Image 1.5 / Nano Banana)"]
+    (e.g., GPT Image series)"]
     GATE{"Identity Validation Gates
     Face ∧ Skeleton ∧ Proportion"}
     ABORT["Hard Abort
@@ -887,7 +889,7 @@ flowchart TD
 
     S1["Stage 1\nReference Generation\n(e.g., Midjourney)"]
     S2["Stage 2\nAnchor Finalization\n(e.g., ComfyUI)"]
-    S3["Stage 3\nSequential Scene Generation\n(e.g., GPT Image 1.5 / Nano Banana)"]
+    S3["Stage 3\nSequential Scene Generation\n(e.g., GPT Image series)"]
     GATE{"Identity Validation Gates\nFace ∧ Skeleton ∧ Proportion"}
     HA["Hard Abort\n→ Re-binding\n→ Re-convergence"]
     S4["Stage 4\nProduction Post-Processing\n(e.g., Adobe Photoshop / Firefly)"]
