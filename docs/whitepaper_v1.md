@@ -778,6 +778,12 @@ It defines a governance structure that determines whether outputs are accepted, 
 
 The following section describes one practical implementation path for CIP-governed character identity stabilization within the current generative AI ecosystem.
 
+CIP is vendor-neutral at the protocol layer. However, not every
+generation system currently satisfies the operational requirements
+needed for anchor-preserving sequential scene generation.
+Accordingly, the following pipeline distinguishes between
+protocol-level generality and tested implementation-level suitability.
+
 CIP operates as a closed-loop identity control system,
 in which generation and validation are inseparable components.
 
@@ -918,7 +924,9 @@ flowchart TD
 
 ### Brand Integrity
 
-A standardized operational procedure (SOP) ensuring that any operator, on any system, can produce the same character.
+A standardized operational procedure (SOP) ensuring that any
+operator, working within a generation system that satisfies CIP
+operational requirements, can produce the same character.
 
 Identity is defined by the anchor + minimal prompt combination — not by a specific model, platform, or session. This makes the character asset portable and vendor-independent.
 
@@ -926,7 +934,13 @@ Identity is defined by the anchor + minimal prompt combination — not by a spec
 
 Decoupling intellectual property from specific AI vendors.
 
-Character assets remain persistent and manageable even as underlying technologies evolve. The anchor mechanism functions as a platform-agnostic identity reference record.
+Character assets remain persistent and manageable even as
+underlying technologies evolve. The anchor mechanism functions
+as a platform-agnostic identity reference record. However,
+recovery quality and downstream sequential generation remain
+dependent on the capabilities of the target system — in
+particular, its ability to preserve the anchor as a stable
+operational reference across iterative updates.
 
 ### Operational Efficiency
 
@@ -1187,7 +1201,7 @@ The following properties were observed:
 - A single high-quality sample is sufficient to initialize an anchor
 - Multi-view expansion stabilizes reconstruction across multiple view-conditioned perspectives
 - Naming (identifier binding) significantly improves recall probability
-- Under PAL-governed conditions, identity convergence has been observed without ControlNet, OpenPose, seed control, or LoRA — using only a stable UID and a PAL-registered anchor asset. This condition is termed **Anchor-Sufficient Convergence (ASC)**.
+- Under PAL-governed conditions, identity convergence has been observed in tested configurations without ControlNet, OpenPose, seed control, or LoRA — using only a stable UID and a PAL-registered anchor asset. This condition is termed **Anchor-Sufficient Convergence (ASC)**.
 
 *See: [Glossary — ASC](glossary.md) — [Column: PAL](column_pal.md)*
 
@@ -1251,16 +1265,16 @@ Under this definition, a workflow is reproducible if: given the same anchor, the
 
 The protocol has been validated across the following production case groups:
 
-|Case  |Scenario                                                                                |Result                                                                     |
-|------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-|**01**|**Baseline Failure → Recovery Cycle**                                                   |                                                                           |
-|01A   |Baseline — no protocol                                                                  |Identity collapse confirmed                                                |
-|01B   |Hard Abort, Re-binding, Re-convergence (production recovery cycle; demonstrated in Mira)|Full BGC cycle documented                                                  |
-|02    |Wedding series, 4 emotional transitions                                                 |Identity maintained, 15 turns                                              |
-|03    |Fashion production, skeletal control                                                    |Audit-ready consistency, 38 turns                                          |
-|04    |Cross-platform migration (SD → ChatGPT)                                                 |High-fidelity recovery observed under anchor-governed re-binding conditions|
-|05    |Minimal prompt emergence — no image anchor (under constrained conditions)               |New consistent character emerged                                           |
-|06    |Gemini replication — cross-platform validation                                          |High-consistency behavior observed under gate-governed conditions          |
+|Case  |Scenario                                                                                |Result                                                                                 |
+|------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+|**01**|**Baseline Failure → Recovery Cycle**                                                   |                                                                                       |
+|01A   |Baseline — no protocol                                                                  |Identity collapse confirmed                                                            |
+|01B   |Hard Abort, Re-binding, Re-convergence (production recovery cycle; demonstrated in Mira)|Full BGC cycle documented                                                              |
+|02    |Wedding series, 4 emotional transitions                                                 |Identity maintained, 15 turns                                                          |
+|03    |Fashion production, skeletal control                                                    |Audit-ready consistency, 38 turns                                                      |
+|04    |Cross-platform migration (SD → ChatGPT)                                                 |High-fidelity recovery observed under anchor-governed re-binding conditions            |
+|05    |Minimal prompt emergence — no image anchor (under constrained conditions)               |New consistent character emerged                                                       |
+|06    |Cross-platform replication test                                                         |Partial convergence observed; anchor-preserving sequential generation was not confirmed|
 
 *Full case documentation available in [Case Studies](case_01_failure_log.md)*
 
@@ -1340,11 +1354,33 @@ Identity Gates define the validation criteria — face similarity, skeletal prop
 
 No. Generative systems are probabilistic by design. CIP does not claim or require deterministic reproduction. Its goal is bounded convergence — producing outputs that satisfy defined identity constraints within acceptable variation, not exact pixel-level replication. The protocol governs when outputs are accepted or rejected, not whether they are identical.
 
+That said, bounded convergence does not imply that the anchor
+functions merely as loose stylistic guidance. In workflows
+requiring sequential scene generation, the anchor must serve
+as a stable operational reference point — one that the
+generation system preserves reliably across iterative updates,
+not merely references at the initial input stage.
+
 -----
 
 ### Q6. Is CIP dependent on a specific model or vendor?
 
-No. CIP is model-agnostic and platform-agnostic. It defines an operational governance layer that can be applied to any generative system capable of accepting anchor image references and producing iterative outputs. Case studies have validated the protocol across multiple platforms including Stable Diffusion, ChatGPT (GPT Image 1), and Gemini (Imagen 3).
+No. CIP is model-agnostic and platform-agnostic at the protocol
+level. It defines an operational governance layer for anchor
+management, identity validation, hard-abort enforcement, and
+re-convergence.
+
+However, successful implementation of all CIP workflows depends
+on the capabilities of the underlying generation system. In
+particular, sequential scene generation requires a system capable
+of preserving a validated anchor image as a stable reference point
+while performing minimal-difference updates across successive
+generations.
+
+In the tested implementation described in this document, the GPT
+Image series satisfied this requirement most reliably. Other systems
+may become suitable as their reference-preservation and sequential
+update capabilities improve.
 
 -----
 
@@ -1356,7 +1392,21 @@ Prompt engineering focuses on optimizing text inputs to influence model outputs.
 
 ### Q8. How does cross-platform migration work under CIP?
 
-Cross-platform migration in CIP relies on the anchor image as the primary identity carrier. Because the anchor encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity Gates are re-applied in the new environment to confirm that convergence has been achieved. This process does not require model-level alignment between platforms.
+Cross-platform migration in CIP relies on the anchor image as the
+primary identity carrier. Because the anchor encodes visual identity
+independently of any specific model or platform, it can be
+re-introduced into a different generative system as a reference input.
+
+However, successful recovery and subsequent sequential generation
+remain dependent on the capabilities of the target system, especially
+its ability to preserve the anchor as a stable reference point across
+iterative updates. Identity Gates are re-applied in the new
+environment to confirm whether convergence has in fact been achieved.
+
+This process does not require model-level alignment between
+platforms, but it does require that the target system satisfy the
+operational conditions needed for anchor-governed recovery and,
+where relevant, anchor-preserving sequential generation.
 
 -----
 
@@ -1368,7 +1418,18 @@ Highly detailed prompts may push generation into sparse regions of the model’s
 
 ### Q10. How does CIP interact with agentic orchestration systems?
 
-Agentic systems — such as ChatGPT, Claude, or Gemini with tool-use capabilities — can operate as orchestration layers within a CIP-governed pipeline. In this role they may coordinate tool calls across pipeline stages, monitor identity gate outcomes, trigger re-binding events when drift is detected, and maintain audit records of gate decisions. CIP defines the governance constraints; the agentic system executes coordination within those constraints.
+Agentic systems — such as ChatGPT, Claude, or Gemini with tool-use
+capabilities — can operate as orchestration layers within a
+CIP-governed pipeline. In this role they may coordinate tool calls
+across pipeline stages, monitor identity gate outcomes, trigger
+re-binding events when drift is detected, and maintain audit records
+of gate decisions.
+
+CIP defines the governance constraints; the agentic system executes
+coordination within those constraints. However, orchestration does
+not substitute for the capabilities required of the underlying
+generation system itself, particularly in workflows requiring
+anchor-preserving sequential scene generation.
 
 -----
 
@@ -1445,6 +1506,14 @@ Cross-platform character persistence under CIP therefore depends on the anchor a
 This property is particularly relevant for production workflows that span multiple tools — for example, initial character development in one system, iterative scene generation in another, and final post-processing in a third. CIP provides the governance layer that maintains identity continuity across these transitions.
 
 The operational implication for IP asset management is significant. Character identity assets in generative AI production environments are not defined by a prompt or a model configuration, but by a validated anchor image and the governance protocol that governs its use. This reframes character asset management in generative systems from a prompt engineering problem into an operational governance problem — the problem space CIP is designed to govern.
+
+The portability of the anchor is a protocol-level property.
+However, the quality of recovery and the viability of
+subsequent sequential generation in the target environment
+remain dependent on the capabilities of that system —
+particularly its ability to preserve the anchor as a stable
+reference point across iterative updates. Anchor portability
+does not guarantee operational equivalence across platforms.
 
 -----
 
