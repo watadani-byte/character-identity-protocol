@@ -1292,7 +1292,7 @@ Together these mechanisms constitute an operational governance layer that can in
 
 ### D.5 CIP and Cross-Platform Character Persistence
 
-A significant challenge in generative AI production environments is maintaining character identity across different platforms, models, or generation sessions. CIP addresses this challenge through the portability of the anchor mechanism. Because the anchor image encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity gates are re-applied in the new environment to confirm whether convergence has in fact been achieved.
+A significant challenge in generative AI production environments is maintaining character identity across different platforms, models, or generation sessions. CIP addresses this challenge through the portability of the anchor mechanism. Because the anchor image encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity gates are re-applied in the new environment to confirm whether convergence has been achieved.
 
 The portability of the anchor is a protocol-level property. However, the quality of recovery and the viability of subsequent sequential generation in the target environment remain dependent on the capabilities of that system — particularly its ability to preserve the anchor as a stable reference point across iterative updates. Anchor portability does not guarantee operational equivalence across platforms.
 
