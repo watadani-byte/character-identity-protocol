@@ -29,7 +29,7 @@ The primary engineering challenge in deploying generative AI for production work
 
 Conventional prompt-based approaches lack defined control targets, validation logic, and recovery conditions, resulting in non-reproducible outputs and undetected **Identity Loss** during model updates or session terminations.
 
-The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol enables the protection, recovery, and cross-platform portability of character identities.
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol supports the protection, recovery, and cross-platform reuse of character identities.
 
 CIP reframes character identity from a static output property to a recoverable convergence state — one that must be repeatedly recovered under operational constraints.
 
@@ -682,7 +682,7 @@ This framing biases the model toward alignment with the provided visual anchor r
 
 **Validation**
 
-Successfully demonstrated in migrating a lost Stable Diffusion character into GPT Image 1, achieving high-fidelity recall despite fundamental architecture differences.
+This approach was validated in a case study migrating a lost Stable Diffusion character into GPT Image 1, in which high-fidelity identity recall was achieved despite fundamental architecture differences.
 
 *Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
@@ -829,19 +829,19 @@ flowchart TD
 
 ### Brand Integrity
 
-A standardized operational procedure (SOP) intended to enable operators, working within generation systems that satisfy CIP operational requirements, to recover and maintain the same character.
+A standardized operational procedure (SOP) intended to enable operators, working within generation systems that satisfy CIP operational requirements, to recover and maintain the same character identity.
 
 Identity is defined by the anchor + minimal prompt combination — not by a specific model, platform, or session. This makes the character asset portable and vendor-independent at the protocol level.
 
 ### IP Portability
 
-Decoupling intellectual property from specific AI vendors.
+CIP decouples intellectual property from specific AI vendors.
 
 Character assets remain persistent and manageable even as underlying technologies evolve. The anchor mechanism functions as a platform-agnostic identity reference record. However, recovery quality and downstream sequential generation remain dependent on the capabilities of the target system, particularly its ability to preserve the anchor as a stable operational reference across iterative updates.
 
 ### Operational Efficiency
 
-Statistically reducing randomized generation attempts, thereby minimizing generation costs and human review time.
+CIP reduces randomized generation attempts, thereby minimizing generation costs and human review time.
 
 Production metrics observed across case studies:
 
@@ -1019,11 +1019,11 @@ A single image was generated that exhibited strong identity coherence (hereafter
 
 ### 5.3 Step 1: Identifier Assignment
 
-A unique identifier was assigned to the character (Name: Shiraishi Shizuka). This step converts the image from a visual sample into a symbolic anchor.
+A unique identifier — Shiraishi Shizuka — was assigned to the character. This step converts the image from a visual sample into a symbolic anchor.
 
 ### 5.4 Step 2: Minimal Prompt Reduction
 
-The generation prompt was reduced to a minimal form — identity referenced primarily via the assigned name, with descriptive tokens minimized. This enforces single-command constraint and reduces ambiguity in A → A′ transformation.
+The generation prompt was reduced to a minimal form — identity referenced primarily via the assigned name, with descriptive tokens minimized. This enforces a single-command constraint and reduces ambiguity in the A → A′ transformation.
 
 ### 5.5 Step 3: Anchor Expansion (Character Sheet)
 
@@ -1033,7 +1033,7 @@ A multi-view character sheet was generated (front, side, back views). This step 
 
 The character was regenerated using the assigned identifier and minimal prompt structure.
 
-Result: identity consistency significantly improved; drift reduced compared to non-anchored generation.
+Identity consistency was significantly improved, and drift was reduced relative to non-anchored generation.
 
 ### 5.7 Observations
 
@@ -1124,9 +1124,9 @@ The protocol has been validated across the following production case groups:
 
 In this sense, CIP is not a generation technique but a recovery protocol for identity persistence in probabilistic generative systems.
 
-In the fluid and volatile landscape of generative AI, the Character Identity Protocol serves as a compass.
+In the rapidly evolving landscape of generative AI, the Character Identity Protocol provides an operational framework for identity governance.
 
-By combining statistical convergence with rigorous operational framing, CIP establishes a practical standard for the management and preservation of character identities in production AI workflows.
+By combining statistical convergence with explicit operational framing, CIP defines a structured approach to the management and preservation of character identities in production AI workflows.
 
 The protocol does not oppose the model’s optimization dynamics.  
 It constrains outputs operationally.
@@ -1200,7 +1200,7 @@ That said, bounded convergence does not imply that the anchor functions merely a
 
 No. CIP is model-agnostic and platform-agnostic at the protocol level. It defines an operational governance layer for anchor management, identity validation, hard-abort enforcement, and re-convergence.
 
-However, successful implementation of all CIP workflows depends on the capabilities of the underlying generation system. In particular, sequential scene generation requires a system capable of preserving a validated anchor image as a stable reference point while performing minimal-difference updates across successive generations. In the tested implementation described in this document, the GPT Image series satisfied this requirement most reliably. Other systems may become suitable as their reference-preservation and sequential update capabilities improve.
+However, successful implementation of all CIP workflows depends on the capabilities of the underlying generation system. In particular, sequential scene generation requires a system capable of preserving a validated anchor image as a stable reference point while performing minimal-difference updates across successive generations. In the tested implementation described in this document, the GPT Image series satisfied this requirement at the level needed for the tested production workflow. Other systems may become suitable as their reference-preservation and sequential update capabilities improve.
 
 -----
 
@@ -1212,7 +1212,7 @@ Prompt engineering focuses on optimizing text inputs to influence model outputs.
 
 ### Q8. How does cross-platform migration work under CIP?
 
-Cross-platform migration in CIP relies on the anchor image as the primary identity carrier. Because the anchor encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity Gates are re-applied in the new environment to confirm whether convergence has in fact been achieved.
+Cross-platform migration in CIP relies on the anchor image as the primary identity carrier. Because the anchor encodes visual identity independently of any specific model or platform, it can be re-introduced into a different generative system as a reference input. Identity Gates are re-applied in the new environment to confirm whether convergence has been achieved.
 
 However, successful recovery and subsequent sequential generation remain dependent on the capabilities of the target system — in particular, its ability to preserve the anchor as a stable reference point across iterative updates. This process does not require model-level alignment between platforms, but it does require that the target system satisfy the operational conditions needed for anchor-governed recovery and, where relevant, anchor-preserving sequential generation.
 
