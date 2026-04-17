@@ -11,7 +11,7 @@ Within probabilistic generative systems, identity is treated as a recoverable co
 Generative image models operate by sampling from a learned training distribution.
 
 These models do not reproduce images deterministically.
-Each generation is a probabilistic reconstruction conditioned by inputs such as text prompts, reference images, and internal noise states.
+Each generation is a probabilistic reconstruction conditioned by inputs such as text prompts, anchor materials, and internal noise states.
 
 Because of this structure, outputs tend to stabilize in regions of the training distribution where examples are dense.
 These regions can be thought of as high-density zones of the learned representation space.
@@ -58,10 +58,10 @@ This approach allows the model to search its distribution more freely.
 
 ## Anchor-Guided Convergence
 
-When a reference image is provided, it becomes a strong conditioning signal.
+When anchor material is provided, it becomes a strong conditioning signal.
 
-The information contained in an image reference is significantly richer than that contained in a short text prompt.
-As a result, the reference image often dominates the identity reconstruction process.
+The information contained in an anchor image is significantly richer than that contained in a short text prompt.
+As a result, the anchor often dominates the identity reconstruction process.
 
 Under minimal prompt conditions, generation typically follows this pattern:
 
@@ -70,15 +70,18 @@ Minimal Prompt
       ↓
 Model Exploration within Training Distribution
       ↓
-Anchor Attraction (reference image guidance)
+Anchor Attraction (anchor material guidance)
       ↓
 Identity Convergence
 ```
 
-The anchor image acts as an identity attractor in the reconstruction process.
+The anchor acts as an identity attractor in the reconstruction process.
 
 It does not enforce deterministic reproduction.
 Instead, it increases the probability that the model will converge toward a reconstruction state consistent with the anchor.
+
+**Reference guidance is not identity governance.**
+Reference images, IP-Adapter-like systems, LoRA, ControlNet, and image reference features may improve resemblance or continuity, but they do not define identity failure, Hard Abort, re-binding, adoption, rejection, purge, or auditability. These governance functions belong to CIP.
 
 -----
 
@@ -96,6 +99,32 @@ Sources of drift include:
 Without intervention, identity similarity tends to degrade gradually.
 
 This phenomenon is referred to in CIP as **identity drift**.
+
+-----
+
+## Reconstruction Model
+
+CIP treats generation as a probabilistic transformation:
+
+```
+A → (A + C) → B′
+A → A′ → B′
+A′ = A + C
+```
+
+Where:
+
+- A = user input or reference condition (anchor, prompt)
+- C = internal constraints: training priors, optimization pressure, compression, platform constraints, and constraint rewriting
+- A′ = internally reconstructed state (not the output)
+- B′ = actual output
+
+A′ is the internally reconstructed state that the model produces before generating the visible output B′.
+A′ is not directly observable, but its behavior can be inferred from B′ and its deviation from the anchor.
+
+**C explains why drift occurs. It does not excuse unmanaged drift.**
+
+CIP governs the reconstruction process by constraining A′ — not by controlling the output directly.
 
 -----
 
@@ -172,6 +201,18 @@ If any gate fails, generation must stop immediately — drift propagation is pre
 
 -----
 
+## Adoption, Rejection, and Purge
+
+CIP governs not only stopping conditions but also what happens to outputs after gate evaluation.
+
+- **Adoption**: an output that passes all gates is accepted into the production workflow.
+- **Rejection**: an output that fails one or more gates is discarded; Hard Abort is triggered.
+- **Purge**: contaminated outputs and associated generation state are cleared before re-binding begins.
+
+These distinctions ensure that drift does not propagate through accepted outputs and that the re-convergence cycle begins from a verified clean state.
+
+-----
+
 ## Operational Model
 
 The full CIP mechanism can be summarized as:
@@ -179,16 +220,18 @@ The full CIP mechanism can be summarized as:
 ```
 Minimal Prompt
       +
-Anchor Image
+Anchor Material
       ↓
 Distribution Exploration
       ↓
 Anchor-Guided Convergence
       ↓
+A → (A + C) → B′
+      ↓
 Identity Gates
       ↓
-PASS → Production
-FAIL → Hard Abort → Re-binding → Re-convergence
+PASS → Adoption → Production
+FAIL → Rejection → Hard Abort → Purge → Re-binding → Re-convergence
 ```
 
 CIP does not modify model behavior.
@@ -201,46 +244,21 @@ In this framework, identity is not generated once and preserved indefinitely.
 
 -----
 
-## Reconstruction Model
-
-CIP treats generation as a probabilistic transformation:
-
-```
-A → A'
-```
-
-Where:
-
-A = reference state (anchor)  
-A’ = reconstructed output
-
-The goal is not identical replication but **bounded convergence**.
-
-The internal reconstruction stage introduces variability that is:
-
-- Invisible to the user
-- Partially optimized by the model
-- Not directly controllable
-
-This reconstruction variability contributes significantly to identity drift.
-
------
-
 ## Convergence Attractor
 
-The anchor image acts as a **primary convergence attractor**.
+The anchor acts as a **primary convergence attractor**.
 
 ```
-Anchor = Previously Converged Output Image
+Anchor = Previously Converged Output (validated)
 ```
 
 Minimal Prompt = auxiliary constraint used during reconstruction
 
 Important clarification:
 
-- The image is **not** used as inspiration
+- The anchor is **not** used as inspiration
 - It functions as a **high-information constraint**
-- It represents a validated convergence state within the model’s output space
+- It represents a validated convergence state within the model’s reconstruction space
 
 Minimal prompts allow the model to explore its training distribution
 without forcing unstable constraints.
@@ -267,7 +285,7 @@ Layer C – Execution (Latent Sampling & Rendering)
 
 Verbose prompts tend to activate Layers A and B more strongly.  
 Minimal prompts appear to reduce interpretive and optimization pressure.  
-When paired with a converged image, the model’s solution space narrows significantly.
+When paired with a converged anchor, the model’s solution space narrows significantly.
 
 -----
 
@@ -311,13 +329,13 @@ Stability is therefore **chained** through repeated re-convergence cycles, rathe
 
 Periodic re-anchoring restores the convergence attractor and resets drift accumulation.
 
-Operational observations suggest that re-binding after multiple turns can significantly improve identity stability in production workflows (observed: every 10–15 turns).
+Internal production observations suggest that re-binding after multiple turns can improve identity stability in some workflows. These are workflow-specific observations, not controlled benchmarks.
 
 -----
 
 ## Why Anchors Reduce Drift
 
-A previously generated image:
+A previously generated and validated output:
 
 - Encodes high-dimensional latent structure
 - Represents a statistically valid solution
@@ -338,12 +356,16 @@ This does not imply literal parameter control, but functionally constrains the l
 ### Image-to-Image
 
 Encourages structural continuity but often introduces stylistic or semantic reinterpretation.
-Anchor usage differs in intent: the goal is **identity preservation**, not variation.
+Anchor usage differs in intent: the goal is **identity governance**, not variation.
 
 ### ControlNet
 
 Provides structural constraints (pose, depth, etc.) but content identity may still vary.
-Anchor mechanism applies constraints across both structure and identity.
+ControlNet does not define identity failure conditions, Hard Abort, or re-binding. These are CIP governance functions.
+
+### IP-Adapter and Similar Reference Systems
+
+May improve visual resemblance or continuity. Do not define adoption, rejection, purge, or auditability. Reference guidance is not identity governance.
 
 ### Seed Fixing
 
@@ -440,31 +462,60 @@ CIP documents these phenomena at the operational layer. Formal theoretical model
 
 -----
 
-## Practical Summary
+## Internal Production Observations
 
-|Metric                  |Without Protocol   |With Protocol      |
-|------------------------|-------------------|-------------------|
-|Identity preservation   |40–60% failure rate|<5% failure rate   |
-|Wasted generations      |~50%               |<5%                |
-|Predictability          |Uncontrolled drift |Managed convergence|
-|Cross-platform migration|Trial and error    |Systematic protocol|
+The following figures are based on internal production workflow observations and are not derived from controlled laboratory measurement. They are offered as qualitative orientation only.
 
-*Figures based on observed internal production workflows. Not derived from controlled laboratory measurement.*
+|Metric                  |Without Protocol   |With Protocol       |
+|------------------------|-------------------|--------------------|
+|Identity preservation   |Higher failure rate|Reduced failure rate|
+|Wasted generations      |Higher             |Reduced             |
+|Predictability          |Uncontrolled drift |Managed convergence |
+|Cross-platform migration|Trial and error    |Systematic protocol |
+
+*These observations reflect specific internal workflows. Results will vary by platform, generation system, and use case.*
 
 -----
 
-## Validation
+## Observed Operational Outcomes
 
-The anchor mechanism has been validated across production case studies, including:
+The anchor mechanism has been observed to support identity continuity across production workflows, including:
 
-- Multi-turn identity preservation (15+ turns, 4 pose variations)
+- Multi-turn identity preservation (observed across multiple turns and pose variations)
 - Cross-platform migration (Stable Diffusion → ChatGPT)
-- Identity recovery from collapse
-- Professional character creation in ChatGPT
-- Cross-platform replication on Gemini (Imagen 3)
+- Identity recovery from drift or collapse
+- Professional character creation workflows in ChatGPT
+- Cross-platform replication attempts on Gemini (Imagen 3) — partial convergence observed; anchor-preserving sequential generation was not confirmed
 
-*Validation was conducted in production workflows, not controlled laboratory conditions.  
+*These are production observations, not controlled laboratory results.  
 Systematic cross-platform testing remains an open research direction.*
+
+-----
+
+## PAL and CIP: Two-Layer Framework
+
+PAL (Persistent Anchor Layer) and CIP (Character Identity Protocol) operate as two complementary layers of the same framework.
+
+PAL originally existed inside CIP, but was later separated and expanded because its scope became broader.
+They now function as two distinct but coordinated layers.
+
+**PAL handles:**
+
+- generative continuity
+- persistent anchoring across sessions
+- anchor material availability at inference time
+
+**CIP handles:**
+
+- governance and validation
+- gate-based stopping conditions
+- Hard Abort, re-binding, re-convergence
+- adoption, rejection, purge
+- contamination control
+- auditability
+
+Neither layer alone constitutes identity governance.
+PAL supports continuity. CIP governs adoption and failure handling.
 
 -----
 
