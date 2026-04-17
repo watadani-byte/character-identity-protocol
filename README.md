@@ -18,7 +18,7 @@ C  = internal constraints (training priors, optimization pressure, compression, 
 A′ = internally reconstructed state
 B′ = actual output
 
-CIP controls A′.
+CIP governs the workflow around A′.
 C explains why drift occurs. It does not excuse unmanaged drift.
 ```
 
@@ -98,13 +98,13 @@ Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind
 
 CIP introduces a governance layer between the user and the model:
 
-|Component                       |Role                                                     |
-|--------------------------------|---------------------------------------------------------|
-|**Anchor**                      |Validated identity reference — the single source of truth|
-|**Identity Gates**              |PASS / FAIL validation (Face ∧ Skeleton ∧ Proportion)    |
-|**Hard Abort**                  |Immediate termination on identity failure                |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation           |
-|**Re-convergence**              |Controlled recovery from last verified anchor state      |
+|Component                       |Role                                                               |
+|--------------------------------|-------------------------------------------------------------------|
+|**Anchor**                      |Validated identity reference — the single source of truth          |
+|**Identity Gates**              |PASS / FAIL validation, beginning with Face ∧ Skeleton ∧ Proportion|
+|**Hard Abort**                  |Immediate termination on identity failure                          |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                     |
+|**Re-convergence**              |Controlled recovery from last verified anchor state                |
 
 Identity is not assumed to persist. It is continuously validated and recovered.
 
@@ -118,7 +118,7 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 ```
 Core Model:     A → (A + C) → B′  (Reconstruction Control Model)
 Control Target: A′  (reconstructed state)
-Key Operations: Anchor · Gates · Hard Abort · Re-convergence
+Key Operations: Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
 ```
 
 CIP does not improve generation.
@@ -303,7 +303,7 @@ One area where community contribution is particularly valuable:
 
 **PAL implementation examples on new platforms**
 
-As new AI platforms emerge — including domain-specific LLMs, video generation systems, and multimodal agents — documenting how PAL maps to their persistent layer features helps CIP grow as a platform-agnostic standard.
+As new AI platforms emerge — including domain-specific LLMs, video generation systems, and multimodal agents — documenting how PAL maps to their persistent layer features helps the CIP / PAL framework grow as a platform-agnostic standard.
 
 If you have implemented or observed PAL-like behavior on a platform not yet documented, contributions are welcome:
 
