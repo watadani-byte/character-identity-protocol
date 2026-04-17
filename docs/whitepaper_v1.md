@@ -1134,6 +1134,7 @@ This implies that future improvements in generative reliability may be achieved 
 - [Appendix D — Character Concept and IP Asset Management](#appendix-d--character-concept-and-ip-asset-management)
 - [Appendix E — Implementation Schema (JSON/YAML Specification)](#appendix-e--implementation-schema-jsonyaml-specification)
 - [Appendix F — Visual Drift Detection Checklist](#appendix-f--visual-drift-detection-checklist)
+- [Appendix G — Production Observation Notes](#appendix-g--production-observation-notes)
   - F.1 Face Gate
   - F.2 Skeleton Gate
   - F.3 Proportion Gate
@@ -1863,3 +1864,51 @@ attributes, this checklist serves as a prompt to extend it.
 
 *See: [Archetype Drift — Taxonomy](whitepaper_v1.md#238-archetype-drift)*  
 *See: [Glossary — Archetype Drift](glossary.md)*
+
+-----
+
+## Appendix G — Production Observation Notes
+
+### G.1 Purpose
+
+This appendix preserves numerical observations from internal production workflows separately from the main White Paper argument. These figures are workflow notes, not benchmark claims. They are documented here to provide context for practitioners reviewing CIP case studies, while avoiding the misreading of production observations as controlled laboratory results or protocol-level performance guarantees.
+
+### G.2 Observational Figures
+
+The following figures were observed across selected internal production sessions, primarily documented in case studies 01–07. They are not derived from controlled measurement and should not be treated as universal performance rates.
+
+|Metric                    |Observed Without Protocol            |Observed With Protocol            |
+|--------------------------|-------------------------------------|----------------------------------|
+|Identity gate failure rate|40–60% observed in selected workflows|<5% observed in selected workflows|
+|Wasted generations        |~50% observed in selected workflows  |<5% observed in selected workflows|
+|Cross-platform migration  |Trial and error                      |Systematic procedure observed     |
+
+**These figures are workflow notes, not benchmark claims.**
+
+### G.3 Measurement Context
+
+The following conditions and limitations apply to all figures in this appendix:
+
+- Observations are drawn from selected production sessions, primarily case studies 01–07
+- Gate outcomes (Face Gate, Skeleton Gate, Proportion Gate) were human-judged
+- No automated similarity metric was used in any reported measurement
+- No controlled laboratory validation was conducted
+- Results are platform-dependent: primary platform was ChatGPT (GPT Image 1) unless otherwise noted
+- Results are workflow-dependent: generation parameters, session structure, and anchor quality varied
+- Results are operator-dependent: human judgment thresholds were not standardized across sessions
+- Results are character-dependent: identity complexity, distinctiveness, and Reconstruction Durability varied
+- Systematic cross-platform measurement has not been conducted and remains pending
+
+### G.4 Interpretation
+
+These observations suggest that CIP-style governance — specifically, gate-based adoption and rejection, Hard Abort on failure, and anchor re-binding — may reduce accepted identity failures, uncontrolled retry loops, and wasted generations in the observed workflows.
+
+They do not establish universal performance rates. Reproduction of similar outcomes under different platforms, workflows, operators, or character definitions is not guaranteed and has not been systematically tested.
+
+### G.5 Status
+
+**Validation status: observational.**
+
+Systematic cross-platform measurement remains pending.
+
+These figures should be updated or replaced when controlled measurement becomes available. Until then, they serve as contextual workflow notes for practitioners and should be interpreted accordingly.
