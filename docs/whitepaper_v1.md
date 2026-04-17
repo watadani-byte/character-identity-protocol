@@ -35,7 +35,7 @@ CIP reframes character identity from a static output property to a recoverable c
 
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
-CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). These three components constitute the core technical architecture of the protocol.
+CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). In the current framework, HDLA and ARCM describe the continuity-side mechanisms used within CIP-governed workflows, while CIP provides the governance layer for validation, stopping, adoption, rejection, and purge.
 
 -----
 
@@ -193,7 +193,7 @@ flowchart TB
     PROMPT -.->|operates within| CIP_LAYER
 ```
 
-*Figure 1. CIP operates as an orthogonal reconstruction control layer relative to model-centric and prompt-centric approaches. Model modifications and prompt strategies remain valid within CIP-governed workflows; the protocol governs identity validation and recovery conditions independently of the generation mechanism employed.*
+*Figure 1. CIP operates as an orthogonal governance layer relative to model-centric, conditioning / reference-based, and prompt-centric approaches. Model modifications, reference-conditioning systems, and prompt strategies remain valid within CIP-governed workflows; the protocol governs identity validation, failure handling, adoption, rejection, purge, and recovery conditions independently of the generation mechanism employed.*
 
 -----
 
@@ -604,7 +604,7 @@ evaluation alone.*
 
 ## 3. Core Implementation: The Anchor Mechanism
 
-The protocol utilizes three pillars to lock identity:
+The protocol utilizes three pillars to stabilize identity:
 
 **1. Anchor Image**  
 The highest-purity reference image serving as the ground truth for convergence.  
@@ -1013,7 +1013,7 @@ A multi-view character sheet was generated (front, side, back views). This step 
 
 The character was regenerated using the assigned identifier and minimal prompt structure.
 
-Identity consistency was significantly improved, and drift was reduced relative to non-anchored generation.
+Identity consistency was observed to improve, and drift appeared reduced relative to non-anchored generation under the tested workflow conditions.
 
 ### 5.7 Observations
 
@@ -1021,7 +1021,7 @@ The following properties were observed:
 
 - Identity convergence can be induced without model modification
 - A single high-quality sample was sufficient to initialize an anchor in the tested workflow
-- Multi-view expansion stabilizes reconstruction across multiple view-conditioned perspectives
+- Multi-view expansion was observed to support reconstruction stability across multiple view-conditioned perspectives
 - Naming (identifier binding) was observed to improve recall probability
 - Under PAL-governed conditions, identity convergence has been observed in tested configurations without ControlNet, OpenPose, seed control, or LoRA — using only a stable UID and a PAL-registered anchor asset. This condition is termed **Anchor-Sufficient Convergence (ASC)**.
 
