@@ -10,13 +10,17 @@ This document clarifies the distinctions between CIP and commonly used approache
 
 ## Comparison Table
 
-|Approach                             |Category        |What It Modifies                                          |Typical Use                                                                                   |
-|-------------------------------------|----------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------|
-|**LoRA**                             |Model-centric   |Model weights (low-rank adapter)                          |Fine-tuning a model to generate a specific character or style                                 |
-|**DreamBooth**                       |Model-centric   |Model weights (full or partial fine-tune)                 |Training a model to associate a subject with a unique identifier                              |
-|**ControlNet**                       |Model-centric   |Generation via structural conditioning (pose, depth, edge)|Constraining image composition and structure during generation                                |
-|**Prompt Engineering**               |Prompt-centric  |Text input to the model                                   |Optimizing prompts to guide model outputs toward intended results                             |
-|**Character Identity Protocol (CIP)**|Governance layer|Generation workflow (not the model)                       |Governing identity stability through anchors, validation gates, and hard-abort recovery cycles|
+|Approach                             |Category                 |What It Modifies or Provides                              |Typical Use                                                                                   |
+|-------------------------------------|-------------------------|----------------------------------------------------------|----------------------------------------------------------------------------------------------|
+|**LoRA**                             |Model-centric            |Model weights (low-rank adapter)                          |Fine-tuning a model to generate a specific character or style                                 |
+|**DreamBooth**                       |Model-centric            |Model weights (full or partial fine-tune)                 |Training a model to associate a subject with a unique identifier                              |
+|**ControlNet**                       |Model-centric            |Generation via structural conditioning (pose, depth, edge)|Constraining image composition and structure during generation                                |
+|**IP-Adapter / Image Prompting**     |Reference-based          |Visual conditioning signal at inference time              |Improving resemblance to a reference image during generation                                  |
+|**Platform Image Reference Features**|Reference-based          |Platform-native image conditioning                        |Providing visual reference within a platform’s native generation interface                    |
+|**Prompt Engineering**               |Prompt-centric           |Text input to the model                                   |Optimizing prompts to guide model outputs toward intended results                             |
+|**Manual QA / Brand Review**         |Human review             |Output selection and approval                             |Human evaluation of generated outputs against brand or character standards                    |
+|**PAL (Persistent Anchor Layer)**    |Continuity infrastructure|Anchor material availability across sessions              |Maintaining persistent anchor materials for cross-session identity continuity                 |
+|**Character Identity Protocol (CIP)**|Governance layer         |Generation workflow (not the model)                       |Governing identity stability through anchors, validation gates, and hard-abort recovery cycles|
 
 -----
 
@@ -24,25 +28,47 @@ This document clarifies the distinctions between CIP and commonly used approache
 
 > **CIP does not modify the model. CIP governs the generation process.**
 
-LoRA, DreamBooth, and ControlNet are training-side or conditioning-side techniques that intervene at the model level. Prompt engineering optimizes the input signal. None of these approaches introduce explicit identity validation or failure conditions into the generation workflow.
+LoRA, DreamBooth, and ControlNet are training-side or conditioning-side techniques that intervene at the model level. Prompt engineering optimizes the input signal. IP-Adapter and platform image reference features provide visual conditioning at inference time. None of these approaches introduce explicit identity governance — defined failure conditions, Hard Abort, re-binding, adoption, rejection, purge, or auditability — into the generation workflow.
+
+**Reference guidance is not identity governance.**
+
+Improving visual resemblance is not the same as governed identity continuity. A generation workflow that produces consistent-looking outputs is not audit-ready unless it provides: a validated anchor, comparison outputs, defined failure criteria, PASS/FAIL rules, adoption and rejection conditions, and a recovery or purge procedure.
 
 CIP operates entirely at inference time. It does not modify model weights, training data, or internal architecture. Instead, it defines a structured operational workflow:
 
-- **Anchor images** provide a validated identity reference for each generation cycle
+- **Anchor materials** provide a validated identity reference for each generation cycle
 - **Identity validation gates** evaluate each output against defined criteria (face, skeleton, proportion)
 - **Hard Abort** terminates the cycle when validation fails, preventing drift propagation
-- **Re-binding and re-convergence** restart the cycle from the last validated anchor state
+- **Adoption / Rejection / Purge** determine what happens to outputs after gate evaluation
+- **Re-binding and re-convergence** restart the cycle from the last verified anchor state
 
-This makes CIP compatible with any generative system capable of accepting image references — including closed-source platforms — and applicable on top of existing model-centric techniques.
+This makes CIP compatible with any generative system capable of accepting anchor references — including closed-source platforms — and applicable on top of existing model-centric or reference-based techniques.
+
+PAL (Persistent Anchor Layer) supports this workflow by maintaining anchor materials across sessions, ensuring that re-convergence remains possible even after session resets or platform transitions.
+
+-----
+
+## What Existing Methods Do Well
+
+The methods listed above are valid and useful within their respective domains.
+
+- LoRA and DreamBooth can significantly improve character resemblance within a trained model.
+- ControlNet provides reliable structural conditioning for pose and composition.
+- IP-Adapter and platform image reference features enable reference-guided generation at inference time without model modification.
+- Manual QA and brand review provide human judgment as a quality control layer.
+
+These techniques address generation quality and resemblance. They do not address the governance problem: how to detect identity failure, halt drift propagation, recover to a verified state, and maintain an auditable record of adoption and rejection decisions.
 
 -----
 
 ## Summary
 
-Existing approaches to character consistency generally operate by modifying the model (LoRA, DreamBooth, ControlNet) or by optimizing inputs (prompt engineering). These are valid techniques but do not introduce explicit identity governance into the generation workflow.
+Existing approaches to character consistency generally operate by modifying the model (LoRA, DreamBooth, ControlNet), conditioning generation on a reference image (IP-Adapter, platform image features), or optimizing inputs (prompt engineering). These are valid techniques for improving resemblance and generation quality, but do not introduce explicit identity governance into the generation workflow.
 
-CIP addresses a different problem: how to detect, halt, and recover from identity drift in a principled and auditable way. Its contribution is the operational governance layer — anchors, identity validation gates, and hard-abort recovery cycles — that remains applicable regardless of the underlying model or platform.
+PAL supports continuity by maintaining anchor materials across sessions.
+
+CIP addresses a different problem: how to detect, halt, and recover from identity drift in a principled and auditable way. Its contribution is the operational governance layer — anchors, identity validation gates, adoption and rejection conditions, hard-abort recovery cycles, and purge procedures — that remains applicable regardless of the underlying model or platform.
 
 -----
 
-*See also: [CIP Terminology Mapping](cip_terminology_mapping.md) — [Technical Mechanism](technical_mechanism.md) — [Glossary](glossary.md)*
+*See also: [Technical Mechanism](technical_mechanism.md) — [Glossary](glossary.md)*
