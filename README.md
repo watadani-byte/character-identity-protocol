@@ -6,12 +6,20 @@ The same prompt produces different people.
 
 CIP introduces a protocol to control it.
 
-CIP is a protocol for controlling identity in probabilistic generative systems — operating entirely at inference time, without model modification.
+CIP is a governance and control protocol for identity in probabilistic generative systems — operating entirely at inference time, without model modification.
 
 ```
-A (input) → A′ (reconstructed) → B′ (output)
+A → (A + C) → B′
+A → A′ → B′
+A′ = A + C
+
+A  = user input or reference condition
+C  = internal constraints (training priors, optimization pressure, compression, platform constraints)
+A′ = internally reconstructed state
+B′ = actual output
 
 CIP controls A′.
+C explains why drift occurs. It does not excuse unmanaged drift.
 ```
 
 > This repository is under active documentation development.
@@ -48,6 +56,10 @@ can disappear in the process.
 This repository refers to that tendency as
 **Summary Assimilation**.
 
+Summarization is useful. The problem is not summarization itself,
+but the loss of governance-relevant distinctions that can occur
+when AI-generated summaries are accepted without human review.
+
 CIP is an attempt to respond to both problems:
 to define the missing governance structure explicitly,
 and to name distinctions that would otherwise
@@ -81,19 +93,23 @@ Conventional:
 Generate → Drift → Retry → Drift → Collapse
 
 CIP:
-Generate → Gate → PASS (accept) / FAIL → Hard Abort → Re-bind → Generate
+Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind → Generate
 ```
 
 CIP introduces a governance layer between the user and the model:
 
-|Component         |Role                                                     |
-|------------------|---------------------------------------------------------|
-|**Anchor**        |Validated identity reference — the single source of truth|
-|**Identity Gates**|PASS / FAIL validation (Face ∧ Skeleton ∧ Proportion)    |
-|**Hard Abort**    |Immediate termination on identity failure                |
-|**Re-convergence**|Controlled recovery from last verified anchor state      |
+|Component                       |Role                                                     |
+|--------------------------------|---------------------------------------------------------|
+|**Anchor**                      |Validated identity reference — the single source of truth|
+|**Identity Gates**              |PASS / FAIL validation (Face ∧ Skeleton ∧ Proportion)    |
+|**Hard Abort**                  |Immediate termination on identity failure                |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation           |
+|**Re-convergence**              |Controlled recovery from last verified anchor state      |
 
 Identity is not assumed to persist. It is continuously validated and recovered.
+
+**Reference-based generation is not identity governance.**
+Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image reference features may improve resemblance or continuity. They do not define failure conditions, Hard Abort, adoption, rejection, purge, or auditability.
 
 -----
 
@@ -111,8 +127,10 @@ It makes identity a controlled variable.
 This is not a prompt technique.
 It is a control protocol.
 
-> CIP governs identity. PAL sustains it
-> across sessions where persistence conditions are available.
+> CIP governs identity: validation, failure handling, adoption, rejection, and purge.
+> PAL sustains it: persistent anchoring and generative continuity across sessions.
+
+PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the same framework. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. They now function as two distinct but coordinated layers.
 
 > CIP should be read not as a denial of misuse risk,
 > but as a governance response to it.
@@ -141,7 +159,7 @@ It is a control protocol.
 
 **Related Frameworks**
 
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence*
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence and generative continuity*
 - [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 - [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 - [PAL Operations Manual](docs/pal_operations_manual_v0.1.md) — *File management, versioning, and continuity operations*
