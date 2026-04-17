@@ -1,8 +1,10 @@
 # Technical Mechanism — Character Identity Protocol
 
-CIP treats character identity as an inference-time control problem rather than a prompting problem.
+CIP treats character identity as an inference-time governance problem rather than a prompting problem.
 
 Within probabilistic generative systems, identity is treated as a recoverable convergence state in the model’s reconstruction space.
+
+In the current framework, PAL supports generative continuity and persistent anchoring, while CIP governs validation, stopping, re-binding, re-convergence, adoption, rejection, and purge.
 
 -----
 
@@ -124,7 +126,8 @@ A′ is not directly observable, but its behavior can be inferred from B′ and 
 
 **C explains why drift occurs. It does not excuse unmanaged drift.**
 
-CIP governs the reconstruction process by constraining A′ — not by controlling the output directly.
+CIP does not directly control A′.
+It governs the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
 -----
 
