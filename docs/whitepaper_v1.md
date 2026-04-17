@@ -2,8 +2,8 @@
 
 **Inference-Time Control of Reconstruction for Identity Convergence in Generative Systems**
 
-> This white paper reflects operational observations and validated production workflows.
-> It does not claim deterministic reproduction or internal model access.
+> This white paper reflects operational observations and production workflow case studies.
+> It does not claim deterministic reproduction, controlled laboratory validation, or internal model access.
 
 -----
 
@@ -13,13 +13,13 @@
 
 Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — primarily operate at the level of model parameters or input specification, and do not explicitly control the reconstruction process that produces outputs during inference.
 
-This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction control framework that formalizes identity stabilization as a control problem over the reconstructed state A′. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP treats A′ as the controlled variable and constrains its evolution under probabilistic drift.
+This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction control framework that formalizes identity stabilization as a governance problem over the reconstructed state A′. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP treats A′ as the governance target: it does not directly control A′, but defines the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
-The protocol defines a closed-loop control architecture consisting of: anchor-based constraints that restrict the reconstruction space, minimal prompt design that reduces optimization pressure, identity validation gates (Face, Skeleton, Proportion), and Hard Abort mechanisms that terminate invalid reconstruction trajectories. Together, these components support bounded convergence of A′ within an anchor-constrained region.
+The protocol defines a closed-loop control architecture consisting of: anchor-based constraints that bias the reconstruction space, minimal prompt design that reduces optimization pressure, identity validation gates (Face, Skeleton, Proportion), and Hard Abort mechanisms that terminate invalid reconstruction trajectories. Together, these components are observed to support bounded convergence of A′ within an anchor-proximate region.
 
-CIP operates entirely at inference time, requires no model modification, and is compatible with closed-source systems. Validation across production workflows — including multi-turn generation and cross-platform identity recovery — indicates that identity consistency can be improved by governing reconstruction dynamics rather than output similarity alone.
+CIP operates entirely at inference time, requires no model modification, and may be applied to closed-source systems to the extent that they expose sufficient reference, generation, and review controls. Production workflow observations — including multi-turn generation and cross-platform identity recovery — suggest that identity consistency can be improved by governing reconstruction workflows around A′ rather than output similarity alone.
 
-These results support the view that identity stability in generative systems is fundamentally an inference-time reconstruction control problem, and that governance of A′ provides a generalizable framework for improving reliability in probabilistic generative environments.
+These observations support the view that identity stability in generative systems is fundamentally an inference-time governance problem, and that governing the workflow around A′ provides a generalizable framework for improving reliability in probabilistic generative environments.
 
 -----
 
@@ -143,6 +143,14 @@ unresolved control and governance problems,
 and AI-assisted summarization
 can make that concealment systematic.
 
+Summary Assimilation should not be read as a claim that summarization is inherently harmful.
+Summarization is necessary for communication, documentation, and field formation.
+
+The governance issue is what happens after summarization:
+human judgment is required to determine which distinctions have been compressed,
+which unresolved problems have been made to appear solved,
+and whether new terminology is needed to preserve those distinctions.
+
 -----
 
 ## 2.1 Related Work and Research Context
@@ -159,9 +167,13 @@ Research on character consistency in generative AI systems has developed across 
 flowchart TB
     subgraph MODEL["Model-Centric Approaches"]
         M1[LoRA]
-        M2[ControlNet]
-        M3[IP-Adapter]
-        M4[DreamBooth]
+        M2[DreamBooth]
+    end
+
+    subgraph CONDITION["Conditioning / Reference-Based Approaches"]
+        C1[ControlNet]
+        C2[IP-Adapter]
+        C3[Platform Image Reference Features]
     end
 
     subgraph PROMPT["Prompt-Centric Approaches"]
@@ -169,14 +181,15 @@ flowchart TB
         P2[Master Prompts]
     end
 
-    subgraph CIP_LAYER["CIP — Reconstruction Control Layer"]
-        C1[Anchor Management]
-        C2[Identity Validation Gates]
-        C3[Hard Abort Recovery]
-        C4[Cross-Platform Re-convergence]
+    subgraph CIP_LAYER["CIP — Governance Layer"]
+        G1[Identity Validation Gates]
+        G2[Hard Abort]
+        G3[Re-binding / Re-convergence]
+        G4[Adoption / Rejection / Purge]
     end
 
     MODEL -.->|operates within| CIP_LAYER
+    CONDITION -.->|operates within| CIP_LAYER
     PROMPT -.->|operates within| CIP_LAYER
 ```
 
@@ -190,7 +203,7 @@ The majority of academic work on character consistency attempts to stabilize ide
 
 These approaches share a common assumption: that character consistency can be achieved by encoding identity features directly into model parameters or conditioning channels. They are often effective within a single model and deployment context, but they carry limitations in cross-platform scenarios and typically require access to model internals or training infrastructure.
 
-CIP does not modify model parameters or conditioning mechanisms. It operates entirely at inference time and is compatible with closed-source systems. This distinguishes CIP from model-centric approaches not as a competing technique but as an orthogonal operational layer.
+CIP does not modify model parameters or conditioning mechanisms. It operates entirely at inference time and may be applied to closed-source systems to the extent that they expose sufficient reference, generation, and review controls. This distinguishes CIP from model-centric approaches not as a competing technique but as an orthogonal operational layer.
 
 -----
 
@@ -234,7 +247,7 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
-Accordingly, CIP may be understood as an **inference-time reconstruction control framework implemented as an operational governance layer**: a protocol that constrains A′ reconstruction technically, and enforces PASS/FAIL validation, Hard Abort, and recovery operationally — all during inference, without modifying the model itself.
+Accordingly, CIP may be understood as an **inference-time reconstruction control framework implemented as an operational governance layer**: a protocol that governs reconstruction workflows around A′ through anchor materials, gate evaluation, Hard Abort, re-binding, adoption, rejection, and purge — all during inference, without modifying the model itself.
 
 -----
 
@@ -258,7 +271,7 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 ### Terminology: Control and Governance in CIP
 
-In CIP, “control” refers to the technical constraint of the reconstructed state (A′), while “governance” refers to the operational enforcement of validation, failure handling, and recovery.
+In CIP, “control” refers to workflow-level constraint around the reconstructed state (A′), while “governance” refers to the operational enforcement of validation, failure handling, adoption, rejection, purge, and recovery.
 
 These are complementary layers: control defines what is constrained and how; governance defines when constraints are enforced, when failures are declared, and what recovery path is taken.
 
@@ -274,31 +287,33 @@ Operationally, A′ is defined as:
 
 - the reconstruction state conditioned by prompt, anchor, and context
 - the immediate precursor to output generation (B′)
-- the control target within the CIP loop
+- the governance target within the CIP loop
 
-CIP does not control output directly. It constrains A′ indirectly through anchor injection, prompt entropy reduction, and identity validation gates.
+CIP does not directly control A′. It governs the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged — through anchor injection, prompt entropy reduction, and identity validation gates.
 
-Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by maintaining A′ within a bounded convergence region relative to the anchor.
+Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by governing the workflow around A′ relative to the anchor.
 
-We refer to this formulation — A → A′ → B′ — as the **Reconstruction Control Model (RCM)**. RCM provides the theoretical basis for treating identity drift as a reconstruction control problem rather than a prompt engineering or output filtering problem.
+We refer to this formulation — A → A′ → B′ — as the **Reconstruction Control Model (RCM)**. RCM provides the theoretical basis for treating identity drift as a reconstruction governance problem rather than a prompt engineering or output filtering problem.
 
 ### Control-Theoretic Interpretation
 
 CIP can be interpreted as a closed-loop control system:
 
-|Component          |Role                             |
-|-------------------|---------------------------------|
-|Controlled variable|A′ (reconstructed state)         |
-|Reference signal   |Anchor                           |
-|Control input      |Minimal Prompt + Anchor injection|
-|Decision logic     |Identity Gates (validation layer)|
-|Disturbance        |Probabilistic drift              |
-|Observer           |Output (B′) + evaluation process |
-|Control action     |Hard Abort and Re-binding        |
+|Component        |Role                             |
+|-----------------|---------------------------------|
+|Governance target|A′ (reconstructed state)         |
+|Reference signal |Anchor                           |
+|Control input    |Minimal Prompt + Anchor injection|
+|Decision logic   |Identity Gates (validation layer)|
+|Disturbance      |Probabilistic drift              |
+|Observer         |Output (B′) + evaluation process |
+|Control action   |Hard Abort and Re-binding        |
 
-CIP can therefore be interpreted as a **bounded stochastic control system over A′**: one in which the control objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
+*Note: A′ is treated here as the governance target — the state around which CIP defines acceptance, rejection, re-binding, and purge conditions. A′ is not directly observable or directly controllable; CIP governs the workflow conditions around it.*
 
-**Objective Function (Operational)**
+CIP can therefore be interpreted as a **bounded stochastic governance system over A′**: one in which the objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
+
+**Operational Objective (Conceptual)**
 
 ```
 Maximize: identity similarity to anchor under gate constraints
@@ -310,16 +325,18 @@ Subject to: Hard Abort condition when drift exceeds gate threshold
 
 CIP is structured as a multi-layer system spanning conceptual, control-theoretic, operational, and governance layers.
 
-The control-theoretic layer of CIP is referred to as **Reconstruction Convergence Control (RCC)** — the operational realization of bounded A′ control through anchor constraints, identity gates, and Hard Abort enforcement.
+The control-theoretic layer of CIP is referred to as **Reconstruction Convergence Control (RCC)** — the operational realization of bounded A′ governance through anchor constraints, identity gates, and Hard Abort enforcement.
 
 |Layer  |Name                      |Content                                                                                   |
 |-------|--------------------------|------------------------------------------------------------------------------------------|
 |Level 0|Worldview Layer           |Character Identity Protocol (CIP)                                                         |
 |Level 1|Phenomenon Model          |Reconstruction Control Model (RCM): A → A′ → B′                                           |
-|Level 2|Control Target            |Reconstructed State A′                                                                    |
+|Level 2|Governance Target         |Reconstructed State A′                                                                    |
 |Level 3|Control Theory Layer (RCC)|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
 |Level 4|Execution Method          |Anchor Re-Convergence Method (ARCM)                                                       |
 |Level 5|Governance Layer          |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
+
+In the current framework, PAL supports the continuity-side mechanisms that make anchor persistence and re-convergence possible, while CIP governs validation, stopping, adoption, rejection, and purge. The table above describes their combined operational stack as used in CIP-governed workflows.
 
 This layered structure allows CIP to function simultaneously as a research model, an engineering control system, and an operational governance protocol. Each layer is independently reviewable, operationally enforceable, and compatible with third-party audit.
 
@@ -680,9 +697,9 @@ By framing the request as recovery of a lost entity, the operator shifts the AI�
 
 This framing biases the model toward alignment with the provided visual anchor rather than interpreting the prompt freely.
 
-**Validation**
+**Observed Result**
 
-This approach was validated in a case study migrating a lost Stable Diffusion character into GPT Image 1, in which high-fidelity identity recall was achieved despite fundamental architecture differences.
+This approach was observed in a case study migrating a lost Stable Diffusion character into GPT Image 1, in which high-fidelity identity recall was achieved under the tested workflow conditions.
 
 *Full procedure documented in Case 04: Cross-Platform Migration (publication pending rights confirmation)*
 
@@ -737,46 +754,7 @@ Such systems can coordinate across pipeline stages, trigger re-binding events wh
 
 ### Pipeline Diagram
 
-*Figure 3. Representative Cross-Platform Production Pipeline under CIP Governance*
-
-```mermaid
-flowchart TD
-    GOV["CIP Governance Layer
-    ─────────────────────────────
-    Anchor Management · Identity Gates · Hard Abort · Re-convergence"]
-
-    S1["Stage 1: Reference Generation
-    (e.g., Midjourney)"]
-    S2["Stage 2: Anchor Finalization
-    (e.g., ComfyUI)"]
-    S3["Stage 3: Sequential Scene Generation
-    (e.g., GPT Image series)"]
-    GATE{"Identity Validation Gates
-    Face ∧ Skeleton ∧ Proportion"}
-    ABORT["Hard Abort
-    → Re-binding
-    → Re-convergence"]
-    S4["Stage 4: Production Post-Processing
-    (e.g., Adobe products)"]
-    S5["Stage 5: Orchestration / Workflow Governance
-    (e.g., ChatGPT / Claude / Gemini)"]
-
-    GOV -.->|governs| S3
-    GOV -.->|governs| GATE
-    GOV -.->|governs| ABORT
-
-    S1 --> S2
-    S2 --> S3
-    S3 --> GATE
-    GATE -->|PASS| S4
-    GATE -->|FAIL — drift detected| ABORT
-    ABORT -->|Re-converge| S3
-    S4 --> S5
-    S5 -.->|coordinates & audits| S2
-    S5 -.->|coordinates & audits| S3
-```
-
-*Note: Vendor names shown are examples only. The primary contribution is the CIP governance layer, which remains applicable as individual tools evolve.*
+*See Figure 4 below for the full pipeline diagram.*
 
 -----
 
@@ -841,23 +819,25 @@ Character assets remain persistent and manageable even as underlying technologie
 
 ### Operational Efficiency
 
-CIP reduces randomized generation attempts, thereby minimizing generation costs and human review time.
+CIP may reduce uncontrolled retry cycles by introducing earlier stop conditions and clearer adoption criteria, thereby reducing wasted generations and human review load in observed workflows.
 
-Production metrics observed across case studies:
+Internal production observations across case studies:
 
-*The following figures represent observational production-session averages and should not be interpreted as statistically validated benchmarks.*
+*The following figures are qualitative indicators based on internal production workflow observations. They are not statistically validated benchmarks.*
 
-|Metric                  |Without Protocol   |With Protocol       |
-|------------------------|-------------------|--------------------|
-|Identity preservation   |40–60% failure rate|<5% failure rate    |
-|Wasted generations      |~50%               |<5%                 |
-|Cross-platform migration|Trial and error    |Systematic procedure|
+|Metric                    |Without Protocol|With Protocol                |
+|--------------------------|----------------|-----------------------------|
+|Accepted identity failures|More likely     |Reduced through gates        |
+|Wasted generations        |Higher          |Reduced through early abort  |
+|Cross-platform migration  |Trial and error |Systematic recovery procedure|
+
+*Earlier internal estimates such as “40–60%” or “<5%” are treated as workflow notes, not protocol-level claims or statistically validated benchmarks.*
 
 *Measurement notes: Observational estimates based on production sessions documented in case studies 01–07. “Failure” = human-judged identity gate failure (Face Gate or Skeleton Gate or Proportion Gate). No automated measurement was used. Platform: ChatGPT (GPT Image 1) unless otherwise noted. These are provisional figures; systematic cross-platform measurement has not been conducted.*
 
 ### Measurement Disclosure
 
-All percentage-based thresholds reported in this document are observational governance thresholds established through production workflow monitoring. They are not claims about internal model architecture, deterministic output guarantees, or statistically validated benchmarks.
+Any percentage-based figures or thresholds referenced in this document or related case notes are observational governance notes established through production workflow monitoring. They are not claims about internal model architecture, deterministic output guarantees, or statistically validated benchmarks.
 
 Match rate assessment in the reported case studies was human-judged; no automated similarity metric was used in those measurements. CIP itself permits quantitative verification layers, but they are presented as optional implementations and non-prescriptive examples in this document.
 
@@ -1001,13 +981,13 @@ flowchart LR
 
 -----
 
-## 5. Experimental Validation: Anchor Convergence Protocol
+## 5. Operational Case Study: Anchor Convergence Protocol
 
-This section demonstrates the operational validity of the Character Identity Protocol (CIP) through a practical reconstruction workflow.
+This section describes the operational validity of the Character Identity Protocol (CIP) through a practical reconstruction workflow.
 
 ### 5.1 Objective
 
-To validate that character identity can be:
+To observe whether character identity can be:
 
 - Stabilized from a single high-quality sample
 - Reconstructed across generations
@@ -1040,16 +1020,16 @@ Identity consistency was significantly improved, and drift was reduced relative 
 The following properties were observed:
 
 - Identity convergence can be induced without model modification
-- A single high-quality sample is sufficient to initialize an anchor
+- A single high-quality sample was sufficient to initialize an anchor in the tested workflow
 - Multi-view expansion stabilizes reconstruction across multiple view-conditioned perspectives
-- Naming (identifier binding) significantly improves recall probability
+- Naming (identifier binding) was observed to improve recall probability
 - Under PAL-governed conditions, identity convergence has been observed in tested configurations without ControlNet, OpenPose, seed control, or LoRA — using only a stable UID and a PAL-registered anchor asset. This condition is termed **Anchor-Sufficient Convergence (ASC)**.
 
 *See: [Glossary — ASC](glossary.md) — [Column: PAL](column_pal.md)*
 
 ### 5.8 Interpretation
 
-This experiment supports the hypothesis that:
+This case study supports the hypothesis that:
 
 > Character identity is not stored as a fixed entity, but can be re-converged through controlled reconstruction conditions.
 
@@ -1065,9 +1045,9 @@ High-Density Sample
 
 ### 5.9 Conclusion
 
-Anchor Convergence is a valid operational mechanism for stabilizing identity in probabilistic generative systems.
+Anchor Convergence is an operationally observed mechanism for supporting identity stabilization in probabilistic generative systems.
 
-The workflow described in this section corresponds directly to the Shizuka case study (Case 04), in which a validated high-density sample was assigned a unique identifier, subjected to minimal prompt reduction, and expanded into a multi-view character sheet. This sequence produced stable identity re-convergence across sessions — without model fine-tuning or image-to-image re-anchoring. The case demonstrates that identifier binding combined with character sheet expansion substantially increases identity recall probability across generation cycles.
+The workflow described in this section corresponds directly to the Shizuka case study (Case 04), in which a validated high-density sample was assigned a unique identifier, subjected to minimal prompt reduction, and expanded into a multi-view character sheet. This sequence produced stable identity re-convergence across sessions — without model fine-tuning or image-to-image re-anchoring. The case suggests that identifier binding combined with character sheet expansion can increase identity recall probability across generation cycles under tested workflow conditions.
 
 -----
 
@@ -1093,7 +1073,7 @@ The UID reference is applied during the validation phase of the CIP governance l
 
 -----
 
-## 6. Validation
+## 6. Validation Status
 
 **Reproducibility Definition**
 
@@ -1101,7 +1081,7 @@ CIP defines reproducibility not as identical output replication, but as reproduc
 
 Under this definition, a workflow is reproducible if: given the same anchor, the same minimal prompt, and the same identity gate criteria, the classification outcome (PASS or FAIL) is consistently determinable — even when the generated images differ in non-identity-defining attributes.
 
-The protocol has been validated across the following production case groups:
+The protocol has been observed across the following production case groups:
 
 |Case  |Scenario                                                                                |Result                                                                                 |
 |------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
@@ -1122,18 +1102,20 @@ The protocol has been validated across the following production case groups:
 
 > *“So she can find her way home.”*
 
-In this sense, CIP is not a generation technique but a recovery protocol for identity persistence in probabilistic generative systems.
+In this sense, CIP is not a generation technique. It is a governance protocol for identity recovery and adoption control in probabilistic generative systems.
+
+PAL supports persistence and continuity; CIP governs recovery, validation, adoption, rejection, and purge.
 
 In the rapidly evolving landscape of generative AI, the Character Identity Protocol provides an operational framework for identity governance.
 
-By combining statistical convergence with explicit operational framing, CIP defines a structured approach to the management and preservation of character identities in production AI workflows.
+By combining statistical convergence with explicit operational framing, CIP defines a structured approach to the governance of character identities in production AI workflows.
 
 The protocol does not oppose the model’s optimization dynamics.  
 It constrains outputs operationally.
 
 ### Implication: Inference-Time Governance
 
-CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time reconstruction control problem.
+CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time governance problem.
 
 This implies that future improvements in generative reliability may be achieved not only through model scaling or training, but through structured operational control applied during inference.
 
