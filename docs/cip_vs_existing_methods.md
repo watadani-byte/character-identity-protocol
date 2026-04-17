@@ -4,6 +4,8 @@
 
 Many existing approaches address character consistency by modifying the model itself or by optimizing prompt inputs. CIP operates differently: it introduces a governance layer at the generation workflow level, governing the conditions under which outputs are accepted or rejected without altering the model.
 
+In the current framework, PAL supports generative continuity and persistent anchoring, while CIP governs validation, stopping, re-binding, recovery, adoption, rejection, and purge.
+
 This document clarifies the distinctions between CIP and commonly used approaches.
 
 -----
@@ -26,7 +28,7 @@ This document clarifies the distinctions between CIP and commonly used approache
 
 ## Key Clarification
 
-> **CIP does not modify the model. CIP governs the generation process.**
+> **CIP does not modify model weights or internal architecture. CIP governs the generation workflow.**
 
 LoRA, DreamBooth, and ControlNet are training-side or conditioning-side techniques that intervene at the model level. Prompt engineering optimizes the input signal. IP-Adapter and platform image reference features provide visual conditioning at inference time. None of these approaches introduce explicit identity governance — defined failure conditions, Hard Abort, re-binding, adoption, rejection, purge, or auditability — into the generation workflow.
 
@@ -37,12 +39,12 @@ Improving visual resemblance is not the same as governed identity continuity. A 
 CIP operates entirely at inference time. It does not modify model weights, training data, or internal architecture. Instead, it defines a structured operational workflow:
 
 - **Anchor materials** provide a validated identity reference for each generation cycle
-- **Identity validation gates** evaluate each output against defined criteria (face, skeleton, proportion)
+- **Identity validation gates** evaluate each output against defined criteria, beginning with structural gates such as face, skeleton, and proportion, and extending to domain-critical gates where required
 - **Hard Abort** terminates the cycle when validation fails, preventing drift propagation
 - **Adoption / Rejection / Purge** determine what happens to outputs after gate evaluation
 - **Re-binding and re-convergence** restart the cycle from the last verified anchor state
 
-This makes CIP compatible with any generative system capable of accepting anchor references — including closed-source platforms — and applicable on top of existing model-centric or reference-based techniques.
+This makes CIP applicable to generative systems capable of accepting anchor references — including closed-source platforms, to the extent that they expose sufficient reference, generation, and review controls — and usable on top of existing model-centric or reference-based techniques.
 
 PAL (Persistent Anchor Layer) supports this workflow by maintaining anchor materials across sessions, ensuring that re-convergence remains possible even after session resets or platform transitions.
 
@@ -67,7 +69,7 @@ Existing approaches to character consistency generally operate by modifying the 
 
 PAL supports continuity by maintaining anchor materials across sessions.
 
-CIP addresses a different problem: how to detect, halt, and recover from identity drift in a principled and auditable way. Its contribution is the operational governance layer — anchors, identity validation gates, adoption and rejection conditions, hard-abort recovery cycles, and purge procedures — that remains applicable regardless of the underlying model or platform.
+CIP addresses a different problem: how to detect, halt, and recover from identity drift in a principled and auditable way. Its contribution is the operational governance layer — anchor materials, identity validation gates, adoption and rejection conditions, hard-abort recovery cycles, and purge procedures — that remains applicable regardless of the underlying model or platform.
 
 -----
 
