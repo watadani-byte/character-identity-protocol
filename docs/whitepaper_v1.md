@@ -1812,7 +1812,7 @@ as the documented trigger.
 *See: [Glossary — Hard Abort](glossary.md)*  
 *See: [Appendix E — Implementation Schema](#appendix-e--implementation-schema-jsonyaml-specification)*
 
------ 
+-----
 
 ### F.7 Archetype Drift — Visual Checklist
 
