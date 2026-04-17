@@ -162,7 +162,8 @@ A′ is not directly observable but can be inferred from B′ and its deviation 
 
 **C explains why drift occurs. It does not excuse unmanaged drift.**
 
-CIP governs the reconstruction process by constraining A′ — not by controlling the output directly.
+CIP does not directly control A′.
+It governs the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
 *Formerly listed as “Reconstruction (A→A’)”*
 
@@ -285,9 +286,9 @@ It is a property of how the character was formed.
 
 ```
 Character Formation (RD)
+  ├── PAL Persistence / Continuity
   └── CIP Governance
-        └── PAL Persistence
-              └── ASC Conditions
+        └── Adoption / Rejection / Purge
 ```
 
 A character designed for high Reconstruction Durability
@@ -315,6 +316,8 @@ A theoretical abstraction of the generation process — not a claim about propri
 
 Verbose prompts activate Layers A and B more strongly.  
 Minimal prompts reduce pressure on Layers A and B, allowing the anchor to dominate.
+
+*Note: Layer C in this abstraction is not the same as C in the reconstruction model A → (A + C) → B′. The former names a conceptual processing layer; the latter names internal constraints such as training priors, optimization pressure, and platform behavior.*
 
 -----
 
@@ -450,6 +453,13 @@ PASS = FaceGate ∧ SkeletonGate ∧ ProportionGate
 
 If any gate fails → Hard Abort.  
 No progressive correction permitted.
+
+These are the minimal structural gates.
+
+They may not detect all identity failures. In domains where style,
+cultural frame, archetype register, costume state, sequence meaning,
+or persona consistency are identity-critical, additional gates must be
+defined by the operator.
 
 *See: [Quality Gate Addendum](quality_gate_addendum.md)*
 
@@ -634,8 +644,12 @@ PAL (Persistent Anchor Layer) and CIP (Character Identity Protocol) operate as t
 - contamination control
 - auditability
 
-Neither layer alone constitutes identity governance.
-PAL supports continuity. CIP governs adoption and failure handling.
+PAL alone does not constitute identity governance.
+CIP alone does not provide persistent continuity infrastructure.
+
+PAL supports continuity.
+CIP governs adoption and failure handling.
+Together, they form the continuity-governance stack.
 
 *See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md)*
 
