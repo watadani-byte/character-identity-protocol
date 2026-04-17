@@ -66,12 +66,14 @@ fine-tuning.
 
 **Implication:**
 
-ASC demonstrates that identity is not a property of
-generation tools — it is a property of the anchor.
+ASC describes an operationally observed condition in which
+identity is not a property of generation tools — it is
+a property of the anchor.
 
 When PAL is properly configured, the anchor asset alone
-is sufficient to maintain character identity across
-sessions, platforms, and generation cycles.
+may be sufficient to support character identity across
+sessions, platforms, and generation cycles. This is an
+observed pattern, not a universal guarantee.
 
 > The anchor is sufficient. The tools are optional.
 
@@ -86,19 +88,29 @@ sessions, platforms, and generation cycles.
 ## Anchor
 
 ```
-Anchor = Minimal Prompt + Previously Converged Output Image
+Anchor = Minimal Prompt + Previously Converged Output (validated)
 ```
 
-A previously generated image that represents a known, high-quality solution state.  
+A previously generated and validated output that represents a known, high-quality solution state.
 Used as a constraint to bias future generation toward the same convergence point.
 
-The image is **not** an artistic reference or stylistic inspiration. It is a record of a solution the model has already found.
+The anchor is **not** an artistic reference or stylistic inspiration. It is a record of a solution the model has already found and that has passed identity gate validation.
+
+*See also: [Anchor Material](glossary.md#anchor-material)*
+
+-----
+
+## Anchor Material
+
+The set of materials used to maintain and re-establish anchor-guided convergence. May include a validated anchor image, a UID definition, a character sheet, a structured identity document, or a combination of these.
+
+“Anchor material” is the broader term. “Anchor image” refers specifically to the visual component of anchor material in image-generation workflows.
 
 -----
 
 ## Anchor Mechanism
 
-The protocol-level stabilizing principle by which a validated anchor image is introduced as a high-information conditioning signal to bias reconstruction toward a previously achieved identity state.
+The protocol-level stabilizing principle by which validated anchor material is introduced as a high-information conditioning signal to bias reconstruction toward a previously achieved identity state.
 
 Distinct from image-to-image (which encourages variation) and seed fixing (which primarily controls initial noise sampling).
 
@@ -109,6 +121,50 @@ Distinct from image-to-image (which encourages variation) and seed fixing (which
 The operational workflow for forming and re-establishing an anchor. Includes: high-density sample selection, identity gate validation, identifier binding, minimal prompt reduction, and multi-view expansion. Constitutes the entry condition of the CIP governance loop.
 
 Distinct from Anchor Mechanism: Anchor Mechanism is the stabilizing principle; Anchor Convergence is the formation and re-convergence workflow.
+
+-----
+
+## Audit-Ready Character Consistency
+
+A character consistency workflow that provides the minimum evidence required for governance review. Audit-ready consistency requires:
+
+- a validated anchor
+- comparison outputs evaluated against the anchor
+- defined failure criteria
+- PASS/FAIL rules
+- adoption and rejection conditions
+- a recovery or purge procedure
+
+A workflow that produces visually consistent-looking outputs is not audit-ready unless these elements are present and documented.
+
+Reference-based generation, improved resemblance, or human approval alone do not constitute audit-ready character consistency.
+
+-----
+
+## Reconstruction (A → A′ → B′)
+
+The internal process by which a generative model interprets inputs and produces an output.
+
+```
+A → (A + C) → B′
+A → A′ → B′
+A′ = A + C
+```
+
+Where:
+
+- A = user input or reference condition (anchor, prompt)
+- C = internal constraints: training priors, optimization pressure, compression, platform constraints, and constraint rewriting
+- A′ = internally reconstructed state (not the output; not directly observable)
+- B′ = actual output
+
+A′ is not directly observable but can be inferred from B′ and its deviation from the anchor.
+
+**C explains why drift occurs. It does not excuse unmanaged drift.**
+
+CIP governs the reconstruction process by constraining A′ — not by controlling the output directly.
+
+*Formerly listed as “Reconstruction (A→A’)”*
 
 -----
 
@@ -247,24 +303,6 @@ platforms and model versions.
 
 -----
 
-## Reconstruction (A→A’)
-
-The internal process by which a generative model interprets a prompt and reformulates it into a generation target.
-
-```
-User prompt (A) → Model's internal reformulation (A') → Generation
-```
-
-This stage is:
-
-- Invisible to the user
-- Not directly controllable
-- The primary source of identity drift
-
-The anchor mechanism constrains A→A’ by supplying a high-information prior.
-
------
-
 ## Layer A / Layer B / Layer C
 
 A theoretical abstraction of the generation process — not a claim about proprietary architecture.
@@ -330,7 +368,7 @@ governance, contamination detection, and purge procedures.
 
 ## Match Rate
 
-A human-assessed similarity score between the anchor image and a generated output.
+A human-assessed similarity score between the anchor and a generated output.
 
 Match rate is not an identity verification metric. It is an **early warning indicator for character drift** — a signal that degradation may be beginning before full collapse occurs.
 
@@ -410,7 +448,7 @@ The set of validation conditions that must all pass before a generation is accep
 PASS = FaceGate ∧ SkeletonGate ∧ ProportionGate
 ```
 
-If any gate fails → hard abort.  
+If any gate fails → Hard Abort.  
 No progressive correction permitted.
 
 *See: [Quality Gate Addendum](quality_gate_addendum.md)*
@@ -426,6 +464,18 @@ No continuation, no correction, no exception.
 
 -----
 
+## Adoption / Rejection / Purge
+
+CIP governance decisions applied after gate evaluation.
+
+- **Adoption**: an output that passes all gates is accepted into the production workflow.
+- **Rejection**: an output that fails one or more gates is discarded; Hard Abort is triggered.
+- **Purge**: contaminated outputs and associated generation state are cleared before re-binding begins.
+
+These distinctions ensure that drift does not propagate through accepted outputs and that the re-convergence cycle begins from a verified clean state.
+
+-----
+
 ## Contamination
 
 The accumulation of identity drift in a session’s context, caused by:
@@ -436,6 +486,16 @@ The accumulation of identity drift in a session’s context, caused by:
 
 Contaminated sessions cannot be recovered by prompt adjustment.  
 They must be abandoned and restarted with a clean anchor.
+
+-----
+
+## Reference-Based Generation
+
+Generation conditioned on a reference image at inference time, without model modification. Examples include IP-Adapter, platform image prompting features, and similar systems.
+
+Reference-based generation may improve visual resemblance or continuity. It does not constitute identity governance: it does not define failure conditions, Hard Abort, re-binding, adoption, rejection, purge, or auditability.
+
+Reference guidance is not identity governance.
 
 -----
 
@@ -456,10 +516,12 @@ The gradual deviation of generated outputs from the established character identi
 
 Caused by:
 
-- Reconstruction variability (A→A’) accumulating across turns
+- Reconstruction variability (A → A′) accumulating across turns
 - Optimization pressure from verbose prompts
 - Session context degradation
 - Insufficient anchoring frequency
+
+C — internal constraints including training priors, optimization pressure, and platform behavior — explains why drift occurs. It does not excuse unmanaged drift.
 
 -----
 
@@ -528,6 +590,12 @@ Unresolved control problems are presented as existing method
 components, and genuinely important but still-unnamed distinctions
 disappear into apparently adequate descriptions.
 
+Summarization is useful. The problem is not summarization itself,
+but the loss of governance-relevant distinctions that can occur
+when AI-generated summaries are accepted without human review.
+Human judgment after summarization is necessary to verify that
+critical distinctions have not been absorbed or flattened.
+
 CIP is in part a response to this tendency:
 by naming distinctions explicitly,
 it attempts to preserve their visibility
@@ -539,7 +607,81 @@ before they can be assimilated into familiar frameworks.
 
 The procedure for re-establishing a character identity on a different generative platform.
 
-The anchor image functions as a platform-agnostic identity record.  
-The character’s convergence state can be recovered on any system capable of image-guided generation.
+The anchor material functions as a platform-agnostic identity record that can be reintroduced into a different system as a reference input. Identity gates are re-applied in the new environment to confirm whether convergence has been achieved.
+
+Recovery quality and the viability of subsequent sequential generation remain dependent on the capabilities of the target system — particularly its ability to preserve the anchor as a stable reference point across iterative updates. Cross-platform migration does not guarantee operational equivalence across platforms.
 
 *See: [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)*
+
+-----
+
+## PAL and CIP: Framework Relationship
+
+PAL (Persistent Anchor Layer) and CIP (Character Identity Protocol) operate as two complementary layers of the same framework. PAL originally existed inside CIP, but was separated and expanded because its scope became broader.
+
+**PAL handles:**
+
+- generative continuity
+- persistent anchoring across sessions
+- anchor material availability at inference time
+
+**CIP handles:**
+
+- governance and validation
+- gate-based stopping conditions
+- Hard Abort, re-binding, re-convergence
+- adoption, rejection, purge
+- contamination control
+- auditability
+
+Neither layer alone constitutes identity governance.
+PAL supports continuity. CIP governs adoption and failure handling.
+
+*See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md)*
+
+-----
+
+## Re-Anchoring Principle
+
+The operational principle that identity is not permanently preserved but must be periodically re-established through controlled re-convergence cycles.
+
+Re-anchoring is triggered when:
+
+- identity gate evaluation approaches failure
+- session length approaches the Max Context Stability Threshold (MCST)
+- Hard Abort has been executed
+
+Re-anchoring restores the convergence attractor and resets drift accumulation. It is a governance requirement, not an optional optimization.
+
+-----
+
+## Inter-PAL Conflict
+
+A condition in which two or more PAL-registered anchor assets contain conflicting identity definitions for the same character or role.
+
+Inter-PAL Conflict may occur during:
+
+- cross-session migration between platforms
+- version updates to anchor materials
+- multi-operator workflows where anchor definitions diverge
+
+Resolution requires explicit anchor governance: identifying the authoritative anchor, deprecating conflicting materials, and re-establishing a single verified convergence state.
+
+*See: [PAL Hypothesis Document](pal_hypothesis.md)*
+
+-----
+
+## Anchor Preservation Governance (APG)
+
+The CIP-side governance structure responsible for preserving externally defined structured anchors under operational conditions.
+
+APG defines four functions:
+
+- **Rule checking**: evaluating outputs against anchor-defined identity criteria
+- **Interpretive consistency monitoring**: detecting subtle shifts in identity register
+- **Drift signal detection**: identifying accumulating deviation before gate failure
+- **Governance decision**: determining adoption, rejection, or Hard Abort
+
+APG is distinct from PAL (which manages anchor material availability) and from monitoring or guardrails (which may flag outputs but do not define structured recovery procedures).
+
+*See: [PAL Hypothesis Document — Section 9.4, Section 15.6](pal_hypothesis.md) — [pal-lab/docs/glossary.md](https://github.com/watadani-byte/pal-lab)*
