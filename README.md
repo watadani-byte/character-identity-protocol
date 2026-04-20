@@ -85,11 +85,11 @@ and reframing it as an adoption-governance problem.
 
 ## The Problem
 
-You generate a character. It is exactly right.
+You generate an output. It appears correct.
 
-You generate it again. It is different.
+You generate it again. It is no longer safely adoptable.
 
-This is not a prompt failure. It is the expected behavior of a probabilistic system. Without adoption governance, identity drift accumulates undetected — and outputs that should be rejected continue to propagate.
+This is not a prompt failure. It is the expected behavior of a probabilistic system. Without adoption governance, drift accumulates undetected — and outputs that should be rejected continue to propagate.
 
 -----
 
@@ -137,7 +137,7 @@ It makes identity a controlled variable.
 This is not a prompt technique.
 It is a control protocol.
 
-> CIP governs identity: validation, failure handling, adoption, rejection, and purge.
+> CIP governs adoptability: validation, failure handling, adoption, rejection, and purge under identity, brand-code, and rights-control constraints.
 > PAL sustains it: persistent anchoring and generative continuity across sessions.
 
 PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the same framework. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. They now function as two distinct but coordinated layers.
@@ -210,7 +210,7 @@ To the author’s knowledge, this repository contains
 the earliest explicit documentation of:
 
 - **PAL** as a distinct governance-oriented concept,
-- **CIP** as an inference-time identity control framework, and
+- **CIP** as an inference-time adoption-governance framework for probabilistic outputs, and
 - **Summary Assimilation** as a term for the loss of
   still-unnamed distinctions through AI summarization.
 
