@@ -1,12 +1,23 @@
 # Character Identity Protocol (CIP)
 
-Generative AI does not preserve identity.
+CIP is an adoption-governance protocol for probabilistic outputs.
 
-The same prompt produces different people.
+It does not exist simply to make generated outputs more consistent.  
+It exists to determine whether an output remains valid for adoption under identity, brand-code, and rights-control constraints.
 
-CIP introduces a protocol to control it.
+In probabilistic generative and agentic systems, resemblance is not enough.  
+Functional usefulness is not enough.  
+Outputs that violate these constraints are not merely low-quality — they are non-adoptable.
 
-CIP is a governance and control protocol for identity in probabilistic generative systems — operating entirely at inference time, without model modification.
+CIP introduces a governance layer between generation and adoption.  
+Its purpose is to decide whether an output should be accepted, rejected, aborted, purged, or re-bound.
+
+Character identity in image and video generation is one concrete entry point.  
+But the underlying problem is broader: probabilistic outputs used as IP, brand, persona, or control-bound assets require explicit adoption governance.
+
+CIP governs that layer.
+
+CIP operates entirely at inference time, without model modification.
 
 ```
 A → (A + C) → B′
@@ -32,22 +43,21 @@ C explains why drift occurs. It does not excuse unmanaged drift.
 
 ## Why This Repository Exists
 
-Many components relevant to character consistency in generative AI
-already exist in partial form:
+Many existing components address character consistency in generative AI:
 reference images, prompt templates, anchor reuse,
 versioned assets, quality checks, retry workflows,
 and platform-specific persistence features.
 
 These components are useful.
-The problem is that they do not yet form
-a unified control framework —
-one that is explicit, closed, and governable.
+The problem is that they do not address adoption governance —
+the explicit, closed, and auditable determination of whether an output
+may be accepted, rejected, or purged under defined constraints.
 
 A secondary problem compounds this:
 AI-generated summaries of this domain
 tend to make its operationally fragmented reality
 appear more coherent and already-solved than it is.
-Unresolved control problems are absorbed into familiar
+Unresolved governance problems are absorbed into familiar
 explanatory frames and begin to appear as if they were
 already established method components.
 Still-unnamed but important distinctions
@@ -69,7 +79,7 @@ before they can be examined.
 The contribution is not novelty at the level of base technology.
 It is closer to identifying an unresolved operational domain,
 naming its missing structure,
-and reframing it as a control and governance problem.
+and reframing it as an adoption-governance problem.
 
 -----
 
@@ -79,7 +89,7 @@ You generate a character. It is exactly right.
 
 You generate it again. It is different.
 
-This is not a prompt failure. It is the expected behavior of a probabilistic system. Without operational control, identity drift emerges naturally across turns, sessions, and platforms.
+This is not a prompt failure. It is the expected behavior of a probabilistic system. Without adoption governance, identity drift accumulates undetected — and outputs that should be rejected continue to propagate.
 
 -----
 
