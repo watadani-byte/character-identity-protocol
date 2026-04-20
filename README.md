@@ -43,7 +43,7 @@ C explains why drift occurs. It does not excuse unmanaged drift.
 
 ## Why This Repository Exists
 
-Many existing components address character consistency in generative AI:
+Many existing components address continuity and control problems in probabilistic generative systems:
 reference images, prompt templates, anchor reuse,
 versioned assets, quality checks, retry workflows,
 and platform-specific persistence features.
@@ -131,8 +131,8 @@ Control Target: A′  (reconstructed state)
 Key Operations: Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
 ```
 
-CIP does not improve generation.
-It makes identity a controlled variable.
+CIP does not primarily optimize generation.
+It makes adoptability a controlled variable.
 
 This is not a prompt technique.
 It is a control protocol.
@@ -295,7 +295,7 @@ character-identity-protocol/
 
 ```bibtex
 @misc{character_identity_protocol_2026,
-  title={Character Identity Protocol: Operational Governance for Identity Convergence in Probabilistic Generative Systems},
+  title={Character Identity Protocol: Operational Adoption Governance for Probabilistic Outputs},
   author={Hitoshi Watadani},
   year={2026},
   note={GitHub Repository},
