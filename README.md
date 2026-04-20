@@ -108,13 +108,13 @@ Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind
 
 CIP introduces a governance layer between the user and the model:
 
-|Component                       |Role                                                               |
-|--------------------------------|-------------------------------------------------------------------|
-|**Anchor**                      |Validated identity reference — the single source of truth          |
-|**Identity Gates**              |PASS / FAIL validation, beginning with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination on identity failure                          |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                     |
-|**Re-convergence**              |Controlled recovery from last verified anchor state                |
+|Component                       |Role                                                                                                    |
+|--------------------------------|--------------------------------------------------------------------------------------------------------|
+|**Anchor**                      |Validated identity reference — the single source of truth                                               |
+|**Identity Gates**              |PASS / FAIL validation against defined identity constraints, beginning with Face ∧ Skeleton ∧ Proportion|
+|**Hard Abort**                  |Immediate termination on identity failure                                                               |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                          |
+|**Re-convergence**              |Controlled recovery from last verified anchor state                                                     |
 
 Identity is not assumed to persist. It is continuously validated and recovered.
 
