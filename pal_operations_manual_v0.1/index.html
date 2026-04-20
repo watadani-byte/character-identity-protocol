@@ -1,0 +1,3102 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/pal_operations_manual_v0.1/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PAL Operations Manual v0.1 - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pal-operations-manual-v01" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PAL Operations Manual v0.1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model (A→C→B′)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency — An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_complete_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Complete Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_integrated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Integrated
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Character_Identity_Protocol_Quality_Gate_Addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate Addendum (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence — Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis (Technical)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-governing-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Governing Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-yaml-first-and-ssot-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. YAML-First and SSOT Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-file-module-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. File Module Specification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-file-creation-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. File Creation Policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. File Creation Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-write-for-reuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Write for reuse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-write-for-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Write for auditability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-keep-active-files-focused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Keep active files focused
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-keep-anti-drift-separate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Keep anti-drift separate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-make-constraints-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Make constraints explicit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-keep-file-scope-narrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Keep file scope narrow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-naming-and-metadata-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Naming and Metadata Policy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-versioning-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Versioning Policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Versioning Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-major-version-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Major Version Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-minor-version-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Minor Version Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-patch-version-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Patch Version Change
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-revision-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Revision Triggers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-archive-and-rollback-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Archive and Rollback Policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Archive and Rollback Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-archive-before-replacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Archive before replacing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-preserve-rollback-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Preserve rollback paths
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-record-revision-reasons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Record revision reasons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-separate-archive-from-live-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Separate archive from live use
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-session-management-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Session Management Policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Session Management Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-separate-research-from-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Separate research from execution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-keep-execution-sessions-focused" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Keep execution sessions focused
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-one-major-change-per-session-turn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 One major change per session turn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-preserve-checkpoints-immediately" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Preserve checkpoints immediately
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-contamination-prevention-and-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Contamination Prevention and Detection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Contamination Prevention and Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-prevention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Prevention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-detection-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Detection indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-response-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 Response protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-repository-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Repository Management
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-enterprise-documentation-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Enterprise Documentation Extension
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-governance-and-safety-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Governance and Safety Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-minimal-operational-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Minimal Operational Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-suggested-repository-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Suggested Repository Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-operational-threshold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        17. Operational Threshold
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="pal-operations-manual-v01">PAL Operations Manual v0.1</h1>
+<p><em>Operational guidance for file creation, versioning, repository use, and continuity management</em></p>
+<p><strong>Status:</strong> Working Operations Manual<br />
+<strong>Scope:</strong> Character-centric PAL management workflows, with extension notes for enterprise documentation environments<br />
+<strong>Nature:</strong> Operational guidance<br />
+<strong>Date:</strong> 2026-04-03</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This document defines how to <strong>create, manage, revise, and preserve</strong> a PAL over time.</p>
+<p>The PAL Hypothesis document describes what PAL is and how it may function as a cross-session stabilization layer.
+This document addresses a different question:</p>
+<blockquote>
+<p>How should a PAL be managed so that it remains usable, auditable, and stable across ongoing operational use?</p>
+</blockquote>
+<p>A PAL is not created once. It is maintained continuously.</p>
+<p>PAL should not be treated as a loose collection of prompts or images.
+It should be treated as a <strong>versioned, modular operational asset system</strong>.</p>
+<hr />
+<h2 id="2-governing-principles">2. Governing Principles</h2>
+<p>A PAL should be managed as a <strong>versioned modular reference system</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One file, one role</td>
+<td>Each file serves a distinct, explicit function</td>
+</tr>
+<tr>
+<td>Modular replacement</td>
+<td>Update by replacing modules, not rebuilding from scratch</td>
+</tr>
+<tr>
+<td>Execution / research separation</td>
+<td>Keep live-use materials separate from exploratory materials</td>
+</tr>
+<tr>
+<td>Checkpoint preservation</td>
+<td>Successful anchors are preserved, not discarded</td>
+</tr>
+<tr>
+<td>Drift as operational data</td>
+<td>Observed drift is logged systematically, not discarded</td>
+</tr>
+<tr>
+<td>Infrastructure discipline</td>
+<td>PAL is managed like an operational asset layer, not an informal prompt notebook</td>
+</tr>
+</tbody>
+</table>
+<p>The goal is not to build one perfect file.
+The goal is to maintain a stable operational layer that can be updated without losing continuity.</p>
+<hr />
+<h2 id="3-yaml-first-and-ssot-policy">3. YAML-First and SSOT Policy</h2>
+<p>YAML is the <strong>Single Source of Truth (SSOT)</strong> for all PAL definitions.</p>
+<p>English-language prompts are a <strong>delivery format</strong>, not the authoritative source layer.</p>
+<p>This means:</p>
+<ul>
+<li>Identity definitions should be authored in YAML first</li>
+<li>English prompts should be generated from the YAML definition, not the other way around</li>
+<li>When generation quality degrades, return to the YAML source — not to the English prompt</li>
+<li>Do not edit YAML to match English. Edit English to match YAML.</li>
+</ul>
+<p><strong>SSOT enforcement:</strong></p>
+<blockquote>
+<p>If a conflict exists between the YAML definition and the English prompt, the YAML definition is authoritative.</p>
+</blockquote>
+<p>This policy applies to all modules: identity_core, behavioral_profile, delta_lexicon, and acceptance_criteria.</p>
+<hr />
+<h2 id="4-file-module-specification">4. File Module Specification</h2>
+<p>A PAL should be divided into discrete, reusable modules.</p>
+<p><strong>Core modules (required for operational use):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>identity_core</code></td>
+<td>Stable YAML definition of the target identity</td>
+</tr>
+<tr>
+<td><code>structural_anchor</code></td>
+<td>Multi-angle structural reference (character sheet or equivalent)</td>
+</tr>
+<tr>
+<td><code>active_anchor</code></td>
+<td>Most recent operationally validated reference asset</td>
+</tr>
+<tr>
+<td><code>behavioral_profile</code></td>
+<td>Continuity definition for behavior, affect, and relational register</td>
+</tr>
+<tr>
+<td><code>delta_lexicon</code></td>
+<td>Controlled wording set for managed modifications</td>
+</tr>
+<tr>
+<td><code>acceptance_criteria</code></td>
+<td>Explicit success and failure conditions</td>
+</tr>
+<tr>
+<td><code>operation_notes</code></td>
+<td>Context-specific instructions for current workflow</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Supporting modules (as needed):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>supporting_anchors</code></td>
+<td>Additional validated references for specific scene types</td>
+</tr>
+<tr>
+<td><code>anti_drift</code></td>
+<td>Documentation of observed drift directions — research asset, not execution input</td>
+</tr>
+<tr>
+<td><code>scene_packs</code></td>
+<td>Scene-specific prompt and reference bundles</td>
+</tr>
+<tr>
+<td><code>platform_notes</code></td>
+<td>Platform-specific PAL mapping observations</td>
+</tr>
+<tr>
+<td><code>session_review</code></td>
+<td>Post-session quality and continuity logs</td>
+</tr>
+<tr>
+<td><code>contamination_reports</code></td>
+<td>Documented contamination events and resolutions</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important:</strong> Anti-drift materials are research assets.
+They should be documented and preserved, but should not be mixed into live execution inputs.</p>
+<hr />
+<h2 id="5-file-creation-policy">5. File Creation Policy</h2>
+<h3 id="51-write-for-reuse">5.1 Write for reuse</h3>
+<p>Files should be written to function across multiple sessions and workflows, not for a single use.</p>
+<h3 id="52-write-for-auditability">5.2 Write for auditability</h3>
+<p>Each file should make its purpose explicit. Another operator should be able to identify why it exists and how it should be used without needing additional context.</p>
+<h3 id="53-keep-active-files-focused">5.3 Keep active files focused</h3>
+<p>Active execution files should remain narrow in scope.
+Do not accumulate session history, exploratory notes, or drift documentation in live operational files.</p>
+<h3 id="54-keep-anti-drift-separate">5.4 Keep anti-drift separate</h3>
+<p>Anti-drift references are operationally valuable as documentation.
+They should be stored in the <code>anti_drift/</code> module, not injected into live execution inputs.</p>
+<h3 id="55-make-constraints-explicit">5.5 Make constraints explicit</h3>
+<p>If a constraint matters operationally, it must be written down.
+Do not rely on implicit recall. Explicit constraints are operationally durable. Implicit ones are not.</p>
+<h3 id="56-keep-file-scope-narrow">5.6 Keep file scope narrow</h3>
+<p>A file should address one operational problem.
+Narrow scope improves replaceability, reduces contamination risk, and simplifies rollback.</p>
+<hr />
+<h2 id="6-naming-and-metadata-policy">6. Naming and Metadata Policy</h2>
+<p>Every PAL file should be identifiable at a glance from its filename and metadata header.</p>
+<p><strong>Recommended metadata fields:</strong></p>
+<ul>
+<li><code>title</code></li>
+<li><code>module_type</code></li>
+<li><code>version</code></li>
+<li><code>status</code> — active / archive / deprecated / experimental</li>
+<li><code>date</code></li>
+<li><code>scope</code></li>
+<li><code>uid</code> (character identifier)</li>
+<li><code>notes</code> (brief description of last change)</li>
+</ul>
+<p><strong>Filename convention:</strong></p>
+<pre><code>{uid}_{module_type}_{variant}_{version}_{status}.{ext}
+</code></pre>
+<p><strong>Examples:</strong></p>
+<pre><code>rieko_identity_core_v0.1_active.yaml
+rieko_active_anchor_bridal_v0.2_active.pdf
+rieko_anti_drift_bridal_v0.1_archive.md
+rieko_behavioral_profile_v0.1_active.yaml
+</code></pre>
+<p><strong>Status labels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td>Current operational file</td>
+</tr>
+<tr>
+<td><code>archive</code></td>
+<td>Preserved for reference or rollback</td>
+</tr>
+<tr>
+<td><code>deprecated</code></td>
+<td>No longer recommended for live use</td>
+</tr>
+<tr>
+<td><code>experimental</code></td>
+<td>Test use only — not for production workflows</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-versioning-policy">7. Versioning Policy</h2>
+<p>All PAL files and module sets should be versioned explicitly using a three-part scheme: <code>MAJOR.MINOR.PATCH</code>.</p>
+<h3 id="71-major-version-change">7.1 Major Version Change</h3>
+<p>Use when PAL structure changes substantially.</p>
+<p>Triggers:</p>
+<ul>
+<li>Module structure redesign</li>
+<li>Major identity reinterpretation</li>
+<li>Replacement of core operational logic</li>
+<li>Acceptance criteria model change</li>
+</ul>
+<p>Example: <code>v1.0.0 → v2.0.0</code></p>
+<h3 id="72-minor-version-change">7.2 Minor Version Change</h3>
+<p>Use when the PAL is meaningfully improved without structural change.</p>
+<p>Triggers:</p>
+<ul>
+<li>Stronger active anchor identified</li>
+<li>New supporting anchors added</li>
+<li>Behavioral profile clarity improved</li>
+<li>Anti-drift coverage expanded</li>
+<li>Delta lexicon refined</li>
+</ul>
+<p>Example: <code>v0.1.0 → v0.2.0</code></p>
+<h3 id="73-patch-version-change">7.3 Patch Version Change</h3>
+<p>Use for small corrections that do not affect operational behavior.</p>
+<p>Triggers:</p>
+<ul>
+<li>Wording fixes</li>
+<li>Metadata correction</li>
+<li>Formatting cleanup</li>
+<li>Score annotation adjustment without criteria change</li>
+</ul>
+<p>Example: <code>v0.1.0 → v0.1.1</code></p>
+<hr />
+<h2 id="8-revision-triggers">8. Revision Triggers</h2>
+<p>A PAL should be revised when any of the following occurs:</p>
+<ul>
+<li>A stronger active anchor is operationally validated</li>
+<li>A new recurring drift pattern is observed and confirmed</li>
+<li>A current file is consistently producing contamination or ambiguity</li>
+<li>A better delta wording pattern is confirmed across multiple sessions</li>
+<li>Acceptance criteria prove too weak, too strict, or too vague</li>
+<li>A platform-specific behavior changes in a way that affects operational outcomes</li>
+<li>A workflow expands into a new scene domain or state</li>
+</ul>
+<p><strong>Revision discipline:</strong></p>
+<p>Do not revise because a more visually appealing output was generated.
+Revision should be driven by <strong>continuity value</strong>, not aesthetic novelty.
+Version increments should reflect operational improvement, not preference.</p>
+<hr />
+<h2 id="9-archive-and-rollback-policy">9. Archive and Rollback Policy</h2>
+<p>Previous operational states should always be recoverable.</p>
+<h3 id="91-archive-before-replacing">9.1 Archive before replacing</h3>
+<p>Before replacing any active module, move the prior version to <code>archive/</code> with its version label intact.</p>
+<p>Always archive:</p>
+<ul>
+<li>Previous active anchors</li>
+<li>Previous identity core versions</li>
+<li>Prior acceptance criteria versions</li>
+<li>Drift notes linked to major revisions</li>
+</ul>
+<h3 id="92-preserve-rollback-paths">9.2 Preserve rollback paths</h3>
+<p>At any point in the operational lifecycle, it must be possible to return to the last known reliable state.
+This is not optional. It is a core operational requirement.</p>
+<h3 id="93-record-revision-reasons">9.3 Record revision reasons</h3>
+<p>Every version change should include a brief revision note.</p>
+<p>Example:</p>
+<pre><code>v0.2: active anchor updated following stronger bridal continuity result in session 2026-03-15.
+</code></pre>
+<h3 id="94-separate-archive-from-live-use">9.4 Separate archive from live use</h3>
+<p>Archived materials should not remain in active execution folders.
+Move deprecated and archived files explicitly.
+Do not rely on filename suffixes alone to distinguish them from live files.</p>
+<hr />
+<h2 id="10-session-management-policy">10. Session Management Policy</h2>
+<h3 id="101-separate-research-from-execution">10.1 Separate research from execution</h3>
+<p><strong>Research sessions:</strong> taxonomy development, drift discovery, concept testing, comparative analysis</p>
+<p><strong>Execution sessions:</strong> production-oriented generation, active recall, limited modifications, checkpoint generation</p>
+<p>Do not mix research activity into execution sessions without explicit intent.</p>
+<h3 id="102-keep-execution-sessions-focused">10.2 Keep execution sessions focused</h3>
+<p>Short, focused sessions reduce contamination risk and uncontrolled drift accumulation.</p>
+<h3 id="103-one-major-change-per-session-turn">10.3 One major change per session turn</h3>
+<p>Do not attempt multiple major transformations simultaneously.
+Compound changes make drift attribution difficult.</p>
+<h3 id="104-preserve-checkpoints-immediately">10.4 Preserve checkpoints immediately</h3>
+<p>When a success state is identified, preserve it before continuing.
+Deferred preservation is a common source of unrecoverable loss.</p>
+<hr />
+<h2 id="11-contamination-prevention-and-detection">11. Contamination Prevention and Detection</h2>
+<p>PAL operates as a normative persistence layer, not only a visual reference system.
+Contaminated anchor materials may stabilize unintended behavioral frames with the same effectiveness as intended ones.</p>
+<h3 id="111-prevention">11.1 Prevention</h3>
+<ul>
+<li>Audit anchor library contents before deployment</li>
+<li>Define contamination criteria before deployment, not after</li>
+<li>Do not register exploratory, adversarial, or untested materials into the active execution layer</li>
+<li>Anti-drift references should remain in <code>anti_drift/</code> — not in active execution inputs</li>
+<li>Maintain strict separation between execution assets and research assets at all times</li>
+</ul>
+<h3 id="112-detection-indicators">11.2 Detection indicators</h3>
+<p>Contamination may be indicated by:</p>
+<ul>
+<li>Persistent behavioral register shifts not traceable to prompt changes</li>
+<li>Resistance to operator direction across multiple sessions</li>
+<li>Outputs that systematically reflect materials registered in the library but not actively invoked</li>
+<li>Drift patterns that do not respond to rollback of prompt changes alone</li>
+</ul>
+<h3 id="113-response-protocol">11.3 Response protocol</h3>
+<p>When contamination is detected or suspected:</p>
+<ol>
+<li><strong>Stop active execution immediately.</strong> Do not continue production workflows under suspected contamination.</li>
+<li>Disconnect session references to the affected library layer.</li>
+<li>Purge suspect materials from the persistent reference layer — even if their connection to the anomaly is unclear.</li>
+<li>Do not rely on session reset alone. Session reset clears conversation context. It does not purge the persistent reference layer.</li>
+<li>Verify that shared or parallel sessions are also no longer exposed to affected materials.</li>
+<li>Re-validate the library and behavioral baseline before resuming governed operation.</li>
+<li>Document the event in <code>contamination_reports/</code>.</li>
+<li>If the anomaly is severe or the mechanism is unclear, escalate to platform support.</li>
+</ol>
+<blockquote>
+<p>A well-formed anchor stabilizes intended behavior.
+A contaminated anchor stabilizes unintended behavior.
+PAL cannot distinguish between them.
+That distinction is the operator’s responsibility.</p>
+</blockquote>
+<hr />
+<h2 id="12-repository-management">12. Repository Management</h2>
+<p>For long-running PAL workflows, repository-based management is recommended.</p>
+<p>A version-controlled repository provides:</p>
+<ul>
+<li>Explicit change history</li>
+<li>Rollback capability</li>
+<li>Modular file organization</li>
+<li>Drift and contamination issue tracking</li>
+<li>Release tagging for stable PAL sets</li>
+</ul>
+<p><strong>Recommended practices:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Practice</th>
+<th>Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Module changes</td>
+<td>Record via commits with revision notes</td>
+</tr>
+<tr>
+<td>Experiments</td>
+<td>Use branches, not the main operational branch</td>
+</tr>
+<tr>
+<td>Drift / contamination events</td>
+<td>Document as issues</td>
+</tr>
+<tr>
+<td>Stable checkpoints</td>
+<td>Tag as releases</td>
+</tr>
+<tr>
+<td>Active / archive separation</td>
+<td>Maintain as explicit folder structure</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Platform note:</strong> GitHub is a practical choice but not a requirement.
+The core requirement is explicit version control and operational traceability — regardless of tooling.</p>
+<hr />
+<h2 id="13-enterprise-documentation-extension">13. Enterprise Documentation Extension</h2>
+<p>The same operational principles described in this manual may apply to internal documentation used in enterprise AI workflows.</p>
+<p>Many organizations already provide AI systems with access to support manuals, operational procedures, escalation rules, compliance references, and internal knowledge documents.</p>
+<p>In these environments, continuity failures may not present as character drift.
+They may present as:</p>
+<ul>
+<li>Policy drift across sessions</li>
+<li>Instruction drift under changing context</li>
+<li>Inconsistent escalation behavior</li>
+<li>Outdated procedure recall</li>
+<li>Unstable response quality across operators</li>
+</ul>
+<p>When internal documentation becomes part of an AI reference workflow, it should be treated as an operational persistence layer — not as passive storage.</p>
+<p><strong>Recommended practices for enterprise documentation:</strong></p>
+<ul>
+<li>Keep active documents separate from archive documents</li>
+<li>Label deprecated materials explicitly</li>
+<li>Preserve version history with revision reasons</li>
+<li>Avoid mixing exploratory or provisional content into live operational reference sets</li>
+<li>Define contamination criteria for documentation that should not influence AI behavior</li>
+</ul>
+<p>This document remains centered on character-centric workflows.
+However, the same operational logic — modularity, versioning, auditability, and rollback — applies wherever AI behavioral consistency must be maintained across sessions.</p>
+<hr />
+<h2 id="14-governance-and-safety-notes">14. Governance and Safety Notes</h2>
+<p>PAL is not a neutral convenience layer.</p>
+<p>A more effective persistence condition carries increased governance responsibility.</p>
+<p><strong>Operational risks:</strong></p>
+<ul>
+<li>Unintended behavioral frame locking</li>
+<li>Persistent bias reinforcement across sessions</li>
+<li>Hidden continuity contamination</li>
+<li>Cross-session carryover of undesirable patterns</li>
+<li>Operator over-trust in persistence behavior without validation</li>
+</ul>
+<p><strong>Governance requirements:</strong></p>
+<ul>
+<li>Changes must be documented</li>
+<li>Acceptance criteria must be explicit</li>
+<li>Drift must be logged</li>
+<li>Rollback must remain possible at all times</li>
+<li>Operators must distinguish controlled continuity from uncontrolled lock-in</li>
+</ul>
+<p>The value of PAL as a stabilization tool is inseparable from its governance obligation.</p>
+<hr />
+<h2 id="15-minimal-operational-workflow">15. Minimal Operational Workflow</h2>
+<p>A practical first operational setup may proceed as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Create <code>identity_core</code></td>
+<td>Author in YAML. English prompt is a projection.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Create <code>structural_anchor</code></td>
+<td>Multi-angle reference if available</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Register first <code>active_anchor</code></td>
+<td>Use validated output only</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Create <code>behavioral_profile</code></td>
+<td>Define continuity baseline</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Create initial <code>delta_lexicon</code></td>
+<td>Document controlled modification patterns</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Define <code>acceptance_criteria</code></td>
+<td>Explicit success and failure conditions</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Begin short execution sessions</td>
+<td>Focused, single-objective sessions</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Preserve successful checkpoints</td>
+<td>Archive before continuing</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Log drift cases</td>
+<td>Record in <code>anti_drift/</code> or <code>drift_logs/</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Increment to next minor version</td>
+<td>Only when continuity measurably improves</td>
+</tr>
+</tbody>
+</table>
+<p>This produces a manageable PAL v0.1 operational set.</p>
+<hr />
+<h2 id="16-suggested-repository-layout">16. Suggested Repository Layout</h2>
+<pre><code>pal/
+├── active/
+│   ├── identity_core/
+│   ├── structural_anchor/
+│   ├── active_anchor/
+│   ├── behavioral_profile/
+│   ├── delta_lexicon/
+│   ├── acceptance_criteria/
+│   └── operation_notes/
+│
+├── supporting/
+│   ├── supporting_anchors/
+│   └── scene_packs/
+│
+├── anti_drift/
+│   ├── archetype_drift/
+│   ├── westernization_drift/
+│   └── scene_specific_drift/
+│
+├── archive/
+│   ├── v0.1/
+│   ├── v0.2/
+│   └── deprecated/
+│
+├── logs/
+│   ├── session_logs/
+│   ├── drift_logs/
+│   └── contamination_reports/
+│
+└── README.md
+</code></pre>
+<hr />
+<h2 id="17-operational-threshold">17. Operational Threshold</h2>
+<p>A PAL is being managed correctly when it meets three conditions:</p>
+<ol>
+<li><strong>Revisable</strong> — it can be updated without losing its history</li>
+<li><strong>Auditable</strong> — its state and change record are clear to any operator</li>
+<li><strong>Recoverable</strong> — it can be rolled back to the last known reliable state without collapse</li>
+</ol>
+<p>These are the minimum operational requirements.
+They are not aspirational — they are the baseline that makes PAL viable as a long-term operational tool.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

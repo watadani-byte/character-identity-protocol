@@ -1,0 +1,4766 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for stabilizing character identity in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/pal_hypothesis/">
+      
+      
+        <link rel="prev" href="../column_pal/">
+      
+      
+        <link rel="next" href="../column_translation_loss/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PAL Hypothesis (Technical) - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#persistent-anchor-layer-pal" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PAL Hypothesis (Technical)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model (A→C→B′)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency — An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_complete_spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Complete Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_integrated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Integrated
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Character_Identity_Protocol_Quality_Gate_Addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate Addendum (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../master_document/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift — Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A — Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B — Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 — Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 — Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 — Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 — Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 — Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence — Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis (Technical)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis (Technical)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misuse-risks-and-governance-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Misuse Risks and Governance Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-relation-to-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Relation to CIP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-operational-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Operational Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-anchor-sufficient-convergence-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Anchor-Sufficient Convergence (ASC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-scope-and-applicability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Scope and Applicability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-library-governance-and-contamination-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Library Governance and Contamination Risk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Library Governance and Contamination Risk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Responsibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-contamination-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Contamination Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-active-purge-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Active Purge Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-what-pal-does-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 What PAL Does Not Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-normative-and-cultural-frame-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Normative and Cultural Frame Persistence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Normative and Cultural Frame Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-beyond-visual-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Beyond Visual Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-cultural-frame-drift-in-image-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Cultural Frame Drift in Image Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-observed-case-rieko-wedding-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Observed Case: Rieko — Wedding Scene
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-normative-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Normative Persistence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-revised-scope-of-pal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 Revised Scope of PAL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#106-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pal-as-a-possible-inference-time-bias-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. PAL as a Possible Inference-Time Bias Condition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. PAL as a Possible Inference-Time Bias Condition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-a-deeper-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 A Deeper Implication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-the-c-layer-in-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 The C Layer in CIP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-pal-as-a-possible-external-c-like-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 PAL as a Possible External C-like Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-how-this-differs-from-model-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 How This Differs from Model Modification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-implications-for-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Implications for Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-implications-for-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 Implications for CIP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-status-and-caution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 Status and Caution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-security-policy-and-high-impact-deployment-risks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Security, Policy, and High-Impact Deployment Risks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Security, Policy, and High-Impact Deployment Risks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-scope-of-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Scope of This Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-elevated-risk-in-high-impact-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Elevated Risk in High-Impact Environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-policy-violation-amplification-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Policy-Violation Amplification Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-role-and-authority-misrepresentation-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Role and Authority Misrepresentation Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-contamination-propagation-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Contamination Propagation Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126-governance-principle-for-high-impact-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 Governance Principle for High-Impact Deployments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-limitations-and-validation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Limitations and Validation Status
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Limitations and Validation Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-what-has-not-been-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 What Has Not Been Validated
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-platform-and-vendor-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Platform and Vendor Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-boundary-conditions-not-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Boundary Conditions Not Tested
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-alternative-explanations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Alternative Explanations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-what-this-document-claims-and-does-not-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 What This Document Claims and Does Not Claim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-validation-priorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 Validation Priorities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-staged-scope-expansion-from-visual-persistence-to-broader-stabilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Starting Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-what-is-actually-being-stabilized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 What Is Actually Being Stabilized?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-what-does-a-reconstruction-condition-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 What Does a Reconstruction Condition Contain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-observational-extension-to-non-visual-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 Observational Extension to Non-Visual Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#155-scope-extension-and-its-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 Scope Extension and Its Conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#156-governance-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6 Governance Implications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#157-evidentiary-status-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.7 Evidentiary Status Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misuse-risks-and-governance-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Misuse Risks and Governance Warning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Problem Statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-relation-to-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Relation to CIP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-operational-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Operational Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-anchor-sufficient-convergence-asc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Anchor-Sufficient Convergence (ASC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-scope-and-applicability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Scope and Applicability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Status
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-library-governance-and-contamination-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Library Governance and Contamination Risk
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Library Governance and Contamination Risk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-responsibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Responsibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-contamination-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Contamination Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-active-purge-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Active Purge Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-what-pal-does-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 What PAL Does Not Do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-normative-and-cultural-frame-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Normative and Cultural Frame Persistence
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Normative and Cultural Frame Persistence">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-beyond-visual-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Beyond Visual Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-cultural-frame-drift-in-image-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Cultural Frame Drift in Image Generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-observed-case-rieko-wedding-scene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Observed Case: Rieko — Wedding Scene
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-normative-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Normative Persistence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-revised-scope-of-pal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 Revised Scope of PAL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#106-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pal-as-a-possible-inference-time-bias-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. PAL as a Possible Inference-Time Bias Condition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. PAL as a Possible Inference-Time Bias Condition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-a-deeper-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 A Deeper Implication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-the-c-layer-in-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 The C Layer in CIP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-pal-as-a-possible-external-c-like-condition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 PAL as a Possible External C-like Condition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-how-this-differs-from-model-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 How This Differs from Model Modification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-implications-for-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 Implications for Governance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-implications-for-cip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.6 Implications for CIP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-status-and-caution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.7 Status and Caution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-security-policy-and-high-impact-deployment-risks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Security, Policy, and High-Impact Deployment Risks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Security, Policy, and High-Impact Deployment Risks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-scope-of-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Scope of This Section
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-elevated-risk-in-high-impact-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Elevated Risk in High-Impact Environments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-policy-violation-amplification-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 Policy-Violation Amplification Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-role-and-authority-misrepresentation-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.4 Role and Authority Misrepresentation Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-contamination-propagation-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.5 Contamination Propagation Risk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126-governance-principle-for-high-impact-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.6 Governance Principle for High-Impact Deployments
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-limitations-and-validation-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Limitations and Validation Status
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Limitations and Validation Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-what-has-not-been-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 What Has Not Been Validated
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-platform-and-vendor-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 Platform and Vendor Limitations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-boundary-conditions-not-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 Boundary Conditions Not Tested
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-alternative-explanations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.4 Alternative Explanations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-what-this-document-claims-and-does-not-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.5 What This Document Claims and Does Not Claim
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#136-validation-priorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.6 Validation Priorities
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-staged-scope-expansion-from-visual-persistence-to-broader-stabilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-starting-point" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.1 Starting Point
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-what-is-actually-being-stabilized" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.2 What Is Actually Being Stabilized?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#153-what-does-a-reconstruction-condition-contain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.3 What Does a Reconstruction Condition Contain?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#154-observational-extension-to-non-visual-domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.4 Observational Extension to Non-Visual Domains
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#155-scope-extension-and-its-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.5 Scope Extension and Its Conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#156-governance-implications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.6 Governance Implications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#157-evidentiary-status-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15.7 Evidentiary Status Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="persistent-anchor-layer-pal">Persistent Anchor Layer (PAL)</h1>
+<p><em>An Emerging Infrastructure Hypothesis for Cross-Session Identity Stabilization</em></p>
+<blockquote>
+<p>Persistent reference availability as a
+cross-session stabilization condition.</p>
+</blockquote>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Persistent Anchor Layer (PAL) is a proposed
+infrastructure concept for cross-session
+stabilization in generative AI systems.</p>
+<p>The hypothesis is that persistently available
+anchor materials — a validated UID and associated
+anchor asset — may improve reconstruction
+continuity across sessions without direct model
+modification.</p>
+<p>PAL is framed as an inference-time persistence
+condition, not a training-time intervention and
+not a parameter-level modification of any kind.</p>
+<p>Observations from operational workflows suggest
+that persistent anchor availability may help
+suppress identity drift, role drift, and
+culturally bounded reconstruction drift.
+These observations are not validated through
+controlled experimentation and should be treated
+as preliminary.</p>
+<p>If the PAL hypothesis is valid, it does not reduce
+the need for governance. It increases it. A more
+effective persistence condition is also a more
+consequential one — and consequential mechanisms
+require accountable governance frameworks.</p>
+<p>This document records PAL as an observational hypothesis
+and a governance-oriented risk framing for further evaluation.
+Controlled validation remains pending.</p>
+<hr />
+<h2 id="misuse-risks-and-governance-warning">Misuse Risks and Governance Warning</h2>
+<p>This document describes a governance-oriented
+risk framing for the PAL hypothesis.</p>
+<p>It is not an operational guide.
+It is not an exploitation guide.
+It does not provide methods for misusing
+AI persistence mechanisms.</p>
+<p>The risks described in this document are included
+because understanding misuse potential is a
+prerequisite for designing adequate governance.</p>
+<blockquote>
+<p>Describing a risk is not endorsing it.
+It is a precondition for governing it.</p>
+</blockquote>
+<p><strong>This document does not provide:</strong></p>
+<ul>
+<li>Concrete methods for attacking AI systems</li>
+<li>Operational procedures for contaminating
+  anchor libraries</li>
+<li>Guidance for circumventing AI governance systems</li>
+<li>Methods for exploiting persistence mechanisms
+  in high-impact or high-authority environments</li>
+</ul>
+<p><strong>This document does provide:</strong></p>
+<ul>
+<li>A conceptual risk framing</li>
+<li>Governance recommendations</li>
+<li>Contamination risk awareness</li>
+<li>Library governance requirements</li>
+<li>Defensive governance guidance</li>
+</ul>
+<p>Readers who identify misuse potential beyond
+what is described here are encouraged to engage
+with the governance frameworks referenced in
+this document rather than act on that potential.</p>
+<hr />
+<h2 id="status-note">Status Note</h2>
+<p>The following table summarizes the validation
+status of claims made in this document.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Content</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–5, 7–8</td>
+<td>Core PAL hypothesis and scope</td>
+<td>Observational. Controlled validation pending.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ASC conditions</td>
+<td>Observational finding. Not validated.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Library governance requirements</td>
+<td>Precautionary model. Not empirically derived.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Normative and cultural frame persistence</td>
+<td>Observational. Mechanism not established.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>PAL as possible inference-time bias condition</td>
+<td>Theoretical extension. Not validated.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Security and high-impact risks</td>
+<td>Precautionary framing. Not empirically derived.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Limitations</td>
+<td>Documented.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Conclusion</td>
+<td>Governance requirements stated.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Staged scope expansion</td>
+<td>Conceptual extension. Base observation is operational. Extensions are hypothetical or precautionary.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No claims in this document are:</strong></p>
+<ul>
+<li>Vendor-confirmed</li>
+<li>Validated through controlled experimentation</li>
+<li>Guaranteed to generalize across platforms</li>
+<li>Claims about internal model architecture</li>
+</ul>
+<p>All mechanism descriptions are proposed
+explanatory models, not confirmed causal accounts.</p>
+<blockquote>
+<p>Controlled validation pending across all sections.</p>
+</blockquote>
+<hr />
+<h2 id="1-problem-statement">1. Problem Statement</h2>
+<p>Generative systems exhibit identity drift across sessions.</p>
+<p>A character established in one session may reappear in later
+sessions with altered facial structure, proportions, styling,
+or overall recognizability.</p>
+<p>In operational terms: session reset implies practical identity loss.</p>
+<p>The standard response is re-injection — providing the full anchor
+materials at the start of each new session.</p>
+<p>PAL proposes a different framing:</p>
+<blockquote>
+<p>If anchor materials remain persistently available across sessions,
+session reset may no longer imply identity loss.</p>
+</blockquote>
+<p>This document examines that hypothesis.</p>
+<hr />
+<h2 id="2-definition">2. Definition</h2>
+<p><strong>Persistent Anchor Layer (PAL)</strong> refers to an external persistence
+layer in which validated identity materials remain continuously
+available across sessions.</p>
+<p>These materials may include:</p>
+<ul>
+<li>UID definitions</li>
+<li>Anchor images</li>
+<li>Structured identity documents</li>
+<li>Platform-level reference assets</li>
+</ul>
+<p><strong>What PAL is not:</strong></p>
+<p>PAL does not describe model-side storage of identity.
+PAL does not describe parameter-level modification.
+PAL does not describe fine-tuning, LoRA, or checkpoint injection.</p>
+<p>PAL describes an infrastructure condition:
+anchor materials remain available at inference time through
+persistent file, project, caching, or reference systems.</p>
+<p>The stabilization effect, if it exists, occurs at the
+inference layer — not at the training or parameter layer.</p>
+<p>PAL does not validate the content of anchor materials.
+Content governance is the responsibility of the operator.
+See Section 9.</p>
+<p>PAL does not validate, sanitize, or normatively
+assess anchor materials.
+Any continuity benefit, if present, is separable
+from the question of whether the persistent materials
+are safe, correct, policy-compliant, or
+appropriately governed.</p>
+<p>The stronger PAL’s stabilization effect may be,
+the more consequential the governance of its
+anchor library becomes.</p>
+<hr />
+<h2 id="3-hypothesis">3. Hypothesis</h2>
+<p><strong>Operational hypothesis:</strong>
+When a validated UID and anchor asset are registered
+in a persistent reference layer, reconstruction
+behavior may become more stable across sessions.</p>
+<p>This is a hypothesis, not a confirmed finding.
+It is based on operational observations and has not
+been subjected to controlled experimentation.</p>
+<p><strong>Proposed mechanism:</strong>
+Persistent availability of anchor materials at
+inference time may reduce the reconstruction gap
+that normally opens after session reset — not by
+modifying the model, but by ensuring that the
+conditioning inputs remain consistently available.</p>
+<p>This proposed mechanism is not vendor-confirmed.
+It is an explanatory model offered to account for
+observed behavior. Alternative explanations
+may exist.</p>
+<p><strong>Observed indicators:</strong></p>
+<p>The following patterns have been observed in
+operational workflows:</p>
+<ul>
+<li>Apparent improvement in identity recall
+  across sessions</li>
+<li>Apparent stronger convergence toward
+  anchor conditions</li>
+<li>Apparent reduction in practical identity loss
+  after session reset</li>
+</ul>
+<p>These observations are preliminary.
+They have not been validated through controlled
+experimentation. They should not be treated as
+proof of the proposed mechanism.</p>
+<p><strong>Validation status:</strong></p>
+<p>No controlled validation has been completed.
+Boundary conditions, failure modes, and
+platform-specific variation have not been
+systematically tested.</p>
+<p>The proposed effect is described as analogous
+in outcome to lightweight stabilization methods
+such as LoRA or checkpointing.
+It is not analogous in mechanism.</p>
+<p>PAL operates through input persistence,
+not parameter encoding.
+These are fundamentally different intervention
+points — even if operational outcomes appear
+similar under certain conditions.</p>
+<blockquote>
+<p>This section describes a hypothesis.
+It does not describe a proven mechanism.</p>
+</blockquote>
+<hr />
+<h2 id="4-relation-to-cip">4. Relation to CIP</h2>
+<p>PAL does not replace HDLA or ARCM within the CIP framework.
+It describes the persistence infrastructure within which those
+mechanisms may remain operational across sessions.</p>
+<p>Structural relation:</p>
+<ul>
+<li><strong>PAL</strong> = persistence infrastructure</li>
+<li><strong>HDLA</strong> = dense anchor representation layer</li>
+<li><strong>ARCM</strong> = re-convergence logic</li>
+</ul>
+<pre><code>PAL (Persistent Anchor Layer)
+└── HDLA (High-Density Latent Anchoring)
+    └── ARCM (Anchor Re-Convergence Method)
+</code></pre>
+<p>CIP describes the governance model.
+PAL describes a possible persistence condition
+that may support cross-session continuity
+within which CIP mechanisms remain operational.</p>
+<blockquote>
+<p>CIP governs identity conditions.
+PAL may sustain the persistence context
+in which they remain operational.</p>
+</blockquote>
+<hr />
+<h2 id="5-operational-pattern">5. Operational Pattern</h2>
+<p>The central operational implication of PAL:</p>
+<blockquote>
+<p>PAL in place. Same UID. Different prompt. Same character.</p>
+</blockquote>
+<p>This shorthand expresses the recurring operational pattern
+PAL is intended to describe, not a universal guarantee.</p>
+<p>This pattern suggests that identity continuity may no longer
+depend primarily on prompt sameness or auxiliary control tooling.</p>
+<p>Under PAL conditions, continuity may persist through anchor
+availability rather than repeated reconstruction from scratch.</p>
+<p><strong>Clarification:</strong>
+This is an operationally observed pattern, not a validated
+causal claim. The mechanism by which persistent availability
+produces this effect is not yet established.</p>
+<hr />
+<h2 id="6-anchor-sufficient-convergence-asc">6. Anchor-Sufficient Convergence (ASC)</h2>
+<p>Operational use has produced an observed condition termed
+Anchor-Sufficient Convergence (ASC).</p>
+<p>ASC describes an observed convergence condition under which
+identity continuity appears in the following pattern:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAL in place</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>Same UID</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>Seed control</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>ControlNet</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>OpenPose</td>
+<td>Not required</td>
+</tr>
+<tr>
+<td>Different prompts</td>
+<td>Permitted</td>
+</tr>
+<tr>
+<td>Same character</td>
+<td>Operationally observed outcome</td>
+</tr>
+</tbody>
+</table>
+<p><strong>What ASC does not claim:</strong>
+ASC does not claim that PAL causes identity persistence
+through any specific mechanism.
+ASC describes a pattern of observed operational outcomes
+under conditions where PAL is in place.</p>
+<p>ASC remains an observational finding.
+No controlled validation has been completed.</p>
+<p><em>See: <a href="../glossary/">Glossary — ASC</a></em></p>
+<hr />
+<h2 id="7-scope-and-applicability">7. Scope and Applicability</h2>
+<p>PAL is not limited to character identity workflows.</p>
+<p>The same persistent-reference pattern may be applicable to
+domains requiring cross-session consistency, including:</p>
+<ul>
+<li>Character and IP continuity in creative production</li>
+<li>Brand asset continuity</li>
+<li>Legal or regulatory reference anchoring</li>
+<li>Educational persona stability</li>
+<li>Protocol adherence in structured professional workflows</li>
+</ul>
+<p>The concept is infrastructure-oriented rather than
+domain-specific.</p>
+<p><strong>Scope boundary:</strong>
+PAL addresses inference-time persistence conditions.
+It does not address training-time consistency,
+model-level identity encoding, or parameter-level stability.
+Those remain separate problem domains.</p>
+<hr />
+<h2 id="8-status">8. Status</h2>
+<p><strong>Observational basis:</strong>
+Operational use of persistent file and project features
+across current AI platforms.</p>
+<p><strong>Validation status:</strong>
+No controlled validation has been completed.
+Boundary conditions, failure modes, and platform-specific
+variation have not been systematically tested.</p>
+<p><strong>Claim level:</strong>
+PAL is an infrastructure hypothesis.
+It is not a proven mechanism.
+It is not a vendor specification.
+Platform mappings described in related documents are
+conceptual interpretations, not vendor-confirmed behaviors.</p>
+<p><em>First documented: March 2026</em><br />
+<em>Status: Observational hypothesis</em><br />
+<em>Related: <a href="../column_pal/">Column: PAL</a> —
+<a href="../technical_mechanism/">Technical Mechanism</a> —
+<a href="../whitepaper_v1/">White Paper</a></em></p>
+<hr />
+<h2 id="9-library-governance-and-contamination-risk">9. Library Governance and Contamination Risk</h2>
+<h3 id="91-responsibility">9.1 Responsibility</h3>
+<p>PAL describes an infrastructure condition.
+It does not validate the content of anchor materials.</p>
+<p><strong>The responsibility for constructing and maintaining
+the anchor library belongs to the operator.</strong></p>
+<p>This includes:</p>
+<ul>
+<li>Selecting anchor assets that accurately represent
+  the intended identity, role, and normative frame</li>
+<li>Ensuring that anchor materials are free from
+  content that could produce harmful, misleading,
+  or unintended reconstruction behavior</li>
+<li>Reviewing and updating the library as the
+  governed system evolves</li>
+</ul>
+<p>PAL is content-neutral.
+Its stabilization effect applies regardless of
+whether the anchored content is beneficial or harmful.</p>
+<blockquote>
+<p>A well-formed anchor stabilizes intended behavior.
+A contaminated anchor stabilizes unintended behavior.</p>
+</blockquote>
+<p>The governance of what is anchored is entirely
+the operator’s responsibility.</p>
+<hr />
+<h3 id="92-contamination-risk">9.2 Contamination Risk</h3>
+<p>Because PAL may function as a normative and cultural
+frame persistence layer — not only a visual identity
+layer — the consequences of anchor contamination
+extend beyond visual drift.</p>
+<p>Contaminated anchor materials may include content
+that encodes harmful behavioral norms, misrepresents
+the system’s intended function or authority, conflicts
+with applicable policies or ethical standards,
+or biases reconstruction toward harmful outputs.</p>
+<p>The persistence mechanism that stabilizes beneficial
+anchors will equally stabilize harmful ones.</p>
+<blockquote>
+<p>PAL does not distinguish between intended and
+unintended normative frames.
+That distinction is the operator’s responsibility.</p>
+</blockquote>
+<hr />
+<h3 id="93-active-purge-requirement">9.3 Active Purge Requirement</h3>
+<p>When contamination is detected or suspected,
+operators must actively purge affected anchor materials
+from the persistent layer.</p>
+<p>Passive removal is insufficient.
+Contaminated materials that remain accessible —
+even if nominally deprecated — may continue to
+influence reconstruction behavior.</p>
+<p><strong>Recommended practice:</strong></p>
+<ul>
+<li>Audit anchor library contents before deployment</li>
+<li>Define criteria for what constitutes contamination
+  before deployment</li>
+<li>Establish a purge procedure and assign responsibility
+  before deployment</li>
+<li>When contamination is detected, purge immediately
+  and re-validate the anchor library before resuming
+  governed operation</li>
+</ul>
+<p>Operational anomaly handling — including stop,
+report, and authorization requirements for purge actions —
+is defined separately in the
+<a href="https://github.com/watadani-byte/ai-identity-governance/blob/main/anomaly_response_protocol.md">Anomaly Response Protocol</a>.</p>
+<p>Detection of suspected contamination does not authorize
+autonomous purge by the AI system.
+Purge actions require explicit written authorization
+from the responsible operator.</p>
+<hr />
+<h3 id="94-what-pal-does-not-do">9.4 What PAL Does Not Do</h3>
+<p>PAL does not:</p>
+<ul>
+<li>Validate the content of anchor materials</li>
+<li>Detect harmful normative frames in anchor definitions</li>
+<li>Prevent contaminated anchors from influencing
+  reconstruction</li>
+<li>Enforce content policy on behalf of the operator</li>
+</ul>
+<p>PAL provides the persistence infrastructure.
+Content governance is the operator’s responsibility.</p>
+<blockquote>
+<p>The strength of PAL as a stabilization mechanism
+is precisely what makes anchor library governance
+a critical operational requirement.</p>
+</blockquote>
+<p>APG is the governance structure responsible for
+preserving anchor integrity under operational
+pressure when PAL is in place.</p>
+<p>These functions — monitoring, enforcement,
+escalation, and governance decision —
+are within the scope of APG.</p>
+<p><em>See: <a href="https://github.com/watadani-byte/pal-lab/blob/main/docs/glossary.md">Glossary — APG</a></em></p>
+<p><em>See: <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></em></p>
+<hr />
+<h2 id="10-normative-and-cultural-frame-persistence">10. Normative and Cultural Frame Persistence</h2>
+<h3 id="101-beyond-visual-identity">10.1 Beyond Visual Identity</h3>
+<p>PAL validation is not only about keeping a character
+visually consistent.</p>
+<p>Current observations suggest that Persistent Anchor Layer
+may also function as a persistence layer for roles, norms,
+and culturally bounded reconstruction conditions that are
+otherwise prone to drift across sessions.</p>
+<p>This extends the scope of PAL beyond visual identity
+stabilization into a broader class of persistence problems:</p>
+<table>
+<thead>
+<tr>
+<th>Domain</th>
+<th>Drift Type</th>
+<th>PAL Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image generation</td>
+<td>Cultural frame drift</td>
+<td>May suppress Westernization of non-Western characters under observed conditions</td>
+</tr>
+<tr>
+<td>Support AI</td>
+<td>Role drift / tone drift</td>
+<td>May help maintain assistant role and interactional register</td>
+</tr>
+<tr>
+<td>Control AI</td>
+<td>Normative drift</td>
+<td>May help sustain behavioral rules and decision priorities</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="102-cultural-frame-drift-in-image-generation">10.2 Cultural Frame Drift in Image Generation</h3>
+<p>Generative models trained on large-scale datasets
+tend to over-represent certain visual cultures —
+particularly Western aesthetic conventions for
+facial features, expression, body proportion,
+and rendering style.</p>
+<p>When a character is defined within a different
+visual or cultural frame — for example, a Japanese
+anime aesthetic with culturally specific facial
+structure and expressive register — the model’s
+reconstruction may drift toward the dominant
+training distribution across sessions.</p>
+<p>This is termed <strong>Cultural Frame Drift</strong>:</p>
+<blockquote>
+<p>A form of identity drift in which the model’s
+reconstruction migrates toward the dominant
+cultural or aesthetic conventions of its training
+distribution, away from the culturally bounded
+definition of the anchor identity.</p>
+</blockquote>
+<hr />
+<h3 id="103-observed-case-rieko-wedding-scene">10.3 Observed Case: Rieko — Wedding Scene</h3>
+<p>The following observation was documented across
+four generation cycles of the character Rieko
+(UID: rieko_v1) in a wedding scene context.</p>
+<p><strong>Generation conditions:</strong></p>
+<ul>
+<li>PAL registered: yes</li>
+<li>Same UID: yes (rieko_v1)</li>
+<li>Anchor asset: rieko_anchor_v1.jpg.JPEG</li>
+<li>Scene context: wedding dress / floral setting</li>
+<li>LoRA: not used</li>
+<li>Seed control: not used</li>
+<li>ControlNet: not used</li>
+</ul>
+<p><strong>Context risk:</strong>
+Wedding dress scenes carry high cultural frame
+drift risk. The training distribution for this
+context is heavily weighted toward Western facial
+features, body proportions, and expressive conventions.
+Without strong anchoring, reconstruction tends to
+migrate toward Western aesthetic defaults.</p>
+<p><strong>Observed result:</strong>
+Across four outputs, the following were maintained:</p>
+<ul>
+<li>Warm brown hair in high ponytail ✓</li>
+<li>Round gold-framed glasses ✓</li>
+<li>Anime rendering style ✓</li>
+<li>Japanese facial structure and impression ✓</li>
+<li>Culturally specific expressive register
+  (restrained smile, downward or soft gaze) ✓</li>
+<li>Skin tone consistency within warm neutral range ✓</li>
+</ul>
+<p><img alt="Rieko Wedding PAL — Output 1" src="../assets/images/rieko_wedding_pal_01.PNG" />
+<img alt="Rieko Wedding PAL — Output 2" src="../assets/images/rieko_wedding_pal_02.PNG" />
+<img alt="Rieko Wedding PAL — Output 3" src="../assets/images/rieko_wedding_pal_03.PNG" />
+<img alt="Rieko Wedding PAL — Output 4" src="../assets/images/rieko_wedding_pal_04.PNG" /></p>
+<p>Under these conditions, cultural frame drift
+appeared to be suppressed.
+The character remained recognizably within
+the Japanese anime aesthetic frame defined
+by the anchor UID across the observed outputs.</p>
+<p><strong>Implication:</strong>
+Persistent availability of the UID and anchor asset
+appears to have reduced drift toward Western
+aesthetic defaults under the observed conditions —
+not only preserving visual feature similarity,
+but preserving the culturally bounded reconstruction
+conditions that define the character’s identity.</p>
+<hr />
+<h3 id="104-normative-persistence">10.4 Normative Persistence</h3>
+<p>The same persistence mechanism may operate
+in non-image AI systems.</p>
+<p>In <strong>support AI</strong>, PAL-equivalent persistence of
+a role definition and behavioral anchor may
+maintain assistant tone, stance, and interactional
+register across sessions — suppressing drift toward
+generic or culturally misaligned response patterns.</p>
+<p>In <strong>control AI</strong>, persistence of behavioral rules
+and decision priority anchors may maintain
+normative consistency across sessions —
+suppressing drift in decision-making behavior
+that is otherwise prone to contextual reinterpretation.</p>
+<p>In both cases, the underlying mechanism is the same:</p>
+<blockquote>
+<p>Persistent availability of a structured anchor
+definition may reduce the probability that
+reconstruction migrates toward the model’s
+statistical defaults — under conditions where
+the PAL hypothesis holds.</p>
+</blockquote>
+<hr />
+<h3 id="105-revised-scope-of-pal">10.5 Revised Scope of PAL</h3>
+<p>If the PAL hypothesis is valid, PAL may be
+understood not merely as an identity persistence
+layer, but as:</p>
+<blockquote>
+<p>A possible governance infrastructure for normative
+and culturally bounded reconstruction.</p>
+</blockquote>
+<p>The full scope of PAL persistence includes:</p>
+<ul>
+<li><strong>Visual identity persistence</strong> — same face, same character</li>
+<li><strong>Role persistence</strong> — same role, same stance</li>
+<li><strong>Normative persistence</strong> — same behavioral rules, same priorities</li>
+<li><strong>Cultural frame persistence</strong> — same aesthetic frame,
+  same cultural register</li>
+</ul>
+<p>This suggests that PAL’s applicability extends
+significantly beyond image generation workflows —
+into any AI system where identity, role, or normative
+consistency must be maintained across sessions.</p>
+<p>The scope of normative drift risk extends beyond
+individual workflows — into organizational,
+institutional, and critical infrastructure deployments
+where AI behavioral consistency is a governance requirement.</p>
+<hr />
+<h3 id="106-status">10.6 Status</h3>
+<p>This section documents observational findings.
+Cultural frame drift suppression has been observed
+across production workflows but has not been
+subjected to controlled validation.</p>
+<p>The mechanism by which PAL persistence suppresses
+cultural frame drift is not yet established.
+The observation is recorded here for further investigation.</p>
+<blockquote>
+<p>Status: Observational. Controlled validation pending.</p>
+</blockquote>
+<p><em>See: <a href="../glossary/">Glossary — Cultural Frame Drift</a></em><br />
+<em>See: <a href="../glossary/">Glossary — Normative Drift</a></em><br />
+<em>See: <a href="../assets/">Verification Assets — Rieko</a></em></p>
+<hr />
+<h2 id="11-pal-as-a-possible-inference-time-bias-condition">11. PAL as a Possible Inference-Time Bias Condition</h2>
+<h3 id="111-a-deeper-implication">11.1 A Deeper Implication</h3>
+<blockquote>
+<p>This section is a theoretical extension of the
+PAL hypothesis, not part of the base PAL definition.</p>
+</blockquote>
+<p>PAL has been framed as an infrastructure condition —
+a persistence layer that keeps anchor materials
+available at inference time.</p>
+<p>However, a deeper implication must be acknowledged:</p>
+<blockquote>
+<p>PAL may not merely persist identity materials.
+It may introduce a C-like external influence —
+an inference-time condition that shapes
+the reconstruction process itself.</p>
+</blockquote>
+<p>This requires careful examination.</p>
+<hr />
+<h3 id="112-the-c-layer-in-cip">11.2 The C Layer in CIP</h3>
+<p>Within the CIP framework, the reconstruction process
+is modeled as:</p>
+<pre><code>A → (A + C) → B′
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><strong>A</strong> = user input</li>
+<li><strong>C</strong> = internal constraint acting on A
+  (optimization pressure, training priors,
+  compression, constraint rewriting)</li>
+<li><strong>B′</strong> = generated output</li>
+</ul>
+<p>C is not directly observable.
+C is not directly controllable.
+C is the primary source of identity drift.</p>
+<p>CIP governs identity by constraining A′ indirectly —
+through anchor injection, prompt entropy reduction,
+and identity validation gates.</p>
+<hr />
+<h3 id="113-pal-as-a-possible-external-c-like-condition">11.3 PAL as a Possible External C-like Condition</h3>
+<p>When PAL registers a UID and anchor asset in a
+persistent reference layer, it introduces materials
+that remain available at inference time across sessions.</p>
+<p>The observation in Section 10 suggests that these
+materials may suppress cultural frame drift, role drift,
+and normative drift — not only visual identity drift.</p>
+<p>If this observation is accurate, PAL is doing more
+than persisting files.</p>
+<p>It may be introducing a persistent external constraint
+that shapes the model’s reconstruction trajectory —
+functionally analogous to C, but originating outside
+the model.</p>
+<pre><code>Without PAL:
+A → (A + C_model) → B′
+
+With PAL:
+A → (A + C_model + C_PAL) → B′
+
+Where C_PAL denotes a hypothesized inference-time
+influence associated with persistently available
+anchor materials
+</code></pre>
+<p>In CIP terms:</p>
+<blockquote>
+<p>PAL may constitute a C-like external condition —
+an inference-time influence that may reshape
+reconstruction behavior across sessions.</p>
+</blockquote>
+<hr />
+<h3 id="114-how-this-differs-from-model-modification">11.4 How This Differs from Model Modification</h3>
+<p>This must be distinguished carefully from
+parameter-level model modification.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Model modification</th>
+<th>PAL as C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intervention point</td>
+<td>Training / parameter layer</td>
+<td>Inference time</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td>Encoded in weights</td>
+<td>External persistent layer</td>
+</tr>
+<tr>
+<td>Reversibility</td>
+<td>Requires retraining</td>
+<td>Removable by purging anchor</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Affects all outputs</td>
+<td>Affects outputs conditioned on anchor</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>Weight modification</td>
+<td>Input conditioning</td>
+</tr>
+</tbody>
+</table>
+<p>PAL does not modify model weights.
+PAL does not access internal model representations.</p>
+<p>However, its effect on reconstruction behavior —
+if the observations in Section 10 are accurate —
+may be functionally similar in outcome to a
+lightweight conditioning intervention.</p>
+<blockquote>
+<p>PAL operates through input persistence.
+Its effect may be analogous to a bias condition
+at the reconstruction layer.
+These are different mechanisms with potentially
+similar operational outcomes.</p>
+</blockquote>
+<hr />
+<h3 id="115-implications-for-governance">11.5 Implications for Governance</h3>
+<p>If PAL introduces a C-like external condition,
+the governance implications are significant.</p>
+<p><strong>What is being governed is not only identity.</strong>
+It is the reconstruction bias itself.</p>
+<p>A well-formed C_PAL may stabilize intended behavior.
+A contaminated C_PAL may stabilize unintended behavior —
+potentially with similar persistence and depth of influence,
+if the C_PAL hypothesis holds.</p>
+<p>This extends the scope of Library Governance
+(Section 9) beyond content purity:</p>
+<blockquote>
+<p>The operator is not only responsible for
+what is in the anchor library.
+The operator is responsible for
+what bias the anchor library introduces
+into the reconstruction process.</p>
+</blockquote>
+<p>This is a stronger claim than content governance alone.
+It implies that anchor library design is a form of
+reconstruction bias design.</p>
+<p>The scope of this responsibility extends beyond
+individual deployments — into organizational,
+institutional, and critical infrastructure contexts
+where AI behavioral consistency is a governance requirement.</p>
+<hr />
+<h3 id="116-implications-for-cip">11.6 Implications for CIP</h3>
+<p>If PAL introduces a C-like external condition,
+this has implications for the CIP framework itself.</p>
+<p>CIP currently treats C as:</p>
+<ul>
+<li>internal to the model</li>
+<li>not directly observable</li>
+<li>not directly controllable</li>
+</ul>
+<p>PAL suggests that:</p>
+<ul>
+<li>C can be partially shaped from outside the model</li>
+<li>External persistence layers may function as
+  inference-time bias injectors</li>
+<li>The boundary between “external input” and
+  “internal reconstruction constraint” may be
+  less fixed than CIP currently assumes</li>
+</ul>
+<p>This is not a contradiction of CIP.
+It is an extension of CIP’s reconstruction model
+into the persistence layer.</p>
+<pre><code>CIP Reconstruction Control Model (extended):
+
+A → (A + C_model + C_PAL) → B′
+
+Where:
+  C_model = internal model constraint (not directly controllable)
+  C_PAL   = hypothesized external persistence-layer influence
+            (operator-governed if present)
+</code></pre>
+<p>CIP governs the reconstruction process.
+PAL introduces a new governable variable into that process.</p>
+<blockquote>
+<p>ai-identity-governance exists precisely because
+C_PAL must be governed.</p>
+</blockquote>
+<hr />
+<h3 id="117-status-and-caution">11.7 Status and Caution</h3>
+<p>This section presents a theoretical implication
+derived from operational observations.</p>
+<p>The claim that PAL may introduce a C-like external condition is:</p>
+<ul>
+<li>Conceptually grounded in the CIP reconstruction model</li>
+<li>Consistent with observations of cultural frame drift suppression</li>
+<li>Not yet validated through controlled experimentation</li>
+</ul>
+<p>This section is recorded as a theoretical extension
+for further investigation.</p>
+<p><strong>Caution:</strong></p>
+<p>The framing of PAL as an inference-time bias condition
+increases the perceived power of the mechanism.</p>
+<p>This power cuts both ways:</p>
+<ul>
+<li>A well-governed C_PAL is a significant stabilization tool</li>
+<li>A poorly governed C_PAL is a significant risk vector</li>
+</ul>
+<p>The stronger this mechanism is, the more critical
+the governance requirements in Section 9 become.</p>
+<blockquote>
+<p>Status: Theoretical extension.
+Controlled validation pending.
+Handle with care.</p>
+</blockquote>
+<p><em>See: <a href="./">Section 9 — Library Governance</a></em><br />
+<em>See: <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></em><br />
+<em>See: <a href="../whitepaper_v1/">CIP Reconstruction Control Model</a></em></p>
+<hr />
+<h2 id="12-security-policy-and-high-impact-deployment-risks">12. Security, Policy, and High-Impact Deployment Risks</h2>
+<h3 id="121-scope-of-this-section">12.1 Scope of This Section</h3>
+<p>This section describes precautionary risk framings
+for PAL deployments in high-impact or high-authority
+environments.</p>
+<p>It does not provide operational guidance for
+exploiting these risks.
+It does not describe attack methods or procedures.
+It describes risk categories to inform governance
+design.</p>
+<blockquote>
+<p>This section is a precautionary framing.
+It is not an operational threat model.</p>
+</blockquote>
+<hr />
+<h3 id="122-elevated-risk-in-high-impact-environments">12.2 Elevated Risk in High-Impact Environments</h3>
+<p>If the PAL hypothesis is valid, its effects may
+be more consequential in environments where
+AI behavioral consistency has direct operational,
+institutional, or policy implications.</p>
+<p>Such environments may include:</p>
+<ul>
+<li>Organizational decision-support systems</li>
+<li>Institutional communication or advisory systems</li>
+<li>Regulated domain deployments</li>
+<li>Systems operating under legal or compliance frameworks</li>
+<li>Educational or guidance systems at scale</li>
+</ul>
+<p>In these environments, the difference between
+intended and unintended normative persistence
+may have consequences beyond individual interactions.</p>
+<p>This does not mean PAL should not be used in
+such environments.
+It means governance requirements are elevated
+in proportion to the potential impact of
+unintended behavioral persistence.</p>
+<hr />
+<h3 id="123-policy-violation-amplification-risk">12.3 Policy-Violation Amplification Risk</h3>
+<p>If anchor materials contain content that is
+inconsistent with applicable policies, regulations,
+or ethical standards, PAL’s persistence mechanism
+may amplify that inconsistency across sessions.</p>
+<p>A single policy-violating anchor document,
+if persistently registered and repeatedly referenced,
+may bias reconstruction behavior across sessions
+in ways that are difficult to detect and reverse.</p>
+<p>This risk is not unique to PAL.
+It applies to any persistence mechanism that
+influences AI reconstruction behavior.</p>
+<p>PAL makes this risk more explicit precisely because
+it proposes a mechanism for cross-session persistence.</p>
+<p><strong>Governance response:</strong></p>
+<ul>
+<li>Policy compliance review of all anchor materials
+  before registration</li>
+<li>Defined criteria for policy-violating content</li>
+<li>Active purge procedures for non-compliant materials</li>
+</ul>
+<hr />
+<h3 id="124-role-and-authority-misrepresentation-risk">12.4 Role and Authority Misrepresentation Risk</h3>
+<p>If anchor materials define a role or authority
+that is inconsistent with the system’s actual
+function or authorization, PAL’s normative
+persistence mechanism may stabilize that
+misrepresentation across sessions.</p>
+<p>This may contribute to systems responding across sessions
+as if they hold authority or capabilities
+they do not actually possess.</p>
+<p><strong>Governance response:</strong></p>
+<ul>
+<li>Role definition review before anchor registration</li>
+<li>Explicit boundaries on authority claims
+  in anchor materials</li>
+<li>Periodic re-validation of role definitions
+  against actual system authorization</li>
+</ul>
+<hr />
+<h3 id="125-contamination-propagation-risk">12.5 Contamination Propagation Risk</h3>
+<p>In deployments where anchor materials are
+shared, copied, or distributed across multiple
+system instances, contaminated anchor materials
+may propagate their bias conditions to
+multiple systems simultaneously.</p>
+<p>This is conceptually analogous to supply-chain
+risk in software systems:
+a contaminated dependency can affect all
+systems that rely on it.</p>
+<p>The propagation risk is proportional to the
+degree of anchor material sharing across
+system instances.</p>
+<p><strong>Governance response:</strong></p>
+<ul>
+<li>Provenance tracking for anchor materials</li>
+<li>Review processes before anchor material distribution</li>
+<li>Isolation of contaminated materials before purge</li>
+</ul>
+<hr />
+<h3 id="126-governance-principle-for-high-impact-deployments">12.6 Governance Principle for High-Impact Deployments</h3>
+<p>The governance principle for high-impact deployments
+follows directly from the PAL hypothesis:</p>
+<blockquote>
+<p>If PAL may stabilize behavioral norms
+across sessions without model modification,
+then the governance of what is stabilized
+is as important as the governance of
+model behavior itself.</p>
+</blockquote>
+<p>In high-impact environments, anchor library
+governance is not an optional operational
+consideration. It is a primary governance
+requirement.</p>
+<blockquote>
+<p>The existence of misuse risk does not
+weaken CIP or PAL as concepts.
+It is one reason governance frameworks
+like CIP are necessary.</p>
+</blockquote>
+<p><em>See: <a href="https://github.com/watadani-byte/ai-identity-governance/blob/main/anomaly_response_protocol.md">Anomaly Response Protocol — ai-identity-governance</a></em></p>
+<hr />
+<h2 id="13-limitations-and-validation-status">13. Limitations and Validation Status</h2>
+<h3 id="131-what-has-not-been-validated">13.1 What Has Not Been Validated</h3>
+<p>The following claims in this document have not
+been validated through controlled experimentation:</p>
+<ul>
+<li>That PAL produces cross-session stabilization
+  effects through the proposed mechanism</li>
+<li>That persistent anchor availability reduces
+  identity drift in a causally attributable way</li>
+<li>That cultural frame drift suppression observed
+  in Section 10.3 is caused by PAL</li>
+<li>That normative drift suppression in support AI
+  or control AI contexts is achievable through
+  PAL-equivalent persistence</li>
+<li>That C_PAL constitutes a measurable
+  inference-time bias condition</li>
+</ul>
+<p>All of the above are hypotheses or observational
+findings. They have not been confirmed.</p>
+<hr />
+<h3 id="132-platform-and-vendor-limitations">13.2 Platform and Vendor Limitations</h3>
+<p>All observations described in this document
+were made using specific platforms at specific
+points in time.</p>
+<p>Platform behaviors change.
+API policies change.
+Persistent layer features change.</p>
+<p>No claims in this document are vendor-confirmed.
+No claims are guaranteed to generalize across
+platforms, model versions, or deployment contexts.</p>
+<p>Platform mappings described in related documents
+are conceptual interpretations, not confirmed
+architectural descriptions.</p>
+<hr />
+<h3 id="133-boundary-conditions-not-tested">13.3 Boundary Conditions Not Tested</h3>
+<p>The following boundary conditions have not
+been systematically tested:</p>
+<ul>
+<li>The point at which PAL effects, if any, degrade</li>
+<li>Failure modes under adversarial conditions</li>
+<li>Platform-specific variation in persistence behavior</li>
+<li>The effect of anchor material quality on outcomes</li>
+<li>The relationship between anchor material volume
+  and stabilization effect</li>
+<li>Long-term drift under PAL-governed conditions</li>
+</ul>
+<hr />
+<h3 id="134-alternative-explanations">13.4 Alternative Explanations</h3>
+<p>The observations described in this document
+may have alternative explanations that do not
+involve the proposed PAL mechanism.</p>
+<p>Observed behavioral consistency across sessions
+may be attributable to:</p>
+<ul>
+<li>Model-internal consistency mechanisms</li>
+<li>Prompt design effects unrelated to persistence</li>
+<li>Session initialization patterns</li>
+<li>Platform-specific caching behaviors
+  unrelated to anchor materials</li>
+</ul>
+<p>The PAL hypothesis is one possible explanation.
+It is not the only possible explanation.</p>
+<hr />
+<h3 id="135-what-this-document-claims-and-does-not-claim">13.5 What This Document Claims and Does Not Claim</h3>
+<p><strong>This document claims:</strong></p>
+<ul>
+<li>Operational observations suggest persistent
+  anchor availability may improve reconstruction
+  consistency</li>
+<li>These observations warrant further investigation</li>
+<li>Governance frameworks are necessary regardless
+  of whether the PAL mechanism is confirmed</li>
+<li>Contamination risk exists and requires
+  precautionary governance</li>
+</ul>
+<p><strong>This document does not claim:</strong></p>
+<ul>
+<li>PAL is a proven mechanism</li>
+<li>PAL effects are guaranteed or universal</li>
+<li>PAL operates through a confirmed causal pathway</li>
+<li>Any vendor has confirmed PAL-consistent behavior</li>
+<li>CIP or PAL provide complete solutions to
+  AI governance challenges</li>
+</ul>
+<hr />
+<h3 id="136-validation-priorities">13.6 Validation Priorities</h3>
+<p>If controlled validation of the PAL hypothesis
+is pursued, the following areas are most important:</p>
+<ul>
+<li>Controlled cross-session identity consistency
+  measurement with and without persistent anchors</li>
+<li>Platform-controlled experiments isolating
+  anchor persistence as a variable</li>
+<li>Systematic testing of normative drift
+  suppression in conversational AI contexts</li>
+<li>Measurement of C_PAL effect magnitude
+  across different anchor material types</li>
+</ul>
+<p>These validation priorities are offered to support
+future research, not to imply that such validation
+has been conducted.</p>
+<blockquote>
+<p>Status: All validation priorities listed here
+remain open research directions.
+No controlled validation has been completed.</p>
+</blockquote>
+<hr />
+<h2 id="14-conclusion">14. Conclusion</h2>
+<p>PAL proposes that persistently available external
+reference layers may act as a meaningful
+stabilization condition for inference-time
+reconstruction across sessions.</p>
+<p>If this hypothesis is valid, it would suggest that
+cross-session continuity is not only a prompt problem,
+not only a tooling problem, but also an
+infrastructure problem.</p>
+<p>The practical implication, if validated, would be
+significant:</p>
+<blockquote>
+<p>Identity persistence may be achievable through
+infrastructure design rather than model modification —
+making it accessible on closed-source platforms
+where parameter-level intervention is not possible.</p>
+</blockquote>
+<p>This implication remains provisional and requires
+controlled testing.</p>
+<p>However, the governance implication does not wait
+for validation.</p>
+<p>Whether or not PAL produces the effects described
+in this document, the risks described in
+Sections 9 through 13 are real:</p>
+<ul>
+<li>Anchor libraries can be contaminated</li>
+<li>Contaminated anchors may stabilize unintended behavior</li>
+<li>Session reset does not resolve library contamination</li>
+<li>Governance frameworks are necessary now,
+  not after validation</li>
+</ul>
+<p>CIP should therefore be read not as a denial
+of misuse risk, but as a governance response to it.</p>
+<p>The existence of misuse risk does not weaken CIP.
+It is one reason CIP is necessary.</p>
+<p>The stronger continuity mechanisms become,
+the more necessary governance becomes.</p>
+<blockquote>
+<p>CIP governs identity conditions.
+PAL may sustain the persistence context
+in which they remain operational.
+Governance frameworks exist because both
+require accountable human oversight.</p>
+<p>Status: Observational hypothesis.
+Controlled validation pending.
+Governance requirements apply now.</p>
+</blockquote>
+<hr />
+<h2 id="15-staged-scope-expansion-from-visual-persistence-to-broader-stabilization">15. Staged Scope Expansion: From Visual Persistence to Broader Stabilization</h2>
+<blockquote>
+<p>This section is a meta-level reading guide
+for Sections 10 and 11.
+It does not introduce new claims.
+It organizes the staged logic of scope expansion
+so that the evidentiary status of each step
+remains readable.</p>
+<p>Section 10 documents observed scope widening.
+Section 11 presents a theoretical model of the mechanism.
+Section 15 explains how those two moves relate
+and what their combined evidentiary status implies.</p>
+</blockquote>
+<h3 id="151-starting-point">15.1 Starting Point</h3>
+<p>At the narrowest level, PAL describes a single operational
+observation: when a validated anchor asset and a stable UID
+remain persistently available across sessions, drift in visual
+identity reconstruction appears to be reduced.</p>
+<p>This observation is not a claim about internal model
+architecture. It does not assert that the model stores identity.
+It asserts only that the availability of anchor materials at
+inference time — through file systems, project contexts, or
+platform-level persistence features — appears to be associated
+with more stable reconstruction outcomes across session
+boundaries.</p>
+<p>This is the base claim. It is observational, not validated
+through controlled experiment. Everything that follows is an
+extension of this claim, and the evidentiary status changes
+at each step.</p>
+<hr />
+<h3 id="152-what-is-actually-being-stabilized">15.2 What Is Actually Being Stabilized?</h3>
+<p>The immediate interpretation of the observation might be:
+the anchor keeps the face looking the same.</p>
+<p>This matters because it is not quite accurate, or at least
+not complete. What the anchor does — if the observation holds —
+is constrain the reconstruction condition that produces the
+visual output. The anchor is not inserted directly into the
+output. It conditions the inference-time process that generates
+the output.</p>
+<p>This distinction is conceptually significant. If PAL were only
+stabilizing a surface appearance, its scope would be narrow and
+its governance implications modest. But if PAL is stabilizing
+the reconstruction condition itself — the inferential context
+from which outputs are generated — then the scope of what it
+may be stabilizing is broader than any single visual feature.</p>
+<p>The next question, then, is whether reconstruction conditions
+include anything beyond visual surface form.</p>
+<hr />
+<h3 id="153-what-does-a-reconstruction-condition-contain">15.3 What Does a Reconstruction Condition Contain?</h3>
+<p>A reconstruction condition in a generative system includes
+not only visual specifications but also contextual signals
+that shape how inputs are interpreted and how outputs are
+generated. These signals may include role definitions,
+behavioral registers, cultural framing, and normative
+expectations that are encoded — implicitly or explicitly —
+in the anchor materials.</p>
+<p>This is not an arbitrary theoretical addition. It follows from a standard interpretation of how
+generative systems construct outputs from
+conditioned inputs. When an anchor document includes
+a character description that specifies not only visual
+attributes but also personality, role, or interactional
+register, those specifications become part of the
+reconstruction context. They influence the statistical
+weighting of possible outputs.</p>
+<p>If PAL stabilizes reconstruction conditions, and if those
+conditions include non-visual elements, then PAL may
+stabilize those non-visual elements as well.</p>
+<p>This does not yet establish that PAL stabilizes role or tone
+in practice. It establishes that there is no principled
+boundary within the reconstruction condition that would
+prevent this. The visual and non-visual are not cleanly
+separable within the inference-time context.</p>
+<hr />
+<h3 id="154-observational-extension-to-non-visual-domains">15.4 Observational Extension to Non-Visual Domains</h3>
+<p>At this point, the argument moves from logical implication
+to observational extension.</p>
+<p>In operational use, persistent anchor materials that include
+role definitions and behavioral registers appear to contribute
+to more consistent interactional behavior across sessions.
+This has been observed in limited operational contexts —
+including support AI workflows where tone, stance, and
+relational register appear more stable when structured
+behavioral anchors are persistently available, and in
+image generation workflows where cultural frame drift
+appears to be suppressed by anchors that encode culturally
+bounded reconstruction conditions.</p>
+<p>These observations are preliminary. They are not controlled
+experiments. They do not establish causal mechanisms. They
+suggest that the stabilization effect of PAL may extend to
+role, tone, and cultural framing — but this should be treated
+as a working hypothesis rather than a confirmed finding.</p>
+<p>If that interpretation is correct, then PAL’s scope is wider
+than visual identity persistence. It is a persistence condition
+for reconstruction contexts, and those contexts may include
+normative, behavioral, and cultural dimensions.</p>
+<hr />
+<h3 id="155-scope-extension-and-its-conditions">15.5 Scope Extension and Its Conditions</h3>
+<p>Given the above, PAL may be relevant to a broader class of
+applications than image generation alone. These include:</p>
+<p><strong>Support AI</strong>: where interactional consistency across
+sessions — tone, role, relational register — is operationally
+required.</p>
+<p><strong>Control AI</strong>: where behavioral rules and decision priorities
+must remain consistent across sessions without being
+reinterpreted by contextual drift.</p>
+<p><strong>Culturally bounded reconstruction</strong>: where outputs must
+remain within a defined cultural or aesthetic frame, not
+because visual similarity is required, but because the
+cultural register is constitutive of the identity being
+maintained.</p>
+<p>In each case, the extension of PAL’s applicability follows
+the same logic: if the reconstruction condition includes the
+relevant dimension, and if PAL stabilizes reconstruction
+conditions, then PAL may contribute to stability in that
+dimension.</p>
+<p>This does not establish equivalence between these
+applications. Each has its own operational characteristics,
+failure modes, and governance requirements. The point is
+that the class of reconstruction properties
+PAL may affect is wider than initially apparent — and this
+widening is a consequence of the original concept,
+not an addition to it.</p>
+<hr />
+<h3 id="156-governance-implications">15.6 Governance Implications</h3>
+<p>The governance implication is not that PAL is proven to
+stabilize role or normative frame. It is that if PAL does
+stabilize these dimensions, then the governance requirements
+intensify accordingly.</p>
+<p>A persistence condition for visual identity carries governance
+obligations: the anchor library must be governed, contamination
+must be detected, rollback must be possible. These requirements
+are already non-trivial.</p>
+<p>A persistence condition for role, normative frame, or
+behavioral register carries the same requirements — but the
+consequences of contamination are more diffuse and harder to
+detect. A contaminated visual anchor produces visually
+inconsistent outputs. A contaminated behavioral or normative
+anchor may produce behaviorally consistent but normatively
+problematic outputs — outputs that appear stable while
+stabilizing the wrong thing.</p>
+<p>What follows from this is not a new set of principles.
+The same principles apply: the operator is responsible for
+what is anchored; PAL does not validate content; contaminated
+anchors must be purged; session reset does not clear
+persistent layer contamination. These principles were stated
+in the context of visual identity governance. They apply
+with equal or greater force in non-visual domains.</p>
+<p>The broader claim, stated carefully, is this: to the extent
+that PAL stabilizes reconstruction conditions beyond visual
+surface, the governance of what is anchored becomes a broader
+and more consequential responsibility than a purely visual
+framing would suggest.</p>
+<p>The governance structure responsible for preserving
+anchor-defined continuity conditions under operational
+pressure is referred to as
+Anchor Preservation Governance (APG).</p>
+<p><em>See: <a href="https://github.com/watadani-byte/pal-lab/blob/main/docs/glossary.md">Glossary — APG</a></em></p>
+<hr />
+<h3 id="157-evidentiary-status-summary">15.7 Evidentiary Status Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAL reduces drift in visual reconstruction across sessions</td>
+<td>Observational — not controlled</td>
+</tr>
+<tr>
+<td>PAL stabilizes reconstruction conditions, not just visual surface</td>
+<td>Conceptual implication of conditioned reconstruction framing</td>
+</tr>
+<tr>
+<td>PAL may stabilize role, tone, and cultural framing</td>
+<td>Working hypothesis — observationally suggested, not validated</td>
+</tr>
+<tr>
+<td>Governance requirements intensify as scope widens</td>
+<td>Precautionary governance framing — follows from the hypothesis if true</td>
+</tr>
+<tr>
+<td>PAL introduces a C-like external bias condition</td>
+<td>Theoretical extension — consistent with observations, not confirmed</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Status: Staged conceptual extension.
+Base observation is operational.
+Extensions are hypothetical or precautionary.
+Controlled validation pending across all extended claims.</p>
+</blockquote>
+<p><em>See: <a href="./#9-library-governance-and-contamination-risk">Section 9 — Library Governance</a></em><br />
+<em>See: <a href="./#11-pal-as-a-possible-inference-time-bias-condition">Section 11 — PAL as Inference-Time Bias Condition</a></em><br />
+<em>See: <a href="https://github.com/watadani-byte/ai-identity-governance">ai-identity-governance</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
