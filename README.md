@@ -95,8 +95,8 @@ This is not a prompt failure. It is the expected behavior of a probabilistic sys
 
 ## From Generation to Control
 
-This is not a generation problem.
-It is a control problem.
+This is not merely a generation problem.
+It is an adoption-governance problem.
 
 ```
 Conventional:
@@ -118,7 +118,7 @@ CIP introduces a governance layer between the user and the model:
 
 Identity is not assumed to persist. It is continuously validated and recovered.
 
-**Reference-based generation is not identity governance.**
+**Reference-based generation is not adoption governance.**
 Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image reference features may improve resemblance or continuity. They do not define failure conditions, Hard Abort, adoption, rejection, purge, or auditability.
 
 -----
