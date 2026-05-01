@@ -43,7 +43,7 @@ CIP is not a prompt trick, image-generation workflow, LoRA method, reference-ima
 
 The shortest accurate summary is:
 
-CIP governs whether a probabilistic output remains adoptable under identity, brand-code, and rights-control constraints.
+**CIP governs whether a probabilistic output remains adoptable under identity, brand-code, and rights-control constraints.**
 
 -----
 
