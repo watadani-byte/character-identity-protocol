@@ -33,6 +33,20 @@ CIP governs the workflow around A′.
 C explains why drift occurs. It does not excuse unmanaged drift.
 ```
 
+## Canonical Summary
+
+Character Identity Protocol (CIP) is an inference-time adoption-governance framework for probabilistic AI outputs.
+
+It defines how identity continuity, drift, validation gates, failure handling, rollback, purge, and human adoption decisions should be governed when AI systems generate or reconstruct identity-bound assets.
+
+CIP is not a prompt trick, image-generation workflow, LoRA method, reference-image technique, or character-consistency tutorial.
+
+The shortest accurate summary is:
+
+CIP governs whether a probabilistic output remains adoptable under identity, brand-code, and rights-control constraints.
+
+-----
+
 > This repository is under active documentation development.
 > For a structured reading experience, use the
 > [GitHub Pages navigation](https://watadani-byte.github.io/character-identity-protocol/).
@@ -314,6 +328,8 @@ One area where community contribution is particularly valuable:
 **PAL implementation examples on new platforms**
 
 As new AI platforms emerge — including domain-specific LLMs, video generation systems, and multimodal agents — documenting how PAL maps to their persistent layer features helps the CIP / PAL framework grow as a platform-agnostic standard.
+
+Platform examples document how persistence features may map to PAL, while CIP itself remains an adoption-governance framework.
 
 If you have implemented or observed PAL-like behavior on a platform not yet documented, contributions are welcome:
 
