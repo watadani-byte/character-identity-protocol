@@ -93,8 +93,17 @@ Failure → Immediate Hard Abort.
 
 ## 5.2 Hard Abort Discipline
 
-When threshold breach occurs: - Do not correct progressively - Terminate
-session - Re-anchor from last stable state
+When threshold breach occurs:
+
+- Do not correct progressively
+- Terminate session
+- Re-anchor from last stable state
+
+Hard Abort is triggered only after continuity recovery mechanisms fail to restore baseline identity.
+
+Recovery mechanisms are defined separately in PAL, including identity re-anchoring after expression, motion, stylization, temporal drift, or other continuity disturbances.
+
+At this stage, further correction often compounds drift rather than resolving it. The correct action is to stop the current generation path and restore from the last verified stable anchor.
 
 -----
 
