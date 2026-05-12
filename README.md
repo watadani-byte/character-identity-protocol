@@ -20,12 +20,12 @@ CIP governs that layer.
 CIP operates entirely at inference time, without model modification.
 
 ```
-A → (A + C) → B′
+A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
 A′ = A + C
 
 A  = user input or reference condition
-C  = internal constraints (training priors, optimization pressure, compression, platform constraints)
+C  = generative mediation — the added layer of interpretation, optimization, constraint handling, and creative transformation
 A′ = internally reconstructed state
 B′ = actual output
 
@@ -140,7 +140,7 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 ## Core Model
 
 ```
-Core Model:     A → (A + C) → B′  (Reconstruction Control Model)
+Core Model:     A → (A + C) → A′ → B′  (Reconstruction Control Model)
 Control Target: A′  (reconstructed state)
 Key Operations: Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
 ```
