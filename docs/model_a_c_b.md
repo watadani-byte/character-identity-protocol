@@ -130,7 +130,7 @@ This model was first made visible through character consistency failures: the sy
 
 However, character drift is only one case of a broader problem. The underlying issue is not limited to character identity, but to the continuity of A itself.
 
-A may be a character, a person, a scene, a style, an instruction, a policy, an emotional tone, a brand identity, or an operational criterion. PAL generalizes from character continuity to A-continuity: the preservation of the defined identity of A across generative transformation.
+A may be a character, a person, a scene, a style, an instruction, a policy, an emotional tone, a brand identity, or an operational criterion. This generalizes character continuity into A-continuity: the preservation of the defined identity of A across generative transformation.
 
 Character drift was the first observable case; A-continuity is the generalized problem.
 
