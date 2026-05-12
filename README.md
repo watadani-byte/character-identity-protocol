@@ -30,6 +30,7 @@ A′ = internally reconstructed state
 B′ = actual output
 
 CIP governs the workflow around A′.
+A′ is not directly accessed; it is governed operationally through anchors, gates, validation decisions, and adoption controls.
 C explains why drift occurs. It does not excuse unmanaged drift.
 ```
 
@@ -171,7 +172,7 @@ PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the
 
 **Core Concepts**
 
-- [Core Model — A → (A + C) → B′](docs/model_a_c_b.md)
+- [Core Model — A → (A + C) → A′ → B′](docs/model_a_c_b.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
 
@@ -321,7 +322,7 @@ character-identity-protocol/
 
 ## Contributing — Platform Implementation Examples
 
-CIP is designed as an open governance standard.
+CIP is designed as an openly documented governance framework.
 
 One area where community contribution is particularly valuable:
 
@@ -345,7 +346,7 @@ If you have implemented or observed PAL-like behavior on a platform not yet docu
 ## License
 
 **Documentation, concepts, cases, and governance files**
-(`docs/`, `README.md`, `LICENSE`):
+(`README.md`, `docs/` excluding `docs/schemas/`):
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 You may read, share, and adapt with attribution.
 
