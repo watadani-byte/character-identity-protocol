@@ -32,6 +32,10 @@ B′ = actual output
 CIP governs the workflow around A′.
 A′ is not directly accessed; it is governed operationally through anchors, gates, validation decisions, and adoption controls.
 C explains why drift occurs. It does not excuse unmanaged drift.
+
+C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
+
+Creative transformation is acceptable while A's intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 ```
 
 ## Canonical Summary
