@@ -269,12 +269,11 @@ character-identity-protocol/
 │   ├── case_07/
 │   │   └── images/
 │   │
-│   ├── columns/
-│   │   ├── column_pal.md
-│   │   ├── column_miracle_image.md
-│   │   ├── column_identity_drift.md
-│   │   ├── column_translation_loss.md
-│   │   └── column_reconstruction_durability.md
+│   ├── column_pal.md
+│   ├── column_miracle_image.md
+│   ├── column_identity_drift.md
+│   ├── column_translation_loss.md
+│   ├── column_reconstruction_durability.md
 │   │
 │   ├── pal_hypothesis.md
 │   ├── pal_operations_manual_v0.1.md
@@ -350,7 +349,7 @@ If you have implemented or observed PAL-like behavior on a platform not yet docu
 Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 You may read, share, and adapt with attribution.
 
-**Schema and specification files** (`docs/schemas/`):
+**Schema files and machine-readable control definitions** (`docs/schemas/`):
 All rights reserved — 2026.
 
 Viewing, citation, and conceptual reference are permitted.
