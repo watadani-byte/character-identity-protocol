@@ -28,6 +28,8 @@ Where:
 |B     |Intended output (what the user expects)                                                                                                          |
 |B′    |Actual output (what the system produces)                                                                                                         |
 
+A′ is not directly accessed. CIP governs it operationally through anchors, gates, validation decisions, and adoption controls.
+
 The system does not execute A directly.
 
 It internally mediates A through C — adding interpretation, inference, optimization, compression, stylistic transformation, and creative contribution — producing A′, which then generates B′. B′ may deviate from B.
@@ -55,7 +57,7 @@ C is not directly visible to the user. In practice, it is always present in gene
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, or recovery procedures.
 
-A′ is not directly accessed; it is governed operationally through anchors, gates, validation decisions, and adoption controls.
+### Scope of C
 
 C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
 
@@ -144,3 +146,5 @@ CIP does not seek to eliminate C. It seeks to make C governable: to preserve AI�
 
 CIP begins from this point: identity is not assumed to persist,
 and reconstructed identity states must be validated before they are adopted.
+
+In its shortest form, drift means that A’s intended identity has not been preserved.
