@@ -355,7 +355,7 @@ All rights reserved — 2026.
 Viewing, citation, and conceptual reference are permitted.
 The following are not permitted without written permission:
 
-- Implementation based on these specifications
+- Implementation based on these machine-readable control definitions
 - Redistribution of modified versions
 - Commercial deployment based on these specifications
 - Derivative works for commercial use
