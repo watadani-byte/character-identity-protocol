@@ -77,7 +77,7 @@ The user wrote A. The model generated B′. The gap between A and B′ is eviden
 
 ## The Structure of C
 
-C is dominated by the statistical structure of the training data distribution.
+C is strongly shaped by the statistical structure of the training data distribution, but it may also include system instructions, safety layers, product-side rewriting, sampling behavior, and tool constraints.
 
 High-density regions of the distribution pull outputs toward familiar patterns — a consistent bias that can be understood as **distributional gravity**.
 
@@ -130,7 +130,7 @@ Character drift was the first observable case; A-continuity is the generalized p
 
 ## Conclusion
 
-The difference between B and B′ can be understood as drift — a structural deviation introduced during generative mediation.
+When B′ no longer preserves the intended identity of A, the difference between B and B′ can be understood as drift — a structural deviation introduced during generative mediation.
 
 Character consistency, instruction following, and output reliability are all affected by C.
 
