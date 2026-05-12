@@ -55,6 +55,12 @@ C is not directly visible to the user. In practice, it is always present in gene
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, or recovery procedures.
 
+A′ is not directly accessed; it is governed operationally through anchors, gates, validation decisions, and adoption controls.
+
+C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
+
+Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
+
 -----
 
 ## A Concrete Example
