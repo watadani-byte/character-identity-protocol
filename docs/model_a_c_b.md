@@ -146,4 +146,4 @@ CIP does not seek to eliminate C. It seeks to make C governable: to preserve AI�
 
 CIP begins from this point: identity is not assumed to persist, and reconstructed identity states must be validated before they are adopted.
 
-In its shortest form, drift means that A’s intended identity has not been preserved.
+In its shortest form, drift is the failure to preserve A’s intended identity.
