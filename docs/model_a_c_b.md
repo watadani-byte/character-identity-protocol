@@ -28,9 +28,9 @@ Where:
 |B     |Intended output (what the user expects)                                                                                                          |
 |B′    |Actual output (what the system produces)                                                                                                         |
 
-A′ is not directly accessed. CIP governs it operationally through anchors, gates, validation decisions, and adoption controls.
+A′ is not directly observable or inspectable by the user. CIP therefore governs it operationally through external controls: anchors, gates, validation decisions, and adoption controls.
 
-The system does not execute A directly.
+The system does not execute A as a fixed specification.
 
 It internally mediates A through C — adding interpretation, inference, optimization, compression, stylistic transformation, and creative contribution — producing A′, which then generates B′. B′ may deviate from B.
 
@@ -75,11 +75,11 @@ The intended output B includes: full body, turned posture, eye contact.
 
 The actual output B′ shows: head and shoulders only, forward-facing, no eye contact.
 
-The model mediated the compositional instruction through C — defaulting toward a common training pattern (portrait framing) rather than executing A as specified.
+The model mediated the compositional instruction through C — defaulting toward a common training pattern (portrait framing) rather than preserving A’s specified compositional requirements.
 
 In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction, producing A′ before B′ was generated.
 
-The user wrote A. The model generated B′. The gap between A and B′ is evidence of C.
+The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred.
 
 -----
 
@@ -105,7 +105,7 @@ C is not a fixed constraint. It is probabilistic.
 
 Even with identical input A, C introduces variation — because the same statistical pressures interact differently with each sampling event.
 
-This means identical prompts do not guarantee identical outputs.
+This means that, under ordinary sampling conditions, identical prompts do not guarantee identical outputs.
 
 > C contains entropy. Drift is therefore both directional and stochastic.
 
