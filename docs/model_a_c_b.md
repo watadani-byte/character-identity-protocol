@@ -1,5 +1,5 @@
 # Why Generative AI Does Not Execute Your Input
- 
+
 Most people assume generative AI works like this:
 
 > A → B
