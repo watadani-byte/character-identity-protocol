@@ -36,7 +36,7 @@ It internally mediates A through C — adding interpretation, inference, optimiz
 
 B′ ≠ B is not necessarily a malfunction. It is often the expected behavior of a system operating under generative mediation. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
 
-> **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes *what* the internal state is.
+> **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
 
 -----
 
@@ -144,7 +144,6 @@ Character consistency, instruction following, and output reliability are all aff
 
 CIP does not seek to eliminate C. It seeks to make C governable: to preserve AI’s creative contribution while preventing unapproved drift from A to A′.
 
-CIP begins from this point: identity is not assumed to persist,
-and reconstructed identity states must be validated before they are adopted.
+CIP begins from this point: identity is not assumed to persist, and reconstructed identity states must be validated before they are adopted.
 
 In its shortest form, drift means that A’s intended identity has not been preserved.
