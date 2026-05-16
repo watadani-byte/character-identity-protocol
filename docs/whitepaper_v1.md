@@ -17,9 +17,9 @@ This paper introduces the Character Identity Protocol (CIP), an inference-time r
 
 The protocol defines a closed-loop control architecture consisting of: anchor-based constraints that bias the reconstruction space, minimal prompt design that reduces optimization pressure, identity validation gates (Face, Skeleton, Proportion), and Hard Abort mechanisms that terminate invalid reconstruction trajectories. Together, these components are observed to support bounded convergence of A′ within an anchor-proximate region.
 
-CIP operates entirely at inference time, requires no model modification, and may be applied to closed-source systems to the extent that they expose sufficient reference, generation, and review controls. Production workflow observations — including multi-turn generation and cross-platform identity recovery — suggest that identity consistency can be improved by governing reconstruction workflows around A′ rather than output similarity alone.
+CIP operates entirely at inference time, requires no model modification, and may be applied to closed-source systems to the extent that they expose sufficient reference, generation, and review controls. Production workflow observations — including multi-turn generation and cross-platform identity recovery — suggest that identity consistency can be improved by governing reconstruction workflows around C → A′ rather than output similarity alone.
 
-These observations support the view that identity stability in generative systems is fundamentally an inference-time governance problem, and that governing the workflow around A′ provides a generalizable framework for improving reliability in probabilistic generative environments.
+These observations support the view that identity stability in generative systems is fundamentally an inference-time governance problem, and that governing the workflow around C → A′ provides a generalizable framework for improving reliability in probabilistic generative environments.
 
 -----
 
@@ -283,19 +283,25 @@ These are complementary layers: control defines what is constrained and how; gov
 
 Within the CIP framework, A′ represents the internally reconstructed problem state derived from user input A.
 
-A′ can be understood as A + C, where C is the internal constraint acting on A — including optimization pressure, training priors, compression, and constraint rewriting. The notation A → A′ → B′ describes the internal state; the notation A → (A + C) → B′ explains why that state deviates from the original input.
+A′ can be understood as the result of non-linear generative mediation applied to A under C:
 
-A′ is not directly observable. However, it can be inferred through output behavior (B′) and its deviation from the anchor reference.
+```text
+A′ ≈ T_C(A)
+```
+
+where C is the generative mediation acting on A — including optimization pressure, training priors, compression, constraint rewriting, and creative transformation. The expression A + C is shorthand for this non-linear process, not a simple sum. The notation A → A′ → B′ describes the structural sequence; the notation A → (A + C) → A′ → B′ explains why that state deviates from the original input.
+
+A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be exposed or inferred through prompt disclosure, execution traces, output behavior B′, and validation against the original A or a validated anchor.
 
 Operationally, A′ is defined as:
 
 - the reconstruction state conditioned by prompt, anchor, and context
 - the immediate precursor to output generation (B′)
-- the governance target within the CIP loop
+- the reconstructed state validated within the CIP governance loop
 
-CIP does not directly control A′. It governs the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged — through anchor injection, prompt entropy reduction, and identity validation gates.
+CIP does not directly control A′, and C is not directly visible. It governs the workflow conditions around C → A′ — making generative mediation operationally governable and defining when reconstructed states are accepted, rejected, re-bound, or purged through anchor injection, prompt entropy reduction, and identity validation gates.
 
-Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by governing the workflow around A′ relative to the anchor.
+Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by governing the workflow around C → A′ relative to the original A and the validated anchor.
 
 We refer to this formulation — A → A′ → B′ — as the **Reconstruction Control Model (RCM)**. RCM provides the theoretical basis for treating identity drift as a reconstruction governance problem rather than a prompt engineering or output filtering problem.
 
@@ -303,19 +309,19 @@ We refer to this formulation — A → A′ → B′ — as the **Reconstruction
 
 CIP can be interpreted as a closed-loop control system:
 
-|Component        |Role                             |
-|-----------------|---------------------------------|
-|Governance target|A′ (reconstructed state)         |
-|Reference signal |Anchor                           |
-|Control input    |Minimal Prompt + Anchor injection|
-|Decision logic   |Identity Gates (validation layer)|
-|Disturbance      |Probabilistic drift              |
-|Observer         |Output (B′) + evaluation process |
-|Control action   |Hard Abort and Re-binding        |
+|Component       |Role                                                 |
+|----------------|-----------------------------------------------------|
+|Governance focus|C → A′ (generative mediation and reconstructed state)|
+|Reference signal|Anchor                                               |
+|Control input   |Minimal Prompt + Anchor injection                    |
+|Decision logic  |Identity Gates (validation layer)                    |
+|Disturbance     |Unmanaged C and probabilistic drift                  |
+|Observer        |Output (B′) + evaluation process                     |
+|Control action  |Hard Abort and Re-binding                            |
 
-*Note: A′ is treated here as the governance target — the state around which CIP defines acceptance, rejection, re-binding, and purge conditions. A′ is not directly observable or directly controllable; CIP governs the workflow conditions around it.*
+*Note: CIP treats C → A′ as the governance focus. A′ is not directly controllable, and C is not directly visible; therefore, CIP governs the workflow conditions around mediation, reconstruction, validation, adoption, rejection, re-binding, and purge.*
 
-CIP can therefore be interpreted as a **bounded stochastic governance system over A′**: one in which the objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
+CIP can therefore be interpreted as a **bounded stochastic governance system over C → A′**: one in which the objective is not deterministic state replication, but bounded probabilistic convergence to an anchor-defined identity region.
 
 **Operational Objective (Conceptual)**
 
@@ -329,13 +335,13 @@ Subject to: Hard Abort condition when drift exceeds gate threshold
 
 CIP is structured as a multi-layer system spanning conceptual, control-theoretic, operational, and governance layers.
 
-The control-theoretic layer of CIP is referred to as **Reconstruction Convergence Control (RCC)** — the operational realization of bounded A′ governance through anchor constraints, identity gates, and Hard Abort enforcement.
+The control-theoretic layer of CIP is referred to as **Reconstruction Convergence Control (RCC)** — the operational realization of bounded C → A′ governance through anchor constraints, identity gates, and Hard Abort enforcement.
 
 |Layer  |Name                      |Content                                                                                   |
 |-------|--------------------------|------------------------------------------------------------------------------------------|
 |Level 0|Worldview Layer           |Character Identity Protocol (CIP)                                                         |
 |Level 1|Phenomenon Model          |Reconstruction Control Model (RCM): A → A′ → B′                                           |
-|Level 2|Governance Target         |Reconstructed State A′                                                                    |
+|Level 2|Governance Focus          |C → A′ mediation and reconstructed state                                                  |
 |Level 3|Control Theory Layer (RCC)|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
 |Level 4|Execution Method          |Anchor Re-Convergence Method (ARCM)                                                       |
 |Level 5|Governance Layer          |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
@@ -1114,8 +1120,10 @@ In the rapidly evolving landscape of generative AI, the Character Identity Proto
 
 By combining statistical convergence with explicit operational framing, CIP defines a structured approach to the governance of character identities in production AI workflows.
 
-The protocol does not oppose the model’s optimization dynamics.  
-It constrains outputs operationally.
+The protocol does not reject the model’s generative mediation.  
+It governs it.
+
+CIP/PAL preserves the productive value of AI-generated mediation while preventing unmanaged C from rewriting identity, brand code, or adoption criteria.
 
 ### Implication: Inference-Time Governance
 
