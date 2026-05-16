@@ -28,7 +28,7 @@ Where:
 |B     |Intended output (what the user expects)                                                                                                          |
 |B′    |Actual output (what the system produces)                                                                                                         |
 
-A′ is not directly observable or inspectable by the user. CIP therefore governs it operationally through external controls: anchors, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally visible through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
 
 The system does not execute A as a fixed specification.
 
@@ -55,13 +55,32 @@ Drift occurs only when C transforms A into A′ without preserving A’s intende
 C is not directly visible to the user. In practice, it is always present in generative systems and shapes A′ and therefore B′.
 
 C explains why drift occurs. It does not excuse unmanaged drift.
-The existence of C does not remove the need for human judgment, validation gates, or recovery procedures.
+The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
 
 ### Scope of C
 
 C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
+
+-----
+
+## Why C Is the Governance Target
+
+A′ and B′ are observable only after transformation has already occurred.
+
+A′ is A after mediation.
+B′ is the output produced from that mediated state.
+
+If governance focuses only on A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
+
+C is different.
+
+C is the transformation layer that changes A into A′. Governing C means governing the conditions under which A is interpreted, compressed, optimized, expanded, or replaced before B′ is produced.
+
+This shifts governance from output correction to transformation control.
+
+C is not an excuse for drift. It is the layer that must be made governable.
 
 -----
 
@@ -79,7 +98,86 @@ The model mediated the compositional instruction through C — defaulting toward
 
 In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction, producing A′ before B′ was generated.
 
-The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred.
+The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred, although it does not by itself identify the exact C.
+
+-----
+
+## Exposing A′
+
+C is difficult to govern if A′ remains invisible.
+
+Practical methods for making parts of A′ operationally visible include:
+
+- requiring the model to show the prompt before execution
+- separating prompt evaluation from image generation
+- comparing visible prompts against generated outputs
+- recording generation parameters and execution conditions
+- validating outputs against anchors before adoption
+
+Pre-execution prompt disclosure does not make the full execution process transparent. The visible prompt may still differ from the final internal execution state.
+
+However, it narrows the invisible interval between A and B′.
+
+This makes it possible to inspect part of A′, compare it with A, and identify likely C before drift becomes adopted.
+
+-----
+
+## Diagnosing C from B′
+
+In practice, the user observes B′ first, then works backward:
+
+```
+B′ → A′ → C
+```
+
+From B′, the user infers how A may have been reconstructed as A′, and then identifies the likely C that transformed A into A′.
+
+**Example: eye color**
+
+- A: user specifies brown eyes
+- B′: generated image shows hazel or greenish-brown eyes
+- Diagnosis: the system operationally interpreted “brown” as a wider color category including hazel, amber, or greenish-brown variations
+- C: semantic expansion of the intended color anchor
+
+The governance issue is not whether hazel is objectively part of brown. The issue is that the model’s operational interpretation of “brown” was wider than the user’s intended anchor.
+
+A feedback-only correction would say:
+
+> “Make the eyes brown.”
+
+A CIP correction narrows the transformation conditions:
+
+> “Use solid dark chocolate-brown irises, with no green tint and no hazel variation.”
+
+The diagnosis of C converts feedback into feedforward governance.
+
+-----
+
+## C Accumulation
+
+In multi-stage AI workflows, A′ is not always produced by a single C.
+
+Each stage introduces its own mediation:
+
+```
+A  → (A  + C1) → A′1
+A′1 → (A′1 + C2) → A′2
+A′2 → (A′2 + C3) → A′3
+```
+
+The accumulated state approaches:
+
+```
+A′n ≈ A + C1 + C2 + C3 + … + Cn
+```
+
+This is not simple addition. Each C acts on an already transformed version of A.
+
+A compressed prompt is not merely a shorter A. It is a reconstructed A′ produced by selection, omission, prioritization, and replacement. Repeated compression can accumulate C.
+
+Small transformations that appear acceptable at each step may compound until the final output no longer preserves the intended identity of A.
+
+For this reason, each stage must not inherit only the previous A′. It must re-check the current reconstructed state against the original A.
 
 -----
 
