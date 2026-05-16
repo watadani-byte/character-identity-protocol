@@ -275,7 +275,7 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 ### Terminology: Control and Governance in CIP
 
-In CIP, “control” refers to workflow-level constraint around C → A′ — the mediation process and reconstructed state, while “governance” refers to the operational enforcement of validation, failure handling, adoption, rejection, purge, and recovery.
+In CIP, “control” refers to workflow-level constraint around C → A′ — the mediation process and reconstructed state — while “governance” refers to the operational enforcement of validation, failure handling, adoption, rejection, purge, and recovery.
 
 These are complementary layers: control defines what is constrained and how; governance defines when constraints are enforced, when failures are declared, and what recovery path is taken.
 
