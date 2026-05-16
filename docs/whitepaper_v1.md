@@ -13,7 +13,7 @@
 
 Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — primarily operate at the level of model parameters or input specification, and do not explicitly control the reconstruction process that produces outputs during inference.
 
-This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction control framework that formalizes identity stabilization as a governance problem over the reconstructed state A′. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP treats A′ as the governance target: it does not directly control A′, but defines the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
+This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction control framework that formalizes identity stabilization as a governance problem around C → A′: the mediation process that reconstructs user input A into an operational state A′ before output is adopted. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP does not directly control A′. Instead, it governs the workflow around C → A′: making generative mediation operationally governable and defining the conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
 The protocol defines a closed-loop control architecture consisting of: anchor-based constraints that bias the reconstruction space, minimal prompt design that reduces optimization pressure, identity validation gates (Face, Skeleton, Proportion), and Hard Abort mechanisms that terminate invalid reconstruction trajectories. Together, these components are observed to support bounded convergence of A′ within an anchor-proximate region.
 
@@ -36,6 +36,10 @@ CIP reframes character identity from a static output property to a recoverable c
 In style-defined identity domains (e.g., anime and franchise animation), rendering regime stability constitutes part of identity and is enforced under the same Identity Gate discipline.
 
 CIP operationally realizes convergence control through **High-Density Latent Anchoring (HDLA)**, guided by the Reconstruction Control Model (RCM: A → A′ → B′) and executed through the Anchor Re-Convergence Method (ARCM). In the current framework, HDLA and ARCM describe the continuity-side mechanisms used within CIP-governed workflows, while CIP provides the governance layer for validation, stopping, adoption, rejection, and purge.
+
+CIP/PAL does not reject AI mediation; it governs it.
+
+The goal is to preserve the productive value of AI-generated mediation while preventing that mediation from rewriting identity, brand code, or adoption criteria.
 
 -----
 
@@ -1134,7 +1138,6 @@ This implies that future improvements in generative reliability may be achieved 
 - [Appendix D — Character Concept and IP Asset Management](#appendix-d--character-concept-and-ip-asset-management)
 - [Appendix E — Implementation Schema (JSON/YAML Specification)](#appendix-e--implementation-schema-jsonyaml-specification)
 - [Appendix F — Visual Drift Detection Checklist](#appendix-f--visual-drift-detection-checklist)
-- [Appendix G — Production Observation Notes](#appendix-g--production-observation-notes)
   - F.1 Face Gate
   - F.2 Skeleton Gate
   - F.3 Proportion Gate
@@ -1142,6 +1145,7 @@ This implies that future improvements in generative reliability may be achieved 
   - F.5 Composite Drift Indicators
   - F.6 Checklist Usage Notes
   - F.7 Archetype Drift
+- [Appendix G — Production Observation Notes](#appendix-g--production-observation-notes)
 
 -----
 
@@ -1875,7 +1879,7 @@ This appendix preserves numerical observations from internal production workflow
 
 ### G.2 Observational Figures
 
-The following figures were observed across selected internal production sessions, primarily documented in case studies 01–07. They are not derived from controlled measurement and should not be treated as universal performance rates.
+The following figures were observed across selected internal production sessions, associated with the production workflows described in case studies 01–07. They are not derived from controlled measurement and should not be treated as universal performance rates.
 
 |Metric                    |Observed Without Protocol            |Observed With Protocol            |
 |--------------------------|-------------------------------------|----------------------------------|
