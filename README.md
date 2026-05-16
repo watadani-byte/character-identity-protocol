@@ -182,6 +182,7 @@ PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the
 **Core Concepts**
 
 - [Core Model — A → (A + C) → A′ → B′](docs/model_a_c_b.md)
+- [C Taxonomy — Classifying Generative Mediation](docs/c_taxonomy.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
 
