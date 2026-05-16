@@ -23,14 +23,14 @@ CIP operates entirely at inference time, without model modification.
 A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
 
-A′ ≈ A + C
+A′ ≈ A + C  (shorthand; not simple addition)
 
 A  = user input or reference condition
 C  = generative mediation — the added layer of interpretation, optimization, constraint handling, and creative transformation
 A′ = internally reconstructed state: A as transformed by C
 B′ = actual output
 
-CIP governs the workflow around A′ by making C operationally governable.
+CIP governs the workflow around C → A′ by making C operationally governable and validating A′ before adoption.
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally visible through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
 
