@@ -1,5 +1,5 @@
 # C Taxonomy: Classifying Generative Mediation
-　
+
 C Taxonomy classifies the generative mediation that transforms A into A′.
 
 In the reconstruction model:
