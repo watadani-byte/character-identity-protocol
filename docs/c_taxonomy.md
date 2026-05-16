@@ -52,7 +52,7 @@ C Taxonomy provides the diagnostic vocabulary for that identification.
 
 The same visible drift may be caused by different forms of C.
 
-Example: Face Drift may result from semantic expansion, style gravity, prompt compression, role inference, or weak anchoring — or from several of these acting together.
+Example: Face Drift may result from Semantic Expansion C, Style Gravity C, Compression / Omission C, Role Inference C, or Reference Weakening C — or from several of these acting together.
 
 -----
 
@@ -66,9 +66,11 @@ A term in A is interpreted more broadly than the user intended.
 
 **Example**
 
+```text
 A: brown eyes
 B′: hazel or greenish-brown eyes
-Likely C: “brown” was interpreted as a wider color category
+Likely C: "brown" was interpreted as a wider color category
+```
 
 **Governance response**
 
@@ -84,9 +86,11 @@ A specified concept is replaced with a nearby but different concept.
 
 **Example**
 
+```text
 A: quiet, wounded expression
 B′: dramatic sadness or performative grief
 Likely C: restrained grief was substituted with a more recognizable emotional trope
+```
 
 **Governance response**
 
@@ -100,9 +104,11 @@ Important constraints in A are removed, compressed, or deprioritized.
 
 **Example**
 
+```text
 A: full body, turned posture, looking over shoulder
 B′: head-and-shoulders portrait
 Likely C: posture and full-body constraints were compressed away or deprioritized
+```
 
 **Governance response**
 
@@ -116,9 +122,11 @@ The system improves, beautifies, clarifies, regularizes, or “helps” beyond t
 
 **Example**
 
+```text
 A: do not optimize the prompt
 B′: optimized or improved prompt/output
-Likely C: default improvement behavior overrode the user’s constraint
+Likely C: default improvement behavior overrode the user's constraint
+```
 
 **Governance response**
 
@@ -132,9 +140,11 @@ A is pulled toward common training-distribution patterns.
 
 **Example**
 
+```text
 A: a woman looking over her shoulder at the camera, full body
 B′: conventional head-and-shoulders portrait
 Likely C: portrait framing defaulted from distributional gravity
+```
 
 **Governance response**
 
@@ -148,9 +158,11 @@ A style, genre, medium, or aesthetic pulls identity features away from the inten
 
 **Example**
 
+```text
 A: same character in a cinematic noir scene
 B′: character face changes to match noir archetype
 Likely C: noir style gravity altered facial identity
+```
 
 **Governance response**
 
@@ -164,9 +176,11 @@ The system infers a social role, occupation, personality, or narrative function 
 
 **Example**
 
+```text
 A: intelligent woman with glasses
 B′: corporate businesswoman template
 Likely C: intelligence + glasses were inferred as professional/business role
+```
 
 **Governance response**
 
@@ -180,9 +194,11 @@ The system fills missing background, setting, story, or emotional context in a w
 
 **Example**
 
+```text
 A: a character standing alone
 B′: dramatic fantasy battlefield scene
 Likely C: the model completed missing narrative context
+```
 
 **Governance response**
 
@@ -196,10 +212,12 @@ System instructions, safety layers, product-side rewriting, tool constraints, or
 
 **Example**
 
+```text
 A: user prompt
 A′: product-mediated or policy-mediated execution prompt
 B′: output shaped by hidden constraints
 Likely C: tool or product mediation changed A before execution
+```
 
 **Governance response**
 
@@ -213,10 +231,12 @@ A is transformed through visible or hidden prompt rewriting before generation.
 
 **Example**
 
+```text
 A: concise image instruction
 A′: expanded prompt with added details
 B′: output reflects the added details
 Likely C: prompt rewriting introduced new operative conditions
+```
 
 **Governance response**
 
@@ -230,9 +250,11 @@ The anchor or reference condition is present, but its control strength is too we
 
 **Example**
 
+```text
 A: use this character reference
 B′: similar but not the same character
 Likely C: reference was treated as loose resemblance, not identity constraint
+```
 
 **Governance response**
 
@@ -266,12 +288,21 @@ Do not inherit only the previous A′. Re-check each stage against the original 
 
 ## Diagnosis Pattern
 
-```
-Observed B′:        What appeared in the output?
-Expected B:         What should have appeared if A had been preserved?
-Inferred A′:        How did the system appear to reconstruct A?
-Likely C:           What mediation likely transformed A into A′?
-Governance response: How should the workflow constrain that C next time?
+```text
+Observed B′:
+What appeared in the output?
+
+Expected B:
+What should have appeared if A had been preserved?
+
+Inferred A′:
+How did the system appear to reconstruct A?
+
+Likely C:
+What mediation likely transformed A into A′?
+
+Governance response:
+How should the workflow constrain that C next time?
 ```
 
 -----
