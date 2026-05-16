@@ -67,9 +67,9 @@ Creative transformation is acceptable while A’s intended identity remains pres
 
 ## Why C Is the Governance Target
 
-B′ is observed after transformation has occurred. A′, when partially exposed, is observed as A after mediation.
+B′ is observed after transformation has occurred. A′, when partially exposed, is observed as A after mediation rather than as the original A.
 
-If governance focuses only on A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
+If governance focuses only on partially exposed A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
 
 C is different.
 
