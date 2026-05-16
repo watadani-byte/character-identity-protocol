@@ -251,7 +251,7 @@ This perspective introduces a production-oriented approach analogous to quality 
 
 CIP therefore occupies a position in the research landscape that is distinct from model modification approaches, prompt engineering practice, and static asset-first pipelines. It addresses the operational governance layer that these approaches do not explicitly define.
 
-Accordingly, CIP may be understood as an **inference-time reconstruction control framework implemented as an operational governance layer**: a protocol that governs reconstruction workflows around A′ through anchor materials, gate evaluation, Hard Abort, re-binding, adoption, rejection, and purge — all during inference, without modifying the model itself.
+Accordingly, CIP may be understood as an **inference-time reconstruction control framework implemented as an operational governance layer**: a protocol that governs reconstruction workflows around C → A′ through anchor materials, gate evaluation, Hard Abort, re-binding, adoption, rejection, and purge — all during inference, without modifying the model itself.
 
 -----
 
@@ -275,7 +275,7 @@ These frames exhibit unusually high coherence — disproportionately finished re
 
 ### Terminology: Control and Governance in CIP
 
-In CIP, “control” refers to workflow-level constraint around the reconstructed state (A′), while “governance” refers to the operational enforcement of validation, failure handling, adoption, rejection, purge, and recovery.
+In CIP, “control” refers to workflow-level constraint around C → A′ — the mediation process and reconstructed state, while “governance” refers to the operational enforcement of validation, failure handling, adoption, rejection, purge, and recovery.
 
 These are complementary layers: control defines what is constrained and how; governance defines when constraints are enforced, when failures are declared, and what recovery path is taken.
 
