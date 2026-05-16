@@ -10,6 +10,8 @@ A → (A + C) → A′ → B′ ≠ B
 
 C is the mediation layer through which the system interprets, compresses, expands, optimizes, constrains, or creatively transforms the user’s input A before producing B′.
 
+As defined in the core model, A + C is not simple addition. It is shorthand for a non-linear mediation process: A′ ≈ T_C(A). C Taxonomy classifies the likely properties of that mediation process — the ways in which A is transformed into A′.
+
 Character Drift Taxonomy classifies the visible drift that appears in B′.
 
 C Taxonomy classifies the likely mediation that caused A to become A′.
@@ -282,7 +284,9 @@ This is not simple addition. Each C acts on an already transformed version of A.
 
 **Governance response**
 
-Do not inherit only the previous A′. Re-check each stage against the original A.
+Do not inherit only the previous A′. Re-check each stage against the original A or a validated anchor.
+
+Anchors and gates act as reset points against C accumulation before a reconstructed A′ is allowed to become the next input condition.
 
 -----
 
