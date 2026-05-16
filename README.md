@@ -22,15 +22,18 @@ CIP operates entirely at inference time, without model modification.
 ```
 A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
-A′ = A + C
+
+A′ ≈ A + C
 
 A  = user input or reference condition
 C  = generative mediation — the added layer of interpretation, optimization, constraint handling, and creative transformation
-A′ = internally reconstructed state
+A′ = internally reconstructed state: A as transformed by C
 B′ = actual output
 
-CIP governs the workflow around A′.
-A′ is not directly observable or inspectable by the user; CIP therefore governs it operationally through external controls: anchors, gates, validation decisions, and adoption controls.
+CIP governs the workflow around A′ by making C operationally governable.
+
+A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally visible through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
+
 C explains why drift occurs. It does not excuse unmanaged drift.
 
 C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
@@ -148,7 +151,7 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 
 ```
 Core Model:     A → (A + C) → A′ → B′  (Reconstruction Control Model)
-Control Target: A′  (reconstructed state)
+Control Layer:  C → A′  (governing mediation and reconstructed state)
 Key Operations: Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
 ```
 
