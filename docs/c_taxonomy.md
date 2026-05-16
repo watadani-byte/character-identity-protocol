@@ -290,6 +290,22 @@ Anchors and gates act as reset points against C accumulation before a reconstruc
 
 -----
 
+## Diagnostic Grouping
+
+The categories above are listed individually because C categories are not mutually exclusive.
+
+For practical diagnosis, they may be grouped by likely source:
+
+|Group                |Typical categories                                                                  |Diagnostic question                                                           |
+|---------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+|Distribution-driven C|Semantic Expansion C, Semantic Substitution C, Default Pattern C, Style Gravity C   |Did the model pull A toward familiar learned patterns or nearby concepts?     |
+|System-driven C      |Compression / Omission C, Optimization C, Constraint Mediation C, Prompt Rewriting C|Did system behavior, rewriting, compression, or tooling alter A before output?|
+|Context-driven C     |Role Inference C, Context Completion C, Reference Weakening C, Accumulation C       |Did inferred context, role, weak anchoring, or workflow history reshape A?    |
+
+These groups are diagnostic aids, not strict classes. A single drift event may involve categories from multiple groups.
+
+-----
+
 ## Diagnosis Pattern
 
 ```text
