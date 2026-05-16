@@ -37,6 +37,8 @@ It internally mediates A through C — adding interpretation, inference, optimiz
 B′ ≠ B is not necessarily a malfunction. It is often the expected behavior of a system operating under generative mediation. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
 
 > **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
+> 
+> The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. In more formal terms, A′ may be understood as the result of a transformation applied to A under C — that is, A′ ≈ T_C(A) — rather than as a simple sum.
 
 -----
 
@@ -183,6 +185,10 @@ A compressed prompt is not merely a shorter A. It is a reconstructed A′ produc
 Small transformations that appear acceptable at each step may compound until the final output no longer preserves the intended identity of A.
 
 For this reason, each stage must not inherit only the previous A′. It must re-check the current reconstructed state against the original A.
+
+Anchors and gates act as reset points against C accumulation. At each stage, the current A′ should be checked against the original A or a validated anchor before it is allowed to become the next input condition.
+
+This may be implemented through visual comparison, semantic checks, identity gates, embedding similarity, human validation, or domain-specific adoption criteria.
 
 -----
 
