@@ -146,6 +146,14 @@ A CIP-style correction narrows the transformation conditions:
 
 > “Use solid dark chocolate-brown irises, with no green tint and no hazel variation.”
 
+|Aspect           |Feedback-only correction             |CIP-style correction                                        |
+|-----------------|-------------------------------------|------------------------------------------------------------|
+|Observed B′      |Hazel or greenish-brown eyes appeared|Hazel or greenish-brown eyes appeared                       |
+|Diagnosis        |The eye color is wrong               |“Brown” may have been interpreted too broadly               |
+|Governance target|B′, the visible output               |C, the likely semantic expansion from A to A′               |
+|Correction       |Make the eyes brown                  |Narrow the color anchor to solid dark chocolate-brown irises|
+|Governance effect|Fixes one output                     |Reduces the recurrence condition for the same drift         |
+
 The diagnosis of C converts feedback into feedforward governance.
 
 -----
