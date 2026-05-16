@@ -67,10 +67,7 @@ Creative transformation is acceptable while A’s intended identity remains pres
 
 ## Why C Is the Governance Target
 
-A′ and B′ are observable only after transformation has already occurred.
-
-A′ is A after mediation.
-B′ is the output produced from that mediated state.
+B′ is observed after transformation has occurred. A′, when partially exposed, is observed as A after mediation.
 
 If governance focuses only on A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
 
@@ -136,16 +133,16 @@ From B′, the user infers how A may have been reconstructed as A′, and then i
 
 - A: user specifies brown eyes
 - B′: generated image shows hazel or greenish-brown eyes
-- Diagnosis: the system operationally interpreted “brown” as a wider color category including hazel, amber, or greenish-brown variations
+- Diagnosis: the system may have operationally interpreted “brown” as a wider color category including hazel, amber, or greenish-brown variations
 - C: semantic expansion of the intended color anchor
 
-The governance issue is not whether hazel is objectively part of brown. The issue is that the model’s operational interpretation of “brown” was wider than the user’s intended anchor.
+The governance issue is not whether hazel is objectively part of brown. The issue is that the model’s operational interpretation of “brown” appears to have been wider than the user’s intended anchor.
 
 A feedback-only correction would say:
 
 > “Make the eyes brown.”
 
-A CIP correction narrows the transformation conditions:
+A CIP-style correction narrows the transformation conditions:
 
 > “Use solid dark chocolate-brown irises, with no green tint and no hazel variation.”
 
