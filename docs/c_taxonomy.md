@@ -309,7 +309,7 @@ How should the workflow constrain that C next time?
 
 ## Example Diagnosis
 
-```
+```text
 Observed B′:         Hazel or greenish-brown eyes appeared.
 Expected B:          Clearly brown eyes.
 Inferred A′:         "Brown" appears to have been reconstructed as a broad color category.
