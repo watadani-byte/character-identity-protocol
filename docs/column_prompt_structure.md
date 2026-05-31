@@ -91,6 +91,8 @@ Understanding these roles helps prevent common mistakes when writing prompts.
 
 The Theme defines what the prompt is about.
 
+In some prompts, the theme may also include the role the AI should take or the goal the user wants to achieve.
+
 **Example:**
 
 ```
@@ -167,7 +169,8 @@ The Output defines the format of the final result.
 ```
 Output:
 Use bullet points
-Keep sentences short
+Use a Markdown table if comparison is needed
+Keep the answer under three paragraphs
 ```
 
 Output instructions control how the answer is presented.
@@ -254,9 +257,9 @@ Effective prompts often share several common characteristics.
 
 In practice, prompts tend to work best when they follow three basic principles:
 
-- information is compressed
+- information is clearly organized
 - instructions are structured
-- requests are short and specific
+- requests are concise and specific
 
 These properties make prompts easier for the AI to interpret when it reconstructs their meaning internally.
 
@@ -275,7 +278,7 @@ Each new message becomes part of the context that the AI interprets when generat
 Understanding prompts in this way helps explain why:
 
 - clear instructions improve reliability
-- overly long prompts may become unstable
+- long, unstructured prompts may become unstable
 - long conversations can gradually change how the AI interprets a task
 
 By thinking of prompts as structured information given to a probabilistic system, users can design prompts more effectively and avoid many common frustrations.
