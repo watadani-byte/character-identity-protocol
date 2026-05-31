@@ -1,5 +1,5 @@
 # A Simple Structure for Writing Prompts
-　
+
 > This article is practical and introductory in nature.
 > It is intended for users who are new to writing prompts for generative AI systems.
 
