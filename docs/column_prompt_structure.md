@@ -36,7 +36,7 @@ A simpler approach is to start with a structure that matches how people naturall
 
 ## Step 1 — Start with Five Simple Elements
 
-For beginners, prompts are easier to understand when they are broken into five parts.
+For beginners, prompts are easier to understand when they are broken into five parts:
 
 - Theme
 - Rules
@@ -69,6 +69,11 @@ Process (Steps to follow)
         ↓
 Output (Final format)
 ```
+
+The purpose of this structure is not to make prompts longer.
+It is to reduce ambiguity.
+
+By separating the topic, conditions, reference materials, reasoning process, and final format, users can make it easier for the AI to preserve the original intent of the prompt.
 
 Because it follows a natural mental flow, beginners can understand it quickly.
 
@@ -109,14 +114,14 @@ Use simple language
 Avoid technical jargon
 ```
 
-Rules act as constraints on the response.
-They guide how the AI should approach the task.
+Rules guide how the AI should approach the task.
+They act as behavioral constraints on the response.
 
 -----
 
 ### Materials
 
-Materials contain reference information.
+Materials contain reference information the AI should use.
 
 **Example:**
 
@@ -129,16 +134,16 @@ An article about diffusion models
 Beginners often make the mistake of mixing instructions with materials.
 However, these are different things.
 
-- Materials = reference information
-- Rules = instructions
+- Rules = instructions that guide behavior
+- Materials = reference information the AI may draw on
 
-Materials provide context and information the AI may use when generating the response.
+Materials provide context and information. They do not tell the AI how to behave.
 
 -----
 
 ### Process
 
-The Process describes how the explanation should proceed.
+The Process describes the steps the AI should follow before producing the final answer.
 
 **Example:**
 
@@ -149,7 +154,7 @@ Process:
 3. Summarize the key point
 ```
 
-The process acts as a step-by-step guide for how the answer should be constructed.
+The process controls the path the answer should take, not just its content.
 
 -----
 
@@ -165,7 +170,8 @@ Use bullet points
 Keep sentences short
 ```
 
-Output instructions help control how the answer is presented, not what it contains.
+Output instructions control how the answer is presented.
+They do not define what the answer contains.
 
 -----
 
@@ -233,6 +239,15 @@ By starting with a structure that matches how people naturally think, prompt des
 
 -----
 
+## Where This Structure Applies
+
+This structure can be used with many current generative AI systems, especially text-based conversational models.
+
+However, different systems may require different emphasis depending on their purpose.
+Search-based systems may require clearer source instructions, while image generation systems often use a more visual prompt structure.
+
+-----
+
 ## Summary
 
 Effective prompts often share several common characteristics.
@@ -269,11 +284,12 @@ By thinking of prompts as structured information given to a probabilistic system
 
 ## Next Section
 
-This structure works well for many kinds of prompts.
+This structure works well for many text-based prompts.
 
-However, prompts used for image generation systems often follow a slightly different pattern.
+However, image generation prompts often follow a slightly different pattern.
+They usually place more emphasis on subject, style, composition, visual details, and constraints.
 
-In the next section we will examine how prompts are commonly written for image generation tasks.
+In the next section, we will examine how prompts are commonly written for image generation tasks.
 
 -----
 
