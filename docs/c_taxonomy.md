@@ -1,4 +1,4 @@
-# C Taxonomy: Classifying Generative Mediation
+# C Taxonomy: Classifying Mediation from A to A′
 
 C Taxonomy classifies the mediation that transforms A into A′, including model-side generative mediation and execution-structure mediation.
 
@@ -427,6 +427,8 @@ Governance response: Replace the broad color anchor with a narrower visual ancho
 |Effect    |Fixes one instance        |Reduces recurrence risk            |
 
 C diagnosis converts feedback into feedforward governance.
+
+*Here, “C → A′” is shorthand for the governed transformation of A into A′ under C; it does not mean that C independently produces A′ without A.*
 
 -----
 
