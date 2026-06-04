@@ -42,7 +42,7 @@ B′ ≠ B does not mean that every difference is a failure. It marks the struct
 
 > **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
 > 
-> The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. In more formal terms, A′ may be understood as the result of a transformation applied to A under C — that is, A′ ≈ T_C(A) — rather than as a simple sum.
+> The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. More formally, A′ may be represented as T_C(A): the result of transforming A under the conditions of C. This is a secondary formal representation; the primary model remains A → (A + C) → A′ → B′ ≠ B.
 
 -----
 
@@ -72,6 +72,8 @@ C is broad by design, but not unlimited: it refers only to generative mediation 
 C may include interpretation, compression, weighting, completion, sampling, stylistic transformation, constraint handling, reconstruction, and optimization or product-side rewriting when it affects the generative transformation.
 
 C does not include external business decisions, human editorial judgment, or organizational approval processes themselves. However, when those decisions are converted into prompts, constraints, examples, policies, or workflow conditions that shape a later generation step, they may become part of the conditions under which C operates.
+
+For governance purposes, CIP distinguishes between C as generative mediation and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape its effects.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
@@ -112,6 +114,22 @@ The model mediated the compositional instruction through C — defaulting toward
 In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction, producing A′ before B′ was generated.
 
 The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred, although it does not by itself identify the exact C. This supports a diagnosis of likely C, not a complete reconstruction of the model’s internal process.
+
+### A Second Example: Policy Softening in Text Generation
+
+CIP is not limited to image generation or character consistency. The same model applies to instruction following and enterprise workflows.
+
+A user prompts a model with:
+
+> “Draft a customer support response denying a refund request. Be polite but absolutely firm that our policy is final.”
+
+The intended output B is a professional, courteous message that clearly communicates the finality of the refund decision.
+
+The actual output B′ may become overly apologetic, offering to “look into alternatives” or “escalate the issue,” even though the user specified that the policy is final.
+
+This suggests that C may have mediated the instruction through learned customer-service patterns that prioritize agreeableness, apology, or de-escalation over the specified firmness.
+
+In this case, the drift is not a failure of politeness. It is a failure to preserve the operational identity of A: a firm policy boundary expressed in polite language.
 
 -----
 
@@ -236,7 +254,7 @@ Even with identical input A, C introduces variation — because the same statist
 
 This means that, under ordinary sampling conditions, identical prompts do not guarantee identical outputs.
 
-> C contains entropy. Drift is therefore both directional and stochastic.
+Drift is directional because C pulls outputs toward learned distributional patterns, and stochastic because sampling introduces variation across executions.
 
 -----
 
