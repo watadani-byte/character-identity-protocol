@@ -58,7 +58,7 @@ C is not an error. C is the generative contribution of AI.
 
 Drift occurs only when C transforms A into A′ without preserving A’s intended identity.
 
-C is not directly visible to the user. In practice, it is always present in generative systems and shapes A′ and therefore B′.
+C is not directly visible to the user. In practice, some form of C is present whenever a generative system reconstructs input into output, and it shapes A′ and therefore B′.
 
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
