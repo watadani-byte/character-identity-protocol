@@ -143,27 +143,30 @@ Reference-based generation, improved resemblance, or human approval alone do not
 
 ## Reconstruction (A → A′ → B′)
 
-The internal process by which a generative model interprets inputs and produces an output.
+The reconstruction model describes the process by which a probabilistic system transforms user input or reference condition A into an internally reconstructed state A′ before producing the actual output B′.
 
 ```
-A → (A + C) → B′
+A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
-A′ = A + C
+A′ ≈ T_C(A)
 ```
 
 Where:
 
-- A = user input or reference condition (anchor, prompt)
-- C = internal constraints: training priors, optimization pressure, compression, platform constraints, and constraint rewriting
-- A′ = internally reconstructed state (not the output; not directly observable)
+- A = user input or reference condition
+- C = mediation that transforms A into A′, including model-side mediation and execution-structure mediation
+- A′ = internally reconstructed state: A as transformed by C
 - B′ = actual output
 
-A′ is not directly observable but can be inferred from B′ and its deviation from the anchor.
+The expression A + C is not simple addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′.
 
-**C explains why drift occurs. It does not excuse unmanaged drift.**
+A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be externalized, inferred, or tested through prompt disclosure, execution traces, anchor comparison, gate evaluation, validation decisions, and adoption controls.
 
-CIP does not directly control A′.
-It governs the workflow conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
+C explains why drift occurs. It does not excuse unmanaged drift.
+
+CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
+
+“C → A′” is shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.
 
 *Formerly listed as “Reconstruction (A→A’)”*
 
@@ -686,7 +689,7 @@ Resolution requires explicit anchor governance: identifying the authoritative an
 -----
 
 ## Anchor Preservation Governance (APG)
-　
+
 The CIP-side governance structure responsible for preserving externally defined structured anchors under operational conditions.
 
 APG defines four functions:
