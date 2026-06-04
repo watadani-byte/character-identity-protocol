@@ -1,6 +1,8 @@
 # Why Generative AI Does Not Execute Your Input
 
-In this document, CIP refers to Character Identity Protocol: an inference-time adoption-governance framework that determines whether probabilistic outputs remain valid for adoption under identity, brand-code, and rights-control constraints.
+In this document, CIP refers to Character Identity Protocol: an inference-time adoption-governance framework for determining whether probabilistic outputs remain valid for adoption under defined identity constraints.
+
+Although CIP was first developed through character-consistency failures, the model generalizes to A-continuity: the preservation of a defined input identity, role, function, brand code, or operational criterion across generative transformation.
 
 Most people assume generative AI works like this:
 
@@ -50,7 +52,7 @@ Without C, the model cannot explain observed behavior.
 
 Generative systems are trained to optimize across a large distribution of inputs. When they receive A, they do not treat it as a fixed specification. They interpret it — compressing, reweighting, and reconstructing it — according to patterns learned during training.
 
-This interpretation process is C.
+This mediating transformation process is C.
 
 C is not an error. C is the generative contribution of AI.
 
@@ -164,7 +166,7 @@ A CIP-style correction narrows the transformation conditions:
 |-----------------|-------------------------------------|------------------------------------------------------------|
 |Observed B′      |Hazel or greenish-brown eyes appeared|Hazel or greenish-brown eyes appeared                       |
 |Diagnosis        |The eye color is wrong               |“Brown” may have been interpreted too broadly               |
-|Governance target|B′, the visible output               |C, the likely semantic expansion from A to A′               |
+|Governance target|B′, the visible output               |The semantic expansion condition from A to A′               |
 |Correction       |Make the eyes brown                  |Narrow the color anchor to solid dark chocolate-brown irises|
 |Governance effect|Fixes one output                     |Reduces the recurrence condition for the same drift         |
 
