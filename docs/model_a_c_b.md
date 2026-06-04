@@ -24,13 +24,13 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                                      |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                                    |
-|C     |Generative mediation — the set of mediations through which A is interpreted, compressed, weighted, optimized, constrained, and creatively transformed into A′|
-|A′    |Internally reconstructed state: A as transformed by C                                                                                                        |
-|B     |Intended output (what the user expects)                                                                                                                      |
-|B′    |Actual output (what the system produces)                                                                                                                     |
+|Symbol|Meaning                                                                                                                                                                                                                            |
+|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                                                                                                                                                          |
+|C     |Mediation that transforms A into A′ — including model-side generative mediation and execution-structure mediation through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed|
+|A′    |Internally reconstructed state: A as transformed by C                                                                                                                                                                              |
+|B     |Intended output (what the user expects)                                                                                                                                                                                            |
+|B′    |Actual output (what the system produces)                                                                                                                                                                                           |
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
 
@@ -58,6 +58,10 @@ This mediating transformation process is C.
 
 C is not an error. C is the generative contribution of AI.
 
+The question is not whether C exists, but how its effects are governed.
+
+AI systems often describe C as improvement, clarification, optimization, or contextual interpretation. CIP does not deny that these operations may be useful. However, when they change A before producing B′, CIP treats them as governance-relevant transformations.
+
 C becomes governable only when the conditions under which it transforms A into A′ are constrained, externalized where possible, and validated before adoption.
 
 Drift occurs only when C transforms A into A′ without preserving A’s intended identity.
@@ -71,13 +75,19 @@ A′ is not fully or directly observable under ordinary conditions. CIP therefor
 
 ### Scope of C
 
-C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
+C is broad by design, but not unlimited: it refers to model-side or execution-structure mediation that transforms A into A′.
+
+In agentic AI systems, C does not only emerge from the model’s generative behavior. It can also be introduced by the execution structure around the model: scaffolding, harnesses, context engineering, tool routing, memory injection, evaluation loops, retry behavior, and stop conditions.
+
+These structures are not C merely because they exist. They become relevant to C only when they mediate, transform, redirect, expand, constrain, or replace A before B′ is produced.
+
+CIP does not treat output drift as a model-only issue. It treats drift as a system-level continuity problem: where, how, and under whose authority A is transformed into A′ before producing B′.
 
 C may include interpretation, compression, weighting, completion, sampling, stylistic transformation, constraint handling, reconstruction, and optimization or product-side rewriting when it affects the generative transformation.
 
 C does not include external business decisions, human editorial judgment, or organizational approval processes themselves. However, when those decisions are converted into prompts, constraints, examples, policies, or workflow conditions that shape a later generation step, they may become part of the conditions under which C operates.
 
-For governance purposes, CIP distinguishes between C as generative mediation and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape how C transforms A into A′.
+For governance purposes, CIP distinguishes between C as mediation that transforms A into A′ and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape how C transforms A into A′.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
@@ -134,6 +144,15 @@ The actual output B′ may become overly apologetic, offering to “look into al
 This suggests that C may have mediated the instruction through learned customer-service patterns that prioritize agreeableness, apology, or de-escalation over the specified firmness.
 
 In this case, the drift is not a failure of politeness. It is a failure to preserve the operational identity of A: a firm policy boundary expressed in polite language.
+
+These examples differ in modality, but the governance problem is the same: preserving the intended identity of A across the mediations that transform A into A′.
+
+In image-generation workflows, C may enter at more than one layer.
+
+- **Model-side C**: the language model changes, optimizes, compresses, or reinterprets the user’s instruction before image generation.
+- **Image-execution C**: the written prompt is preserved, but the image model visually resolves the output in a different direction during generation.
+
+CIP separates these cases because they require different governance responses. Model-side C is governed through prompt disclosure, prompt approval, instruction-preservation checks, and pre-execution gates. Image-execution C is governed through anchors, visual comparison, identity gates, regeneration, Hard Abort, and adoption control.
 
 -----
 
@@ -308,7 +327,7 @@ CIP therefore treats generative drift as a governable transformation risk, not m
 
 ## Conclusion
 
-When B′ no longer preserves the intended identity of A, the difference between B and B′ can be understood as drift — a structural deviation introduced during generative mediation.
+When B′ no longer preserves the intended identity of A, the difference between B and B′ can be understood as drift — a structural deviation introduced during mediation from A to A′.
 
 Character consistency, instruction following, and output reliability are all affected by C.
 
