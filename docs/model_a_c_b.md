@@ -83,7 +83,7 @@ B′ is observed after transformation has occurred. A′, when partially exposed
 
 If governance focuses only on partially exposed A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
 
-C is different.
+C is different because it concerns the transformation conditions before B′ is produced.
 
 CIP does not assume that C can be directly inspected or controlled as an internal mechanism. Instead, it treats the conditions under which C operates as the governance target.
 
@@ -269,7 +269,7 @@ Character drift was the first observable case; A-continuity is the generalized p
 
 CIP does not replace existing AI governance frameworks. It provides a focused operational layer for identifying and managing transformation risk in generative AI systems.
 
-Practical governance under CIP follows four steps:
+Practical governance under CIP can be aligned with four functions:
 
 - **Map**: identify where A may be transformed by C across prompts, tools, models, workflow stages, and adoption points.
 - **Measure**: detect whether B′ preserves the intended identity, role, function, or operational criteria of A.
