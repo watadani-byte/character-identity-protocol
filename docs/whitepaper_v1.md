@@ -13,7 +13,7 @@
 
 Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — primarily operate at the level of model parameters or input specification, and do not explicitly control the reconstruction process that produces outputs during inference.
 
-This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction governance framework that formalizes identity stabilization as a governance problem around the conditions under which C transforms A into A′: the mediation process through which user input A becomes an operational reconstructed state A′ before output is adopted. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP does not directly control C or A′. Instead, it governs the workflow conditions around C → A′: making generative mediation operationally governable and defining the conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
+This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction governance framework that formalizes identity stabilization as a governance problem around the conditions under which C transforms A into A′: the mediation process through which user input A becomes an operational reconstructed state A′ before output is adopted. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP does not directly control C or A′. Instead, it governs the workflow conditions around C → A′: making mediation from A to A′ operationally governable and defining the conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
 *“C → A′” is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
 
@@ -43,7 +43,7 @@ CIP operationally realizes convergence control through **High-Density Latent Anc
 
 CIP/PAL does not reject AI mediation; it governs it.
 
-The goal is to preserve the productive value of AI-generated mediation while preventing that mediation from rewriting identity, brand code, or adoption criteria.
+The goal is to preserve the productive value of AI mediation while preventing unmanaged mediation from rewriting identity, brand code, or adoption criteria.
 
 -----
 
@@ -293,7 +293,7 @@ A′ can be understood as the result of non-linear generative mediation applied 
 A′ ≈ T_C(A)
 ```
 
-where C is model-side or execution-structure mediation acting on A — including interpretation, compression, weighting, optimization pressure, constraint handling, sampling behavior, training-prior influence, product-side rewriting where applicable, creative transformation, and in agentic systems, scaffolding, tool routing, memory injection, evaluation loops, and retry behavior when these mediate or replace A before B′ is produced. C is not the invisible internal representation itself. It refers to the mediation through which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′. The expression A + C is shorthand for this non-linear process, not a simple sum. The notation A → A′ → B′ describes the structural sequence; the notation A → (A + C) → A′ → B′ explains why that state deviates from the original input.
+where C is model-side or execution-structure mediation acting on A. It may include interpretation, compression, weighting, optimization pressure, constraint handling, sampling behavior, training-prior influence, product-side rewriting where applicable, and creative transformation. In agentic systems, C may also arise from scaffolding, tool routing, memory injection, evaluation loops, and retry behavior when these mediate, transform, redirect, or replace A before B′ is produced. C is not the invisible internal representation itself. It refers to the mediation through which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′. The expression A + C is shorthand for this non-linear process, not a simple sum. The notation A → A′ → B′ describes the structural sequence; the notation A → (A + C) → A′ → B′ explains why that state deviates from the original input.
 
 A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be exposed or inferred through prompt disclosure, execution traces, output behavior B′, and validation against the original A or a validated anchor.
 
@@ -1126,10 +1126,10 @@ In the rapidly evolving landscape of generative AI, the Character Identity Proto
 
 By combining statistical convergence with explicit operational framing, CIP defines a structured approach to the governance of character identities in production AI workflows.
 
-The protocol does not reject the model’s generative mediation.  
+The protocol does not reject AI mediation.  
 It governs it.
 
-CIP/PAL preserves the productive value of AI-generated mediation while preventing unmanaged C-driven transformation from rewriting identity, brand code, or adoption criteria.
+CIP/PAL preserves the productive value of AI mediation while preventing unmanaged C-driven transformation from rewriting identity, brand code, or adoption criteria.
 
 ### Implication: Inference-Time Governance
 
