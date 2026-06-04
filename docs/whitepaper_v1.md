@@ -287,7 +287,7 @@ These are complementary layers: control defines what is constrained and how; gov
 
 Within the CIP framework, A′ represents the internally reconstructed problem state derived from user input A.
 
-A′ can be understood as the result of non-linear generative mediation applied to A under C:
+A′ can be understood as the result of non-linear mediation applied to A under C:
 
 ```text
 A′ ≈ T_C(A)
