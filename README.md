@@ -15,7 +15,7 @@ Its purpose is to decide whether an output should be accepted, rejected, aborted
 Character identity in image and video generation is one concrete entry point.  
 But the underlying problem is broader: probabilistic outputs used as IP, brand, persona, or control-bound assets require explicit adoption governance.
 
-CIP governs that layer.
+CIP governs the adoption layer.
 
 CIP operates entirely at inference time, without model modification.
 
