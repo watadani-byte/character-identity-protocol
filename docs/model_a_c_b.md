@@ -24,13 +24,13 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                                                                                                            |
-|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                                                                                                          |
-|C     |Mediation that transforms A into A′ — including model-side generative mediation and execution-structure mediation through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed|
-|A′    |Internally reconstructed state: A as transformed by C                                                                                                                                                                              |
-|B     |Intended output (what the user expects)                                                                                                                                                                                            |
-|B′    |Actual output (what the system produces)                                                                                                                                                                                           |
+|Symbol|Meaning                                                                                                                                                                                                                                      |
+|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                                                                                                                                                                    |
+|C     |Mediation that transforms A into A′ — including model-side generative mediation and execution-structure mediation such as interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, or reconstruction|
+|A′    |Internally reconstructed state: A as transformed by C                                                                                                                                                                                        |
+|B     |Intended output (what the user expects)                                                                                                                                                                                                      |
+|B′    |Actual output (what the system produces)                                                                                                                                                                                                     |
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
 
@@ -38,7 +38,7 @@ The system does not execute A as a fixed specification.
 
 It internally mediates A through C — adding interpretation, inference, optimization, compression, stylistic transformation, and creative contribution — producing A′, which then generates B′. B′ may deviate from B.
 
-B′ ≠ B does not mean that every difference is a failure. It marks the structural possibility of deviation; drift occurs only when the intended identity of A is no longer preserved. B′ ≠ B is not necessarily a malfunction — it is often the expected behavior of a system operating under generative mediation. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
+B′ ≠ B does not mean that every difference is a failure. It marks the structural possibility of deviation; drift occurs only when the intended identity of A is no longer preserved. B′ ≠ B is not necessarily a malfunction — it is often the expected behavior of a system operating through mediation from A to A′. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
 
 > **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
 > 
@@ -55,6 +55,8 @@ Without C, the model cannot explain observed behavior.
 Generative systems are trained to optimize across a large distribution of inputs. When they receive A, they do not treat it as a fixed specification. They interpret it — compressing, reweighting, and reconstructing it — according to patterns learned during training.
 
 This mediating transformation process is C.
+
+In agentic systems, the same transformation may also be introduced by execution structures around the model.
 
 C is not an error. C is the generative contribution of AI.
 
@@ -151,6 +153,8 @@ In image-generation workflows, C may enter at more than one layer.
 
 - **Model-side C**: the language model changes, optimizes, compresses, or reinterprets the user’s instruction before image generation.
 - **Image-execution C**: the written prompt is preserved, but the image model visually resolves the output in a different direction during generation.
+
+For example, if the user says, “The eyes are not hazel; they are brown,” and the language model rewrites this into “brown eyes with a strong green tone,” the drift occurs before image generation. If the written prompt remains “clearly brown eyes, not hazel,” but the generated image still has hazel eyes, the drift occurs during image execution.
 
 CIP separates these cases because they require different governance responses. Model-side C is governed through prompt disclosure, prompt approval, instruction-preservation checks, and pre-execution gates. Image-execution C is governed through anchors, visual comparison, identity gates, regeneration, Hard Abort, and adoption control.
 
