@@ -320,7 +320,7 @@ A theoretical abstraction of the generation process — not a claim about propri
 Verbose prompts activate Layers A and B more strongly.  
 Minimal prompts reduce pressure on Layers A and B, allowing the anchor to dominate.
 
-*Note: Layer C in this abstraction is not the same as C in the reconstruction model A → (A + C) → B′. The former names a conceptual processing layer; the latter names internal constraints such as training priors, optimization pressure, and platform behavior.*
+*Note: Layer C in this abstraction is not the same as C in the reconstruction model A → (A + C) → A′ → B′. The former names a conceptual execution layer; the latter names mediation that transforms A into A′.*
 
 -----
 
@@ -470,10 +470,11 @@ defined by the operator.
 
 ## Hard Abort
 
-The mandatory stop condition triggered when any quality gate fails.
+The mandatory stop condition triggered when any quality gate or governance condition fails.
 
-The session is terminated. Contaminated outputs are discarded.  
-No continuation, no correction, no exception.
+A contaminated generation or adoption cycle is terminated. Drifted outputs are discarded and are not allowed to propagate downstream.
+
+Hard Abort is followed by purge, re-binding, and re-convergence from the last validated anchor state or governing condition.
 
 -----
 
@@ -533,8 +534,9 @@ Caused by:
 - Optimization pressure from verbose prompts
 - Session context degradation
 - Insufficient anchoring frequency
+- Model-side or execution-structure mediation that transforms A before B′ is produced
 
-C — internal constraints including training priors, optimization pressure, and platform behavior — explains why drift occurs. It does not excuse unmanaged drift.
+C — mediation that transforms A into A′, including model-side and execution-structure mediation — explains why drift occurs. It does not excuse unmanaged drift.
 
 -----
 
@@ -689,7 +691,7 @@ Resolution requires explicit anchor governance: identifying the authoritative an
 -----
 
 ## Anchor Preservation Governance (APG)
-　
+
 The CIP-side governance structure responsible for preserving externally defined structured anchors under operational conditions.
 
 APG defines four functions:
