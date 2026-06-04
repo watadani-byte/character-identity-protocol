@@ -43,6 +43,8 @@ B′ ≠ B does not mean that every difference is a failure. It marks the struct
 > **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
 > 
 > The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. More formally, A′ may be represented as T_C(A): the result of transforming A under the conditions of C. This is a secondary formal representation; the primary model remains A → (A + C) → A′ → B′ ≠ B.
+> 
+> In this document, A → (A + C) → A′ → B′ remains the primary explanatory notation, while A′ ≈ T_C(A) is used only as a secondary formal shorthand for the same reconstruction process.
 
 -----
 
@@ -56,6 +58,8 @@ This mediating transformation process is C.
 
 C is not an error. C is the generative contribution of AI.
 
+C becomes governable only when the conditions under which it transforms A into A′ are constrained, externalized where possible, and validated before adoption.
+
 Drift occurs only when C transforms A into A′ without preserving A’s intended identity.
 
 C is not directly visible to the user. In practice, some form of C is present whenever a generative system reconstructs input into output, and it shapes A′ and therefore B′.
@@ -63,7 +67,7 @@ C is not directly visible to the user. In practice, some form of C is present wh
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
 
-A′ is not directly observable or inspectable by the user. CIP therefore governs it operationally through external controls: anchors, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable under ordinary conditions. CIP therefore governs reconstructed states operationally through external controls: anchors, gates, validation decisions, and adoption controls.
 
 ### Scope of C
 
@@ -73,7 +77,7 @@ C may include interpretation, compression, weighting, completion, sampling, styl
 
 C does not include external business decisions, human editorial judgment, or organizational approval processes themselves. However, when those decisions are converted into prompts, constraints, examples, policies, or workflow conditions that shape a later generation step, they may become part of the conditions under which C operates.
 
-For governance purposes, CIP distinguishes between C as generative mediation and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape its effects.
+For governance purposes, CIP distinguishes between C as generative mediation and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape how C transforms A into A′.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
@@ -293,6 +297,8 @@ Practical governance under CIP can be aligned with four functions:
 - **Measure**: detect whether B′ preserves the intended identity, role, function, or operational criteria of A.
 - **Manage**: reduce recurrence by adjusting prompts, anchors, constraints, validation gates, workflow separation, reset procedures, and adoption controls.
 - **Govern**: define who has authority to validate, reject, reset, or adopt reconstructed outputs.
+
+For CIP, governance does not end with detecting drift. It requires assigning decision authority: who validates the reconstructed state, who may reject or adopt B′, which deviations are acceptable variation, which deviations constitute drift, and when Hard Abort, re-binding, or purge must be triggered.
 
 In relation to ISO/IEC 42001, CIP can function as an operational layer within an AI management system: it helps organizations define, evaluate, monitor, and improve the conditions under which generative transformation occurs.
 
