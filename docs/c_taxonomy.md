@@ -58,6 +58,24 @@ Example: Face Drift may result from Semantic Expansion C, Style Gravity C, Compr
 
 -----
 
+## C Types: Generative and Structural
+
+C may originate from two distinct sources.
+
+**Generative C**
+
+Model-side or generation-process mediation, such as interpretation, compression, weighting, optimization, safety or generalization bias, stylistic transformation, semantic expansion, and creative reconstruction.
+
+**Structural C**
+
+Execution-structure mediation introduced by agent scaffolding, harnesses, context engineering, tool routing, memory injection, evaluation loops, retry behavior, and stop conditions.
+
+These structures are not C merely because they exist. They become relevant to C only when they mediate, transform, redirect, expand, constrain, or replace A before B′ is produced.
+
+CIP does not treat output drift as a model-only issue. It treats drift as a system-level continuity problem: where, how, and under whose authority A is transformed into A′ before producing B′.
+
+-----
+
 ## Initial C Categories
 
 C categories are diagnostic, not mutually exclusive. A single drift event may involve multiple categories.
@@ -121,6 +139,8 @@ Separate fixed elements from optional elements. Re-check compressed prompts agai
 ### 4. Optimization C
 
 The system improves, beautifies, clarifies, regularizes, or “helps” beyond the user’s intent.
+
+AI systems often describe this as improvement, clarification, or contextual interpretation. CIP does not deny that these operations may be useful. However, when they change A before producing B′, CIP treats them as governance-relevant transformations.
 
 **Example**
 
