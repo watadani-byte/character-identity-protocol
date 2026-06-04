@@ -27,7 +27,7 @@ A → A′ → B′
 
 A′ ≈ T_C(A)
 
-A + C is shorthand for non-linear generative mediation, not simple addition.
+A + C is shorthand for non-linear mediation, not simple addition.
 
 A  = user input or reference condition
 C  = generative mediation — model-side or execution-structure mediation through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed into A′
@@ -156,7 +156,7 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 ## Core Model
 
 ```
-Core Model:        A → (A + C) → A′ → B′  (Reconstruction Control Model)
+Core Model:        A → (A + C) → A′ → B′ ≠ B  (Reconstruction Control Model)
 Formal shorthand:  A′ ≈ T_C(A)
 Governance Layer:  Workflow conditions around C → A′, including validation, adoption, rejection, purge, and re-binding
 Key Operations:    Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
