@@ -303,7 +303,7 @@ Operationally, A′ is defined as:
 - the immediate precursor to output generation (B′)
 - the reconstructed state validated within the CIP governance loop
 
-CIP does not directly control A′, and C is not directly visible. It governs the workflow conditions around C → A′ — making generative mediation operationally governable and defining when reconstructed states are accepted, rejected, re-bound, or purged through anchor injection, prompt entropy reduction, and identity validation gates.
+CIP does not directly control A′, and C is not directly visible. It governs the workflow conditions around C → A′ — making mediation from A to A′ operationally governable and defining when reconstructed states are accepted, rejected, re-bound, or purged through anchor injection, prompt entropy reduction, and identity validation gates.
 
 Thus, identity stabilization in CIP is achieved not by enforcing output similarity, but by governing the workflow around C → A′ relative to the original A and the validated anchor.
 
@@ -1135,7 +1135,7 @@ CIP/PAL preserves the productive value of AI mediation while preventing unmanage
 
 CIP suggests that identity stability in generative systems is not solely a model capability problem, but an inference-time governance problem.
 
-This implies that future improvements in generative reliability may be achieved not only through model scaling or training, but through structured operational control applied during inference.
+This implies that future improvements in generative reliability may be achieved not only through model scaling or training, but through structured operational control applied during inference, including governance of the execution structures around agentic systems.
 
 -----
 
@@ -1228,6 +1228,8 @@ Highly detailed prompts may push generation into sparse regions of the model’s
 ### Q10. How does CIP interact with agentic orchestration systems?
 
 Agentic systems — such as ChatGPT, Claude, or Gemini with tool-use capabilities — can operate as orchestration layers within a CIP-governed pipeline. In this role they may coordinate tool calls across pipeline stages, monitor identity gate outcomes, trigger re-binding events when drift is detected, and maintain audit records of gate decisions. CIP defines the governance constraints; the agentic system executes coordination within those constraints. However, orchestration does not substitute for the capabilities required of the underlying generation system itself, particularly in workflows requiring anchor-preserving sequential scene generation.
+
+In agentic workflows, the orchestration layer itself may also introduce C when scaffolding, memory, tool routing, retry behavior, evaluation loops, or stop conditions transform A before B′ is produced.
 
 -----
 
