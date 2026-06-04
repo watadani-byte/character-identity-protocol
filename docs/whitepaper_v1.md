@@ -29,7 +29,9 @@ The primary engineering challenge in deploying generative AI for production work
 
 Conventional prompt-based approaches lack defined control targets, validation logic, and recovery conditions, resulting in non-reproducible outputs and undetected **Identity Loss** during model updates or session terminations.
 
-The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point (*a region in reconstruction space where identity reconstruction is reliably stable*) within the model’s reconstruction space. Through the Anchor Mechanism, the protocol supports the protection, recovery, and cross-platform reuse of character identities.
+The Character Identity Protocol (CIP) defines character identity not as a random output, but as a statistical convergence point: an operationally observed region of reconstruction behavior where identity reconstruction is reliably stable under defined constraints. Through the Anchor Mechanism, the protocol supports the protection, recovery, and cross-platform reuse of character identities.
+
+In this paper, “reconstruction space” is used as an operational abstraction for observed reconstruction behavior, not as a claim of access to the model’s internal latent representation.
 
 CIP reframes character identity from a static output property to a recoverable convergence state — one that must be repeatedly recovered under operational constraints.
 
@@ -341,7 +343,7 @@ The control-theoretic layer of CIP is referred to as **Reconstruction Convergenc
 |-------|--------------------------|------------------------------------------------------------------------------------------|
 |Level 0|Worldview Layer           |Character Identity Protocol (CIP)                                                         |
 |Level 1|Phenomenon Model          |Reconstruction Control Model (RCM): A → A′ → B′                                           |
-|Level 2|Governance Focus          |C → A′ mediation and reconstructed state                                                  |
+|Level 2|Governance Focus          |Workflow conditions around C → A′ mediation and reconstructed-state validation            |
 |Level 3|Control Theory Layer (RCC)|Anchor Model · Minimal Prompt Principle · State-space reduction · Transition segmentation |
 |Level 4|Execution Method          |Anchor Re-Convergence Method (ARCM)                                                       |
 |Level 5|Governance Layer          |Identity Gates (Face, Skeleton, Proportion) · Hard Abort · Re-binding · Audit / Validation|
@@ -645,7 +647,7 @@ This process is referred to in CIP as the **Anchor Re-Convergence Method (ARCM)*
 
 Anchor Convergence can be interpreted as a density-guided reconstruction process.
 
-High-quality anchor images correspond to high-density regions within the model’s reconstruction space — regions where identity reconstruction is statistically stable. (The term “learned distribution” is used here as a supporting abstraction for reconstruction behavior, not a claim about internal model representation.)
+High-quality anchor images correspond to operationally observed high-density regions of reconstruction behavior — regions where identity reconstruction is statistically stable. (The term “learned distribution” is used here as a supporting abstraction for reconstruction behavior, not a claim about internal model representation.)
 
 The Anchor Convergence procedure operates by:
 
@@ -1125,7 +1127,7 @@ By combining statistical convergence with explicit operational framing, CIP defi
 The protocol does not reject the model’s generative mediation.  
 It governs it.
 
-CIP/PAL preserves the productive value of AI-generated mediation while preventing unmanaged C from rewriting identity, brand code, or adoption criteria.
+CIP/PAL preserves the productive value of AI-generated mediation while preventing unmanaged C-driven transformation from rewriting identity, brand code, or adoption criteria.
 
 ### Implication: Inference-Time Governance
 
