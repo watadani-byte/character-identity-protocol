@@ -1,5 +1,5 @@
 # C Taxonomy: Classifying Mediation from A to A′
-
+　
 C Taxonomy classifies the mediation that transforms A into A′, including model-side generative mediation and execution-structure mediation.
 
 In the reconstruction model:
