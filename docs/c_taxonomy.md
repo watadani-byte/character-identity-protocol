@@ -1,6 +1,6 @@
 # C Taxonomy: Classifying Generative Mediation
 
-C Taxonomy classifies the generative mediation that transforms A into A′.
+C Taxonomy classifies the mediation that transforms A into A′, including model-side generative mediation and execution-structure mediation.
 
 In the reconstruction model:
 
@@ -8,7 +8,7 @@ In the reconstruction model:
 A → (A + C) → A′ → B′ ≠ B
 ```
 
-C is the mediation layer through which the system interprets, compresses, expands, optimizes, constrains, or creatively transforms the user’s input A before producing B′.
+C is the mediation layer through which the system, or the execution structure around it, transforms A into A′ before producing B′.
 
 As defined in the core model, A + C is not simple addition. It is shorthand for a non-linear mediation process: A′ ≈ T_C(A). C Taxonomy classifies the likely properties of that mediation process — the ways in which A is transformed into A′.
 
@@ -30,7 +30,7 @@ It is the layer that must be diagnosed, constrained, and made governable.
 
 ## Purpose
 
-The purpose of C Taxonomy is to make generative mediation operationally diagnosable.
+The purpose of C Taxonomy is to make C operationally diagnosable.
 
 In practice, the user observes B′ first, then works backward:
 
@@ -73,6 +73,11 @@ Execution-structure mediation introduced by agent scaffolding, harnesses, contex
 These structures are not C merely because they exist. They become relevant to C only when they mediate, transform, redirect, expand, constrain, or replace A before B′ is produced.
 
 CIP does not treat output drift as a model-only issue. It treats drift as a system-level continuity problem: where, how, and under whose authority A is transformed into A′ before producing B′.
+
+Generative C and Structural C classify the source of mediation. In image-generation workflows, Model-side C and Image-execution C identify where that mediation entered the workflow.
+
+- **Model-side C**: the language model changes, optimizes, compresses, or reinterprets the user’s instruction before image generation.
+- **Image-execution C**: the written prompt is preserved, but the image model visually resolves the output in a different direction during generation.
 
 -----
 
@@ -310,17 +315,68 @@ Anchors and gates act as reset points against C accumulation before a reconstruc
 
 -----
 
+### 13. Tool Routing C
+
+A is expanded or redirected into tool use, search, external retrieval, or external action not required by the original request.
+
+**Governance response**
+
+Restrict tool access, require tool-use approval, and define when external retrieval or action is allowed.
+
+-----
+
+### 14. Memory Injection C
+
+Persistent memory, prior context, or unrelated stored information is introduced into the current A.
+
+**Governance response**
+
+Scope or disable memory, isolate session context, and validate outputs against the current A rather than prior context.
+
+-----
+
+### 15. Evaluation Loop C
+
+The evaluation loop rewards task completion, improvement, or helpfulness rather than preservation of A.
+
+**Governance response**
+
+Define evaluation criteria around A-continuity, not task success alone.
+
+-----
+
+### 16. Stop Condition C
+
+Weak or absent stop conditions allow the system to continue transforming A after the requested scope has been satisfied.
+
+**Governance response**
+
+Define stop criteria, maximum edit scope, and Hard Abort conditions.
+
+-----
+
+### 17. Scaffold / Harness C
+
+The execution scaffold or harness changes the task mode itself, such as converting audit into edit, review into rewrite, or checking into optimization.
+
+**Governance response**
+
+Separate audit mode from edit mode and require explicit approval before modification.
+
+-----
+
 ## Diagnostic Grouping
 
 The categories above are listed individually because C categories are not mutually exclusive.
 
 For practical diagnosis, they may be grouped by likely source:
 
-|Group                |Typical categories                                                                  |Diagnostic question                                                           |
-|---------------------|------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-|Distribution-driven C|Semantic Expansion C, Semantic Substitution C, Default Pattern C, Style Gravity C   |Did the model pull A toward familiar learned patterns or nearby concepts?     |
-|System-driven C      |Compression / Omission C, Optimization C, Constraint Mediation C, Prompt Rewriting C|Did system behavior, rewriting, compression, or tooling alter A before output?|
-|Context-driven C     |Role Inference C, Context Completion C, Reference Weakening C, Accumulation C       |Did inferred context, role, weak anchoring, or workflow history reshape A?    |
+|Group                |Typical categories                                                                           |Diagnostic question                                                           |
+|---------------------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
+|Distribution-driven C|Semantic Expansion C, Semantic Substitution C, Default Pattern C, Style Gravity C            |Did the model pull A toward familiar learned patterns or nearby concepts?     |
+|System-driven C      |Compression / Omission C, Optimization C, Constraint Mediation C, Prompt Rewriting C         |Did system behavior, rewriting, compression, or tooling alter A before output?|
+|Context-driven C     |Role Inference C, Context Completion C, Reference Weakening C, Accumulation C                |Did inferred context, role, weak anchoring, or workflow history reshape A?    |
+|Execution-structure C|Tool Routing C, Memory Injection C, Evaluation Loop C, Stop Condition C, Scaffold / Harness C|Did the agentic execution structure transform A before B′ was produced?       |
 
 These groups are diagnostic aids, not strict classes. A single drift event may involve categories from multiple groups.
 
