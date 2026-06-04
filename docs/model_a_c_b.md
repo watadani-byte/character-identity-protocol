@@ -24,13 +24,13 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                                                                                                                      |
-|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                                                                                                                    |
-|C     |Mediation that transforms A into A′ — including model-side generative mediation and execution-structure mediation such as interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, or reconstruction|
-|A′    |Internally reconstructed state: A as transformed by C                                                                                                                                                                                        |
-|B     |Intended output (what the user expects)                                                                                                                                                                                                      |
-|B′    |Actual output (what the system produces)                                                                                                                                                                                                     |
+|Symbol|Meaning                                                                                                                                                                                                                           |
+|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                                                                                                                                                         |
+|C     |Mediation that transforms A into A′ — including model-side mediation and execution-structure mediation such as interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, or reconstruction|
+|A′    |Internally reconstructed state: A as transformed by C                                                                                                                                                                             |
+|B     |Intended output (what the user expects)                                                                                                                                                                                           |
+|B′    |Actual output (what the system produces)                                                                                                                                                                                          |
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
 
