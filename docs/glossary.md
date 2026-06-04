@@ -686,7 +686,7 @@ Resolution requires explicit anchor governance: identifying the authoritative an
 -----
 
 ## Anchor Preservation Governance (APG)
-
+　
 The CIP-side governance structure responsible for preserving externally defined structured anchors under operational conditions.
 
 APG defines four functions:
