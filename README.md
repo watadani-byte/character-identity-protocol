@@ -23,16 +23,18 @@ CIP operates entirely at inference time, without model modification.
 A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
 
-A′ ≈ A + C  (shorthand; not simple addition)
+A′ ≈ T_C(A)
+
+A + C is shorthand for non-linear generative mediation, not simple addition.
 
 A  = user input or reference condition
-C  = generative mediation — the added layer of interpretation, optimization, constraint handling, and creative transformation
+C  = generative mediation — the set of mediations through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed into A′
 A′ = internally reconstructed state: A as transformed by C
 B′ = actual output
 
-CIP governs the workflow around C → A′ by making C operationally governable and validating A′ before adoption.
+CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
 
-A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally visible through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
 
 C explains why drift occurs. It does not excuse unmanaged drift.
 
@@ -150,16 +152,17 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 ## Core Model
 
 ```
-Core Model:     A → (A + C) → A′ → B′  (Reconstruction Control Model)
-Control Layer:  C → A′  (governing mediation and reconstructed state)
-Key Operations: Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
+Core Model:        A → (A + C) → A′ → B′  (Reconstruction Control Model)
+Formal shorthand:  A′ ≈ T_C(A)
+Governance Layer:  Workflow conditions around C → A′, including validation, adoption, rejection, purge, and re-binding
+Key Operations:    Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
 ```
 
 CIP does not primarily optimize generation.
 It makes adoptability a controlled variable.
 
 This is not a prompt technique.
-It is a control protocol.
+It is a workflow-level control and adoption-governance protocol.
 
 > CIP governs adoptability: validation, failure handling, adoption, rejection, and purge under identity, brand-code, and rights-control constraints.
 > PAL sustains it: persistent anchoring and generative continuity across sessions.
