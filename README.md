@@ -30,13 +30,11 @@ A′ ≈ T_C(A)
 A + C is shorthand for non-linear mediation, not simple addition.
 
 A  = user input or reference condition
-C  = generative mediation — model-side or execution-structure mediation through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed into A′
+C  = mediation that transforms A into A′ — including model-side and execution-structure mediation
 A′ = internally reconstructed state: A as transformed by C
 B′ = actual output
 
 CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
-
-*"C → A′" is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
 
@@ -48,6 +46,8 @@ Creative transformation is acceptable while A’s intended identity remains pres
 
 In its shortest form, drift is the failure to preserve A’s intended identity.
 ```
+
+*“C → A′” is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
 
 ## Canonical Summary
 
@@ -136,7 +136,7 @@ CIP:
 Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind → Generate
 ```
 
-CIP introduces a governance layer between the user and the model:
+CIP introduces a governance layer between probabilistic generation and human adoption:
 
 |Component                       |Role                                                                                                    |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|
@@ -160,13 +160,13 @@ Core Model:        A → (A + C) → A′ → B′ ≠ B  (Reconstruction Contro
 Formal shorthand:  A′ ≈ T_C(A)
 Governance Layer:  Workflow conditions around C → A′, including validation, adoption, rejection, purge, and re-binding
 Key Operations:    Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
+```
 
 **Hard Abort:** immediate termination of a contaminated generation or adoption cycle when identity or governance failure is detected.
 
 **Re-binding:** reconnecting the workflow to the last validated anchor, UID, and governing constraints before re-convergence.
 
 **Purge:** removing drifted or contaminated outputs, states, or references from adoption candidates and downstream workflow conditions.
-```
 
 CIP does not primarily optimize generation.
 It makes adoptability a controlled variable.
@@ -195,7 +195,7 @@ PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the
 **Core Concepts**
 
 - [Core Model — A → (A + C) → A′ → B′](docs/model_a_c_b.md)
-- [C Taxonomy — Classifying Generative Mediation](docs/c_taxonomy.md)
+- [C Taxonomy — Classifying Mediation from A to A′](docs/c_taxonomy.md)
 - [Technical Mechanism](docs/technical_mechanism.md)
 - [Re-Convergence — Identity Recovery](docs/reconvergence.md)
 
