@@ -1,5 +1,7 @@
 # Why Generative AI Does Not Execute Your Input
 
+In this document, CIP refers to Character Identity Protocol: an inference-time adoption-governance framework that determines whether probabilistic outputs remain valid for adoption under identity, brand-code, and rights-control constraints.
+
 Most people assume generative AI works like this:
 
 > A → B
@@ -20,21 +22,21 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                          |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                        |
-|C     |Generative mediation — the added layer of interpretation, optimization, constraint handling, and creative transformation between input and output|
-|A′    |Internally reconstructed state: A as transformed by C                                                                                            |
-|B     |Intended output (what the user expects)                                                                                                          |
-|B′    |Actual output (what the system produces)                                                                                                         |
+|Symbol|Meaning                                                                                                                                                      |
+|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                                                                                    |
+|C     |Generative mediation — the set of mediations through which A is interpreted, compressed, weighted, optimized, constrained, and creatively transformed into A′|
+|A′    |Internally reconstructed state: A as transformed by C                                                                                                        |
+|B     |Intended output (what the user expects)                                                                                                                      |
+|B′    |Actual output (what the system produces)                                                                                                                     |
 
-A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally visible through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
 
 The system does not execute A as a fixed specification.
 
 It internally mediates A through C — adding interpretation, inference, optimization, compression, stylistic transformation, and creative contribution — producing A′, which then generates B′. B′ may deviate from B.
 
-B′ ≠ B is not necessarily a malfunction. It is often the expected behavior of a system operating under generative mediation. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
+B′ ≠ B does not mean that every difference is a failure. It marks the structural possibility of deviation; drift occurs only when the intended identity of A is no longer preserved. B′ ≠ B is not necessarily a malfunction — it is often the expected behavior of a system operating under generative mediation. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
 
 > **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; A → A′ → B′ describes the structural sequence of reconstruction and output.
 > 
@@ -59,15 +61,21 @@ C is not directly visible to the user. In practice, it is always present in gene
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
 
+A′ is not directly observable or inspectable by the user. CIP therefore governs it operationally through external controls: anchors, gates, validation decisions, and adoption controls.
+
 ### Scope of C
 
 C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
+
+C may include interpretation, compression, weighting, completion, sampling, stylistic transformation, constraint handling, reconstruction, and optimization or product-side rewriting when it affects the generative transformation.
+
+C does not include external business decisions, human editorial judgment, or organizational approval processes themselves. However, when those decisions are converted into prompts, constraints, examples, policies, or workflow conditions that shape a later generation step, they may become part of the conditions under which C operates.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
 -----
 
-## Why C Is the Governance Target
+## Why the Conditions of C Are the Governance Target
 
 B′ is observed after transformation has occurred. A′, when partially exposed, is observed as A after mediation rather than as the original A.
 
@@ -75,11 +83,15 @@ If governance focuses only on partially exposed A′ or B′, it becomes feedbac
 
 C is different.
 
-C is the transformation layer that changes A into A′. Governing C means governing the conditions under which A is interpreted, compressed, optimized, expanded, or replaced before B′ is produced.
+CIP does not assume that C can be directly inspected or controlled as an internal mechanism. Instead, it treats the conditions under which C operates as the governance target.
+
+Practical governance targets include: prompts, anchors, constraints, workflow separation, validation gates, execution settings, adoption criteria, and reset procedures.
+
+Governing the conditions of C means governing the circumstances under which A is interpreted, compressed, optimized, expanded, or replaced before B′ is produced.
 
 This shifts governance from output correction to transformation control.
 
-C is not an excuse for drift. It is the layer that must be made governable.
+C is not an excuse for drift. It is the layer whose conditions must be made governable.
 
 -----
 
@@ -97,7 +109,7 @@ The model mediated the compositional instruction through C — defaulting toward
 
 In this case, limb and posture information were not simply ignored — they were structurally removed during internal reconstruction, producing A′ before B′ was generated.
 
-The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred, although it does not by itself identify the exact C.
+The user wrote A. The model generated B′. The gap between A and B′ is observable evidence that generative mediation occurred, although it does not by itself identify the exact C. This supports a diagnosis of likely C, not a complete reconstruction of the model’s internal process.
 
 -----
 
@@ -105,7 +117,7 @@ The user wrote A. The model generated B′. The gap between A and B′ is observ
 
 C is difficult to govern if A′ remains invisible.
 
-Practical methods for making parts of A′ operationally visible include:
+Practical methods for making parts of A′ operationally externalizable or inferable include:
 
 - requiring the model to show the prompt before execution
 - separating prompt evaluation from image generation
@@ -167,18 +179,24 @@ In multi-stage AI workflows, A′ is not always produced by a single C.
 Each stage introduces its own mediation:
 
 ```
-A  → (A  + C1) → A′1
+A   → (A   + C1) → A′1
 A′1 → (A′1 + C2) → A′2
 A′2 → (A′2 + C3) → A′3
 ```
 
-The accumulated state approaches:
+More formally, this can be represented as a transformation chain:
+
+```
+A′n ≈ T_Cn(…T_C3(T_C2(T_C1(A))))
+```
+
+Or in shorthand:
 
 ```
 A′n ≈ A + C1 + C2 + C3 + … + Cn
 ```
 
-This is not simple addition. Each C acts on an already transformed version of A.
+This notation is only a shorthand for cumulative mediation. It does not mean that C1, C2, and C3 are simply added to A. Each C acts on an already reconstructed state, meaning that later transformations may amplify, erase, or normalize earlier deviations.
 
 A compressed prompt is not merely a shorter A. It is a reconstructed A′ produced by selection, omission, prioritization, and replacement. Repeated compression can accumulate C.
 
@@ -196,7 +214,7 @@ This may be implemented through visual comparison, semantic checks, identity gat
 
 C is strongly shaped by the statistical structure of the training data distribution, but it may also include system instructions, safety layers, product-side rewriting, sampling behavior, and tool constraints.
 
-High-density regions of the distribution pull outputs toward familiar patterns — a consistent bias that can be understood as **distributional gravity**.
+High-density regions of the distribution pull outputs toward familiar patterns — a consistent bias that can be understood as **distributional gravity**. This paper uses the term distributional gravity as a practical metaphor for this tendency.
 
 This means:
 
@@ -245,13 +263,30 @@ Character drift was the first observable case; A-continuity is the generalized p
 
 -----
 
+## Governance Alignment
+
+CIP does not replace existing AI governance frameworks. It provides a focused operational layer for identifying and managing transformation risk in generative AI systems.
+
+Practical governance under CIP follows four steps:
+
+- **Map**: identify where A may be transformed by C across prompts, tools, models, workflow stages, and adoption points.
+- **Measure**: detect whether B′ preserves the intended identity, role, function, or operational criteria of A.
+- **Manage**: reduce recurrence by adjusting prompts, anchors, constraints, validation gates, workflow separation, reset procedures, and adoption controls.
+- **Govern**: define who has authority to validate, reject, reset, or adopt reconstructed outputs.
+
+In relation to ISO/IEC 42001, CIP can function as an operational layer within an AI management system: it helps organizations define, evaluate, monitor, and improve the conditions under which generative transformation occurs.
+
+CIP therefore treats generative drift as a governable transformation risk, not merely as an output-quality problem.
+
+-----
+
 ## Conclusion
 
 When B′ no longer preserves the intended identity of A, the difference between B and B′ can be understood as drift — a structural deviation introduced during generative mediation.
 
 Character consistency, instruction following, and output reliability are all affected by C.
 
-CIP does not seek to eliminate C. It seeks to make C governable: to preserve AI’s creative contribution while preventing unapproved drift from A to A′.
+CIP does not seek to eliminate C. It seeks to govern the conditions under which C transforms A, so that AI’s creative contribution can be preserved without allowing unapproved drift from A to A′.
 
 CIP begins from this point: identity is not assumed to persist, and reconstructed identity states must be validated before they are adopted.
 
