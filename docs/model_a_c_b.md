@@ -325,7 +325,7 @@ For CIP, governance does not end with detecting drift. It requires assigning dec
 
 In relation to ISO/IEC 42001, CIP can function as an operational layer within an AI management system: it helps organizations define, evaluate, monitor, and improve the conditions under which generative transformation occurs.
 
-CIP therefore treats generative drift as a governable transformation risk, not merely as an output-quality problem.
+CIP therefore treats drift as a governable transformation risk, not merely as an output-quality problem.
 
 -----
 
