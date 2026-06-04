@@ -13,7 +13,7 @@
 
 Generative image systems are inherently probabilistic: identical prompts may produce different outputs across generation cycles, and character identity may drift over sessions, platforms, and contexts. Existing approaches to character consistency — including model fine-tuning, prompt engineering, and reference conditioning — primarily operate at the level of model parameters or input specification, and do not explicitly control the reconstruction process that produces outputs during inference.
 
-This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction control framework that formalizes identity stabilization as a governance problem around C → A′: the mediation process that reconstructs user input A into an operational state A′ before output is adopted. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP does not directly control A′. Instead, it governs the workflow around C → A′: making generative mediation operationally governable and defining the conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
+This paper introduces the Character Identity Protocol (CIP), an inference-time reconstruction governance framework that formalizes identity stabilization as a governance problem around the conditions under which C transforms A into A′: the mediation process through which user input A becomes an operational reconstructed state A′ before output is adopted. In generative systems, user input A is not directly solved; it is first transformed into an internal reconstructed representation A′, which then produces output B′. CIP does not directly control C or A′. Instead, it governs the workflow conditions around C → A′: making generative mediation operationally governable and defining the conditions under which reconstructed states are accepted, rejected, re-bound, or purged.
 
 The protocol defines a closed-loop control architecture consisting of: anchor-based constraints that bias the reconstruction space, minimal prompt design that reduces optimization pressure, identity validation gates (Face, Skeleton, Proportion), and Hard Abort mechanisms that terminate invalid reconstruction trajectories. Together, these components are observed to support bounded convergence of A′ within an anchor-proximate region.
 
@@ -289,7 +289,7 @@ A′ can be understood as the result of non-linear generative mediation applied 
 A′ ≈ T_C(A)
 ```
 
-where C is the generative mediation acting on A — including optimization pressure, training priors, compression, constraint rewriting, and creative transformation. The expression A + C is shorthand for this non-linear process, not a simple sum. The notation A → A′ → B′ describes the structural sequence; the notation A → (A + C) → A′ → B′ explains why that state deviates from the original input.
+where C is the generative mediation acting on A — including interpretation, compression, weighting, optimization pressure, constraint handling, sampling behavior, training-prior influence, product-side rewriting where applicable, and creative transformation. C is not the invisible internal representation itself. It refers to the generative mediation through which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′. The expression A + C is shorthand for this non-linear process, not a simple sum. The notation A → A′ → B′ describes the structural sequence; the notation A → (A + C) → A′ → B′ explains why that state deviates from the original input.
 
 A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be exposed or inferred through prompt disclosure, execution traces, output behavior B′, and validation against the original A or a validated anchor.
 
@@ -309,15 +309,15 @@ We refer to this formulation — A → A′ → B′ — as the **Reconstruction
 
 CIP can be interpreted as a closed-loop control system:
 
-|Component       |Role                                                 |
-|----------------|-----------------------------------------------------|
-|Governance focus|C → A′ (generative mediation and reconstructed state)|
-|Reference signal|Anchor                                               |
-|Control input   |Minimal Prompt + Anchor injection                    |
-|Decision logic  |Identity Gates (validation layer)                    |
-|Disturbance     |Unmanaged C and probabilistic drift                  |
-|Observer        |Output (B′) + evaluation process                     |
-|Control action  |Hard Abort and Re-binding                            |
+|Component       |Role                                                     |
+|----------------|---------------------------------------------------------|
+|Governance focus|Workflow conditions around C → A′                        |
+|Reference signal|Anchor                                                   |
+|Control input   |Minimal Prompt + Anchor injection                        |
+|Decision logic  |Identity Gates (validation layer)                        |
+|Disturbance     |Unmanaged C-driven transformation and probabilistic drift|
+|Observer        |Output (B′) + evaluation process                         |
+|Control action  |Hard Abort and Re-binding                                |
 
 *Note: CIP treats C → A′ as the governance focus. A′ is not directly controllable, and C is not directly visible; therefore, CIP governs the workflow conditions around mediation, reconstruction, validation, adoption, rejection, re-binding, and purge.*
 
@@ -680,7 +680,9 @@ These steps do not directly access internal model representations. Instead, they
 
 This behavior is referred to as **High-Density Latent Anchoring (HDLA)** — an operational mechanism distinct from direct model conditioning or parameter modification.
 
-In this document, “high-density regions” refers to regions of the reconstruction space where identity reconstruction is statistically stable and repeatedly recoverable under anchor-constrained conditions.
+In HDLA, “latent” refers to an operationally inferred reconstruction tendency, not to direct access to or control over the model’s internal latent variables.
+
+In this document, “high-density regions” refers to operationally observed regions of reconstruction behavior where identity reconstruction is statistically stable and repeatedly recoverable under anchor-constrained conditions.
 
 -----
 
