@@ -17,6 +17,8 @@ But the underlying problem is broader: probabilistic outputs used as IP, brand, 
 
 CIP governs the adoption layer.
 
+In CIP, *identity* refers to the continuity that must be preserved in A — including character identity, role, function, brand code, policy boundary, persona, or operational meaning. An *operational criterion* is the explicit adoption condition used to determine whether that identity has been preserved in B′.
+
 CIP operates entirely at inference time, without model modification.
 
 ```
@@ -28,17 +30,19 @@ A′ ≈ T_C(A)
 A + C is shorthand for non-linear generative mediation, not simple addition.
 
 A  = user input or reference condition
-C  = generative mediation — the set of mediations through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed into A′
+C  = generative mediation — model-side or execution-structure mediation through which A is interpreted, compressed, weighted, optimized, constrained, sampled, stylized, or reconstructed into A′
 A′ = internally reconstructed state: A as transformed by C
 B′ = actual output
 
 CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
 
+*"C → A′" is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
+
 A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
 
 C explains why drift occurs. It does not excuse unmanaged drift.
 
-C is broad by design, but not unlimited: it refers only to generative mediation that transforms A into A′.
+C is broad by design, but not unlimited: it refers to model-side or execution-structure mediation that transforms A into A′. In agentic systems, C can also be introduced by execution structure — scaffolding, tool routing, memory, evaluation loops, and retry behavior — when these mediate or replace A before B′ is produced.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
@@ -156,6 +160,12 @@ Core Model:        A → (A + C) → A′ → B′  (Reconstruction Control Mode
 Formal shorthand:  A′ ≈ T_C(A)
 Governance Layer:  Workflow conditions around C → A′, including validation, adoption, rejection, purge, and re-binding
 Key Operations:    Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
+
+**Hard Abort:** immediate termination of a contaminated generation or adoption cycle when identity or governance failure is detected.
+
+**Re-binding:** reconnecting the workflow to the last validated anchor, UID, and governing constraints before re-convergence.
+
+**Purge:** removing drifted or contaminated outputs, states, or references from adoption candidates and downstream workflow conditions.
 ```
 
 CIP does not primarily optimize generation.
