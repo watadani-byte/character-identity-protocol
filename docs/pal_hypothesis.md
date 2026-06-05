@@ -174,7 +174,7 @@ from the question of whether the persistent materials
 are safe, correct, policy-compliant, or
 appropriately governed.
 
-The stronger PAL’s stabilization effect may be,
+The stronger PAL's stabilization effect may be,
 the more consequential the governance of its
 anchor library becomes.
 
@@ -266,7 +266,7 @@ PAL describes a possible persistence condition
 that may support cross-session continuity
 within which CIP mechanisms remain operational.
 
-> CIP governs identity conditions.
+> CIP governs validation and adoption conditions.
 > PAL may sustain the persistence context
 > in which they remain operational.
 
@@ -404,7 +404,7 @@ whether the anchored content is beneficial or harmful.
 > A contaminated anchor stabilizes unintended behavior.
 
 The governance of what is anchored is entirely
-the operator’s responsibility.
+the operator's responsibility.
 
 -----
 
@@ -417,7 +417,7 @@ extend beyond visual drift.
 
 Contaminated anchor materials may include content
 that encodes harmful behavioral norms, misrepresents
-the system’s intended function or authority, conflicts
+the system's intended function or authority, conflicts
 with applicable policies or ethical standards,
 or biases reconstruction toward harmful outputs.
 
@@ -426,7 +426,7 @@ anchors will equally stabilize harmful ones.
 
 > PAL does not distinguish between intended and
 > unintended normative frames.
-> That distinction is the operator’s responsibility.
+> That distinction is the operator's responsibility.
 
 -----
 
@@ -475,7 +475,7 @@ PAL does not:
 - Enforce content policy on behalf of the operator
 
 PAL provides the persistence infrastructure.
-Content governance is the operator’s responsibility.
+Content governance is the operator's responsibility.
 
 > The strength of PAL as a stabilization mechanism
 > is precisely what makes anchor library governance
@@ -499,7 +499,7 @@ are within the scope of APG.
 
 ### 10.1 Beyond Visual Identity
 
-PAL validation is not only about keeping a character
+PAL scope is not only about keeping a character
 visually consistent.
 
 Current observations suggest that Persistent Anchor Layer
@@ -529,13 +529,13 @@ and rendering style.
 When a character is defined within a different
 visual or cultural frame — for example, a Japanese
 anime aesthetic with culturally specific facial
-structure and expressive register — the model’s
+structure and expressive register — the model's
 reconstruction may drift toward the dominant
 training distribution across sessions.
 
 This is termed **Cultural Frame Drift**:
 
-> A form of identity drift in which the model’s
+> A form of identity drift in which the model's
 > reconstruction migrates toward the dominant
 > cultural or aesthetic conventions of its training
 > distribution, away from the culturally bounded
@@ -595,7 +595,7 @@ appears to have reduced drift toward Western
 aesthetic defaults under the observed conditions —
 not only preserving visual feature similarity,
 but preserving the culturally bounded reconstruction
-conditions that define the character’s identity.
+conditions that define the character's identity.
 
 -----
 
@@ -620,7 +620,7 @@ In both cases, the underlying mechanism is the same:
 
 > Persistent availability of a structured anchor
 > definition may reduce the probability that
-> reconstruction migrates toward the model’s
+> reconstruction migrates toward the model's
 > statistical defaults — under conditions where
 > the PAL hypothesis holds.
 
@@ -632,7 +632,7 @@ If the PAL hypothesis is valid, PAL may be
 understood not merely as an identity persistence
 layer, but as:
 
-> A possible governance infrastructure for normative
+> A possible persistence infrastructure for normative
 > and culturally bounded reconstruction.
 
 The full scope of PAL persistence includes:
@@ -643,7 +643,7 @@ The full scope of PAL persistence includes:
 - **Cultural frame persistence** — same aesthetic frame,
   same cultural register
 
-This suggests that PAL’s applicability extends
+This suggests that PAL's applicability extends
 significantly beyond image generation workflows —
 into any AI system where identity, role, or normative
 consistency must be maintained across sessions.
@@ -702,22 +702,20 @@ Within the CIP framework, the reconstruction process
 is modeled as:
 
 ```
-A → (A + C) → B′
+A → (A + C) → A′ → B′
 ```
 
 Where:
 
 - **A** = user input
-- **C** = internal constraint acting on A
-  (optimization pressure, training priors,
-  compression, constraint rewriting)
+- **C** = mediation that transforms A into A′, including model-side and execution-structure mediation
 - **B′** = generated output
 
 C is not directly observable.
 C is not directly controllable.
 C is the primary source of identity drift.
 
-CIP governs identity by constraining A′ indirectly —
+CIP supports identity governance by governing workflow conditions around C → A′ —
 through anchor injection, prompt entropy reduction,
 and identity validation gates.
 
@@ -737,20 +735,18 @@ If this observation is accurate, PAL is doing more
 than persisting files.
 
 It may be introducing a persistent external constraint
-that shapes the model’s reconstruction trajectory —
+that shapes the model's reconstruction trajectory —
 functionally analogous to C, but originating outside
 the model.
 
 ```
 Without PAL:
-A → (A + C_model) → B′
+A → (A + C) → A′ → B′
 
 With PAL:
-A → (A + C_model + C_PAL) → B′
+A → (A + C) → A′ → B′
 
-Where C_PAL denotes a hypothesized inference-time
-influence associated with persistently available
-anchor materials
+Where persistently available anchor materials may affect the conditions under which C operates
 ```
 
 In CIP terms:
@@ -798,8 +794,8 @@ the governance implications are significant.
 **What is being governed is not only identity.**
 It is the reconstruction bias itself.
 
-A well-formed C_PAL may stabilize intended behavior.
-A contaminated C_PAL may stabilize unintended behavior —
+Well-governed PAL-supported anchor conditions may stabilize intended behavior.
+Poorly governed PAL-supported anchor conditions may stabilize unintended behavior —
 potentially with similar persistence and depth of influence,
 if the C_PAL hypothesis holds.
 
@@ -828,41 +824,40 @@ where AI behavioral consistency is a governance requirement.
 If PAL introduces a C-like external condition,
 this has implications for the CIP framework itself.
 
-CIP currently treats C as:
+CIP treats C as:
 
-- internal to the model
+- model-side or execution-structure mediation
 - not directly observable
 - not directly controllable
 
 PAL suggests that:
 
-- C can be partially shaped from outside the model
+- Conditions around C can be shaped from outside the model
 - External persistence layers may function as
   inference-time bias injectors
-- The boundary between “external input” and
-  “internal reconstruction constraint” may be
+- The boundary between "external input" and
+  "internal reconstruction constraint" may be
   less fixed than CIP currently assumes
 
 This is not a contradiction of CIP.
-It is an extension of CIP’s reconstruction model
+It is an extension of CIP's reconstruction model
 into the persistence layer.
 
 ```
 CIP Reconstruction Control Model (extended):
 
-A → (A + C_model + C_PAL) → B′
+A → (A + C) → A′ → B′
 
 Where:
-  C_model = internal model constraint (not directly controllable)
-  C_PAL   = hypothesized external persistence-layer influence
-            (operator-governed if present)
+  C         = model-side or execution-structure mediation
+  PAL-supported anchor conditions = operator-governed conditions if present
 ```
 
-CIP governs the reconstruction process.
-PAL introduces a new governable variable into that process.
+CIP governs workflow conditions around reconstruction.
+PAL introduces a persistence condition that may affect that process.
 
 > ai-identity-governance exists precisely because
-> C_PAL must be governed.
+> PAL-supported anchor conditions must be governed.
 
 -----
 
@@ -887,8 +882,8 @@ increases the perceived power of the mechanism.
 
 This power cuts both ways:
 
-- A well-governed C_PAL is a significant stabilization tool
-- A poorly governed C_PAL is a significant risk vector
+- Well-governed PAL-supported anchor conditions are a significant stabilization tool
+- Poorly governed PAL-supported anchor conditions are a significant risk vector
 
 The stronger this mechanism is, the more critical
 the governance requirements in Section 9 become.
@@ -953,7 +948,7 @@ unintended behavioral persistence.
 
 If anchor materials contain content that is
 inconsistent with applicable policies, regulations,
-or ethical standards, PAL’s persistence mechanism
+or ethical standards, PAL's persistence mechanism
 may amplify that inconsistency across sessions.
 
 A single policy-violating anchor document,
@@ -980,8 +975,8 @@ it proposes a mechanism for cross-session persistence.
 ### 12.4 Role and Authority Misrepresentation Risk
 
 If anchor materials define a role or authority
-that is inconsistent with the system’s actual
-function or authorization, PAL’s normative
+that is inconsistent with the system's actual
+function or authorization, PAL's normative
 persistence mechanism may stabilize that
 misrepresentation across sessions.
 
@@ -1104,7 +1099,7 @@ been systematically tested:
 - The effect of anchor material quality on outcomes
 - The relationship between anchor material volume
   and stabilization effect
-- Long-term drift under PAL-governed conditions
+- Long-term drift under PAL-supported continuity conditions
 
 -----
 
@@ -1221,7 +1216,7 @@ It is one reason CIP is necessary.
 The stronger continuity mechanisms become,
 the more necessary governance becomes.
 
-> CIP governs identity conditions.
+> CIP governs validation and adoption conditions.
 > PAL may sustain the persistence context
 > in which they remain operational.
 > Governance frameworks exist because both
@@ -1346,7 +1341,7 @@ suggest that the stabilization effect of PAL may extend to
 role, tone, and cultural framing — but this should be treated
 as a working hypothesis rather than a confirmed finding.
 
-If that interpretation is correct, then PAL’s scope is wider
+If that interpretation is correct, then PAL's scope is wider
 than visual identity persistence. It is a persistence condition
 for reconstruction contexts, and those contexts may include
 normative, behavioral, and cultural dimensions.
@@ -1372,7 +1367,7 @@ because visual similarity is required, but because the
 cultural register is constitutive of the identity being
 maintained.
 
-In each case, the extension of PAL’s applicability follows
+In each case, the extension of PAL's applicability follows
 the same logic: if the reconstruction condition includes the
 relevant dimension, and if PAL stabilizes reconstruction
 conditions, then PAL may contribute to stability in that
