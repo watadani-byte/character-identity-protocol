@@ -1,6 +1,6 @@
 # Architecture Diagram — Character Identity Protocol
 
-This document provides visual representations of CIP’s three core mechanisms:
+This document provides visual representations of CIP's three core mechanisms:
 Anchor Attractor, Cycle Stabilization, and Identity Gates.
 
 > All diagrams are operational abstractions. They do not represent proprietary model internals.
@@ -137,10 +137,10 @@ User Prompt
           ↓
 ┌─────────────────────┐
 │  Reconstruction      │  ← Unconstrained
-│  A → A'              │  Identity drift emerges here
+│  A → A′              │  Identity drift emerges here
 └─────────┬───────────┘
           ↓
-     Output (A')
+     Output (B′)
      (Identity: uncontrolled)
 ```
 
@@ -155,7 +155,7 @@ Minimal Prompt  +  Anchor Image ──────────────┐
 └─────────┬───────────┘                        │
           ↓                                    ↓
 ┌─────────────────────────────────────────────┐
-│  Reconstruction A → A'                       │
+│  Reconstruction A → A′                       │
 │  Anchor guides reconstruction                │  ← Operationally constrained
 │  toward a previously converged solution state│
 └─────────┬───────────────────────────────────┘
@@ -234,7 +234,7 @@ High  ┤                  Re-binding
 
 
 > CIP does not control the model.  
-> It controls the conditions under which the model converges.
+> It governs workflow conditions around convergence.
 
 -----
 
@@ -243,7 +243,7 @@ High  ┤                  Re-binding
 
 ## 7. Persistent Anchor Layer (PAL) — Cross-Platform Architecture
 
-PAL extends CIP’s inference-time anchoring into cross-session infrastructure.
+PAL supports CIP-governed inference-time anchoring through cross-session infrastructure.
 
 ### PAL Layer Hierarchy
 
@@ -259,7 +259,7 @@ PAL (Persistent Anchor Layer)
 ┌─────────────────────────────────────────────────────────────┐
 │                  PAL — Cross-Platform View                  │
 ├──────────────┬──────────────────────┬───────────────────────┤
-│   Platform   │    PAL Feature       │   CIP Layer           │
+│   Platform   │    PAL Feature       │   Framework Layer     │
 ├──────────────┼──────────────────────┼───────────────────────┤
 │  ChatGPT     │  Library (PDF/files) │  PAL Infrastructure   │
 ├──────────────┼──────────────────────┼───────────────────────┤
@@ -298,6 +298,6 @@ flowchart TD
     PASS --> END
 ```
 
-*PAL eliminates full re-injection at session start and provides a stable anchor recovery source across Hard Abort cycles.*
+*PAL may reduce full re-injection at session start and provide a stable anchor recovery source for CIP-governed Hard Abort cycles.*
 
 *See: [Column: Persistent Anchor Layer (PAL)](column_pal.md)*
