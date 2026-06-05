@@ -47,7 +47,7 @@ Creative transformation is acceptable while A’s intended identity remains pres
 In its shortest form, drift is the failure to preserve A’s intended identity.
 ```
 
-*“C → A′” is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
+*"C → A′" is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
 
 ## Canonical Summary
 
@@ -138,13 +138,13 @@ Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
 
-|Component                       |Role                                                                                                    |
-|--------------------------------|--------------------------------------------------------------------------------------------------------|
-|**Anchor**                      |Validated identity reference — the single source of truth                                               |
+|Component                       |Role                                                        |
+|--------------------------------|------------------------------------------------------------|
+|**Anchor**                      |Validated identity reference — the single source of truth   |
 |**Identity Gates**              |PASS / FAIL validation against defined identity constraints, beginning with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination on identity failure                                                               |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                          |
-|**Re-convergence**              |Controlled recovery from last verified anchor state                                                     |
+|**Hard Abort**                  |Immediate termination on identity failure                   |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation              |
+|**Re-convergence**              |Controlled recovery from last verified anchor state         |
 
 Identity is not assumed to persist. It is continuously validated and recovered.
 
@@ -244,10 +244,10 @@ as an infrastructure hypothesis for cross-session stabilization
 were first named and documented by Hitoshi Watadani
 in March 2026 in this repository.
 
-To the author’s knowledge, this repository contains
+To the author's knowledge, this repository contains
 the earliest explicit documentation of:
 
-- **PAL** as a distinct governance-oriented concept,
+- **PAL** as a distinct continuity-oriented concept,
 - **CIP** as an inference-time adoption-governance framework for probabilistic outputs, and
 - **Summary Assimilation** as a term for the loss of
   still-unnamed distinctions through AI summarization.
