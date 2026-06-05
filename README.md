@@ -1,47 +1,5 @@
-# Character Identity Protocol (CIP)
-
-CIP is an adoption-governance protocol for probabilistic outputs.
-
-It does not exist simply to make generated outputs more consistent.  
-It exists to determine whether an output remains valid for adoption under identity, brand-code, and rights-control constraints.
-
-In probabilistic generative and agentic systems, resemblance is not enough.  
-Functional usefulness is not enough.  
-Outputs that violate these constraints are not merely low-quality — they are non-adoptable.
-
-CIP introduces a governance layer between generation and adoption.  
-Its purpose is to decide whether an output should be accepted, rejected, aborted, purged, or re-bound.
-
-Character identity in image and video generation is one concrete entry point.  
-But the underlying problem is broader: probabilistic outputs used as IP, brand, persona, or control-bound assets require explicit adoption governance.
-
-CIP governs the adoption layer.
-
-In CIP, *identity* refers to the continuity that must be preserved in A — including character identity, role, function, brand code, policy boundary, persona, or operational meaning. An *operational criterion* is the explicit adoption condition used to determine whether that identity has been preserved in B′.
-
-CIP operates entirely at inference time, without model modification.
-
-```
-A → (A + C) → A′ → B′ ≠ B
-A → A′ → B′
-
-A′ ≈ T_C(A)
-
-A + C is shorthand for non-linear mediation, not simple addition.
-
-A  = user input or reference condition
-C  = mediation that transforms A into A′ — including model-side and execution-structure mediation
-A′ = internally reconstructed state: A as transformed by C
-B′ = actual output
-
-CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
-
-A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
-
-C explains why drift occurs. It does not excuse unmanaged drift.
-
-C is broad by design, but not unlimited: it refers to model-side or execution-structure mediation that transforms A into A′. In agentic systems, C can also be introduced by execution structure — scaffolding, tool routing, memory, evaluation loops, and retry behavior — when these mediate or replace A before B′ is produced.
-
+これは良い表現です。
+ただし “controlled variable” は制御理論っぽい強い語なので、もしよりgovernance寄りにするなら：
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
 In its shortest form, drift is the failure to preserve A’s intended identity.
