@@ -75,7 +75,7 @@ may be sufficient to support character identity across
 sessions, platforms, and generation cycles. This is an
 observed pattern, not a universal guarantee.
 
-> The anchor is sufficient. The tools are optional.
+> The anchor may be sufficient under observed conditions. The tools may be optional.
 
 **Related:**
 
@@ -88,10 +88,10 @@ observed pattern, not a universal guarantee.
 ## Anchor
 
 ```
-Anchor = Minimal Prompt + Previously Converged Output (validated)
+Anchor = validated identity reference
 ```
 
-A previously generated and validated output that represents a known, high-quality solution state.
+A validated identity reference, usually derived from a previously generated and validated output that represents a known, high-quality solution state.
 Used as a constraint to bias future generation toward the same convergence point.
 
 The anchor is **not** an artistic reference or stylistic inspiration. It is a record of a solution the model has already found and that has passed identity gate validation.
@@ -203,7 +203,7 @@ An operational likelihood that subsequent generation cycles converge toward the 
 
 The state at which a generative model’s output stabilizes into a coherent, consistent result.
 
-A “convergence point” is a location in the model’s solution space where identity, structure, and rendering align with unusual precision.
+A “convergence point” is an operationally observed region of reconstruction behavior where identity, structure, and rendering align with unusual precision.
 
 The protocol does not force convergence — it biases the search space toward a previously achieved convergence point.
 
@@ -682,7 +682,7 @@ Re-anchoring is triggered when:
 - session length approaches the Max Context Stability Threshold (MCST)
 - Hard Abort has been executed
 
-Re-anchoring restores the convergence attractor and resets drift accumulation. It is a governance requirement, not an optional optimization.
+Re-anchoring restores the validated anchor condition and resets drift accumulation. It is a governance requirement, not an optional optimization.
 
 -----
 
@@ -704,7 +704,7 @@ Resolution requires explicit anchor governance: identifying the authoritative an
 
 ## Anchor Preservation Governance (APG)
 
-The CIP-side governance structure responsible for preserving externally defined structured anchors under operational conditions.
+A governance structure responsible for preserving externally defined structured anchors under operational conditions.
 
 APG defines four functions:
 
