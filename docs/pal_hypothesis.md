@@ -37,8 +37,8 @@ effective persistence condition is also a more
 consequential one — and consequential mechanisms
 require accountable governance frameworks.
 
-This document records PAL as an observational hypothesis
-and a governance-oriented risk framing for further evaluation.
+This document records PAL as an observational persistence hypothesis
+with governance-relevant risks for further evaluation.
 Controlled validation remains pending.
 
 -----
@@ -762,7 +762,7 @@ In CIP terms:
 This must be distinguished carefully from
 parameter-level model modification.
 
-|                  |Model modification        |PAL as C                             |
+|                  |Model modification        |PAL-supported persistence condition  |
 |------------------|--------------------------|-------------------------------------|
 |Intervention point|Training / parameter layer|Inference time                       |
 |Persistence       |Encoded in weights        |External persistent layer            |
@@ -797,7 +797,7 @@ It is the reconstruction bias itself.
 Well-governed PAL-supported anchor conditions may stabilize intended behavior.
 Poorly governed PAL-supported anchor conditions may stabilize unintended behavior —
 potentially with similar persistence and depth of influence,
-if the C_PAL hypothesis holds.
+if the PAL-as-bias-condition hypothesis holds.
 
 This extends the scope of Library Governance
 (Section 9) beyond content purity:
@@ -1060,7 +1060,7 @@ been validated through controlled experimentation:
 - That normative drift suppression in support AI
   or control AI contexts is achievable through
   PAL-equivalent persistence
-- That C_PAL constitutes a measurable
+- That PAL-supported anchor conditions constitute a measurable
   inference-time bias condition
 
 All of the above are hypotheses or observational
@@ -1158,7 +1158,7 @@ is pursued, the following areas are most important:
   anchor persistence as a variable
 - Systematic testing of normative drift
   suppression in conversational AI contexts
-- Measurement of C_PAL effect magnitude
+- Measurement of PAL-supported anchor-condition effects
   across different anchor material types
 
 These validation priorities are offered to support
