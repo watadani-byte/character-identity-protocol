@@ -1,5 +1,5 @@
 # Persistent Anchor Layer (PAL)
-　
+
 *An Emerging Infrastructure Hypothesis for Cross-Session Identity Stabilization*
 
 > Persistent reference availability as a
