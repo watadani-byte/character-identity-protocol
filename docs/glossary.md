@@ -540,6 +540,18 @@ C — mediation that transforms A into A′, including model-side and execution-
 
 -----
 
+## Cumulative Identity Divergence Coefficient / 累積別人化係数
+
+A proposed CIP/PAL operational term for describing the accumulated degree to which A becomes “someone/something else” through repeated C-mediated transformations.
+
+It applies when small deviations across prompts, generations, tools, sessions, or workflow stages accumulate until the resulting A′ or B′ no longer preserves the intended identity, role, meaning, or operational criterion of the original A.
+
+This is not currently an established academic term or standardized metric. In CIP/PAL, it functions as a conceptual measure or diagnostic indicator of cumulative drift risk, rather than a fixed mathematical coefficient.
+
+*Related: C Accumulation — Drift — A-continuity — Re-binding — Purge*
+
+-----
+
 ## Stabilization Condition
 
 Within the PAL framework, a stabilization condition refers
