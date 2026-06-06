@@ -734,10 +734,8 @@ and normative drift — not only visual identity drift.
 If this observation is accurate, PAL is doing more
 than persisting files.
 
-It may be introducing a persistent external constraint
-that shapes the model’s reconstruction trajectory —
-functionally analogous to C, but originating outside
-the model.
+It may be introducing a persistent external condition
+that shapes the conditions under which C operates.
 
 ```
 Without PAL:
