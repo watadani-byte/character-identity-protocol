@@ -16,7 +16,7 @@ These models do not reproduce images deterministically.
 Each generation is a probabilistic reconstruction conditioned by inputs such as text prompts, anchor materials, and internal noise states.
 
 Because of this structure, outputs tend to stabilize in regions of the training distribution where examples are dense.
-These regions can be thought of as high-density zones of the learned representation space.
+These regions can be described operationally as high-density regions of reconstruction behavior.
 
 When generation conditions align with such regions, outputs appear stable and coherent.
 When conditions push the model into sparse regions of the distribution, instability and drift become more likely.
@@ -77,7 +77,7 @@ Anchor Attraction (anchor material guidance)
 Identity Convergence
 ```
 
-The anchor acts as an identity attractor in the reconstruction process.
+Operationally, the anchor can be treated as an identity attractor: a heuristic description for how anchor material appears to bias reconstruction toward a validated identity reference.
 
 It does not enforce deterministic reproduction.
 Instead, it increases the probability that the model will converge toward a reconstruction state consistent with the anchor.
@@ -109,20 +109,22 @@ This phenomenon is referred to in CIP as **identity drift**.
 CIP treats generation as a probabilistic transformation:
 
 ```
-A → (A + C) → B′
+A → (A + C) → A′ → B′ ≠ B
 A → A′ → B′
-A′ = A + C
+A′ ≈ T_C(A)
 ```
 
 Where:
 
 - A = user input or reference condition (anchor, prompt)
-- C = internal constraints: training priors, optimization pressure, compression, platform constraints, and constraint rewriting
+- C = mediation that transforms A into A′, including model-side mediation and execution-structure mediation
 - A′ = internally reconstructed state (not the output)
 - B′ = actual output
 
+C may include training priors, optimization pressure, compression, sampling behavior, platform-side rewriting, constraint handling, tool routing, memory injection, evaluation loops, and other workflow structures when they mediate or transform A before B′ is produced.
+
 A′ is the internally reconstructed state that the model produces before generating the visible output B′.
-A′ is not directly observable, but its behavior can be inferred from B′ and its deviation from the anchor.
+A′ is not directly observable, but aspects of the reconstructed state may be inferred from B′, prompt disclosure where available, execution traces, and deviation from the validated anchor.
 
 **C explains why drift occurs. It does not excuse unmanaged drift.**
 
@@ -229,7 +231,7 @@ Distribution Exploration
       ↓
 Anchor-Guided Convergence
       ↓
-A → (A + C) → B′
+A → (A + C) → A′ → B′
       ↓
 Identity Gates
       ↓
@@ -344,13 +346,13 @@ A previously generated and validated output:
 
 - Provides high-information identity reference material
 - Represents a statistically valid solution
-- Constrains identity features implicitly
+- Biases reconstruction toward identity-consistent features
 
 From an optimization perspective:
 
 - Reconstructing from scratch is costly
 - Converging toward a known solution is efficient
-- The model tends toward low-variance reproduction
+- The model may tend toward lower-variance reconstruction under anchor-supported conditions
 
 This does not imply literal parameter control (e.g., direct seed manipulation), but functionally biases reconstruction toward the validated anchor condition.
 
@@ -418,7 +420,7 @@ It is an **operational protocol** leveraging observed optimization behavior.
 
 ## Operational Result
 
-CIP transforms probabilistic generation into a **controlled reconstruction workflow**.
+CIP transforms probabilistic generation into a workflow-governed reconstruction process.
 
 Identity stability emerges from:
 
@@ -434,7 +436,7 @@ Identity stability emerges from:
 CIP operates entirely at inference time.
 
 The protocol does not modify model weights, training procedures, or internal architectures.
-Instead, it governs workflow conditions around reconstruction through input design and operational control.
+Instead, it governs workflow conditions around reconstruction through input design, validation gates, adoption decisions, rejection, purge, and re-binding.
 
 From a systems perspective, CIP can therefore be interpreted as an inference-time stabilization protocol for probabilistic generative models.
 
@@ -458,7 +460,7 @@ CIP models identity stability as a bounded, time-indexed property rather than a 
 CIP's minimal prompt strategy reflects the observation that dense regions of the training distribution produce more stable outputs. This connects conceptually to sampling dynamics, mode attraction, and density-weighted generation behavior.
 
 **Anchor as convergence attractor**  
-Using a previously converged output as a reconstruction reference introduces a known stable state into the generation process. This relates conceptually to attractor dynamics, basin of attraction modeling, and guided convergence in probabilistic systems.
+Using a previously converged output as a reconstruction reference introduces a known stable state into the generation process. This relates conceptually to attractor dynamics, basin of attraction modeling, and guided convergence in probabilistic systems. This is used as an operational analogy, not as a claim of formal attractor dynamics or internal model access.
 
 **Identity recovery vs. identity persistence**  
 CIP treats identity not as a persistent property to be maintained, but as a state to be continuously recovered through controlled convergence cycles. This reframes the problem from *identity persistence* to *identity recovery* — a distinction that may be of interest to researchers studying iterative generation behavior.
@@ -577,7 +579,7 @@ re-convergence possible across sessions.
 
 **ASC is not a mechanism.**
 ASC is an observed operational condition —
-a pattern of outcomes under PAL-governed conditions.
+a pattern of outcomes under PAL-supported continuity conditions.
 It is not a claim about causation.
 
 *See: [Column: PAL](column_pal.md) — [PAL Hypothesis Document](pal_hypothesis.md) — [Glossary](glossary.md)*
