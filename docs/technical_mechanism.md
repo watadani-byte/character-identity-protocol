@@ -2,7 +2,7 @@
 
 CIP treats character identity as an inference-time governance problem rather than a prompting problem.
 
-Within probabilistic generative systems, identity is treated as a recoverable convergence state in the model's reconstruction space.
+Within probabilistic generative systems, identity is treated as a recoverable convergence state in observed reconstruction behavior.
 
 In the current framework, PAL supports generative continuity and persistent anchoring, while CIP governs validation, stopping, re-binding, re-convergence, adoption, rejection, and purge.
 
@@ -63,7 +63,7 @@ This approach allows the model to search its distribution more freely.
 When anchor material is provided, it becomes a strong conditioning signal.
 
 The information contained in an anchor image is significantly richer than that contained in a short text prompt.
-As a result, the anchor often dominates the identity reconstruction process.
+As a result, the anchor may become the dominant identity reference in the reconstruction process.
 
 Under minimal prompt conditions, generation typically follows this pattern:
 
@@ -245,7 +245,7 @@ Instead, it operates by aligning generation with the natural convergence dynamic
 
 In this framework, identity is not generated once and preserved indefinitely.
 
-**Identity is continuously recovered through controlled convergence cycles.**
+**Identity is continuously recovered through governed convergence cycles.**
 
 -----
 
@@ -262,8 +262,8 @@ Minimal Prompt = auxiliary constraint used during reconstruction
 Important clarification:
 
 - The anchor is **not** used as inspiration
-- It functions as a **high-information constraint**
-- It represents a validated convergence state within the model's reconstruction space
+- It functions as a **high-information anchor condition**
+- It represents a validated convergence state within observed reconstruction behavior
 
 Minimal prompts allow the model to explore its training distribution
 without forcing unstable constraints.
@@ -292,7 +292,7 @@ Layer C – Execution Layer (Latent Sampling & Rendering)
 
 Verbose prompts tend to activate Layers A and B more strongly.  
 Minimal prompts appear to reduce interpretive and optimization pressure.  
-When paired with a converged anchor, the model's solution space narrows significantly.
+When paired with a converged anchor, the effective reconstruction range appears to narrow.
 
 -----
 
@@ -463,7 +463,7 @@ CIP's minimal prompt strategy reflects the observation that dense regions of the
 Using a previously converged output as a reconstruction reference introduces a known stable state into the generation process. This relates conceptually to attractor dynamics, basin of attraction modeling, and guided convergence in probabilistic systems. This is used as an operational analogy, not as a claim of formal attractor dynamics or internal model access.
 
 **Identity recovery vs. identity persistence**  
-CIP treats identity not as a persistent property to be maintained, but as a state to be continuously recovered through controlled convergence cycles. This reframes the problem from *identity persistence* to *identity recovery* — a distinction that may be of interest to researchers studying iterative generation behavior.
+CIP treats identity not as a persistent property to be maintained, but as a state to be continuously recovered through governed convergence cycles. This reframes the problem from *identity persistence* to *identity recovery* — a distinction that may be of interest to researchers studying iterative generation behavior.
 
 CIP documents these phenomena at the operational layer. Formal theoretical modeling remains an open research direction.
 
