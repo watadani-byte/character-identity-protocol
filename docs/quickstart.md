@@ -2,10 +2,10 @@
 
 This guide explains the minimal workflow required to run CIP.
 
-CIP treats character identity as a convergence control problem.
+CIP treats character identity as an inference-time adoption-governance problem.
 
 CIP does not attempt to control the model.
-It controls the operational conditions under which identity converges.
+It governs the workflow conditions under which reconstructed outputs are validated, adopted, rejected, purged, or re-bound.
 
 CIP operates entirely at inference time and requires no model modification.
 
@@ -21,7 +21,7 @@ The protocol uses three elements:
 
 ## Step 1 — Select an Anchor
 
-Choose a **converged image** that represents the correct character identity.
+Choose a **validated identity reference image** that represents the correct character identity.
 
 The anchor should be:
 
@@ -29,7 +29,7 @@ The anchor should be:
 - clearly identifiable
 - not a draft or exploratory result
 
-This image becomes the **identity reference**.
+This image becomes the **validated anchor**.
 
 *Anchor selection is operator-owned: the anchor is the target image the operator wants to reproduce. CIP governs the process after anchor selection.*
 
@@ -55,7 +55,7 @@ Avoid precise numeric constraints.
 - full thighs
 
 The goal is **not precise control**.
-The goal is to allow the model to explore its distribution while the anchor attracts convergence.
+The goal is to reduce unnecessary reconstruction pressure while the anchor remains the primary identity reference.
 
 Assign a **UID (Unique Identifier)** — a name or label for the character. Used as a stable recall token across cycles and sessions.
 
@@ -69,9 +69,9 @@ Assign a **UID (Unique Identifier)** — a name or label for the character. Used
 Call Model "Hana". Generate.
 ```
 
-“Hana” is the UID used for recall, not a descriptive prompt.
+"Hana" is the UID used for recall, not a descriptive prompt.
 
-That’s it. The image does the work. The prompt confirms identity, not describes it.
+That's it. The image does the work. The prompt confirms identity, not describes it.
 
 -----
 
@@ -79,12 +79,10 @@ That’s it. The image does the work. The prompt confirms identity, not describe
 
 Generate a small batch of outputs (3–5 outputs per turn is typical in demonstrations).
 
-Compare them to the anchor.
-
-Verify identity similarity against the anchor (human evaluation of Face Gate, Skeleton Gate, and Proportion Gate).
+Evaluate each output against the validated anchor using Face Gate, Skeleton Gate, and Proportion Gate.
 
 Apply only one change per turn (pose OR lighting OR outfit — not combined).
-Verify identity similarity every turn.
+Evaluate gate criteria every turn.
 
 -----
 
@@ -107,7 +105,7 @@ If any gate fails, generation must stop immediately.
 - Identity similarity drops below the operational threshold (operator-defined; the ~90% figure is a demonstration value, not a protocol standard)
 
 Do **not** attempt progressive correction after failure.
-Discard contaminated outputs. Re-anchor in a new cycle.
+Reject the failed output, purge contaminated outputs/states, and re-bind to the last validated anchor before re-convergence.
 
 -----
 
@@ -116,15 +114,16 @@ Discard contaminated outputs. Re-anchor in a new cycle.
 If drift occurs:
 
 ```
-1. Abort generation
-2. Discard outputs from the failed turn onward
-3. Treat the current generation process as contaminated
-4. Open new cycle (new session or re-bound context)
-5. Re-inject anchor image + minimal prompt
-6. Verify identity before proceeding
+1. Stop generation immediately
+2. Reject the failed output
+3. Purge contaminated outputs/states from the failed turn onward
+4. Reset the context or environment, including opening a new session if needed
+5. Re-bind to the last validated anchor, UID, and minimal prompt
+6. Re-converge under full gate enforcement
+7. Apply gate validation before adoption
 ```
 
-This restores identity convergence.
+This restores the conditions under which adoptable outputs can be produced.
 
 -----
 
@@ -134,9 +133,9 @@ This restores identity convergence.
 |-------------------------------------------|-----------------------------|-------------------------------------|
 |Verbose prompt with anchor                 |Optimization overrides anchor|Reduce to minimal prompt             |
 |Changing multiple conditions in one turn   |Compound drift               |One change per turn only             |
-|Continuing after identity failure          |Contamination accumulates    |Hard abort, re-anchor                |
-|Using a draft image as anchor              |Weak convergence baseline    |Use highest-purity output only       |
-|Not checking identity similarity every turn|Silent drift undetected      |Verify identity similarity every turn|
+|Continuing after identity failure          |Contamination accumulates    |Hard abort, purge, re-bind           |
+|Using a draft image as anchor              |Weak convergence baseline    |Use highest-purity validated output  |
+|Not evaluating gate criteria every turn    |Silent drift undetected      |Evaluate gate criteria every turn    |
 
 -----
 
@@ -151,7 +150,7 @@ Anchor → Minimal Prompt → Generation → Identity Gates
 If drift occurs:
 
 ```
-Hard Abort → Re-bind → Re-converge
+Hard Abort → Reject → Purge → Re-bind → Re-converge → Gate validation before adoption
 ```
 
 Identity is not generated.
