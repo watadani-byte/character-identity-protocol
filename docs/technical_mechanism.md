@@ -37,7 +37,7 @@ Examples include:
 
 While these instructions appear precise, they may reduce the probability that the model can locate a stable reconstruction region.
 
-CIP therefore favors minimal attribute prompts that describe invariant characteristics while leaving the model freedom to explore its learned distribution.
+CIP therefore favors minimal attribute prompts that describe invariant characteristics while reducing unnecessary reconstruction pressure.
 
 **Example:**
 
@@ -54,7 +54,7 @@ Minimal attribute description (stable):
 - modest chest
 - full thighs
 
-This approach allows the model to search its distribution more freely.
+This approach reduces unnecessary reconstruction pressure while preserving the anchor's role as the primary identity reference.
 
 -----
 
@@ -72,7 +72,7 @@ Minimal Prompt
       ↓
 Model Exploration within Training Distribution
       ↓
-Anchor Attraction (anchor material guidance)
+Anchor-Guided Reconstruction
       ↓
 Identity Convergence
 ```
@@ -271,7 +271,7 @@ without forcing unstable constraints.
 This creates the following dynamic:
 
 ```
-Model Exploration → Anchor Attraction → Convergence
+Distribution Exploration → Anchor-Guided Reconstruction → Convergence
 ```
 
 -----
@@ -302,7 +302,7 @@ Over time, reconstruction drifts due to:
 
 - stochastic sampling
 - context window shifts
-- latent sampling variance
+- sampling variance
 
 CIP manages this through **cycle-based stabilization**.
 
