@@ -2,7 +2,7 @@
 
 CIP treats character identity as an inference-time governance problem rather than a prompting problem.
 
-Within probabilistic generative systems, identity is treated as a recoverable convergence state in the model’s reconstruction space.
+Within probabilistic generative systems, identity is treated as a recoverable convergence state in the model's reconstruction space.
 
 In the current framework, PAL supports generative continuity and persistent anchoring, while CIP governs validation, stopping, re-binding, re-convergence, adoption, rejection, and purge.
 
@@ -141,7 +141,7 @@ This region behaves as a low-entropy zone, where variation between generations i
 
 However, large changes to prompts, pose, composition, or structure increase the entropy of the generation process.
 
-These changes expand the search space within the model’s distribution, increasing the probability of identity deviation.
+These changes expand the search space within the model's distribution, increasing the probability of identity deviation.
 
 Repeated retries within such high-entropy states typically amplify divergence rather than restore identity stability.
 
@@ -252,7 +252,7 @@ In this framework, identity is not generated once and preserved indefinitely.
 The anchor acts as a **primary convergence attractor**.
 
 ```
-Anchor = Previously Converged Output (validated)
+Anchor = validated identity reference supported by Minimal Prompt + Previously Converged Output Image
 ```
 
 Minimal Prompt = auxiliary constraint used during reconstruction
@@ -261,7 +261,7 @@ Important clarification:
 
 - The anchor is **not** used as inspiration
 - It functions as a **high-information constraint**
-- It represents a validated convergence state within the model’s reconstruction space
+- It represents a validated convergence state within the model's reconstruction space
 
 Minimal prompts allow the model to explore its training distribution
 without forcing unstable constraints.
@@ -281,14 +281,16 @@ For explanatory purposes, generation can be modeled as three conceptual layers:
 ```
 Layer A – Language Interpretation
 Layer B – Reconstruction / Optimization
-Layer C – Execution (Latent Sampling & Rendering)
+Layer C – Execution Layer (Latent Sampling & Rendering)
 ```
 
 *This is a theoretical abstraction, not a claim about proprietary architecture.*
 
+> Note: Layer C in this diagram is not the same as C in the reconstruction model A → (A + C) → A′ → B′. In the reconstruction model, C means mediation that transforms A into A′.
+
 Verbose prompts tend to activate Layers A and B more strongly.  
 Minimal prompts appear to reduce interpretive and optimization pressure.  
-When paired with a converged anchor, the model’s solution space narrows significantly.
+When paired with a converged anchor, the model's solution space narrows significantly.
 
 -----
 
@@ -330,7 +332,7 @@ Cycle B
 
 Stability is therefore **chained** through repeated re-convergence cycles, rather than maintained continuously.
 
-Periodic re-anchoring restores the convergence attractor and resets drift accumulation.
+Periodic re-anchoring restores the validated anchor condition and resets drift accumulation.
 
 Internal production observations suggest that re-binding after multiple turns can improve identity stability in some workflows. These are workflow-specific observations, not controlled benchmarks.
 
@@ -340,7 +342,7 @@ Internal production observations suggest that re-binding after multiple turns ca
 
 A previously generated and validated output:
 
-- Encodes high-dimensional latent structure
+- Provides high-information identity reference material
 - Represents a statistically valid solution
 - Constrains identity features implicitly
 
@@ -350,7 +352,7 @@ From an optimization perspective:
 - Converging toward a known solution is efficient
 - The model tends toward low-variance reproduction
 
-This does not imply literal parameter control, but functionally constrains the latent trajectory.
+This does not imply literal parameter control (e.g., direct seed manipulation), but functionally biases reconstruction toward the validated anchor condition.
 
 -----
 
@@ -373,13 +375,13 @@ May improve visual resemblance or continuity. Do not define adoption, rejection,
 ### Seed Fixing
 
 Controls initial noise sampling but does not constrain reconstruction variability.
-Anchors operate at a different stage: they constrain post-reconstruction convergence behavior.
+Anchors operate at the workflow level: they support convergence toward a validated identity reference during reconstruction and validation.
 
 -----
 
 ## What Anchors Likely Do (Conservative Interpretation)
 
-> The anchor constrains the model’s latent convergence path by supplying a high-density target state.
+> The anchor biases reconstruction toward a validated identity reference by supplying a high-information anchor condition.
 
 This reduces:
 
@@ -410,7 +412,7 @@ This mechanism:
 
 It is an **operational protocol** leveraging observed optimization behavior.
 
-> This repository documents operational observations and governance methods. It does not claim access to proprietary model internals or privileged architectural information. The protocol operates at the operational layer, constraining reconstruction behavior through input design — without modifying or accessing internal model architecture.
+> This repository documents operational observations and governance methods. It does not claim access to proprietary model internals or privileged architectural information. The protocol operates at the operational layer, governing workflow conditions around reconstruction through input design and validation — without modifying or accessing internal model architecture.
 
 -----
 
@@ -432,7 +434,7 @@ Identity stability emerges from:
 CIP operates entirely at inference time.
 
 The protocol does not modify model weights, training procedures, or internal architectures.
-Instead, it constrains generation behavior through input design and operational control.
+Instead, it governs workflow conditions around reconstruction through input design and operational control.
 
 From a systems perspective, CIP can therefore be interpreted as an inference-time stabilization protocol for probabilistic generative models.
 
@@ -453,7 +455,7 @@ CIP operates exclusively at inference time. It does not modify model weights, tr
 CIP models identity stability as a bounded, time-indexed property rather than a static output characteristic. This relates to research on temporal consistency in iterative generative systems, iterative drift accumulation, and convergence window modeling.
 
 **Distribution-aware operation**  
-CIP’s minimal prompt strategy reflects the observation that dense regions of the training distribution produce more stable outputs. This connects conceptually to sampling dynamics, mode attraction, and density-weighted generation behavior.
+CIP's minimal prompt strategy reflects the observation that dense regions of the training distribution produce more stable outputs. This connects conceptually to sampling dynamics, mode attraction, and density-weighted generation behavior.
 
 **Anchor as convergence attractor**  
 Using a previously converged output as a reconstruction reference introduces a known stable state into the generation process. This relates conceptually to attractor dynamics, basin of attraction modeling, and guided convergence in probabilistic systems.
