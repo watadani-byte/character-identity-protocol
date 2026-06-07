@@ -9,7 +9,7 @@ It terminates the process and restores a known-valid state.
 
 ## Retry vs. Re-Convergence
 
-This distinction defines the difference between uncontrolled generation and controlled systems.
+This distinction defines the difference between uncontrolled generation and governed recovery.
 
 ```
 Conventional (Retry):
@@ -17,13 +17,13 @@ Generate → Drift → Retry → Drift → Retry → Collapse
 (Same contaminated context. Drift compounds.)
 
 CIP (Re-Convergence):
-Generate → Drift → FAIL → Hard Abort → Re-bind Anchor → Generate
-(Context is exited. Recovery begins from verified state.)
+Generate → Drift → FAIL → Hard Abort → Purge → Re-bind Anchor → Re-converge
+(Context is exited. Contaminated outputs/states are purged. Recovery begins from verified state.)
 ```
 
 **Retry** continues within the contaminated reconstruction context. Each attempt inherits the drift of the previous. The system has no mechanism to return to a known-valid state.
 
-**Re-convergence** exits that context entirely. The contaminated cycle is terminated. Recovery begins from the last verified anchor — a state that has previously passed all identity gates.
+**Re-convergence** exits that context entirely. The contaminated cycle is terminated and contaminated outputs/states are purged. Recovery begins from the last verified anchor — a state that has previously passed all identity gates.
 
 -----
 
@@ -35,7 +35,7 @@ Once drift occurs, additional generation within the same context tends to propag
 
 Re-convergence addresses this by:
 
-- terminating the contaminated generation cycle immediately (Hard Abort)
+- terminating the contaminated generation cycle immediately (Hard Abort) and purging contaminated outputs/states
 - returning to the last validated anchor state
 - resetting the reconstruction context
 - resuming generation under full gate enforcement
@@ -49,11 +49,13 @@ Identity Gate FAIL
         ↓
 Hard Abort — terminate current cycle immediately
         ↓
+Purge contaminated outputs/states
+        ↓
 Roll back to last verified Anchor
         ↓
 Reset context (environment reset)
         ↓
-Re-inject Anchor as primary reconstruction stabilizer
+Re-bind to the last validated anchor as the primary conditioning reference
         ↓
 Reset sampling configuration if applicable
         ↓
@@ -76,12 +78,12 @@ If no verified anchor exists, re-convergence cannot proceed. A new anchor format
 
 ## Re-binding
 
-Re-binding is the act of re-injecting the verified anchor into a new generation cycle.
+Re-binding is the act of reconnecting the workflow to the last validated anchor, UID, and governing constraints before re-convergence.
 
 Re-binding procedure:
 
 1. Select the last verified anchor
-1. Re-inject as the primary conditioning reference
+1. Re-bind to the last validated anchor as the primary conditioning reference
 1. Apply minimal prompt (invariant attributes only)
 1. Apply identifier binding (UID) to reinforce identity recall
 1. Resume generation under gate enforcement
@@ -92,10 +94,10 @@ Re-binding is not optional. It is a governance requirement within the CIP framew
 
 ## Hard Abort vs. Progressive Correction
 
-|Approach                   |Behavior                            |Risk              |
-|---------------------------|------------------------------------|------------------|
-|Progressive correction     |Adjust and retry within same context|Drift compounds   |
-|Hard Abort + Re-convergence|Terminate and restart from anchor   |Drift is contained|
+|Approach                   |Behavior                                              |Risk              |
+|---------------------------|------------------------------------------------------|------------------|
+|Progressive correction     |Adjust and retry within same context                  |Drift compounds   |
+|Hard Abort + Re-convergence|Terminate and re-bind to last validated anchor        |Drift is contained|
 
 CIP mandates Hard Abort. Progressive correction assumes the system can self-correct. CIP treats this assumption as operationally unsafe.
 
@@ -105,12 +107,12 @@ CIP mandates Hard Abort. Progressive correction assumes the system can self-corr
 
 Re-convergence operates within bounded generation cycles.
 
-Each cycle has a defined entry point (anchor) and a defined exit condition (Hard Abort or session end). Stability is maintained by chaining cycles through disciplined re-convergence — not by assuming identity persists indefinitely.
+Each cycle has a defined entry point (validated anchor) and a defined exit condition (Hard Abort or session end). Stability is maintained by chaining cycles through disciplined re-convergence — not by assuming identity persists indefinitely.
 
 ```
 Cycle A → Generate → Gate → PASS / FAIL (Hard Abort)
                                     ↓
-                              Re-binding
+                              Purge → Re-binding
                                     ↓
 Cycle B → Generate → Gate → PASS / FAIL (Hard Abort)
 ```
@@ -120,6 +122,6 @@ Cycle B → Generate → Gate → PASS / FAIL (Hard Abort)
 ## Key Principle
 
 > Re-convergence does not fix a bad output.
-> It restores the conditions under which good outputs can be produced.
+> It restores the conditions under which adoptable outputs can be produced.
 
 *See: [CIP Specification v0.1](cip_spec_v0.1.md) — [Quality Gate & Hard Abort](quality_gate_addendum.md) — [Protocol Template](protocol_template.md)*
