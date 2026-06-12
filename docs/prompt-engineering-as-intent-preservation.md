@@ -11,7 +11,7 @@
 
 “Prompt engineering is over” has become a common refrain.
 
-There is some truth behind it. The value of incantation-style tricks — magic phrases designed to coax a model into producing plausible output — has declined. Models have become better at interpreting ordinary language. The era of secret keywords is largely behind us.
+There is some truth behind it. The value of incantation-style tricks — magic phrases designed to coax a model into producing plausible output — has declined. Models have become better at interpreting ordinary language. The era of relying primarily on secret keywords is fading.
 
 But prompt engineering itself is not over.
 
@@ -29,7 +29,7 @@ A → (A + C) → A′ → B′
 
 A — the original input, intent, creative identity, or operational criterion — passes through C: the mediation introduced by model interpretation, completion, context, UI behavior, tools, sampling, and system instructions. The result is A′, a reconstructed working state, which then produces B′ — an actual output that may differ from the intended B.
 
-C is not merely an error. C is also how AI completes, interprets, creates, and shapes. But the same mediation can dilute A, render it invisible, or transform it implicitly.
+C is not merely an error. C is also how AI completes, interprets, adapts, generates, and shapes. But the same mediation can dilute A, render it invisible, or transform it implicitly.
 
 The question is therefore no longer “what do we make the AI produce?”
 
