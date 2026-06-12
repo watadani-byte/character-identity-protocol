@@ -68,6 +68,7 @@ nav:
       - PAL Hypothesis Technical: pal_hypothesis.md
       - Translation Loss and the YAML-First Principle: column_translation_loss.md
       - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
+      - Is Prompt Engineering Over: prompt-engineering-as-intent-preservation.md
 
   - Reference:
       - Glossary: glossary.md
