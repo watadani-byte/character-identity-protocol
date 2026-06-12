@@ -118,11 +118,11 @@ High-signal context and A-exposing context often overlap. But they are not ident
 
 ## Where PAL and CIP Fit
 
-**PAL** is an execution-side protocol: it supports conditions under which A is less likely to degrade during generation — through anchors, drift boundaries, continuity support, and execution constraints.
+**PAL** is an execution-side continuity layer: it supports conditions under which A is less likely to degrade during generation — through anchors, drift boundaries, continuity support, and persistent reference conditions.
 
 **CIP** is an operational protocol: it does not adopt B′ as-is. It evaluates whether B′ is adoptable as B — through validation gates, adoption decisions, rejection, Hard Abort, purge, and re-binding.
 
-Neither eliminates C. Both manage the conditions under which C operates — so that A is less likely to be diluted, rendered invisible, or implicitly transformed.
+Neither eliminates C. PAL supports continuity conditions around generation; CIP governs validation and adoption conditions around the resulting B′. Together, they reduce the risk that A is diluted, rendered invisible, or implicitly transformed.
 
 -----
 
