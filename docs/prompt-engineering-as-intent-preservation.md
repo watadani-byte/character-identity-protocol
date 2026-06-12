@@ -118,7 +118,7 @@ High-signal context and A-exposing context often overlap. But they are not ident
 
 ## Where PAL and CIP Fit
 
-**PAL** is an execution-side protocol: it supports conditions under which A is less likely to degrade during generation — through persistent anchor availability and continuity support.
+**PAL** is an execution-side protocol: it supports conditions under which A is less likely to degrade during generation — through anchors, drift boundaries, continuity support, and execution constraints.
 
 **CIP** is an operational protocol: it does not adopt B′ as-is. It evaluates whether B′ is adoptable as B — through validation gates, adoption decisions, rejection, Hard Abort, purge, and re-binding.
 
@@ -136,10 +136,10 @@ What is needed going forward is not merely a prompt. It is a design discipline t
 
 - exposes A
 - diagnoses the influence of C
-- suppresses unintended transformation into A′
+- manages the risk of unintended transformation into A′
 - and decides whether B′ is adoptable as B
 
-The spell-casting era is ending. The intent-preservation era has begun.
+The spell-casting era is fading. The intent-preservation era is emerging.
 
 -----
 
