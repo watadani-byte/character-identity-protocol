@@ -70,6 +70,9 @@ nav:
       - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
       - Is Prompt Engineering Over: prompt-engineering-as-intent-preservation.md
 
+  - Experimental Hypotheses:
+      - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
+
   - Reference:
       - Glossary: glossary.md
       - CIP Terminology Mapping: cip_terminology_mapping.md
