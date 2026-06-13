@@ -1,5 +1,5 @@
 # Hypothesis: PAL Prompt Layer and PAL Conformance Assessment Layer
-　
+
 *An Experimental Translation and Diagnostic Structure for PAL-Governed Image Generation*
 
 > Status: Promising experimental hypothesis — approved for documentation and validation, but not yet adopted as a finalized PAL specification.
