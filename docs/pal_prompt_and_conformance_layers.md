@@ -1,6 +1,6 @@
 # Hypothesis: PAL Prompt Layer and PAL Conformance Assessment Layer
 
-*An Experimental Translation and Diagnostic Structure for PAL-Governed Image Generation*
+*An Experimental Translation and Diagnostic Structure for PAL-Supported Image Generation*
 
 > Status: Promising experimental hypothesis — approved for documentation and validation, but not yet adopted as a finalized PAL specification.
 
@@ -113,7 +113,7 @@ This is drift introduced while reorganizing, compressing, or optimizing approved
 **2. Execution Package → Generated Candidate**
 = generative reconstruction drift
 
-This is drift introduced by the generative model itself, through the mediation C that transforms the Execution Package (as A) into A′ and then B′.
+This is drift introduced during generative execution through model-side or execution-structure mediation that transforms the model-facing Execution Package into A′ before B′ is produced.
 
 These two drift locations are diagnostically distinct. A failure observed in a generated candidate may originate in either location, and the appropriate governance response differs depending on which location is responsible.
 
@@ -182,7 +182,7 @@ The following should be evaluated:
 
 - character identity retention
 - correct execution of scene variables
-- predicted drift reduction
+- reduction of predicted drift
 - generation-to-generation variance
 - human approval rate
 - critical identity violation rate
