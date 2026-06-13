@@ -1167,6 +1167,8 @@ has been conducted.
 > remain open research directions.
 > No controlled validation has been completed.
 
+**Related hypothesis:** [PAL Prompt Layer and PAL Conformance Assessment Layer](pal_prompt_and_conformance_layers.md) — a related experimental hypothesis proposing a structured translation layer between PAL source modules and generative models, with a separate diagnostic conformance layer. Documented separately as it has not been validated.
+
 -----
 
 ## 14. Conclusion
