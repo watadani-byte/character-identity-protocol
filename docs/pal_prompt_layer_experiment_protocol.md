@@ -442,6 +442,20 @@ scenes:
 conditions:
   - A: direct_pal
   - B: pal_prompt_layer
+predicted_drift:
+  - element: facial_register
+    direction: westernization
+    protected_condition: Japanese anime facial impression
+  - element: expression
+    direction: generic_broad_smile
+    protected_condition: restrained_soft_expression
+generation_order:
+  method: pre_registered_balanced_order
+  sequence:
+    - scene: neutral_scene
+      order: [A, B]
+    - scene: high_drift_scene
+      order: [B, A]
 output_count: 12
 primary_outcomes:
   - critical_identity_violation_rate
@@ -469,11 +483,11 @@ candidate_004,high_drift,FAIL,PASS,FAIL,YES,REJECT,
 **Condition mapping (condition_mapping.csv) — kept separate until first evaluation pass is complete:**
 
 ```csv
-candidate_id,condition,generation_order
-candidate_001,B,2
-candidate_002,A,1
-candidate_003,B,4
-candidate_004,A,3
+candidate_id,condition,scene,session_id,generation_order
+candidate_001,B,neutral,session_B_neutral_01,2
+candidate_002,A,neutral,session_A_neutral_01,1
+candidate_003,B,high_drift,session_B_high_01,4
+candidate_004,A,high_drift,session_A_high_01,3
 ```
 
 -----
