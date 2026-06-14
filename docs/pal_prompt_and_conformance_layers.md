@@ -219,4 +219,4 @@ This document records an experimental hypothesis for further investigation. It i
 
 If validated, this structure may inform future revisions to PAL-governed workflow documentation. Until then, it remains a documented hypothesis available for testing.
 
-*See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md) — [Glossary](glossary.md)*
+*See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md) — [Glossary](glossary.md) — [PAL Prompt Layer Experiment Protocol](pal_prompt_layer_experiment_protocol.md)*
