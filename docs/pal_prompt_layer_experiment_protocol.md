@@ -78,7 +78,7 @@ Generative Model
 Generated Candidate
 ```
 
-The existing PAL definitions are used without explicit reorganization into the Prompt Layer blocks.
+The existing PAL definitions are used without explicit reorganization into the Prompt Layer blocks. Condition A must use the repository’s pre-existing direct-PAL procedure without introducing the three Prompt Layer blocks. Its exact preparation method and final prompt must be preserved as the baseline.
 
 ### Condition B — PAL Prompt Layer
 
@@ -157,15 +157,19 @@ The following must remain the same between Conditions A and B:
 
 Any unavoidable difference must be recorded.
 
-**Condition B — Predicted Drift Pre-Registration**
+### Predicted Drift Pre-Registration
 
-For Condition B, predicted drift directions must be documented before generation. Each predicted drift should identify:
+Predicted drift directions must be documented before either condition is generated.
+
+The same pre-registered drift directions are used to evaluate Conditions A and B. Each predicted drift should identify:
 
 - the element at risk
 - the expected direction of unintended change
 - the corresponding protected condition
 
-This registration is required so that “reduction of predicted drift” can be evaluated against a pre-defined target rather than a post-hoc judgment.
+Condition B may encode these pre-registered risks in its Anti-drift Block. Condition A does not receive a separately constructed Anti-drift Block unless such a block already exists in the pre-existing direct-PAL baseline procedure.
+
+This registration is required so that reduction of predicted drift can be evaluated against a pre-defined and shared target rather than a post-hoc judgment.
 
 Example:
 
@@ -229,10 +233,10 @@ These are two separate potential transformation or drift locations. The final ou
 ## Generation Procedure
 
 1. Predefine and version the source materials.
-1. Generate Condition A outputs.
-1. Generate Condition B outputs.
+1. Pre-register the condition order or randomization procedure.
+1. Generate Condition A and Condition B outputs according to that pre-registered order.
 1. Use separate clean sessions where practical.
-1. Alternate or randomize A/B order where practical.
+1. Balance or randomize A/B order where practical so that one condition is not always generated first.
 1. Do not progressively correct failed candidates.
 1. Do not promote any candidate into a new anchor during the experiment.
 1. Preserve failed candidates as experimental evidence, but do not adopt them into production.
