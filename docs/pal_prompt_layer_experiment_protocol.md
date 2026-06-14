@@ -44,7 +44,9 @@ Definitions:
 - **C** = model-side or execution-structure mediation that transforms A into A′
 - **A′** = the reconstructed task state produced under C
 - **B′** = the generated candidate
-- **B** = the intended or adoptable output condition
+- **B** = the intended output condition
+
+CIP evaluates whether B′ is adoptable in relation to B.
 
 Important constraints:
 
@@ -54,7 +56,7 @@ Important constraints:
 - The PAL Prompt Layer may itself participate in execution-structure mediation and may therefore become part of C.
 - CIP does not directly control C or A′.
 - CIP governs validation, rejection, purge, re-binding, re-convergence, and adoption.
-- PAL supports continuity, persistence, anchor availability, and execution-facing preparation.
+- PAL supports continuity, persistence, and anchor availability. In Condition B, the proposed PAL Prompt Layer provides experimental execution-facing preparation.
 - Conformance assessments are diagnostic inputs only.
 - The human operator retains final adoption authority.
 
@@ -155,6 +157,28 @@ The following must remain the same between Conditions A and B:
 
 Any unavoidable difference must be recorded.
 
+**Condition B — Predicted Drift Pre-Registration**
+
+For Condition B, predicted drift directions must be documented before generation. Each predicted drift should identify:
+
+- the element at risk
+- the expected direction of unintended change
+- the corresponding protected condition
+
+This registration is required so that “reduction of predicted drift” can be evaluated against a pre-defined target rather than a post-hoc judgment.
+
+Example:
+
+```yaml
+predicted_drift:
+  - element: facial_register
+    direction: westernization
+    protected_condition: Japanese anime facial impression
+  - element: expression
+    direction: generic_broad_smile
+    protected_condition: restrained_soft_expression
+```
+
 -----
 
 ## Pre-Execution Conformance Check
@@ -177,6 +201,14 @@ Condition B must include a diagnostic comparison between the PAL source modules 
 |Critical omissions detected      |YES / NO         |
 
 This check diagnoses possible execution-translation drift.
+
+**Handling check failures:**
+
+If the Pre-Execution Conformance Check detects a critical omission or an unapproved transformation, the Execution Package must be revised before generation.
+
+Both the initially compiled package and the revised package must be retained. All revisions must be logged.
+
+In that case, Condition B measures the combined workflow of structured translation plus pre-execution human review, not automatic prompt compilation alone. This distinction must be noted in the result record.
 
 -----
 
@@ -420,12 +452,24 @@ protocol:
 
 ## Evaluation Example
 
+**Evaluator-facing file (evaluation.csv) — condition is not visible to the evaluator:**
+
 ```csv
-candidate_id,condition,scene,character_conformance,scene_variable_execution,anti_drift_compliance,critical_identity_violation,human_adoption_decision
-candidate_001,B,neutral,PASS,PASS,PASS,NO,ADOPT
-candidate_002,A,neutral,WARNING,PASS,FAIL,NO,REJECT
-candidate_003,B,high_drift,PASS,PASS,PASS,NO,ADOPT
-candidate_004,A,high_drift,FAIL,PASS,FAIL,YES,REJECT
+candidate_id,scene,character_conformance,scene_variable_execution,anti_drift_compliance,critical_identity_violation,human_adoption_decision,notes
+candidate_001,neutral,PASS,PASS,PASS,NO,ADOPT,
+candidate_002,neutral,WARNING,PASS,FAIL,NO,REJECT,
+candidate_003,high_drift,PASS,PASS,PASS,NO,ADOPT,
+candidate_004,high_drift,FAIL,PASS,FAIL,YES,REJECT,
+```
+
+**Condition mapping (condition_mapping.csv) — kept separate until first evaluation pass is complete:**
+
+```csv
+candidate_id,condition,generation_order
+candidate_001,B,2
+candidate_002,A,1
+candidate_003,B,4
+candidate_004,A,3
 ```
 
 -----
