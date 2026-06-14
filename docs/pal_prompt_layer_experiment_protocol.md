@@ -1,5 +1,5 @@
 # PAL Prompt Layer — Initial Smoke Test Protocol
-　
+
 *Experimental validation plan for the PAL Prompt Layer and PAL Conformance Assessment Layer*
 
 > Status: Draft initial smoke-test protocol — designed to detect whether the PAL Prompt Layer shows a useful operational signal. Not yet executed and not a finalized PAL specification.
