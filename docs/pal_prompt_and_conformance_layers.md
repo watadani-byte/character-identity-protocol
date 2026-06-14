@@ -8,7 +8,7 @@
 
 ## Scope Note
 
-This document proposes an experimental extension to PAL-governed workflows. It is not a normative PAL specification, and it does not redefine C, A, A′, B′, CIP, or PAL.
+This document proposes an experimental extension to PAL-supported workflows. It is not a normative PAL specification, and it does not redefine C, A, A′, B′, CIP, or PAL.
 
 Fixed terminology preserved in this document:
 
@@ -29,7 +29,7 @@ A → (A + C) → A′ → B′ ≠ B
 - CIP governs validation, rejection, purge, re-binding, re-convergence, and adoption.
 - PAL supports continuity, persistence, and anchor availability.
 - Conformance measurements described in this document are diagnostic inputs only.
-- Human judgment and CIP retain adoption authority.
+- CIP defines the adoption-governance process, while the human operator retains final adoption authority.
 
 This document does not describe PAL as directly governing adoption. It does not describe a conformance score as replacing human validation. It does not describe the PAL Prompt Layer as controlling or eliminating C.
 
@@ -41,7 +41,7 @@ PAL source definitions may be correct — accurately describing the approved cha
 
 In other words: PAL may correctly define A, but the path from A to a usable prompt is itself a transformation step. If that step is undocumented and unstructured, it may introduce drift before generation even begins.
 
-This document proposes that PAL-governed workflows benefit from an explicit translation layer — the **PAL Prompt Layer** — positioned between PAL source modules and the generative model, and an explicit diagnostic layer — the **PAL Conformance Assessment Layer** — positioned between the generated candidate and CIP adoption review.
+This document proposes that PAL-supported workflows may benefit from an explicit translation layer — the **PAL Prompt Layer** — positioned between PAL source modules and the generative model, and an explicit diagnostic layer — the **PAL Conformance Assessment Layer** — positioned between the generated candidate and CIP adoption review.
 
 -----
 
@@ -142,7 +142,7 @@ A single undifferentiated similarity score is not used. Instead, separate diagno
 
 **A high aggregate score must not compensate for a critical character-identity failure.**
 
-Conformance scores produced by the PAL Conformance Assessment Layer are diagnostic inputs only. They do not replace human judgment or CIP adoption authority.
+Conformance scores produced by the PAL Conformance Assessment Layer are diagnostic inputs only. They do not replace human judgment or the CIP-governed adoption process.
 
 -----
 
@@ -184,7 +184,7 @@ The following should be evaluated:
 - correct execution of scene variables
 - reduction of predicted drift
 - generation-to-generation variance
-- human approval rate
+- human adoption rate
 - critical identity violation rate
 - recovery after rejection and re-binding
 - execution-translation drift
@@ -217,6 +217,6 @@ The PAL Prompt Layer is not assumed to be drift-free. As noted above, it may its
 
 This document records an experimental hypothesis for further investigation. It is not a finalized PAL specification, and it has not been merged into the core PAL definition.
 
-If validated, this structure may inform future revisions to PAL-governed workflow documentation. Until then, it remains a documented hypothesis available for testing.
+If validated, this structure may inform future revisions to PAL-supported workflow documentation. Until then, it remains a documented hypothesis available for testing.
 
 *See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md) — [Glossary](glossary.md) — [PAL Prompt Layer Experiment Protocol](pal_prompt_layer_experiment_protocol.md)*
