@@ -1,5 +1,5 @@
 # Why Generative AI Does Not Execute Your Input
-　
+
 In this document, CIP refers to Character Identity Protocol: an inference-time adoption-governance framework for determining whether probabilistic outputs remain valid for adoption under defined identity constraints.
 
 Although CIP was first developed through character-consistency failures, the model generalizes to A-continuity: the preservation of a defined input identity, role, function, brand code, or operational criterion across generative transformation.
