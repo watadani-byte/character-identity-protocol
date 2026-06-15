@@ -73,7 +73,7 @@ PAL Prompt Layer
           ↓
 Pre-Execution Conformance Check
           ↓
-Final Prompt / Execution Package
+Execution Package
           ↓
 Generative Model
           ↓
@@ -92,7 +92,7 @@ Human Final Adoption Decision
 
 PAL Source Modules are the approved source-level definitions for identity, continuity, permitted variation, and drift boundaries. They function as the operator-approved authoritative reference for the current workflow — the current approved source of truth for continuity evaluation.
 
-Do not treat an unvalidated or merely earlier definition as authoritative. Only definitions that have passed identity gate validation and have been accepted into the PAL library constitute approved PAL source definitions.
+Do not treat an unvalidated or merely earlier definition as authoritative. Only definitions that have passed the applicable human validation and approval process and have been accepted into the PAL library constitute approved PAL source definitions. For character-anchor materials, this may include the applicable CIP identity gates.
 
 -----
 
@@ -126,6 +126,14 @@ The Execution Package is the task-specific model-facing execution artifact produ
 - not automatically authoritative
 - inspectable and traceable where possible
 
+Within a specific generation event, the Execution Package is the model-facing realization of the approved source conditions and generation request. It does not replace the broader approved intent represented by A, and it is not identical to A′.
+
+The distinction is:
+
+- **A** = approved intent, PAL conditions, and current generation request
+- **Execution Package** = task-specific model-facing realization of those conditions
+- **A′** = reconstructed state produced under C-mediated transformation
+
 The Execution Package may expose evidence of pre-generation transformation. This may help diagnose aspects of the path from A toward A′, but the Execution Package is not itself A′.
 
 -----
@@ -152,9 +160,11 @@ Before generation, the Execution Package may be checked against the PAL source m
 
 > Does the model-facing Execution Package still preserve the approved PAL source definitions?
 
-This check is diagnostic. It does not authorize or block generation on its own; it provides input to the operator and to CIP-governed workflow conditions.
+This check produces diagnostic evidence only and does not possess autonomous authority to approve or block generation.
 
-If the Pre-Execution Conformance Check detects a critical omission or an unapproved transformation, the Execution Package must be revised before generation. Both the initially compiled package and the revised package must be retained and all revisions logged.
+Under this experimental protocol, however, a critical omission or unapproved transformation is treated as a human-governed pre-execution stop condition. The Execution Package must be revised and reviewed before generation proceeds. Both the initially compiled package and the revised package must be retained, and all revisions must be logged.
+
+The key distinction: assessment = diagnostic evidence; the stop or proceed decision = human-governed CIP workflow.
 
 -----
 
@@ -214,11 +224,21 @@ C is not directly controllable. The architecture governs part of the conditions 
 
 -----
 
-## CIP Validation and Adoption
+## CIP-Governed Validation and Adoption
 
-CIP does not directly control C, A′, or the generative model. CIP governs the workflow conditions surrounding the transformation from A to A′ under C and the subsequent treatment of B′. The human operator retains final adoption authority.
+The responsibility boundary in this hypothesis is as follows:
 
-A candidate, score, optimized prompt, or Execution Package must not become part of the approved source identity merely because it performs well. Adoption requires explicit human validation.
+- **PAL Source Modules** define the approved continuity conditions.
+- **The PAL Prompt Layer** translates those conditions into a model-facing Execution Package.
+- **The Pre-Execution Conformance Check** assesses whether that translation still preserves the approved source definitions.
+- **The generative model** produces a candidate.
+- **The PAL Conformance Assessment Layer** produces diagnostic evidence about conformance to the approved PAL source definitions.
+- **CIP** governs validation, rejection, purge, re-binding, re-convergence, and adoption.
+- **The human operator** retains final adoption authority.
+
+CIP does not directly control C, A′, or the generative model. It governs workflow conditions surrounding the transformation from A to A′ under C and the subsequent treatment of B′.
+
+A candidate, conformance result, optimized prompt, or Execution Package must not become part of the approved source identity merely because it performs well. Adoption requires explicit human validation.
 
 -----
 
@@ -235,20 +255,6 @@ C                     ≠ Error
 C                     ≠ Creativity Alone
 PAL Prompt Layer      ≠ C as a Whole
 ```
-
------
-
-## Relationship to CIP
-
-The responsibility boundary in this hypothesis is as follows:
-
-- **PAL Source Modules** define the approved continuity conditions.
-- **The PAL Prompt Layer** translates those conditions into a model-facing Execution Package.
-- **The Pre-Execution Conformance Check** assesses whether the translation still preserves the approved source definitions.
-- **The generative model** produces a candidate.
-- **The PAL Conformance Assessment Layer** diagnoses conformance against the source PAL modules.
-- **CIP** governs validation, rejection, purge, re-binding, re-convergence, and adoption.
-- **The human operator** retains final adoption authority.
 
 -----
 
