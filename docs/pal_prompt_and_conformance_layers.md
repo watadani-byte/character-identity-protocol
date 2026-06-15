@@ -37,7 +37,7 @@ Definitions and boundaries:
 - The PAL Prompt Layer is not equivalent to C as a whole.
 - The PAL Prompt Layer may participate in execution-structure mediation and may therefore become part of C.
 - CIP does not directly control C or A′.
-- CIP defines and governs the validation, rejection, purge, re-binding, re-convergence, and adoption process.
+- CIP governs validation, rejection, purge, re-binding, re-convergence, and adoption.
 - PAL supports continuity, persistence, and anchor availability.
 - The human operator retains final adoption authority.
 - Conformance outputs are diagnostic evidence only.
@@ -130,7 +130,9 @@ Within a specific generation event, the Execution Package is the model-facing re
 
 The distinction is:
 
-- **A** = approved intent, PAL conditions, and current generation request
+For the purpose of this architecture:
+
+- **A** = the approved intent as instantiated through the applicable PAL conditions and current generation request
 - **Execution Package** = task-specific model-facing realization of those conditions
 - **A′** = reconstructed state produced under C-mediated transformation
 
@@ -162,9 +164,12 @@ Before generation, the Execution Package may be checked against the PAL source m
 
 This check produces diagnostic evidence only and does not possess autonomous authority to approve or block generation.
 
-Under this experimental protocol, however, a critical omission or unapproved transformation is treated as a human-governed pre-execution stop condition. The Execution Package must be revised and reviewed before generation proceeds. Both the initially compiled package and the revised package must be retained, and all revisions must be logged.
+Under the associated experimental protocol, however, a critical omission or unapproved transformation triggers a human-governed pre-execution stop decision. Generation proceeds only after the Execution Package has been revised and reviewed by the human operator. Both the initially compiled package and the revised package must be retained, and all revisions must be logged.
 
-The key distinction: assessment = diagnostic evidence; the stop or proceed decision = human-governed CIP workflow.
+The key distinction is:
+
+- Assessment = diagnostic evidence
+- Stop or proceed decision = a decision made within the CIP-governed workflow under human authority
 
 -----
 
