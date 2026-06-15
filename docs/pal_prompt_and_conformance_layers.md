@@ -128,8 +128,6 @@ The Execution Package is the task-specific model-facing execution artifact produ
 
 Within a specific generation event, the Execution Package is the model-facing realization of the approved source conditions and generation request. It does not replace the broader approved intent represented by A, and it is not identical to A′.
 
-The distinction is:
-
 For the purpose of this architecture:
 
 - **A** = the approved intent as instantiated through the applicable PAL conditions and current generation request
@@ -225,7 +223,7 @@ C is model-side or execution-structure mediation that transforms A into A′.
 - The architecture does not remove C.
 - It makes part of the transformation path more explicit, inspectable, traceable, and diagnosable.
 
-C is not directly controllable. The architecture governs part of the conditions around C, not C itself.
+C is not directly controllable. The architecture supports the structuring and diagnosis of conditions around C, while CIP governs the associated workflow conditions.
 
 -----
 
@@ -267,7 +265,7 @@ PAL Prompt Layer      ≠ C as a Whole
 
 This hypothesis proposes a controlled comparison between:
 
-1. Direct generation from existing PAL definitions
+1. Direct generation from approved PAL source definitions
 1. Generation through the structured PAL Prompt Layer
 
 Where possible, the following should be held constant:
