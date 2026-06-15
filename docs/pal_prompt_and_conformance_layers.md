@@ -298,7 +298,7 @@ The following should be evaluated:
 - generation-to-generation variance
 - human adoption rate
 - critical identity violation rate
-- recovery after rejection, re-binding, or re-convergence in later recovery-focused tests
+- recovery through purge, re-binding, and re-convergence following rejection, in later recovery-focused tests
 - execution-translation drift
 - post-generation conformance
 
