@@ -32,11 +32,11 @@ Where:
 |B     |Intended output (what the user expects)                                                                                                                                                                                          |
 |B′    |Actual output (what the system produces)                                                                                                                                                                                         |
 
-A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, execution traces, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable by the user under ordinary conditions. However, generated prompts, rewritten instructions, execution traces, intermediate representations, anchor comparisons, and generated candidates may provide operational evidence about aspects of the path from A toward A′. The CIP-governed process can use this evidence for validation, recovery, and adoption decisions, but these artifacts are not necessarily identical to A′.
 
 The system does not execute A as a fixed specification.
 
-It internally mediates A through C — adding interpretation, inference, optimization, compression, stylistic transformation, and creative contribution — producing A′, which then generates B′. B′ may deviate from B.
+A is mediated through C — through processes that may include interpretation, inference, optimization, compression, stylistic transformation, creative contribution, or execution-structure transformation — producing A′, from which B′ is generated.
 
 B′ ≠ B does not mean that every difference is a failure. It marks the structural possibility of deviation; drift occurs only when the intended identity of A is no longer preserved. B′ ≠ B is not necessarily a malfunction — it is often the expected behavior of a system operating through mediation from A to A′. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
 
@@ -68,12 +68,12 @@ C-driven transformation becomes operationally governable only when the condition
 
 Drift occurs only when C transforms A into A′ without preserving A’s intended identity.
 
-C is not directly visible to the user. In practice, some form of C is present whenever a generative system reconstructs input into output, and it shapes A′ and therefore B′.
+C is not necessarily fully or directly observable by the user. In some workflows, exposed prompts, rewritten instructions, execution traces, or intermediate artifacts may provide partial evidence of C-mediated transformation.
 
 C explains why drift occurs. It does not excuse unmanaged drift.
 The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
 
-A′ is not fully or directly observable under ordinary conditions. CIP therefore governs reconstructed states operationally through external controls: anchors, gates, validation decisions, and adoption controls.
+A′ is not fully or directly observable under ordinary conditions. CIP therefore governs validation, rejection, purge, re-binding, re-convergence, and adoption using available evidence from anchors, gates, exposed artifacts, execution traces, and generated candidates. CIP does not directly control A′.
 
 ### Scope of C
 
@@ -158,7 +158,7 @@ In image-generation workflows, C may enter at more than one layer.
 
 For example, if the user says, “The eyes are not hazel; they are brown,” and the language model rewrites this into “brown eyes with a strong green tone,” the drift occurs before image generation. If the written prompt remains “clearly brown eyes, not hazel,” but the generated image still has hazel eyes, the drift occurs during image execution.
 
-CIP separates these cases because they require different governance responses. Model-side C is governed operationally through prompt disclosure, prompt approval, instruction-preservation checks, and pre-execution gates. Image-execution C is governed operationally through anchors, visual comparison, identity gates, regeneration, Hard Abort, and adoption control.
+CIP separates these cases because they require different governance responses. Conditions and evidence associated with model-side mediation can be addressed through prompt disclosure, prompt approval, instruction-preservation checks, and human-governed pre-execution decisions. Conditions and candidates associated with image-execution mediation can be addressed through anchors, visual comparison, identity gates, rejection, purge, re-binding, re-convergence, and human adoption decisions. These controls govern the workflow around C-mediated transformation; they do not directly control C itself.
 
 -----
 
@@ -178,7 +178,7 @@ Pre-execution prompt disclosure does not make the full execution process transpa
 
 However, partial exposure narrows the invisible interval between A and B′.
 
-This makes it possible to inspect part of A′, compare it with A, and identify likely C before drift becomes adopted.
+This makes it possible to inspect evidence about aspects of the path from A toward A′, compare that evidence with A, and form a hypothesis about likely C-mediated transformation before drift becomes adopted.
 
 -----
 
@@ -253,9 +253,9 @@ A compressed prompt may embody a task-specific transformation of A and may provi
 
 Small transformations that appear acceptable at each step may compound until the final output no longer preserves the intended identity of A.
 
-For this reason, each stage must not inherit only the previous A′. It must re-check the current reconstructed state against the original A.
+For this reason, each stage must not rely only on the preceding reconstructed condition. Available model-facing artifacts, intermediate outputs, and generated candidates should be checked against the original A or an approved representation of A before they become the next active workflow condition.
 
-Anchors and gates act as reset points against C accumulation. At each stage, the current A′ should be checked against the original A or a validated anchor before it is allowed to become the next input condition.
+Anchors and gates act as reset points against C accumulation. At each stage, available evidence of the reconstructed condition should be checked against the original A or a validated anchor before the resulting artifact or candidate is allowed to become the next active input condition.
 
 This may be implemented through visual comparison, semantic checks, identity gates, embedding similarity, human validation, or domain-specific adoption criteria.
 
