@@ -24,13 +24,13 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                                                                                                          |
-|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                                                                                                        |
-|C     |Mediation that transforms A into A′, including model-side mediation and execution-structure mediation such as interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, or reconstruction|
-|A′    |Reconstructed task state: A as transformed through C-mediated processing                                                                                                                                                         |
-|B     |Intended output (what the user expects)                                                                                                                                                                                          |
-|B′    |Actual output (what the system produces)                                                                                                                                                                                         |
+|Symbol|Meaning                                                                                                                                                                                                                                                                  |
+|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|A     |User input (prompt, instruction, request)                                                                                                                                                                                                                                |
+|C     |Model-side or execution-structure mediation that transforms A into A′. It may include interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, reconstruction, or other mediation when these participate in that transformation.|
+|A′    |Reconstructed task state: A as transformed through C-mediated processing                                                                                                                                                                                                 |
+|B     |Intended output (what the user expects)                                                                                                                                                                                                                                  |
+|B′    |Actual output (what the system produces)                                                                                                                                                                                                                                 |
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, generated prompts, rewritten instructions, execution traces, intermediate representations, anchor comparisons, and generated candidates may provide operational evidence about aspects of the path from A toward A′. The CIP-governed process can use this evidence for validation, recovery, and adoption decisions, but these artifacts are not necessarily identical to A′.
 
@@ -66,7 +66,7 @@ AI systems often describe C as improvement, clarification, optimization, or cont
 
 C-driven transformation becomes operationally governable only when the conditions under which C transforms A into A′ are constrained, externalized where possible, and validated before adoption.
 
-Drift occurs only when C transforms A into A′ without preserving A’s intended identity.
+Within this reconstruction model, drift occurs when C-mediated transformation from A to A′ does not preserve A’s intended identity.
 
 C is not necessarily fully or directly observable by the user. In some workflows, exposed prompts, rewritten instructions, execution traces, or intermediate artifacts may provide partial evidence of C-mediated transformation.
 
@@ -162,11 +162,11 @@ CIP separates these cases because they require different governance responses. C
 
 -----
 
-## Exposing A′
+## Exposing Evidence of the Path toward A′
 
-C is difficult to govern if A′ remains invisible.
+C-mediated transformation is difficult to diagnose when evidence about the path from A toward A′ remains unavailable.
 
-Practical methods for making parts of A′ operationally externalizable or inferable include:
+Practical methods for obtaining operational evidence about aspects of the path from A toward A′ include:
 
 - requiring the model to show the prompt before execution
 - separating prompt evaluation from image generation
@@ -263,7 +263,7 @@ This may be implemented through visual comparison, semantic checks, identity gat
 
 ## The Structure of C
 
-C is strongly shaped by the statistical structure of the training data distribution, but it may also include system instructions, safety layers, product-side rewriting, sampling behavior, and tool constraints.
+Model-side forms of C may be strongly shaped by the statistical structure of the training data distribution. C may also include mediation arising from system instructions, safety layers, product-side rewriting, sampling behavior, tool constraints, and execution structures when these transform A into A′.
 
 High-density regions of the distribution pull outputs toward familiar patterns — a consistent bias that can be understood as **distributional gravity**. This document uses the term distributional gravity as a practical metaphor for this tendency.
 
@@ -293,7 +293,7 @@ Where probabilistic forms of C are present, drift is directional because C pulls
 
 An anchor resists distributional gravity by providing a high-information reference that constrains the reconstruction trajectory.
 
-Where C pulls toward high-density regions of the training distribution, the anchor pulls toward a specific validated identity state.
+Where model-side forms of C pull toward high-density regions of the training distribution, the anchor provides a competing reference toward a specific validated identity state.
 
 An anchor does not eliminate C.
 It changes the reconstruction conditions by introducing a competing reference force.
