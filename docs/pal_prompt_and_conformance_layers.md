@@ -168,8 +168,8 @@ Under the associated experimental protocol, however, a critical omission or unap
 
 The key distinction is:
 
-- Assessment = diagnostic evidence
-- Stop or proceed decision = a decision made within the CIP-governed workflow under human authority
+- **Assessment** = diagnostic evidence
+- **Stop or proceed decision** = a decision made within the CIP-governed workflow under human authority
 
 -----
 
