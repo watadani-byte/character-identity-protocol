@@ -2,7 +2,7 @@
 
 *An Experimental Translation and Diagnostic Structure for PAL-Supported Image Generation*
 
-> Status: Promising experimental hypothesis — approved for documentation and validation, but not yet adopted as a finalized PAL specification.
+> Status: Promising experimental hypothesis — accepted for documentation and validation testing, but not yet adopted as a finalized PAL specification.
 
 -----
 
@@ -81,9 +81,8 @@ Generated Candidate
           ↓
 PAL Conformance Assessment Layer
           ↓
-CIP-Governed Validation and Adoption
-          ↓
-Human Final Adoption Decision
+CIP-Governed Validation, Recovery, and Adoption Process
+          └─ Human Operator Retains Final Adoption Authority
 ```
 
 -----
@@ -128,17 +127,21 @@ The Execution Package is the task-specific model-facing execution artifact produ
 
 Within a specific generation event, the Execution Package is the model-facing realization of the approved source conditions and generation request. It does not replace the broader approved intent represented by A, and it is not identical to A′.
 
-For the purpose of this architecture:
+For the purpose of operational mapping in this architecture:
 
-- **A** = the approved intent as instantiated through the applicable PAL conditions and current generation request
-- **Execution Package** = task-specific model-facing realization of those conditions
-- **A′** = reconstructed state produced under C-mediated transformation
+- **A** is represented by the approved intent as instantiated through the applicable PAL conditions and the current generation request.
+- **The Execution Package** represents the task-specific model-facing realization derived from those conditions.
+- **A′** remains the reconstructed task state produced through C-mediated transformation.
+
+This mapping does not redefine A, the Execution Package, or A′ as globally equivalent concepts.
 
 The Execution Package may expose evidence of pre-generation transformation. This may help diagnose aspects of the path from A toward A′, but the Execution Package is not itself A′.
 
 -----
 
-## Two Drift Locations
+## Two Primary Drift Locations Examined by This Hypothesis
+
+For the purpose of this hypothesis, two primary transformation boundaries are examined:
 
 ```
 PAL Source Modules → Execution Package
@@ -148,7 +151,17 @@ Execution Package → Generated Candidate
 = generative reconstruction drift
 ```
 
-These are two separate potential transformation or drift locations. The final output alone cannot always establish which location caused a failure.
+These are not asserted to be the only possible failure locations in the wider PAL/CIP workflow. They are the two transformation boundaries directly examined by the proposed experiment.
+
+Other failure locations may include:
+
+- source-definition or source-approval failure
+- intermediate Prompt Layer transformation failure
+- undisclosed product-side processing
+- conformance-assessment error
+- human governance or adoption error
+
+The final output alone cannot always establish which location caused a failure.
 
 -----
 
@@ -223,11 +236,11 @@ C is model-side or execution-structure mediation that transforms A into A′.
 - The architecture does not remove C.
 - It makes part of the transformation path more explicit, inspectable, traceable, and diagnosable.
 
-C is not directly controllable. The architecture supports the structuring and diagnosis of conditions around C, while CIP governs the associated workflow conditions.
+C is not assumed to be directly controllable by CIP. The architecture instead supports the structuring and diagnosis of conditions surrounding C and may expose evidence of C-mediated transformation, while CIP governs the associated workflow conditions. The architecture does not expose or control C in full.
 
 -----
 
-## CIP-Governed Validation and Adoption
+## CIP-Governed Validation, Recovery, and Adoption Process
 
 The responsibility boundary in this hypothesis is as follows:
 
@@ -237,7 +250,7 @@ The responsibility boundary in this hypothesis is as follows:
 - **The generative model** produces a candidate.
 - **The PAL Conformance Assessment Layer** produces diagnostic evidence about conformance to the approved PAL source definitions.
 - **CIP** governs validation, rejection, purge, re-binding, re-convergence, and adoption.
-- **The human operator** retains final adoption authority.
+- **The human operator** retains final adoption authority within that CIP-governed process.
 
 CIP does not directly control C, A′, or the generative model. It governs workflow conditions surrounding the transformation from A to A′ under C and the subsequent treatment of B′.
 
