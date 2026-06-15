@@ -64,7 +64,7 @@ The question is not whether C exists, but how its effects are governed.
 
 AI systems often describe C as improvement, clarification, optimization, or contextual interpretation. CIP does not deny that these operations may be useful. However, when they change A before producing B′, CIP treats them as governance-relevant transformations.
 
-C-driven transformation becomes operationally governable only when the conditions under which C transforms A into A′ are constrained, externalized where possible, and validated before adoption.
+The workflow around C-mediated transformation becomes operationally governable when relevant transformation conditions are externalized where possible, evaluated through available evidence, and subjected to validation before adoption.
 
 Within this reconstruction model, drift occurs when C-mediated transformation from A to A′ does not preserve A’s intended identity.
 
@@ -89,7 +89,7 @@ C may include interpretation, compression, weighting, completion, sampling, styl
 
 C does not include external business decisions, human editorial judgment, or organizational approval processes themselves. However, when those decisions are converted into prompts, constraints, examples, policies, or workflow conditions that shape a later generation step, they may become part of the conditions under which C operates.
 
-For governance purposes, CIP distinguishes between C as mediation that transforms A into A′ and the conditions under which C operates. C itself is not directly inspectable or controllable as an internal mechanism; the governable layer is the set of external and operational conditions that shape how C transforms A into A′.
+For governance purposes, CIP distinguishes C-mediated transformation from the external and operational conditions that shape, expose evidence about, or respond to that transformation. C as a whole is not necessarily fully or directly inspectable or controllable. The governable layer is the set of external and operational conditions that shape how C transforms A into A′, make aspects of that transformation evidentially available, or determine what happens in response to transformation outcomes.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
 
@@ -97,9 +97,9 @@ Creative transformation is acceptable while A’s intended identity remains pres
 
 ## Why the Conditions of C Are the Governance Target
 
-B′ is observed after transformation has occurred. A′, when partially exposed, is observed as A after mediation rather than as the original A.
+B′ is observed after transformation has occurred. Evidence about aspects of the path toward A′, when available, reflects A after some degree of mediation rather than the original A.
 
-If governance focuses only on partially exposed A′ or B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
+If governance focuses only on downstream evidence about A′ or on B′, it becomes feedback governance: the user detects drift after the system has already transformed the input.
 
 C is different because it concerns mediation before B′ is produced; CIP governs the transformation conditions around that mediation.
 
@@ -267,11 +267,11 @@ Model-side forms of C may be strongly shaped by the statistical structure of the
 
 High-density regions of the distribution pull outputs toward familiar patterns — a consistent bias that can be understood as **distributional gravity**. This document uses the term distributional gravity as a practical metaphor for this tendency.
 
-This means:
+For model-side forms of C influenced by distributional gravity, this may mean:
 
-- outputs tend to regress toward the most common patterns in training data
-- unusual or precise instructions are more likely to be transformed
-- drift is not random — it is directional
+- outputs may regress toward more familiar patterns in the training distribution
+- unusual or highly specific instructions may face stronger transformation pressure
+- resulting drift may be directional rather than purely random
 
 C also includes the AI’s interpretive creativity: its capacity to infer, extend, stylize, and complete. This is part of the generative side of C, and it is not inherently harmful.
 
