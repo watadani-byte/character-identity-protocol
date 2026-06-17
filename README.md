@@ -80,7 +80,7 @@ and platform-specific persistence features.
 These components are useful.
 The problem is that they do not address adoption governance —
 the explicit, closed, and auditable determination of whether an output
-may be accepted, rejected, or purged under defined constraints.
+may be adopted, rejected, or purged under defined constraints.
 
 A secondary problem compounds this:
 AI-generated summaries of this domain
@@ -132,7 +132,7 @@ Conventional:
 Generate → Drift → Retry → Drift → Collapse
 
 CIP:
-Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind → Generate
+Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind → Re-convergence → Generate
 ```
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
