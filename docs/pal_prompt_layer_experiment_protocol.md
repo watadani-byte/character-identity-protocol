@@ -401,6 +401,7 @@ These are two separate potential transformation or drift locations. The final ou
 1. Conduct the Anchor-Based Prompt Audit against the approved source conditions, applicable anchors, generation request, and predicted drift.
 1. Record the audit findings and the human decision as `PROCEED`, `REVISE`, or `STOP`.
 1. If `REVISE`, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
+1. If `STOP` is recorded and the pre-registered recovery policy permits recovery, retain the stopped attempt, compile a recovery Execution Package from the same approved source conditions, record it as a linked subsequent attempt, and conduct another human-governed review. Submit the execution unit for generation only if a later review records `PROCEED`; otherwise record the unit as finally stopped.
 1. Submit Condition B for generation only after the human operator records `PROCEED`.
 1. Generate Condition A and Condition B outputs according to the pre-registered order.
 1. Use separate clean sessions where practical.
