@@ -27,9 +27,9 @@ Generative AI does not convert human input A directly into the intended output B
 A → (A + C) → A′ → B′
 ```
 
-A — the original input, intent, creative identity, or operational criterion — passes through C: the mediation introduced by model interpretation, completion, context, UI behavior, tools, sampling, and system instructions. The result is A′, a reconstructed working state, which then produces B′ — an actual output that may differ from the intended B.
+A — the original input, intent, creative identity, or operational criterion — is transformed through C: model-side or execution-structure mediation that may involve interpretation, completion, context, UI behavior, tools, sampling, or system instructions. The result is A′, a reconstructed working state, which then produces B′ — an actual output that may differ from the intended B.
 
-C is not merely an error. C is also how AI completes, interprets, adapts, generates, and shapes. But the same mediation can dilute A, render it invisible, or transform it implicitly.
+C may include processes through which AI completes, interprets, adapts, generates, and shapes, but these are possible forms of C rather than its complete definition. The same mediation can also dilute A, render it invisible, or transform it implicitly.
 
 The question is therefore no longer “what do we make the AI produce?”
 
