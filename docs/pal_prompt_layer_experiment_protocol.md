@@ -365,8 +365,9 @@ If the pre-registered recovery policy permits recovery, a new Execution Package 
 The protocol must report separately:
 
 - registered execution units
-- stopped pre-execution execution units
-- Execution Packages receiving `PROCEED`
+- execution units receiving any `STOP` decision
+- execution units finally stopped without reaching generation
+- execution units reaching generation
 - generated candidates
 - candidate-level conformance and adoption outcomes
 
