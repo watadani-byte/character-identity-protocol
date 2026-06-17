@@ -22,32 +22,31 @@ In CIP, *identity* refers to the continuity that must be preserved in A — incl
 CIP operates entirely at inference time, without model modification.
 
 ```
+A → (A + C) → A′ → B′
 A → (A + C) → A′ → B′ ≠ B
-A → A′ → B′
-
 A′ ≈ T_C(A)
 
 A + C is shorthand for non-linear mediation, not simple addition.
 
-A  = user input or reference condition
-C  = mediation that transforms A into A′ — including model-side and execution-structure mediation
-A′ = internally reconstructed state: A as transformed by C
+A  = user input, approved intent, or reference condition
+C  = model-side or execution-structure mediation that transforms A into A′
+A′ = reconstructed task state produced through the transformation of A under C
 B′ = actual output
 
-CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
+CIP does not directly control C or A′. It governs validation, rejection, purge, re-binding, re-convergence, and adoption around the transformation from A to A′ under C.
 
-A′ is not fully or directly observable by the user under ordinary conditions. However, CIP can make parts of A′ operationally externalizable, inferable, or testable through external controls such as prompt disclosure, anchor comparison, gates, validation decisions, and adoption controls.
+A′ may not be fully observable. In some workflows, however, parts of the transformation path or reconstructed task state may be partially exposed through generated prompts, rewritten instructions, execution traces, intermediate representations, or other inspectable artifacts. These exposed artifacts are not necessarily identical to A′. They provide diagnostic evidence that may be evaluated together with anchor comparisons, validation gates, generated outputs, and other available workflow evidence.
 
-C explains why drift occurs. It does not excuse unmanaged drift.
+C explains why drift can occur. It does not excuse unmanaged drift.
 
-C is broad by design, but not unlimited: it refers to model-side or execution-structure mediation that transforms A into A′. In agentic systems, C can also be introduced by execution structure — scaffolding, tool routing, memory, evaluation loops, and retry behavior — when these mediate or replace A before B′ is produced.
+C is broad by design, but not unlimited: it refers to model-side or execution-structure mediation that transforms A into A′. In agentic systems, C can also include scaffolding, tool routing, memory, evaluation loops, retry behavior, or other execution structures when they mediate or replace conditions derived from A before B′ is produced.
 
-Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
+Creative transformation is acceptable while A's intended identity remains preserved. When that identity is no longer preserved, the transformation constitutes drift in relation to A.
 
-In its shortest form, drift is the failure to preserve A’s intended identity.
+In its shortest form, drift is the failure to preserve A's intended identity.
+
+The human operator retains final adoption authority.
 ```
-
-*"C → A′" is used here as shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.*
 
 ## Canonical Summary
 
@@ -138,13 +137,13 @@ Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
 
-|Component                       |Role                                                        |
-|--------------------------------|------------------------------------------------------------|
-|**Anchor**                      |Validated identity reference — the single source of truth   |
+|Component                       |Role                                                                                                    |
+|--------------------------------|--------------------------------------------------------------------------------------------------------|
+|**Anchor**                      |Validated identity reference — the single source of truth                                               |
 |**Identity Gates**              |PASS / FAIL validation against defined identity constraints, beginning with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination on identity failure                   |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation              |
-|**Re-convergence**              |Controlled recovery from last verified anchor state         |
+|**Hard Abort**                  |Immediate termination on identity failure                                                               |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                          |
+|**Re-convergence**              |Controlled recovery from last verified anchor state                                                     |
 
 Identity is not assumed to persist. It is continuously validated and recovered.
 
@@ -156,10 +155,12 @@ Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image 
 ## Core Model
 
 ```
-Core Model:        A → (A + C) → A′ → B′ ≠ B  (Reconstruction Control Model)
+Core Model:        A → (A + C) → A′ → B′
+Mismatch / Drift:  A → (A + C) → A′ → B′ ≠ B
 Formal shorthand:  A′ ≈ T_C(A)
-Governance Layer:  Workflow conditions around C → A′, including validation, adoption, rejection, purge, and re-binding
+Governance Layer:  Workflow conditions around the transformation from A to A′ under C, including validation, rejection, purge, re-binding, re-convergence, and adoption
 Key Operations:    Anchor · Gates · Hard Abort · Re-bind · Re-convergence · Adoption / Rejection / Purge
+Human Authority:   The human operator retains final adoption authority
 ```
 
 **Hard Abort:** immediate termination of a contaminated generation or adoption cycle when identity or governance failure is detected.
@@ -175,9 +176,9 @@ This is not a prompt technique.
 It is a workflow-level control and adoption-governance protocol.
 
 > CIP governs adoptability: validation, failure handling, adoption, rejection, and purge under identity, brand-code, and rights-control constraints.
-> PAL sustains it: persistent anchoring and generative continuity across sessions.
+> PAL supports continuity, persistence, and anchor availability across generative workflows.
 
-PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the same framework. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. They now function as two distinct but coordinated layers.
+PAL (Persistent Anchor Layer) and CIP operate as two distinct but coordinated layers. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. PAL supports the availability and continuity of approved reference conditions; CIP governs the workflow through which generated candidates and available evidence are evaluated, rejected, recovered, or adopted.
 
 > CIP should be read not as a denial of misuse risk,
 > but as a governance response to it.
@@ -207,10 +208,14 @@ PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the
 
 **Related Frameworks**
 
-- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Cross-session identity persistence and generative continuity*
+- [Persistent Anchor Layer (PAL)](docs/column_pal.md) — *Continuity, persistence, and anchor availability across generative workflows*
 - [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
+- [PAL Prompt Layer and PAL Conformance Assessment Layer](docs/pal_prompt_and_conformance_layers.md) — *Promising experimental translation and diagnostic architecture; not a finalized PAL specification*
+- [PAL Prompt Layer Initial Smoke Test Protocol](docs/pal_prompt_layer_experiment_protocol.md) — *Draft controlled comparison of Direct PAL and PAL Prompt Layer workflows*
 - [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 - [PAL Operations Manual](docs/pal_operations_manual_v0.1.md) — *File management, versioning, and continuity operations*
+
+The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt Audit remain experimental. They do not redefine PAL, C, A′, or CIP, and they do not replace human validation or final adoption authority.
 
 **Cases**
 
@@ -224,6 +229,8 @@ PAL (Persistent Anchor Layer) and CIP operate as two complementary layers of the
 
 **Columns**
 
+- [Is Prompt Engineering Over?](docs/prompt-engineering-as-intent-preservation.md) — *Prompt engineering reframed as intent preservation, including Anchor-Based Prompt Audit*
+- [A Simple Structure for Writing Prompts](docs/column_prompt_structure.md)
 - [Miracle Images and Convergence Behavior](docs/column_miracle_image.md)
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 - [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
@@ -244,7 +251,7 @@ as an infrastructure hypothesis for cross-session stabilization
 were first named and documented by Hitoshi Watadani
 in March 2026 in this repository.
 
-To the author's knowledge, this repository contains
+To the author’s knowledge, this repository contains
 the earliest explicit documentation of:
 
 - **PAL** as a distinct continuity-oriented concept,
@@ -277,6 +284,9 @@ character-identity-protocol/
 │   ├── model_a_c_b.md
 │   ├── protocol_template.md
 │   ├── whitepaper_appendices.md
+│   ├── pal_prompt_and_conformance_layers.md
+│   ├── pal_prompt_layer_experiment_protocol.md
+│   ├── prompt-engineering-as-intent-preservation.md
 │   │
 │   ├── case_01_failure_log.md
 │   ├── case_01b_mira_project.md
@@ -293,6 +303,7 @@ character-identity-protocol/
 │   │   └── images/
 │   │
 │   ├── column_pal.md
+│   ├── column_prompt_structure.md
 │   ├── column_miracle_image.md
 │   ├── column_identity_drift.md
 │   ├── column_translation_loss.md
@@ -358,7 +369,7 @@ If you have implemented or observed PAL-like behavior on a platform not yet docu
 
 - Open an [Issue](https://github.com/watadani-byte/character-identity-protocol/issues) describing the platform and feature
 - Reference the [PAL column](docs/column_pal.md) and [Architecture Diagram](docs/architecture_diagram.md) for formatting guidance
-- Include: platform name, persistent layer feature, mapping to PAL / HDLA / ARCM layers
+- Include: platform name, persistent layer feature, and mapping to PAL layers
 
 > CIP provides the governance framework.
 > The community provides the platform coverage.
