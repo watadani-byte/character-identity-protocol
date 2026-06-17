@@ -52,7 +52,7 @@ The human operator retains final adoption authority.
 
 Character Identity Protocol (CIP) is an inference-time adoption-governance framework for probabilistic AI outputs.
 
-It defines how identity continuity, drift, validation gates, failure handling, rollback, purge, and human adoption decisions should be governed when AI systems generate or reconstruct identity-bound assets.
+It defines how identity continuity, drift, validation gates, failure handling, re-binding, re-convergence, purge, and human adoption decisions should be governed when AI systems generate or reconstruct identity-bound assets.
 
 CIP is not a prompt trick, image-generation workflow, LoRA method, reference-image technique, or character-consistency tutorial.
 
@@ -137,13 +137,13 @@ Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
 
-|Component                       |Role                                                                                                    |
-|--------------------------------|--------------------------------------------------------------------------------------------------------|
-|**Anchor**                      |Validated identity reference — the single source of truth                                               |
-|**Identity Gates**              |PASS / FAIL validation against defined identity constraints, beginning with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination on identity failure                                                               |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                          |
-|**Re-convergence**              |Controlled recovery from last verified anchor state                                                     |
+|Component                       |Role                                                                                                                        |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+|**Anchor**                      |Validated reference state retained within the approved identity and continuity conditions                                   |
+|**Identity Gates**              |PASS / FAIL validation against defined identity constraints; character workflows may begin with Face ∧ Skeleton ∧ Proportion|
+|**Hard Abort**                  |Immediate termination on identity failure                                                                                   |
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                                              |
+|**Re-convergence**              |Controlled recovery from the last verified anchor state                                                                     |
 
 Identity continuity is not assumed to persist. It is continuously evaluated, and the workflow is recovered from the last validated anchor state when failure occurs.
 
