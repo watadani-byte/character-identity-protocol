@@ -101,6 +101,54 @@ The goal is to raise the preservation density of A — the proportion of the pro
 
 -----
 
+## Anchor-Based Prompt Audit
+
+An optimized or hyper-compressed prompt should not be assumed to preserve A merely because it is clear, concise, or model-compatible.
+
+The model-facing prompt is itself a transformed representation of the approved intent. Selection, compression, restructuring, prioritization, and integration may preserve A — but they may also omit, weaken, reweight, or introduce elements before generation begins.
+
+Prompt review should therefore ask more than:
+
+> Will the model respond well to this prompt?
+
+It should also ask:
+
+> Does this model-facing prompt still represent A?
+
+An anchor-based prompt audit compares the model-facing instruction against approved source conditions before execution.
+
+The anchor may be:
+
+- an approved character image
+- a validated identity description
+- a brand code
+- a policy boundary
+- a scene definition
+- an approved sequence state
+- or another human-validated representation of A
+
+The review examines whether the prompt:
+
+- preserves protected elements
+- keeps variable elements within their approved scope
+- retains explicit drift boundaries
+- omits critical identity conditions
+- introduces unsupported interpretation
+- creates unnecessary reconstruction pressure
+- or allows scene, style, or optimization instructions to override A
+
+This audit is tool-agnostic. It may be applied to an ordinary prompt, a structured prompt, a compressed prompt, or an Execution Package produced through a PAL Prompt Layer workflow.
+
+In a PAL-supported workflow, the same method can provide diagnostic evidence about possible execution-translation drift between approved PAL Source Modules and the resulting Execution Package.
+
+The audit does not prove identity preservation, reveal all of A′, or guarantee the generated result. It provides pre-execution diagnostic evidence for a human-governed decision to proceed, revise, or stop.
+
+After generation, the candidate must still be evaluated against the approved anchor and applicable identity conditions. Final adoption authority remains with the human operator within the CIP-governed process.
+
+Prompt engineering therefore includes not only constructing a model-facing instruction, but also auditing whether that instruction still preserves the intent it was meant to execute.
+
+-----
+
 ## Relation to Context Engineering
 
 This framing overlaps with context engineering and compaction as discussed in the broader ecosystem — but it is not the same thing.
@@ -118,11 +166,15 @@ High-signal context and A-exposing context often overlap. But they are not ident
 
 ## Where PAL and CIP Fit
 
-**PAL** is an execution-side continuity layer: it supports conditions under which A is less likely to degrade during generation — through anchors, drift boundaries, continuity support, and persistent reference conditions.
+PAL supports continuity, persistence, and anchor availability. It helps preserve approved source conditions and reference states across generative workflows.
 
-**CIP** is an operational protocol: it does not adopt B′ as-is. It evaluates whether B′ is adoptable as B — through validation gates, adoption decisions, rejection, Hard Abort, purge, and re-binding.
+Experimental extensions such as the PAL Prompt Layer may translate approved PAL Source Modules into task-specific model-facing structures or Execution Packages. Because this translation may itself transform A, the resulting instruction should be reviewed for possible execution-translation drift before generation.
 
-Neither eliminates C. PAL supports continuity conditions around generation; CIP governs validation and adoption conditions around the resulting B′. Together, they reduce the risk that A is diluted, rendered invisible, or implicitly transformed.
+CIP does not directly control C, A′, or the generative model. It governs validation, rejection, purge, re-binding, re-convergence, and adoption around C-mediated transformation.
+
+Neither PAL nor CIP eliminates C. PAL supports the availability and continuity of approved reference conditions. CIP governs the workflow through which generated candidates and available diagnostic evidence are evaluated, rejected, recovered, or adopted.
+
+The human operator retains final adoption authority within the CIP-governed process.
 
 -----
 
