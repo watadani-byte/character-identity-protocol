@@ -155,7 +155,7 @@ This framing overlaps with context engineering and compaction as discussed in th
 
 Context engineering, in general, designs high-signal context for the model’s task success.
 
-CIP/PAL designs A-exposing context for the preservation of A’s identity, boundaries, and approved elements.
+CIP/PAL-oriented workflows use A-exposing context to support the preservation of A’s identity, boundaries, and approved elements.
 
 High-signal context and A-exposing context often overlap. But they are not identical. Information that is high-signal for the model’s task performance can, in some cases, induce drift against the protection of A.
 
@@ -189,7 +189,7 @@ What is needed going forward is not merely a prompt. It is a design discipline t
 - exposes A
 - diagnoses the influence of C
 - manages the risk of unintended transformation into A′
-- and decides whether B′ is adoptable as B
+- and supports the human decision on whether B′ is adoptable in relation to B
 
 The spell-casting era is fading. The intent-preservation era is emerging.
 
