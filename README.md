@@ -132,7 +132,9 @@ Conventional:
 Generate → Drift → Retry → Drift → Collapse
 
 CIP:
-Generate → Gate → PASS → Adopt / FAIL → Hard Abort → Purge → Re-bind → Re-convergence → Generate
+Generate → Gate
+  ├─ PASS → Adopt
+  └─ FAIL → Hard Abort → Purge → Re-bind → Re-convergence → Generate
 ```
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
