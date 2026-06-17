@@ -206,13 +206,96 @@ Condition B must include a diagnostic comparison between the PAL source modules 
 
 This check diagnoses possible execution-translation drift.
 
-**Handling check failures:**
+### Anchor-Based Prompt Audit Procedure
 
-If the Pre-Execution Conformance Check detects a critical omission or an unapproved transformation, the Execution Package must be revised before generation.
+For Condition B, the Pre-Execution Conformance Check uses an Anchor-Based Prompt Audit as its operational review procedure.
 
-Both the initially compiled package and the revised package must be retained. All revisions must be logged.
+The audit compares the initially compiled Execution Package against:
 
-In that case, Condition B measures the combined workflow of structured translation plus pre-execution human review, not automatic prompt compilation alone. This distinction must be noted in the result record.
+- the approved PAL Source Modules
+- the applicable validated anchor or reference state
+- the current generation request
+- the pre-registered predicted drift
+- the approved fixed, variable, and drift-boundary conditions
+
+The audit examines whether the Execution Package:
+
+|Audit item                                                                          |Result     |
+|------------------------------------------------------------------------------------|-----------|
+|Protected identity and continuity conditions preserved                              |PASS / FAIL|
+|Scene variables remain within approved scope                                        |PASS / FAIL|
+|Explicit drift boundaries retained                                                  |PASS / FAIL|
+|Critical approved source condition omitted                                          |YES / NO   |
+|Unsupported interpretation introduced                                               |YES / NO   |
+|Scene, style, optimization, or production instructions override protected conditions|YES / NO   |
+|Unnecessary reconstruction pressure introduced                                      |YES / NO   |
+|Traceability to approved PAL Source Modules maintained                              |PASS / FAIL|
+
+The applicable anchor may include:
+
+- an approved character image
+- a validated identity description
+- an approved costume, background, or sequence definition
+- the current validated reference state
+- or another human-approved representation of the applicable PAL source conditions
+
+The review may be:
+
+- human
+- model-assisted
+- hybrid
+
+A model-assisted review produces diagnostic evidence only. Its findings do not autonomously approve, reject, revise, or block the Execution Package.
+
+The resulting review record must identify:
+
+- the review method
+- the reviewer type
+- the audit findings
+- the human decision
+- whether revision was required
+- the reason for revision or stop
+
+Use the following human decisions:
+
+- **PROCEED**
+- **REVISE**
+- **STOP**
+
+These are decisions made by the human operator within the CIP-governed workflow. They are not autonomous outputs of the audit.
+
+### Handling review findings
+
+If the Pre-Execution Conformance Check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select REVISE or STOP.
+
+**For REVISE:**
+
+1. retain the initially compiled Execution Package
+1. retain the complete diagnostic review findings
+1. record the approved revision instruction
+1. produce a revised Execution Package
+1. retain a structured diff or revision log
+1. conduct a second human-governed review
+1. proceed to generation only after the human operator records PROCEED
+
+**For STOP:**
+
+1. retain the initially compiled Execution Package
+1. retain the diagnostic review findings
+1. record the reason for stopping
+1. do not submit that Execution Package for generation
+
+The following must be retained:
+
+- initial Execution Package
+- diagnostic review findings
+- human decision record
+- revision instruction, where applicable
+- revised Execution Package, where applicable
+- revision history
+- final pre-execution decision
+
+When revision occurs, Condition B measures a combined workflow consisting of structured Prompt Layer translation plus pre-execution human review. It does not measure automatic Prompt Layer compilation alone.
 
 -----
 
@@ -232,15 +315,25 @@ These are two separate potential transformation or drift locations. The final ou
 
 ## Generation Procedure
 
-1. Predefine and version the source materials.
-1. Pre-register the condition order or randomization procedure.
-1. Generate Condition A and Condition B outputs according to that pre-registered order.
+1. Predefine and version the approved PAL Source Modules, anchor assets, UID, and scene request.
+1. Pre-register the predicted drift directions.
+1. Pre-register the Condition A / Condition B generation order or randomization procedure.
+1. Prepare and preserve the Condition A direct model-facing prompt according to the pre-existing direct-PAL procedure.
+1. Compile the initial Condition B Execution Package through the PAL Prompt Layer.
+1. Preserve the initial Condition B Execution Package before review.
+1. Conduct the Anchor-Based Prompt Audit against the approved source conditions, applicable anchors, generation request, and predicted drift.
+1. Record the audit findings and the human decision as PROCEED, REVISE, or STOP.
+1. If REVISE, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
+1. Submit Condition B for generation only after the human operator records PROCEED.
+1. Generate Condition A and Condition B outputs according to the pre-registered order.
 1. Use separate clean sessions where practical.
 1. Balance or randomize A/B order where practical so that one condition is not always generated first.
-1. Do not progressively correct failed candidates.
+1. Do not progressively correct failed generated candidates.
 1. Do not promote any candidate into a new anchor during the experiment.
-1. Preserve failed candidates as experimental evidence, but do not adopt them into production.
+1. Preserve failed candidates as experimental evidence, but do not retain them as active production anchors or approved workflow states.
 1. Record platform errors, prompt rewrites, refusals, or unexpected execution behavior.
+
+Revision of the Execution Package during the pre-execution review is distinct from progressive correction of generated candidates. The former diagnoses and repairs possible execution-translation drift before generation; the latter is prohibited during the controlled output comparison.
 
 -----
 
@@ -323,8 +416,16 @@ Also record adverse effects:
 - Background conformance
 - Sequence continuity
 - Generation-to-generation variance
+- pre-execution critical omission detection rate
+- unsupported interpretation detection rate
+- Execution Package revision rate
+- protected-condition override detection rate
+- percentage of initial Execution Packages receiving immediate PROCEED
+- difference between initial and final reviewed Execution Packages
 
 Do not create a combined score that can override a critical identity violation.
+
+Do not treat the pre-execution outcome measures as proof that the final generated identity was preserved.
 
 -----
 
@@ -395,6 +496,12 @@ experiments/
     │   ├── source_modules/
     │   ├── condition_a_direct/
     │   ├── condition_b_prompt_layer/
+    │   │   ├── initial_execution_package/
+    │   │   ├── pre_execution_review/
+    │   │   ├── revision_instruction/
+    │   │   ├── revised_execution_package/
+    │   │   ├── final_execution_package/
+    │   │   └── revision_log/
     │   ├── outputs/
     │   ├── condition_mapping.csv
     │   ├── evaluation.csv
@@ -406,6 +513,7 @@ experiments/
 - `docs/pal_prompt_layer_experiment_protocol.md` is the reusable method.
 - `experiments/pal_prompt_layer/PAL-PL-EXP-XXX/` stores only experiment-specific conditions, evidence, evaluation, and conclusions.
 - Individual experiments must reference the protocol version and Git commit used.
+- The subdirectories shown under `condition_b_prompt_layer/` are recommended record categories and may be implemented as files or directories depending on the experiment. They are not created at this documentation stage.
 
 **Protocol reference example:**
 
@@ -457,6 +565,30 @@ generation_order:
     - scene: high_drift_scene
       order: [B, A]
 output_count: 12
+condition_b_pre_execution_review:
+  method: anchor_based_prompt_audit
+  reviewer_type: human | model_assisted | hybrid
+  initial_execution_package: <path>
+  applicable_anchors:
+    - <anchor path or identifier>
+  findings:
+    protected_conditions_preserved: pass | fail
+    variables_within_scope: pass | fail
+    drift_boundaries_retained: pass | fail
+    critical_omission_detected: true | false
+    unsupported_interpretation_detected: true | false
+    protected_condition_override_detected: true | false
+    unnecessary_reconstruction_pressure_detected: true | false
+    source_traceability_confirmed: pass | fail
+  human_decision: proceed | revise | stop
+  decision_reason: <text>
+  revision_required: true | false
+  revision_instruction: <path or N/A>
+  revised_execution_package: <path or N/A>
+  revision_log: <path or N/A>
+  final_execution_package: <path or N/A>
+  human_reviewer: <identifier>
+  reviewed_at: <timestamp>
 primary_outcomes:
   - critical_identity_violation_rate
   - human_adoption_rate
@@ -467,6 +599,10 @@ protocol:
   version: v0.1
   commit: <git commit hash>
 ```
+
+The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator’s decision within the CIP-governed workflow.
+
+-----
 
 ## Evaluation Example
 
@@ -514,6 +650,10 @@ Known confounders:
 - operator familiarity
 - evaluation subjectivity
 - interaction between PAL modules
+- reviewer effects introduced by model-assisted or human pre-execution audit
+- variability in how anchors and protected conditions are interpreted during review
+
+Because Condition B includes structured translation and a human-governed pre-execution review, the initial smoke test evaluates the combined workflow. The protocol preserves the initial and final Execution Packages so that Prompt Layer translation effects and review-mediated corrections can be examined separately.
 
 -----
 
