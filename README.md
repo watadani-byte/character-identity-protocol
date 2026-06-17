@@ -143,7 +143,7 @@ CIP introduces a governance layer between probabilistic generation and human ado
 |--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 |**Anchor**                      |Validated reference state retained within the approved identity and continuity conditions                                   |
 |**Identity Gates**              |PASS / FAIL validation against defined identity constraints; character workflows may begin with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination on identity failure                                                                                   |
+|**Hard Abort**                  |Immediate termination when identity or governance failure is detected                                                       |
 |**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                                              |
 |**Re-convergence**              |Controlled recovery from the last verified anchor state                                                                     |
 
