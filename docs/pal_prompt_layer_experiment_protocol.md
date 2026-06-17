@@ -360,6 +360,8 @@ The protocol must report separately:
 
 A stopped pre-execution execution unit does not contribute generated candidates. All unrealized planned candidates associated with that unit must be reported rather than concealed through unregistered replacement generation.
 
+Every initial review, `STOP` decision, recovery attempt, subsequent review, and final pre-execution status must remain in the record. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome.
+
 -----
 
 ## Two Potential Drift Locations
@@ -488,6 +490,8 @@ Also record adverse effects:
 - pre-execution `STOP` rate
 - number of registered execution units reaching generation
 - recovery-attempt rate after `STOP`
+- recovered execution unit rate
+- final-stop rate (units not reaching generation)
 
 Do not create a combined score that can override a critical identity violation.
 
@@ -634,61 +638,88 @@ registered_execution_unit_count: 4
 planned_candidates_per_execution_unit: 3
 total_planned_generated_candidate_count: 12
 realized_generated_candidate_count: <record after execution>
-stopped_pre_execution_unit_count: <record after execution>
-unrealized_candidate_count_due_to_stop: <record after execution>
+execution_units_with_any_stop_decision: <record after execution>
+execution_units_finally_stopped: <record after execution>
+recovered_execution_unit_count: <record after execution>
+execution_units_reaching_generation: <record after execution>
+unrealized_candidate_count_due_to_final_stop: <record after execution>
 condition_b_pre_execution_reviews:
   - execution_unit_id: unit_B_neutral
     scene: neutral_scene
     condition: B
-    method: anchor_based_prompt_audit
-    reviewer_type: hybrid
-    initial_execution_package: <path>
+    planned_candidate_count: 3
     applicable_anchors:
       - <anchor path or identifier>
-    findings:
-      protected_conditions_preserved: pass | fail
-      variables_within_scope: pass | fail
-      drift_boundaries_retained: pass | fail
-      critical_omission_detected: true | false
-      unsupported_interpretation_detected: true | false
-      protected_condition_override_detected: true | false
-      unnecessary_reconstruction_pressure_detected: true | false
-      source_traceability_confirmed: pass | fail
-    human_decision: revise
-    decision_reason: <text>
-    revision_required: true
-    revision_instruction: <path or N/A>
-    revised_execution_package: <path or N/A>
-    revision_log: <path or N/A>
-    final_execution_package: <path or N/A>
-    human_reviewer: <identifier>
-    reviewed_at: <timestamp>
+    review_attempts:
+      - attempt: 1
+        method: anchor_based_prompt_audit
+        reviewer_type: hybrid
+        execution_package: <initial package path>
+        findings:
+          protected_conditions_preserved: fail
+          variables_within_scope: pass
+          drift_boundaries_retained: fail
+          critical_omission_detected: true
+          unsupported_interpretation_detected: false
+          protected_condition_override_detected: false
+          unnecessary_reconstruction_pressure_detected: true
+          source_traceability_confirmed: fail
+        human_decision: stop
+        decision_reason: <text>
+        human_reviewer: <identifier>
+        reviewed_at: <timestamp>
+      - attempt: 2
+        method: anchor_based_prompt_audit
+        reviewer_type: hybrid
+        execution_package: <recovery package path>
+        linked_prior_attempt: 1
+        revision_instruction: <path>
+        revision_log: <path>
+        findings:
+          protected_conditions_preserved: pass
+          variables_within_scope: pass
+          drift_boundaries_retained: pass
+          critical_omission_detected: false
+          unsupported_interpretation_detected: false
+          protected_condition_override_detected: false
+          unnecessary_reconstruction_pressure_detected: false
+          source_traceability_confirmed: pass
+        human_decision: proceed
+        decision_reason: <text>
+        human_reviewer: <identifier>
+        reviewed_at: <timestamp>
+    final_pre_execution_status: proceed
+    final_execution_package: <path>
+    reached_generation: true
+    realized_generated_candidate_count: 3
   - execution_unit_id: unit_B_high_drift
     scene: high_drift_scene
     condition: B
-    method: anchor_based_prompt_audit
-    reviewer_type: hybrid
-    initial_execution_package: <path>
+    planned_candidate_count: 3
     applicable_anchors:
       - <anchor path or identifier>
-    findings:
-      protected_conditions_preserved: pass | fail
-      variables_within_scope: pass | fail
-      drift_boundaries_retained: pass | fail
-      critical_omission_detected: true | false
-      unsupported_interpretation_detected: true | false
-      protected_condition_override_detected: true | false
-      unnecessary_reconstruction_pressure_detected: true | false
-      source_traceability_confirmed: pass | fail
-    human_decision: proceed
-    decision_reason: <text>
-    revision_required: false
-    revision_instruction: N/A
-    revised_execution_package: N/A
-    revision_log: N/A
+    review_attempts:
+      - attempt: 1
+        method: anchor_based_prompt_audit
+        reviewer_type: hybrid
+        execution_package: <path>
+        findings:
+          protected_conditions_preserved: pass
+          variables_within_scope: pass
+          drift_boundaries_retained: pass
+          critical_omission_detected: false
+          unsupported_interpretation_detected: false
+          protected_condition_override_detected: false
+          unnecessary_reconstruction_pressure_detected: false
+          source_traceability_confirmed: pass
+        human_decision: proceed
+        decision_reason: <text>
+        human_reviewer: <identifier>
+        reviewed_at: <timestamp>
+    final_pre_execution_status: proceed
     final_execution_package: <path>
-    human_reviewer: <identifier>
-    reviewed_at: <timestamp>
+    reached_generation: true
+    realized_generated_candidate_count: 3
 stop_recovery_policy:
   permitted: true
   maximum_attempts_per_execution_unit: 1
@@ -708,7 +739,9 @@ The `findings` fields contain diagnostic evidence. The `human_decision` field re
 
 Values separated by `|` in the `findings` fields indicate allowed alternatives. Each experiment record must contain one selected value. The `reviewer_type` and `human_decision` fields shown above contain example values; replace them with the single value applicable to each experiment instance.
 
-A stopped execution unit remains part of the `registered_execution_unit_count` but does not contribute generated candidates. All unrealized planned candidates associated with the stopped unit must be reported under `unrealized_candidate_count_due_to_stop`. The difference between `total_planned_generated_candidate_count` and `realized_generated_candidate_count` must be accounted for in the result record.
+Each Condition B execution unit record uses a `review_attempts` list to preserve every review, `STOP` decision, recovery attempt, and final outcome in sequence. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome. The `final_pre_execution_status` and `reached_generation` fields summarize the unit’s outcome; the full history remains in `review_attempts`.
+
+`execution_units_with_any_stop_decision` counts units that received at least one `STOP`. `execution_units_finally_stopped` counts units that did not reach generation. `recovered_execution_unit_count` counts units where a recovery attempt resulted in `PROCEED`. `unrealized_candidate_count_due_to_final_stop` counts planned candidates from units that never reached generation. The difference between `total_planned_generated_candidate_count` and `realized_generated_candidate_count` must be accounted for in the result record.
 
 -----
 
