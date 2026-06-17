@@ -123,14 +123,16 @@ The first experiment is deliberately small.
 - 2 scenes
 - 2 conditions
 - 3 outputs per condition per scene
-- = 12 outputs
+- = 12 planned outputs
 
 **Smaller initial pilot (also acceptable):**
 
 - 1 scene
 - 2 conditions
 - 3 outputs per condition
-- = 6 outputs
+- = 6 planned outputs
+
+Realized generated-candidate counts may be lower if a registered Condition B execution unit receives a final `STOP`, as defined below.
 
 This is a smoke test, not a statistical validation study.
 
@@ -183,13 +185,14 @@ The following must remain the same between Conditions A and B:
 - Session-reset policy
 - Available generation settings
 - Generation date range
-- `STOP` recovery policy
 
 The registered execution unit count and planned candidate count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B execution unit receives `STOP`. Registered execution units, stopped execution units, and generated candidates must therefore be reported separately.
 
 Any unavoidable difference must be recorded.
 
 ### STOP Recovery Policy Pre-Registration
+
+The following Condition B-specific policy must also be pre-registered before generation begins.
 
 The recovery policy following a `STOP` decision must be pre-registered before generation begins. It must specify whether recovery attempts are permitted, the maximum number of recovery attempts permitted after the initial review for each execution unit, and whether a recovered unit may proceed to generation. This policy must not be changed after review findings are observed.
 
