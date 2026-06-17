@@ -104,7 +104,7 @@ Generative Model
 Generated Candidate
 ```
 
-The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical. A STOP decision prevents submission to the generative model.
+The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical. A `STOP` decision prevents submission to the generative model.
 
 **Block definitions:**
 
@@ -271,11 +271,11 @@ Use the following human decisions:
 
 These are decisions made by the human operator within the CIP-governed workflow. They are not autonomous outputs of the audit.
 
-PROCEED authorizes submission of the reviewed Execution Package for generation; it does not certify preservation of A or guarantee conformance in the generated candidate.
+`PROCEED` authorizes submission of the reviewed Execution Package for generation; it does not certify preservation of A or guarantee conformance in the generated candidate.
 
 ### Handling review findings
 
-If the Pre-Execution Conformance Check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select REVISE or STOP.
+If the Pre-Execution Conformance Check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select `REVISE` or `STOP`.
 
 **For REVISE:**
 
@@ -285,7 +285,7 @@ If the Pre-Execution Conformance Check identifies a critical omission, unsupport
 1. produce a revised Execution Package
 1. retain a structured diff or revision log
 1. conduct a second human-governed review
-1. proceed to generation only after the human operator records PROCEED
+1. proceed to generation only after the human operator records `PROCEED`
 
 **For STOP:**
 
@@ -306,6 +306,30 @@ The following must be retained:
 - final pre-execution decision
 
 When revision occurs, Condition B measures a combined workflow consisting of structured Prompt Layer translation plus pre-execution human review. It does not measure automatic Prompt Layer compilation alone.
+
+### Handling a `STOP` Decision in the Experimental Record
+
+A `STOP` decision is a reportable pre-execution outcome. It must not remove the affected trial from the experiment record or be treated as though the initial Execution Package had never been produced.
+
+When `STOP` is recorded:
+
+- the trial remains registered under its original scene, condition, and generation order
+- the initial Execution Package and complete review findings are retained
+- the stop reason is recorded as a pre-execution execution-translation failure
+- no candidate is generated from the stopped Execution Package
+- the stopped trial is not silently replaced by a newly selected scene, request, or easier condition
+
+If the protocol permits recovery, a new Execution Package may be compiled only from the same approved PAL Source Modules, anchor, scene request, and pre-registered predicted drift. The recovery attempt must remain linked to the original stopped trial and must be recorded as a subsequent attempt, not as a replacement for the stopped outcome.
+
+The protocol must report separately:
+
+- registered trials
+- stopped pre-execution trials
+- Execution Packages receiving `PROCEED`
+- generated candidates
+- candidate-level conformance and adoption outcomes
+
+A stopped pre-execution trial does not count as a generated output. Any resulting imbalance in candidate count must be reported rather than concealed through unregistered replacement generation.
 
 -----
 
@@ -332,9 +356,9 @@ These are two separate potential transformation or drift locations. The final ou
 1. Compile the initial Condition B Execution Package through the PAL Prompt Layer.
 1. Preserve the initial Condition B Execution Package before review.
 1. Conduct the Anchor-Based Prompt Audit against the approved source conditions, applicable anchors, generation request, and predicted drift.
-1. Record the audit findings and the human decision as PROCEED, REVISE, or STOP.
-1. If REVISE, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
-1. Submit Condition B for generation only after the human operator records PROCEED.
+1. Record the audit findings and the human decision as `PROCEED`, `REVISE`, or `STOP`.
+1. If `REVISE`, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
+1. Submit Condition B for generation only after the human operator records `PROCEED`.
 1. Generate Condition A and Condition B outputs according to the pre-registered order.
 1. Use separate clean sessions where practical.
 1. Balance or randomize A/B order where practical so that one condition is not always generated first.
@@ -430,8 +454,11 @@ Also record adverse effects:
 - unsupported interpretation detection rate
 - Execution Package revision rate
 - protected-condition override detection rate
-- percentage of initial Execution Packages receiving immediate PROCEED
+- percentage of initial Execution Packages receiving immediate `PROCEED`
 - difference between initial and final reviewed Execution Packages
+- pre-execution `STOP` rate
+- number of registered trials reaching generation
+- recovery-attempt rate after `STOP`
 
 Do not create a combined score that can override a critical identity violation.
 
@@ -577,7 +604,7 @@ generation_order:
 output_count: 12
 condition_b_pre_execution_review:
   method: anchor_based_prompt_audit
-  reviewer_type: human | model_assisted | hybrid
+  reviewer_type: hybrid
   initial_execution_package: <path>
   applicable_anchors:
     - <anchor path or identifier>
@@ -590,7 +617,7 @@ condition_b_pre_execution_review:
     protected_condition_override_detected: true | false
     unnecessary_reconstruction_pressure_detected: true | false
     source_traceability_confirmed: pass | fail
-  human_decision: proceed | revise | stop
+  human_decision: revise
   decision_reason: <text>
   revision_required: true | false
   revision_instruction: <path or N/A>
@@ -611,6 +638,8 @@ protocol:
 ```
 
 The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator’s decision within the CIP-governed workflow.
+
+Values separated by `|` in the `findings` fields indicate allowed alternatives. Each experiment record must contain one selected value. The `reviewer_type` and `human_decision` fields shown above contain example values; replace them with the single value applicable to each experiment instance.
 
 -----
 
