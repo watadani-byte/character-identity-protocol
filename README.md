@@ -10,7 +10,7 @@ Functional usefulness is not enough.
 Outputs that violate these constraints are not merely low-quality — they are non-adoptable.
 
 CIP introduces a governance layer between generation and adoption.  
-Its purpose is to govern whether an output should be adopted, rejected, subjected to Hard Abort, purged, re-bound, or returned to re-convergence.
+Its purpose is to govern whether an output should be adopted, rejected, or purged, and whether the workflow should enter Hard Abort, re-binding, or re-convergence.
 
 Character identity in image and video generation is one concrete entry point.  
 But the underlying problem is broader: probabilistic outputs used as IP, brand, persona, or control-bound assets require explicit adoption governance.
@@ -178,7 +178,7 @@ It is a workflow-level control and adoption-governance protocol.
 > CIP governs adoptability: validation, failure handling, adoption, rejection, and purge under identity, brand-code, and rights-control constraints.
 > PAL supports continuity, persistence, and anchor availability across generative workflows.
 
-PAL (Persistent Anchor Layer) and CIP operate as two distinct but coordinated layers. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. PAL supports the availability and continuity of approved reference conditions; CIP governs the workflow through which generated candidates and available evidence are evaluated, rejected, recovered, or adopted.
+PAL (Persistent Anchor Layer) and CIP operate as two distinct but coordinated layers. PAL originally existed inside CIP, but was separated and expanded because its scope became broader. PAL supports the availability and continuity of approved reference conditions; CIP governs the workflow through which generated candidates and available evidence are evaluated, candidates are adopted or rejected, and failed continuity states are purged, re-bound, or returned to re-convergence.
 
 > CIP should be read not as a denial of misuse risk,
 > but as a governance response to it.
