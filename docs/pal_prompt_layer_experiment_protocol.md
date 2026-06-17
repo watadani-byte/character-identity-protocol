@@ -192,7 +192,7 @@ Any unavoidable difference must be recorded.
 
 ### STOP Recovery Policy Pre-Registration
 
-The following Condition B-specific policy must also be pre-registered before generation begins.
+The following Condition B-specific policy must also be pre-registered.
 
 The recovery policy following a `STOP` decision must be pre-registered before generation begins. It must specify whether recovery attempts are permitted, the maximum number of recovery attempts permitted after the initial review for each execution unit, and whether a recovered unit may proceed to generation. This policy must not be changed after review findings are observed.
 
@@ -394,6 +394,7 @@ These are two separate potential transformation or drift locations. The final ou
 
 1. Predefine and version the approved PAL Source Modules, anchor assets, UID, and scene request.
 1. Pre-register the predicted drift directions.
+1. Pre-register the Condition B `STOP` recovery policy, including whether recovery is permitted, the maximum number of recovery attempts after the initial review for each execution unit, and whether a recovered execution unit may proceed to generation.
 1. Pre-register the Condition A / Condition B generation order or randomization procedure.
 1. Prepare and preserve the Condition A direct model-facing prompt according to the pre-existing direct-PAL procedure.
 1. Compile the initial Condition B Execution Package through the PAL Prompt Layer.
