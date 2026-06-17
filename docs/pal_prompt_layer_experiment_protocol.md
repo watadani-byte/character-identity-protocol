@@ -183,10 +183,15 @@ The following must remain the same between Conditions A and B:
 - Session-reset policy
 - Available generation settings
 - Generation date range
+- `STOP` recovery policy
 
 The registered execution unit count and planned candidate count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B execution unit receives `STOP`. Registered execution units, stopped execution units, and generated candidates must therefore be reported separately.
 
 Any unavoidable difference must be recorded.
+
+### STOP Recovery Policy Pre-Registration
+
+The recovery policy following a `STOP` decision must be pre-registered before generation begins. It must specify whether recovery attempts are permitted, the maximum number of attempts per execution unit, and whether a recovered unit may proceed to generation. This policy must not be changed after review findings are observed.
 
 ### Predicted Drift Pre-Registration
 
@@ -343,7 +348,7 @@ When `STOP` is recorded:
 - no candidate is generated from the stopped Execution Package
 - the stopped execution unit is not silently replaced by a newly selected scene, request, or easier condition
 
-If the protocol permits recovery, a new Execution Package may be compiled only from the same approved PAL Source Modules, anchor, scene request, and pre-registered predicted drift. The recovery attempt must remain linked to the original stopped execution unit and must be recorded as a subsequent attempt, not as a replacement for the stopped outcome.
+If the pre-registered recovery policy permits recovery, a new Execution Package may be compiled only from the same approved PAL Source Modules, anchor, scene request, and pre-registered predicted drift. The recovery attempt must remain linked to the original stopped execution unit and must be recorded as a subsequent attempt, not as a replacement for the stopped outcome.
 
 The protocol must report separately:
 
@@ -631,30 +636,63 @@ total_planned_generated_candidate_count: 12
 realized_generated_candidate_count: <record after execution>
 stopped_pre_execution_unit_count: <record after execution>
 unrealized_candidate_count_due_to_stop: <record after execution>
-condition_b_pre_execution_review:
-  method: anchor_based_prompt_audit
-  reviewer_type: hybrid
-  initial_execution_package: <path>
-  applicable_anchors:
-    - <anchor path or identifier>
-  findings:
-    protected_conditions_preserved: pass | fail
-    variables_within_scope: pass | fail
-    drift_boundaries_retained: pass | fail
-    critical_omission_detected: true | false
-    unsupported_interpretation_detected: true | false
-    protected_condition_override_detected: true | false
-    unnecessary_reconstruction_pressure_detected: true | false
-    source_traceability_confirmed: pass | fail
-  human_decision: revise
-  decision_reason: <text>
-  revision_required: true | false
-  revision_instruction: <path or N/A>
-  revised_execution_package: <path or N/A>
-  revision_log: <path or N/A>
-  final_execution_package: <path or N/A>
-  human_reviewer: <identifier>
-  reviewed_at: <timestamp>
+condition_b_pre_execution_reviews:
+  - execution_unit_id: unit_B_neutral
+    scene: neutral_scene
+    condition: B
+    method: anchor_based_prompt_audit
+    reviewer_type: hybrid
+    initial_execution_package: <path>
+    applicable_anchors:
+      - <anchor path or identifier>
+    findings:
+      protected_conditions_preserved: pass | fail
+      variables_within_scope: pass | fail
+      drift_boundaries_retained: pass | fail
+      critical_omission_detected: true | false
+      unsupported_interpretation_detected: true | false
+      protected_condition_override_detected: true | false
+      unnecessary_reconstruction_pressure_detected: true | false
+      source_traceability_confirmed: pass | fail
+    human_decision: revise
+    decision_reason: <text>
+    revision_required: true
+    revision_instruction: <path or N/A>
+    revised_execution_package: <path or N/A>
+    revision_log: <path or N/A>
+    final_execution_package: <path or N/A>
+    human_reviewer: <identifier>
+    reviewed_at: <timestamp>
+  - execution_unit_id: unit_B_high_drift
+    scene: high_drift_scene
+    condition: B
+    method: anchor_based_prompt_audit
+    reviewer_type: hybrid
+    initial_execution_package: <path>
+    applicable_anchors:
+      - <anchor path or identifier>
+    findings:
+      protected_conditions_preserved: pass | fail
+      variables_within_scope: pass | fail
+      drift_boundaries_retained: pass | fail
+      critical_omission_detected: true | false
+      unsupported_interpretation_detected: true | false
+      protected_condition_override_detected: true | false
+      unnecessary_reconstruction_pressure_detected: true | false
+      source_traceability_confirmed: pass | fail
+    human_decision: proceed
+    decision_reason: <text>
+    revision_required: false
+    revision_instruction: N/A
+    revised_execution_package: N/A
+    revision_log: N/A
+    final_execution_package: <path>
+    human_reviewer: <identifier>
+    reviewed_at: <timestamp>
+stop_recovery_policy:
+  permitted: true
+  maximum_attempts_per_execution_unit: 1
+  recovered_unit_may_proceed_to_generation: true
 primary_outcomes:
   - critical_identity_violation_rate
   - human_adoption_rate
