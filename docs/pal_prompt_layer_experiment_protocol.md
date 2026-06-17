@@ -96,20 +96,14 @@ Pre-Execution Conformance Check
   └─ Anchor-Based Prompt Audit
         ↓
 Human-Governed Review Decision
-  ├─ PROCEED
-  ├─ REVISE
-  └─ STOP
-        ↓
-Final Execution Package
-        ↓
-Generative Model
-        ↓
-Generated Candidate
+  ├─ PROCEED → Final Execution Package → Generation
+  ├─ REVISE  → Revision → Second Review
+  └─ STOP    → No Generation; Record Outcome
 ```
 
 The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical.
 
-This decision branch is part of the CIP-governed workflow, not a new architectural layer. A `PROCEED` decision leads to the Final Execution Package and generation. A `REVISE` decision returns the package for revision and a second human-governed review. A `STOP` decision prevents generation for that registered trial.
+This decision branch is part of the CIP-governed workflow, not a new architectural layer. A `PROCEED` decision leads to the Final Execution Package and generation. A `REVISE` decision returns the package for revision and a second human-governed review. A `STOP` decision prevents generation for that registered execution unit.
 
 **Block definitions:**
 
@@ -150,6 +144,29 @@ Rieko is suggested as the initial subject because a validated anchor and known d
 
 -----
 
+## Unit of Registration and Counting
+
+For this protocol, an **execution unit** is one pre-registered combination of scene and condition prepared for generation.
+
+A **generated candidate** is one output produced from an execution unit.
+
+Unless a different structure is pre-registered:
+
+- each scene-condition combination constitutes one execution unit
+- each execution unit is assigned its planned number of generated candidates
+- the Condition B Execution Package and its pre-execution review are recorded at the execution-unit level
+- candidate-level conformance and adoption are recorded separately for each generated output
+
+For the recommended two-scene smoke test:
+
+- registered execution units: 4
+- planned generated candidates per execution unit: 3
+- total planned generated candidates: 12
+
+If a Condition B execution unit receives `STOP`, no candidates are generated from that Execution Package. The affected execution unit remains in the experimental record, and all unrealized planned candidates associated with that unit must be reported.
+
+-----
+
 ## Fixed Inputs
 
 The following must remain the same between Conditions A and B:
@@ -162,12 +179,12 @@ The following must remain the same between Conditions A and B:
 - UID
 - Scene request
 - Model and visible model version
-- Pre-registered trial count and planned output count
+- Registered execution unit count and planned candidate count
 - Session-reset policy
 - Available generation settings
 - Generation date range
 
-The pre-registered trial count and planned output count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B trial receives `STOP`. Registered trials, stopped trials, and generated candidates must therefore be reported separately.
+The registered execution unit count and planned candidate count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B execution unit receives `STOP`. Registered execution units, stopped execution units, and generated candidates must therefore be reported separately.
 
 Any unavoidable difference must be recorded.
 
@@ -316,27 +333,27 @@ When revision occurs, Condition B measures a combined workflow consisting of str
 
 ### Handling a `STOP` Decision in the Experimental Record
 
-A `STOP` decision is a reportable pre-execution outcome. It must not remove the affected trial from the experiment record or be treated as though the initial Execution Package had never been produced.
+A `STOP` decision is a reportable pre-execution outcome. It must not remove the affected execution unit from the experiment record or be treated as though the initial Execution Package had never been produced.
 
 When `STOP` is recorded:
 
-- the trial remains registered under its original scene, condition, and generation order
+- the execution unit remains registered under its original scene, condition, and generation order
 - the initial Execution Package and complete review findings are retained
 - the stop reason is recorded as a pre-execution outcome associated with suspected or material execution-translation risk
 - no candidate is generated from the stopped Execution Package
-- the stopped trial is not silently replaced by a newly selected scene, request, or easier condition
+- the stopped execution unit is not silently replaced by a newly selected scene, request, or easier condition
 
-If the protocol permits recovery, a new Execution Package may be compiled only from the same approved PAL Source Modules, anchor, scene request, and pre-registered predicted drift. The recovery attempt must remain linked to the original stopped trial and must be recorded as a subsequent attempt, not as a replacement for the stopped outcome.
+If the protocol permits recovery, a new Execution Package may be compiled only from the same approved PAL Source Modules, anchor, scene request, and pre-registered predicted drift. The recovery attempt must remain linked to the original stopped execution unit and must be recorded as a subsequent attempt, not as a replacement for the stopped outcome.
 
 The protocol must report separately:
 
-- registered trials
-- stopped pre-execution trials
+- registered execution units
+- stopped pre-execution execution units
 - Execution Packages receiving `PROCEED`
 - generated candidates
 - candidate-level conformance and adoption outcomes
 
-A stopped pre-execution trial does not count as a generated output. Any resulting imbalance in candidate count must be reported rather than concealed through unregistered replacement generation.
+A stopped pre-execution execution unit does not contribute generated candidates. All unrealized planned candidates associated with that unit must be reported rather than concealed through unregistered replacement generation.
 
 -----
 
@@ -464,7 +481,7 @@ Also record adverse effects:
 - percentage of initial Execution Packages receiving immediate `PROCEED`
 - difference between initial and final reviewed Execution Packages
 - pre-execution `STOP` rate
-- number of registered trials reaching generation
+- number of registered execution units reaching generation
 - recovery-attempt rate after `STOP`
 
 Do not create a combined score that can override a critical identity violation.
@@ -608,10 +625,12 @@ generation_order:
       order: [A, B]
     - scene: high_drift_scene
       order: [B, A]
-registered_trial_count: 12
-planned_output_count: 12
+registered_execution_unit_count: 4
+planned_candidates_per_execution_unit: 3
+total_planned_generated_candidate_count: 12
 realized_generated_candidate_count: <record after execution>
-stopped_pre_execution_trial_count: <record after execution>
+stopped_pre_execution_unit_count: <record after execution>
+unrealized_candidate_count_due_to_stop: <record after execution>
 condition_b_pre_execution_review:
   method: anchor_based_prompt_audit
   reviewer_type: hybrid
@@ -651,7 +670,7 @@ The `findings` fields contain diagnostic evidence. The `human_decision` field re
 
 Values separated by `|` in the `findings` fields indicate allowed alternatives. Each experiment record must contain one selected value. The `reviewer_type` and `human_decision` fields shown above contain example values; replace them with the single value applicable to each experiment instance.
 
-A stopped trial remains part of the `registered_trial_count` but does not contribute a generated candidate. The difference between `registered_trial_count` and `realized_generated_candidate_count` must be accounted for in the result record.
+A stopped execution unit remains part of the `registered_execution_unit_count` but does not contribute generated candidates. All unrealized planned candidates associated with the stopped unit must be reported under `unrealized_candidate_count_due_to_stop`. The difference between `total_planned_generated_candidate_count` and `realized_generated_candidate_count` must be accounted for in the result record.
 
 -----
 
