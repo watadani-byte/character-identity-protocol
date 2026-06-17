@@ -165,7 +165,7 @@ For the recommended two-scene smoke test:
 - planned generated candidates per execution unit: 3
 - total planned generated candidates: 12
 
-If a Condition B execution unit receives `STOP`, no candidates are generated from that Execution Package. The affected execution unit remains in the experimental record, and all unrealized planned candidates associated with that unit must be reported.
+If a Condition B Execution Package receives `STOP`, no candidates are generated from that stopped package. If the execution unit later receives `PROCEED` through a recovery attempt permitted by the pre-registered policy, candidates may be generated from the resulting Final Execution Package. If the execution unit remains finally stopped, all unrealized planned candidates associated with that unit must be reported.
 
 -----
 
@@ -393,6 +393,7 @@ These are two separate potential transformation or drift locations. The final ou
 ## Generation Procedure
 
 1. Predefine and version the approved PAL Source Modules, anchor assets, UID, and scene request.
+1. Pre-register the execution units and the planned number of generated candidates assigned to each execution unit.
 1. Pre-register the predicted drift directions.
 1. Pre-register the Condition B `STOP` recovery policy, including whether recovery is permitted, the maximum number of recovery attempts after the initial review for each execution unit, and whether a recovered execution unit may proceed to generation.
 1. Pre-register the Condition A / Condition B generation order or randomization procedure.
