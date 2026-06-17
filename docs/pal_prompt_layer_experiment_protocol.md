@@ -191,7 +191,16 @@ Any unavoidable difference must be recorded.
 
 ### STOP Recovery Policy Pre-Registration
 
-The recovery policy following a `STOP` decision must be pre-registered before generation begins. It must specify whether recovery attempts are permitted, the maximum number of attempts per execution unit, and whether a recovered unit may proceed to generation. This policy must not be changed after review findings are observed.
+The recovery policy following a `STOP` decision must be pre-registered before generation begins. It must specify whether recovery attempts are permitted, the maximum number of recovery attempts permitted after the initial review for each execution unit, and whether a recovered unit may proceed to generation. This policy must not be changed after review findings are observed.
+
+The initial review is not counted as a recovery attempt. For example, a policy permitting one recovery attempt allows the following maximum sequence:
+
+```
+Initial review
+→ STOP
+→ One recovery attempt
+→ Final human-governed review decision
+```
 
 ### Predicted Drift Pre-Registration
 
@@ -722,7 +731,7 @@ condition_b_pre_execution_reviews:
     realized_generated_candidate_count: 3
 stop_recovery_policy:
   permitted: true
-  maximum_attempts_per_execution_unit: 1
+  maximum_recovery_attempts_per_execution_unit: 1
   recovered_unit_may_proceed_to_generation: true
 primary_outcomes:
   - critical_identity_violation_rate
