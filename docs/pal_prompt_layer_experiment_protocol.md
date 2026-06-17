@@ -371,7 +371,7 @@ The protocol must report separately:
 - generated candidates
 - candidate-level conformance and adoption outcomes
 
-A stopped pre-execution execution unit does not contribute generated candidates. All unrealized planned candidates associated with that unit must be reported rather than concealed through unregistered replacement generation.
+An execution unit that remains finally stopped without reaching generation does not contribute generated candidates. All unrealized planned candidates associated with that finally stopped unit must be reported rather than concealed through unregistered replacement generation.
 
 Every initial review, `STOP` decision, recovery attempt, subsequent review, and final pre-execution status must remain in the record. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome.
 
@@ -510,6 +510,8 @@ Also record adverse effects:
 - final-stop rate (units not reaching generation)
 - planned-candidate adoption yield
 - execution-unit generation rate
+
+For reporting purposes, the pre-execution `STOP` rate counts execution units receiving at least one `STOP` decision, while the final-stop rate counts execution units that remain stopped and do not reach generation.
 
 Do not create a combined score that can override a critical identity violation.
 
