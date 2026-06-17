@@ -481,8 +481,8 @@ Also record adverse effects:
 
 **Primary:**
 
-- Critical identity violation rate
-- Human adoption rate
+- Candidate-level critical identity violation rate
+- Candidate-level human adoption rate
 
 **Secondary:**
 
@@ -504,10 +504,31 @@ Also record adverse effects:
 - recovery-attempt rate after `STOP`
 - recovered execution unit rate
 - final-stop rate (units not reaching generation)
+- planned-candidate adoption yield
+- execution-unit generation rate
 
 Do not create a combined score that can override a critical identity violation.
 
 Do not treat the pre-execution outcome measures as proof that the final generated identity was preserved.
+
+### Measurement Denominators
+
+Candidate-level conformance and adoption rates are calculated only from candidates that were actually generated and evaluated.
+
+Workflow-level yield must also be reported against the pre-registered planned candidate count so that final `STOP` decisions and unrealized candidates are not removed from interpretation.
+
+Report at least:
+
+- **candidate-level critical identity violation rate**
+  = generated candidates with a critical identity violation / generated candidates evaluated
+- **candidate-level human adoption rate**
+  = adopted candidates / generated candidates evaluated
+- **planned-candidate adoption yield**
+  = adopted candidates / total planned generated candidates
+- **execution-unit generation rate**
+  = execution units reaching generation / registered execution units
+
+These measures must not be substituted for one another. Candidate-level rates describe the quality of generated candidates, while workflow-level yield describes the operational result of the complete workflow, including final pre-execution `STOP` outcomes.
 
 -----
 
@@ -737,8 +758,12 @@ stop_recovery_policy:
   maximum_recovery_attempts_per_execution_unit: 1
   recovered_unit_may_proceed_to_generation: true
 primary_outcomes:
-  - critical_identity_violation_rate
-  - human_adoption_rate
+  - candidate_level_critical_identity_violation_rate
+  - candidate_level_human_adoption_rate
+measurement_denominators:
+  candidate_level: realized_generated_candidate_count
+  planned_candidate_level: total_planned_generated_candidate_count
+  execution_unit_level: registered_execution_unit_count
 diagnostic_role: PAL Conformance Assessment Layer provides diagnostic input only
 human_final_authority: true
 protocol:
