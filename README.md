@@ -10,7 +10,7 @@ Functional usefulness is not enough.
 Outputs that violate these constraints are not merely low-quality — they are non-adoptable.
 
 CIP introduces a governance layer between generation and adoption.  
-Its purpose is to decide whether an output should be accepted, rejected, aborted, purged, or re-bound.
+Its purpose is to govern whether an output should be adopted, rejected, subjected to Hard Abort, purged, re-bound, or returned to re-convergence.
 
 Character identity in image and video generation is one concrete entry point.  
 But the underlying problem is broader: probabilistic outputs used as IP, brand, persona, or control-bound assets require explicit adoption governance.
@@ -145,7 +145,7 @@ CIP introduces a governance layer between probabilistic generation and human ado
 |**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                          |
 |**Re-convergence**              |Controlled recovery from last verified anchor state                                                     |
 
-Identity is not assumed to persist. It is continuously validated and recovered.
+Identity continuity is not assumed to persist. It is continuously evaluated, and the workflow is recovered from the last validated anchor state when failure occurs.
 
 **Reference-based generation is not adoption governance.**
 Reference images, IP-Adapter-like systems, LoRA, ControlNet, and platform image reference features may improve resemblance or continuity. They do not define failure conditions, Hard Abort, adoption, rejection, purge, or auditability.
@@ -284,9 +284,6 @@ character-identity-protocol/
 │   ├── model_a_c_b.md
 │   ├── protocol_template.md
 │   ├── whitepaper_appendices.md
-│   ├── pal_prompt_and_conformance_layers.md
-│   ├── pal_prompt_layer_experiment_protocol.md
-│   ├── prompt-engineering-as-intent-preservation.md
 │   │
 │   ├── case_01_failure_log.md
 │   ├── case_01b_mira_project.md
@@ -308,8 +305,11 @@ character-identity-protocol/
 │   ├── column_identity_drift.md
 │   ├── column_translation_loss.md
 │   ├── column_reconstruction_durability.md
+│   ├── prompt-engineering-as-intent-preservation.md
 │   │
 │   ├── pal_hypothesis.md
+│   ├── pal_prompt_and_conformance_layers.md
+│   ├── pal_prompt_layer_experiment_protocol.md
 │   ├── pal_operations_manual_v0.1.md
 │   ├── prl_v0.1_draft.md
 │   │
