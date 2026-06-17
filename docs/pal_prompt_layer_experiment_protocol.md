@@ -186,7 +186,7 @@ The following must remain the same between Conditions A and B:
 - Available generation settings
 - Generation date range
 
-The registered execution unit count and planned candidate count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B execution unit receives `STOP`. Registered execution units, stopped execution units, and generated candidates must therefore be reported separately.
+The registered execution unit count and planned candidate count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B execution unit remains finally stopped without reaching generation. Execution units receiving any `STOP` decision, execution units finally stopped, execution units reaching generation, and generated candidates must therefore be reported separately.
 
 Any unavoidable difference must be recorded.
 
@@ -528,9 +528,11 @@ Report at least:
 - **candidate-level human adoption rate**
   = adopted candidates / generated candidates evaluated
 - **planned-candidate adoption yield**
-  = adopted candidates / total planned generated candidates
+  = adopted candidates / planned generated candidates within the applicable reporting scope
 - **execution-unit generation rate**
   = execution units reaching generation / registered execution units
+
+For whole-experiment reporting, the denominator for planned-candidate adoption yield is the total pre-registered planned generated-candidate count. For condition-level or scene-level reporting, the denominator is the corresponding pre-registered planned candidate count for that condition or scene.
 
 These measures must not be substituted for one another. Candidate-level rates describe the quality of generated candidates, while workflow-level yield describes the operational result of the complete workflow, including final pre-execution `STOP` outcomes.
 
