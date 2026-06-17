@@ -46,7 +46,7 @@ Definitions:
 - **B′** = the generated candidate
 - **B** = the intended output condition
 
-CIP evaluates whether B′ is adoptable in relation to B.
+Within the CIP-governed process, B′ is evaluated in relation to B, and the human operator retains final adoption authority.
 
 Important constraints:
 
@@ -90,14 +90,21 @@ PAL Prompt Layer
   ├─ Scene Variable Block
   └─ Anti-drift Block
         ↓
-Pre-Execution Conformance Check
+Initial Execution Package
         ↓
-Execution Package
+Pre-Execution Conformance Check
+  └─ Anchor-Based Prompt Audit
+        ↓
+Human-Governed Revision or Proceed Decision
+        ↓
+Final Execution Package
         ↓
 Generative Model
         ↓
 Generated Candidate
 ```
+
+The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical. A STOP decision prevents submission to the generative model.
 
 **Block definitions:**
 
@@ -264,6 +271,8 @@ Use the following human decisions:
 
 These are decisions made by the human operator within the CIP-governed workflow. They are not autonomous outputs of the audit.
 
+PROCEED authorizes submission of the reviewed Execution Package for generation; it does not certify preservation of A or guarantee conformance in the generated candidate.
+
 ### Handling review findings
 
 If the Pre-Execution Conformance Check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select REVISE or STOP.
@@ -293,6 +302,7 @@ The following must be retained:
 - revision instruction, where applicable
 - revised Execution Package, where applicable
 - revision history
+- final Execution Package submitted for generation, where applicable
 - final pre-execution decision
 
 When revision occurs, Condition B measures a combined workflow consisting of structured Prompt Layer translation plus pre-execution human review. It does not measure automatic Prompt Layer compilation alone.
