@@ -530,6 +530,12 @@ Report at least:
 
 These measures must not be substituted for one another. Candidate-level rates describe the quality of generated candidates, while workflow-level yield describes the operational result of the complete workflow, including final pre-execution `STOP` outcomes.
 
+### Reporting by Condition and Scene
+
+All primary and workflow-level measures must be reported separately for Condition A and Condition B. Aggregate comparisons between conditions must not be presented without their per-condition breakdown.
+
+Scene-level results must also be retained and reported separately for each scene. Aggregate differences between conditions must not be interpreted without their scene distribution, as a result that holds in one scene only is not equivalent to a result that holds across scenes.
+
 -----
 
 ## Provisional Result Classification
