@@ -95,7 +95,10 @@ Initial Execution Package
 Pre-Execution Conformance Check
   └─ Anchor-Based Prompt Audit
         ↓
-Human-Governed Revision or Proceed Decision
+Human-Governed Review Decision
+  ├─ PROCEED
+  ├─ REVISE
+  └─ STOP
         ↓
 Final Execution Package
         ↓
@@ -104,7 +107,9 @@ Generative Model
 Generated Candidate
 ```
 
-The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical. A `STOP` decision prevents submission to the generative model.
+The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or new architectural layers. When no revision is required, the initial and final states are identical.
+
+This decision branch is part of the CIP-governed workflow, not a new architectural layer. A `PROCEED` decision leads to the Final Execution Package and generation. A `REVISE` decision returns the package for revision and a second human-governed review. A `STOP` decision prevents generation for that registered trial.
 
 **Block definitions:**
 
@@ -157,10 +162,12 @@ The following must remain the same between Conditions A and B:
 - UID
 - Scene request
 - Model and visible model version
-- Output count
+- Pre-registered trial count and planned output count
 - Session-reset policy
 - Available generation settings
 - Generation date range
+
+The pre-registered trial count and planned output count must be balanced across Conditions A and B. The realized generated-candidate count may differ if a registered Condition B trial receives `STOP`. Registered trials, stopped trials, and generated candidates must therefore be reported separately.
 
 Any unavoidable difference must be recorded.
 
@@ -315,7 +322,7 @@ When `STOP` is recorded:
 
 - the trial remains registered under its original scene, condition, and generation order
 - the initial Execution Package and complete review findings are retained
-- the stop reason is recorded as a pre-execution execution-translation failure
+- the stop reason is recorded as a pre-execution outcome associated with suspected or material execution-translation risk
 - no candidate is generated from the stopped Execution Package
 - the stopped trial is not silently replaced by a newly selected scene, request, or easier condition
 
@@ -367,7 +374,7 @@ These are two separate potential transformation or drift locations. The final ou
 1. Preserve failed candidates as experimental evidence, but do not retain them as active production anchors or approved workflow states.
 1. Record platform errors, prompt rewrites, refusals, or unexpected execution behavior.
 
-Revision of the Execution Package during the pre-execution review is distinct from progressive correction of generated candidates. The former diagnoses and repairs possible execution-translation drift before generation; the latter is prohibited during the controlled output comparison.
+Revision of the Execution Package during the pre-execution review is distinct from progressive correction of generated candidates. The former diagnoses and addresses possible execution-translation drift before generation; the latter is prohibited during the controlled output comparison.
 
 -----
 
@@ -601,7 +608,10 @@ generation_order:
       order: [A, B]
     - scene: high_drift_scene
       order: [B, A]
-output_count: 12
+registered_trial_count: 12
+planned_output_count: 12
+realized_generated_candidate_count: <record after execution>
+stopped_pre_execution_trial_count: <record after execution>
 condition_b_pre_execution_review:
   method: anchor_based_prompt_audit
   reviewer_type: hybrid
@@ -640,6 +650,8 @@ protocol:
 The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator’s decision within the CIP-governed workflow.
 
 Values separated by `|` in the `findings` fields indicate allowed alternatives. Each experiment record must contain one selected value. The `reviewer_type` and `human_decision` fields shown above contain example values; replace them with the single value applicable to each experiment instance.
+
+A stopped trial remains part of the `registered_trial_count` but does not contribute a generated candidate. The difference between `registered_trial_count` and `realized_generated_candidate_count` must be accounted for in the result record.
 
 -----
 
