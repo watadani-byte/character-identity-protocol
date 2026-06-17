@@ -780,7 +780,7 @@ protocol:
 
 The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator’s decision within the CIP-governed workflow.
 
-Values separated by `|` in the `findings` fields indicate allowed alternatives. Each experiment record must contain one selected value. The `reviewer_type` and `human_decision` fields shown above contain example values; replace them with the single value applicable to each experiment instance.
+The `reviewer_type`, `human_decision`, `findings`, and outcome fields shown above contain illustrative values. Each experiment record must contain the single value applicable to that specific review attempt or execution unit.
 
 Each Condition B execution unit record uses a `review_attempts` list to preserve every review, `STOP` decision, recovery attempt, and final outcome in sequence. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome. The `final_pre_execution_status` and `reached_generation` fields summarize the unit’s outcome; the full history remains in `review_attempts`.
 
