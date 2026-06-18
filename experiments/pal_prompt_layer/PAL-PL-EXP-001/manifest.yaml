@@ -1,0 +1,183 @@
+# PAL-PL-EXP-001 manifest
+# Structure: pre_registration → actual_execution → post_experiment_observations → current_record_summary
+# Pre-registration fields record the state at the time of registration.
+# Post-execution fields record what actually occurred and what was observed.
+# Do not retroactively alter pre-registration values to match post-experiment understanding.
+
+# ============================================================
+# PRE-REGISTRATION
+# ============================================================
+
+experiment_id: PAL-PL-EXP-001
+research_record_status: draft
+execution_status: preparation
+hypothesis_status: untested
+
+protocol:
+  file: docs/pal_prompt_layer_experiment_protocol.md
+  version: "<record protocol document version, if assigned>"
+  git_commit: "<record exact protocol commit>"
+
+fixed_terminology:
+  c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
+  reconstruction_model: "A → (A + C) → A′ → B′"
+  mismatch_or_drift_model: "A → (A + C) → A′ → B′ ≠ B"
+  pal_prompt_layer_is_c_as_a_whole: false
+  cip_directly_controls_c_or_a_prime: false
+  ai_review_outputs_are_diagnostic_only: true
+  human_final_decision_authority: true
+  human_final_adoption_authority: true
+
+character_uid: rieko_v1
+
+source_modules:
+  character_pal: {name: Character PAL V2.0, version: v2.0, file: "<path>"}
+  costume_pal: {name: Costume PAL v2, version: v2, file: "<path>"}
+  background_pal: {name: Background PAL v2, version: v2, file: "<path>"}
+  sequence_pal: {name: Sequence PAL v2, version: v2, file: "<path>"}
+
+primary_identity_anchor:
+  identifier: rieko_anchor_candidate_02
+  status: provisional
+  validation_status: human_selected_for_initial_pilot
+  operational_history: long_term_anchor_use
+  visual_check_completed: true
+  asset_path: "<path>"
+  identity_anchor_status_changed_by_experiment: false
+
+scene_request:
+  scene_id: scene_01_gaze_only
+  approval_status: approved
+  permitted_delta: slight_gaze_shift_toward_viewer
+
+conditions:
+  condition_a:
+    type: reconstructed_direct_pal_baseline
+    historical_success_prompt_available: false
+    reconstruction_authorized_by_human: true
+  condition_b:
+    type: pal_prompt_layer_combined_workflow
+
+generation:
+  order: [A1, B1, A2, B2, A3, B3]
+  separate_chat_per_condition: true
+  progressive_candidate_correction: false
+  total_planned_candidate_count: 6
+
+condition_b_pre_execution_review:
+  compiler: {model_family: GPT, model_name: "<record at execution>"}
+  primary_audit: {model_family: Claude, model_name: "<record at execution>"}
+  supplementary_review: {model_family: GPT, role: optimization_and_over_reconstruction_check}
+  review_method: anchor_based_prompt_audit
+  reviewer_type: hybrid
+  audit_outputs_are_diagnostic_only: true
+
+stop_recovery_policy:
+  status: not_explicitly_recorded_before_execution
+  note: no STOP decision occurred; result unaffected
+
+result_record: experiments/pal_prompt_layer/PAL-PL-EXP-001/result.md
+
+# ============================================================
+# ACTUAL EXECUTION
+# Added after execution. Pre-registration fields above are unchanged.
+# ============================================================
+
+actual_execution:
+  execution_status: completed
+  scene: scene_01_gaze_only
+  registered_execution_unit_count: 2
+  execution_units_reaching_generation: 2
+  realized_candidate_count:
+    condition_a: 3
+    condition_b: 3
+    total: 6
+  unrealized_candidate_count_due_to_final_stop: 0
+  generation_order: [A1, B1, A2, B2, A3, B3]
+  execution_units_with_any_stop_decision: 0
+  execution_units_finally_stopped: 0
+  progressive_candidate_correction: false
+  condition_b:
+    compiler: {model_family: GPT, model_name: GPT-5.5 Thinking}
+    primary_audit: {model_family: Claude, model_name: Claude Sonnet 4.6}
+    supplementary_review: {model_family: GPT, role: optimization_and_over_reconstruction_check}
+    initial_human_decision: revise
+    approved_revisions:
+      - no cultural drift caused by costume
+      - do not let costume overwrite person identity
+      - replace theatrical gesture with no gesture drift into theatrical pose
+    delta_review:
+      result: pass
+      unauthorized_changes_detected: false
+      source_traceability_maintained: true
+    final_human_pre_execution_decision: proceed
+    final_execution_package_reused_for_all_attempts: true
+    independent_generation_attempts: 3
+    outputs_per_attempt: 1
+  sequence_mode:
+    current_approved_sequence_reference_used: false
+    delta_only_instruction_used: false
+    primary_identity_anchor_used_for_each_attempt: true
+    full_model_facing_prompt_used_for_each_attempt: true
+
+# ============================================================
+# POST-EXPERIMENT OBSERVATIONS
+# Human visual assessment only. Quantitative rates not yet calculated.
+# No candidate was promoted to a Validated Identity Anchor.
+# ============================================================
+
+post_experiment_observations:
+  human_visual_evaluation:
+    condition_a:
+      character_identity: largely_preserved
+      costume_state: largely_maintained
+      background_state_preservation: unsuccessful
+      gaze_only_execution: unsuccessful
+      sequence_related_output_dimensions: unsuccessful
+      true_frame_to_frame_sequence_continuation: not_adequately_tested
+      human_identified_critical_identity_violation: false
+    condition_b:
+      character_identity: largely_preserved
+      costume_state: largely_maintained
+      background_state_preservation: unsuccessful
+      gaze_only_execution: unsuccessful
+      sequence_related_output_dimensions: unsuccessful
+      true_frame_to_frame_sequence_continuation: not_adequately_tested
+      human_identified_critical_identity_violation: false
+  positive_signal:
+    - character_identity_retention
+    - costume_state_maintenance
+  failed_or_unstable:
+    - background_state_preservation
+    - gaze_only_variable_isolation
+    - body_orientation_preservation
+    - hand_position_preservation
+    - composition_preservation
+    - sequence_related_output_dimensions
+  procedure_mismatch:
+    primary_identity_anchor_used_for_each_attempt: true
+    current_approved_sequence_reference_used: false
+    full_model_facing_prompt_used_for_each_attempt: true
+    delta_only_continuation_used: false
+  true_frame_to_frame_sequence_continuation:
+    status: not_adequately_tested
+    reason: Current Approved Sequence Reference and delta-only continuation were not used
+  clear_condition_advantage:
+    status: not_established
+  human_conclusion: >-
+    Preliminary positive identity-retention signal with an inconclusive sequence
+    result due to an execution-procedure mismatch.
+  shared_protocol_classification: not_yet_assigned
+  candidate_level_quantitative_rates: not_yet_calculated
+
+# ============================================================
+# CURRENT RECORD SUMMARY
+# ============================================================
+
+current_record_summary:
+  execution_status: completed
+  human_review_status: reviewed
+  result_classification: human_conclusion_recorded
+  shared_protocol_classification: not_yet_assigned
+  result_record: experiments/pal_prompt_layer/PAL-PL-EXP-001/result.md
+  result_record_commit: recorded_in_repository_history
