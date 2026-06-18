@@ -1,28 +1,132 @@
-## Identity Establishment and Sequence Continuation as Distinct Execution Tasks
+## Two-Stage Distinction for Sequence Continuation Tests
 
-Identity establishment and sequence continuation are distinct execution tasks. A Primary Identity Anchor establishes who the subject is; a Current Approved Sequence Reference establishes the state from which the next permitted change proceeds.
+### A. Scope
 
-The PAL Prompt Layer does not require every approved condition to be fully re-disclosed during every generation step. In sequence continuation, the Current Approved Sequence Reference may carry much of the existing state, while the model-facing execution representation specifies only the permitted delta and the minimum conditions judged necessary to address observed or anticipated drift.
+The two-stage distinction between identity or base-state establishment and sequence continuation is not required for every PAL experiment. It is required only when an experiment claims to test frame-to-frame sequence continuation.
 
-More complete condition disclosure should not be assumed to produce better continuity. In some sequence workflows, full re-disclosure may increase reconstruction pressure and cause the model to rebuild the scene rather than preserve the current approved state. This is recorded as an experimentally testable operational hypothesis and a design consideration, not as a definitive causal claim.
+Single-image tests, independent composition generation, and standalone costume or background variation tests do not require this distinction.
 
-The PAL Prompt Layer may be used for:
+When an experiment claims to test frame-to-frame sequence continuation, it must distinguish identity or base-state establishment from sequence continuation.
 
-- base-state establishment
-- audit and pre-generation review
-- delta derivation
-- selective re-injection of drifted conditions
+### B. Phase 1 — Identity / Base-State Establishment
 
-Reduced delta-only execution is also an inspectable and traceable task-specific execution representation. When used, it must be recorded as such. It is not defined as a new Layer.
+Conceptual flow:
 
-The following distinctions must be preserved:
+```text
+Primary Identity Anchor
++ Approved PAL Source Conditions
++ Initial Scene Request
+→ Candidate Base Frame
+→ Human Identity and State Check
+```
+
+The human confirms:
+
+- character identity
+- costume state
+- background state
+- composition
+- pose
+- initial scene state
+- suitability as the starting state for continuation
+
+Approval of a Candidate Base Frame for sequence continuation does not automatically validate it as a new identity anchor or constitute final adoption for another purpose.
+
+### C. Phase 2 — Sequence Continuation
+
+Conceptual flow:
+
+```text
+Current Approved Sequence Reference
++ Minimal Permitted Delta
++ Selective Re-injection of Drifted Conditions When Needed
+→ Next Candidate
+→ Human Review
+```
+
+**Current Approved Sequence Reference** is defined as:
+
+> The human-approved representation of the current sequence state used as the reference for the next permitted delta.
+
+### D. Required Distinctions
 
 ```text
 Primary Identity Anchor
 ≠ Current Approved Sequence Reference
 ≠ Validated Identity Anchor
+
+Sequence Reference Selection
+≠ Identity-Anchor Validation
+
+Approval for Sequence Continuation
+≠ Candidate Adoption for Final Use
+≠ Permanent Incorporation into Approved Identity
 ```
 
-Using a human-approved generated candidate as the Current Approved Sequence Reference does not automatically promote that candidate to a Validated Identity Anchor or incorporate it permanently into the approved source identity.
+Using the immediately preceding human-approved generated frame as a temporary Current Approved Sequence Reference does not automatically promote it to a Validated Identity Anchor.
 
-This operational design consideration is not a redefinition of C. C remains model-side or execution-structure mediation that transforms A into A′. The question of which conditions to include in the model-facing representation is an execution-structure design decision within the existing architecture, not a change to C, CIP, or PAL.
+### E. Sequence Continuation Rules
+
+- In a true frame-to-frame sequence test, use the immediately preceding human-approved frame or state as the Current Approved Sequence Reference.
+- Change only one major delta at a time as a general rule.
+- Use only candidates explicitly approved for sequence continuation as the next Current Approved Sequence Reference; do not inherit rejected candidates.
+- Delta-only execution does not require full re-disclosure of all PAL conditions at every step.
+- When drift is observed in a protected condition, that condition may be selectively re-injected.
+- Record whether full condition disclosure was used.
+- Record whether reduced delta-only execution was used.
+- The possibility that full disclosure increases scene reconstruction pressure may be recorded as a hypothesis or observation, not as a definitive causal claim.
+- Full condition disclosure is not categorically worse than reduced delta-only execution.
+- Reduced delta-only execution is not categorically superior to full disclosure.
+- When the Current Approved Sequence Reference is not used and each candidate is independently generated from the Primary Identity Anchor, the results must not be treated as true frame-to-frame continuation results.
+
+### F. Execution Modes
+
+The following are execution modes or task-specific model-facing representations, not new architectural layers:
+
+- full condition disclosure
+- reduced delta-only execution
+- selective condition re-injection
+
+Do not define new Layers, such as a PAL Delta Layer, for these modes.
+
+### G. Recommended Record Structure
+
+The following fields may be added to the sequence-continuation record for each generation step:
+
+```yaml
+sequence_continuation:
+  current_sequence_reference:
+    reference_status: human_approved
+    reference_source_candidate_id: <candidate_id>
+    reference_asset_path: <path>
+    fixed_state_record: <path or identifier>
+    approved_for_sequence_continuation: true
+    purpose: next_delta_generation
+    identity_anchor_status: unchanged
+  inherited_state: <state record reference>
+  permitted_delta: <defined delta>
+  prohibited_simultaneous_changes:
+    - <condition>
+  model_facing_instruction: <exact instruction>
+  selective_reinjection:
+    - <condition, if required>
+```
+
+Use `approved_for_sequence_continuation` rather than `human_adoption_for_sequence` to distinguish continuation approval from final adoption.
+
+### H. A/B Sequence Comparison Design
+
+When comparing conditions in a sequence-continuation test, pre-register one of the following reference designs:
+
+1. **Common approved reference** — Both conditions use the same human-approved base frame. This design makes it easier to compare Prompt Layer or execution-representation differences.
+2. **Condition-specific approved reference** — Each condition continues from its own Phase 1 base frame approved for sequence continuation. This design makes it easier to evaluate overall workflow operational performance.
+
+These two designs measure different questions and must not be conflated.
+
+---
+
+*Insertion note for maintainers:*
+
+- *This section belongs between `### Predicted Drift Pre-Registration` and `## Pre-Execution Conformance Check`.*
+- *Add the following item to the existing `## Generation Procedure` list:* "If the experiment claims to test frame-to-frame sequence continuation, pre-register the two-stage procedure, Current Approved Sequence Reference policy, execution mode, and common or condition-specific reference design defined in this protocol."
+- *Update the document Status line to:* "Draft initial smoke-test protocol — designed to detect whether the PAL Prompt Layer shows a useful operational signal. One initial pilot has been completed, but this remains a draft reusable protocol and not a finalized PAL specification."
