@@ -134,21 +134,24 @@ Generate → Drift → Retry → Drift → Collapse
 CIP:
 Generate → Gate
   ├─ PASS → Adopt
-  └─ FAIL → Hard Abort
-              ├─ Reject
-              ├─ Purge → Stop
-              └─ Purge → Re-bind → Re-convergence → Generate
+  └─ FAIL → Hard Abort → Reject
+                           ↓
+                  Preserve rejection evidence
+                           ↓
+                  Purge from active workflow
+                           ├─ Stop
+                           └─ Re-bind → Re-convergence → Generate
 ```
 
 CIP introduces a governance layer between probabilistic generation and human adoption:
 
-|Component                       |Role                                                                                                                        |
-|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-|**Anchor**                      |Validated reference state retained within the approved identity and continuity conditions                                   |
+|Component                       |Role                                                        |
+|--------------------------------|------------------------------------------------------------|
+|**Anchor**                      |Validated reference state retained within the approved identity and continuity conditions|
 |**Identity Gates**              |PASS / FAIL validation against defined identity constraints; character workflows may begin with Face ∧ Skeleton ∧ Proportion|
-|**Hard Abort**                  |Immediate termination when identity or governance failure is detected                                                       |
-|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation                                                                              |
-|**Re-convergence**              |Controlled recovery from the last verified anchor state                                                                     |
+|**Hard Abort**                  |Immediate termination when identity or governance failure is detected|
+|**Adoption / Rejection / Purge**|CIP governance decisions after gate evaluation              |
+|**Re-convergence**              |Controlled recovery from the last verified anchor state     |
 
 Identity continuity is not assumed to persist. It is continuously evaluated, and the workflow is recovered from the last validated anchor state when failure occurs.
 
@@ -172,7 +175,7 @@ Human Authority:   The human operator retains final adoption authority
 
 **Re-binding:** reconnecting the workflow to the last validated anchor, UID, and governing constraints before re-convergence.
 
-**Purge:** removing drifted or contaminated outputs, states, or references from adoption candidates and downstream workflow conditions.
+**Purge:** removing drifted or contaminated outputs, states, or references from adoption candidates and active downstream workflow conditions. Purge does not require deletion of retained rejection evidence, audit records, or experimental records.
 
 CIP does not primarily optimize generation.
 It makes adoptability a controlled variable.
@@ -256,7 +259,7 @@ as an infrastructure hypothesis for cross-session stabilization
 were first named and documented by Hitoshi Watadani
 in March 2026 in this repository.
 
-To the author’s knowledge, this repository contains
+To the author's knowledge, this repository contains
 the earliest explicit documentation of:
 
 - **PAL** as a distinct continuity-oriented concept,
