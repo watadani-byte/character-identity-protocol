@@ -76,13 +76,17 @@ Initial Execution Package
 Pre-Execution Conformance Check
           ↓
 Human-Governed Review Decision
-  ├─ PROCEED → Final Execution Package → Generation
+  ├─ PROCEED → Final Execution Package
   ├─ REVISE  → Revision → Second Human-Governed Review
-  │                         ├─ PROCEED → Final Execution Package → Generation
+  │                         ├─ PROCEED → Final Execution Package
   │                         ├─ REVISE  → Further action under the pre-registered review policy
   │                         └─ STOP    → No Generation; Record Outcome
   └─ STOP    → No Generation; Record Outcome
-PROCEED Path Only
+
+Only the PROCEED branches continue below:
+Final Execution Package
+          ↓
+Generation
           ↓
 Generated Candidate
           ↓
@@ -275,7 +279,7 @@ The responsibility boundary in this hypothesis is as follows:
 
 CIP does not directly control C, A′, or the generative model. It governs workflow conditions surrounding the transformation from A to A′ under C and the subsequent treatment of B′.
 
-A candidate, conformance result, optimized prompt, or Execution Package must not become part of the approved source identity merely because it performs well. Adoption requires explicit human validation.
+A candidate, conformance result, optimized prompt, or Execution Package must not become part of the approved source identity merely because it performs well. Incorporation into the approved source identity requires a separate explicit human validation decision and must not be inferred from candidate adoption alone.
 
 -----
 
