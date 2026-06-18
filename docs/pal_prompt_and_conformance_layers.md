@@ -49,9 +49,9 @@ This document does not describe PAL as directly governing adoption. It does not 
 
 ## Core Hypothesis
 
-PAL source definitions may be correct — accurately describing the approved character, costume, background, and sequence conditions — while still producing unstable outputs when those definitions are passed directly to a generative model without an explicit model-facing translation layer.
+PAL source definitions may be correct — accurately describing the approved character, costume, background, and sequence conditions — while still producing unstable outputs when the pre-existing path from those definitions to a model-facing prompt is not explicitly structured into the PAL Prompt Layer blocks.
 
-In other words: PAL may correctly define A, but the path from A to a usable prompt is itself a transformation step. If that step is undocumented and unstructured, it may introduce drift before generation even begins.
+In other words: PAL may correctly define A, but the path from A to a task-specific model-facing prompt is itself a transformation step. If that step is undocumented or insufficiently inspectable, it may introduce drift before generation begins.
 
 This document proposes that PAL-supported workflows may benefit from an explicit translation layer — the **PAL Prompt Layer** — positioned between PAL source modules and the generative model, and an explicit diagnostic layer — the **PAL Conformance Assessment Layer** — positioned between the generated candidate and the CIP-governed adoption process.
 
@@ -76,13 +76,14 @@ Initial Execution Package
 Pre-Execution Conformance Check
           ↓
 Human-Governed Review Decision
-  ├─ PROCEED → Final Execution Package → Generation → Generated Candidate
+  ├─ PROCEED → Final Execution Package → Generation
   ├─ REVISE  → Revision → Second Human-Governed Review
-  │                         ├─ PROCEED → Final Execution Package → Generation → Generated Candidate
+  │                         ├─ PROCEED → Final Execution Package → Generation
   │                         ├─ REVISE  → Further action under the pre-registered review policy
   │                         └─ STOP    → No Generation; Record Outcome
   └─ STOP    → No Generation; Record Outcome
-
+PROCEED Path Only
+          ↓
 Generated Candidate
           ↓
 PAL Conformance Assessment Layer
