@@ -71,12 +71,18 @@ PAL Prompt Layer
   ├─ Scene Variable Block
   └─ Anti-drift Block
           ↓
+Initial Execution Package
+          ↓
 Pre-Execution Conformance Check
           ↓
-Execution Package
-          ↓
-Generative Model
-          ↓
+Human-Governed Review Decision
+  ├─ PROCEED → Final Execution Package → Generation → Generated Candidate
+  ├─ REVISE  → Revision → Second Human-Governed Review
+  │                         ├─ PROCEED → Final Execution Package → Generation → Generated Candidate
+  │                         ├─ REVISE  → Further action under the pre-registered review policy
+  │                         └─ STOP    → No Generation; Record Outcome
+  └─ STOP    → No Generation; Record Outcome
+
 Generated Candidate
           ↓
 PAL Conformance Assessment Layer
@@ -84,6 +90,10 @@ PAL Conformance Assessment Layer
 CIP-Governed Validation, Recovery, and Adoption Process
           └─ Human Operator Retains Final Adoption Authority
 ```
+
+Only an execution unit receiving a human-recorded PROCEED decision advances to the Final Execution Package and generation. REVISE and STOP do not independently advance to generation.
+
+The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or additional architectural layers. The Initial Execution Package is preserved before review. When no revision is required, the initial and final states are identical. The Final Execution Package is the reviewed package authorized by the human operator for generation after a PROCEED decision. Neither state is identical to A′.
 
 -----
 
@@ -167,20 +177,28 @@ The final output alone cannot always establish which location caused a failure.
 
 ## Pre-Execution Conformance Check
 
-Before generation, the Execution Package may be checked against the PAL source modules to assess whether execution-translation drift has already been introduced.
+Before generation, the Initial Execution Package is checked against the PAL source modules to assess whether execution-translation drift has already been introduced.
 
 **Primary question:**
 
 > Does the model-facing Execution Package still preserve the approved PAL source definitions?
 
-This check produces diagnostic evidence only and does not possess autonomous authority to approve or block generation.
+This check produces diagnostic evidence only. It does not possess autonomous authority to approve or block generation.
 
-Under the associated experimental protocol, however, a critical omission or unapproved transformation triggers a human-governed pre-execution stop decision. Generation proceeds only after the Execution Package has been revised and reviewed by the human operator. Both the initially compiled package and the revised package must be retained, and all revisions must be logged.
+Based on the diagnostic findings, the human operator records one of the following decisions within the CIP-governed workflow:
+
+- **PROCEED** — authorizes submission of the reviewed Execution Package for generation. PROCEED does not certify that A has been preserved, and it does not guarantee conformance in the generated candidate.
+- **REVISE** — requires revision of the Execution Package and another human-governed review before generation.
+- **STOP** — prevents generation from that Execution Package. The outcome is recorded and remains in the record. A later PROCEED on a revised package does not erase an earlier STOP.
 
 The key distinction is:
 
-- **Assessment** = diagnostic evidence
-- **Stop or proceed decision** = a decision made within the CIP-governed workflow under human authority
+- **Assessment** = diagnostic evidence produced by the Pre-Execution Conformance Check
+- **PROCEED / REVISE / STOP** = decisions made by the human operator within the CIP-governed workflow
+
+Both the initially compiled package and any revised package must be retained, and all revisions must be logged.
+
+If the diagnostic check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select REVISE or STOP rather than PROCEED.
 
 -----
 
@@ -244,11 +262,13 @@ C is not assumed to be directly controllable by CIP. The architecture instead su
 
 The responsibility boundary in this hypothesis is as follows:
 
-- **PAL Source Modules** define the approved continuity conditions.
-- **The PAL Prompt Layer** translates those conditions into a model-facing Execution Package.
-- **The Pre-Execution Conformance Check** assesses whether that translation still preserves the approved source definitions.
+- **PAL Source Modules** provide approved continuity and reference conditions.
+- **The PAL Prompt Layer** translates those conditions into an Initial Execution Package.
+- **The Pre-Execution Conformance Check** produces diagnostic evidence about possible execution-translation drift.
+- **The human operator** records PROCEED, REVISE, or STOP within the CIP-governed workflow.
+- **A PROCEED decision** establishes the Final Execution Package authorized for generation.
 - **The generative model** produces a candidate.
-- **The PAL Conformance Assessment Layer** produces diagnostic evidence about conformance to the approved PAL source definitions.
+- **The PAL Conformance Assessment Layer** produces post-generation diagnostic evidence about conformance to the approved PAL source definitions.
 - **CIP** governs validation, rejection, purge, re-binding, re-convergence, and adoption.
 - **The human operator** retains final adoption authority within that CIP-governed process.
 
@@ -278,17 +298,20 @@ PAL Prompt Layer      ≠ C as a Whole
 
 This hypothesis proposes a controlled comparison between:
 
-1. Direct generation from approved PAL source definitions
-1. Generation through the structured PAL Prompt Layer
+1. Generation through the pre-existing Direct PAL procedure, without explicit reorganization into the PAL Prompt Layer blocks
+2. Generation through the structured PAL Prompt Layer and its human-governed pre-execution review workflow
 
 Where possible, the following should be held constant:
 
 - source anchors
 - scene conditions
 - model and version
-- output count
+- pre-registered execution-unit count
+- planned candidate count
 - session conditions
 - generation settings available to the operator
+
+Realized candidate counts may differ if a registered Condition B execution unit remains finally stopped without reaching generation. Planned and realized counts must therefore be reported separately.
 
 The following should be evaluated:
 
