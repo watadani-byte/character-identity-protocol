@@ -72,11 +72,19 @@ condition_b_pre_execution_review:
   reviewer_type: hybrid
   audit_outputs_are_diagnostic_only: true
 
-stop_recovery_policy:
-  status: not_explicitly_recorded_before_execution
-  note: no STOP decision occurred; result unaffected
-
 result_record: experiments/pal_prompt_layer/PAL-PL-EXP-001/result.md
+
+# ============================================================
+# PRE-REGISTRATION GAPS
+# Fields that were not explicitly recorded before execution.
+# Recorded here after the fact; not treated as pre-registration values.
+# ============================================================
+
+pre_registration_gaps:
+  stop_recovery_policy:
+    status: not_explicitly_recorded_before_execution
+    effect_on_result: none
+    reason: no_stop_decision_occurred
 
 # ============================================================
 # ACTUAL EXECUTION
