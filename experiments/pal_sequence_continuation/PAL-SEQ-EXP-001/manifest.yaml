@@ -1,10 +1,14 @@
 experiment_id: PAL-SEQ-EXP-001
 
 research_record_status: reviewed
-experiment_status: pre_registered_not_executed
+experiment_status: execution_in_progress
 lock_status: locked
 # No separate execution_status field is added; experiment_status is the
 # single field of record for this purpose.
+# execution_in_progress represents: Human Lock completed; Neutral Phase 1
+# completed and Shared Human-Approved Base Frame established; Condition A
+# and Condition B generation not yet started; overall experiment not yet
+# complete.
 
 protocol:
   file: docs/pal_prompt_layer_experiment_protocol.md
@@ -134,11 +138,39 @@ model_and_execution:
   experiment_date_range: null
 
 neutral_base_state_establishment:
-  status: pending
+  status: completed
   condition_affiliation: neutral
-  model_name: null
-  visible_version: null
-  session_id: null
+  model_name: ChatGPT Images 2.0
+  visible_version:
+    chat_model: GPT-5.5 Thinking
+    image_generator_label: ChatGPT Images 2.0
+    backend_snapshot: not_exposed
+  session_id: PAL-SEQ-EXP-001-neutral-phase-1-chat-01
+  # session_id is an experiment-assigned identifier used for record-keeping
+  # in this protocol. It does not represent or expose any internal,
+  # non-public ChatGPT session identifier.
+  generation_settings:
+    output_count_per_attempt: 1
+    aspect_ratio: portrait
+    requested_size: 1024x1536
+    actual_output_dimensions: 1024x1536
+    reference_image:
+      identifier: rieko_primary_identity_anchor_01
+      path: docs/assets/images/rieko_primary_identity_anchor_01.jpeg
+    source_modules:
+      - character_pal_v2.0.pdf
+      - costume_pal_v2.pdf
+      - background_pal_v2.pdf
+      - sequence_pal_v2.pdf
+    prompt_mode: exact_frozen_prompt
+    maximum_total_attempts: 3
+    prompt_revision_between_attempts: false
+    settings_change_between_attempts: false
+    seed: unavailable
+  # actual_output_dimensions is recorded after the first generated image
+  # is saved and its actual dimensions are confirmed. backend_snapshot and
+  # seed are not exposed through the UI and are not guessed; they are
+  # recorded as not_exposed / unavailable.
   # The following reference the fixed values already registered under
   # top-level source_inputs.* (see source_inputs.primary_identity_anchor
   # and source_inputs.character_pal / costume_pal / background_pal /
@@ -171,9 +203,23 @@ neutral_base_state_establishment:
   selection_rule: first_candidate_passing_all_required_base_state_checks
   stop_if_no_candidate_passes: true
   rejected_candidates_retained_as_evidence: true
-  realized_attempts: null
-  selected_base_frame: null
-  approval_decision: null
+  realized_attempts: 1
+  selected_base_frame: attempt_01
+  selected_base_frame_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/neutral_phase_1/attempt_01_shared_base_frame.png
+  approval_decision: approve_as_shared_human_approved_base_frame
+  base_state_check_results:
+    attempt_01:
+      character_identity: pass
+      costume_state: pass
+      background_state: pass
+      composition: pass
+      pose: pass
+      both_hands_visible: pass
+      facial_visibility: pass
+      initial_scene_state: pass
+      suitability_for_gaze_shift_continuation: pass
+      suitability_for_left_hand_delta_continuation: pass
+      critical_identity_violation: false
   identity_anchor_status: unchanged
   counted_as_condition_candidate: false
   selected_before_condition_execution: true

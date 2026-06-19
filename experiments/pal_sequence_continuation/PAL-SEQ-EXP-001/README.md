@@ -2,7 +2,9 @@
 
 ## Status
 
-- Experiment status: pre-registered / not yet executed
+- Experiment status: execution in progress
+- Neutral Phase 1 status: completed
+- Condition A/B status: not yet started
 - Research record status: reviewed
 - Lock status: confirmed
 - Experiment type: follow-up sequence-continuation smoke test
