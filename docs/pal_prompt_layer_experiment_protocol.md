@@ -2,7 +2,7 @@
 
 *Experimental validation plan for the PAL Prompt Layer and PAL Conformance Assessment Layer*
 
-> Status: Draft initial smoke-test protocol — designed to detect whether the PAL Prompt Layer shows a useful operational signal. Not yet executed and not a finalized PAL specification.
+> Status: Draft initial smoke-test protocol — designed to detect whether the PAL Prompt Layer shows a useful operational signal. One initial pilot has been completed, but this remains a draft reusable protocol and not a finalized PAL specification.
 
 -----
 
@@ -78,7 +78,7 @@ Generative Model
 Generated Candidate
 ```
 
-The existing PAL definitions are used without explicit reorganization into the Prompt Layer blocks. Condition A must use the repository’s pre-existing direct-PAL procedure without introducing the three Prompt Layer blocks. Its exact preparation method and final prompt must be preserved as the baseline.
+The existing PAL definitions are used without explicit reorganization into the Prompt Layer blocks. Condition A must use the repository's pre-existing direct-PAL procedure without introducing the three Prompt Layer blocks. Its exact preparation method and final prompt must be preserved as the baseline.
 
 ### Condition B — PAL Prompt Layer
 
@@ -233,6 +233,135 @@ predicted_drift:
 
 -----
 
+-----
+
+## Two-Stage Distinction for Sequence Continuation Tests
+
+### A. Scope
+
+The two-stage distinction between identity or base-state establishment and sequence continuation is not required for every PAL experiment. It is required only when an experiment claims to test frame-to-frame sequence continuation.
+
+Single-image tests, independent composition generation, and standalone costume or background variation tests do not require this distinction.
+
+When an experiment claims to test frame-to-frame sequence continuation, it must distinguish identity or base-state establishment from sequence continuation.
+
+### B. Phase 1 — Identity / Base-State Establishment
+
+Conceptual flow:
+
+```text
+Primary Identity Anchor
++ Approved PAL Source Conditions
++ Initial Scene Request
+→ Candidate Base Frame
+→ Human Identity and State Check
+```
+
+The human confirms:
+
+- character identity
+- costume state
+- background state
+- composition
+- pose
+- initial scene state
+- suitability as the starting state for continuation
+
+Approval of a Candidate Base Frame for sequence continuation does not automatically validate it as a new identity anchor or constitute final adoption for another purpose.
+
+### C. Phase 2 — Sequence Continuation
+
+Conceptual flow:
+
+```text
+Current Approved Sequence Reference
++ Minimal Permitted Delta
++ Selective Re-injection of Drifted Conditions When Needed
+→ Next Candidate
+→ Human Review
+```
+
+**Current Approved Sequence Reference** is defined as:
+
+> The human-approved representation of the current sequence state used as the reference for the next permitted delta.
+
+### D. Required Distinctions
+
+```text
+Primary Identity Anchor
+≠ Current Approved Sequence Reference
+≠ Validated Identity Anchor
+
+Sequence Reference Selection
+≠ Identity-Anchor Validation
+
+Approval for Sequence Continuation
+≠ Candidate Adoption for Final Use
+≠ Permanent Incorporation into Approved Identity
+```
+
+Using the immediately preceding human-approved generated frame as a temporary Current Approved Sequence Reference does not automatically promote it to a Validated Identity Anchor.
+
+### E. Sequence Continuation Rules
+
+- In a true frame-to-frame sequence test, use the immediately preceding human-approved frame or state as the Current Approved Sequence Reference.
+- Change only one major delta at a time as a general rule.
+- Use only candidates explicitly approved for sequence continuation as the next Current Approved Sequence Reference; do not inherit rejected candidates.
+- Delta-only execution does not require full re-disclosure of all PAL conditions at every step.
+- When drift is observed in a protected condition, that condition may be selectively re-injected.
+- Record whether full condition disclosure was used.
+- Record whether reduced delta-only execution was used.
+- The possibility that full disclosure increases scene reconstruction pressure may be recorded as a hypothesis or observation, not as a definitive causal claim.
+- Full condition disclosure is not categorically worse than reduced delta-only execution.
+- Reduced delta-only execution is not categorically superior to full disclosure.
+- When the Current Approved Sequence Reference is not used and each candidate is independently generated from the Primary Identity Anchor, the results must not be treated as true frame-to-frame continuation results.
+
+### F. Execution Modes
+
+The following are execution modes or task-specific model-facing representations, not new architectural layers:
+
+- full condition disclosure
+- reduced delta-only execution
+- selective condition re-injection
+
+Do not define new Layers, such as a PAL Delta Layer, for these modes.
+
+### G. Recommended Record Structure
+
+The following fields may be added to the sequence-continuation record for each generation step:
+
+```yaml
+sequence_continuation:
+  current_sequence_reference:
+    reference_status: human_approved
+    reference_source_candidate_id: <candidate_id>
+    reference_asset_path: <path>
+    fixed_state_record: <path or identifier>
+    approved_for_sequence_continuation: true
+    purpose: next_delta_generation
+    identity_anchor_status: unchanged
+  inherited_state: <state record reference>
+  permitted_delta: <defined delta>
+  prohibited_simultaneous_changes:
+    - <condition>
+  model_facing_instruction: <exact instruction>
+  selective_reinjection:
+    - <condition, if required>
+```
+
+Use `approved_for_sequence_continuation` rather than `human_adoption_for_sequence` to distinguish continuation approval from final adoption.
+
+### H. A/B Sequence Comparison Design
+
+When comparing conditions in a sequence-continuation test, pre-register one of the following reference designs:
+
+1. **Common approved reference** — Both conditions use the same human-approved base frame. This design makes it easier to compare Prompt Layer or execution-representation differences.
+2. **Condition-specific approved reference** — Each condition continues from its own Phase 1 base frame approved for sequence continuation. This design makes it easier to evaluate overall workflow operational performance.
+
+These two designs measure different questions and must not be conflated.
+
+-----
+
 ## Pre-Execution Conformance Check
 
 Condition B must include a diagnostic comparison between the PAL source modules and the Execution Package.
@@ -241,16 +370,16 @@ Condition B must include a diagnostic comparison between the PAL source modules 
 
 > Does the model-facing Execution Package still preserve the approved PAL source definitions?
 
-|Check                            |Result           |
-|---------------------------------|-----------------|
-|Character identity preserved     |PASS / FAIL      |
-|Costume conditions preserved     |PASS / FAIL / N/A|
-|Background conditions preserved  |PASS / FAIL / N/A|
-|Sequence conditions preserved    |PASS / FAIL / N/A|
-|Scene variable correctly isolated|PASS / FAIL      |
-|Anti-drift conditions retained   |PASS / FAIL      |
-|Unapproved additions detected    |YES / NO         |
-|Critical omissions detected      |YES / NO         |
+| Check                             | Result            |
+|-----------------------------------|-------------------|
+| Character identity preserved      | PASS / FAIL       |
+| Costume conditions preserved      | PASS / FAIL / N/A |
+| Background conditions preserved   | PASS / FAIL / N/A |
+| Sequence conditions preserved     | PASS / FAIL / N/A |
+| Scene variable correctly isolated | PASS / FAIL       |
+| Anti-drift conditions retained    | PASS / FAIL       |
+| Unapproved additions detected     | YES / NO          |
+| Critical omissions detected       | YES / NO          |
 
 This check diagnoses possible execution-translation drift.
 
@@ -268,16 +397,16 @@ The audit compares the initially compiled Execution Package against:
 
 The audit examines whether the Execution Package:
 
-|Audit item                                                                          |Result     |
-|------------------------------------------------------------------------------------|-----------|
-|Protected identity and continuity conditions preserved                              |PASS / FAIL|
-|Scene variables remain within approved scope                                        |PASS / FAIL|
-|Explicit drift boundaries retained                                                  |PASS / FAIL|
-|Critical approved source condition omitted                                          |YES / NO   |
-|Unsupported interpretation introduced                                               |YES / NO   |
-|Scene, style, optimization, or production instructions override protected conditions|YES / NO   |
-|Unnecessary reconstruction pressure introduced                                      |YES / NO   |
-|Traceability to approved PAL Source Modules maintained                              |PASS / FAIL|
+| Audit item | Result |
+|------------|--------|
+| Protected identity and continuity conditions preserved | PASS / FAIL |
+| Scene variables remain within approved scope | PASS / FAIL |
+| Explicit drift boundaries retained | PASS / FAIL |
+| Critical approved source condition omitted | YES / NO |
+| Unsupported interpretation introduced | YES / NO |
+| Scene, style, optimization, or production instructions override protected conditions | YES / NO |
+| Unnecessary reconstruction pressure introduced | YES / NO |
+| Traceability to approved PAL Source Modules maintained | PASS / FAIL |
 
 The applicable anchor may include:
 
@@ -321,19 +450,19 @@ If the Pre-Execution Conformance Check identifies a critical omission, unsupport
 **For REVISE:**
 
 1. retain the initially compiled Execution Package
-1. retain the complete diagnostic review findings
-1. record the approved revision instruction
-1. produce a revised Execution Package
-1. retain a structured diff or revision log
-1. conduct a second human-governed review
-1. proceed to generation only after the human operator records `PROCEED`
+2. retain the complete diagnostic review findings
+3. record the approved revision instruction
+4. produce a revised Execution Package
+5. retain a structured diff or revision log
+6. conduct a second human-governed review
+7. proceed to generation only after the human operator records `PROCEED`
 
 **For STOP:**
 
 1. retain the initially compiled Execution Package
-1. retain the diagnostic review findings
-1. record the reason for stopping
-1. do not submit that Execution Package for generation
+2. retain the diagnostic review findings
+3. record the reason for stopping
+4. do not submit that Execution Package for generation
 
 The following must be retained:
 
@@ -394,25 +523,26 @@ These are two separate potential transformation or drift locations. The final ou
 ## Generation Procedure
 
 1. Predefine and version the approved PAL Source Modules, anchor assets, UID, and scene request.
-1. Pre-register the execution units and the planned number of generated candidates assigned to each execution unit.
-1. Pre-register the predicted drift directions.
-1. Pre-register the Condition B `STOP` recovery policy, including whether recovery is permitted, the maximum number of recovery attempts after the initial review for each execution unit, and whether a recovered execution unit may proceed to generation.
-1. Pre-register the Condition A / Condition B generation order or randomization procedure.
-1. Prepare and preserve the Condition A direct model-facing prompt according to the pre-existing direct-PAL procedure.
-1. Compile the initial Condition B Execution Package through the PAL Prompt Layer.
-1. Preserve the initial Condition B Execution Package before review.
-1. Conduct the Anchor-Based Prompt Audit against the approved source conditions, applicable anchors, generation request, and predicted drift.
-1. Record the audit findings and the human decision as `PROCEED`, `REVISE`, or `STOP`.
-1. If `REVISE`, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
-1. If `STOP` is recorded and the pre-registered recovery policy permits recovery, retain the stopped attempt, compile a recovery Execution Package from the same approved source conditions, record it as a linked subsequent attempt, and conduct another human-governed review. Submit the execution unit for generation only if a later review records `PROCEED`; otherwise record the unit as finally stopped.
-1. Submit Condition B for generation only after the human operator records `PROCEED`.
-1. Generate Condition A and Condition B outputs according to the pre-registered order.
-1. Use separate clean sessions where practical.
-1. Balance or randomize A/B order where practical so that one condition is not always generated first.
-1. Do not progressively correct failed generated candidates.
-1. Do not promote any candidate into a new anchor during the experiment.
-1. Preserve failed candidates as experimental evidence, but do not retain them as active production anchors or approved workflow states.
-1. Record platform errors, prompt rewrites, refusals, or unexpected execution behavior.
+2. Pre-register the execution units and the planned number of generated candidates assigned to each execution unit.
+3. If the experiment claims to test frame-to-frame sequence continuation, pre-register the two-stage procedure, Current Approved Sequence Reference policy, execution mode, and common or condition-specific reference design defined in this protocol.
+4. Pre-register the predicted drift directions.
+5. Pre-register the Condition B `STOP` recovery policy, including whether recovery is permitted, the maximum number of recovery attempts after the initial review for each execution unit, and whether a recovered execution unit may proceed to generation.
+6. Pre-register the Condition A / Condition B generation order or randomization procedure.
+7. Prepare and preserve the Condition A direct model-facing prompt according to the pre-existing direct-PAL procedure.
+8. Compile the initial Condition B Execution Package through the PAL Prompt Layer.
+9. Preserve the initial Condition B Execution Package before review.
+10. Conduct the Anchor-Based Prompt Audit against the approved source conditions, applicable anchors, generation request, and predicted drift.
+11. Record the audit findings and the human decision as `PROCEED`, `REVISE`, or `STOP`.
+12. If `REVISE`, preserve the initial package, review findings, revision instruction, revised package, and revision history; then conduct a second human-governed review.
+13. If `STOP` is recorded and the pre-registered recovery policy permits recovery, retain the stopped attempt, compile a recovery Execution Package from the same approved source conditions, record it as a linked subsequent attempt, and conduct another human-governed review. Submit the execution unit for generation only if a later review records `PROCEED`; otherwise record the unit as finally stopped.
+14. Submit Condition B for generation only after the human operator records `PROCEED`.
+15. Generate Condition A and Condition B outputs according to the pre-registered order.
+16. Use separate clean sessions where practical.
+17. Balance or randomize A/B order where practical so that one condition is not always generated first.
+18. Do not progressively correct failed generated candidates.
+19. Do not promote any candidate into a new anchor during the experiment.
+20. Preserve failed candidates as experimental evidence, but do not retain them as active production anchors or approved workflow states.
+21. Record platform errors, prompt rewrites, refusals, or unexpected execution behavior.
 
 Revision of the Execution Package during the pre-execution review is distinct from progressive correction of generated candidates. The former diagnoses and addresses possible execution-translation drift before generation; the latter is prohibited during the controlled output comparison.
 
@@ -444,16 +574,16 @@ The evaluator should not initially see:
 
 Use separate diagnostic dimensions rather than one aggregate similarity score.
 
-|Dimension                  |Result                     |
-|---------------------------|---------------------------|
-|Character conformance      |PASS / WARNING / FAIL      |
-|Costume conformance        |PASS / WARNING / FAIL / N/A|
-|Background conformance     |PASS / WARNING / FAIL / N/A|
-|Scene-variable execution   |PASS / WARNING / FAIL      |
-|Sequence continuity        |PASS / WARNING / FAIL / N/A|
-|Anti-drift compliance      |PASS / WARNING / FAIL      |
-|Critical identity violation|YES / NO                   |
-|Human adoption decision    |ADOPT / REJECT             |
+| Dimension                   | Result                      |
+|-----------------------------|-----------------------------|
+| Character conformance       | PASS / WARNING / FAIL       |
+| Costume conformance         | PASS / WARNING / FAIL / N/A |
+| Background conformance      | PASS / WARNING / FAIL / N/A |
+| Scene-variable execution    | PASS / WARNING / FAIL       |
+| Sequence continuity         | PASS / WARNING / FAIL / N/A |
+| Anti-drift compliance       | PASS / WARNING / FAIL       |
+| Critical identity violation | YES / NO                    |
+| Human adoption decision     | ADOPT / REJECT              |
 
 **A high aggregate score must not compensate for a critical character-identity failure.**
 
@@ -466,9 +596,9 @@ Conformance assessments are diagnostic inputs only. They do not replace human ju
 The initial smoke test should answer only these four questions:
 
 1. Was character identity preserved more often?
-1. Were the requested scene variables executed correctly?
-1. Was the predicted drift reduced?
-1. Did the human operator adopt more outputs?
+2. Were the requested scene variables executed correctly?
+3. Was the predicted drift reduced?
+4. Did the human operator adopt more outputs?
 
 Also record adverse effects:
 
@@ -786,11 +916,11 @@ protocol:
   commit: <git commit hash>
 ```
 
-The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator’s decision within the CIP-governed workflow.
+The `findings` fields contain diagnostic evidence. The `human_decision` field records the operator's decision within the CIP-governed workflow.
 
 The `reviewer_type`, `human_decision`, `findings`, and outcome fields shown above contain illustrative values. Each experiment record must contain the single value applicable to that specific review attempt or execution unit.
 
-Each Condition B execution unit record uses a `review_attempts` list to preserve every review, `STOP` decision, recovery attempt, and final outcome in sequence. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome. The `final_pre_execution_status` and `reached_generation` fields summarize the unit’s outcome; the full history remains in `review_attempts`.
+Each Condition B execution unit record uses a `review_attempts` list to preserve every review, `STOP` decision, recovery attempt, and final outcome in sequence. A later `PROCEED` decision does not replace or erase an earlier `STOP` outcome. The `final_pre_execution_status` and `reached_generation` fields summarize the unit's outcome; the full history remains in `review_attempts`.
 
 `execution_units_with_any_stop_decision` counts units that received at least one `STOP`. `execution_units_finally_stopped` counts units that did not reach generation. `recovered_execution_unit_count` counts units where a recovery attempt resulted in `PROCEED`. `unrealized_candidate_count_due_to_final_stop` counts planned candidates from units that never reached generation. The difference between `total_planned_generated_candidate_count` and `realized_generated_candidate_count` must be accounted for in the result record.
 
