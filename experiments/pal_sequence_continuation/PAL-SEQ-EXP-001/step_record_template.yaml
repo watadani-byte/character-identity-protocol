@@ -1,0 +1,108 @@
+experiment_id: PAL-SEQ-EXP-001
+condition: null
+evaluation_branch_id: null
+internal_branch_id: null
+step_id: null
+
+attempt:
+  type: primary
+  number: 1
+  linked_prior_attempt: null
+
+current_sequence_reference:
+  reference_source_candidate_id: null
+  reference_asset_path: null
+  reference_status: human_approved
+
+inherited_state:
+  fixed_state_record: null
+  identity_state: null
+  costume_state: null
+  background_state: null
+  composition_state: null
+  pose_state: null
+  hand_state: null
+  emotional_state: null
+  lighting_state: null
+
+permitted_delta:
+  element: null
+  requested_change: null
+  change_scale: null
+
+pre_execution_review:
+  applicable: null
+  initial_execution_package: null
+  review_attempts: []
+  final_pre_execution_status: null
+  final_execution_package: null
+
+model_facing_instruction:
+  text: null
+  prompt_or_package_version: null
+  review_attempt_version: null
+  frozen_before_execution: true
+
+selective_reinjection:
+  used: false
+  conditions: []
+  observed_drift_basis: null
+  exact_text: null
+  human_authorized: false
+
+prohibited_simultaneous_changes: []
+
+generated_candidate:
+  candidate_id: null
+  asset_path: null
+  generated_at: null
+
+evaluation:
+  character_conformance: null
+  costume_continuity: null
+  background_continuity: null
+  composition_continuity: null
+  pose_continuity: null
+  hand_position_continuity: null
+  delta_execution: null
+  sequence_continuity: null
+  prohibited_simultaneous_change: null
+  critical_identity_violation: null
+  notes: null
+
+candidate_decision:
+  value: pending
+  permitted_values:
+    - approve_for_sequence_continuation
+    - reject_for_sequence_continuation
+
+post_reject_action:
+  applicable: null
+  value: null
+  permitted_values:
+    - authorize_recovery_attempt
+    - stop_sequence_branch
+  scope: attempt_linked_branch_transition
+  basis: null
+  decided_by: human
+  reason: null
+
+branch_status:
+  value: active
+  permitted_values:
+    - active
+    - completed
+    - stopped
+
+branch_stop:
+  triggered: false
+  reason: null
+  triggered_after_attempt: null
+
+becomes_next_sequence_reference: null
+
+final_use_adoption:
+  status: pending
+
+identity_anchor_status:
+  changed: false
