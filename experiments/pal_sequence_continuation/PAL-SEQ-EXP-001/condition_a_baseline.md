@@ -9,9 +9,10 @@ Condition A — Direct Delta Continuation
 - reconstructed from documented prior operational practice
 - not represented as an exact historical preserved prompt
 - frozen before execution
-- Human baseline approval: pending
-- Approved by: pending
-- Approval date: pending
+- Human baseline approval: approved
+- Approved by: 渡谷 斉
+- Approval date: 2026-06-19
+- Scope of approval: Step 1/2/3 primary instructions, prompt construction rule, selective re-injection rule, and recovery rules (this baseline in full)
 
 ## Construction Rules
 

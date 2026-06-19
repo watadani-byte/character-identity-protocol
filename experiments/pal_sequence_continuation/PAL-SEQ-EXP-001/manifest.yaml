@@ -1,19 +1,19 @@
 experiment_id: PAL-SEQ-EXP-001
 
-research_record_status: draft
-experiment_status: draft_pre_registration
-lock_status: pending_human_confirmation
-# Planned values at Human Lock (not yet applied):
-#   research_record_status: reviewed
-#   experiment_status: pre_registered_not_executed
-#   lock_status: locked
+research_record_status: reviewed
+experiment_status: pre_registered_not_executed
+lock_status: locked
 # No separate execution_status field is added; experiment_status is the
 # single field of record for this purpose.
 
 protocol:
-  file: "<shared protocol path>"
+  file: docs/pal_prompt_layer_experiment_protocol.md
   version: null
-  git_commit: null
+  git_commit: 2212cec56fb7d94ab96e738c6ea201f7540db022
+  # This commit is a pre-lock snapshot commit that fixes the Human-Lock-
+  # preceding repository state, including the referenced shared protocol
+  # at that point in time. It is not asserted to be a protocol-only
+  # change commit.
 
 fixed_terminology:
   c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
@@ -119,7 +119,7 @@ model_and_execution:
   model_name: null
   visible_version: null
   generation_settings: null
-  session_policy_confirmed: false
+  session_policy_confirmed: true
   generation_order:
     method: alternating_within_step
     sequence:
@@ -139,12 +139,16 @@ neutral_base_state_establishment:
   model_name: null
   visible_version: null
   session_id: null
-  primary_identity_anchor: null
+  # The following reference the fixed values already registered under
+  # top-level source_inputs.* (see source_inputs.primary_identity_anchor
+  # and source_inputs.character_pal / costume_pal / background_pal /
+  # sequence_pal). These are not a new or duplicate Source definition.
+  primary_identity_anchor: rieko_primary_identity_anchor_01
   source_modules:
-    character_pal: null
-    costume_pal: null
-    background_pal: null
-    sequence_pal: null
+    character_pal: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/source_modules/character_pal_v2.0.pdf
+    costume_pal: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/source_modules/costume_pal_v2.pdf
+    background_pal: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/source_modules/background_pal_v2.pdf
+    sequence_pal: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/source_modules/sequence_pal_v2.pdf
   scene_request: |
     Establish a Shared Human-Approved Base Frame of Rieko using the approved Character PAL, Costume PAL, Background PAL, and Sequence PAL conditions, referencing the attached Primary Identity Anchor for character identity.
     Keep the overall framing, general body orientation, and facial visibility reasonably close to the Primary Identity Anchor, while replacing the anchor-specific silver evening dress, candlelit luxury venue, red roses and event decoration, cinematic amber lighting, and event-specific atmosphere with the approved white wedding dress and bright indoor photo-wedding studio conditions.
@@ -181,7 +185,7 @@ conditions:
     full_pal_redisclosure: false
     primary_deltas_frozen_before_execution: true
     selective_reinjection_rule_pre_registered: true
-    human_baseline_approval: pending
+    human_baseline_approval: true
   condition_b:
     workflow:
       - GPT_compilation

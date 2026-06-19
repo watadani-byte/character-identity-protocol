@@ -2,12 +2,14 @@
 
 ## Status
 
-- Record status: draft pre-execution lock
-- Experiment status: not yet executed
-- Lock status: pending
-- Human lock decision: pending
-- Locked by: pending
-- Lock date: pending
+- Record status: reviewed
+- Experiment status: pre-registered / not yet executed
+- Lock status: confirmed
+- Human lock decision: locked
+- Locked by: 渡谷 斉
+- Lock date: 2026-06-19
+- Approved changes: PAL-SEQ-EXP-001 draft pre-registration package, including fixed Source inputs, Primary Identity Anchor registration, Neutral Phase 1 design, Condition A baseline, Condition B combined workflow, recovery and branch-transition rules, generation order, session policy, and evaluation anonymization policy.
+- Unresolved items: None blocking execution. Runtime model name, visible version, generation settings, session IDs, generated candidate IDs, and evaluation outcomes remain intentionally unset until their registered recording points.
 
 ## Fixed Sources
 

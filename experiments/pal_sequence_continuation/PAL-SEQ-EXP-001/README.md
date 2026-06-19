@@ -2,9 +2,9 @@
 
 ## Status
 
-- Experiment status: draft pre-registration / not yet executed
-- Research record status: draft
-- Lock status: pending human confirmation
+- Experiment status: pre-registered / not yet executed
+- Research record status: reviewed
+- Lock status: confirmed
 - Experiment type: follow-up sequence-continuation smoke test
 - Character: Rieko
 - Comparison: Condition A — Direct Delta Continuation / Condition B — Combined PAL-Supported Delta Continuation
