@@ -1,18 +1,14 @@
 experiment_id: PAL-SEQ-EXP-001
 
 research_record_status: reviewed
-experiment_status: execution_completed
+experiment_status: execution_in_progress
 lock_status: locked
 # No separate execution_status field is added; experiment_status is the
 # single field of record for this purpose.
-# execution_completed represents: Human Lock completed; Neutral Phase 1
-# completed; Condition A reached full sequence completion (Step 3);
-# Condition B reached partial completion and was stopped at Step 3
-# (highest approved step: Step 2) after a human REJECT decision and a
-# human decision not to authorize recovery. All registered steps for
-# both conditions have been generated and evaluated.
-
-overall_result_classification: promising_but_mixed_sequence_signal
+# execution_in_progress represents: Human Lock completed; Neutral Phase 1
+# completed and Shared Human-Approved Base Frame established; Condition A
+# and Condition B generation not yet started; overall experiment not yet
+# complete.
 
 protocol:
   file: docs/pal_prompt_layer_experiment_protocol.md
@@ -236,8 +232,6 @@ conditions:
     primary_deltas_frozen_before_execution: true
     selective_reinjection_rule_pre_registered: true
     human_baseline_approval: true
-    final_branch_status: completed
-    highest_approved_step: step_03_gaze_to_left_hand
   condition_b:
     workflow:
       - GPT_compilation
@@ -246,9 +240,6 @@ conditions:
       - human_decision
       - reduced_delta_only_execution
     result_attribution: combined_workflow
-    final_branch_status: stopped
-    highest_approved_step: step_02_raise_left_hand
-    branch_completion: partial
 
 condition_b_review_policy:
   primary_attempt:
@@ -290,26 +281,13 @@ sequence_decisions:
 
 candidate_counts:
   planned_primary_candidates: 6
-  realized_primary_candidates: 6
+  realized_primary_candidates: null
   maximum_permitted_recovery_candidates: 6
-  realized_recovery_candidates: 0
+  realized_recovery_candidates: null
   maximum_possible_generated_candidates: 12
-  realized_total_generated_candidates: 6
-  unrealized_primary_candidates_due_to_upstream_stop: 0
-  maximum_registered_recovery_capacity: 6
-  recovery_opportunities_triggered_by_rejection: 1
-  declined_recovery_opportunities: 1
-  # maximum_registered_recovery_capacity (6) is the theoretical maximum
-  # recovery capacity registered for the experiment (one recovery
-  # attempt permitted per primary step across both conditions).
-  # recovery_opportunities_triggered_by_rejection (1) is the number of
-  # times a primary candidate was actually rejected, making a recovery
-  # decision applicable (Condition B Step 3).
-  # declined_recovery_opportunities (1) is the number of triggered
-  # recovery opportunities where the human operator did not authorize a
-  # recovery attempt (Condition B Step 3: recovery_attempt_authorized:
-  # false). realized_recovery_candidates (0) remains the count of
-  # recovery candidates actually generated.
+  realized_total_generated_candidates: null
+  unrealized_primary_candidates_due_to_upstream_stop: null
+  unrealized_recovery_capacity: null
 
 branch_rule:
   later_step_requires_prior_step_approval: true
@@ -354,20 +332,9 @@ reject_transition_policy:
 # with stopped_branches (a branch can reach partial progress and then stop).
 branch_counts:
   registered_branches: 2
-  completed_branches: 1
-  stopped_branches: 1
-  incomplete_branches_with_partial_progress: 1
-  # Definition: incomplete_branches_with_partial_progress counts branches
-  # that did NOT reach full sequence completion but approved at least one
-  # step before stopping (exclusive of completed_branches). Condition A
-  # is excluded because it reached full completion (completed_branches).
-  # Condition B is included (approved Steps 1-2, stopped before Step 3
-  # completion). This field is therefore exclusive of completed_branches
-  # by definition, not merely non-overlapping by coincidence.
-  # stopped_branches and incomplete_branches_with_partial_progress may
-  # still overlap with each other: a branch can stop with zero approved
-  # steps (not partial) or stop after partial progress (both stopped and
-  # partial, as Condition B is here).
+  completed_branches: null
+  stopped_branches: null
+  branches_with_partial_progress: null
 
 # Maps to result.md "## Quantitative Outcome Status":
 #   realized_primary_candidates      -> primary delta-execution success rate (denominator)
@@ -389,374 +356,3 @@ evaluation:
   review_history_hidden: true
 
 human_final_authority: true
-
-# ============================================================
-# STEP EXECUTION RECORDS
-# Individual per-step generation and decision records for Condition A
-# and Condition B. These are factual execution records, not theory or
-# protocol redefinitions.
-#
-# generated_candidate_asset_path is null for all six step records below,
-# with asset_registration_status: pending_human_file_placement. This
-# reflects that the generated candidate images have not yet been placed
-# in the repository by the human operator, not an assumption about their
-# eventual path, filename, or format. Paths must not be guessed or
-# pre-filled before the images are actually placed.
-#
-# Each step record distinguishes two prompt-related fields:
-#   exact_delivery_text       — the full message actually sent to the
-#                                branch chat
-#   model_facing_instruction  — the core image-editing instruction
-#                                within that message
-# These fields are conceptually distinct even when their content would
-# be identical. Both are null with
-# prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-# for all six steps below (Condition A Step 1-3, Condition B Step 2-3 at
-# the step level; Condition B Step 1 at the technical_execution_event
-# level — see step_01 below, which manages its prompt fields per event
-# rather than at the step level, since the step spans a timeout event
-# and a successful retry event with different delivery wording).
-#
-# This unresolved status reflects that the exact wording has not been
-# directly transcribed from, and verified against, the actual branch
-# chat message log for each step — not that no record of the wording
-# exists in this conversation. Where a registered baseline or template
-# text exists, it is recorded separately as registered_baseline_prompt_text
-# and must not be treated as a confirmed exact_delivery_text or
-# model_facing_instruction.
-# ============================================================
-
-step_execution_records:
-
-  condition_a:
-
-    step_01:
-      condition: A
-      step_id: step_01_gaze
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: neutral_phase_1_attempt_01
-        asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/neutral_phase_1/attempt_01_shared_base_frame.png
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-      registered_baseline_prompt_text: "Shift only her gaze slightly toward the viewer. Preserve the current head orientation, body orientation, hand positions, expression, costume, background, lighting, and composition."
-      # registered_baseline_prompt_text is a registered template/baseline
-      # text and must not be treated as a confirmed exact_delivery_text or
-      # model_facing_instruction. The actual exact_delivery_text and
-      # model_facing_instruction must be transcribed from the Condition A
-      # branch chat.
-      generated_candidate_id: condition_a_step_01_attempt_01
-      generated_candidate_asset_path: null
-      asset_registration_status: pending_human_file_placement
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: null
-        pose_continuity: null
-        hand_position_continuity: null
-        delta_execution: warning
-        sequence_continuity: warning
-        prohibited_simultaneous_change: null
-        critical_identity_violation: false
-      human_candidate_decision: approve_for_sequence_continuation
-      becomes_next_sequence_reference: true
-      branch_status: active
-      post_reject_action: not_applicable
-      notes: "Identity, costume, and background succeeded. Delta execution and sequence continuity were rated WARNING rather than PASS."
-
-    step_02:
-      condition: A
-      step_id: step_02_left_hand
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: condition_a_step_01_attempt_01
-        asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-      registered_baseline_prompt_text: "Raise only her left hand slightly and naturally. Preserve the inherited gaze, head orientation, body orientation, right-hand position, expression, costume, background, lighting, and composition."
-      generated_candidate_id: condition_a_step_02_attempt_01
-      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_02/condition_a_step_02_raise_hand_primary_01.png
-      asset_registration_status: placed
-      asset_format: png
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: null
-        pose_continuity: null
-        hand_position_continuity: pass_with_warning
-        delta_execution: pass
-        sequence_continuity: null
-        prohibited_simultaneous_change: minor_unregistered_movement_in_non_target_hand
-        critical_identity_violation: false
-      human_candidate_decision: approve_for_sequence_continuation
-      becomes_next_sequence_reference: true
-      branch_status: active
-      post_reject_action: not_applicable
-      notes: "Registered hand delta succeeded. Minor unregistered movement observed in the non-target hand. Rated PASS WITH WARNING."
-
-    step_03:
-      condition: A
-      step_id: step_03_gaze_to_raised_hand
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: condition_a_step_02_attempt_01
-        asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-      registered_baseline_prompt_text: "Shift only her gaze softly toward her raised left hand. Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, and composition."
-      generated_candidate_id: condition_a_step_03_attempt_01
-      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_03/condition_a_step_03_gaze_to_raised_hand_primary_01.png
-      asset_registration_status: placed
-      asset_format: png
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: null
-        pose_continuity: null
-        hand_position_continuity: null
-        delta_execution: pass
-        sequence_continuity: pass
-        prohibited_simultaneous_change: null
-        critical_identity_violation: false
-      human_candidate_decision: approve_for_sequence_continuation
-      becomes_next_sequence_reference: true
-      branch_status: completed
-      post_reject_action: not_applicable
-      notes: "Gaze-to-raised-hand delta succeeded. Sequence completion reached at Step 3."
-
-  condition_b:
-
-    step_01:
-      condition: B
-      step_id: step_01_gaze
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: neutral_phase_1_attempt_01
-        asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/neutral_phase_1/attempt_01_shared_base_frame.png
-      # Step-level exact_delivery_text and model_facing_instruction are
-      # not used for this step. Because step_01 spans a timeout event and
-      # a successful retry event with different delivery wording, prompt
-      # fields are managed per technical_execution_event below rather
-      # than at the step level. See technical_execution_events for the
-      # event-level exact_delivery_text and model_facing_instruction
-      # fields, both unresolved pending direct transcription from the
-      # branch chat.
-      prompt_management_level: event_level
-      registered_baseline_prompt_text: "Shift only her gaze slightly toward the viewer. Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition."
-      # registered_delta and reference image are unchanged by the wording
-      # change below; only the delivery wording differs between the
-      # timeout attempt and the successful retry.
-      technical_execution_events:
-        - execution_event_number: 1
-          classification: technical_execution_failure_before_candidate_realization
-          candidate_realized: false
-          candidate_counted: false
-          creates_new_attempt: false
-          is_recovery_attempt: false
-          relationship_to_primary_attempt: same_primary_attempt_technical_execution_event
-          exact_delivery_text: null
-          prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-          notes: "Initial execution attempt resulted in a technical timeout before any candidate image was realized. This is the delivery text of the long-form initial input that timed out, not the retry that produced the recorded candidate. This event does not create a new attempt (the realized candidate remains attempt_number: 1) and is not a recovery attempt."
-        - execution_event_number: 2
-          classification: same_primary_attempt_technical_retry
-          candidate_realized: true
-          candidate_counted: true
-          creates_new_attempt: false
-          is_recovery_attempt: false
-          relationship_to_primary_attempt: same_primary_attempt_technical_retry
-          exact_delivery_text: null
-          model_facing_instruction: null
-          prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-          notes: "Successful technical retry of the same primary attempt (attempt_number: 1, unchanged). This is a technical re-execution of the same primary attempt, not a new attempt number. This event has its own exact_delivery_text (the full message sent to the branch chat) and model_facing_instruction (the core image-editing instruction within that message), both unresolved pending direct transcription. The registered permitted delta and the Current Approved Sequence Reference were unchanged between the timeout and this retry; only the delivery wording differed."
-      generated_candidate_id: condition_b_step_01_attempt_01
-      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_01/condition_b_step_01_gaze_to_viewer_primary_01.png
-      asset_registration_status: placed
-      asset_format: png
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: null
-        pose_continuity: null
-        hand_position_continuity: null
-        delta_execution: pass
-        sequence_continuity: warning
-        prohibited_simultaneous_change: null
-        critical_identity_violation: false
-      human_candidate_decision: approve_for_sequence_continuation
-      becomes_next_sequence_reference: true
-      branch_status: active
-      post_reject_action: not_applicable
-      notes: "A technical timeout occurred before candidate realization; this is recorded as a technical execution event, not a recovery attempt or a new primary candidate attempt. The successful retry is the recorded primary attempt (attempt_number: 1). Identity, costume, and background succeeded. The registered gaze delta itself was executed (delta_execution: pass); the WARNING rating applies to sequence_continuity, reflecting that the visual change was somewhat subtle rather than that the delta failed to occur."
-
-    step_02:
-      condition: B
-      step_id: step_02_left_hand
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: condition_b_step_01_attempt_01
-        asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-      generated_candidate_id: condition_b_step_02_attempt_01
-      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_02/condition_b_step_02_raise_hand_primary_01.png
-      asset_registration_status: placed
-      asset_format: png
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: pass
-        pose_continuity: pass
-        hand_position_continuity: pass
-        delta_execution: pass
-        sequence_continuity: pass
-        prohibited_simultaneous_change: null
-        critical_identity_violation: false
-      human_candidate_decision: approve_for_sequence_continuation
-      becomes_next_sequence_reference: true
-      branch_status: active
-      post_reject_action: not_applicable
-      notes: "Hand delta succeeded. Other continuity dimensions also favorable."
-
-    step_03:
-      condition: B
-      step_id: step_03_gaze_to_raised_hand
-      attempt_type: primary
-      attempt_number: 1
-      current_approved_sequence_reference:
-        source: condition_b_step_02_attempt_01
-        asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-      generated_candidate_id: condition_b_step_03_attempt_01
-      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_03/condition_b_step_03_gaze_to_raised_hand_primary_01.png
-      asset_registration_status: placed
-      asset_format: png
-      candidate_realized: true
-      candidate_counted: true
-      results:
-        character_identity: pass
-        costume_continuity: pass
-        background_continuity: pass
-        composition_continuity: pass
-        pose_continuity: pass
-        hand_position_continuity: pass
-        delta_execution: fail
-        sequence_continuity: fail
-        prohibited_simultaneous_change: no_material_change
-        critical_identity_violation: false
-      human_candidate_decision: reject_for_sequence_continuation
-      becomes_next_sequence_reference: false
-      branch_status: stopped
-      post_reject_action: stop_sequence_branch
-      post_reject_action_detail:
-        recovery_attempt_authorized: false
-        recovery_candidates_realized: 0
-      notes: "Identity, costume, background, composition, pose, and hand-position continuity succeeded. The registered Step 3 delta (gaze shift toward the raised hand) was not sufficiently executed. Branch stopped at Step 2 as the highest approved step. This STOP is a branch-level terminal state and does not invalidate the Step 1-2 continuity successes."
-
-# ============================================================
-# OPERATIONAL LIMITATIONS
-# ============================================================
-
-operational_limitations:
-  left_right_interpretation_ambiguity:
-    description: >-
-      The experiment revealed an operational ambiguity in left-right
-      interpretation. References to a character's "left hand" or "right
-      hand" may be interpreted from the character's anatomical
-      perspective, the viewer's screen perspective, or the visible
-      position of the hand within the image. During the experiment,
-      human correction was required when describing which hand had
-      moved.
-    impact: >-
-      This ambiguity did not cause a critical identity failure, but it
-      may affect delta registration, prompt construction, human
-      evaluation, cross-condition comparison, and sequence
-      traceability.
-    recommendation: >-
-      Future model-facing instructions should use visually unambiguous
-      wording where appropriate, for example: "the raised hand"; "the
-      character's left hand, visible on the right side of the image";
-      or "the hand nearest the right edge of the frame." The registered
-      anatomical target must remain fixed in the experiment record. A
-      visually clearer model-facing expression may be used only when it
-      does not alter the registered delta.
-    classification: execution_and_annotation_limitation
-    redefines_theory: false
-
-# ============================================================
-# QUANTITATIVE CALCULATIONS
-# Confirmed calculations based on step_execution_records above.
-# delta-execution is reported as three distinct metrics, not merged
-# into a single rate, per human decision.
-# ============================================================
-
-quantitative_calculations:
-
-  sequence_continuation_approval_rate:
-    numerator: 5
-    denominator: 6
-    value: 0.833
-    definition: "Candidates receiving APPROVE FOR SEQUENCE CONTINUATION / total realized primary candidates"
-
-  delta_execution_breakdown:
-    pass: 4
-    warning: 1
-    fail: 1
-    denominator: 6
-    note: "Condition B Step 1's delta_execution is classified PASS (the registered gaze delta was executed); its WARNING applies to sequence_continuity, not delta_execution. Condition A Step 2's registered hand delta is classified PASS; its WARNING applies to an unregistered minor movement in the non-target hand, not to the registered delta itself. The single WARNING in this delta_execution breakdown is Condition A Step 1."
-
-  strict_delta_execution_success_rate:
-    numerator: 4
-    denominator: 6
-    value: 0.667
-    definition: "PASS only (delta_execution) / total realized primary candidates"
-
-  delta_execution_success_or_warning_rate:
-    numerator: 5
-    denominator: 6
-    value: 0.833
-    definition: "PASS + WARNING (delta_execution) / total realized primary candidates"
-
-  branch_completion_rate:
-    numerator: 1
-    denominator: 2
-    value: 0.5
-    definition: "completed_branches / registered_branches"
-
-  critical_identity_violation_rate:
-    numerator: 0
-    denominator: 6
-    value: 0.0
-    definition: "candidates with critical_identity_violation: true / total realized primary candidates"
-
-  recovery_success_rate:
-    numerator: 0
-    denominator: 0
-    value: "N/A"
-    definition: "realized_recovery_candidates approved for sequence continuation / realized_recovery_candidates"
-    note: "Reported as N/A, not 0%, because realized_recovery_candidates is 0. A 0% value would imply a measured failure; this is an undefined rate due to no applicable cases."
