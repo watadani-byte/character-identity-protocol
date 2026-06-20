@@ -448,8 +448,9 @@ step_execution_records:
       # model_facing_instruction must be transcribed from the Condition A
       # branch chat.
       generated_candidate_id: condition_a_step_01_attempt_01
-      generated_candidate_asset_path: null
-      asset_registration_status: pending_human_file_placement
+      generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_01/condition_a_step_01_gaze_to_viewer_primary_01.png
+      asset_registration_status: placed
+      asset_format: png
       candidate_realized: true
       candidate_counted: true
       results:
