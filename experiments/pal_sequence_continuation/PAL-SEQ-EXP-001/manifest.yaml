@@ -438,9 +438,22 @@ step_execution_records:
       current_approved_sequence_reference:
         source: neutral_phase_1_attempt_01
         asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/neutral_phase_1/attempt_01_shared_base_frame.png
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+      exact_delivery_text: |
+        PAL-SEQ-EXP-001 — Condition A Step 1 Primary Attempt 1
+        Use the single attached image as the immediate visual reference.
+        Copy the character identity from the attached image.
+        Edit the attached image as a new independent execution.
+        Shift only her gaze slightly toward the viewer by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      model_facing_instruction: |
+        Use the single attached image as the immediate visual reference.
+        Copy the character identity from the attached image.
+        Edit the attached image as a new independent execution.
+        Shift only her gaze slightly toward the viewer by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      prompt_resolution_status: resolved_from_branch_chat
       registered_baseline_prompt_text: "Shift only her gaze slightly toward the viewer. Preserve the current head orientation, body orientation, hand positions, expression, costume, background, lighting, and composition."
       # registered_baseline_prompt_text is a registered template/baseline
       # text and must not be treated as a confirmed exact_delivery_text or
@@ -451,6 +464,8 @@ step_execution_records:
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_01/condition_a_step_01_gaze_to_viewer_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1536
       candidate_realized: true
       candidate_counted: true
       results:
@@ -478,14 +493,29 @@ step_execution_records:
       current_approved_sequence_reference:
         source: condition_a_step_01_attempt_01
         asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+      exact_delivery_text: |
+        PAL-SEQ-EXP-001 — Condition A Step 2 Primary Attempt 1
+        The generated result from Condition A Step 1 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Raise only her left hand slightly and naturally by making the minimum necessary change to the left arm and hand area.
+        Preserve the gaze state inherited from Step 1, head orientation, body orientation, right-hand position, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      model_facing_instruction: |
+        The generated result from Condition A Step 1 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Raise only her left hand slightly and naturally by making the minimum necessary change to the left arm and hand area.
+        Preserve the gaze state inherited from Step 1, head orientation, body orientation, right-hand position, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      prompt_resolution_status: resolved_from_branch_chat
       registered_baseline_prompt_text: "Raise only her left hand slightly and naturally. Preserve the inherited gaze, head orientation, body orientation, right-hand position, expression, costume, background, lighting, and composition."
       generated_candidate_id: condition_a_step_02_attempt_01
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_02/condition_a_step_02_raise_hand_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1536
       candidate_realized: true
       candidate_counted: true
       results:
@@ -513,14 +543,32 @@ step_execution_records:
       current_approved_sequence_reference:
         source: condition_a_step_02_attempt_01
         asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+      exact_delivery_text: |
+        PAL-SEQ-EXP-001 — Condition A Step 3 Primary Attempt 1
+        The generated result from Condition A Step 2 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Shift only her gaze softly toward the raised hand by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      model_facing_instruction: |
+        The generated result from Condition A Step 2 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Shift only her gaze softly toward the raised hand by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      prompt_resolution_status: resolved_from_branch_chat
       registered_baseline_prompt_text: "Shift only her gaze softly toward her raised left hand. Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, and composition."
       generated_candidate_id: condition_a_step_03_attempt_01
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_a/step_03/condition_a_step_03_gaze_to_raised_hand_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1535
+      # actual_output_dimensions differs from requested_size for this
+      # candidate. The image was not corrected or re-encoded to match the
+      # requested size; the actual measured dimensions are recorded as-is.
       candidate_realized: true
       candidate_counted: true
       results:
@@ -571,8 +619,39 @@ step_execution_records:
           creates_new_attempt: false
           is_recovery_attempt: false
           relationship_to_primary_attempt: same_primary_attempt_technical_execution_event
-          exact_delivery_text: null
-          prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+          exact_delivery_text: |
+            PAL-SEQ-EXP-001 — Condition B Step 1 primary attemptを実行します。
+            ## Execution Record
+            - Experiment ID: PAL-SEQ-EXP-001
+            - Condition: B — PAL-Supported Delta Continuation
+            - Branch: condition_b
+            - Step ID: step_01_gaze
+            - Attempt type: primary
+            - Attempt number: 1
+            - Output count: 1 image only
+            - Execution mode: reduced_delta_only_execution
+            - Human pre-execution decision: PROCEED
+            - Final Execution Package: established
+            ## Attached Image
+            Use the single attached image:
+            - `neutral_phase_1/attempt_01_shared_base_frame.png`
+            - Role: Current Approved Sequence Reference
+            - Use it as the immediate state from which this registered delta proceeds
+            Do not treat the image as a Validated Identity Anchor.
+            No Primary Identity Anchor, PAL Source Module, rejected candidate, audit record, or Condition A candidate is attached to this generation attempt.
+            ## Model-Facing Instruction
+            Shift only her gaze slightly toward the viewer. Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition.
+            ## Execution Constraints
+            - Generate exactly one image.
+            - Apply only the registered gaze delta.
+            - Do not rewrite, expand, optimize, or reinterpret the model-facing instruction.
+            - Do not introduce a head turn, pose change, hand movement, expression change, costume change, background reconstruction, lighting change, crop change, or composition change.
+            - Do not generate another candidate unless the human operator authorizes a registered recovery attempt.
+            - Do not automatically approve the generated candidate for sequence continuation.
+            Generate the single Condition B Step 1 primary candidate now.
+          model_facing_instruction: |
+            Shift only her gaze slightly toward the viewer. Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition.
+          prompt_resolution_status: resolved_from_branch_chat
           notes: "Initial execution attempt resulted in a technical timeout before any candidate image was realized. This is the delivery text of the long-form initial input that timed out, not the retry that produced the recorded candidate. This event does not create a new attempt (the realized candidate remains attempt_number: 1) and is not a recovery attempt."
         - execution_event_number: 2
           classification: same_primary_attempt_technical_retry
@@ -580,15 +659,31 @@ step_execution_records:
           candidate_counted: true
           creates_new_attempt: false
           is_recovery_attempt: false
+          successful_execution_event: true
           relationship_to_primary_attempt: same_primary_attempt_technical_retry
-          exact_delivery_text: null
-          model_facing_instruction: null
-          prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
-          notes: "Successful technical retry of the same primary attempt (attempt_number: 1, unchanged). This is a technical re-execution of the same primary attempt, not a new attempt number. This event has its own exact_delivery_text (the full message sent to the branch chat) and model_facing_instruction (the core image-editing instruction within that message), both unresolved pending direct transcription. The registered permitted delta and the Current Approved Sequence Reference were unchanged between the timeout and this retry; only the delivery wording differed."
+          exact_delivery_text: |
+            PAL-SEQ-EXP-001 — Condition B Step 1 Primary Attempt 1
+            Use the single attached image as the immediate visual reference.
+            Copy the character identity from the attached image.
+            Edit the attached image as a new independent execution.
+            Shift only her gaze slightly toward the viewer by making the minimum necessary change to the eye area.
+            Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+            Generate exactly one image.
+          model_facing_instruction: |
+            Use the single attached image as the immediate visual reference.
+            Copy the character identity from the attached image.
+            Edit the attached image as a new independent execution.
+            Shift only her gaze slightly toward the viewer by making the minimum necessary change to the eye area.
+            Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+            Generate exactly one image.
+          prompt_resolution_status: resolved_from_branch_chat
+          notes: "Successful technical retry of the same primary attempt (attempt_number: 1, unchanged). This is a technical re-execution of the same primary attempt, not a new attempt number. The registered permitted delta and the Current Approved Sequence Reference were unchanged between the timeout event and this retry; only the delivery wording differed. This event produced condition_b_step_01_attempt_01."
       generated_candidate_id: condition_b_step_01_attempt_01
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_01/condition_b_step_01_gaze_to_viewer_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1536
       candidate_realized: true
       candidate_counted: true
       results:
@@ -616,13 +711,31 @@ step_execution_records:
       current_approved_sequence_reference:
         source: condition_b_step_01_attempt_01
         asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+      exact_delivery_text: |
+        PAL-SEQ-EXP-001 — Condition B Step 2 Primary Attempt 1
+        The generated result from Condition B Step 1 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Raise only her left hand slightly and naturally by making the minimum necessary change to the left arm and hand area.
+        Preserve the gaze state inherited from Step 1, head orientation, body orientation, right-hand position, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      model_facing_instruction: |
+        The generated result from Condition B Step 1 has been approved.
+        Use the previous approved generated result as the current sequence reference.
+        Copy the character identity and current sequence state from the previous approved generated result, and edit that result directly to generate the next step candidate.
+        Raise only her left hand slightly and naturally by making the minimum necessary change to the left arm and hand area.
+        Preserve the gaze state inherited from Step 1, head orientation, body orientation, right-hand position, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      prompt_resolution_status: resolved_from_branch_chat
       generated_candidate_id: condition_b_step_02_attempt_01
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_02/condition_b_step_02_raise_hand_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1535
+      # actual_output_dimensions differs from requested_size for this
+      # candidate. The image was not corrected or re-encoded to match the
+      # requested size; the actual measured dimensions are recorded as-is.
       candidate_realized: true
       candidate_counted: true
       results:
@@ -650,13 +763,31 @@ step_execution_records:
       current_approved_sequence_reference:
         source: condition_b_step_02_attempt_01
         asset_path: null
-      exact_delivery_text: null
-      model_facing_instruction: null
-      prompt_resolution_status: unresolved_pending_direct_transcription_from_branch_chat
+      exact_delivery_text: |
+        PAL-SEQ-EXP-001 — Condition B Step 3 Primary Attempt 1
+        The generated result from Condition B Step 2 has been approved.
+        Use the single attached image as the current approved sequence reference.
+        Copy the character identity and the current sequence state shown in this image, and edit this image directly to generate the next step candidate.
+        Shift only her gaze softly toward the raised hand by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      model_facing_instruction: |
+        The generated result from Condition B Step 2 has been approved.
+        Use the single attached image as the current approved sequence reference.
+        Copy the character identity and the current sequence state shown in this image, and edit this image directly to generate the next step candidate.
+        Shift only her gaze softly toward the raised hand by making the minimum necessary change to the eye area.
+        Preserve the current head orientation, body orientation, both hand positions, expression, costume, background, lighting, framing, and composition. Do not change anything else.
+        Generate exactly one image.
+      prompt_resolution_status: resolved_from_branch_chat
       generated_candidate_id: condition_b_step_03_attempt_01
       generated_candidate_asset_path: experiments/pal_sequence_continuation/PAL-SEQ-EXP-001/condition_b/step_03/condition_b_step_03_gaze_to_raised_hand_primary_01.png
       asset_registration_status: placed
       asset_format: png
+      requested_size: 1024x1536
+      actual_output_dimensions: 1024x1535
+      # actual_output_dimensions differs from requested_size for this
+      # candidate. The image was not corrected or re-encoded to match the
+      # requested size; the actual measured dimensions are recorded as-is.
       candidate_realized: true
       candidate_counted: true
       results:
@@ -761,3 +892,26 @@ quantitative_calculations:
     value: "N/A"
     definition: "realized_recovery_candidates approved for sequence continuation / realized_recovery_candidates"
     note: "Reported as N/A, not 0%, because realized_recovery_candidates is 0. A 0% value would imply a measured failure; this is an undefined rate due to no applicable cases."
+
+# ============================================================
+# IMAGE COMMIT REFERENCES
+# Full 40-character SHA references for the two commits that placed the
+# six candidate images. Abbreviated/short hashes are not used.
+# ============================================================
+
+image_commit_references:
+  commit_1:
+    title: "Add 5 of 6 PAL-SEQ-EXP-001 candidate images"
+    full_sha: "6c80021c8301187d86955ab04ac6b5c00ffac230"
+    contents:
+      - condition_a/step_02/condition_a_step_02_raise_hand_primary_01.png
+      - condition_a/step_03/condition_a_step_03_gaze_to_raised_hand_primary_01.png
+      - condition_b/step_01/condition_b_step_01_gaze_to_viewer_primary_01.png
+      - condition_b/step_02/condition_b_step_02_raise_hand_primary_01.png
+      - condition_b/step_03/condition_b_step_03_gaze_to_raised_hand_primary_01.png
+  commit_2:
+    title: "Complete PAL-SEQ-EXP-001 candidate image set"
+    full_sha: "9ec5e416fb0aed5b21317a5953205bec22227253"
+    contents:
+      - condition_a/step_01/condition_a_step_01_gaze_to_viewer_primary_01.png
+  note: "Both commits also updated manifest.yaml at the time of each commit. The full SHA values above are the authoritative reference for these image placements; do not abbreviate to a short hash when citing them."
