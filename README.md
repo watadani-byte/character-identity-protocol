@@ -222,6 +222,7 @@ PAL (Persistent Anchor Layer) and CIP operate as two distinct but coordinated la
 - [PAL Prompt Layer Initial Smoke Test Protocol](docs/pal_prompt_layer_experiment_protocol.md) — *Draft controlled comparison of Direct PAL and PAL Prompt Layer workflows*
 - [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
 - [PAL Operations Manual](docs/pal_operations_manual_v0.1.md) — *File management, versioning, and continuity operations*
+- [Human-Supervised Orchestrator / Agent Workflow Hypothesis](docs/cip-pal-orchestrator-agent-workflow-hypothesis.md) — *A working hypothesis on observing and governing the accumulation and canonicalization of C in workflows that span multiple AI systems. This is an operational note, not a standardization proposal.*
 
 The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt Audit remain experimental. They do not redefine PAL, C, A′, or CIP, and they do not replace human validation or final adoption authority.
 
@@ -319,6 +320,7 @@ character-identity-protocol/
 │   ├── pal_prompt_and_conformance_layers.md
 │   ├── pal_prompt_layer_experiment_protocol.md
 │   ├── pal_operations_manual_v0.1.md
+│   ├── cip-pal-orchestrator-agent-workflow-hypothesis.md
 │   ├── prl_v0.1_draft.md
 │   │
 │   ├── schemas/
