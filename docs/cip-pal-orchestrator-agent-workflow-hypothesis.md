@@ -95,7 +95,7 @@ This table records plausible or observed risk categories per layer. It does not 
 
 ## Operating Principle
 
-Each AI-to-AI hand-off in the diagram above is treated as a potential C-introduction point. The human checkpoint following each hand-off is the governance response to that point: it is where the workflow operator inspects available evidence about the transformation (the AI's output, and where exposed, its reasoning or intermediate artifacts) before that output is allowed to become the input to the next stage.
+Each AI-to-AI hand-off in the diagram above is treated as a potential C-introduction point. The human checkpoint following each hand-off is the governance response to that point: it is where the workflow operator inspects available evidence about the transformation — including the AI's output and, where exposed, intermediate artifacts such as rewritten prompts, execution traces, tool outputs, or other inspectable records — before that output is allowed to become the input to the next stage.
 
 The human checkpoint is not only a quality gate. It is an adoption-governance gate.
 
