@@ -16,7 +16,7 @@ Workflows that span multiple AI systems — an orchestrator model, one or more s
 A → (A + C) → A′ → B′
 ```
 
-When a workflow chains multiple AI systems, C does not occur once. It can occur at each hand-off between systems, and each subsequent C acts on an already-reconstructed state rather than on the original A. This is the C accumulation pattern already described in the CIP core model: each stage's output becomes the next stage's input, and small transformations that look acceptable at each step may compound.
+When a workflow chains multiple AI systems, C does not occur once. It can occur at each hand-off between systems, and each subsequent C acts on an already-reconstructed state rather than on the original A. This can be understood as a C accumulation pattern under the CIP core model: each stage's output becomes the next stage's input, and small transformations that look acceptable at each step may compound.
 
 B′ — an output candidate that may differ from the expected B — emerges from this chain. B′ is not assumed to be adoptable merely because it was produced by the most recent AI system in the chain.
 
@@ -26,7 +26,7 @@ This document records an operational hypothesis, derived from practice on a sing
 
 ## Hypothesis
 
-A human-supervised Orchestrator / Agent workflow may improve the observability and governance of C-induced transformations compared with fully automated multi-agent chaining, because each AI-generated transformation can be reviewed before it becomes canonical. A human-supervised Orchestrator / Agent workflow may support the preservation of user intent by improving the observability and governance of C-induced transformations before they become canonical.
+A human-supervised Orchestrator / Agent workflow may support the preservation of user intent by improving the observability and governance of C-induced transformations before they become canonical. Compared with fully automated multi-agent chaining, this workflow is hypothesized to make each AI-generated transformation more reviewable before adoption.
 
 This is a comparative hypothesis, not a comparative result. No controlled comparison against a fully automated multi-agent chain has been conducted.
 
@@ -84,7 +84,7 @@ These are human decisions. No AI-generated review result independently produces 
 | ChatGPT Orchestrator | Plans the workflow, sequences sub-tasks, routes work to specialized agents | Premature commitment to a plan; silent scope drift between the stated task and the orchestrated sub-tasks |
 | Codex | Executes code-level or structured tasks between orchestration and specialized AI layers | Introducing implementation choices not specified by the human; silent normalization of ambiguous instructions |
 | ChatGPT / GPT Image 2.0 | Image generation and editing | Aestheticization; identity drift; cultural or stylistic reframing, such as Westernization; reinterpreting expression or composition; adding unrequested direction; auto-optimizing toward a "better image" |
-| Claude / GitHub Copilot | Code review, document drafting, structured analysis | Over-confident normalization of ambiguous source material; silent paraphrase drift in transcription-sensitive tasks |
+| Claude / GitHub Copilot | Documentation support, code assistance, structured review | Over-confident normalization of ambiguous source material; silent paraphrase drift in transcription-sensitive tasks |
 | Gemini / Google tools / Veo 3 | Search, video, multimodal generation | Source conflation; unverified claims presented with high confidence; format-driven content reshaping |
 | Perplexity / Web search | External information retrieval | Citation drift; outdated or superseded information presented as current; source quality variance |
 | ChatGPT Final Review | Pre-adoption synthesis and review | Summary Assimilation — smoothing over unresolved distinctions to produce a more coherent-looking final answer |
@@ -98,6 +98,8 @@ This table records plausible or observed risk categories per layer. It does not 
 Each AI-to-AI hand-off in the diagram above is treated as a potential C-introduction point. The human checkpoint following each hand-off is the governance response to that point: it is where the workflow operator inspects available evidence about the transformation (the AI's output, and where exposed, its reasoning or intermediate artifacts) before that output is allowed to become the input to the next stage.
 
 The human checkpoint is not only a quality gate. It is an adoption-governance gate.
+
+The checkpoint does not assume that C is a failure by itself; it asks whether the C-induced transformation should be accepted, revised, held, or rejected before adoption.
 
 A checkpoint that only asks "is this output good?" addresses quality. A checkpoint that also asks "does this output remain faithful to the original A, or has C silently substituted something else?" addresses adoption governance. Both questions are asked at each checkpoint in this workflow pattern.
 
