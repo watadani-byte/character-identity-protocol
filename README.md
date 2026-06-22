@@ -234,6 +234,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Case: PAL Contamination — Unintended Library Accumulation](docs/case_pal_contamination_01.md)
 - [Case 05: Serendipitous Creation](docs/case_05_serendipitous.md)
 - [Case 06: Cross-Platform Validation (Gemini)](docs/case_06_gemini.md)
+- [Sequence PAL Case Analysis: Hana Wedding Series](docs/sequence_pal_case_hana_wedding.md) — historical case analysis of sequence-continuity drift, human approval checkpoints, and agentic auto-progression risk.
 - [All Cases →](docs/case_01_failure_log.md)
 
 **Columns**
