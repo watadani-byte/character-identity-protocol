@@ -1,5 +1,5 @@
 # Sequence PAL Case Analysis: Hana Wedding Series
-　
+
 **Status:** Case analysis and hypothesis support — not a finalized protocol.
 
 ---
