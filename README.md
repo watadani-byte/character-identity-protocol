@@ -302,6 +302,7 @@ character-identity-protocol/
 │   ├── case_pal_contamination_01.md
 │   ├── case_05_serendipitous.md
 │   ├── case_06_gemini.md
+│   ├── sequence_pal_case_hana_wedding.md
 │   │
 │   ├── case_06/
 │   │   └── images/
