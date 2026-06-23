@@ -12,72 +12,66 @@ theme:
   name: material
 
 nav:
-  - Whitepaper: whitepaper_v1.md
-
   - Start Here:
-      - Home: index.md
-      - Getting Started: getting_started.md
-      - Quickstart: quickstart.md
-
+    - Home: index.md
+    - Getting Started: getting_started.md
+    - Quickstart: quickstart.md
+  - Whitepaper: whitepaper_v1.md
   - Core Concepts:
-      - Core Model - C-mediated Reconstruction: model_a_c_b.md
-      - Technical Mechanism: technical_mechanism.md
-      - Why Your Character Keeps Changing: why_character_changes.md
-      - Observed Drift Phenomena: drift_observations.md
-      - Character Consistency - An Observation: character_consistency_observation.md
-      - Reproducibility Scope: reproducibility_scope.md
-
+    - Core Model - C-mediated Reconstruction: model_a_c_b.md
+    - Technical Mechanism: technical_mechanism.md
+    - Why Your Character Keeps Changing: why_character_changes.md
+    - Observed Drift Phenomena: drift_observations.md
+    - Character Consistency - An Observation: character_consistency_observation.md
+    - Reproducibility Scope: reproducibility_scope.md
   - Protocol / Architecture:
-      - Architecture Diagram: architecture_diagram.md
-      - CIP Specification v0.1: cip_spec_v0.1.md
-      - Quality Gate & Hard Abort: quality_gate_addendum.md
-      - Video Addendum: cip_video_addendum.md
-
+    - Architecture Diagram: architecture_diagram.md
+    - CIP Specification v0.1: cip_spec_v0.1.md
+    - Quality Gate & Hard Abort: quality_gate_addendum.md
+    - Video Addendum: cip_video_addendum.md
   - Analysis / Taxonomy:
-      - Character Drift Taxonomy: character_drift_taxonomy.md
-      - Generative Character Drift - Technical Overview: column_character_drift_technical.md
-      - Applications: applications.md
-      - Legal Governance: legal_governance.md
-      - CIP vs Existing Methods: cip_vs_existing_methods.md
-
+    - Character Drift Taxonomy: character_drift_taxonomy.md
+    - Generative Character Drift - Technical Overview: column_character_drift_technical.md
+    - Applications: applications.md
+    - Legal Governance: legal_governance.md
+    - CIP vs Existing Methods: cip_vs_existing_methods.md
   - Cases:
-      - Case 01A - Baseline Failure: case_01_failure_log.md
-      - Case 01B - Mira Project: case_01b_mira_project.md
-      - Case 02 - Wedding Series: case_02_wedding_series.md
-      - Case 03 - Avedon Project: case_03_avedon_project.md
-      - Case 04 - Cross-Platform Migration: case_04_shizuka.md
-      - Case 05 - Serendipitous Creation: case_05_serendipitous.md
-      - Case 06 - Gemini Validation: case_06_gemini.md
-
+    - Case 01A - Baseline Failure: case_01_failure_log.md
+    - Case 01B - Mira Project: case_01b_mira_project.md
+    - Case 02 - Wedding Series: case_02_wedding_series.md
+    - Case 03 - Avedon Project: case_03_avedon_project.md
+    - Case 04 - Cross-Platform Migration: case_04_shizuka.md
+    - Case 05 - Serendipitous Creation: case_05_serendipitous.md
+    - Case 06 - Gemini Validation: case_06_gemini.md
+    - Sequence PAL Case Analysis - Hana Wedding Series: sequence_pal_case_hana_wedding.md
   - Practical Guides:
-      - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
-      - Decision Pack: decision_pack.md
-      - A Simple Structure for Writing Prompts: column_prompt_structure.md
-      - Writing Prompts for Image Generation: column_image_prompt_structure.md
-      - Re-Convergence - Identity Recovery: reconvergence.md
-      - Protocol Template: protocol_template.md
-
+    - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
+    - A Simple Structure for Writing Prompts: column_prompt_structure.md
+    - Writing Prompts for Image Generation: column_image_prompt_structure.md
+    - Decision Pack: decision_pack.md
+    - Re-Convergence - Identity Recovery: reconvergence.md
+    - Protocol Template: protocol_template.md
   - Columns:
-      - Before Consistent Characters: column_before_consistent_characters.md
-      - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
-      - Character Identity Drift: column_identity_drift.md
-      - Identity Drift in Generative Image Models: column_identity_drift_practical.md
-      - Miracle Image: column_miracle_image.md
-      - Production Notes: column_production.md
-      - Persistent Anchor Layer (PAL): column_pal.md
-      - PAL Hypothesis Technical: pal_hypothesis.md
-      - Translation Loss and the YAML-First Principle: column_translation_loss.md
-      - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
-      - Is Prompt Engineering Over: prompt-engineering-as-intent-preservation.md
-
+    - Before Consistent Characters: column_before_consistent_characters.md
+    - How Generative AI Actually Behaves: column_how_generative_ai_behaves.md
+    - Character Identity Drift: column_identity_drift.md
+    - Identity Drift in Generative Image Models: column_identity_drift_practical.md
+    - Miracle Image: column_miracle_image.md
+    - Production Notes: column_production.md
+    - Translation Loss and the YAML-First Principle: column_translation_loss.md
+    - Is Prompt Engineering Over: prompt-engineering-as-intent-preservation.md
+    - Persistent Anchor Layer (PAL): column_pal.md
+    - PAL Hypothesis Technical: pal_hypothesis.md
+    - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
   - Experimental Hypotheses:
-      - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
-      - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md
-
+    - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
+    - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md
+    - Multi-Agent Verification and Intent Adherence: multi_agent_verification_and_intent_adherence.md
+    - Human-Checkpointed Multi-Model Workflow: human_checkpointed_multi_model_workflow.md
   - Reference:
-      - Glossary: glossary.md
-      - CIP Terminology Mapping: cip_terminology_mapping.md
-      - White Paper Appendices: whitepaper_appendices.md
+    - Glossary: glossary.md
+    - CIP Terminology Mapping: cip_terminology_mapping.md
+    - White Paper Appendices: whitepaper_appendices.md
 
 plugins:
   - search
