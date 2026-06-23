@@ -233,6 +233,7 @@ This note relates to the following existing CIP/PAL documentation:
   experimental translation layer
 - **`docs/prompt-engineering-as-intent-preservation.md`** — Anchor-Based Prompt
   Audit as a method for assessing prompt-level A-adherence
+- **`docs/human_checkpointed_multi_model_workflow.md`** — describes a human-checkpointed workflow for exposing intermediate A′ candidates and distributed C patterns as reviewable artifacts before final adoption.
 
 Relevant existing CIP/PAL concepts that apply in multi-agent contexts:
 
