@@ -60,6 +60,7 @@ nav:
     - Production Notes: column_production.md
     - Translation Loss and the YAML-First Principle: column_translation_loss.md
     - Is Prompt Engineering Over: prompt-engineering-as-intent-preservation.md
+    - Creative Prompting and Intent Preservation: column_creative_prompting_and_intent_preservation.md
     - Persistent Anchor Layer (PAL): column_pal.md
     - PAL Hypothesis Technical: pal_hypothesis.md
     - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
