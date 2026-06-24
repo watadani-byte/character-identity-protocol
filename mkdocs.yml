@@ -69,6 +69,7 @@ nav:
     - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md
     - Multi-Agent Verification and Intent Adherence: multi_agent_verification_and_intent_adherence.md
     - Human-Checkpointed Multi-Model Workflow: human_checkpointed_multi_model_workflow.md
+    - Multi-AI Mediation and Cumulative A-Drift: multi_ai_mediation_and_cumulative_a_drift.md
   - Reference:
     - Glossary: glossary.md
     - CIP Terminology Mapping: cip_terminology_mapping.md
