@@ -48,6 +48,7 @@ nav:
     - Practical Prompting for Chat AI: practical_prompting_chat_ai.md
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
+    - Prompt Compression After Human-Approved Convergence: prompt_compression_after_human_approved_convergence.md
     - Decision Pack: decision_pack.md
     - Re-Convergence - Identity Recovery: reconvergence.md
     - Protocol Template: protocol_template.md
