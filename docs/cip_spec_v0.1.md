@@ -119,7 +119,7 @@ Drift_n = Σ D_total(i)
 *This appendix is non-normative. It provides a theoretical interpretation of C and drift.*
 
 ```
-C = mediation that transforms A into A′
+C = model-side or execution-structure mediation that transforms A into A′
 Anchor = validated identity reference
 Identity = continuity validated under gate criteria
 Drift = failure to preserve A's intended identity

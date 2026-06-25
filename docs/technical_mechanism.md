@@ -110,7 +110,6 @@ CIP treats generation as a probabilistic transformation:
 
 ```
 A → (A + C) → A′ → B′ ≠ B
-A → A′ → B′
 A′ ≈ T_C(A)
 ```
 
@@ -475,7 +474,7 @@ The following figures are based on internal production workflow observations and
 
 |Metric                  |Without Protocol   |With Protocol       |
 |------------------------|-------------------|--------------------|
-|Identity preservation   |Higher failure rate|Reduced failure rate|
+|Identity validation failure rate|Higher failure rate|Reduced failure rate|
 |Wasted generations      |Higher             |Reduced             |
 |Predictability          |Uncontrolled drift |Managed convergence |
 |Cross-platform migration|Trial and error    |Systematic protocol |
@@ -522,7 +521,7 @@ They now function as two distinct but coordinated layers.
 - auditability
 
 Neither layer alone constitutes identity governance.
-PAL supports continuity. CIP governs adoption and failure handling.
+PAL supports continuity. CIP supports governance of validation, rejection, purge, re-binding, re-convergence, and adoption.
 
 -----
 

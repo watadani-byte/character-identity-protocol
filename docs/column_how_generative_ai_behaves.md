@@ -18,40 +18,44 @@ Understanding the following characteristics helps avoid common misunderstandings
 
 AI systems do not process input in a simple input → output manner.
 
-Instead, the model first interprets and compresses the input internally.
-Generation is then performed based on this reconstructed representation.
+Instead, the model mediates the input through interpretation, compression, optimization, and other model-side or execution-structure processes.
+Generation is then performed based on the resulting task understanding or execution form.
 
 Conceptually, the process can be described as:
 
 ```
 User Input (A)
         ↓
-Interpretation & Compression
+C-mediated transformation
+(model-side or execution-structure mediation)
         ↓
-Internal Representation (A′)
+Task Understanding / Execution Form (A′)
         ↓
 Probabilistic Sampling
         ↓
 Generated Output (B′)
 ```
 
-This means the AI is not responding to the exact prompt you wrote, but to an internally reconstructed version of it.
+This means the AI is not responding to the exact prompt you wrote, but to a C-mediated task understanding or execution form.
 
 Because of this process:
 
 - the prompt may be interpreted differently than expected
 - some details may be weakened or lost
-- the final output depends on how the model internally represents the prompt
+- the final output depends on how C mediates the prompt
 
 This conceptual model can be summarized as:
 
-> A → A′ → B′
+> A → (A + C) → A′ → B′
 
 Where:
 
 - A = the user input
-- A′ = the internally interpreted representation
+- C = model-side or execution-structure mediation that transforms A into A′
+- A′ = the task understanding or execution form produced after C-mediated transformation
 - B′ = the generated output
+
+Here, `(A + C)` means C-mediated transformation, not simple arithmetic addition.
 
 -----
 
@@ -85,25 +89,25 @@ This characteristic is fundamental to how modern generative models operate.
 
 -----
 
-## 3. AI compresses meaning when interpreting prompts
+## 3. AI mediates meaning when processing prompts
 
-Long prompts are not processed word-for-word.
+Long prompts are not always processed word-for-word.
 
-Instead, the model compresses the prompt into a semantic representation before generation.
+Instead, the model may mediate the prompt through semantic compression and other forms of C-mediated transformation before generation.
 
 Conceptually:
 
 ```
 Long Prompt
         ↓
-Semantic Compression
+C-mediated transformation
         ↓
-Internal Meaning Representation
+Task Understanding / Execution Form
         ↓
 Generated Output
 ```
 
-Because of this compression process:
+Because of this mediation process:
 
 - some instructions may be ignored
 - certain details may disappear
@@ -265,17 +269,15 @@ Different AI systems may therefore behave differently even when given similar pr
 
 Generative AI systems should not be thought of as deterministic tools that simply execute instructions.
 
-Instead, they behave more like probabilistic pattern generators that internally reinterpret prompts before producing outputs.
+Instead, they behave more like probabilistic pattern generators that transform prompts through C-mediated transformation before producing outputs.
 
 Conceptually:
 
 ```
-A (user input)
-→ A′ (internal interpretation)
-→ B′ (generated output)
+A → (A + C) → A′ → B′
 ```
 
-Because generation relies on probabilistic sampling and internal reinterpretation:
+Because generation relies on probabilistic sampling and C-mediated transformation:
 
 - identical inputs may not produce identical outputs
 - results may vary between generations

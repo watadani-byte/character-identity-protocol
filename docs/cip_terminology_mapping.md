@@ -20,7 +20,7 @@ Different communities working with generative AI use different terminology for s
 
 ## Key Clarification
 
-> **CIP does not modify the model. CIP governs the generation process.**
+> **CIP does not modify the model. CIP supports governance of the workflow conditions around generation, including validation, rejection, purge, re-binding, re-convergence, and adoption.**
 
 CIP is an operational governance protocol. It does not fine-tune model weights, modify training data, or alter internal model architecture. Instead, it defines a structured workflow — anchor management, identity validation gates, and hard-abort recovery cycles — that governs the conditions under which generation is allowed to continue.
 
