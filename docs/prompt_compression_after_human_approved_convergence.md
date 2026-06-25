@@ -252,3 +252,9 @@ human-approved convergence state already exists.
 
 *This document is an operational observation and image-generation workflow note.
 It is not a finalized protocol, benchmark, or standard.*
+> Compress only after converging.
+
+---
+
+*This document is an operational observation and image-generation workflow note.
+It is not a finalized protocol, benchmark, or standard.*
