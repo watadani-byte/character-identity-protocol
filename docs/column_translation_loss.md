@@ -78,7 +78,7 @@ When generation quality degrades, return to the YAML source —
 not to the English prompt.
 
 The English prompt is a lossy representation of the YAML.
-The YAML is the character.
+The YAML is the reviewable source state for the character definition.
 
 -----
 
@@ -122,7 +122,7 @@ structure encodes:
 Natural language editing — even well-intentioned editing — tends
 to erode this encoded structure over time.
 
-YAML as SSOT preserves the author’s original intent against the
+YAML as SSOT helps preserve the author’s original intent against the
 drift introduced by repeated translation and editing cycles.
 
 > The goal is not to produce the best English prompt.
@@ -137,13 +137,13 @@ This principle operates at the input layer of the CIP governance loop.
 
 |CIP Layer               |YAML-First Role                                                     |
 |------------------------|--------------------------------------------------------------------|
-|Minimal Prompt Principle|YAML → English projection preserves minimalism                      |
+|Minimal Prompt Principle|YAML provides the source state for controlled minimal projection|
 |Anchor Mechanism        |YAML SSOT functions as a textual anchor parallel to the image anchor|
 |Identity Gates          |Structured definition makes gate criteria explicit and auditable    |
 |Hard Abort              |Return to YAML source on quality degradation                        |
 
-The YAML definition and the anchor image together constitute
-the full identity specification:
+The YAML definition and the anchor image together provide
+the primary reviewable identity specification for the workflow:
 
 ```
 Identity Specification
@@ -152,7 +152,7 @@ Identity Specification
 ```
 
 Neither alone is sufficient.
-Together they define the character completely.
+They do not guarantee model compliance or identity preservation.
 
 -----
 
@@ -182,6 +182,37 @@ These are different objectives.
 
 -----
 
+## Relation to the Minimal Prompt Principle
+
+The YAML-First Principle is closely related to the Minimal Prompt Principle.
+
+A minimal prompt should not be understood as merely a short prompt. It is a
+controlled projection from a structured source state. Without the YAML source,
+minimality can become accidental compression rather than controlled projection.
+
+In this sense, YAML-first provides the source state from which minimum, long,
+optimized, and ultra-compressed prompts may be derived while keeping the
+human-approved structure reviewable.
+
+> Minimality without source-of-truth becomes accidental compression.
+
+-----
+
+## Related Practical Pattern
+
+This column explains why a YAML-first approach is useful: natural-language
+prompts are lossy projections of a structured source state.
+
+For a practical YAML-based workflow that formalizes this idea, see:
+
+- [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md)
+- [YAML Prompt Source-of-Truth Manual](yaml_prompt_source_of_truth_manual.md)
+
+The practical pattern treats the YAML master as a human-approved / reviewable
+source state and natural-language prompts as derived artifacts.
+
+-----
+
 ## Status
 
 This column documents an operational pattern observed across
@@ -193,4 +224,4 @@ These observations are recorded for further investigation.
 -----
 
 *First documented: March 2026*  
-*Related: [Minimal Prompt Principle](whitepaper_v1.md) — [Glossary](glossary.md) — [White Paper](whitepaper_v1.md)*
+*Related: [Minimal Prompt Principle](whitepaper_v1.md) — [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) — [YAML Prompt Source-of-Truth Manual](yaml_prompt_source_of_truth_manual.md) — [Glossary](glossary.md) — [White Paper](whitepaper_v1.md)*
