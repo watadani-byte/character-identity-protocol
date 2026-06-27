@@ -10,12 +10,12 @@ This pattern does not guarantee model compliance, identity preservation, or outp
 
 ## Background
 
-In prompt-based image-generation workflows, a human may approve an intended input state `A`, but the generative system may internally reconstruct or mediate that input into `A′`, producing an output `B′` that differs from the intended result `B`.
+In prompt-based image-generation workflows, a human may approve an intended input state `A`, but the generative system may mediate or reconstruct that input into `A′`, producing an output `B′` that differs from the intended result `B`.
 
-Within the CIP/PAL framing, this can be represented as:
+Within the CIP/PAL framing, the risk condition addressed by this pattern can be represented as:
 
 ```text
-A → (A + C) → A′ → B′
+A → (A + C) → A′ → B′ ≠ B
 ```
 
 Where:
@@ -24,6 +24,9 @@ Where:
 - `C` is model-side or execution-structure mediation that transforms `A` into `A′`.
 - `A′` is the task understanding or execution form after C-mediated transformation.
 - `B′` is the produced output.
+- `B` is the intended or human-expected result.
+
+This expression describes the risk condition addressed by CIP/PAL. It does not claim that every output necessarily diverges from `B`. Rather, it keeps the intended risk structure visible: `C` may mediate `A` into `A′`, and the produced `B′` may differ from the intended or human-expected `B`.
 
 The purpose of this pattern is not to eliminate `C`, nor to claim direct control over `A′`. The purpose is to make the human-approved source state more explicit, reviewable, and resistant to unintended optimization loss.
 
@@ -327,4 +330,4 @@ Its main contribution is the separation of:
 - long prompt and compressed prompt,
 - content drift and template drift.
 
-This makes prompt intent easier to review, preserve, reject, restore, and re-converge under human control.
+This makes prompt intent easier to review, preserve as a source state, reject, restore, and re-converge under human control.
