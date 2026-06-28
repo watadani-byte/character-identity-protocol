@@ -1,0 +1,297 @@
+experiment:
+  id: YAML-FPL-EXP-001
+  title: YAML-First Prompt Lifecycle Experiment
+  status: completed
+  generation_allowed: false
+
+protocol:
+  base: Minimal Protocol Draft v0.1
+  patch: Protocol Revision Patch v0.2
+  risk_condition_expression: "A → (A + C) → A′ → B′ ≠ B"
+  c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
+  note: >
+    The risk-condition expression does not claim that every output necessarily diverges
+    from B. It keeps the observation structure visible. C, A′, and B′ ≠ B must not be
+    dropped from any record, evaluation, or problem statement.
+
+manifest_role:
+  description: >
+    This file is experiment metadata. It is not the YAML master / YAML Prompt.
+    It manages artifact slots, approval states, C and drift tracking references,
+    and step status. It does not contain YAML master body content inline.
+  yaml_master_note: >
+    The YAML master is a separate source-of-truth artifact. It must not be confused
+    with this manifest. When the YAML master is created, it is referenced here as
+    an artifact slot only.
+
+convergence_state:
+  identity_convergence_achieved: true
+  approved_generation_exists: true
+  stable_across_steps: [6B, 9]
+  scene_inheritance_adopted: false
+  overall_result: successful_identity_convergence_with_anchor_mediated_scene_carryover
+
+source_a:
+  type: minimum_definition
+  status: approved
+  language: Japanese
+  content_summary: >
+    2D anime-style illustration of a Japanese woman in her mid-twenties.
+    Includes: translation request, illustration generation request,
+    and estimated execution prompt return request.
+    Full source text is preserved in README.md and result.md.
+  identity_critical_items:
+    - Japanese woman in her mid-twenties
+    - 2D anime-style illustration
+    - Brown wavy semi-long hair
+    - High ponytail
+    - Fine delicate side locks
+    - Layered bangs
+    - Softly shining brown eyes
+    - Thin metal-frame glasses
+    - Soft facial lines
+    - Slender adult body
+    - Relatively small head compared with height
+    - Neck not too long
+    - Long arms and legs
+    - Torso not too long
+    - Modest bust
+    - Slightly fuller thighs
+    - Well-proportioned but not childlike
+    - Not Westernized into a fashion-model face
+    - Not converted into generic anime girl
+
+artifacts:
+  yaml_master:
+    type: yaml_source_of_truth
+    status: approved
+    path: null
+    approval_status: approved_as_source_of_truth
+    note: >
+      Do not treat manifest.yaml as YAML master. The YAML master is a separate artifact
+      created at Step 2, reviewed at Step 3, and approved as source-of-truth.
+      It includes the required sections: ImmutableCore, ControlledVariables,
+      SceneVariables, ReferencePolicy, Execution, ConvergenceState, PromptStrategy,
+      DriftHandling, AuditChecklist, OutputSlots.
+
+  minimal_prompt:
+    type: derived_a_prime_artifact
+    status: approved_with_warning
+    path: null
+    approval_status: reviewed_a_prime_artifact_only
+    note: >
+      Created at Step 4. Requires human judgment (APPROVE / APPROVE WITH WARNING /
+      REVISE / REJECT / STOP) before any further use. The derived minimal prompt is
+      itself an A′ artifact.
+
+  long_prompt:
+    type: derived_a_prime_artifact
+    status: approved_with_warning
+    path: null
+    approval_status: approved_for_generation_after_step5
+    note: >
+      Created at Step 5. Requires human approval before first generation is triggered.
+      Human judgment required: APPROVE / APPROVE WITH WARNING / REVISE / REJECT / STOP.
+
+  estimated_execution_prompt_artifact:
+    type: post_generation_observation_artifact
+    status: not_obtained
+    path: null
+    note: >
+      freegpt.im did not expose the execution prompt in Step 6B or Step 9.
+      C_posthoc judgment was not assessable in this experiment run.
+      This remains a known limitation of the auxiliary freegpt.im route.
+
+  optimized_prompt:
+    type: derived_a_prime_artifact
+    status: approved_with_warning
+    path: null
+    approval_status: narrow_correction_only_not_first_generation
+    note: >
+      Must not be used for first generation. Created at Step 8 only after B′ has been
+      reviewed and drift points identified. Correction must be aimed at returning to A,
+      not simply improving image quality.
+
+  ultra_compressed_prompt:
+    type: recall_artifact
+    status: approved_with_warning
+    path: null
+    approval_status: identity_recall_only_requires_anchor_and_convergence_state
+    note: >
+      Must not be used for first generation, identity recovery, new character creation,
+      unapproved scene change, or as YAML master replacement. Available only after
+      human-approved convergence exists and compression safety review passes.
+
+compression_safety_review:
+  fail_conditions:
+    - Removes identity-critical details from ImmutableCore
+    - Weakens the distinction between copy_identity and reference_identity
+    - Implies compressed prompt can replace YAML master
+    - Implies compressed prompt can initialize a new identity
+    - Removes convergence-state dependency
+    - Hides known warnings from previous APPROVE WITH WARNING steps
+    - Converts specific protected attributes into generic style language
+    - Omits glasses, eye color, hair structure, age impression, body balance, or Japanese facial impression
+    - Introduces new unapproved aesthetic direction
+    - Makes C / A′ / B′ ≠ B unobservable in the record
+
+c_type_tracking_candidates:
+  - C_translation
+  - C_prompt_expansion
+  - C_compression
+  - C_optimization
+  - C_posthoc
+  - C_interpretive
+  - C_generalization
+  - C_neutralization
+  - C_orchestration
+
+drift_type_tracking_candidates:
+  - Translation Loss
+  - Structural Omission
+  - Post-hoc Alignment to B′
+  - Creative Overreach
+  - Compression Loss
+  - Optimization Drift / Optimization Falloff
+  - Constraint-induced C Amplification
+  - Template Drift
+  - Identity Drift
+  - Scene Drift
+
+AuditChecklist:
+  step_0:
+    judgment: APPROVE
+  step_1:
+    judgment: APPROVE
+  step_2:
+    judgment: APPROVE
+    note: initial REVISE, revised record approved
+  step_3:
+    judgment: APPROVE
+  step_4:
+    judgment: APPROVE WITH WARNING
+  step_5:
+    judgment: APPROVE WITH WARNING
+  step_6a:
+    judgment: "optional / pending — not executed"
+  step_6b:
+    judgment: APPROVE WITH WARNING
+    condition: "auxiliary — freegpt.im direct submission"
+  step_7:
+    judgment: APPROVE WITH WARNING
+  step_8:
+    judgment: APPROVE WITH WARNING
+  step_9:
+    judgment: APPROVE WITH WARNING
+  pre_step_10:
+    judgment: APPROVE
+  step_10:
+    judgment: APPROVE WITH WARNING
+  step_11:
+    judgment: APPROVE
+
+steps:
+  step_0:
+    name: Protocol Approval
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+
+  step_1:
+    name: Minimum Definition Audit
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+
+  step_2:
+    name: YAML Master Draft
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+    note: initial REVISE, revised record approved
+
+  step_3:
+    name: YAML Master Review
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+
+  step_4:
+    name: Minimal Prompt Derivation
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  step_5:
+    name: Long Prompt Derivation
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  step_6a:
+    name: First Generation / ChatGPT-mediated
+    generation_allowed: false
+    status: optional_pending
+    judgment: not_executed
+
+  step_6b:
+    name: Direct GPT Image 2 UI First Generation
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+    condition: "auxiliary — freegpt.im direct submission"
+
+  step_7:
+    name: A / A′ Artifact / B′ Comparison
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  step_8:
+    name: Optimized Prompt Candidate
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  step_9:
+    name: Second Generation
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  pre_step_10:
+    name: Compression Candidate Readiness Check
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+
+  step_10:
+    name: Compression Candidate
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE WITH WARNING
+
+  step_11:
+    name: Compression Safety Review
+    generation_allowed: false
+    status: completed
+    judgment: APPROVE
+
+current_step:
+  step: 11
+  name: Compression Safety Review
+  status: completed
+  generation_allowed: false
+
+stop_procedure:
+  trigger: STOP judgment at any step
+  actions:
+    - Record the reason for STOP using the standard record format
+    - Preserve all artifacts generated up to that point
+    - Do not discard Source A, YAML master, A′ artifacts, Estimated Execution Prompt Artifacts, B′ outputs, reviews, or recovery notes
+    - No further generation or prompt derivation may occur after STOP
+    - Human must explicitly choose one of the following restart options
+  restart_options:
+    - Protocol revision and restart from Step 0
+    - Selective restart from the last approved step
+    - Experiment termination with full record preservation
