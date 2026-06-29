@@ -326,9 +326,20 @@ Minimal prompts reduce pressure on Layers A and B, allowing the anchor to domina
 
 ## Minimal Prompt
 
-A prompt containing only factual, identity-defining attributes — no adjectives, no mood descriptors, no compositional instructions.
+A minimal natural-language prompt derived from human-approved Minimum Requirements
+or a YAML source state, used for character exploration and reconstruction behavior
+observation.
+It usually contains only the minimum identity-relevant attributes needed for the
+test, but minimality is defined by controlled projection from source state, not
+by shortness alone.
 
-Purpose: to reduce optimization pressure from the model’s training priors, preserving the convergence state established by the anchor.
+**Design Rationale:** The Minimal Prompt emerged from the observation that long, elaborate prompts activate more C-mediated transformation, increasing the risk that A is reconstructed into an unintended A′. Reducing prompt surface area reduces optimization pressure from the model’s training priors. A minimal prompt is not merely a short prompt; it is a controlled projection from a structured source state.
+
+**Identity Lifecycle phase:** Character exploration. Used to observe how much identity can be recovered from minimal input, and to identify which attributes are load-bearing for reconstruction. Not for production identity establishment when identity continuity matters.
+
+**What it does not replace:** The Minimal Prompt is not a substitute for the Long Prompt in identity-establishment workflows. It is not sufficient for first-generation use when identity continuity matters.
+
+**Prerequisites:** Human-approved Minimum Requirements. Preferably a YAML source state. Convergence is not required.
 
 Example:
 
@@ -341,6 +352,132 @@ Not:
 ```
 beautiful, elegant, mysterious Japanese woman with flowing black hair...
 ```
+
+*See also: [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+
+-----
+
+## Minimum Requirements
+
+The human-approved minimal source input that defines the intended character, scene, or output.
+
+**Design Rationale:** Before any prompt is written, a human must define what is required. Minimum Requirements is not a prompt; it is the source of authority from which all prompts are derived. It emerged from the need to distinguish the human-approved intent `A` from the model-mediated reconstructions `A′` that follow.
+
+**Identity Lifecycle phase:** Pre-prompt. The starting point of the entire prompt lifecycle.
+
+**What it does not replace:** Nothing. It is itself the source state, not a replacement for any derived artifact.
+
+**Prerequisites:** None. This is the first artifact in the lifecycle.
+
+*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+
+-----
+
+## YAML Prompt
+
+A structured, human-reviewable YAML file that serves as the source-of-truth for character identity, scene variables, prompt strategy, and workflow governance.
+
+**Design Rationale:** The YAML Prompt emerged from the observation that natural-language prompts are lossy projections of human intent. When a character definition is converted into English prose, useful redundancy is removed, prohibitions are weakened, and priority relationships are collapsed. The YAML Prompt preserves the structured source state from which all natural-language prompts are derived.
+
+**Identity Lifecycle phase:** Source state management. The YAML Prompt is the master specification; all other prompt forms are derived artifacts.
+
+**What it does not replace:** The YAML Prompt is not a generation prompt by default. It is not a replacement for the Long Prompt, Minimal Prompt, or any other derived form. Natural-language prompts are projections of the YAML, not equivalents.
+
+**Prerequisites:** Human-approved Minimum Requirements.
+
+*See also: [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) — [Translation Loss and the YAML-First Principle](column_translation_loss.md)*
+
+-----
+
+## Long Prompt
+
+A full natural-language prompt used for initial identity establishment or re-convergence after drift.
+
+**Design Rationale:** The Long Prompt emerged from the need to make A dense and explicit before the model forms A′. Without a sufficiently detailed initial prompt, C-mediated transformation may fill missing information with distributional defaults, producing a B′ that diverges from the intended B. The Long Prompt reduces missing information that C might otherwise fill in freely.
+
+**Identity Lifecycle phase:** Identity establishment. Used for first generation and for re-convergence when drift has occurred.
+
+**What it does not replace:** The Long Prompt is not a substitute for the YAML master. It is a derived artifact — a controlled projection of the YAML source state into natural language. It does not eliminate C.
+
+**Prerequisites:** Human-approved YAML master or equivalent source state.
+
+*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+
+-----
+
+## Optimization Prompt
+
+A shorter prompt created after observing the first generation result, used to correct specific observed drift while preserving the human-approved source state.
+
+**Design Rationale:** The Optimization Prompt emerged from the need to correct drift in B′ without replacing or weakening the source state A. It is not a general quality improvement prompt. It targets only the specific deviations observed between A and B′, aiming to return the next generation toward the intended A.
+
+**Identity Lifecycle phase:** Convergence adjustment. Used after first generation review, not before.
+
+**What it does not replace:** The Optimization Prompt must not be used for first generation. It must not replace the Long Prompt or the YAML master. Correction must be aimed at returning to A, not simply improving image quality.
+
+**Prerequisites:** Observed B′ and specific drift points must exist. The human-approved source state remains authoritative. Not for first-generation identity establishment.
+
+*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md)*
+
+-----
+
+## Ultra-Compressed Prompt
+
+A lightweight recall prompt used only after human-approved convergence exists, for returning toward an established identity state.
+
+**Design Rationale:** The Ultra-Compressed Prompt emerged from the practical need to recall an established identity without repeating the full Long Prompt. It works because the convergence state, anchor image, and rejected-drift history already exist. Without those preconditions, it is insufficient for identity establishment.
+
+**Identity Lifecycle phase:** Identity recall after stabilization. Used only after convergence has been achieved and human-approved.
+
+**What it does not replace:** The Ultra-Compressed Prompt must not be used for first generation, identity recovery, new character creation, or unapproved scene change. It must not replace the YAML master or the Long Prompt. Compressed prompts are not initialization substitutes.
+
+**Prerequisites:** Human-approved convergence state. Anchor image. Established convergence history. Compression safety review passed.
+
+*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+
+-----
+
+## Transition Prompt
+
+A prompt used to move from one approved scene or sequence state to the next, while preserving the established identity.
+
+**Design Rationale:** The Transition Prompt emerged from sequence-generation workflows where a character must move through a series of scenes without losing identity continuity. It differs from the Long Prompt in that it assumes convergence already exists and focuses on scene or state change rather than identity establishment.
+
+**Identity Lifecycle phase:** Sequence continuation. Used after convergence is established and a new scene or state change is required.
+
+**What it does not replace:** The Transition Prompt must not be used before convergence exists. It does not replace the Long Prompt for initial identity establishment. It does not replace the YAML master.
+
+**Prerequisites:** Established and human-approved convergence state. Approved anchor image. Defined target scene or sequence state.
+
+*See also: [Sequence PAL Case Analysis: Hana Wedding Series](sequence_pal_case_hana_wedding.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+
+-----
+
+## Identity Establishment
+
+The workflow phase in which an initial human-approved convergence state is created for a character through prompt-guided generation, anchor formation, and identity gate validation.
+
+**Design Rationale:** Identity Establishment is distinguished from Identity Recall because the two phases have different preconditions and prompt requirements. Before convergence exists, the workflow requires a Long Prompt and human approval at each generation step. After convergence, lighter recall mechanisms may be used.
+
+**Identity Lifecycle phase:** Foundational. Must precede Identity Recall and Transition prompts.
+
+**What it is not:** Identity Establishment is not a single generation event. It is a governed process that ends only when a human-approved anchor and convergence state have been validated through identity gates.
+
+*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md) — [Quality Gate & Hard Abort](quality_gate_addendum.md)*
+
+-----
+
+## Identity Recall
+
+The workflow phase in which a previously established identity state is re-invoked using a lightweight prompt and an approved anchor, without repeating the full identity establishment process.
+
+**Design Rationale:** Identity Recall emerged from the observation that once a convergence state exists, re-establishing the full identity from scratch is unnecessary and risks introducing new drift. Recall assumes that the anchor, convergence state, and approved constraints are already available.
+
+**Identity Lifecycle phase:** Post-convergence. Requires an established and human-approved convergence state as a precondition.
+
+**What it is not:** Identity Recall is not identity recovery. If the convergence state has been lost or contaminated, recovery requires re-establishment, not recall. The Ultra-Compressed Prompt used for Identity Recall must not be used as an initialization substitute.
+
+*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md) — [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md)*
 
 -----
 

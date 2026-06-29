@@ -49,6 +49,7 @@ nav:
     - A Simple Structure for Writing Prompts: column_prompt_structure.md
     - Writing Prompts for Image Generation: column_image_prompt_structure.md
     - Prompt Compression After Human-Approved Convergence: prompt_compression_after_human_approved_convergence.md
+    - Prompt Lifecycle Design Rationale: prompt_lifecycle_design_rationale.md
     - YAML Prompt Source-of-Truth Pattern: yaml_prompt_source_of_truth_pattern.md
     - YAML Prompt Source-of-Truth Manual: yaml_prompt_source_of_truth_manual.md
     - Decision Pack: decision_pack.md
