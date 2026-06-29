@@ -337,7 +337,9 @@ by shortness alone.
 
 **Identity Lifecycle phase:** Character exploration. Used to observe how much identity can be recovered from minimal input, and to identify which attributes are load-bearing for reconstruction. Not for production identity establishment when identity continuity matters.
 
-**What it does not replace:** The Minimal Prompt is not a substitute for the Long Prompt in identity-establishment workflows. It is not sufficient for first-generation use when identity continuity matters.
+**What it does not replace:** The Minimal Prompt is not a substitute for the Long Prompt in identity-establishment workflows. It is not sufficient for first-generation use when identity continuity matters. It is not appropriate as the sole prompt for identity fixation, series generation, or continuous small-change generation. In these cases, the Long Prompt, anchor image, and human approval checkpoint are required.
+
+**Drift risk in short-prompt workflows:** Using minimal prompts or short tag lists without sufficient anchoring and constraints for identity fixation purposes may increase drift risk. The model may fill in unspecified attributes through C-mediated reconstruction, producing outputs that appear plausible but diverge from the intended identity. This applies across generative AI platforms, including tag-list-oriented workflows. It is not a claim that such workflows are inherently unstable; it is an observation that minimality without source-of-truth and human approval checkpoints may allow C to reconstruct unspecified attributes in unintended directions when identity continuity across multiple generations is required.
 
 **Prerequisites:** Human-approved Minimum Requirements. Preferably a YAML source state. Convergence is not required.
 
