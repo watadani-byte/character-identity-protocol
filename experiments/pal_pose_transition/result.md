@@ -37,6 +37,10 @@ Pose Check:
 Drift Check:
 Human Judgment:
   APPROVE / APPROVE WITH WARNING / REJECT / STOP / RESET
+Next Approved State:
+  yes / no
+Carry Forward To Next Step:
+  yes / no
 Recovery Action:
   none / optimize / purge / reset_to_last_approved_state /
   re-bind_to_anchor / re-converge

@@ -54,6 +54,17 @@ This is not a new character creation experiment.
 This is not a Prompt Lifecycle document experiment.
 This is not an SD comparison experiment.
 
+## Dependency
+
+This experiment depends on an already approved anchor / converged identity state.
+
+Primary reference:
+
+- YAML-FPL-EXP-001 — approved YAML master and identity convergence state
+- Prior approved anchor image / approved identity image selected by the human operator
+
+This experiment does not re-test the full YAML prompt lifecycle.
+
 ## Source State
 
 Use an approved anchor / converged identity state.

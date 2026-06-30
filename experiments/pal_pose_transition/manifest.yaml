@@ -35,6 +35,12 @@ source_state:
   not_identity_recall_unless: >
     The experiment is specifically testing recall degradation.
 
+scene_state:
+  approved_scene_state: not_established
+  anchor_scene_carryover_allowed_as_reference: true
+  anchor_scene_carryover_adopted_as_source_state: false
+  unapproved_scene_or_mood_adoption: reject_or_warning
+
 pose_set:
   baseline_pose:
     name: Front-facing neutral standing pose
