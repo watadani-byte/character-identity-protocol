@@ -1,7 +1,7 @@
 experiment:
   id: PAL-POSE-EXP-001
   title: Identity Copy Across Full-Body Pose Changes
-  status: draft_preparation
+  status: completed
   type: PAL-supported pose transition experiment
 
 classification:
@@ -184,7 +184,8 @@ non_claims:
 
 expected_output:
   result_file: result.md
-  classification_pending: true
+  classification_pending: false
+  result_classification: successful_identity_copy_baseline_with_stepwise_pose_transition_warnings
   one_sentence_summary: >
     PAL-POSE-EXP-001 tests whether an approved identity can be copied from an
     anchor and preserved across controlled full-body pose changes such as
