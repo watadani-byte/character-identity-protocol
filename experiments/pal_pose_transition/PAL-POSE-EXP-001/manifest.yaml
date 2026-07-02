@@ -1,0 +1,192 @@
+experiment:
+  id: PAL-POSE-EXP-001
+  title: Identity Copy Across Full-Body Pose Changes
+  status: completed
+  type: PAL-supported pose transition experiment
+
+classification:
+  category: identity_copy_pose_transition
+  experimental_scope: controlled_full_body_pose_changes
+  lifecycle_phase: post_convergence_identity_copy
+  prompt_lifecycle_experiment: false
+  minimal_prompt_exploration: false
+  sd_comparison: false
+  new_character_creation: false
+
+fixed_model:
+  c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
+  canonical_model: "A → (A + C) → A′ → B′"
+  risk_condition_model: "A → (A + C) → A′ → B′ ≠ B"
+  cip_control_claim: "CIP/PAL does not directly control C, A′, or the generative model."
+  cip_governance_scope:
+    - validation
+    - rejection
+    - purge
+    - re-binding
+    - re-convergence
+    - adoption
+
+source_state:
+  required_state: approved_anchor_or_converged_identity_state
+  operating_term: Identity Copy
+  identity_copy_definition: >
+    Copy the approved identity from the anchor, approved image, or converged state,
+    rather than relying on a compressed prompt alone to recall the identity.
+  not_identity_recall_unless: >
+    The experiment is specifically testing recall degradation.
+
+scene_state:
+  approved_scene_state: not_established
+  anchor_scene_carryover_allowed_as_reference: true
+  anchor_scene_carryover_adopted_as_source_state: false
+  unapproved_scene_or_mood_adoption: reject_or_warning
+
+pose_set:
+  baseline_pose:
+    name: Front-facing neutral standing pose
+    description:
+      - Front-facing neutral standing pose.
+      - Weight evenly distributed.
+      - Legs straight.
+      - Arms relaxed at sides.
+      - Upper body facing camera.
+      - Head upright.
+      - Neutral or restrained soft expression.
+    purpose: Establish the baseline full-body identity copy state.
+
+  pose_1:
+    name: One Hand in Pocket
+    description:
+      - Standing pose.
+      - Weight on one leg.
+      - One hand in pocket.
+      - Other arm relaxed.
+      - Torso slightly angled.
+      - Head facing camera.
+      - Relaxed but restrained expression.
+    purpose: >
+      Test whether identity, hair, face, body proportion, outfit, and atmosphere
+      remain stable when the pose introduces arm, shoulder, torso, and weight-shift changes.
+
+  pose_2:
+    name: Legs Crossed at Ankles
+    description:
+      - Standing pose.
+      - Legs lightly crossed at ankles.
+      - Weight on back leg.
+      - Arms relaxed.
+      - Upper body upright.
+      - Head slightly tilted.
+      - Soft restrained expression.
+    purpose: >
+      Test whether identity remains stable when the lower-body pose and weight
+      distribution change while the upper body is mostly preserved.
+
+  optional_challenge_pose:
+    name: Hand on Hip / Contrapposto
+    enabled_by_default: false
+    use_condition: "Use only if Baseline, Pose 1, and Pose 2 are stable."
+    description:
+      - Contrapposto standing pose.
+      - One hand on hip.
+      - Legs apart.
+      - Torso slightly angled.
+      - Expression restrained.
+    risk_note: >
+      Higher risk because it may affect body proportion, mood, confidence level,
+      torso curve, and expression intensity.
+
+step_flow:
+  - step: 0
+    name: Source / Anchor Confirmation
+    requires_human_review: true
+  - step: 1
+    name: Identity Copy Baseline
+    requires_human_review: true
+  - step: 2
+    name: "Pose 1: One Hand in Pocket"
+    requires_human_review: true
+  - step: 3
+    name: "Pose 2: Legs Crossed at Ankles"
+    requires_human_review: true
+  - step: 4
+    name: "Optional Challenge Pose: Hand on Hip / Contrapposto"
+    optional: true
+    requires_human_review: true
+  - step: final
+    name: Final Evaluation
+    requires_human_review: true
+
+human_checkpoint_decisions:
+  - APPROVE
+  - APPROVE WITH WARNING
+  - REJECT
+  - STOP / RESET
+
+review_criteria:
+  identity:
+    - Face identity preserved?
+    - Age impression preserved?
+    - Hair shape and flow preserved?
+    - Eye shape and expression preserved?
+    - Body proportion preserved?
+    - Outfit preserved?
+  pose:
+    - Approved pose change applied?
+    - Pose is anatomically plausible?
+    - Hands and fingers acceptable?
+    - Legs and weight distribution match the requested pose?
+    - Torso and shoulders changed only as needed for the pose?
+  drift:
+    - Unapproved facial reconstruction?
+    - Unapproved body proportion change?
+    - Unapproved hairstyle change?
+    - Unapproved expression escalation?
+    - Unapproved outfit change?
+    - Unapproved background or lighting drift?
+    - Scene or mood adoption beyond the approved pose?
+  next_step_usability:
+    - Can this output become the approved state for the next step?
+    - If not, reject or optimize before continuing.
+
+optimization_prompt_policy:
+  initial_generation_method: forbidden
+  allowed_after: Human Review identifies a specific deviation from Source A or the approved anchor state.
+  allowed_examples:
+    - face became slightly different
+    - hair flow changed
+    - body proportion drifted
+    - expression became too strong
+    - outfit changed
+    - pose was correct but identity weakened
+    - lighting or background drifted without approval
+  constraint: >
+    Optimization Prompt should restore only the deviation.
+    It should not add beauty, drama, mood, or scene adoption.
+
+purge_rule:
+  rejected_generations_must_not_become_next_state: true
+  sequence:
+    - REJECT
+    - PURGE
+    - RESET TO LAST APPROVED STATE
+    - RE-BIND TO ANCHOR
+    - RE-CONVERGE IF NEEDED
+
+non_claims:
+  - It does not create a new character.
+  - It does not test Minimal Prompt as an identity anchor.
+  - It does not repeat eye-direction / hand-movement / gaze-shift sequence testing.
+  - It does not add new glossary terms.
+  - It does not compare SD-style workflows.
+  - It does not treat pose prompts as standalone identity anchors.
+  - It does not treat Optimization Prompt as a universal replacement for Long Prompt or Identity Copy.
+
+expected_output:
+  result_file: result.md
+  classification_pending: false
+  result_classification: successful_identity_copy_baseline_with_stepwise_pose_transition_warnings
+  one_sentence_summary: >
+    PAL-POSE-EXP-001 tests whether an approved identity can be copied from an
+    anchor and preserved across controlled full-body pose changes such as
+    neutral standing, one hand in pocket, and legs crossed at ankles.
