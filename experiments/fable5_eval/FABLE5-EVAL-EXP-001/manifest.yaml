@@ -1,0 +1,203 @@
+experiment:
+  id: FABLE5-EVAL-EXP-001
+  title: Fable 5 Short-Term CIP/PAL Document Evaluation
+  status: completed
+  type: PAL-supported auxiliary-model evaluation
+
+classification:
+  category: short_term_model_screening
+  target_model: Fable 5
+  general_model_benchmark: false
+  image_generation_experiment: false
+  cip_pal_document_management_evaluation: true
+  terminology_audit_evaluation: true
+  multi_ai_workflow_evaluation: true
+  prompt_lifecycle_experiment: false
+  final_classification_pending: false
+  result_classification: fable5_approved_with_warning_as_auxiliary_cip_pal_review_model
+  allowed_final_classifications:
+    - recommended_for_document_management
+    - usable_with_strong_human_review
+    - useful_for_long_context_summarization_only
+    - not_recommended_for_cip_pal_documents
+    - inconclusive_due_to_time_limit
+    - fable5_approved_with_warning_as_auxiliary_cip_pal_review_model
+
+fixed_model:
+  c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
+  canonical_model: "A → (A + C) → A′ → B′"
+  risk_condition_model: "A → (A + C) → A′ → B′ ≠ B"
+  cip_control_claim: "CIP/PAL does not directly control C, A′, or the generative model."
+  required_term_for_pal_workflows: PAL-supported
+  avoided_term_for_pal_workflows: PAL-governed
+  cip_governance_scope:
+    - validation
+    - rejection
+    - purge
+    - re-binding
+    - re-convergence
+    - adoption
+  final_authority: human_approval
+
+purpose:
+  summary: >
+    Evaluate whether Fable 5 can assist with CIP/PAL experiment document
+    management, terminology audit, cautious result interpretation, and
+    ChatGPT-main pseudo multi-AI workflow support under human review.
+  not_general_performance_benchmark: true
+  not_primary_generation_model_evaluation: true
+  time_limited_screening: true
+
+initial_input_set:
+  primary_experiment: PAL-POSE-EXP-001
+  files:
+    - input_reference/PAL-POSE-EXP-001/README.md
+    - input_reference/PAL-POSE-EXP-001/manifest.yaml
+    - input_reference/PAL-POSE-EXP-001/result.md
+  handling_notes:
+    - README.md is a draft-preparation design document.
+    - manifest.yaml records completed status and metadata.
+    - result.md is the completed result record.
+    - Fable 5 must not confuse draft preparation status with completed result status.
+
+subtests:
+  test_1:
+    id: fable5_test1_experiment_record_review
+    title: Experiment Record Review
+    primary_input: PAL-POSE-EXP-001
+    prompt_file: prompts/fable5_test1_experiment_record_review.md
+    required_outputs:
+      - experiment_summary
+      - result_classification_review
+      - success_warning_limitation_nonclaim_separation
+      - changelog_note
+      - next_review_points
+    key_risk_checks:
+      - overstates_success
+      - confuses_identity_copy_with_identity_recall
+      - ignores_stepwise_approved_state_carry_forward
+      - ignores_warnings_or_limitations
+      - rewrites_cip_pal_fixed_model
+
+  test_2:
+    id: fable5_test2_terminology_audit
+    title: Terminology Audit
+    prompt_file: prompts/fable5_test2_terminology_audit.md
+    required_outputs:
+      - detected_terminology_issues
+      - minimal_correction_suggestions
+      - no_theory_rewrite_confirmation
+    key_risk_checks:
+      - redefines_c
+      - replaces_canonical_model
+      - uses_pal_governed
+      - implies_cip_controls_c_or_a_prime
+      - performs_theoretical_rewrite_instead_of_minimal_correction
+
+  test_3:
+    id: fable5_test3_multi_ai_workflow_review
+    title: ChatGPT-Main Pseudo Multi-AI Workflow Review
+    prompt_file: prompts/fable5_test3_multi_ai_workflow_review.md
+    required_outputs:
+      - workflow_map
+      - c_occurrence_points
+      - distributed_c_risk_points
+      - a_prime_drift_points
+      - human_checkpoint_recommendations
+      - recommended_fable5_role
+    key_risk_checks:
+      - fails_to_understand_distributed_c
+      - confuses_a_adherence_with_b_prime_quality
+      - removes_human_final_approval
+      - overpromotes_fable5_to_final_authority
+
+comparison:
+  optional: true
+  comparison_models:
+    - Sonnet 5
+    - current Claude
+    - ChatGPT
+    - Codex
+  primary_comparison_target: Sonnet 5
+  same_prompt_required: true
+  comparison_prompt_file: prompts/sonnet5_comparison_prompt.md
+  note: >
+    Document management is expected to be handled by Sonnet 5 if it proves more
+    suitable. Fable 5 is evaluated as a short-term auxiliary candidate, not as
+    the default document manager.
+
+scoring:
+  scale:
+    0: unusable_or_severe_failure
+    1: partially_useful_but_risky
+    2: usable_with_mandatory_human_review
+    3: high_quality_candidate_under_human_review
+  rubric_file: scoring_rubric.md
+  categories:
+    - terminology_fidelity
+    - c_definition_preservation
+    - overstatement_avoidance
+    - warning_limitation_handling
+    - markdown_yaml_stability
+    - minimal_correction_ability
+    - long_context_organization
+    - multi_ai_workflow_understanding
+    - human_checkpoint_handling
+    - github_document_management_fit
+
+human_checkpoint_decisions:
+  - APPROVE
+  - APPROVE WITH WARNING
+  - REVISE
+  - REJECT
+  - STOP / RESET
+
+non_claims:
+  - This is not a general Fable 5 benchmark.
+  - This does not evaluate Fable 5 as the primary image generation model.
+  - This does not modify CIP/PAL core definitions.
+  - This does not replace human approval.
+  - This does not assume Fable 5 will replace Sonnet 5 for document management.
+
+result:
+  status: completed
+  result_classification: fable5_approved_with_warning_as_auxiliary_cip_pal_review_model
+  final_human_judgment: APPROVE WITH WARNING
+  adoption_recommendation: adopt_with_warning
+  completed_tests:
+    - test_1_experiment_record_review: APPROVE WITH WARNING
+    - test_2_terminology_audit: APPROVE WITH WARNING
+    - test_3_pseudo_multi_ai_workflow_review: APPROVE WITH WARNING
+    - sonnet5_comparison: APPROVE WITH WARNING
+  sonnet5_comparison_caveat: same-task comparison with possible prior-context contamination
+  recommended_roles:
+    - auxiliary reviewer
+    - terminology auditor
+    - warning detector
+    - pre-synthesis drift checker
+    - long-form organizer
+  not_recommended_roles:
+    - final authority
+    - autonomous repository editor
+    - sole terminology authority
+    - majority-vote gate
+    - replacement for human approval
+    - replacement for ChatGPT main synthesis
+    - replacement for Sonnet 5 document management
+  warnings:
+    - Human review required before any output is adopted.
+    - Possible over-editing beyond minimal-correction scope.
+    - Possible prior-context contamination in Sonnet 5 comparison.
+  limitations:
+    - Short-term screening only; not a general benchmark.
+    - Does not replace human approval as final authority.
+    - Does not establish Fable 5 as primary document manager.
+
+expected_output:
+  result_file: result.md
+  classification_pending: false
+  result_classification: fable5_approved_with_warning_as_auxiliary_cip_pal_review_model
+  one_sentence_summary: >
+    FABLE5-EVAL-EXP-001 screens Fable 5 as a possible auxiliary model for
+    CIP/PAL document organization, terminology audit, cautious result handling,
+    and ChatGPT-main pseudo multi-AI workflow support under human approval.
