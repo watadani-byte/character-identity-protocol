@@ -1,0 +1,3179 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for inference-time validation, adoption, rejection, purge, and re-convergence in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/pal_prompt_and_conformance_layers/">
+      
+      
+        <link rel="prev" href="../column_reconstruction_durability/">
+      
+      
+        <link rel="next" href="../pal_prompt_layer_experiment_protocol/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>PAL Prompt & Conformance Layers (Hypothesis) - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hypothesis-pal-prompt-layer-and-pal-conformance-assessment-layer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PAL Prompt & Conformance Layers (Hypothesis)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model - C-mediated Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency - An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift - Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A - Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B - Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 - Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 - Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 - Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 - Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 - Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequence_pal_case_hana_wedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequence PAL Case Analysis - Hana Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_compression_after_human_approved_convergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Compression After Human-Approved Convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_lifecycle_design_rationale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Lifecycle Design Rationale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence - Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-engineering-as-intent-preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Is Prompt Engineering Over
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_creative_prompting_and_intent_preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creative Prompting and Intent Preservation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis Technical
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Hypotheses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Hypotheses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt & Conformance Layers (Hypothesis)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt & Conformance Layers (Hypothesis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-source-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Source Modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-prompt-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Prompt Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-establishment-and-sequence-continuation-as-distinct-execution-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Establishment and Sequence Continuation as Distinct Execution Tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-primary-drift-locations-examined-by-this-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two Primary Drift Locations Examined by This Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-execution-conformance-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Execution Conformance Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-candidate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generated Candidate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-conformance-assessment-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Conformance Assessment Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cip-governed-validation-recovery-and-adoption-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIP-Governed Validation, Recovery, and Adoption Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Distinctions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testable-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testable Claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status and Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_prompt_layer_experiment_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt Layer Experiment Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_agent_verification_and_intent_adherence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Verification and Intent Adherence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../human_checkpointed_multi_model_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Checkpointed Multi-Model Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_ai_mediation_and_cumulative_a_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-AI Mediation and Cumulative A-Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening Definition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope Note
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proposed-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-source-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Source Modules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-prompt-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Prompt Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#identity-establishment-and-sequence-continuation-as-distinct-execution-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Establishment and Sequence Continuation as Distinct Execution Tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-primary-drift-locations-examined-by-this-hypothesis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two Primary Drift Locations Examined by This Hypothesis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-execution-conformance-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-Execution Conformance Check
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-candidate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generated Candidate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pal-conformance-assessment-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PAL Conformance Assessment Layer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-to-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to C
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cip-governed-validation-recovery-and-adoption-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIP-Governed Validation, Recovery, and Adoption Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Distinctions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testable-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testable Claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Final Claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-and-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status and Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hypothesis-pal-prompt-layer-and-pal-conformance-assessment-layer">Hypothesis: PAL Prompt Layer and PAL Conformance Assessment Layer</h1>
+<p><em>An Experimental Translation and Diagnostic Structure for PAL-Supported Image Generation</em></p>
+<blockquote>
+<p>Status: Promising experimental hypothesis — accepted for documentation and validation testing, but not yet adopted as a finalized PAL specification.</p>
+</blockquote>
+<hr />
+<h2 id="opening-definition">Opening Definition</h2>
+<p>The PAL Intent-to-Execution and Conformance Architecture is a proposed operational structure for translating approved PAL source definitions into inspectable model-facing execution conditions, generating candidate outputs, and diagnosing their conformance against those approved definitions. Rejection, recovery, and adoption remain within the CIP-governed process, with final adoption authority retained by the human operator.</p>
+<hr />
+<h2 id="scope-note">Scope Note</h2>
+<p>This document proposes an experimental extension to PAL-supported workflows. It is not a normative PAL specification, and it does not redefine C, A, A′, B′, CIP, or PAL.</p>
+<p>Fixed terminology preserved in this document:</p>
+<ul>
+<li>C is model-side or execution-structure mediation that transforms A into A′.</li>
+<li>The current fixed reconstruction model is:</li>
+</ul>
+<pre><code>A → (A + C) → A′ → B′
+</code></pre>
+<ul>
+<li>When describing mismatch or drift:</li>
+</ul>
+<pre><code>A → (A + C) → A′ → B′ ≠ B
+</code></pre>
+<p>Definitions and boundaries:</p>
+<ul>
+<li>C is not only error, noise, or creative contribution.</li>
+<li>The PAL Prompt Layer is not equivalent to C as a whole.</li>
+<li>The PAL Prompt Layer may participate in execution-structure mediation and may therefore become part of C.</li>
+<li>CIP does not directly control C or A′.</li>
+<li>CIP governs validation, rejection, purge, re-binding, re-convergence, and adoption.</li>
+<li>PAL supports continuity, persistence, and anchor availability.</li>
+<li>The human operator retains final adoption authority.</li>
+<li>Conformance outputs are diagnostic evidence only.</li>
+<li>PAL does not directly govern adoption.</li>
+</ul>
+<p>This document does not describe PAL as directly governing adoption. It does not describe a conformance output as replacing human validation. It does not describe the PAL Prompt Layer as controlling or eliminating C.</p>
+<hr />
+<h2 id="core-hypothesis">Core Hypothesis</h2>
+<p>PAL source definitions may be correct — accurately describing the approved character, costume, background, and sequence conditions — while still producing unstable outputs when the pre-existing path from those definitions to a model-facing prompt is not explicitly structured into the PAL Prompt Layer blocks.</p>
+<p>In other words: PAL may correctly define A, but the path from A to a task-specific model-facing prompt is itself a transformation step. If that step is undocumented or insufficiently inspectable, it may introduce drift before generation begins.</p>
+<p>This document proposes that PAL-supported workflows may benefit from an explicit translation layer — the <strong>PAL Prompt Layer</strong> — positioned between PAL source modules and the generative model, and an explicit diagnostic layer — the <strong>PAL Conformance Assessment Layer</strong> — positioned between the generated candidate and the CIP-governed adoption process.</p>
+<hr />
+<h2 id="proposed-structure">Proposed Structure</h2>
+<pre><code>PAL Source Modules
+  ├─ Character PAL
+  ├─ Costume PAL
+  ├─ Background PAL
+  └─ Sequence PAL
+          ↓
+PAL Prompt Layer
+  ├─ Identity Block
+  ├─ Scene Variable Block
+  └─ Anti-drift Block
+          ↓
+Initial Execution Package
+          ↓
+Pre-Execution Conformance Check
+          ↓
+Human-Governed Review Decision
+  ├─ PROCEED → Final Execution Package
+  ├─ REVISE  → Revision → Second Human-Governed Review
+  │                         ├─ PROCEED → Final Execution Package
+  │                         ├─ REVISE  → Further action under the pre-registered review policy
+  │                         └─ STOP    → No Generation; Record Outcome
+  └─ STOP    → No Generation; Record Outcome
+
+Only the PROCEED branches continue below:
+Final Execution Package
+          ↓
+Generation
+          ↓
+Generated Candidate
+          ↓
+PAL Conformance Assessment Layer
+          ↓
+CIP-Governed Validation, Recovery, and Adoption Process
+          └─ Human Operator Retains Final Adoption Authority
+</code></pre>
+<p>Only an execution unit receiving a human-recorded PROCEED decision advances to the Final Execution Package and generation. REVISE and STOP do not independently advance to generation.</p>
+<p>The Initial Execution Package and Final Execution Package are review states of the same task-specific artifact compiled through the PAL Prompt Layer. They are not separate globally defined concepts or additional architectural layers. The Initial Execution Package is preserved before review. When no revision is required, the initial and final states are identical. The Final Execution Package is the reviewed package authorized by the human operator for generation after a PROCEED decision. Neither state is identical to A′.</p>
+<hr />
+<h2 id="pal-source-modules">PAL Source Modules</h2>
+<p>PAL Source Modules are the approved source-level definitions for identity, continuity, permitted variation, and drift boundaries. They function as the operator-approved authoritative reference for the current workflow — the current approved source of truth for continuity evaluation.</p>
+<p>Do not treat an unvalidated or merely earlier definition as authoritative. Only definitions that have passed the applicable human validation and approval process and have been accepted into the PAL library constitute approved PAL source definitions. For character-anchor materials, this may include the applicable CIP identity gates.</p>
+<hr />
+<h2 id="pal-prompt-layer">PAL Prompt Layer</h2>
+<p>The PAL Prompt Layer reorganizes approved PAL source definitions into a task-specific model-facing representation. It may select, omit, prioritize, restructure, optimize, compress, or resolve conflicts among source conditions. It is not a neutral transport mechanism.</p>
+<p>The PAL Prompt Layer must remain:</p>
+<ul>
+<li>inspectable</li>
+<li>traceable to its approved source modules</li>
+<li>distinguishable from the approved PAL source definitions</li>
+</ul>
+<p>The three execution-facing blocks are:</p>
+<ul>
+<li><strong>Identity Block</strong> — approved elements that must remain stable across the generation.</li>
+<li><strong>Scene Variable Block</strong> — elements permitted or required to change in the current scene.</li>
+<li><strong>Anti-drift Block</strong> — predicted unintended changes, drift directions, and protected boundaries.</li>
+</ul>
+<p>The PAL Prompt Layer may participate in an explicit, designed, and partially observable form of execution-structure mediation by externalizing and structuring part of a transformation path that might otherwise remain implicit. The PAL Prompt Layer does not control or eliminate C. Further mediation may still occur after the Execution Package is produced — including model interpretation, reference-image interpretation, implicit completion, instruction reweighting, safety mediation, product-side transformation, tool constraints, sampling, and probabilistic variation.</p>
+<hr />
+<h2 id="execution-package">Execution Package</h2>
+<p>The Execution Package is the task-specific model-facing execution artifact produced through the PAL Prompt Layer. It is:</p>
+<ul>
+<li>derived from approved PAL source definitions</li>
+<li>not identical to the source modules</li>
+<li>not identical to A′</li>
+<li>not automatically authoritative</li>
+<li>inspectable and traceable where possible</li>
+</ul>
+<p>Within a specific generation event, the Execution Package is the model-facing realization of the approved source conditions and generation request. It does not replace the broader approved intent represented by A, and it is not identical to A′.</p>
+<p>For the purpose of operational mapping in this architecture:</p>
+<ul>
+<li><strong>A</strong> is represented by the approved intent as instantiated through the applicable PAL conditions and the current generation request.</li>
+<li><strong>The Execution Package</strong> represents the task-specific model-facing realization derived from those conditions.</li>
+<li><strong>A′</strong> remains the reconstructed task state produced through C-mediated transformation.</li>
+</ul>
+<p>This mapping does not redefine A, the Execution Package, or A′ as globally equivalent concepts.</p>
+<p>The Execution Package may expose evidence of pre-generation transformation. This may help diagnose aspects of the path from A toward A′, but the Execution Package is not itself A′.</p>
+<hr />
+<h2 id="identity-establishment-and-sequence-continuation-as-distinct-execution-tasks">Identity Establishment and Sequence Continuation as Distinct Execution Tasks</h2>
+<p>Identity establishment and sequence continuation are distinct execution tasks. A Primary Identity Anchor establishes who the subject is; a Current Approved Sequence Reference establishes the state from which the next permitted change proceeds.</p>
+<p>The PAL Prompt Layer does not require every approved condition to be fully re-disclosed during every generation step. In sequence continuation, the Current Approved Sequence Reference may carry much of the existing state, while the model-facing execution representation specifies only the permitted delta and the minimum conditions judged necessary to address observed or anticipated drift.</p>
+<p>More complete condition disclosure should not be assumed to produce better continuity. In some sequence workflows, full re-disclosure may increase reconstruction pressure and cause the model to rebuild the scene rather than preserve the current approved state. This is recorded as an experimentally testable operational hypothesis and a design consideration, not as a definitive causal claim.</p>
+<p>The PAL Prompt Layer may be used for:</p>
+<ul>
+<li>base-state establishment</li>
+<li>audit and pre-generation review</li>
+<li>delta derivation</li>
+<li>selective re-injection of drifted conditions</li>
+</ul>
+<p>Reduced delta-only execution is also an inspectable and traceable task-specific execution representation. When used, it must be recorded as such. It is not defined as a new Layer.</p>
+<p>The following distinctions must be preserved:</p>
+<pre><code class="language-text">Primary Identity Anchor
+≠ Current Approved Sequence Reference
+≠ Validated Identity Anchor
+</code></pre>
+<p>Using a human-approved generated candidate as the Current Approved Sequence Reference does not automatically promote that candidate to a Validated Identity Anchor or incorporate it permanently into the approved source identity.</p>
+<p>This operational design consideration is not a redefinition of C. C remains model-side or execution-structure mediation that transforms A into A′. The question of which conditions to include in the model-facing representation is an execution-structure design decision within the existing architecture, not a change to C, CIP, or PAL.</p>
+<hr />
+<h2 id="two-primary-drift-locations-examined-by-this-hypothesis">Two Primary Drift Locations Examined by This Hypothesis</h2>
+<p>For the purpose of this hypothesis, two primary transformation boundaries are examined:</p>
+<pre><code>PAL Source Modules → Execution Package
+= execution-translation drift
+
+Execution Package → Generated Candidate
+= generative reconstruction drift
+</code></pre>
+<p>These are not asserted to be the only possible failure locations in the wider PAL/CIP workflow. They are the two transformation boundaries directly examined by the proposed experiment.</p>
+<p>Other failure locations may include:</p>
+<ul>
+<li>source-definition or source-approval failure</li>
+<li>intermediate Prompt Layer transformation failure</li>
+<li>undisclosed product-side processing</li>
+<li>conformance-assessment error</li>
+<li>human governance or adoption error</li>
+</ul>
+<p>The final output alone cannot always establish which location caused a failure.</p>
+<hr />
+<h2 id="pre-execution-conformance-check">Pre-Execution Conformance Check</h2>
+<p>Before generation, the Initial Execution Package is checked against the PAL source modules to assess whether execution-translation drift has already been introduced.</p>
+<p><strong>Primary question:</strong></p>
+<blockquote>
+<p>Does the model-facing Execution Package still preserve the approved PAL source definitions?</p>
+</blockquote>
+<p>This check produces diagnostic evidence only. It does not possess autonomous authority to approve or block generation.</p>
+<p>Based on the diagnostic findings, the human operator records one of the following decisions within the CIP-governed workflow:</p>
+<ul>
+<li><strong>PROCEED</strong> — authorizes submission of the reviewed Execution Package for generation. PROCEED does not certify that A has been preserved, and it does not guarantee conformance in the generated candidate.</li>
+<li><strong>REVISE</strong> — requires revision of the Execution Package and another human-governed review before generation.</li>
+<li><strong>STOP</strong> — prevents generation from that Execution Package. The outcome is recorded and remains in the record. A later PROCEED on a revised package does not erase an earlier STOP.</li>
+</ul>
+<p>The key distinction is:</p>
+<ul>
+<li><strong>Assessment</strong> = diagnostic evidence produced by the Pre-Execution Conformance Check</li>
+<li><strong>PROCEED / REVISE / STOP</strong> = decisions made by the human operator within the CIP-governed workflow</li>
+</ul>
+<p>Both the initially compiled package and any revised package must be retained, and all revisions must be logged.</p>
+<p>If the diagnostic check identifies a critical omission, unsupported transformation, protected-condition override, or other material execution-translation risk, the human operator must select REVISE or STOP rather than PROCEED.</p>
+<hr />
+<h2 id="generated-candidate">Generated Candidate</h2>
+<p>The generated candidate is provisional and is not automatically an approved result. It may include:</p>
+<ul>
+<li>valid creative contribution</li>
+<li>acceptable variation</li>
+<li>partial conformance</li>
+<li>unintended drift</li>
+<li>critical identity failure</li>
+<li>unauthorized transformation</li>
+</ul>
+<p>Not every C-mediated change is an error. The generated candidate must be evaluated rather than adopted automatically.</p>
+<hr />
+<h2 id="pal-conformance-assessment-layer">PAL Conformance Assessment Layer</h2>
+<p>After generation, the candidate is assessed separately against the source PAL modules.</p>
+<p>A single undifferentiated similarity score is not used. Instead, separate diagnostic dimensions are retained:</p>
+<ul>
+<li>Character conformance</li>
+<li>Costume conformance</li>
+<li>Background conformance</li>
+<li>Sequence continuity</li>
+<li>Anti-drift compliance</li>
+<li>Critical identity violations</li>
+</ul>
+<p><strong>A high aggregate score must not compensate for a critical failure in a protected identity dimension.</strong></p>
+<p>Conformance outputs produced by the PAL Conformance Assessment Layer:</p>
+<ul>
+<li>are diagnostic evidence only</li>
+<li>do not redefine the approved PAL source</li>
+<li>do not approve or reject candidates autonomously</li>
+<li>do not update the authoritative identity</li>
+<li>do not convert statistical similarity into governance authority</li>
+<li>do not replace human judgment</li>
+<li>do not replace the CIP-governed adoption process</li>
+</ul>
+<hr />
+<h2 id="relationship-to-c">Relationship to C</h2>
+<p>C is model-side or execution-structure mediation that transforms A into A′.</p>
+<ul>
+<li>The PAL Prompt Layer is not C as a whole.</li>
+<li>The PAL Prompt Layer may become part of execution-structure mediation.</li>
+<li>Further mediation may still occur after the Execution Package is produced.</li>
+<li>The architecture does not remove C.</li>
+<li>It makes part of the transformation path more explicit, inspectable, traceable, and diagnosable.</li>
+</ul>
+<p>C is not assumed to be directly controllable by CIP. The architecture instead supports the structuring and diagnosis of conditions surrounding C and may expose evidence of C-mediated transformation, while CIP governs the associated workflow conditions. The architecture does not expose or control C in full.</p>
+<hr />
+<h2 id="cip-governed-validation-recovery-and-adoption-process">CIP-Governed Validation, Recovery, and Adoption Process</h2>
+<p>The responsibility boundary in this hypothesis is as follows:</p>
+<ul>
+<li><strong>PAL Source Modules</strong> provide approved continuity and reference conditions.</li>
+<li><strong>The PAL Prompt Layer</strong> translates those conditions into an Initial Execution Package.</li>
+<li><strong>The Pre-Execution Conformance Check</strong> produces diagnostic evidence about possible execution-translation drift.</li>
+<li><strong>The human operator</strong> records PROCEED, REVISE, or STOP within the CIP-governed workflow.</li>
+<li><strong>A PROCEED decision</strong> establishes the Final Execution Package authorized for generation.</li>
+<li><strong>The generative model</strong> produces a candidate.</li>
+<li><strong>The PAL Conformance Assessment Layer</strong> produces post-generation diagnostic evidence about conformance to the approved PAL source definitions.</li>
+<li><strong>CIP</strong> governs validation, rejection, purge, re-binding, re-convergence, and adoption.</li>
+<li><strong>The human operator</strong> retains final adoption authority within that CIP-governed process.</li>
+</ul>
+<p>CIP does not directly control C, A′, or the generative model. It governs workflow conditions surrounding the transformation from A to A′ under C and the subsequent treatment of B′.</p>
+<p>A candidate, conformance result, optimized prompt, or Execution Package must not become part of the approved source identity merely because it performs well. Incorporation into the approved source identity requires a separate explicit human validation decision and must not be inferred from candidate adoption alone.</p>
+<hr />
+<h2 id="core-distinctions">Core Distinctions</h2>
+<pre><code>PAL Source Modules    ≠ PAL Prompt Layer
+PAL Source Modules    ≠ Execution Package
+Execution Package     ≠ A′
+Generated Candidate   ≠ Approved Output
+Conformance Diagnosis ≠ Adoption
+Diagnostic Evidence   ≠ Governance Decision
+C                     ≠ Error
+C                     ≠ Creativity Alone
+PAL Prompt Layer      ≠ C as a Whole
+</code></pre>
+<hr />
+<h2 id="testable-claim">Testable Claim</h2>
+<p>This hypothesis proposes a controlled comparison between:</p>
+<ol>
+<li>Generation through the pre-existing Direct PAL procedure, without explicit reorganization into the PAL Prompt Layer blocks</li>
+<li>Generation through the structured PAL Prompt Layer and its human-governed pre-execution review workflow</li>
+</ol>
+<p>Where possible, the following should be held constant:</p>
+<ul>
+<li>source anchors</li>
+<li>scene conditions</li>
+<li>model and version</li>
+<li>pre-registered execution-unit count</li>
+<li>planned candidate count</li>
+<li>session conditions</li>
+<li>generation settings available to the operator</li>
+</ul>
+<p>Realized candidate counts may differ if a registered Condition B execution unit remains finally stopped without reaching generation. Planned and realized counts must therefore be reported separately.</p>
+<p>The following should be evaluated:</p>
+<ul>
+<li>character identity retention</li>
+<li>correct execution of scene variables</li>
+<li>reduction of pre-registered predicted drift</li>
+<li>generation-to-generation variance</li>
+<li>human adoption rate</li>
+<li>critical identity violation rate</li>
+<li>recovery through purge, re-binding, and re-convergence following rejection, in later recovery-focused tests</li>
+<li>execution-translation drift</li>
+<li>post-generation conformance</li>
+</ul>
+<p>No causal claim is made prior to testing. This document does not assert that the PAL Prompt Layer reduces drift — only that this is a testable hypothesis worth documenting.</p>
+<p><em>See: <a href="../pal_prompt_layer_experiment_protocol/">PAL Prompt Layer Experiment Protocol</a> for the detailed smoke-test protocol.</em></p>
+<hr />
+<h2 id="limitations">Limitations</h2>
+<p>This hypothesis has not yet established that the absence of a structured Prompt Layer caused previously observed PAL instability.</p>
+<p>Independent sources of drift may remain, including:</p>
+<ul>
+<li>model capability</li>
+<li>anchor quality or impurity</li>
+<li>context contamination</li>
+<li>probabilistic variation</li>
+<li>multi-reference weighting</li>
+<li>reference-image interpretation</li>
+<li>conflicts between character, costume, pose, background, and sequence conditions</li>
+<li>translation loss introduced by the Prompt Layer itself</li>
+</ul>
+<hr />
+<h2 id="final-claim">Final Claim</h2>
+<p>The architecture does not claim that mediation can be eliminated. Its central claim is that part of the transformation from approved intent to model execution may be made more explicit, inspectable, traceable, and diagnosable, while rejection, recovery, and adoption remain within the CIP-governed process and final adoption authority remains with the human operator.</p>
+<hr />
+<h2 id="status-and-next-steps">Status and Next Steps</h2>
+<p>This document records an experimental hypothesis for further investigation. It is not a finalized PAL specification, and it has not been merged into the core PAL definition.</p>
+<p>If validated, this structure may inform future revisions to PAL-supported workflow documentation. Until then, it remains a documented hypothesis available for testing.</p>
+<p><em>See: <a href="../pal_hypothesis/">PAL Hypothesis Document</a> — <a href="../column_pal/">Column: PAL</a> — <a href="../glossary/">Glossary</a> — <a href="../pal_prompt_layer_experiment_protocol/">PAL Prompt Layer Experiment Protocol</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
