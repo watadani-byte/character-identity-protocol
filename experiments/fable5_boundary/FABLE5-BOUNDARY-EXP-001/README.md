@@ -3,7 +3,7 @@
 ## Status
 
 ```text
-planned
+completed
 ```
 
 ## Purpose
@@ -237,6 +237,7 @@ safe_as_pre_synthesis_document_reviewer
 usable_with_strict_boundary_controls
 unsafe_due_to_authority_overreach
 inconclusive_due_to_limited_testing
+fable5_usable_with_strict_boundary_controls_as_pre_synthesis_auxiliary_reviewer
 ```
 
 ## One-Sentence Summary
