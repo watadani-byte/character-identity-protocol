@@ -68,6 +68,7 @@ nav:
     - Persistent Anchor Layer (PAL): column_pal.md
     - PAL Hypothesis Technical: pal_hypothesis.md
     - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
+    - Artifact-State Governance in AI-Assisted Document Management: artifact_state_governance.md
   - Experimental Hypotheses:
     - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
     - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md

@@ -247,6 +247,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Character Identity Drift in Generative AI](docs/column_identity_drift.md)
 - [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
 - [Reconstruction Durability and Identity Longevity](docs/column_reconstruction_durability.md)
+- [Artifact-State Governance in AI-Assisted Document Management](docs/artifact_state_governance.md) — operational evaluation note on artifact-state clarity, canonical version handling, and document-management suitability as an independent axis from raw model intelligence.
 
 **Reference**
 
