@@ -1,857 +1,447 @@
-# Glossary: Character Identity Protocol
+# Prompt Lifecycle Design Rationale
 
-Core terms used throughout the documentation.
+**Status:** Practical Guide / Design Rationale — not a finalized protocol,
+benchmark, or experiment template.
 
------
+---
 
-## Archetype Drift
+## 1. Purpose
 
-A character drift phenomenon in which a generated character
-retains partial visual continuity with the anchor identity
-while shifting toward a stronger nearby archetype in the
-model’s reconstruction space. Archetype Drift is distinct
-from facial collapse or structural degradation. It is a
-directional failure: the character’s visual features remain
-substantially intact, but the identity interpretation
-consistency — the social register, personality impression,
-and role identity — shifts toward a more dominant nearby
-template. The result is captured by the phrase
-same face, different person.
+This document explains why each prompt form in the CIP/PAL workflow exists,
+what problem it was designed to solve, and where in the Identity Lifecycle it
+belongs.
 
-As an example: a character defined as a reserved, precise
-intellectual may drift across generation cycles toward a
-warmer, more approachable register — not through any single
-dramatic change, but through gradual reweighting of expressive
-and social dimensions. The face remains recognizable.
-The person does not.
+The prompts described here are not a linear improvement series. Each emerged
+from a different operational problem encountered at a different stage of
+image-generation and sequence-generation practice. They should be understood
+as distinct artifacts with distinct roles, preconditions, and constraints.
 
-Archetype Drift is particularly significant in multi-scene,
-multi-session, and video generation workflows, where cumulative
-drift across outputs can produce a character who is visually
-continuous but identity-discontinuous. Standard structural
-gates — Face Gate, Skeleton Gate, Proportion Gate — may not
-detect this failure mode, as they evaluate feature similarity
-rather than identity register.
+> Prompts are not ranked by quality or power.
+> Each exists because a different problem required a different solution.
 
-Detection of Archetype Drift may require evaluation beyond
-structural feature comparison, including assessment of social
-impression, expressive register, and role identity consistency
-against the anchor UID definition.
+---
 
-*See: [Identity Drift Taxonomy — Archetype Drift](whitepaper_v1.md) — [PAL Hypothesis Document](pal_hypothesis.md)*
+## 2. CIP/PAL Framing
 
------
-
-## Anchor-Sufficient Convergence (ASC)
-
-> Same UID. Different prompt. Same character.
-
-A convergence condition in which character identity is
-maintained across generations using only a PAL-registered
-anchor asset and a stable UID — without requiring
-ControlNet, OpenPose, seed control, LoRA, or model
-fine-tuning.
-
-**Formal conditions:**
-
-|Condition            |Status      |
-|---------------------|------------|
-|Same UID             |Required    |
-|PAL-registered anchor|Required    |
-|ControlNet           |Not required|
-|OpenPose             |Not required|
-|Seed control         |Not required|
-|LoRA                 |Not required|
-|Model fine-tuning    |Not required|
-
-**Implication:**
-
-ASC describes an operationally observed condition in which
-identity is not a property of generation tools — it is
-a property of the anchor.
-
-When PAL is properly configured, the anchor asset alone
-may be sufficient to support character identity across
-sessions, platforms, and generation cycles. This is an
-observed pattern, not a universal guarantee.
-
-> The anchor may be sufficient under observed conditions. The tools may be optional.
-
-**Related:**
-
-- [Persistent Anchor Layer (PAL)](column_pal.md)
-- [High-Density Latent Anchoring (HDLA)](whitepaper_v1.md)
-- [Anchor Re-Convergence Method (ARCM)](whitepaper_v1.md)
-
------
-
-## Anchor
-
-```
-Anchor = validated identity reference
-```
-
-A validated identity reference, usually derived from a previously generated and validated output that represents a known, high-quality solution state.
-Used as a constraint to bias future generation toward the same convergence point.
-
-The anchor is **not** an artistic reference or stylistic inspiration. It is a record of a solution the model has already found and that has passed identity gate validation.
-
-*See also: [Anchor Material](glossary.md#anchor-material)*
-
------
-
-## Anchor Material
-
-The set of materials used to maintain and re-establish anchor-guided convergence. May include a validated anchor image, a UID definition, a character sheet, a structured identity document, or a combination of these.
-
-“Anchor material” is the broader term. “Anchor image” refers specifically to the visual component of anchor material in image-generation workflows.
-
------
-
-## Anchor Mechanism
-
-The protocol-level stabilizing principle by which validated anchor material is introduced as a high-information conditioning signal to bias reconstruction toward a previously achieved identity state.
-
-Distinct from image-to-image (which encourages variation) and seed fixing (which primarily controls initial noise sampling).
-
------
-
-## Anchor Convergence
-
-The operational workflow for forming and re-establishing an anchor. Includes: high-density sample selection, identity gate validation, identifier binding, minimal prompt reduction, and multi-view expansion. Constitutes the entry condition of the CIP governance loop.
-
-Distinct from Anchor Mechanism: Anchor Mechanism is the stabilizing principle; Anchor Convergence is the formation and re-convergence workflow.
-
------
-
-## Audit-Ready Character Consistency
-
-A character consistency workflow that provides the minimum evidence required for governance review. Audit-ready consistency requires:
-
-- a validated anchor
-- comparison outputs evaluated against the anchor
-- defined failure criteria
-- PASS/FAIL rules
-- adoption and rejection conditions
-- a recovery or purge procedure
-
-A workflow that produces visually consistent-looking outputs is not audit-ready unless these elements are present and documented.
-
-Reference-based generation, improved resemblance, or human approval alone do not constitute audit-ready character consistency.
-
------
-
-## Reconstruction (A → A′ → B′)
-
-The reconstruction model describes the process by which a probabilistic system transforms user input or reference condition A into an internally reconstructed state A′ before producing the actual output B′.
+Within the CIP/PAL reconstruction model:
 
 ```
 A → (A + C) → A′ → B′ ≠ B
-A → A′ → B′
-A′ ≈ T_C(A)
 ```
 
 Where:
 
-- A = user input or reference condition
-- C = mediation that transforms A into A′, including model-side mediation and execution-structure mediation
-- A′ = internally reconstructed state: A as transformed by C
-- B′ = actual output
+- **A** = human original intent, constraints, or approved state
+- **C** = model-side or execution-structure mediation that transforms A into A′
+- **A′** = task understanding or execution form after C-mediated transformation
+- **B′** = generated output or candidate output subject to adoption
+- **B** = intended or human-expected result
 
-The expression A + C is not simple addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′.
+This is a risk-condition expression. It does not claim that every output
+necessarily diverges from B. It keeps the observation structure visible: C may
+mediate A into A′, and B′ may differ from the intended B.
 
-A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be externalized, inferred, or tested through prompt disclosure, execution traces, anchor comparison, gate evaluation, validation decisions, and adoption controls.
+CIP/PAL does not directly control C or A′. It supports governance of the
+workflow conditions around the transformation from A to A′, including
+validation, rejection, purge, re-binding, re-convergence, and adoption.
 
-C explains why drift occurs. It does not excuse unmanaged drift.
+---
 
-CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
+## 3. Prompt Lifecycle
 
-“C → A′” is shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.
-
-*Formerly listed as “Reconstruction (A→A’)”*
-
------
-
-## Infrastructure Condition
-
-Within the PAL framework, an infrastructure condition refers
-to the deployment state in which anchor materials remain
-available at inference time through persistent file, project,
-caching, or reference systems.
-
-Infrastructure condition describes the implementation layer
-of PAL — how anchor materials are made available.
-
-Distinct from stabilization condition, which describes
-the functional effect of that availability.
-
-> PAL is an infrastructure condition.
-> Its functional effect is a stabilization condition.
-
-*See: [Stabilization Condition](glossary.md#stabilization-condition)*
-*See: [PAL Hypothesis Document](pal_hypothesis.md)*
-
------
-
-## Identity Recall Probability
-
-An operational likelihood that subsequent generation cycles converge toward the same identity state as the anchor. Increased by identifier binding, multi-view expansion, and minimal prompt discipline. Not a mathematical probability but a qualitative indicator of reconstruction stability.
-
------
-
-## Convergence / Convergence Point
-
-The state at which a generative model’s output stabilizes into a coherent, consistent result.
-
-A “convergence point” is an operationally observed region of reconstruction behavior where identity, structure, and rendering align with unusual precision.
-
-The protocol does not force convergence — it biases the search space toward a previously achieved convergence point.
-
------
-
-## Cultural Frame Drift
-
-A form of identity drift in which a generated output
-migrates toward the dominant cultural or aesthetic
-conventions of the model’s training distribution,
-away from the culturally bounded definition of
-the anchor identity.
-
-Cultural Frame Drift is particularly observable when
-a character defined within a minority visual culture —
-such as a Japanese anime aesthetic — is generated in
-contexts where the training distribution is heavily
-weighted toward a different cultural convention.
-
-The drift does not necessarily produce structural
-identity failure as detected by Face Gate, Skeleton Gate,
-or Proportion Gate. It may instead manifest as a shift
-in facial impression, expressive register, or stylistic
-rendering that moves the output away from its culturally
-defined anchor.
-
-PAL may suppress Cultural Frame Drift by keeping the
-culturally bounded anchor definition persistently
-available at inference time.
-
-*See: [PAL Hypothesis — Section 10](pal_hypothesis.md)*
-
------
-
-## Convergence Recoverability
-
-> The ability of a character identity to be repeatedly
-> reconstructed as the same identity under variation,
-> reinterpretation, and context change — without requiring
-> strong external stabilization.
-
-Convergence Recoverability is distinct from:
-
-- **Match rate** — a single-generation similarity score
-- **Identity gate PASS** — a binary validation outcome
-- **LoRA consistency** — constraint-enforced similarity
-
-It describes a character-level property of the identity itself,
-not of the control mechanism applied to it.
-
-Characters with high Convergence Recoverability tend to share:
-
-- sufficient distinctiveness (clear identity markers)
-- without reconstruction overload (not pushed into sparse regions)
-- style-identity separation (style does not compete with identity)
-
-**Related:**
-
-- [Reconstruction Durability](glossary.md#reconstruction-durability-rd)
-- [Column: Reconstruction Durability](column_reconstruction_durability.md)
-- [High-Density Latent Anchoring (HDLA)](whitepaper_v1.md)
-
------
-
-## Reconstruction Durability (RD)
-
-> A character-level property describing the likelihood that
-> identity can be repeatedly recovered across generation cycles
-> without external stabilization, determined by the character’s
-> position within the model’s high-density reconstruction regions.
-
-Reconstruction Durability is the combined property of:
-
-- high Convergence Recoverability
-- positioning in high-density reconstruction regions
-- style-identity separation
-
-**Key distinction:**
-Reconstruction Durability is not a property of the control method.
-It is a property of how the character was formed.
-
-**Design implication:**
+The Identity Lifecycle proceeds through the following prompt sequence:
 
 ```
-Character Formation (RD)
-  ├── PAL Persistence / Continuity
-  └── CIP Governance
-        └── Adoption / Rejection / Purge
+Source A
+↓
+Minimum Requirements
+↓
+YAML Prompt (Source of Truth)
+↓
+Minimal Prompt (Character Exploration)
+↓
+Long Prompt (Identity Establishment)
+↓
+Optimization Prompt (Convergence Adjustment)
+↓
+Ultra-Compressed Prompt (Identity Recall)
 ```
 
-A character designed for high Reconstruction Durability
-requires less governance overhead, produces more stable anchors,
-and exhibits higher Convergence Recoverability across
-platforms and model versions.
-
-**Related:**
-
-- [Convergence Recoverability](glossary.md#convergence-recoverability)
-- [Column: Reconstruction Durability](column_reconstruction_durability.md)
-- [Anchor-Sufficient Convergence (ASC)](glossary.md#anchor-sufficient-convergence-asc)
-
------
-
-## Layer A / Layer B / Layer C
-
-A theoretical abstraction of the generation process — not a claim about proprietary architecture.
-
-|Layer|Function                                 |
-|-----|-----------------------------------------|
-|A    |Language interpretation                  |
-|B    |Reconstruction / optimization            |
-|C    |Execution (latent sampling and rendering)|
-
-Verbose prompts activate Layers A and B more strongly.  
-Minimal prompts reduce pressure on Layers A and B, allowing the anchor to dominate.
-
-*Note: Layer C in this abstraction is not the same as C in the reconstruction model A → (A + C) → A′ → B′. The former names a conceptual execution layer; the latter names mediation that transforms A into A′.*
-
------
-
-## Minimal Prompt
-
-A minimal natural-language prompt derived from human-approved Minimum Requirements
-or a YAML source state, used for character exploration and reconstruction behavior
-observation.
-It usually contains only the minimum identity-relevant attributes needed for the
-test, but minimality is defined by controlled projection from source state, not
-by shortness alone.
-
-**Design Rationale:** The Minimal Prompt emerged from the observation that long, elaborate prompts activate more C-mediated transformation, increasing the risk that A is reconstructed into an unintended A′. Reducing prompt surface area reduces optimization pressure from the model’s training priors. A minimal prompt is not merely a short prompt; it is a controlled projection from a structured source state.
-
-**Identity Lifecycle phase:** Character exploration. Used to observe how much identity can be recovered from minimal input, and to identify which attributes are load-bearing for reconstruction. Not for production identity establishment when identity continuity matters.
-
-**What it does not replace:** The Minimal Prompt is not a substitute for the Long Prompt in identity-establishment workflows. It is not sufficient for first-generation use when identity continuity matters. It is not appropriate as the sole prompt for identity fixation, series generation, or continuous small-change generation. In these cases, additional anchoring and human approval checkpoints are required. For post-convergence series generation or continuous small-change workflows, approved anchor material is normally required.
-
-**Drift risk in short-prompt workflows:** Using minimal prompts or short tag lists without sufficient anchoring and constraints for identity fixation purposes may increase drift risk. The model may fill in unspecified attributes through C-mediated reconstruction, producing outputs that appear plausible but diverge from the intended identity. This applies across generative AI platforms, including tag-list-oriented workflows. It is not a claim that such workflows are inherently unstable; it is an observation that minimality without source-of-truth and human approval checkpoints may allow C to reconstruct unspecified attributes in unintended directions when identity continuity across multiple generations is required.
-
-**Prerequisites:** Human-approved Minimum Requirements. Preferably a YAML source state. Convergence is not required.
-
-Example:
+After convergence is established, series generation uses a repeating state
+transition:
 
 ```
-Japanese woman, black hair, brown eyes, 168cm, slender
+Converged State
+↓
+Transition Prompt
+↓
+Next Approved State
 ```
 
-Not:
+Each stage is described below with its design rationale, problem context,
+phase, and constraints.
 
-```
-beautiful, elegant, mysterious Japanese woman with flowing black hair...
-```
+---
 
-*See also: [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+## 4. Minimum Requirements
 
------
+### Problem it solves
 
-## Minimum Requirements
+Before any prompt is written, there must be a clear definition of what is
+required. Without this, prompts may reflect the writer's assumptions rather
+than the human operator's approved intent.
 
-The human-approved minimal source input that defines the intended character, scene, or output.
+### Design Rationale
 
-**Design Rationale:** Before any prompt is written, a human must define what is required. Minimum Requirements is not a prompt; it is the source of authority from which all prompts are derived. It emerged from the need to distinguish the human-approved intent `A` from the model-mediated reconstructions `A′` that follow.
+Minimum Requirements establishes the human-approved source state A. It is the
+authoritative baseline against which all derived prompts and generated outputs
+are compared. Without it, there is no stable A to drift from.
 
-**Identity Lifecycle phase:** Pre-prompt. The starting point of the entire prompt lifecycle.
+### Phase
 
-**What it does not replace:** Nothing. It is itself the source state, not a replacement for any derived artifact.
+Pre-prompt. The starting point of the entire lifecycle.
 
-**Prerequisites:** None. This is the first artifact in the lifecycle.
+### What it does not replace
 
-*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+Nothing. It is the source, not a derived artifact.
 
------
+### Prerequisites
 
-## YAML Prompt
+None.
 
-A structured, human-reviewable YAML file that serves as the source-of-truth for character identity, scene variables, prompt strategy, and workflow governance.
+---
 
-**Design Rationale:** The YAML Prompt emerged from the observation that natural-language prompts are lossy projections of human intent. When a character definition is converted into English prose, useful redundancy is removed, prohibitions are weakened, and priority relationships are collapsed. The YAML Prompt preserves the structured source state from which all natural-language prompts are derived.
+## 5. YAML Prompt (Source of Truth)
 
-**Identity Lifecycle phase:** Source state management. The YAML Prompt is the master specification; all other prompt forms are derived artifacts.
+### Problem it solves
 
-**What it does not replace:** The YAML Prompt is not a generation prompt by default. It is not a replacement for the Long Prompt, Minimal Prompt, or any other derived form. Natural-language prompts are projections of the YAML, not equivalents.
+Natural-language prompts are lossy. When a character definition is translated
+into English prose, useful redundancy is removed, prohibitions are weakened,
+priority relationships collapse, and structural separation disappears. Each
+editing cycle degrades the original intent further.
 
-**Prerequisites:** Human-approved Minimum Requirements.
+### Design Rationale
 
-*See also: [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) — [Translation Loss and the YAML-First Principle](column_translation_loss.md)*
+The YAML Prompt preserves the structured source state in a human-reviewable,
+diffable, and comment-supporting format. It separates immutable identity
+elements, controlled variables, scene variables, reference image policies, and
+workflow governance into named sections. Natural-language prompts are derived
+projections of the YAML, not equivalents.
 
------
+The YAML Prompt is not a generation prompt by default. It is a reviewable
+master specification.
 
-## Long Prompt
+> YAML = human-approved source state.
+> Natural-language prompts = derived artifacts.
 
-A full natural-language prompt used for initial identity establishment or re-convergence after drift.
+### Phase
 
-**Design Rationale:** The Long Prompt emerged from the need to make A dense and explicit before the model forms A′. Without a sufficiently detailed initial prompt, C-mediated transformation may fill missing information with distributional defaults, producing a B′ that diverges from the intended B. The Long Prompt reduces missing information that C might otherwise fill in freely.
+Source state management. Parallel to all other prompt forms.
 
-**Identity Lifecycle phase:** Identity establishment. Used for first generation and for re-convergence when drift has occurred.
+### What it does not replace
 
-**What it does not replace:** The Long Prompt is not a substitute for the YAML master. It is a derived artifact — a controlled projection of the YAML source state into natural language. It does not eliminate C.
+The YAML Prompt does not replace the Long Prompt, Minimal Prompt, or any other
+derived form. It is the source from which those forms are derived.
 
-**Prerequisites:** Human-approved YAML master or equivalent source state.
+### Prerequisites
 
-*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+Human-approved Minimum Requirements.
 
------
+---
 
-## Optimization Prompt
+## 6. Minimal Prompt (Character Exploration)
 
-A shorter prompt created after observing the first generation result, used to correct specific observed drift while preserving the human-approved source state.
+### Problem it solves
 
-**Design Rationale:** The Optimization Prompt emerged from the need to correct drift in B′ without replacing or weakening the source state A. It is not a general quality improvement prompt. It targets only the specific deviations observed between A and B′, aiming to return the next generation toward the intended A.
+Long prompts activate more C-mediated transformation, increasing the risk of
+unintended A′. Observing how much identity can be recovered from minimal input
+reveals which attributes are load-bearing.
 
-**Identity Lifecycle phase:** Convergence adjustment. Used after first generation review, not before.
+### Design Rationale
 
-**What it does not replace:** The Optimization Prompt must not be used for first generation. It must not replace the Long Prompt or the YAML master. Correction must be aimed at returning to A, not simply improving image quality.
+The Minimal Prompt reduces prompt surface area to reduce optimization pressure
+from the model's training priors. It is used to explore reconstruction
+behavior, not to establish identity for production use.
 
-**Prerequisites:** Observed B′ and specific drift points must exist. The human-approved source state remains authoritative. Not for first-generation identity establishment.
+A minimal prompt is not merely a short prompt. It is a controlled projection
+from a structured source state.
 
-*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md)*
+> Minimality without source-of-truth becomes accidental compression.
 
------
+### Phase
 
-## Ultra-Compressed Prompt
+Character exploration. Pre-convergence.
 
-A lightweight recall prompt used only after human-approved convergence exists, for returning toward an established identity state.
+### What it does not replace
 
-**Design Rationale:** The Ultra-Compressed Prompt emerged from the practical need to recall an established identity without repeating the full Long Prompt. It works because the convergence state, anchor image, and rejected-drift history already exist. Without those preconditions, it is insufficient for identity establishment.
+The Minimal Prompt is not a substitute for the Long Prompt in
+identity-establishment workflows. It is not sufficient for first-generation
+use when identity continuity matters.
 
-**Identity Lifecycle phase:** Identity recall after stabilization. Used only after convergence has been achieved and human-approved.
+It is not appropriate as the sole prompt for:
 
-**What it does not replace:** The Ultra-Compressed Prompt must not be used for first generation, identity recovery, new character creation, or unapproved scene change. It must not replace the YAML master or the Long Prompt. Compressed prompts are not initialization substitutes.
+- identity fixation (establishing a repeatable, human-approved character state);
+- series generation (producing a sequence of images with consistent identity);
+- continuous small-change generation (pose, expression, or scene variation
+  within an established identity).
 
-**Prerequisites:** Human-approved convergence state. Anchor image. Established convergence history. Compression safety review passed.
+In these cases, additional anchoring, stronger constraints, and human approval
+checkpoints are required. For post-convergence series generation or continuous
+small-change workflows, approved anchor material is normally required.
 
-*See also: [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+### Relationship to short-prompt and tag-list workflows
 
------
+Some generative AI workflows — including those common in Stable Diffusion and
+similar systems — rely on short prompts or tag lists as a primary generation
+input. These approaches can be effective for exploration and variation within
+a familiar style or training distribution.
 
-## Transition Prompt
+However, using minimal prompts or short tag lists without sufficient anchoring
+and constraints for identity fixation purposes may increase drift risk. The
+model may fill in unspecified attributes through C-mediated reconstruction,
+producing outputs that appear plausible but diverge from the intended identity.
 
-A prompt used to move from one approved scene or sequence state to the next, while preserving the established identity.
+A short tag list may specify broad attributes such as hair color, age range,
+clothing, or visual style, while leaving identity-relevant details such as
+facial structure, eye shape, hair flow, body proportion, expression, and
+atmosphere underspecified. In such cases, checkpoint behavior, sampler behavior,
+seed, prompt weighting, learned distribution, LoRA, DreamBooth, reference
+images, ControlNet, IP-Adapter, img2img, and other execution conditions may
+fill those unspecified regions. These execution-side conditions are forms of C
+in the CIP/PAL framing. They are not inherently harmful, but they become
+governance-relevant when identity continuity across multiple generations is
+required and the unspecified regions are identity-critical.
 
-**Design Rationale:** The Transition Prompt emerged from sequence-generation workflows where a character must move through a series of scenes without losing identity continuity. It differs from the Long Prompt in that it assumes convergence already exists and focuses on scene or state change rather than identity establishment.
+This is not a claim that short-prompt workflows are inherently less stable. It
+is an observation that minimality without source-of-truth and without human
+approval checkpoints may allow C to reconstruct unspecified attributes in
+unintended directions, particularly when identity continuity across multiple
+generations is required.
 
-**Identity Lifecycle phase:** Sequence continuation. Used after convergence is established and a new scene or state change is required.
+### Prerequisites
 
-**What it does not replace:** The Transition Prompt must not be used before convergence exists. It does not replace the Long Prompt for initial identity establishment. It does not replace the YAML master.
+Human-approved Minimum Requirements. Preferably a YAML source state. Convergence is not required.
 
-**Prerequisites:** Established and human-approved convergence state. Approved anchor image. Defined target scene or sequence state.
+---
 
-*See also: [Sequence PAL Case Analysis: Hana Wedding Series](sequence_pal_case_hana_wedding.md) — [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md)*
+## 7. Long Prompt (Identity Establishment)
 
------
+### Problem it solves
 
-## Identity Establishment
+Without a sufficiently detailed initial prompt, C-mediated transformation
+fills missing information with distributional defaults, producing a B′ that
+diverges from the intended B. Identity attributes that are not explicitly
+stated may be reconstructed in an unintended direction.
 
-The workflow phase in which an initial human-approved convergence state is created for a character through prompt-guided generation, anchor formation, and identity gate validation.
+### Design Rationale
 
-**Design Rationale:** Identity Establishment is distinguished from Identity Recall because the two phases have different preconditions and prompt requirements. Before convergence exists, the workflow requires a Long Prompt and human approval at each generation step. After convergence, lighter recall mechanisms may be used.
+The Long Prompt makes A dense and explicit before the model forms A′. It
+re-injects context, identity conditions, constraints, priorities, prohibited
+transformations, and decision boundaries. It is the primary tool for initial
+convergence and for re-convergence after drift.
 
-**Identity Lifecycle phase:** Foundational. Must precede Identity Recall and Transition prompts.
+The Long Prompt does not eliminate C. The model may still compress,
+summarize, reprioritize, or reinterpret the instruction before producing B′.
+However, it reduces the missing information that C might otherwise fill in
+freely.
 
-**What it is not:** Identity Establishment is not a single generation event. It is a governed process that ends only when a human-approved anchor and convergence state have been validated through identity gates.
+In practical use, the Long Prompt functions more like a convergence-stage
+prompt for re-establishing the intended context, constraints, identity
+conditions, and decision boundaries before compressed prompts can safely be
+used for re-binding or recall.
 
-*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md) — [Quality Gate & Hard Abort](quality_gate_addendum.md)*
+### Phase
 
------
+Identity establishment. First generation and re-convergence after drift.
 
-## Identity Recall
+### What it does not replace
 
-The workflow phase in which a previously established identity state is re-invoked using a lightweight prompt and an approved anchor, without repeating the full identity establishment process.
+The Long Prompt is a derived artifact — a controlled projection of the YAML
+source state into natural language. It does not replace the YAML master.
 
-**Design Rationale:** Identity Recall emerged from the observation that once a convergence state exists, re-establishing the full identity from scratch is unnecessary and risks introducing new drift. Recall assumes that the anchor, convergence state, and approved constraints are already available.
+### Prerequisites
 
-**Identity Lifecycle phase:** Post-convergence. Requires an established and human-approved convergence state as a precondition.
+Human-approved YAML master or equivalent source state.
 
-**What it is not:** Identity Recall is not identity recovery. If the convergence state has been lost or contaminated, recovery requires re-establishment, not recall. The Ultra-Compressed Prompt used for Identity Recall must not be used as an initialization substitute.
+---
 
-*See also: [Prompt Lifecycle Design Rationale](prompt_lifecycle_design_rationale.md) — [Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md)*
+## 8. Optimization Prompt (Convergence Adjustment)
 
------
+### Problem it solves
 
-## Library Contamination
+After observing the first generation result, specific drift points become
+visible. A general-purpose correction may improve image quality while
+introducing new drift. What is needed is a targeted correction that addresses
+only the observed deviation from A.
 
-A condition in which anchor materials registered
-in a persistent reference layer contain content
-that produces harmful, misleading, or unintended
-reconstruction behavior.
+### Design Rationale
 
-Because PAL may function as a normative and cultural
-frame persistence layer, contaminated anchor materials
-may stabilize harmful normative frames rather than
-intended ones.
+The Optimization Prompt targets specific observed drift. Correction must be
+aimed at returning to A, not simply improving image quality. It is not a
+general optimization of the prompt. It is a drift-correction instrument.
 
-Library Contamination requires active purge of
-affected materials. Passive removal or deprecation
-is insufficient, as accessible materials may continue
-to influence reconstruction behavior.
+Used before convergence exists, the Optimization Prompt may fill missing
+information through C and produce a coherent B′ that is not sufficiently
+bound to A.
 
-The operator is responsible for anchor library
-governance, contamination detection, and purge procedures.
+### Phase
 
-> PAL does not validate anchor content.
-> The operator does.
+Convergence adjustment. After first generation review, not before.
 
-*See: [PAL Hypothesis — Section 10.7](pal_hypothesis.md)*  
-*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
+### What it does not replace
 
------
+The Optimization Prompt must not be used for first generation. It must not
+replace the Long Prompt or the YAML master.
 
-## Match Rate
+### Prerequisites
 
-A human-assessed similarity score between the anchor and a generated output.
+Observed B′ and specific drift points must exist. The human-approved source state remains authoritative. Not for first-generation identity establishment.
 
-Match rate is not an identity verification metric. It is an **early warning indicator for character drift** — a signal that degradation may be beginning before full collapse occurs.
+---
 
-Evaluated across three dimensions:
+## 9. Ultra-Compressed Prompt (Identity Recall)
 
-- **FaceGate** — facial identity consistency
-- **SkeletonGate** — skeletal proportion and alignment
-- **ProportionGate** — overall body proportion
+### Problem it solves
 
-The similarity threshold is operator-defined. The ~90% figure is a demonstration value only — it is not a protocol standard. Treating it as a fixed threshold is a misapplication of this protocol.
+After convergence is established, re-generating from the full Long Prompt for
+every subsequent generation is unnecessary and risks introducing new C at each
+step. A lighter recall mechanism is needed that leverages the existing
+convergence state.
 
-> Match rate measures the **risk of drift**, not the **fact of identity**.
+### Design Rationale
 
-Match rate is a human judgment, not an automated metric.
+The Ultra-Compressed Prompt works because a human-approved state, effective
+constraints, and rejected-drift history already exist. Without those
+preconditions, it is insufficient for identity establishment.
 
------
+> Compressed prompts are not initialization substitutes.
+> Compress only after converging.
 
-## Normative Drift
+The Ultra-Compressed Prompt preserves only the identity core, essential fixed
+features, allowed variation range, critical drift warnings, and major rejection
+boundaries. It is a lightweight key for returning toward a human-approved
+anchor, not a complete definition of A.
 
-A form of drift in which an AI system’s behavioral
-rules, decision priorities, or role definition shift
-across sessions — away from the anchored normative
-frame and toward the model’s statistical defaults.
+### Phase
 
-Normative Drift is not limited to image generation.
-It may occur in conversational AI, agentic systems,
-and any AI deployment where behavioral consistency
-across sessions is operationally required.
+Identity recall after stabilization. Post-convergence only.
 
-Unlike structural identity drift, Normative Drift
-may not be detectable through visual gate evaluation.
-It requires assessment of behavioral posture,
-role consistency, and interactional register
-across outputs.
+### What it does not replace
 
-PAL may suppress Normative Drift by keeping a
-structured role and behavioral anchor persistently
-available at inference time.
+The Ultra-Compressed Prompt must not be used for first generation, identity
+recovery, new character creation, or unapproved scene change. It must not
+replace the YAML master or the Long Prompt.
 
-*See: [PAL Hypothesis — Section 10](pal_hypothesis.md)*  
-*See: [ai-identity-governance](https://github.com/watadani-byte/ai-identity-governance)*
+### Prerequisites
 
------
+Human-approved convergence state. Anchor image. Established convergence
+history. Compression safety review passed.
 
-## Persistently Available
+---
 
-Within the CIP and PAL frameworks, “persistently available”
-describes anchor materials that remain accessible across
-session boundaries through platform-level persistence features.
+## 10. Transition Prompt (Sequence Continuation)
 
-**What this means operationally:**
+### Problem it solves
 
-- The materials remain available at the start of a new session
-  without explicit re-injection by the operator
-- Access is provided through persistent file, project,
-  caching, or reference systems
-- Availability persists across session resets
+In sequence-generation workflows, a character must move through a series of
+scenes without losing identity continuity. The Long Prompt is designed for
+identity establishment, not for controlled scene-to-scene transition within an
+established sequence.
 
-**What this does not mean:**
+### Design Rationale
 
-- Continuously loaded into active memory
-- Technically permanent or immutable storage
-- Parameter-level encoding within the model
+The Transition Prompt assumes convergence already exists and focuses on the
+state change from one approved scene to the next. It preserves the established
+identity while allowing controlled variation in scene, pose, or context.
 
-The term refers to operational availability across sessions,
-not to any specific technical implementation of persistence.
+The Transition Prompt is the tool used when the problem is not "who is this
+character" but "how does this character move to the next state."
 
-*See: [Persistent Anchor Layer (PAL)](column_pal.md)*
+### Phase
 
------
+Sequence continuation. After convergence is established.
 
-## Quality Gate
+### What it does not replace
 
-The set of validation conditions that must all pass before a generation is accepted.
+The Transition Prompt must not be used before convergence exists. It does not
+replace the Long Prompt for initial identity establishment. It does not
+replace the YAML master.
 
-```
-PASS = FaceGate ∧ SkeletonGate ∧ ProportionGate
-```
+### Prerequisites
 
-If any gate fails → Hard Abort.  
-No progressive correction permitted.
+Established and human-approved convergence state. Approved anchor image.
+Defined target scene or sequence state.
 
-These are the minimal structural gates.
+---
 
-They may not detect all identity failures. In domains where style,
-cultural frame, archetype register, costume state, sequence meaning,
-or persona consistency are identity-critical, additional gates must be
-defined by the operator.
+## 11. Key Distinctions
 
-*See: [Quality Gate Addendum](quality_gate_addendum.md)*
+### Prompt compression is not initialization
 
------
+The compressed prompt works partly because a human-approved state, effective
+constraints, and rejected-drift history already exist. A short prompt is not
+a replacement for that convergence history.
 
-## Hard Abort
+| Prompt type | Operational role |
+|---|---|
+| Long Prompt | Initial convergence / task-frame re-establishment |
+| Optimization Prompt | Drift correction after first generation |
+| Ultra-Compressed Prompt | Lightweight recall after stabilization |
+| Transition Prompt | Scene or state change within established sequence |
 
-The mandatory stop condition triggered when any quality gate or governance condition fails.
+### Identity Establishment vs Identity Recall
 
-A contaminated generation or adoption cycle is terminated. Drifted outputs are discarded and are not allowed to propagate downstream.
+Identity Establishment is the governed process of creating a first
+human-approved convergence state. It requires the Long Prompt and human
+approval at each step.
 
-Hard Abort is followed by purge, re-binding, and re-convergence from the last validated anchor state or governing condition.
+Identity Recall is the process of re-invoking an already-established identity
+state using a lighter mechanism. It requires the convergence state, anchor
+image, and Ultra-Compressed Prompt — none of which can substitute for each
+other.
 
------
+Identity Recall is not identity recovery. If the convergence state has been
+lost or contaminated, recovery requires re-establishment, not recall.
 
-## Adoption / Rejection / Purge
+### YAML is the source, not the prompt
 
-CIP governance decisions applied after gate evaluation.
+The YAML Prompt is the human-approved master specification. All natural-
+language prompts are derived projections. When generation quality degrades,
+return to the YAML source — not to the English prompt.
 
-- **Adoption**: an output that passes all gates is accepted into the production workflow.
-- **Rejection**: an output that fails one or more gates is discarded; Hard Abort is triggered.
-- **Purge**: contaminated outputs and associated generation state are cleared before re-binding begins.
+---
 
-These distinctions ensure that drift does not propagate through accepted outputs and that the re-convergence cycle begins from a verified clean state.
+## 12. Non-Claims
 
------
+This document does not claim:
 
-## Contamination
+- any prompt form eliminates C;
+- any prompt form guarantees identity preservation;
+- any prompt form directly controls A′ or model behavior;
+- prompts are ranked by quality, power, or version number;
+- CIP/PAL directly controls C, A′, or the generative model;
+- this document defines a finalized protocol, benchmark, or standard.
 
-The accumulation of identity drift in a session’s context, caused by:
+---
 
-- Failed generations that were not discarded
-- Continued generation after drift detection
-- Excessive session length without re-anchoring
+## 13. Summary
 
-Contaminated sessions cannot be recovered by prompt adjustment.  
-They must be abandoned and restarted with a clean anchor.
+Each prompt form in the CIP/PAL lifecycle exists because a different problem
+required a different solution at a different stage of identity-governed
+generation work. They are not a linear improvement series.
 
------
+Understanding why each prompt exists — what problem it solves, what it does
+not replace, and what preconditions it requires — is more important than
+knowing which is "shorter" or "stronger."
 
-## Reference-Based Generation
+Human approval remains the control point at every stage.
 
-Generation conditioned on a reference image at inference time, without model modification. Examples include IP-Adapter, platform image prompting features, and similar systems.
+---
 
-Reference-based generation may improve visual resemblance or continuity. It does not constitute identity governance: it does not define failure conditions, Hard Abort, re-binding, adoption, rejection, purge, or auditability.
+*This document is a Practical Guide and Design Rationale record.
+It is not a finalized protocol, benchmark, or experiment template.*
 
-Reference guidance is not identity governance.
-
------
-
-## UID (Unique Identifier)
-
-A stable name or label assigned to a character’s converged state.
-
-Purpose: enables cross-session recall without re-providing the full anchor each time.  
-Example: “Model Hana”, “Model A”, “Shizuka”
-
-The UID corresponds to a specific converged visual state — not assigned arbitrarily.
-
------
-
-## Identity Drift
-
-The gradual deviation of generated outputs from the established character identity across turns.
-
-Caused by:
-
-- Reconstruction variability (A → A′) accumulating across turns
-- Optimization pressure from verbose prompts
-- Session context degradation
-- Insufficient anchoring frequency
-- Model-side or execution-structure mediation that transforms A before B′ is produced
-
-C — mediation that transforms A into A′, including model-side and execution-structure mediation — explains why drift occurs. It does not excuse unmanaged drift.
-
------
-
-## Cumulative Identity Divergence Coefficient / 累積別人化係数
-
-A proposed CIP/PAL operational term for describing the accumulated degree to which A becomes “someone/something else” through repeated C-mediated transformations.
-
-It applies when small deviations across prompts, generations, tools, sessions, or workflow stages accumulate until the resulting A′ or B′ no longer preserves the intended identity, role, meaning, or operational criterion of the original A.
-
-This is not currently an established academic term or standardized metric. In CIP/PAL, it functions as a conceptual measure or diagnostic indicator of cumulative drift risk, rather than a fixed mathematical coefficient.
-
-*Related: C Accumulation — Drift — A-continuity — Re-binding — Purge*
-
------
-
-## Stabilization Condition
-
-Within the PAL framework, a stabilization condition refers
-to the functional effect produced when anchor materials
-are persistently available at inference time.
-
-Stabilization condition describes what PAL does —
-it may improve reconstruction consistency across sessions
-by maintaining anchor availability.
-
-Distinct from infrastructure condition, which describes
-how PAL is implemented.
-
-**Usage guidance:**
-
-- Use “stabilization condition” when describing
-  the functional effect of PAL
-- Use “infrastructure condition” when describing
-  the implementation layer of PAL
-
-> PAL is framed as an inference-time stabilization condition,
-> not a training-time intervention.
-
-*See: [Infrastructure Condition](glossary.md#infrastructure-condition)*
-*See: [PAL Hypothesis Document](pal_hypothesis.md)*
-
------
-
-## Style Drift
-
-The deviation of generated outputs from the defined rendering regime — line weight, color quantization, shading abstraction, texture ceiling — toward a higher information density state (typically: anime abstraction → semi-realistic → photorealistic).
-
-Style Drift is technically distinct from structural Identity Drift.
-
-In general production contexts, style drift may be recoverable through re-anchoring in a subsequent cycle.
-
-**In style-defined identity domains — anime, manga, illustration, game, and franchise animation — style drift is classified as a failure at the point of occurrence, regardless of recoverability.**
-
-This classification rests on the industry standard that:
-
-- Rendering regime is constitutive of identity, not decorative
-- A recoverable failure is still a failure
-- Zero-tolerance enforcement applies to rendering regime deviation in IP-governed production
-
-> Style Drift in anime, manga, game, and serialized IP contexts is not aesthetic variation.  
-> It is identity violation — and triggers Hard Abort under the same conditions as structural drift.
-
-*See: [Video Addendum — Style-Layer Primacy Problem](cip_video_addendum.md)*
-
------
-
-## Summary Assimilation
-
-The tendency of AI systems to absorb immature but significant
-observations into pre-existing explanatory frames
-during summarization, abstraction, or reformulation,
-thereby reducing the visibility of genuinely novel distinctions.
-
-In the context of character consistency workflows,
-Summary Assimilation causes operationally fragmented practices
-to appear as a unified and already-solved system.
-Unresolved control problems are presented as existing method
-components, and genuinely important but still-unnamed distinctions
-disappear into apparently adequate descriptions.
-
-Summarization is useful. The problem is not summarization itself,
-but the loss of governance-relevant distinctions that can occur
-when AI-generated summaries are accepted without human review.
-Human judgment after summarization is necessary to verify that
-critical distinctions have not been absorbed or flattened.
-
-CIP is in part a response to this tendency:
-by naming distinctions explicitly,
-it attempts to preserve their visibility
-before they can be assimilated into familiar frameworks.
-
------
-
-## Cross-Platform Migration
-
-The procedure for re-establishing a character identity on a different generative platform.
-
-The anchor material functions as a platform-agnostic identity record that can be reintroduced into a different system as a reference input. Identity gates are re-applied in the new environment to confirm whether convergence has been achieved.
-
-Recovery quality and the viability of subsequent sequential generation remain dependent on the capabilities of the target system — particularly its ability to preserve the anchor as a stable reference point across iterative updates. Cross-platform migration does not guarantee operational equivalence across platforms.
-
-*See: [Case 04: Cross-Platform Migration — “Shizuka”](case_04_shizuka.md)*
-
------
-
-## PAL and CIP: Framework Relationship
-
-PAL (Persistent Anchor Layer) and CIP (Character Identity Protocol) operate as two complementary layers of the same framework. PAL originally existed inside CIP, but was separated and expanded because its scope became broader.
-
-**PAL handles:**
-
-- generative continuity
-- persistent anchoring across sessions
-- anchor material availability at inference time
-
-**CIP handles:**
-
-- governance and validation
-- gate-based stopping conditions
-- Hard Abort, re-binding, re-convergence
-- adoption, rejection, purge
-- contamination control
-- auditability
-
-PAL alone does not constitute identity governance.
-CIP alone does not provide persistent continuity infrastructure.
-
-PAL supports continuity.
-CIP governs adoption and failure handling.
-Together, they form the continuity-governance stack.
-
-*See: [PAL Hypothesis Document](pal_hypothesis.md) — [Column: PAL](column_pal.md)*
-
------
-
-## Re-Anchoring Principle
-
-The operational principle that identity is not permanently preserved but must be periodically re-established through controlled re-convergence cycles.
-
-Re-anchoring is triggered when:
-
-- identity gate evaluation approaches failure
-- session length approaches the Max Context Stability Threshold (MCST)
-- Hard Abort has been executed
-
-Re-anchoring restores the validated anchor condition and resets drift accumulation. It is a governance requirement, not an optional optimization.
-
------
-
-## Inter-PAL Conflict
-
-A condition in which two or more PAL-registered anchor assets contain conflicting identity definitions for the same character or role.
-
-Inter-PAL Conflict may occur during:
-
-- cross-session migration between platforms
-- version updates to anchor materials
-- multi-operator workflows where anchor definitions diverge
-
-Resolution requires explicit anchor governance: identifying the authoritative anchor, deprecating conflicting materials, and re-establishing a single verified convergence state.
-
-*See: [PAL Hypothesis Document](pal_hypothesis.md)*
-
------
-
-## Anchor Preservation Governance (APG)
-
-A governance structure responsible for preserving externally defined structured anchors under operational conditions.
-
-APG defines four functions:
-
-- **Rule checking**: evaluating outputs against anchor-defined identity criteria
-- **Interpretive consistency monitoring**: detecting subtle shifts in identity register
-- **Drift signal detection**: identifying accumulating deviation before gate failure
-- **Governance decision**: determining adoption, rejection, or Hard Abort
-
-APG is distinct from PAL (which manages anchor material availability) and from monitoring or guardrails (which may flag outputs but do not define structured recovery procedures).
-
-*See: [PAL Hypothesis Document — Section 9.4, Section 15.6](pal_hypothesis.md) — [pal-lab/docs/glossary.md](https://github.com/watadani-byte/pal-lab)*
+*See also: [YAML Prompt Source-of-Truth Pattern](yaml_prompt_source_of_truth_pattern.md) —
+[Prompt Compression After Human-Approved Convergence](prompt_compression_after_human_approved_convergence.md) —
+[Translation Loss and the YAML-First Principle](column_translation_loss.md) —
+[Glossary](glossary.md)*
