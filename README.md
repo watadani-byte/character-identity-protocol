@@ -248,6 +248,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Translation Loss and the YAML-First Principle](docs/column_translation_loss.md)
 - [Reconstruction Durability and Identity Longevity](docs/column_reconstruction_durability.md)
 - [Artifact-State Governance in AI-Assisted Document Management](docs/artifact_state_governance.md) — operational evaluation note on artifact-state clarity, canonical version handling, and document-management suitability as an independent axis from raw model intelligence.
+- [Explicit Instruction Fidelity and Artifact-State User Responsibility](docs/explicit_instruction_fidelity_and_user_responsibility.md) — Distinguishes AI inference-based helpfulness from fidelity to explicitly declared instructions, and clarifies user-side responsibility for specifying artifact-state expectations.
 
 **Reference**
 

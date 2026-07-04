@@ -69,6 +69,7 @@ nav:
     - PAL Hypothesis Technical: pal_hypothesis.md
     - Reconstruction Durability and Identity Longevity: column_reconstruction_durability.md
     - Artifact-State Governance in AI-Assisted Document Management: artifact_state_governance.md
+    - Explicit Instruction Fidelity and Artifact-State User Responsibility: explicit_instruction_fidelity_and_user_responsibility.md
   - Experimental Hypotheses:
     - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
     - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md
