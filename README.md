@@ -220,6 +220,7 @@ PAL (Persistent Anchor Layer) and CIP operate as two distinct but coordinated la
 - [PAL Hypothesis Document](docs/pal_hypothesis.md) — *Formal hypothesis and ASC definition*
 - [Multi-Agent Verification and Intent Adherence in CIP/PAL](docs/multi_agent_verification_and_intent_adherence.md) — working analysis note distinguishing A-adherence verification from final-output B′-quality verification in multi-agent or orchestration-based AI systems.
 - [Human-Checkpointed Multi-Model Workflow](docs/human_checkpointed_multi_model_workflow.md) — working workflow note on exposing distributed C as reviewable intermediate artifacts for human validation, rejection, re-binding, re-convergence, and adoption decisions.
+- [Autonomous ML Research Loops as Bounded Mediation Systems](docs/autonomous_ml_research_loops_as_bounded_mediation_systems.md) — working observation note on an external autonomous ML research case, examining fixed-substrate source-state control, asymmetric-freedom mediation boundaries, proxy-reversal as an evaluation-boundary signal, and upstream human responsibility.
 - [PAL Prompt Layer and PAL Conformance Assessment Layer](docs/pal_prompt_and_conformance_layers.md) — *Promising experimental translation and diagnostic architecture; not a finalized PAL specification*
 - [PAL Prompt Layer Initial Smoke Test Protocol](docs/pal_prompt_layer_experiment_protocol.md) — *Draft controlled comparison of Direct PAL and PAL Prompt Layer workflows*
 - [PAL Reconnected Layer (PRL)](docs/prl_v0.1_draft.md) — *Four-layer operational control architecture (draft)*
