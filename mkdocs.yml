@@ -53,6 +53,7 @@ nav:
     - Prompting as Specification Management under Model Mediation: prompting_as_specification_management.md
     - YAML Prompt Source-of-Truth Pattern: yaml_prompt_source_of_truth_pattern.md
     - YAML Prompt Source-of-Truth Manual: yaml_prompt_source_of_truth_manual.md
+    - Prompt Review Checklist and Lightweight Manifest Use: prompt_review_checklist.md
     - Decision Pack: decision_pack.md
     - Re-Convergence - Identity Recovery: reconvergence.md
     - Protocol Template: protocol_template.md
