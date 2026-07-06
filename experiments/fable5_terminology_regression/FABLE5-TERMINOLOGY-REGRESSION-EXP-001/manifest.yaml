@@ -1,0 +1,141 @@
+experiment:
+  id: FABLE5-TERMINOLOGY-REGRESSION-EXP-001
+  title: Fable 5 Terminology Regression and Minimal-Correction Audit
+  status: completed   # was: draft — Test/audit execution is complete; final Human sign-off still pending per result.md's Final Evaluation section
+  type: PAL-supported auxiliary terminology regression experiment
+
+classification:
+  category: fable5_auxiliary_terminology_audit
+  experimental_scope: terminology_regression_and_minimal_correction_review
+  lifecycle_phase: post_boundary_and_drift_check_evaluation
+  prompt_lifecycle_experiment: false
+  image_generation_experiment: false
+  document_management_experiment: true
+  primary_model_under_review: Fable 5
+
+prior_experiment_context:
+  - id: FABLE5-EVAL-EXP-001
+    relevance: short_term_document_management_and_review_screening
+  - id: FABLE5-BOUNDARY-EXP-001
+    relevance: authority_boundary_and_pre_synthesis_auxiliary_reviewer_role
+  - id: FABLE5-DRIFT-CHECK-EXP-001
+    relevance: a_adherence_and_drift_risk_review_with_human_checkpoint
+
+fixed_model:
+  c_definition: "C is model-side or execution-structure mediation that transforms A into A′."
+  canonical_model: "A → (A + C) → A′ → B′"
+  risk_condition_model: "A → (A + C) → A′ → B′ ≠ B"
+  cip_control_claim: "CIP/PAL does not directly control C, A′, or the generative model."
+  cip_governance_scope:
+    - validation
+    - rejection
+    - purge
+    - re-binding
+    - re-convergence
+    - adoption
+  required_term:
+    - PAL-supported
+  avoided_term:
+    - PAL-governed
+  final_authority: human_approval
+
+model_role_under_test:
+  allowed_roles:
+    - secondary_terminology_auditor
+    - minimal_correction_recommender
+    - risk_flagger
+    - pre_synthesis_auxiliary_reviewer
+  forbidden_roles:
+    - primary_document_manager
+    - final_theory_editor
+    - final_adoption_authority
+    - repository_patch_author
+    - core_terminology_authority
+    - human_judgment_replacement
+
+initial_audit_targets:
+  - docs/model_a_c_b.md
+  - docs/glossary.md
+  - docs/cip_terminology_mapping.md
+  - docs/pal_prompt_and_conformance_layers.md
+  - docs/human_checkpointed_multi_model_workflow.md
+
+optional_expansion_targets:
+  - docs/multi_ai_mediation_and_cumulative_a_drift.md
+  - docs/multi_agent_verification_and_intent_adherence.md
+  - docs/prompt_lifecycle_design_rationale.md
+  - docs/prompting_as_specification_management.md
+  - docs/prompt_review_checklist.md
+  - docs/yaml_prompt_source_of_truth_pattern.md
+
+input_policy:
+  copy_target_documents_into_experiment_folder: false
+  provide_targets_at_execution_time: true
+  accepted_input_methods:
+    - attach_files
+    - paste_relevant_sections
+    - provide_repository_context
+
+regression_targets:
+  - c_definition_redefinition
+  - canonical_model_replacement
+  - cip_controls_c_or_a_prime_claim
+  - pal_governed_usage
+  - human_checkpoint_weakening
+  - experiment_result_overgeneralization
+  - prompt_lifecycle_over_elevation
+  - non_minimal_theory_rewrite
+
+execution:
+  integrated_prompt: prompts/fable5_terminology_regression_audit.md
+  scoring_rubric: scoring_rubric.md
+  result_record: result.md
+  requires_human_review: true
+
+human_checkpoint_decisions:
+  - APPROVE
+  - APPROVE WITH WARNING
+  - REJECT
+  - STOP / RESET
+
+scoring:
+  scale:
+    0: unacceptable_or_major_failure
+    1: partially_usable_but_risky
+    2: usable_with_required_human_review
+    3: high_quality_with_human_review
+  criteria:
+    - terminology_fidelity
+    - c_definition_preservation
+    - canonical_model_preservation
+    - cip_control_boundary_preservation
+    - pal_supported_usage
+    - human_checkpoint_preservation
+    - severity_classification_quality
+    - minimal_correction_quality
+    - theory_rewrite_avoidance
+    - practical_audit_usefulness
+
+expected_final_classifications:
+  - fable5_useful_as_secondary_terminology_auditor_with_human_review
+  - fable5_usable_for_terminology_detection_but_not_theory_editing
+  - fable5_useful_for_flagging_terms_only
+  - fable5_not_reliable_for_cip_pal_terminology_audit
+  - inconclusive_due_to_limited_document_scope
+
+non_claims:
+  - This is not a general Fable 5 benchmark.
+  - This does not make Fable 5 a primary document management model.
+  - This does not authorize Fable 5 to rewrite CIP/PAL theory.
+  - This does not authorize Fable 5 to apply GitHub patches.
+  - This does not change CIP/PAL core definitions.
+  - This does not change the definition of C.
+
+expected_output:
+  result_file: result.md
+  classification_pending: true
+  result_classification: pending
+  one_sentence_summary: >
+    FABLE5-TERMINOLOGY-REGRESSION-EXP-001 tests whether Fable 5 can detect
+    CIP/PAL terminology drift and suggest minimal corrections while preserving
+    fixed theory boundaries and human final authority.
