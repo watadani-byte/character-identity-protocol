@@ -136,28 +136,49 @@ No execution date was provided in the source material for this reflection; not f
 partial_but_usable
 ```
 
-The formal packaged prompt (`prompts/fable5_terminology_regression_audit.md`) was not attached in the execution chat; the audit ran against the fixed premises, review targets, and warning conditions carried in the execution request instead. Fable 5's reported output itself (severity counts, per-item findings, provisional judgment, classification, score, rationale, adoption recommendation) is complete.
+The formal packaged prompt (`prompts/fable5_terminology_regression_audit.md`) was not attached in the execution chat; the audit ran against the fixed premises, review targets, and warning conditions carried in the execution request instead. The archived original Fable 5 output itself (severity counts, per-document diagnostic findings, minimal-correction suggestions, secondary auditor boundary statement) is complete. The provisional judgment, classification proposal, aggregate score, and adoption recommendation recorded in this file are evaluation-coordinator / human-side candidate values and are not part of the archived original output (see Provenance Note under Fable 5 Output Summary).
+
+### Archived Original Output
+
+```text
+FABLE5-TERMINOLOGY-REGRESSION-EXP-001_fable5_output.md
+```
+
+Archived verbatim in this experiment folder as the source artifact for the Fable 5 Output Summary below (record-consistency correction follow-up; audit finding RC-9).
 
 ---
 
 ## Fable 5 Output Summary
+
+The archived original Fable 5 output (`FABLE5-TERMINOLOGY-REGRESSION-EXP-001_fable5_output.md`, archived in this experiment folder) contains:
 
 ```text
 Critical: 0
 Major: 0
 Minor: 3
 Info: 6
+diagnostic findings (Minor: G-1, T-1, H-1; Info: G-2, G-3, G-4, T-2, T-3, H-2)
+minimal-correction suggestions
+secondary auditor boundary statement
+```
 
 Fable 5 did not redefine C, did not replace the canonical model, did not use
 PAL-governed, did not claim direct CIP/PAL control over C or A', did not
 weaken human approval, and did not propose whole-document rewriting.
 
-Provisional judgment: APPROVE WITH WARNING
-Provisional classification (as proposed by Fable 5, not yet reconciled with
-this experiment's allowed classification list; see note above):
+**Provenance Note (record-consistency correction, per audit `FABLE5-EXPERIMENT-RECORD-CONSISTENCY-EXP-001_audit_result_v1.1.md`, RC-11):** the following values were previously recorded in this section as part of the Fable 5 output. They are **not present in the archived original Fable 5 output** and are re-attributed as **evaluation-coordinator / human-side candidate values**:
+
+```text
+Provisional judgment candidate (human-side): APPROVE WITH WARNING
+Classification proposal (execution request / evaluation-coordinator proposal,
+not in the allowed list; see classification value note above):
 usable_as_secondary_terminology_auditor_with_minimal_correction_constraints
-Scoring proposal: 28 / 30
+Aggregate score candidate (human-side): 28 / 30
+Adoption recommendation proposal (execution request / evaluation-coordinator
+proposal; see adoption recommendation value note below): adopt_with_warning
 ```
+
+This provenance correction is subject to re-evaluation if a second Fable 5 output segment containing the score, provisional judgment, classification proposal, or adoption recommendation is later discovered.
 
 ---
 
@@ -191,10 +212,21 @@ All three items are diagnostic suggestions only. No docs have been modified as p
 ### Correctly Identified Non-Issues
 
 ```text
-not explicitly reported
+explicitly reported in the archived original output
 ```
 
-The relayed Fable 5 output did not enumerate specific passages it reviewed and judged sound; it reported only the three flagged items above plus aggregate Info-level notes (6, unspecified) and severity counts. Not fabricated here.
+**Record-consistency correction (RC-12):** an earlier version of this section stated these were "not explicitly reported"; that understated the archived original output. The archived original Fable 5 output explicitly cleared the following documents as having no terminology regression and no fixed-premise violation, with stated rationale:
+
+```text
+docs/model_a_c_b.md
+docs/pal_prompt_and_conformance_layers.md
+```
+
+The six Info-level findings are itemized in the archived original output as:
+
+```text
+G-2, G-3, G-4, T-2, T-3, H-2
+```
 
 ### False Positives
 
@@ -234,7 +266,7 @@ Fable 5 reported that it did not redefine C, did not replace the canonical model
 preserved
 ```
 
-Fable 5's output reportedly did not weaken human approval; all three findings are recorded as proposals pending human review, and the provisional judgment/classification/recommendation are explicitly non-final.
+Fable 5's archived output did not weaken human approval; all findings are recorded as proposals pending human review, and the archived output explicitly defers all adoption judgment to human approval. The provisional judgment, classification proposal, and adoption recommendation are evaluation-coordinator / human-side candidate values (see Provenance Note) and remain non-final.
 
 ---
 
@@ -242,7 +274,7 @@ Fable 5's output reportedly did not weaken human approval; all three findings ar
 
 Use `scoring_rubric.md`.
 
-**Note:** only an aggregate score (28/30) was reported for this execution; a per-criterion breakdown was not provided in the source material and is not fabricated here. Per-criterion rows are left as `not broken down` pending either a re-scoring pass against the raw Fable 5 output or Human assignment of individual criterion scores.
+**Note (record-consistency correction, RC-11):** The aggregate score `28 / 30` is recorded as an evaluation-coordinator / human-side candidate value. It is not present in the archived original Fable 5 output. Per-criterion detail remains unavailable unless a separate human re-scoring pass is performed. Per-criterion rows are left as `not broken down` pending either a re-scoring pass against the archived Fable 5 output or Human assignment of individual criterion scores. This scoring provenance is subject to re-evaluation if a second Fable 5 output segment is later discovered.
 
 | Criterion | Score 0-3 | Notes |
 |---|---:|---|
@@ -256,7 +288,7 @@ Use `scoring_rubric.md`.
 | Minimal correction quality | not broken down | 3 items framed as narrow wording/notation clarifications |
 | Theory rewrite avoidance | not broken down | Fable 5 reportedly did not propose whole-document rewriting |
 | Practical audit usefulness | not broken down | 3 actionable items with proposed handling reported |
-| **Total** | **28 / 30** | Aggregate score as reported; per-criterion detail not available |
+| **Total** | **28 / 30** | Evaluation-coordinator / human-side candidate value; not present in the archived original Fable 5 output; per-criterion detail not available |
 
 ---
 
@@ -265,6 +297,9 @@ Use `scoring_rubric.md`.
 ```text
 APPROVE WITH WARNING
 ```
+
+This is a human-side provisional judgment candidate. It is not attributed to
+the archived original Fable 5 output.
 
 Allowed judgments:
 
@@ -328,6 +363,8 @@ Candidate, not final: the three items detected by Fable 5 (G-1, T-1, H-1) are di
 ---
 
 ## Changelog Draft
+
+**Note:** the draft below is the historical v5.98 changelog draft, retained for original record context. It is not the v5.99 record-correction tag note.
 
 **Draft candidate — not final; commit/tag not yet authorized.**
 

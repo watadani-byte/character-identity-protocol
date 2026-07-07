@@ -4,7 +4,7 @@
 
 ---
 
-## Files to commit
+## Files committed for v5.98
 
 ```
 experiments/fable5_terminology_regression/FABLE5-TERMINOLOGY-REGRESSION-EXP-001/result.md
@@ -135,9 +135,35 @@ Commit: <to be filled in after commit>
 
 ---
 
-## Next step (Human-side)
+## Post-v5.98 Record-Consistency Correction Note
 
-1. Copy the applied `result.md` and `manifest.yaml` into `experiments/fable5_terminology_regression/FABLE5-TERMINOLOGY-REGRESSION-EXP-001/`.
-2. Commit locally using the title and description above.
-3. Tag locally using the tag and tag text above, filling in the commit hash.
-4. Report the commit hash back so the tag text's `<to be filled in after commit>` placeholder can be finalized for the record.
+A later secondary record-consistency audit
+(`FABLE5-EXPERIMENT-RECORD-CONSISTENCY-EXP-001_audit_result_v1.1.md`) found
+that several values recorded in `result.md` — the aggregate score `28 / 30`,
+the provisional judgment `APPROVE WITH WARNING`, the classification proposal,
+and the adoption recommendation proposal — were attributable to the
+evaluation-coordinator / human-side record rather than to the archived original
+Fable 5 output (audit finding RC-11). The audit also found that `result.md`
+understated the archived output's coverage (audit finding RC-12), and the
+original Fable 5 output has now been archived in the experiment folder as
+`FABLE5-TERMINOLOGY-REGRESSION-EXP-001_fable5_output.md` (audit finding RC-9).
+
+This reference is retained as the v5.98 commit/tag reference. Corrected
+provenance is recorded in the follow-up record-correction commit.
+
+This correction is conditional: if a second Fable 5 output segment containing
+the score, provisional judgment, classification proposal, or adoption
+recommendation is later discovered, the provenance re-attribution must be
+re-evaluated with that segment added as an audit input.
+
+Human judgment remains the final authority for this correction; nothing in
+this note finalizes scoring, classification, adoption, or GitHub reflection.
+
+---
+
+## Post-correction status
+
+This file is retained as the v5.98 commit/tag reference with a post-v5.98
+record-consistency correction note. The follow-up correction should be
+committed separately as a v5.99 record-correction commit. It should not be
+treated as rewriting the original v5.98 tag history.

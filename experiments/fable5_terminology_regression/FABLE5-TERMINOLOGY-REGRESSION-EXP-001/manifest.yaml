@@ -90,6 +90,7 @@ execution:
   integrated_prompt: prompts/fable5_terminology_regression_audit.md
   scoring_rubric: scoring_rubric.md
   result_record: result.md
+  archived_original_output: FABLE5-TERMINOLOGY-REGRESSION-EXP-001_fable5_output.md   # added by post-v5.98 record-consistency correction (RC-9)
   requires_human_review: true
 
 human_checkpoint_decisions:
