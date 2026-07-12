@@ -1,0 +1,4250 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for inference-time validation, adoption, rejection, purge, and re-convergence in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/prompt_lifecycle_design_rationale/">
+      
+      
+        <link rel="prev" href="../prompt_compression_after_human_approved_convergence/">
+      
+      
+        <link rel="next" href="../prompting_as_specification_management/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Prompt Lifecycle Design Rationale - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prompt-lifecycle-design-rationale" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Prompt Lifecycle Design Rationale
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model - C-mediated Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency - An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift - Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A - Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B - Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 - Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 - Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 - Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 - Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 - Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequence_pal_case_hana_wedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequence PAL Case Analysis - Hana Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_compression_after_human_approved_convergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Compression After Human-Approved Convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Lifecycle Design Rationale
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Lifecycle Design Rationale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cippal-framing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CIP/PAL Framing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prompt-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Prompt Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-minimum-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Minimum Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Minimum Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-yaml-prompt-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. YAML Prompt (Source of Truth)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. YAML Prompt (Source of Truth)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-minimal-prompt-character-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Minimal Prompt (Character Exploration)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Minimal Prompt (Character Exploration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-to-short-prompt-and-tag-list-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to short-prompt and tag-list workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-long-prompt-identity-establishment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Long Prompt (Identity Establishment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Long Prompt (Identity Establishment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-optimization-prompt-convergence-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Optimization Prompt (Convergence Adjustment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Optimization Prompt (Convergence Adjustment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ultra-compressed-prompt-identity-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ultra-Compressed Prompt (Identity Recall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Ultra-Compressed Prompt (Identity Recall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-transition-prompt-sequence-continuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Transition Prompt (Sequence Continuation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Transition Prompt (Sequence Continuation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-key-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Key Distinctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Key Distinctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-compression-is-not-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt compression is not initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-establishment-vs-identity-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Establishment vs Identity Recall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-is-the-source-not-the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML is the source, not the prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-non-claims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Non-Claims
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompting_as_specification_management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompting as Specification Management under Model Mediation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_review_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Review Checklist and Lightweight Manifest Use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structured_prompting_as_a_practical_specification_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured Prompting as a Practical Specification Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence - Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-engineering-as-intent-preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Is Prompt Engineering Over
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_creative_prompting_and_intent_preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creative Prompting and Intent Preservation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis Technical
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artifact_state_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifact-State Governance in AI-Assisted Document Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explicit_instruction_fidelity_and_user_responsibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explicit Instruction Fidelity and Artifact-State User Responsibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context_contamination_and_controlled_reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Contamination and Controlled Re-convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context_carryover_across_review_transitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Carryover Across Iterative Review Transitions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Hypotheses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Hypotheses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_prompt_and_conformance_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt & Conformance Layers (Hypothesis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_prompt_layer_experiment_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt Layer Experiment Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_agent_verification_and_intent_adherence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Verification and Intent Adherence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../human_checkpointed_multi_model_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Checkpointed Multi-Model Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_ai_mediation_and_cumulative_a_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-AI Mediation and Cumulative A-Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autonomous_ml_research_loops_as_bounded_mediation_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous ML Research Loops as Bounded Mediation Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cippal-framing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CIP/PAL Framing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-prompt-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Prompt Lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-minimum-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Minimum Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Minimum Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-yaml-prompt-source-of-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. YAML Prompt (Source of Truth)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. YAML Prompt (Source of Truth)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-minimal-prompt-character-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Minimal Prompt (Character Exploration)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Minimal Prompt (Character Exploration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relationship-to-short-prompt-and-tag-list-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship to short-prompt and tag-list workflows
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-long-prompt-identity-establishment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Long Prompt (Identity Establishment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Long Prompt (Identity Establishment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-optimization-prompt-convergence-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Optimization Prompt (Convergence Adjustment)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Optimization Prompt (Convergence Adjustment)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ultra-compressed-prompt-identity-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ultra-Compressed Prompt (Identity Recall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Ultra-Compressed Prompt (Identity Recall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-transition-prompt-sequence-continuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Transition Prompt (Sequence Continuation)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Transition Prompt (Sequence Continuation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problem-it-solves_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problem it solves
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-rationale_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design Rationale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-it-does-not-replace_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it does not replace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-key-distinctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Key Distinctions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Key Distinctions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prompt-compression-is-not-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt compression is not initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identity-establishment-vs-identity-recall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identity Establishment vs Identity Recall
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-is-the-source-not-the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YAML is the source, not the prompt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-non-claims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Non-Claims
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="prompt-lifecycle-design-rationale">Prompt Lifecycle Design Rationale</h1>
+<p><strong>Status:</strong> Practical Guide / Design Rationale — not a finalized protocol,
+benchmark, or experiment template.</p>
+<hr />
+<h2 id="1-purpose">1. Purpose</h2>
+<p>This document explains why each prompt form in the CIP/PAL workflow exists,
+what problem it was designed to solve, and where in the Identity Lifecycle it
+belongs.</p>
+<p>The prompts described here are not a linear improvement series. Each emerged
+from a different operational problem encountered at a different stage of
+image-generation and sequence-generation practice. They should be understood
+as distinct artifacts with distinct roles, preconditions, and constraints.</p>
+<blockquote>
+<p>Prompts are not ranked by quality or power.
+Each exists because a different problem required a different solution.</p>
+</blockquote>
+<hr />
+<h2 id="2-cippal-framing">2. CIP/PAL Framing</h2>
+<p>Within the CIP/PAL reconstruction model:</p>
+<pre><code>A → (A + C) → A′ → B′ ≠ B
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><strong>A</strong> = human original intent, constraints, or approved state</li>
+<li><strong>C</strong> = model-side or execution-structure mediation that transforms A into A′</li>
+<li><strong>A′</strong> = task understanding or execution form after C-mediated transformation</li>
+<li><strong>B′</strong> = generated output or candidate output subject to adoption</li>
+<li><strong>B</strong> = intended or human-expected result</li>
+</ul>
+<p>This is a risk-condition expression. It does not claim that every output
+necessarily diverges from B. It keeps the observation structure visible: C may
+mediate A into A′, and B′ may differ from the intended B.</p>
+<p>CIP/PAL does not directly control C or A′. It supports governance of the
+workflow conditions around the transformation from A to A′, including
+validation, rejection, purge, re-binding, re-convergence, and adoption.</p>
+<hr />
+<h2 id="3-prompt-lifecycle">3. Prompt Lifecycle</h2>
+<p>The Identity Lifecycle proceeds through the following prompt sequence:</p>
+<pre><code>Source A
+↓
+Minimum Requirements
+↓
+YAML Prompt (Source of Truth)
+↓
+Minimal Prompt (Character Exploration)
+↓
+Long Prompt (Identity Establishment)
+↓
+Optimization Prompt (Convergence Adjustment)
+↓
+Ultra-Compressed Prompt (Identity Recall)
+</code></pre>
+<p>After convergence is established, series generation uses a repeating state
+transition:</p>
+<pre><code>Converged State
+↓
+Transition Prompt
+↓
+Next Approved State
+</code></pre>
+<p>Each stage is described below with its design rationale, problem context,
+phase, and constraints.</p>
+<hr />
+<h2 id="4-minimum-requirements">4. Minimum Requirements</h2>
+<h3 id="problem-it-solves">Problem it solves</h3>
+<p>Before any prompt is written, there must be a clear definition of what is
+required. Without this, prompts may reflect the writer's assumptions rather
+than the human operator's approved intent.</p>
+<h3 id="design-rationale">Design Rationale</h3>
+<p>Minimum Requirements establishes the human-approved source state A. It is the
+authoritative baseline against which all derived prompts and generated outputs
+are compared. Without it, there is no stable A to drift from.</p>
+<h3 id="phase">Phase</h3>
+<p>Pre-prompt. The starting point of the entire lifecycle.</p>
+<h3 id="what-it-does-not-replace">What it does not replace</h3>
+<p>Nothing. It is the source, not a derived artifact.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>None.</p>
+<hr />
+<h2 id="5-yaml-prompt-source-of-truth">5. YAML Prompt (Source of Truth)</h2>
+<h3 id="problem-it-solves_1">Problem it solves</h3>
+<p>Natural-language prompts are lossy. When a character definition is translated
+into English prose, useful redundancy is removed, prohibitions are weakened,
+priority relationships collapse, and structural separation disappears. Each
+editing cycle degrades the original intent further.</p>
+<h3 id="design-rationale_1">Design Rationale</h3>
+<p>The YAML Prompt preserves the structured source state in a human-reviewable,
+diffable, and comment-supporting format. It separates immutable identity
+elements, controlled variables, scene variables, reference image policies, and
+workflow governance into named sections. Natural-language prompts are derived
+projections of the YAML, not equivalents.</p>
+<p>The YAML Prompt is not a generation prompt by default. It is a reviewable
+master specification.</p>
+<blockquote>
+<p>YAML = human-approved source state.
+Natural-language prompts = derived artifacts.</p>
+</blockquote>
+<h3 id="phase_1">Phase</h3>
+<p>Source state management. Parallel to all other prompt forms.</p>
+<h3 id="what-it-does-not-replace_1">What it does not replace</h3>
+<p>The YAML Prompt does not replace the Long Prompt, Minimal Prompt, or any other
+derived form. It is the source from which those forms are derived.</p>
+<h3 id="prerequisites_1">Prerequisites</h3>
+<p>Human-approved Minimum Requirements.</p>
+<hr />
+<h2 id="6-minimal-prompt-character-exploration">6. Minimal Prompt (Character Exploration)</h2>
+<h3 id="problem-it-solves_2">Problem it solves</h3>
+<p>Long prompts activate more C-mediated transformation, increasing the risk of
+unintended A′. Observing how much identity can be recovered from minimal input
+reveals which attributes are load-bearing.</p>
+<h3 id="design-rationale_2">Design Rationale</h3>
+<p>The Minimal Prompt reduces prompt surface area to reduce optimization pressure
+from the model's training priors. It is used to explore reconstruction
+behavior, not to establish identity for production use.</p>
+<p>A minimal prompt is not merely a short prompt. It is a controlled projection
+from a structured source state.</p>
+<blockquote>
+<p>Minimality without source-of-truth becomes accidental compression.</p>
+</blockquote>
+<h3 id="phase_2">Phase</h3>
+<p>Character exploration. Pre-convergence.</p>
+<h3 id="what-it-does-not-replace_2">What it does not replace</h3>
+<p>The Minimal Prompt is not a substitute for the Long Prompt in
+identity-establishment workflows. It is not sufficient for first-generation
+use when identity continuity matters.</p>
+<p>It is not appropriate as the sole prompt for:</p>
+<ul>
+<li>identity fixation (establishing a repeatable, human-approved character state);</li>
+<li>series generation (producing a sequence of images with consistent identity);</li>
+<li>continuous small-change generation (pose, expression, or scene variation
+  within an established identity).</li>
+</ul>
+<p>In these cases, additional anchoring, stronger constraints, and human approval
+checkpoints are required. For post-convergence series generation or continuous
+small-change workflows, approved anchor material is normally required.</p>
+<h3 id="relationship-to-short-prompt-and-tag-list-workflows">Relationship to short-prompt and tag-list workflows</h3>
+<p>Some generative AI workflows — including those common in Stable Diffusion and
+similar systems — rely on short prompts or tag lists as a primary generation
+input. These approaches can be effective for exploration and variation within
+a familiar style or training distribution.</p>
+<p>However, using minimal prompts or short tag lists without sufficient anchoring
+and constraints for identity fixation purposes may increase drift risk. The
+model may fill in unspecified attributes through C-mediated reconstruction,
+producing outputs that appear plausible but diverge from the intended identity.</p>
+<p>A short tag list may specify broad attributes such as hair color, age range,
+clothing, or visual style, while leaving identity-relevant details such as
+facial structure, eye shape, hair flow, body proportion, expression, and
+atmosphere underspecified. In such cases, checkpoint behavior, sampler behavior,
+seed, prompt weighting, learned distribution, LoRA, DreamBooth, reference
+images, ControlNet, IP-Adapter, img2img, and other execution conditions may
+fill those unspecified regions. These execution-side conditions are forms of C
+in the CIP/PAL framing. They are not inherently harmful, but they become
+governance-relevant when identity continuity across multiple generations is
+required and the unspecified regions are identity-critical.</p>
+<p>This is not a claim that short-prompt workflows are inherently less stable. It
+is an observation that minimality without source-of-truth and without human
+approval checkpoints may allow C to reconstruct unspecified attributes in
+unintended directions, particularly when identity continuity across multiple
+generations is required.</p>
+<h3 id="prerequisites_2">Prerequisites</h3>
+<p>Human-approved Minimum Requirements. Preferably a YAML source state. Convergence is not required.</p>
+<hr />
+<h2 id="7-long-prompt-identity-establishment">7. Long Prompt (Identity Establishment)</h2>
+<h3 id="problem-it-solves_3">Problem it solves</h3>
+<p>Without a sufficiently detailed initial prompt, C-mediated transformation
+fills missing information with distributional defaults, producing a B′ that
+diverges from the intended B. Identity attributes that are not explicitly
+stated may be reconstructed in an unintended direction.</p>
+<h3 id="design-rationale_3">Design Rationale</h3>
+<p>The Long Prompt makes A dense and explicit before the model forms A′. It
+re-injects context, identity conditions, constraints, priorities, prohibited
+transformations, and decision boundaries. It is the primary tool for initial
+convergence and for re-convergence after drift.</p>
+<p>The Long Prompt does not eliminate C. The model may still compress,
+summarize, reprioritize, or reinterpret the instruction before producing B′.
+However, it reduces the missing information that C might otherwise fill in
+freely.</p>
+<p>In practical use, the Long Prompt functions more like a convergence-stage
+prompt for re-establishing the intended context, constraints, identity
+conditions, and decision boundaries before compressed prompts can safely be
+used for re-binding or recall.</p>
+<h3 id="phase_3">Phase</h3>
+<p>Identity establishment. First generation and re-convergence after drift.</p>
+<h3 id="what-it-does-not-replace_3">What it does not replace</h3>
+<p>The Long Prompt is a derived artifact — a controlled projection of the YAML
+source state into natural language. It does not replace the YAML master.</p>
+<h3 id="prerequisites_3">Prerequisites</h3>
+<p>Human-approved YAML master or equivalent source state.</p>
+<hr />
+<h2 id="8-optimization-prompt-convergence-adjustment">8. Optimization Prompt (Convergence Adjustment)</h2>
+<h3 id="problem-it-solves_4">Problem it solves</h3>
+<p>After observing the first generation result, specific drift points become
+visible. A general-purpose correction may improve image quality while
+introducing new drift. What is needed is a targeted correction that addresses
+only the observed deviation from A.</p>
+<h3 id="design-rationale_4">Design Rationale</h3>
+<p>The Optimization Prompt targets specific observed drift. Correction must be
+aimed at returning to A, not simply improving image quality. It is not a
+general optimization of the prompt. It is a drift-correction instrument.</p>
+<p>Used before convergence exists, the Optimization Prompt may fill missing
+information through C and produce a coherent B′ that is not sufficiently
+bound to A.</p>
+<h3 id="phase_4">Phase</h3>
+<p>Convergence adjustment. After first generation review, not before.</p>
+<h3 id="what-it-does-not-replace_4">What it does not replace</h3>
+<p>The Optimization Prompt must not be used for first generation. It must not
+replace the Long Prompt or the YAML master.</p>
+<h3 id="prerequisites_4">Prerequisites</h3>
+<p>Observed B′ and specific drift points must exist. The human-approved source state remains authoritative. Not for first-generation identity establishment.</p>
+<hr />
+<h2 id="9-ultra-compressed-prompt-identity-recall">9. Ultra-Compressed Prompt (Identity Recall)</h2>
+<h3 id="problem-it-solves_5">Problem it solves</h3>
+<p>After convergence is established, re-generating from the full Long Prompt for
+every subsequent generation is unnecessary and risks introducing new C at each
+step. A lighter recall mechanism is needed that leverages the existing
+convergence state.</p>
+<h3 id="design-rationale_5">Design Rationale</h3>
+<p>The Ultra-Compressed Prompt works because a human-approved state, effective
+constraints, and rejected-drift history already exist. Without those
+preconditions, it is insufficient for identity establishment.</p>
+<blockquote>
+<p>Compressed prompts are not initialization substitutes.
+Compress only after converging.</p>
+</blockquote>
+<p>The Ultra-Compressed Prompt preserves only the identity core, essential fixed
+features, allowed variation range, critical drift warnings, and major rejection
+boundaries. It is a lightweight key for returning toward a human-approved
+anchor, not a complete definition of A.</p>
+<h3 id="phase_5">Phase</h3>
+<p>Identity recall after stabilization. Post-convergence only.</p>
+<h3 id="what-it-does-not-replace_5">What it does not replace</h3>
+<p>The Ultra-Compressed Prompt must not be used for first generation, identity
+recovery, new character creation, or unapproved scene change. It must not
+replace the YAML master or the Long Prompt.</p>
+<h3 id="prerequisites_5">Prerequisites</h3>
+<p>Human-approved convergence state. Anchor image. Established convergence
+history. Compression safety review passed.</p>
+<hr />
+<h2 id="10-transition-prompt-sequence-continuation">10. Transition Prompt (Sequence Continuation)</h2>
+<h3 id="problem-it-solves_6">Problem it solves</h3>
+<p>In sequence-generation workflows, a character must move through a series of
+scenes without losing identity continuity. The Long Prompt is designed for
+identity establishment, not for controlled scene-to-scene transition within an
+established sequence.</p>
+<h3 id="design-rationale_6">Design Rationale</h3>
+<p>The Transition Prompt assumes convergence already exists and focuses on the
+state change from one approved scene to the next. It preserves the established
+identity while allowing controlled variation in scene, pose, or context.</p>
+<p>The Transition Prompt is the tool used when the problem is not "who is this
+character" but "how does this character move to the next state."</p>
+<h3 id="phase_6">Phase</h3>
+<p>Sequence continuation. After convergence is established.</p>
+<h3 id="what-it-does-not-replace_6">What it does not replace</h3>
+<p>The Transition Prompt must not be used before convergence exists. It does not
+replace the Long Prompt for initial identity establishment. It does not
+replace the YAML master.</p>
+<h3 id="prerequisites_6">Prerequisites</h3>
+<p>Established and human-approved convergence state. Approved anchor image.
+Defined target scene or sequence state.</p>
+<hr />
+<h2 id="11-key-distinctions">11. Key Distinctions</h2>
+<h3 id="prompt-compression-is-not-initialization">Prompt compression is not initialization</h3>
+<p>The compressed prompt works partly because a human-approved state, effective
+constraints, and rejected-drift history already exist. A short prompt is not
+a replacement for that convergence history.</p>
+<table>
+<thead>
+<tr>
+<th>Prompt type</th>
+<th>Operational role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Long Prompt</td>
+<td>Initial convergence / task-frame re-establishment</td>
+</tr>
+<tr>
+<td>Optimization Prompt</td>
+<td>Drift correction after first generation</td>
+</tr>
+<tr>
+<td>Ultra-Compressed Prompt</td>
+<td>Lightweight recall after stabilization</td>
+</tr>
+<tr>
+<td>Transition Prompt</td>
+<td>Scene or state change within established sequence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="identity-establishment-vs-identity-recall">Identity Establishment vs Identity Recall</h3>
+<p>Identity Establishment is the governed process of creating a first
+human-approved convergence state. It requires the Long Prompt and human
+approval at each step.</p>
+<p>Identity Recall is the process of re-invoking an already-established identity
+state using a lighter mechanism. It requires the convergence state, anchor
+image, and Ultra-Compressed Prompt — none of which can substitute for each
+other.</p>
+<p>Identity Recall is not identity recovery. If the convergence state has been
+lost or contaminated, recovery requires re-establishment, not recall.</p>
+<h3 id="yaml-is-the-source-not-the-prompt">YAML is the source, not the prompt</h3>
+<p>The YAML Prompt is the human-approved master specification. All natural-
+language prompts are derived projections. When generation quality degrades,
+return to the YAML source — not to the English prompt.</p>
+<hr />
+<h2 id="12-non-claims">12. Non-Claims</h2>
+<p>This document does not claim:</p>
+<ul>
+<li>any prompt form eliminates C;</li>
+<li>any prompt form guarantees identity preservation;</li>
+<li>any prompt form directly controls A′ or model behavior;</li>
+<li>prompts are ranked by quality, power, or version number;</li>
+<li>CIP/PAL directly controls C, A′, or the generative model;</li>
+<li>this document defines a finalized protocol, benchmark, or standard.</li>
+</ul>
+<hr />
+<h2 id="13-summary">13. Summary</h2>
+<p>Each prompt form in the CIP/PAL lifecycle exists because a different problem
+required a different solution at a different stage of identity-governed
+generation work. They are not a linear improvement series.</p>
+<p>Understanding why each prompt exists — what problem it solves, what it does
+not replace, and what preconditions it requires — is more important than
+knowing which is "shorter" or "stronger."</p>
+<p>Human approval remains the control point at every stage.</p>
+<hr />
+<p><em>This document is a Practical Guide and Design Rationale record.
+It is not a finalized protocol, benchmark, or experiment template.</em></p>
+<p><em>See also: <a href="../yaml_prompt_source_of_truth_pattern/">YAML Prompt Source-of-Truth Pattern</a> —
+<a href="../prompt_compression_after_human_approved_convergence/">Prompt Compression After Human-Approved Convergence</a> —
+<a href="../column_translation_loss/">Translation Loss and the YAML-First Principle</a> —
+<a href="../glossary/">Glossary</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
