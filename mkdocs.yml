@@ -73,6 +73,7 @@ nav:
     - Artifact-State Governance in AI-Assisted Document Management: artifact_state_governance.md
     - Explicit Instruction Fidelity and Artifact-State User Responsibility: explicit_instruction_fidelity_and_user_responsibility.md
     - Context Contamination and Controlled Re-convergence: context_contamination_and_controlled_reconvergence.md
+    - Context Carryover Across Iterative Review Transitions: context_carryover_across_review_transitions.md
   - Experimental Hypotheses:
     - PAL Prompt & Conformance Layers (Hypothesis): pal_prompt_and_conformance_layers.md
     - PAL Prompt Layer Experiment Protocol: pal_prompt_layer_experiment_protocol.md

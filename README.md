@@ -252,6 +252,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Explicit Instruction Fidelity and Artifact-State User Responsibility](docs/explicit_instruction_fidelity_and_user_responsibility.md) — Distinguishes AI inference-based helpfulness from fidelity to explicitly declared instructions, and clarifies user-side responsibility for specifying artifact-state expectations.
 - [Prompting as Specification Management under Model Mediation](docs/prompting_as_specification_management.md) — Frames operational prompting as lightweight specification management for document, file, artifact, repository, and multi-step AI workflows under model mediation.
 - [Context Contamination and Controlled Re-convergence](docs/context_contamination_and_controlled_reconvergence.md) — Practical cross-domain observation comparing context-mediated drift and re-convergence in image-generation and companion-AI-like persona workflows.
+- [Context Carryover Across Iterative Review Transitions](docs/context_carryover_across_review_transitions.md) — Working observation on a multi-turn AI review case, documenting anchor persistence, progressive expansion, qualification convergence, structural context carryover, claim reactivation, and human-guided re-convergence.
 
 **Reference**
 
