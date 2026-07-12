@@ -54,6 +54,7 @@ nav:
     - YAML Prompt Source-of-Truth Pattern: yaml_prompt_source_of_truth_pattern.md
     - YAML Prompt Source-of-Truth Manual: yaml_prompt_source_of_truth_manual.md
     - Prompt Review Checklist and Lightweight Manifest Use: prompt_review_checklist.md
+    - Structured Prompting as a Practical Specification Pattern: structured_prompting_as_a_practical_specification_pattern.md
     - Decision Pack: decision_pack.md
     - Re-Convergence - Identity Recovery: reconvergence.md
     - Protocol Template: protocol_template.md
