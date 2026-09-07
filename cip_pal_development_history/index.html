@@ -1,0 +1,3089 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for inference-time validation, adoption, rejection, purge, and re-convergence in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/cip_pal_development_history/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CIP/PAL Development History - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cippal-development-history" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CIP/PAL Development History
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model - C-mediated Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency - An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift - Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A - Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B - Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 - Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 - Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 - Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 - Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 - Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sequence_pal_case_hana_wedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequence PAL Case Analysis - Hana Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_compression_after_human_approved_convergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Compression After Human-Approved Convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_lifecycle_design_rationale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Lifecycle Design Rationale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompting_as_specification_management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompting as Specification Management under Model Mediation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yaml_prompt_source_of_truth_manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt_review_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Review Checklist and Lightweight Manifest Use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../structured_prompting_as_a_practical_specification_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured Prompting as a Practical Specification Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence - Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../protocol_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prompt-engineering-as-intent-preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Is Prompt Engineering Over
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_creative_prompting_and_intent_preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creative Prompting and Intent Preservation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis Technical
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../artifact_state_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifact-State Governance in AI-Assisted Document Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explicit_instruction_fidelity_and_user_responsibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explicit Instruction Fidelity and Artifact-State User Responsibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context_contamination_and_controlled_reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Contamination and Controlled Re-convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context_carryover_across_review_transitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Carryover Across Iterative Review Transitions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Hypotheses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Hypotheses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_prompt_and_conformance_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt & Conformance Layers (Hypothesis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pal_prompt_layer_experiment_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt Layer Experiment Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_agent_verification_and_intent_adherence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Verification and Intent Adherence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../human_checkpointed_multi_model_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Checkpointed Multi-Model Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multi_ai_mediation_and_cumulative_a_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-AI Mediation and Cumulative A-Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../autonomous_ml_research_loops_as_bounded_mediation_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous ML Research Loops as Bounded Mediation Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose and scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-evidence-and-dating-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Evidence and dating policy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Evidence and dating policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#evidence-scope-and-document-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence scope and document provenance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-genesis-statement-candidate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Genesis Statement candidate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-conceptual-origin-and-first-public-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Conceptual origin and first public record
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-selected-development-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Selected development timeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-current-formulation-used-for-this-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Current formulation used for this history
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-historical-discrepancies-and-open-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Historical discrepancies and open questions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Historical discrepancies and open questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-pals-february-label-and-march-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 PAL's February label and March commit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-early-purge-wording-and-case-attribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Early purge wording and case attribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-a-document-replacement-within-pal-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 A document replacement within PAL history
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-pal-governed-and-pal-supported-wording" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 PAL-governed and PAL-supported wording
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-handover-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Handover terminology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-statements-about-c-and-present-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Statements about C and present instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-remaining-evidence-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Remaining evidence gaps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-external-developments-and-comparison-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. External developments and comparison boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-review-and-publication-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Review and publication boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="cippal-development-history">CIP/PAL Development History</h1>
+<blockquote>
+<p><strong>Status: Approved for repository inclusion.</strong></p>
+<p><strong>Repository:</strong> <a href="https://github.com/watadani-byte/character-identity-protocol">character-identity-protocol</a><br />
+<strong>Historical baseline:</strong> <code>5ba8e69af03d9e5d86daee27a9bdb8491caf26cc</code><br />
+<strong>Prepared:</strong> 2026-09-07</p>
+</blockquote>
+<h2 id="1-purpose-and-scope">1. Purpose and scope</h2>
+<p>This document traces the recorded development of Character Identity Protocol (CIP) and Persistent Anchor Layer (PAL). It distinguishes early observations, later terminology, formal statements, and operational proposals.</p>
+<p>The purpose is to make the development record traceable. It is not a claim of worldwide priority, patentability, scientific validation, or implementation completeness. Later definitions are not presumed to have existed in the earliest records.</p>
+<p>This is a selected development timeline, not a complete commit log. Milestones describe what particular documents recorded. They do not independently establish that the documents' technical claims were demonstrated in practice.</p>
+<h2 id="2-evidence-and-dating-policy">2. Evidence and dating policy</h2>
+<p>Three dates must remain distinct:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Meaning</th>
+<th>Required evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conceptual Origin</td>
+<td>A private formulation or recorded observation</td>
+<td>Original message or manuscript, with its own timestamp and provenance</td>
+</tr>
+<tr>
+<td>First Public Record</td>
+<td>A record becoming accessible to others</td>
+<td>Evidence of public availability at the relevant time</td>
+</tr>
+<tr>
+<td>Formalization Milestone</td>
+<td>A formulation appearing in a recorded document</td>
+<td>The document at a fixed commit, its metadata, and the relevant change</td>
+</tr>
+</tbody>
+</table>
+<p>The timeline below uses <strong>Git-recorded dates</strong>, not independently verified publication dates. Author and committer timestamps are reported separately in the supporting audit. For the milestone commits listed here, they match. Their original <code>+09:00</code> offset is preserved.</p>
+<p>A root commit, a tag, or a statement such as “Initial public release” does not by itself establish when the repository became publicly accessible. Dates written inside documents are also distinct from the commits that introduced those documents.</p>
+<p>“Earliest located” means earliest within the reported search scope, not earliest anywhere. A term's first located occurrence is not automatically the first occurrence of the underlying idea. Conversely, an earlier related idea does not establish that the later name or complete definition already existed.</p>
+<h3 id="evidence-scope-and-document-provenance">Evidence scope and document provenance</h3>
+<p>This document draws on the read-only <strong>CIP/PAL commit.history.md history audit</strong>, dated 2026-09-07T20:53:14+09:00, and the preceding handover and preliminary investigation.</p>
+<p>The audit reports examination of 1,011 commits reachable from the baseline <code>main</code>, with 941 distinct changed-file blobs: 891 UTF-8 text blobs and 50 non-text blobs. Four PDFs were additionally searched using extracted text; image text and PDF rendering/OCR were not exhaustively examined. The audit reports no merge commits and a non-shallow history. Deleted refs, history preceding a force-push, private conversations, and records outside the inspected history are not guaranteed to be covered.</p>
+<p>The auditing environment could not refresh remote refs during that audit because of a DNS failure. This baseline therefore identifies the inspected history, not a claim that the remote repository remains unchanged.</p>
+<p>The audit's accompanying search scripts, JSON ledgers, extracted evidence, and verification file were not supplied with the report used to prepare this document. Its exhaustive-search claims have not been independently reproduced during drafting. Fixed-commit references below identify the evidence to inspect; they are not a substitute for reviewing it.</p>
+<h2 id="3-genesis-statement-candidate">3. Genesis Statement candidate</h2>
+<p>The handover supplies the following Japanese statement as a candidate record of the original problem formulation. Its wording and symbols are preserved:</p>
+<blockquote>
+<p>「B という出力が欲しくて A と言う入力を入力したとする。A → B の経路探索は最適化と言えるが A に C を足して A ‘ とし、A’ → B’ とする事を最適化とは言わない」</p>
+</blockquote>
+<p>The statement distinguishes pursuing an intended output from changing the input through an added C and obtaining a different output. It is relevant to the history of the problem being addressed.</p>
+<p><strong>Provenance status:</strong> The original message and its message-level timestamp have not been supplied. The quotation is currently supported by the handover, not by an independently inspected original conversation export.</p>
+<p>This quotation alone does not establish when the complete present-day sequence, Canonical A, the PAL extensions, or runtime control proposals were formulated.</p>
+<h2 id="4-conceptual-origin-and-first-public-record">4. Conceptual origin and first public record</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Current evidence</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>When was the Genesis Statement written?</td>
+<td>Quotation in the handover; original message not supplied</td>
+<td>Pending</td>
+</tr>
+<tr>
+<td>What is the root of the inspected Git history?</td>
+<td><code>e9341ed4b1a9cf19f8f14746b5a650a35869fa63</code>, recorded 2026-02-10T18:50:54+09:00</td>
+<td>Identified in the inspected history</td>
+</tr>
+<tr>
+<td>What did the root README say about release status?</td>
+<td>It described February 2026 as an initial public release</td>
+<td>Document self-description</td>
+</tr>
+<tr>
+<td>When did that record first become publicly accessible?</td>
+<td>Contemporaneous visibility evidence not supplied</td>
+<td>Pending</td>
+</tr>
+</tbody>
+</table>
+<p>The root README contained the repository title, an anchor-based reconstruction claim, a minimal-prompt/converged-image formulation, and statements about identity preservation and production cases. Documentation was marked as forthcoming. This establishes the content of an early repository record; it does not independently verify the case outcomes or the exact publication time. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/e9341ed4b1a9cf19f8f14746b5a650a35869fa63/README.md">Root README</a></p>
+<h2 id="5-selected-development-timeline">5. Selected development timeline</h2>
+<p>All times below are Git author and committer times, matching in the cited records. Each source link is fixed to the relevant full commit hash.</p>
+<table>
+<thead>
+<tr>
+<th>Git-recorded timestamp</th>
+<th>What the record contains</th>
+<th>What this evidence does not establish</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-10T18:50:54+09:00</td>
+<td>Root README: anchor-based reconstruction, minimal prompts with converged images, and identity-preservation claims</td>
+<td>The complete current formulation, independently validated case outcomes, or exact public availability</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/e9341ed4b1a9cf19f8f14746b5a650a35869fa63/README.md">E01 — README</a></td>
+</tr>
+<tr>
+<td>2026-02-11T16:54:36+09:00</td>
+<td>Internal reconstruction using A-prime notation, plus Face/Skeleton/Proportion validation gates and failure-triggered stopping</td>
+<td>The complete C-mediated sequence or the later adoption-governance architecture</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/d0ab6332cce6a2059bce021ecad9e7a6d3b9ecb5/README_with_case7.md">B01/B02 — Early README</a></td>
+</tr>
+<tr>
+<td>2026-02-22T02:20:33+09:00</td>
+<td>Explicit rejection after a failed identity gate; human-validated primary gates; auxiliary logs separated from the decision</td>
+<td>Completion of every later approval or adoption rule, or technical enforcement of those rules</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/482ffb6e4ed6bb8296d0b080df6afcbc27b80393/docs/Character_Identity_Protocol_Quality_Gate_Addendum.md">B04/B05 — Quality Gate Addendum</a></td>
+</tr>
+<tr>
+<td>2026-02-28T17:13:26+09:00</td>
+<td>Anchor re-binding after an environment reset, followed by re-convergence under identity validation gates</td>
+<td>Demonstrated cross-environment effectiveness; the text retained pending-validation qualifications</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/981154c09dc2623e2e67dceec2932416a6cd2144/README.md">B06/B07 — README</a></td>
+</tr>
+<tr>
+<td>2026-03-21T18:50:12+09:00</td>
+<td>Definitions of A, C, intended B, actual B-prime, and mismatch; C described through internal constraints</td>
+<td>Absence of A-prime elsewhere in the repository; this particular initial file omitted it from its sequence</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/bb099818a8524a91c3432a59b1ad9df0086c19c5/docs/model_a_c_b.md">E02 — Model explanation</a></td>
+</tr>
+<tr>
+<td>2026-03-21T19:26:54+09:00</td>
+<td>A C-mediated sequence including A-prime, with the mismatch condition elsewhere in the same document</td>
+<td>A single uninterrupted rendering of the current complete sequence</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/66b6e6f2c78c17e62fc4bf7eaac114fda2b57b07/docs/cip_integrated.md">B08 — Integrated document</a></td>
+</tr>
+<tr>
+<td>2026-03-22T12:20:09+09:00</td>
+<td>A notation note connecting A-prime to the earlier explanation in <code>model_a_c_b.md</code></td>
+<td>The repository-wide first appearance of A-prime or approval of the historical equality notation as the current definition</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/356bc48f04fb97249c404b46dfea2ccede44b7a2/docs/model_a_c_b.md">B09 — Notation note</a></td>
+</tr>
+<tr>
+<td>2026-03-29T13:01:14+09:00</td>
+<td>Persistent Anchor Layer named as an observational hypothesis for cross-session reference persistence</td>
+<td>A February publication date or completed systematic validation</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/6a5991b70219e5af4634f0ed533d32489b43ee6d/docs/column_pal.md">E03 — PAL column</a></td>
+</tr>
+<tr>
+<td>2026-03-31T06:42:40+09:00</td>
+<td>PAL developed as an external persistence layer for validated identity materials, distinguished from model-weight updates</td>
+<td>PAL's first naming or completion of controlled validation</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/0bf2b5e0b58f5538b6f9dcede8f46e29e0287e48/docs/pal_hypothesis.md">B10 — PAL hypothesis</a></td>
+</tr>
+<tr>
+<td>2026-03-31T12:54:48+09:00</td>
+<td>Structured source definitions distinguished from natural-language delivery projections through a YAML-first approach</td>
+<td>The later general definition or name Canonical A</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/da48996690525e880a0e4e437a2772e1cab31540/docs/column_translation_loss.md">B11 — Translation loss</a></td>
+</tr>
+<tr>
+<td>2026-04-17T11:58:04+09:00</td>
+<td>Adoption, rejection, purge, re-binding, and auditability identified as CIP governance functions, distinct from reference guidance</td>
+<td>Complete operational definitions or implementation of all those functions</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/0c1cbc3b47b33c0ed902113142c9937c4917d453/docs/technical_mechanism.md">B14 — Technical mechanism</a></td>
+</tr>
+<tr>
+<td>2026-04-20T11:57:14+09:00</td>
+<td>CIP explicitly presented as adoption governance between generation and adoption</td>
+<td>Implementation completeness or independent validation of all associated claims</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/7bdebe860988c8ba3e42d453c86e9ecc5f0c4ed9/README.md">B15 — README</a></td>
+</tr>
+<tr>
+<td>2026-05-12T19:28:48+09:00</td>
+<td>The complete sequence written continuously; C described as generative mediation and A-prime as A transformed under C</td>
+<td>First existence of all component ideas, which have earlier records</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/7cfe6dc7e64f257ecc05fd88359c3e1e11528df8/docs/model_a_c_b.md">B16 — Model revision</a></td>
+</tr>
+<tr>
+<td>2026-05-16T14:41:26+09:00</td>
+<td>C Taxonomy distinguishes observed output drift from diagnosis of likely mediation</td>
+<td>Direct measurement or conclusive identification of internal mechanisms</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/03b9c2a68a251a611d3d71e2fb5d97e3c1b3f2fa/docs/c_taxonomy.md">B17 — C Taxonomy</a></td>
+</tr>
+<tr>
+<td>2026-06-04T09:59:02+09:00</td>
+<td>Human editorial judgment and organizational approval themselves explicitly excluded from C</td>
+<td>A claim that every surrounding workflow condition is C</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/9f9bd103dcc9f1d628f024ca2084f787e5abe1cc/docs/model_a_c_b.md">B18 — Scope boundary</a></td>
+</tr>
+<tr>
+<td>2026-06-04T15:22:00+09:00</td>
+<td>Model-side and execution-structure mediation explicitly included when they transform A; surrounding structures are not C merely because they exist</td>
+<td>A deployed Runtime Gate or technical enforcement of the stated boundaries</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/738e26cde7852811b0f5efbbe7760db7021b2673/docs/model_a_c_b.md">B19 — Mediation scope</a></td>
+</tr>
+<tr>
+<td>2026-06-14T04:30:28+09:00</td>
+<td>PAL Prompt and Conformance Assessment layers proposed as experimental extensions; source, translation, candidate generation, and human/CIP adoption distinguished</td>
+<td>A finalized PAL specification or proof that the extensions improve outcomes</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/93d447ce2eea53c01ba0881c8c3849552f143c04/docs/pal_prompt_and_conformance_layers.md">E04/B20 — Experimental architecture</a></td>
+</tr>
+<tr>
+<td>2026-06-14T20:44:48+09:00</td>
+<td>A defined through approved PAL source conditions and the intended request, separately from the reconstructed state and generated candidate</td>
+<td>An executed experiment or a general naming milestone for Canonical A</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/f5730d0c0197e1f2304e0118f95eb4aac46f50d1/docs/pal_prompt_layer_experiment_protocol.md">B21 — Smoke-test protocol</a></td>
+</tr>
+<tr>
+<td>2026-06-24T12:01:14+09:00</td>
+<td>A described as human intent, constraints, or approved state, separately from the mediated state</td>
+<td>Full equivalence to every part of the current Canonical A definition</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/62c07970df3ec9cb2eac6c33e595a1f4f1a3bcfe/docs/multi_ai_mediation_and_cumulative_a_drift.md">B26 — Multi-AI mediation</a></td>
+</tr>
+<tr>
+<td>2026-06-26T13:53:12+09:00</td>
+<td>A explicitly described as the human-approved source state in a proposed operational pattern</td>
+<td>First use of the name Canonical A or completion of a universal specification</td>
+<td><a href="https://github.com/watadani-byte/character-identity-protocol/blob/fd90e5ec5ca2ecc9050abb5647aab5f11e43cb1b/docs/yaml_prompt_source_of_truth_pattern.md">B22 — Source-of-truth pattern</a></td>
+</tr>
+</tbody>
+</table>
+<p>The evidence identifiers correspond to entries in the supporting audit. They distinguish evidence records, not protocol versions.</p>
+<h2 id="6-current-formulation-used-for-this-history">6. Current formulation used for this history</h2>
+<p>The governing sequence for this document is:</p>
+<pre><code class="language-text">A → (A + C) → A′ → B′ ≠ B
+</code></pre>
+<p>The historical distinction is between <strong>earlier component descriptions</strong>, <strong>their combination in one document</strong>, and <strong>their continuous written formulation</strong>. This does not require changing any historical quotation.</p>
+<p>For the current task, Canonical A means Context selected, organized, and approved by the human. It remains distinct from C, A-prime, B-prime, and model-derived execution state. AI extraction or summary does not automatically become Canonical A.</p>
+<p>The inspected repository contains related descriptions of approved source conditions and derived states. The audit did not establish the first definition of <strong>Canonical A as a name</strong>. The current task's definition must not be backdated on the strength of related language alone.</p>
+<p>At the inspected baseline, PAL means <strong>Persistent Anchor Layer</strong>. PAL Prompt Layer and PAL Conformance Assessment Layer are documented as experimental extensions, not replacements for PAL's name or for human adoption authority. CIP governs the adoption process; PAL supports persistence and continuity. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/5ba8e69af03d9e5d86daee27a9bdb8491caf26cc/README.md">Baseline README</a></p>
+<p>The Runtime Safety Profile v0.4 remains <strong>Proposal under the supplied handover conditions</strong>. Its source document and approval record were not inspected in this audit. No implementation or public-date milestone for that proposal is assigned here.</p>
+<h2 id="7-historical-discrepancies-and-open-questions">7. Historical discrepancies and open questions</h2>
+<h3 id="71-pals-february-label-and-march-commit">7.1 PAL's February label and March commit</h3>
+<p>The PAL column was added in the inspected history on 2026-03-29, while its closing status line names February 2026. The meaning of that month—observation, drafting, or another event—has not been established. Both are retained without converting the document's label into a publication date. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/6a5991b70219e5af4634f0ed533d32489b43ee6d/docs/column_pal.md">PAL column</a></p>
+<h3 id="72-early-purge-wording-and-case-attribution">7.2 Early purge wording and case attribution</h3>
+<p>A 2026-02-19 version of <code>docs/case_01_failure_log.md</code> contains a Case 03/Avedon heading and wording about purged generations. The audit identifies a content replacement and inconsistent case/count information. This supports an early recorded use of the word, but not a verified Case 01 purge event or a complete normative purge definition. It is excluded from the main milestone table pending clarification. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/6b334e969ce8931f25aeaff2224a8370ee73fbf5/docs/case_01_failure_log.md">Historical case file</a></p>
+<p>The earliest explicit operational definition of purge—including what is removed from active use and what evidence is retained—remains a follow-up question. A use of the word and a listing of governance functions should not be presented as that complete definition.</p>
+<h3 id="73-a-document-replacement-within-pal-history">7.3 A document replacement within PAL history</h3>
+<p>On 2026-04-05, <code>docs/pal_hypothesis.md</code> contained an Anomaly Response Protocol separating access from authority. Its presence at that path is evidence of a recorded document, not proof of an uninterrupted conceptual expansion of the PAL hypothesis. The intent of the replacement remains unresolved. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/684dd59b32055c5bbe5512878d83eb94a9e549c4/docs/pal_hypothesis.md">Historical replacement</a></p>
+<h3 id="74-pal-governed-and-pal-supported-wording">7.4 PAL-governed and PAL-supported wording</h3>
+<p>The initial 2026-06-14 experimental architecture used PAL-governed wording while assigning adoption authority to humans and CIP. A same-day revision at 04:43:49 changed the subtitle to PAL-Supported, while other wording remained. Historical quotations must retain those differences; that revision alone does not establish completion of all terminology corrections. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/1817b82e9760238da7dc72ee010dce5c70edb19f/docs/pal_prompt_and_conformance_layers.md">Subtitle revision</a></p>
+<h3 id="75-handover-terminology">7.5 Handover terminology</h3>
+<p>The original handover's section 2.2 labels PAL as Conformance Assessment Layer. This differs from the repository's PAL name and its distinction between persistence support and diagnostic extensions. The handover wording has been inspected during drafting; its intended referent still requires human determination. This discrepancy is not authorization to redefine PAL in the repository.</p>
+<h3 id="76-statements-about-c-and-present-instructions">7.6 Statements about C and present instructions</h3>
+<p>Some historical text states that eliminating C is not the purpose of the described protocol or pattern. The current human instruction nevertheless requires continued effort to eliminate C, and prohibits using an explanation of C as an excuse.</p>
+<p>This history preserves historical statements as evidence and retains the present instruction without narrowing it to this audit or declaring the difference resolved. Any substantive reconciliation belongs in a separately reviewed change, not a silent alteration of history. <a href="https://github.com/watadani-byte/character-identity-protocol/blob/fd90e5ec5ca2ecc9050abb5647aab5f11e43cb1b/docs/yaml_prompt_source_of_truth_pattern.md">Historical pattern statement</a></p>
+<h3 id="77-remaining-evidence-gaps">7.7 Remaining evidence gaps</h3>
+<ul>
+<li>The Genesis Statement's original message and message-level timestamp.</li>
+<li>Contemporaneous evidence of first public availability.</li>
+<li>The original provenance of the PAL document's February label.</li>
+<li>The first named definition of Canonical A within or outside the inspected history.</li>
+<li>The complete operational purge-definition milestone.</li>
+<li>Source documents for Runtime Gate, an external watchdog, authoritative external-state Outcome Verification, and Runtime Safety Profile v0.4.</li>
+<li>Independent reproduction using the audit's accompanying evidence and search files.</li>
+</ul>
+<p>Unlocated material is not declared nonexistent. No guessed dates or commit identifiers are assigned to these gaps.</p>
+<h2 id="8-external-developments-and-comparison-boundary">8. External developments and comparison boundary</h2>
+<p>External frameworks and standards were not examined in this audit. No external chronology or precedence comparison is asserted in this document.</p>
+<p>A later comparison, if adopted, should occupy a separate section with independently verified source dates and narrowly described similarities. It must not be inserted into CIP/PAL's internal origin record. Similar terminology, a later external publication, or an unsuccessful search does not establish priority or independent invention.</p>
+<h2 id="9-review-and-publication-boundary">9. Review and publication boundary</h2>
+<p>The content of this document has been reviewed and approved by the human author for repository inclusion. Unresolved evidence questions remain explicitly marked; approval does not convert them into verified findings.</p>
+<p>Future substantive changes remain subject to human review. Approval of this document does not by itself authorize automated repository operations, commits, pushes, tags, or releases.</p>
+<p>Before publication, review the selected evidence and decide how to retain the supporting audit, resolve or explicitly preserve the open questions, and confirm the final filename and location. Unresolved origin and publication dates can remain openly marked as pending; they need not be filled with estimates to produce a useful history.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

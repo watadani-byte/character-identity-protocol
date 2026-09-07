@@ -1,0 +1,182 @@
+{
+  "1": {
+    "inputs": { "ckpt_name": "v1-5-pruned-emaonly.safetensors" },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": { "title": "Checkpoint (Shared)" }
+  },
+  "4": {
+    "inputs": { "width": 512, "height": 768, "batch_size": 1 },
+    "class_type": "EmptyLatentImage",
+    "_meta": { "title": "Latent (Shared)" }
+  },
+
+  "20": {
+    "inputs": {
+      "text": "blurry, distorted, low quality, asymmetrical eyes, inconsistent face, different person, identity drift, extra limbs, deformed hands, childlike, chibi, oversized head, dramatic expression, dynamic action pose, heavy makeup, props, complex outfit",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": { "title": "Common_Negative" }
+  },
+
+  "30": {
+    "inputs": {
+      "text": "1woman, early 20s, oval face, smooth fair skin, almond-shaped dark brown eyes, straight nose, soft lips, long straight black hair, slender physique, neutral relaxed standing pose, calm expression, quiet emotional presence, full body shot, simple clean white background, soft studio lighting, 85mm portrait lens, clear silhouette, realistic hair detail, subtle shading",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": { "title": "A_Conventional_Positive — all attributes in one prompt" }
+  },
+
+  "31": {
+    "inputs": {
+      "seed": 42,
+      "steps": 25,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": ["1", 0],
+      "positive": ["30", 0],
+      "negative": ["20", 0],
+      "latent_image": ["4", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": { "title": "KSampler — Branch A" }
+  },
+
+  "32": {
+    "inputs": { "samples": ["31", 0], "vae": ["1", 2] },
+    "class_type": "VAEDecode",
+    "_meta": { "title": "VAEDecode — Branch A" }
+  },
+
+  "33": {
+    "inputs": { "pixels": ["32", 0], "vae": ["1", 2] },
+    "class_type": "VAEEncode",
+    "_meta": { "title": "VAEEncode — Branch A" }
+  },
+
+  "34": {
+    "inputs": {
+      "seed": 42,
+      "steps": 20,
+      "cfg": 7.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 0.35,
+      "model": ["1", 0],
+      "positive": ["30", 0],
+      "negative": ["20", 0],
+      "latent_image": ["33", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": { "title": "KSampler Refine — Branch A" }
+  },
+
+  "35": {
+    "inputs": { "samples": ["34", 0], "vae": ["1", 2] },
+    "class_type": "VAEDecode",
+    "_meta": { "title": "VAEDecode Refine — Branch A" }
+  },
+
+  "36": {
+    "inputs": { "images": ["35", 0], "filename_prefix": "A_Conventional" },
+    "class_type": "SaveImage",
+    "_meta": { "title": "Save — Branch A Output" }
+  },
+
+  "50": {
+    "inputs": {
+      "text": "1woman, early 20s, oval face, smooth fair skin, almond-shaped dark brown eyes, straight nose, soft lips, long straight black hair, slender physique, neutral relaxed standing pose, calm expression, quiet emotional presence",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": { "title": "B_Identity_Positive — character identity attributes only" }
+  },
+
+  "51": {
+    "inputs": {
+      "text": "full body composition, simple clean white background, natural standing posture, soft studio lighting, 85mm portrait lens, clear silhouette, realistic hair detail, subtle shading",
+      "clip": ["1", 1]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": { "title": "B_Scene_Positive — scene and rendering attributes only" }
+  },
+
+  "52": {
+    "inputs": {
+      "conditioning_1": ["50", 0],
+      "conditioning_2": ["51", 0]
+    },
+    "class_type": "ConditioningCombine",
+    "_meta": { "title": "Combine Identity + Scene — Branch B" }
+  },
+
+  "53": {
+    "inputs": {
+      "seed": 42,
+      "steps": 25,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": ["1", 0],
+      "positive": ["52", 0],
+      "negative": ["20", 0],
+      "latent_image": ["4", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": { "title": "KSampler — Branch B" }
+  },
+
+  "54": {
+    "inputs": { "samples": ["53", 0], "vae": ["1", 2] },
+    "class_type": "VAEDecode",
+    "_meta": { "title": "VAEDecode — Branch B" }
+  },
+
+  "55": {
+    "inputs": { "pixels": ["54", 0], "vae": ["1", 2] },
+    "class_type": "VAEEncode",
+    "_meta": { "title": "VAEEncode — Branch B" }
+  },
+
+  "56": {
+    "inputs": {
+      "seed": 42,
+      "steps": 20,
+      "cfg": 7.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 0.35,
+      "model": ["1", 0],
+      "positive": ["52", 0],
+      "negative": ["20", 0],
+      "latent_image": ["55", 0]
+    },
+    "class_type": "KSampler",
+    "_meta": { "title": "KSampler Refine — Branch B" }
+  },
+
+  "57": {
+    "inputs": { "samples": ["56", 0], "vae": ["1", 2] },
+    "class_type": "VAEDecode",
+    "_meta": { "title": "VAEDecode Refine — Branch B" }
+  },
+
+  "58": {
+    "inputs": { "images": ["57", 0], "filename_prefix": "B_IdentitySeparated" },
+    "class_type": "SaveImage",
+    "_meta": { "title": "Save — Branch B Output" }
+  },
+
+  "99": {
+    "inputs": {
+      "text": "A/B Comparison Workflow\n\nBranch A: all attributes in one prompt\nBranch B: identity separated from scene\n\nSame checkpoint, latent, sampler, seed.\nCompare outputs to observe identity consistency differences.",
+      "font_size": 14
+    },
+    "class_type": "Note",
+    "_meta": { "title": "Comparison Intent" }
+  }
+}
