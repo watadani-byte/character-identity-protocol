@@ -165,3 +165,17 @@ The content of this document has been reviewed and approved by the human author 
 Future substantive changes remain subject to human review. Approval of this document does not by itself authorize automated repository operations, commits, pushes, tags, or releases.
 
 Before publication, review the selected evidence and decide how to retain the supporting audit, resolve or explicitly preserve the open questions, and confirm the final filename and location. Unresolved origin and publication dates can remain openly marked as pending; they need not be filled with estimates to produce a useful history.
+
+## 10. Supplementary records and subsequent clarifications
+
+### 10.1 Additional private-note record
+
+An additional private-note screenshot displays 30 January 2026 at 13:15 and contains the declaration "Input unchanged (A fixed)." The human author reports that the text was copied from a ChatGPT conversation without subsequent editing and that the relevant time zone was Japan Standard Time (UTC+09:00).
+
+This record supports the presence of an early concern with preserving A, rejecting changes to A, and retaining the user's authority to stop an attempt. The displayed timestamp does not independently establish the original ChatGPT message time, the note's initial creation time, or public availability. This English declaration is a separate record from the Japanese Genesis Statement quoted above; its displayed date is not assigned to that statement.
+
+[Source image, transcription, translation, and provenance](cip_input_unchanged_declaration_record.md)
+
+### 10.2 Human-approved clarification of C
+
+During the documentation review on 14 September 2026, the human author approved retaining the existing central definition of C while clarifying its boundary with Canonical A, the continuing obligation to pursue elimination of C, attribution boundaries for external research, and the distinction between conceptual scope and implementation capability. This clarification did not introduce narrow and broad definitions of C or approve changes to Runtime Safety Profile v0.4.

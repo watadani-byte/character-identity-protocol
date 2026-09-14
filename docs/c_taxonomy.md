@@ -437,7 +437,7 @@ C diagnosis converts feedback into feedforward governance.
 - C categories are not mutually exclusive.
 - A single drift event may involve multiple forms of C.
 - C Taxonomy should be used as a diagnostic map, not as a rigid single-label classification system.
-- The purpose is not to eliminate C.
+- This taxonomy does not itself eliminate C or guarantee its complete elimination. That limitation does not remove the obligation to continue efforts to eliminate C, nor permit its use as an excuse for deviation.
 - The purpose is to distinguish acceptable creative mediation from unapproved drift-producing mediation.
 
 A single drift event may involve several categories acting together:
@@ -445,6 +445,10 @@ A single drift event may involve several categories acting together:
 ```
 Semantic Expansion C + Style Gravity C + Compression / Omission C + Accumulation C
 ```
+
+These categories are diagnostic aids within the existing definition of C. They do not introduce narrow and broad definitions of C. Assigning a category identifies a possible form of mediation; it does not by itself verify an internal mechanism or establish a causal explanation.
+
+Where external research is used to support a diagnosis, its terminology, sources, scope, and contributions must remain identifiable. A CIP/PAL mapping does not establish ownership or novelty of the mapped mechanism.
 
 -----
 

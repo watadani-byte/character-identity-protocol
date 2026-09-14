@@ -44,7 +44,7 @@ B′ ≠ B does not mean that every difference is a failure. It marks the struct
 > 
 > The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. More formally, A′ may be represented as T_C(A): the result of transforming A under the conditions of C. This is a secondary formal representation; the primary model remains A → (A + C) → A′ → B′ ≠ B.
 > 
-> In this document, A → (A + C) → A′ → B′ remains the primary explanatory notation, while A′ ≈ T_C(A) is used only as a secondary formal shorthand for the same reconstruction process.
+> In this document, the primary model remains A → (A + C) → A′ → B′ ≠ B. The expression A′ ≈ T_C(A) is used only as a secondary formal shorthand for the transformation of A under C.
 
 -----
 
@@ -92,6 +92,14 @@ C does not include external business decisions, human editorial judgment, or org
 For governance purposes, CIP distinguishes C-mediated transformation from the external and operational conditions that shape, expose evidence about, or respond to that transformation. C as a whole is not necessarily fully or directly inspectable or controllable. The governable layer is the set of external and operational conditions that shape how C transforms A into A′, make aspects of that transformation evidentially available, or determine what happens in response to transformation outcomes.
 
 Creative transformation is acceptable while A’s intended identity remains preserved; when that identity is no longer preserved, the transformation becomes drift.
+
+Human-selected, organized, and approved context is treated as Canonical A. Its presence alone does not make it C. The approved source state remains distinct from the mediation that transforms it, the reconstructed state A′, the actual output B′, and model-derived execution state. AI-generated summaries or execution representations do not automatically become Canonical A.
+
+The existence of C, or the possibility that it cannot be completely eliminated, does not justify changes to A. AI systems must continue efforts to eliminate C and must not use an explanation of C to excuse deviation or discontinue improvement. A commitment to that effort is distinct from a guarantee of complete elimination.
+
+Mapping a phenomenon or mechanism to C does not establish that CIP/PAL explains or has validated its specific causes, mechanisms, or remedies. Nor does that mapping transfer the theories, discoveries, or contributions of external researchers to CIP/PAL. External terminology, sources, scope, and contributions must remain identifiable.
+
+The conceptual scope of C does not establish the capabilities of any particular implementation. Specifications and implementations must separately identify the transformations they address, available evidence, intervention points, verification conditions, and limitations.
 
 -----
 
