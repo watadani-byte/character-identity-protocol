@@ -259,6 +259,8 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Glossary](docs/glossary.md)
 - [CIP vs Existing Methods](docs/cip_vs_existing_methods.md)
 - [Decision Pack](docs/decision_pack.md)
+- [CIP/PAL Development History](docs/cip_pal_development_history.md)
+- [Input Unchanged Declaration — Private-Note Record](docs/cip_input_unchanged_declaration_record.md)
 
 -----
 
