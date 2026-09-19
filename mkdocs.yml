@@ -86,6 +86,8 @@ nav:
     - Glossary: glossary.md
     - CIP Terminology Mapping: cip_terminology_mapping.md
     - White Paper Appendices: whitepaper_appendices.md
+    - Runtime Stop MVP Proposal Versions: proposals/runtime_stop_mvp/index.md
+    - Runtime Stop MVP Version Changes: proposals/runtime_stop_mvp/changelog.md
 
 plugins:
   - search

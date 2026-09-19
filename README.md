@@ -261,6 +261,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Decision Pack](docs/decision_pack.md)
 - [CIP/PAL Development History](docs/cip_pal_development_history.md)
 - [Input Unchanged Declaration — Private-Note Record](docs/cip_input_unchanged_declaration_record.md)
+- [Runtime Stop MVP — Proposal Versions](docs/proposals/runtime_stop_mvp/index.md) — Latest proposal: v0.5, Producer Approved; Audit Approval and Final ADOPT Pending. v0.4 Fixed retained separately; version-specific PAL terminology is explained in the index.
 
 -----
 
