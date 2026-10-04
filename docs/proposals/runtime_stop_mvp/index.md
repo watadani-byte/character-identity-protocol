@@ -45,5 +45,5 @@ No full-text Markdown conversion is included. Any later conversion is a derived 
 
 The following documents are review material, not incorporated changes to the preserved v0.6 proposal. Publication does not grant adoption, audit approval, activation, execution permission or Go. The latest proposal and version register above remain unchanged.
 
-- [Preflight Readiness — Change Proposal](preflight_readiness_proposal.md): proposed initial A/B readiness rule, separate from transmission preflight and result evaluation; Producer decisions remain pending.
+- [Preflight Governance — RFC Draft](preflight_readiness_proposal.md): proposed initial A/B readiness rule, separate from transmission preflight and result evaluation; Producer decisions remain pending.
 - [Claude Code Mods — v0.6 Review Input](claude_code_mods_review.md): primary-source review and candidate mappings/tests; no test results or immediate normative revision claimed.
