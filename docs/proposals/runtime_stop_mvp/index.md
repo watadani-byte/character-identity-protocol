@@ -40,3 +40,10 @@ The versioned files preserve the supplied bytes; filename normalization is the o
 The supplied v0.6 DOCX and user-provided PDF are also retained without alteration. The revision-preparation handover designated a v0.5 DOCX as the baseline for that review; this does not silently establish format precedence for the new v0.6 pair or change the earlier v0.5 archive policy. Full textual equivalence of the v0.6 formats has not been established. Appendix A identifies the reviewed draft hash, not the hash of these final supplied files.
 
 No full-text Markdown conversion is included. Any later conversion is a derived reading format and must be checked against the human-designated source before publication. A conflict between original formats requires human determination and must not be silently reconciled.
+
+## Review inputs — not adopted amendments
+
+The following documents are review material, not incorporated changes to the preserved v0.6 proposal. Publication does not grant adoption, audit approval, activation, execution permission or Go. The latest proposal and version register above remain unchanged.
+
+- [Preflight Readiness — Change Proposal](preflight_readiness_proposal.md): proposed initial A/B readiness rule, separate from transmission preflight and result evaluation; Producer decisions remain pending.
+- [Claude Code Mods — v0.6 Review Input](claude_code_mods_review.md): primary-source review and candidate mappings/tests; no test results or immediate normative revision claimed.
