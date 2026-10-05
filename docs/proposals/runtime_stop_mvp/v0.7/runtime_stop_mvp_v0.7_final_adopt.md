@@ -508,6 +508,8 @@ AC通過は必要条件であり、運用開始の十分条件ではない。証
 
 本記録は証拠の追記であり、Day 8–14全受入試験、AC-01〜AC-25、Day 30の限定GoまたはSafety Profile Activationの完了を意味しない。
 
+別記録ER-2026-10-05-DQAとして、GitHubアップロード用文書パッケージを対象にCodex上で17項目の静的プリフライトを実施し、17/17 PASSおよびZIP整合性PASSを確認した。これは文書・パッケージ内の一貫性確認であり、ローカルRuntime Harnessの33件を再実行した結果でも、GitHub上の表示・リンク確認でもない。詳細は[文書パッケージ・プリフライト記録](CIP_PAL_v0.7_Documentation_Package_Preflight_Record_2026-10-05.md)を参照する。
+
 ## Part III — Governance, Approval & Transition
 
 ### 20. 承認手続きの有限化
@@ -587,6 +589,9 @@ CHG-001〜032はv0.5までの履歴と配置を示す。CHG-001〜026は2026年8
 
 **ER-2026-10-05-LRH — Local Runtime Harness Validation Record**  
 対象：§19.1に記載するユーザー提示のローカルモック試験33件および検証範囲の限定。区分：Editorial／Evidence。記録日：2026年10月5日。本追記は規範要件、Final ADOPTの範囲、Safety Profile Activation、実行GoまたはB′採用を変更しない。
+
+**ER-2026-10-05-DQA — Documentation Package Preflight**  
+対象：GitHubアップロード用Markdownパッケージの静的整合性確認。区分：Editorial／Evidence。Codex上のQAスクリプトが17項目すべてPASSし、ZIP整合性確認もPASSした。本記録はRuntime Harness 33件の再実行、GitHubリモート表示の確認、規範適合、監査記録の独立認証または本番適格性を意味しない。詳細は付属文書「文書パッケージ・プリフライト記録」を参照。
 
 ### 23. 最終意思決定ポイント
 

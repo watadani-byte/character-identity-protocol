@@ -16,7 +16,7 @@ v0.5 incorporates Producer-approved Material changes CHG-027–032 against v0.4.
 
 v0.6 is a separately preserved revision of v0.5. Its Appendix A records the Producer’s 2026-09-27 ADOPT decision on the reviewed draft; Section 23 retains the audit prerequisite for final ADOPT. The earlier versions and their historical status records remain unchanged.
 
-v0.7 is a separately preserved revision of v0.6, incorporating Producer-approved Material change CR-07 (Ready_H) and recording, in its §23 and Appendix F, a unanimous audit approval and the resulting Final ADOPT. It does not delete, overwrite, or retrospectively alter v0.6, v0.5, or v0.4, and their recorded statuses above are unchanged. Unlike v0.4–v0.6, v0.7 is authored directly as a repository Markdown document rather than preserved as a separate binary original. The linked Local Harness Validation Addendum and Documentation Package Preflight Record are Editorial/Evidence records under §20.1; they support v0.7 but are not themselves normative text and do not extend Final ADOPT to Safety Profile Activation, Approved P_A effectiveness, Go, or B′ adoption.
+v0.7 is a separately preserved revision of v0.6, incorporating Producer-approved Material change CR-07 (Ready_H) and recording, in its §23 and Appendix F, a unanimous audit approval and the resulting Final ADOPT. It does not delete, overwrite, or retrospectively alter v0.6, v0.5, or v0.4, and their recorded statuses above are unchanged. For this publication, v0.7 is supplied as Markdown; no separate v0.7 DOCX or PDF is included in the received package. The linked Local Harness Validation Addendum and Documentation Package Preflight Record are Editorial/Evidence records under §20.1; they support v0.7 but are not themselves normative text and do not extend Final ADOPT to Safety Profile Activation, Approved P_A effectiveness, Go, or B′ adoption.
 
 ## Approval boundary
 
@@ -42,7 +42,7 @@ The versioned files preserve the supplied bytes; filename normalization is the o
 
 The supplied v0.6 DOCX and user-provided PDF are also retained without alteration. The revision-preparation handover designated a v0.5 DOCX as the baseline for that review; this does not silently establish format precedence for the new v0.6 pair or change the earlier v0.5 archive policy. Full textual equivalence of the v0.6 formats has not been established. Appendix A identifies the reviewed draft hash, not the hash of these final supplied files.
 
-v0.7 is authored and published directly as Markdown; it has no separate DOCX or PDF original, and this index does not create one by assertion.
+The supplied v0.7 Markdown is published as received. This index does not establish whether other source formats exist.
 
 No full-text Markdown conversion is included for v0.4–v0.6. Any later conversion is a derived reading format and must be checked against the human-designated source before publication. A conflict between original formats requires human determination and must not be silently reconciled.
 
