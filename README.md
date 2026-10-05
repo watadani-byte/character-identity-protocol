@@ -261,7 +261,7 @@ The PAL Prompt Layer, PAL Conformance Assessment Layer, and Anchor-Based Prompt 
 - [Decision Pack](docs/decision_pack.md)
 - [CIP/PAL Development History](docs/cip_pal_development_history.md)
 - [Input Unchanged Declaration — Private-Note Record](docs/cip_input_unchanged_declaration_record.md)
-- [Runtime Stop MVP — Proposal Versions](docs/proposals/runtime_stop_mvp/index.md) — Latest proposal: v0.6, Producer Approved; Producer ADOPT decision recorded, Audit Approval and Final ADOPT Pending. v0.4 Fixed and v0.5 Producer Approved retained separately; version-specific PAL terminology is explained in the index.
+- [Runtime Stop MVP — Proposal Versions](docs/proposals/runtime_stop_mvp/index.md) — Latest proposal: v0.7, Final ADOPT. The v0.6 Producer Approved version (Producer ADOPT decision recorded; Audit Approval and Final ADOPT pending), v0.5 Producer Approved, and v0.4 Fixed are retained separately. Version-specific PAL terminology is explained in the index.
 - [Preflight Governance — RFC Draft](docs/proposals/runtime_stop_mvp/preflight_readiness_proposal.md) — Under review: a proposed condition for the AI to stop further exploration or processing and request human clarification when Canonical A or the human-specified intended/expected output B is missing or cannot be identified, or when supplied inputs or requirements contain an unresolved contradiction. The basic sequence A → (A + C) → A′ → B′ ≠ B is unchanged. This is unadopted review material; it does not change the published v0.6 text or its recorded approval status.
 
 -----
