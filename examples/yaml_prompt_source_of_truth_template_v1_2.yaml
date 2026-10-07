@@ -1,0 +1,614 @@
+PromptPackage:
+  Meta:
+    PromptID: ""
+    Version: "v1.2"
+    Status: "draft" # draft / human_reviewed / human_approved / generation_approved / deprecated
+    CreatedFor: "image_generation"
+    SourceOfTruth: "yaml_master"
+    Notes: ""
+
+  TemplatePolicy:
+    TemplateVersion: "v1.2"
+    SchemaLock: true
+    DoNotRemoveEmptyFields: true
+    DoNotMergeSections: true
+    DoNotRenameKeysWithoutHumanApproval: true
+    DoNotReorderCoreSectionsWithoutHumanApproval: true
+    EmptyFieldMeaning: "intentionally unresolved, unused in this case, or awaiting human specification; not unnecessary"
+    HumanApprovalRequiredForTemplateChange: true
+    TemplateStructureIsControlSurface: true
+    PreservedSections:
+      - "Meta"
+      - "TemplatePolicy"
+      - "Purpose"
+      - "Execution"
+      - "ConvergenceState"
+      - "PromptStrategy"
+      - "ReferencePolicy"
+      - "Target"
+      - "ControlPolicy"
+      - "MinimumPrompt" # top-level text slot
+      - "CharacterIdentity"
+      - "Expression"
+      - "Outfit"
+      - "Pose"
+      - "Background"
+      - "Composition"
+      - "Lighting"
+      - "Rendering"
+      - "PositiveBoundaries"
+      - "Negatives"
+      - "ExpansionRules"
+      - "DriftHandling"
+      - "ReviewPolicy"
+      - "AuditChecklist"
+      - "OutputSlots"
+    Notes:
+      - "PromptStrategy.MinimumPrompt defines the rule for minimum prompt generation."
+      - "MinimumPrompt.Text is the top-level minimum prompt text slot."
+      - "OutputSlots.MinimumPrompt is the derived output slot."
+      - "These are not duplicates and must not be merged without human approval."
+
+  Purpose:
+    Summary: ""
+    IntendedUse:
+      - "support human review of human-approved character identity continuity"
+      - "define scene, outfit, pose, background, and lighting"
+      - "support controlled prompt expansion"
+      - "avoid unintended identity drift or scene reinterpretation"
+      - "separate immutable identity elements from controlled and scene variables"
+      - "clarify whether attached images are identity anchors, scene references, outfit references, pose references, mood references, or style references"
+
+  Execution:
+    ActionMode: "expand_only" # generate_now / expand_only / review_only / archive_source
+    OutputPromptType: "long_prompt" # minimum_prompt / yaml_prompt / long_prompt / optimized_prompt / ultra_compressed_prompt
+    OutputLanguage: "english"
+    HumanApprovalRequiredBeforeGeneration: true
+    ImmediateGenerationAllowed: false
+    TreatThisYAMLAsGenerationInstruction: false
+    TreatThisYAMLAsReviewableSourceState: true
+
+  ConvergenceState:
+    CurrentState: "not_converged" # not_converged / initial_convergence_in_progress / human_approved_convergence / stabilized / deprecated
+    HumanApprovedSourceStateExists: false
+    IdentityConverged: false
+    SceneConverged: false
+    PoseConverged: false
+    OutfitConverged: false
+    BackgroundConverged: false
+    CompressionAllowed: false
+    UltraCompressionAllowed: false
+    ApprovalTrace:
+      ApprovedBy: ""
+      ApprovedAt: ""
+      ApprovalBasis: ""
+      RelatedOutputID: ""
+      Notes: ""
+    Notes: ""
+
+  PromptStrategy:
+    MinimumPrompt:
+      Purpose: "minimal condition prompt for rough reconstruction or quick reference"
+      AllowedUse: true
+      RequiresHumanReview: true
+      NotSufficientForIdentityCriticalGeneration: true
+
+    YAMLPrompt:
+      Purpose: "human-approved structured source of truth"
+      IsMaster: true
+      RequiresHumanApprovalForChange: true
+      UsedForDiffReview: true
+
+    LongPrompt:
+      Purpose: "initial convergence, identity establishment, or re-convergence"
+      AllowedUse: true
+      RecommendedWhen:
+        - "first generation"
+        - "anchor image is available"
+        - "identity continuity is important"
+        - "scene contains many controlled elements"
+        - "previous output drifted and re-convergence is required"
+
+    OptimizedPrompt:
+      Purpose: "re-binding and re-convergence after human-approved convergence"
+      AllowedUse: true
+      UseOnlyAfter:
+        - "human-approved source state exists"
+        - "identity and scene boundaries are confirmed"
+        - "the long prompt has already established the task frame"
+      ProhibitedAsInitialSubstitute: true
+      DoNotUseToReplaceHumanApproval: true
+
+    UltraCompressedPrompt:
+      Purpose: "lightweight recall after stabilization"
+      AllowedUse: true
+      UseOnlyAfter:
+        - "stable approved generation exists"
+        - "identity has converged"
+        - "scene pattern has converged"
+        - "human-approved convergence exists"
+      ProhibitedBeforeConvergence: true
+      ProhibitedAsInitializationSubstitute: true
+      DoNotUseForFirstGeneration: true
+      DoNotUseForIdentityRecovery: true
+
+  ReferencePolicy:
+    AnchorImages:
+      Status: "available" # none / available / required / required_for_identity_only / required_for_scene_only
+      ConflictResolution: "priority_order" # priority_order / human_decides
+      ImageA:
+        Role: "primary_identity_anchor" # primary_identity_anchor / scene_reference / outfit_reference / pose_reference / mood_reference / style_reference
+        Priority: 1
+        Required: true
+        Notes: ""
+      ImageB:
+        Role: "scene_outfit_pose_reference" # primary_identity_anchor / scene_reference / outfit_reference / pose_reference / mood_reference / style_reference
+        Priority: 2
+        Required: false
+        Notes: ""
+      ImageC:
+        Role: ""
+        Priority: 3
+        Required: false
+        Notes: ""
+
+    CharacterReferenceMode:
+      Type: "copy_identity" # copy_identity / reference_identity / new_character_from_reference_style / new_character
+      PreserveIdentityStrictly: true
+      AllowNewCharacterCreation: false
+      IdentityDriftAllowed: false
+      HumanApprovalRequiredForIdentityChange: true
+      CopyMeansSameCharacterNotSimilarCharacter: true
+      ReferenceMeansInformativeButNotIdentityBinding: false
+      ReferenceBindingNote: "ReferenceMeansInformativeButNotIdentityBinding applies when Type is reference_identity. When Type is copy_identity, identity binding is unconditional and this field does not override that binding."
+
+    SceneReferenceMode:
+      Type: "reference_scene" # copy_scene / reference_scene / new_scene_with_existing_character / new_scene
+      PreserveCompositionStrictly: false
+      PreserveMoodStrictly: true
+      PreserveOutfitStrictly: true
+      HumanApprovalRequiredForSceneChange: true
+      AllowSceneReinterpretation: false
+
+    AttachmentUse:
+      RoleHierarchy: "AnchorImages define source-level roles; AttachmentUse confirms execution-time usage and must not override AnchorImages."
+      UseAttachedImageForIdentity: true
+      UseAttachedImageForPose: true
+      UseAttachedImageForOutfit: true
+      UseAttachedImageForBackground: true
+      UseAttachedImageForLighting: true
+      UseAttachedImageForMood: true
+      UseAttachedImageForStyleOnly: false
+      DoNotInventMissingReferenceImages: true
+      DoNotTreatUnavailableImagesAsImplicitAnchors: true
+
+  Target:
+    Type: "existing_character_new_scene" # existing_character_same_scene_edit / existing_character_new_scene / identity_reconstruction / scene_reconstruction / new_character_new_scene
+    CharacterName: ""
+    CharacterContinuityRequired: true
+    SceneContinuityRequired: false
+    IdentityCopyRequired: true
+    NewCharacterCreationAllowed: false
+    Notes: ""
+
+  ControlPolicy:
+    FieldSemantics:
+      ImmutableCore: "content-level constraints that define the approved identity or continuity state; changes require explicit human approval"
+      ControlledVariables: "fields that may vary only within declared allowed ranges and boundaries"
+      SceneVariables: "scene-level fields that may change while preserving ImmutableCore"
+      PositiveBoundaries: "preferred positive constraints used before relying on negatives"
+      Negatives: "last safety fence, not the primary control method"
+      TemplatePolicy: "schema-level constraints that prevent optimization loss of review fields"
+
+    ImmutableCore:
+      Description: "Human-approved identity and continuity elements. Do not change without explicit human approval."
+      Items:
+        - "character identity"
+        - "age impression"
+        - "face impression"
+        - "eye color and eye impression"
+        - "hair color and hairstyle"
+        - "glasses or defining accessories"
+        - "body balance and proportions"
+        - "overall presence"
+        - "non-childlike adult impression"
+        - "identity anchor usage"
+        - "copy_identity vs reference_identity distinction"
+
+    ControlledVariables:
+      Description: "May vary only within the allowed range. Changes outside the boundary require human approval."
+      Items:
+        Expression:
+          Allowed:
+            - ""
+          Boundary:
+            - "must remain consistent with the character's approved presence"
+            - "must not change the emotional meaning of the scene"
+            - "must not become seductive, theatrical, or emotionally exaggerated unless explicitly requested"
+        Pose:
+          Allowed:
+            - ""
+          Boundary:
+            - "must preserve the approved pose meaning"
+            - "must not become theatrical unless explicitly requested"
+            - "must not create a new action category without approval"
+        Camera:
+          Allowed:
+            - ""
+          Boundary:
+            - "must preserve the intended framing and subject visibility"
+            - "must not crop or obscure identity-critical features"
+        Lighting:
+          Allowed:
+            - ""
+          Boundary:
+            - "must preserve the intended atmosphere"
+            - "must not flatten or replace the approved mood"
+        Composition:
+          Allowed:
+            - ""
+          Boundary:
+            - "must preserve intended subject placement and scale"
+            - "must not alter the core composition meaning without approval"
+
+    SceneVariables:
+      Description: "May be changed for each scene while preserving ImmutableCore."
+      Items:
+        - "outfit"
+        - "background"
+        - "props"
+        - "event theme"
+        - "color palette"
+        - "time of day"
+        - "weather or environmental mood"
+        - "secondary characters"
+        - "decorative elements"
+
+    HumanApprovalRequired:
+      - "any change to character identity"
+      - "any change to face impression"
+      - "any change to body proportion"
+      - "any change to age impression"
+      - "any change to character presence"
+      - "any change to identity anchor usage"
+      - "any change from copy_identity to reference_identity"
+      - "any change from reference_identity to new_character"
+      - "any change from formal/tasteful/restraint to seductive/glamour"
+      - "any change that turns reference_scene into unrelated scene"
+      - "any removal, merge, rename, or reorder of schema sections"
+      - "any compression before human-approved convergence"
+
+  MinimumPrompt:
+    Text: ""
+
+  CharacterIdentity:
+    Name: ""
+    Gender: "female"
+    AgeImpression: "young adult, mid-twenties"
+    EthnicityOrCulturalImpression: "Japanese"
+    IdentityDescription:
+      - ""
+    Face:
+      - ""
+    Eyes:
+      - ""
+    Hair:
+      - ""
+    Glasses:
+      - ""
+    BodyBalance:
+      - "adult body proportions"
+      - "slender balanced figure"
+      - "relatively small head compared with height"
+      - "natural neck length"
+      - "long arms and legs"
+      - "balanced graceful silhouette"
+      - "not childlike"
+      - "not chibi"
+    Presence:
+      - "calm"
+      - "intelligent"
+      - "restrained"
+      - "gentle"
+      - "emotionally steady"
+
+  Expression:
+    Lock: "controlled_variable"
+    Description:
+      - ""
+    AllowedRange:
+      - ""
+    Boundary:
+      - "keep the expression natural and restrained"
+      - "avoid changing the character's emotional identity"
+      - "prefer positive emotional boundaries over negative-only constraints"
+
+  Outfit:
+    Lock: "scene_variable"
+    Description:
+      - ""
+    RequiredDetails:
+      - ""
+    Material:
+      - ""
+    ColorPalette:
+      - ""
+    Boundary:
+      - "must remain consistent with the intended scene"
+      - "must remain tasteful and non-theatrical unless explicitly requested"
+      - "must not override identity-critical body balance or age impression"
+
+  Pose:
+    Lock: "controlled_variable"
+    Description:
+      - ""
+    BodyDirection: ""
+    GazeDirection: ""
+    HandPlacement:
+      - ""
+    Boundary:
+      - "must preserve the intended pose meaning"
+      - "must not create a new pose category without approval"
+      - "must not override identity-critical presence"
+
+  Background:
+    Lock: "scene_variable"
+    Description:
+      - ""
+    KeyElements:
+      - ""
+    Atmosphere:
+      - ""
+    Boundary:
+      - "must preserve the intended mood"
+      - "must not replace the scene type without approval"
+      - "must not dominate or obscure the main subject"
+
+  Composition:
+    Lock: "controlled_variable"
+    Framing: ""
+    CameraAngle: ""
+    SubjectPlacement: ""
+    CroppingRules:
+      - "do not crop the face"
+      - "do not obscure the main subject"
+      - "do not remove identity-critical features"
+    Boundary:
+      - "preserve the intended subject scale and visibility"
+      - "preserve the intended composition meaning"
+
+  Lighting:
+    Lock: "controlled_variable"
+    Description:
+      - ""
+    Highlights:
+      - ""
+    Boundary:
+      - "preserve the intended atmosphere"
+      - "avoid flat lighting unless explicitly requested"
+      - "do not replace the approved lighting mood without approval"
+
+  Rendering:
+    Style:
+      - "high-quality 2D anime-style illustration"
+      - "clean detailed linework"
+      - "soft detailed anime shading"
+      - "cinematic highlights"
+    Texture:
+      - ""
+    Quality:
+      - "high detail"
+      - "consistent anatomy"
+      - "consistent character identity cues"
+      - "clear main subject"
+      - "stable proportions"
+
+  PositiveBoundaries:
+    Description: "Preferred positive constraints. Use these before relying on negatives."
+    Items:
+      - "formal"
+      - "tasteful"
+      - "restrained"
+      - "natural"
+      - "elegant"
+      - "soft Japanese anime facial impression"
+      - "adult, not childlike"
+      - "identity continuity first"
+      - "same character when copy_identity is specified"
+      - "human-approved source state remains primary"
+
+  Negatives:
+    UseAsLastSafetyFence: true
+    DoNotUseAsPrimaryControlMethod: true
+    KeepMinimalWhenPossible: true
+    Items:
+      - "short legs"
+      - "childlike body"
+      - "oversized head"
+      - "chibi"
+      - "deformed proportions"
+      - "overly long torso"
+      - "low waistline"
+      - "westernized face"
+      - "overly glamorous Western fashion-model face"
+      - "exaggerated bust"
+      - "overly sexualized pose"
+      - "wide open mouth"
+      - "dramatic theatrical expression"
+      - "messy anatomy"
+      - "extra fingers"
+      - "missing fingers"
+      - "distorted hands"
+      - "cropped face"
+      - "blurred main subject"
+
+  ExpansionRules:
+    OutputSlotMapping:
+      ForMinimumPrompt: "OutputSlots.MinimumPrompt"
+      ForLongPrompt: "OutputSlots.LongPrompt"
+      ForOptimizedPrompt: "OutputSlots.OptimizedPrompt"
+      ForUltraCompressedPrompt: "OutputSlots.UltraCompressedPrompt"
+
+    ForMinimumPrompt:
+      IncludeOnly:
+        - "character identity summary"
+        - "scene summary"
+        - "outfit summary"
+        - "pose summary"
+        - "key constraints"
+      DoNotInclude:
+        - "full audit policy"
+        - "full template policy"
+      Warning: "minimum_prompt is not sufficient for identity-critical generation unless separately approved"
+
+    ForLongPrompt:
+      Include:
+        - "all ImmutableCore"
+        - "all ControlledVariables with boundaries"
+        - "all relevant SceneVariables"
+        - "ReferencePolicy"
+        - "PositiveBoundaries"
+        - "minimal Negatives only when necessary"
+        - "anchor image usage"
+        - "copy_identity vs reference_identity distinction"
+      DoNotDrop:
+        - "identity-critical details"
+        - "human approval requirements"
+        - "ActionMode"
+        - "OutputPromptType"
+
+    ForOptimizedPrompt:
+      Preserve:
+        - "human-approved identity"
+        - "approved pose meaning"
+        - "approved scene boundaries"
+        - "anchor image role"
+        - "copy_identity vs reference_identity distinction"
+      Compress:
+        - "redundant adjectives"
+        - "secondary atmosphere details"
+        - "non-critical rendering embellishments"
+      DoNotCompress:
+        - "identity-critical details"
+        - "approval requirements"
+        - "anchor image usage"
+        - "copy_identity vs reference_identity distinction"
+        - "immutable vs variable distinction"
+      UseOnlyAfter:
+        - "human-approved convergence exists"
+
+    ForUltraCompressedPrompt:
+      IncludeOnly:
+        - "identity anchor phrase"
+        - "scene anchor phrase"
+        - "pose anchor phrase"
+        - "critical boundaries"
+        - "reference mode if identity-critical"
+      UseOnlyWhen:
+        - "identity and scene are already stabilized"
+        - "human-approved convergence exists"
+      ProhibitedFor:
+        - "initial generation"
+        - "identity recovery"
+        - "unapproved scene change"
+        - "new character creation"
+
+  DriftHandling:
+    IfIdentityDriftDetected:
+      Action: "reject_reset_rebind_reconverge"
+      DoNotPatchByAddingMoreNegativesOnly: true
+      RequiredReview:
+        - "compare against identity anchor"
+        - "check face impression"
+        - "check body balance"
+        - "check age impression"
+        - "check presence"
+        - "check whether copy_identity was degraded into reference_identity"
+
+    IfSceneDriftDetected:
+      Action: "reject_or_revise_scene_variables"
+      RequiredReview:
+        - "check ReferencePolicy"
+        - "check SceneReferenceMode"
+        - "check background and outfit boundaries"
+        - "check whether scene reference was replaced by model-side reinterpretation"
+
+    IfPromptCompressionDriftDetected:
+      Action: "return_to_yaml_master_or_long_prompt"
+      RequiredReview:
+        - "check whether optimized or ultra-compressed prompt was used too early"
+        - "check whether identity-critical details were compressed away"
+        - "check whether schema fields were removed or merged"
+
+    IfTemplateDriftDetected:
+      Action: "reject_change_and_restore_from_preserved_sections"
+      RequiredReview:
+        - "compare against TemplatePolicy.PreservedSections"
+        - "check whether any section was merged, renamed, or removed"
+        - "check whether SchemaLock was bypassed"
+
+  ReviewPolicy:
+    ReviewMode: "minimal_patch_preferred"
+    DoNotOptimizeByDefault: true
+    DoNotShortenByDefault: true
+    DoNotRewriteWholeTemplateUnlessRequested: true
+    PreserveRedundantLookingFields: true
+    TreatRedundancyAsPossibleControlSurface: true
+    ReviewerInstructions:
+      - "review the template without merging or deleting sections"
+      - "identify missing fields rather than simplifying the schema"
+      - "flag optimization loss explicitly"
+      - "treat empty fields as unresolved checkpoints"
+      - "do not convert YAML master into natural-language prompt unless requested"
+      - "do not convert YAML master into JSON unless requested"
+
+  AuditChecklist:
+    BeforeExpansion:
+      - "Is ActionMode correct?"
+      - "Is OutputPromptType correct?"
+      - "Is this generation or expansion only?"
+      - "Are anchor image roles clear?"
+      - "Is copy_identity different from reference_identity?"
+      - "Is new character creation allowed or prohibited?"
+      - "Are ImmutableCore items protected?"
+      - "Are ControlledVariables bounded?"
+      - "Are SceneVariables declared?"
+      - "Are negatives minimized and supported by positive boundaries?"
+      - "Is TemplatePolicy preserved?"
+      - "Are empty fields retained as unresolved checkpoints?"
+      - "Is compression allowed by ConvergenceState?"
+
+    BeforeGeneration:
+      - "Has the YAML master been human-approved?"
+      - "Has the long prompt or optimized prompt been reviewed?"
+      - "Are identity anchor images available if required?"
+      - "Does the prompt preserve character identity?"
+      - "Does the prompt avoid unintended new character creation?"
+      - "Does the prompt preserve intended scene, outfit, pose, and background?"
+      - "Is immediate generation explicitly allowed?"
+      - "Is ActionMode set to generate_now?"
+      - "Is ImmediateGenerationAllowed true?"
+      - "Is HumanApprovalRequiredBeforeGeneration satisfied?"
+      - "Are the required OutputSlots populated before generation proceeds?"
+
+    BeforeCompression:
+      - "Does human-approved convergence exist?"
+      - "Is the scene stabilized?"
+      - "Is identity stabilized?"
+      - "Is the compressed prompt being used only for recall, not initialization?"
+      - "Are identity-critical details preserved?"
+      - "Are anchor image roles preserved?"
+
+    BeforeTemplateChange:
+      - "Is the change approved by a human?"
+      - "Does the change remove, merge, rename, or reorder schema sections?"
+      - "Does the change reduce reviewability?"
+      - "Does the change make copy_identity/reference_identity ambiguous?"
+      - "Does the change make generate_now/expand_only ambiguous?"
+      - "Does the change allow premature compression?"
+
+  OutputSlots:
+    MinimumPrompt: ""
+    LongPrompt: ""
+    OptimizedPrompt: ""
+    UltraCompressedPrompt: ""

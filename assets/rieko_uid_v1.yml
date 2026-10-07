@@ -1,0 +1,92 @@
+cip_identity:
+  uid: rieko_v1
+  version: "1.0"
+  created: "2026-03"
+  status: available
+
+  anchor:
+    image_ref: docs/assets/images/rieko_anchor_v1.jpg.JPEG
+    view: multi_view
+    validated: true
+    gate_results:
+      face_gate: PASS
+      skeleton_gate: PASS
+      proportion_gate: PASS
+
+  profile:
+    name: Rieko
+    age_appearance: mid-20s
+    hair:
+      color: "#6B3F2A"
+      color_name: warm_brown
+      length: long
+      style: high_ponytail
+      details:
+        - layered_bangs
+        - soft_natural_waves
+        - side_locks_framing_face
+    eyes:
+      color: "#4A2E1A"
+      color_name: soft_luminous_brown
+      shape: calm_expressive
+    skin_tone: "#F0D5B8"
+    skin_note: warm_neutral_no_facial_whitening
+    build: slim_elegant
+    height_impression: model_like
+
+  body_proportion:
+    head_to_body_ratio: slightly_small_head
+    shoulder_width: narrow
+    waist: high_and_narrow
+    silhouette: naturally_feminine
+    note: fashion_model_balance
+
+  rendering_constraints:
+    style: anime
+    line_art: thin
+    facial_whitening: false
+    color_temperature: warm_neutral
+    skin_continuity: neck_to_face_gradient_required
+    no_abrupt_brightness_shift: true
+
+  accessories:
+    default_state:
+      glasses:
+        type: thin_gold_frame_round
+        required: true
+      earrings:
+        type: small_gold_stud
+        required: true
+      necklace:
+        type: simple_chain
+        required: false
+
+  color_identity:
+    hair_palette:
+      - "#6B3F2A"
+      - "#8B5E3C"
+      - "#A0754E"
+    skin_palette:
+      - "#F0D5B8"
+      - "#E8C9A8"
+    note: warm_neutral_no_color_drift
+
+  minimal_prompt: >
+    Rieko, long warm brown hair in high ponytail with layered bangs,
+    soft luminous brown eyes, thin gold-framed round glasses,
+    small gold stud earrings, slim elegant figure,
+    warm neutral skin tone, anime style
+
+  ssot_note: >
+    This YAML is the structural SSOT for Rieko.
+    The minimal_prompt field is a projection of this definition.
+    Do not edit YAML to match English prompt.
+    When generation quality degrades, return to this YAML source.
+
+  pal_registration:
+    status: recommended
+    note: >
+      Register this file combined with anchor image as PDF
+      in platform persistent layer (ChatGPT Library,
+      Claude Project, Gemini Context Cache)
+      to enable Anchor-Sufficient Convergence (ASC).
