@@ -52,3 +52,14 @@ The following documents are review material, not incorporated changes to the pre
 
 - [Preflight Governance — RFC Draft](preflight_readiness_proposal.md): proposed initial A/B readiness rule, including a later Ready_H procedure-review and 3 Chat Method elaboration, separate from transmission preflight and result evaluation; Producer decisions remain pending.
 - [Claude Code Mods — v0.6 Review Input](claude_code_mods_review.md): primary-source review and candidate mappings/tests; no test results or immediate normative revision claimed.
+
+## v0.8 review materials — not adopted requirements
+
+The following are independent human-review discussion materials and non-normative reference records. They do not amend, reinterpret, overwrite, or change the approval status or history of v0.7 Final ADOPT. The latest proposal designation and version register above remain unchanged.
+
+- [Escalation States and Bounded Safety Measures — Discussion Draft](v0.8/escalation_and_bounded_continuation_discussion.md): an unadopted discussion of pre-start readiness failures, post-start escalation, bounded safety measures, evidence, human handover, and recovery. Proposed requirements and unresolved questions remain subject to human review.
+- [Astra investigation session — limited record assessment](v0.8/astra_limited_record_review_2026-10-07.md): an independent non-normative reference record. The Japanese assessment wording was human-approved on 7 October 2026; that approval is distinct from operational-log verification and formal adoption of v0.8.
+
+Publication of these materials does not grant normative adoption, audit approval, Safety Profile Activation, effectiveness of Approved P_A, individual execution Go, or B′ adoption. They do not demonstrate prompt-injection resistance or Runtime Gate stopping effectiveness.
+
+The basic sequence remains **A → (A + C) → A′ → B′ ≠ B**. Canonical A remains human-selected, organized, and approved context and intent; model-derived interpretations and artifacts do not automatically inherit its authority or approval.
