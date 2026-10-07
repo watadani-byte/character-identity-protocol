@@ -63,3 +63,10 @@ The following are independent human-review discussion materials and non-normativ
 Publication of these materials does not grant normative adoption, audit approval, Safety Profile Activation, effectiveness of Approved P_A, individual execution Go, or B′ adoption. They do not demonstrate prompt-injection resistance or Runtime Gate stopping effectiveness.
 
 The basic sequence remains **A → (A + C) → A′ → B′ ≠ B**. Canonical A remains human-selected, organized, and approved context and intent; model-derived interpretations and artifacts do not automatically inherit its authority or approval.
+
+### Supplementary pending-item records — human review only
+
+- [Observation Review — unresolved items and five-condition proposals](v0.8/observation_review_unresolved_items_2026-10-07.md): preserves U01–U13 and the unadopted elaborations with their original evidence limits. Later source acquisition is recorded separately, not as retrospective resolution.
+- [Escalation States and Bounded Safety Measures — preserved detailed discussion](v0.8/escalation_and_bounded_continuation_detailed_discussion.md): separately preserves all 35 sections and §20.1, including E0–E4, RV-01–RV-12, evidence requirements and human-review procedures. It does not replace the existing 12-section discussion.
+
+These are unresolved, unadopted review materials, not verification results. The detailed discussion's §20.1 and the Astra reference record concern the same limited assessment, not two independent validation cases. Publication does not resolve U/RV items, change v0.7, adopt v0.8, authorize tests, activate a Safety Profile, grant Go, or adopt B′.

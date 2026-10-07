@@ -228,3 +228,11 @@ Runtime Gate、watchdog等の条件付きSafety Profile統制を、
 v0.8の採択、Activation、個別実行Goを意味しない。
 
 本稿の最終採用およびCanonical Aの変更は、人間が判断する。
+
+## 13. 詳細検討資料との関係（非規範的案内）
+
+本案内追加前の本文§1〜§12は保持する。[別置の詳細検討稿](escalation_and_bounded_continuation_detailed_discussion.md)は全35節・§20.1、E0〜E4、RV-01〜RV-12、証拠要件・レビュー手順を含む。両文書は全文同一ではなく、掲載済み本文を詳細版で置き換えない。
+
+[Observation Reviewの未決事項台帳と暫定5条件](observation_review_unresolved_items_2026-10-07.md)は、元調査のU01〜U13を当時の未確認状態のまま保持する。本文§10の概括的な未決事項とは別の詳細記録である。
+
+詳細版§20.1と[Astra限定評価記録](astra_limited_record_review_2026-10-07.md)は同一事例に関する記載であり、独立した二件の検証ではない。追加掲載は未決事項の解消、試験実行、v0.8採択、Activation、Goを意味せず、v0.7を変更・再解釈しない。
