@@ -59,6 +59,7 @@ The following are independent human-review discussion materials and non-normativ
 
 - [Escalation States and Bounded Safety Measures — Discussion Draft](v0.8/escalation_and_bounded_continuation_discussion.md): an unadopted discussion of pre-start readiness failures, post-start escalation, bounded safety measures, evidence, human handover, and recovery. Proposed requirements and unresolved questions remain subject to human review.
 - [Astra investigation session — limited record assessment](v0.8/astra_limited_record_review_2026-10-07.md): an independent non-normative reference record. The Japanese assessment wording was human-approved on 7 October 2026; that approval is distinct from operational-log verification and formal adoption of v0.8.
+- [Human-Reviewed Iterative AI-Assisted Improvement — Early Idea](v0.8/human_reviewed_iterative_improvement_idea.md): an unadopted, unverified discussion of reviewing proposed changes individually and carrying only human-adopted changes into the next human-approved A; no implementation, effectiveness, or priority claim.
 
 Publication of these materials does not grant normative adoption, audit approval, Safety Profile Activation, effectiveness of Approved P_A, individual execution Go, or B′ adoption. They do not demonstrate prompt-injection resistance or Runtime Gate stopping effectiveness.
 
