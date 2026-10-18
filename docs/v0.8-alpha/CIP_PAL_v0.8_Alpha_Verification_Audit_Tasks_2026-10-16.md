@@ -1,4 +1,5 @@
-**状態:** α試験用案 / Discussion Draft / Not Adopted / Not Verified
+**§8拡張の承認状態:** Adopted — Human-approved on 2026-10-19
+**検証状態:** Not Verified — Runtime tests not executed
 
 **原則:** 全試験で **A → (A + C) → A′ → B′ ≠ B** を維持する。A′・B′および試験結果をCanonical Aや意図したBと同一視せず、証拠と人間の判断を分けて記録する。
 

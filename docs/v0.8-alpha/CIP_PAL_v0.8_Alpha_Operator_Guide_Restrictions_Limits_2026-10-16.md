@@ -1,4 +1,5 @@
-**状態:** α試験用案 / Discussion Draft / Not Adopted / Not Verified
+**§8拡張の承認状態:** Adopted — Human-approved on 2026-10-19
+**検証状態:** Not Verified — Runtime tests not executed
 
 **原則:** 全運用で **A → (A + C) → A′ → B′ ≠ B** を維持する。モデル・ツール・環境などのCを経て生じるA′やB′に、Canonical Aの権限を自動継承させない。
 
