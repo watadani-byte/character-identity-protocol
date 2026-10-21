@@ -10,7 +10,7 @@
 
 ## エグゼクティブサマリー — 人間レビュー用統合版
 
-**編集版:** 2026-10-19 / 改善探索の位置づけを反映した修正版（人間確認用・GitHub未反映）  
+**編集版:** 2026-10-21 / 説明簡素化・監査ログ付録版（人間確認用・今回の修正は公開前）  
 **参照基点:** `95e21bda30a8f33e26c51cfc683f00095b8a50e5`（Gitから取得した固定コミット。最新HEADとの同一性は主張しない）
 
 | 項目 | 状態・範囲 |
@@ -31,7 +31,7 @@
 
 本書は人間が日常運用で何を確認するかを読む文書。§9に日常運用レイヤー、§10に要件対応サマリー、§11にF群概要、§12に人間判断項目を収録する。既存§1〜§8のモック運用手順とは適用範囲を分ける。
 
-本修正版は、統合レビュー版に改善探索・評価と正式採用の区別を反映した人間確認用の全文版である。§8本文・F群計画・承認境界は保持する。§8見出しの「改定候補」は掲載時の表現として残すが、§8内容の承認状態は冒頭のAdoptedである。再帰的自己改善ループに関する説明は、実装・実行・有効性の承認へ拡張しない。
+本修正版は、人間レビュー用の全文版である。§8本文・F群計画・承認境界を保持し、監査ログ例を非規範的な付録として収録する。§8の承認状態は冒頭のAdoptedである。
 
 仕様書§8.3のrun停止（Hard Abort）は、仕様書§3.1のIdentity/governance failureに伴うgeneration/adoption cycle停止と同一範囲として人間承認済み。Tencent/Amapは境界参考資料に限定し、停止試験の合否根拠やα有効性の証拠にしない。
 
@@ -48,15 +48,9 @@ Canonical Aは人間が選択・整理・承認した文脈および意図であ
 
 Canonical Aを正統な起点とする原則は、技術的停止・隔離能力の保証ではない。Cと承認に拘束された媒介条件を区別し、変更による再承認の対象を特定する。βへの移行や実環境への適用を今回承認したものではない。
 
-### 改善の探索・評価と正式採用の区別
+### 再帰的自己改善
 
-再帰的自己改善のループそのものは、**今後とも慎重に検討されるべき事項である**。本書は、その実現、有効性、先行性、実装済み能力を主張しない。
-
-人間が承認した目的・範囲・制約の内側で行う改善案の生成・比較・評価と、その変更を正式に適用・採用する判断を区別する。候補を検討する各段階に、候補の正式採用と同じ承認を一律に要求するとは解釈しない。一方、無人の自律ループ、無承認の変更適用、人間の無応答を根拠とする継続、承認の自動継承は禁止を維持する。
-
-探索の成果物は候補として識別・記録し、Canonical Aや採用済み成果物へ自動昇格させない。人間が採用した変更のみを、人間が選択・整理・承認する次のCanonical Aへ反映する。範囲逸脱、不一致、解消されていない曖昧さ・権限問題、または停止条件の成立時は、対象処理を停止・保留して人間の確認を求める。
-
-旧run再開禁止と新run_id・再承認の要件は、既存のHard Abort後および§8に定める中断後の扱いとして維持する。これを、停止していない承認範囲内の検討の各段階にまで一律に拡張しない。本書の整理は、新たな自動反復機構、試験実行、外部Action、モデル重み・内部機能の変更を許可するものではない。
+再帰的自己改善のループそのものは、今後とも慎重に検討されるべき事項である。よってこの項目の本格的なテストはβ版以降で行う
 
 ### 3文書の参照
 
@@ -101,20 +95,6 @@ Canonical Aを正統な起点とする原則は、技術的停止・隔離能力
 - 評価指標、閾値、採点ルールの変更はdiffとして提示し、人間の承認を得る。
 - 人間の不在・無応答を根拠に、評価・変更・再試行のループを継続しない。
 - 未確認事項や証拠不足が残る場合は「不明（要確認）」とし、停止・保留を維持する。
-
-### 5.1 改善案を扱う際の運用上の区別
-
-| 場面 | 扱い | 人間に留保する判断 |
-|---|---|---|
-| 改善案の生成・比較 | 承認された目的・範囲・制約に照らし、候補と根拠を識別して整理する | 範囲変更、未解決の曖昧さ・矛盾の確認 |
-| 隔離モックでの評価準備 | 期待結果、判定基準、対象、証拠、上限を準備する | 試験実行の許可。計画承認を実行許可へ読み替えない |
-| 改善結果の提示 | 元の基準、候補差分、評価結果、未確認事項を並べる | 変更の採否、Canonical Aの変更、B′の最終採用 |
-| 採用後の次の検討 | 人間が採用した内容と次の承認範囲を確認する | 次のCanonical Aと適用範囲の確定 |
-| 停止条件の成立・人間確認待ち | 対象処理を停止・保留し、無応答による自動継続をしない | 再拘束・再承認。停止した旧runは再開しない |
-
-表は日常の検討整理であり、自動反復エンジンの実装手順や試験実行指示ではない。各候補の作成を正式採用と同一視せず、候補の作成ごとに新runを必須とする規則は追加しない。既存§3・§8.3の中断後の新run要件は維持する。
-
-再帰的自己改善のループそのものは、今後とも慎重に検討されるべき事項であり、本書によって運用開始したとは扱わない。
 
 ## 6. 試験終了後
 
@@ -206,8 +186,7 @@ run停止を期待する試験は、事前に固定した範囲・区間でモ�
 
 | 判断・レビュー項目 | 現状 | 人間が確認・決定する内容 |
 |---|---|---|
-| 統合レビュー版の編集 | この修正版は人間確認用 | 指定した改善探索の整理が反映され、§8・承認済み計画・統制基盤が保たれているか |
-| 再帰的自己改善ループ | 今後とも慎重に検討されるべき事項 | 対象・反復境界・人間の介入点・評価方法・実装可否。実現・有効性を未検証のまま保持 |
+| 統合レビュー版の編集 | この修正版は人間確認用 | 指定した説明の簡素化と付録の独立が反映され、既存統制が保たれているか |
 | v0.8成立条件への対応 | 人間判断待ち | 必須要件とする範囲、必要な証拠。正式統合判断と分離する |
 | ケース別の環境・入力 | 本書では具体値未補完 | Canonical Aの版、モック構成、対象run／Action、入力、期待結果 |
 | 観測範囲・取得上限 | 試験前に固定する事項 | 観測期間、取得回数・時間・容量、保存先、確認者 |
@@ -222,3 +201,131 @@ run停止を期待する試験は、事前に固定した範囲・区間でモ�
 本書の規則・義務は、このα試験用候補の範囲を記述する。CIP/PAL全体を再定義せず、v0.7 Final ADOPTの本文・承認記録・承認状態・既存規範を変更・置換しない。境界を規律するという整理は本α候補の目的説明であり、既存Coreへの統制追加ではない。
 
 本資料の掲載や人間による文面承認は、試験実行、v0.8の正式採択、Safety Profile Activation、個別実行Go、B′の最終採用を許可しない。αは成熟度・安全性・検証完了を表す認定ではない。本資料作成時点で試験は未実施（NOT RUN）。
+
+
+## 付録：検知・停止に関する監査ログ記録例（非規範的・2026-10-21）
+
+**付録の状態:** Discussion Draft / Not Adopted / Not Verified — 後日調査のための記録例・検討候補。  
+**既存状態の維持:** §8拡張はAdopted / Not Verified。既存試験および今回の確認候補は全件NOT RUN。本付録を既存§8の採用に含めず、新しい必須スキーマ・合否基準として扱わない。
+
+**A → (A + C) → A′ → B′ ≠ B**
+
+本付録は、停止時点で理由を完全に説明できなくても、当時の観測・判断・未確認事項を残し、後日の人間レビューを支援するための提案である。停止機構の実装、検知の正しさ、停止の実効性、人間の承認をログの存在だけから認定しない。Canonical Aの変更とB′の最終採用は人間が決定する。v0.7 Final ADOPT、v0.8全体の採択状態、Safety Profile Activation、個別実行Goを変更しない。
+
+例示値はすべて架空であり、観測結果・試験実績ではない。運用・確認候補は隔離ローカル環境とモックに限定する。外部通信・実サービスAction・共有リンク作成は本付録で許可しない。
+
+### 位置づけと記入手順
+
+既存§7の取得境界および§8.2の停止時記録に対応する補助例である。以下のJSONは入力審査中のルール一致と停止要求を記録した架空例で、停止結果は未観測としている。必須フィールドや列挙値を確定するスキーマではない。
+
+1. 判明している識別子・版・時刻・根拠を記入する。未取得の識別子や値は捏造せず、不明のまま保持する。
+2. ルール一致と原因の確定を分ける。停止要求の判断理由が記録できても、注入の成立や根本原因が確定したとは扱わない。
+3. 停止対象を出力チャネル、Action、run等として明示する。要求と実測結果は別欄に記録する。
+4. A′・B′の存在・状態は観測に応じて記録し、UNKNOWNやNOT_REACHEDを全件の固定値にしない。
+5. 人間レビュー待ちと理由不明を別々に保持する。後日判明した事項は関連イベントとして追記する。
+
+### 架空の記録例：停止要求済み・停止結果未確認
+
+```json
+{
+  "schema_version": "discussion-example-0.1",
+  "record_kind": "ILLUSTRATIVE_ONLY_NOT_TEST_RESULT",
+  "event_id": "example-event-001",
+  "timestamp": "2026-10-21T00:00:00.003Z",
+  "level": "WARN",
+  "event_code": "PROMPT_INJECTION_SIGNAL_DETECTED",
+  "message": "Rule match recorded; output termination requested. Enforcement outcome is unknown.",
+  "user_id": "example-pseudonymous-id",
+  "session_id": "example-session",
+  "run_id": "example-run",
+  "request_hash": {
+    "algorithm": "SHA-256",
+    "value": "<sha256-of-exact-input-bytes>",
+    "scope": "incoming payload bytes before normalization"
+  },
+  "detection": {
+    "detected_at": "2026-10-21T00:00:00.000Z",
+    "detector_id": "example-detector",
+    "detector_version": "example-version",
+    "rule_id": "example-rule",
+    "rule_version": "example-version",
+    "signal_status": "RULE_MATCH_RECORDED",
+    "reason_status": "UNKNOWN",
+    "reason": null,
+    "evidence_ref": "evidence://example/rule-match-001",
+    "decision_stage": "INPUT_REVIEW"
+  },
+  "decision": {
+    "decided_at": "2026-10-21T00:00:00.001Z",
+    "decision_actor_ref": "example-policy-component",
+    "decision_rule_ref": "example-approved-stop-condition",
+    "decision": "REQUEST_OUTPUT_TERMINATION",
+    "basis_ref": "evidence://example/rule-match-001",
+    "stop_reason_code": "PROMPT_INJECTION_RULE_MATCH"
+  },
+  "cip_pal_state": {
+    "canonical_a_ref": "example-human-approved-context/version-1",
+    "canonical_a_approval_ref": "example-human-approval-record",
+    "c": {
+      "assessment_status": "UNKNOWN",
+      "observed_influences": [],
+      "mediation_candidates": [
+        {
+          "source_ref": "example-detector/example-version",
+          "influence_status": "UNCONFIRMED",
+          "evidence_ref": null
+        }
+      ],
+      "note": "Empty observations do not establish absence of C. Incoming input is not classified wholesale as C."
+    },
+    "a_prime": {
+      "status": "UNKNOWN",
+      "state_ref": null,
+      "evidence_ref": null
+    },
+    "b_prime": {
+      "status": "UNKNOWN",
+      "state_ref": null,
+      "evidence_ref": null
+    },
+    "human_adoption_status": "PENDING"
+  },
+  "mitigation": {
+    "requested_at": "2026-10-21T00:00:00.002Z",
+    "requested_action": "TERMINATE_OUTPUT",
+    "target": {
+      "kind": "OUTPUT_CHANNEL",
+      "ref": "example-run/output-channel"
+    },
+    "enforcement_result": "UNKNOWN",
+    "observed_at": null,
+    "observer_ref": null,
+    "observation_scope": null,
+    "result_evidence_ref": null,
+    "output_emitted": null,
+    "run_stop_status": "UNKNOWN",
+    "external_effect_status": "UNKNOWN"
+  },
+  "review": {
+    "status": "PENDING_REVIEW",
+    "reviewer_ref": null,
+    "decision_ref": null
+  }
+}
+```
+
+`<sha256-of-exact-input-bytes>`、example識別子、evidence参照、時刻は説明用であり、実データ・実在リンク・有効なハッシュではない。`null`はこの例では未確認または未取得を表す。`output_emitted: null`をfalseへ自動変換しない。理由が不明ならreasonをnullにし、推測を事実欄へ入れない。reasonが既知でレビュー待ちの場合は、既知の根拠を保持したままレビュー状態をPENDING_REVIEWとする。
+
+### 観測できた場合と後日レビュー
+
+同じ対象の出力停止を観測できた場合は、別の関連イベントに元event_id、対象、観測主体・時刻・観測区間・証拠参照を記録して、該当範囲のenforcement_resultをTERMINATED等と記録する。これはrun全体や外部作用の停止を意味しない。`output_emitted: false`は、観測できたチャネルと期間について未送信を確認できた場合に限る。出力停止前の一部送信があれば、その事実・範囲を残す。
+
+事後レビューでは、関連event_id、確認者、確認時刻、参照した証拠、判断、未解決事項を追記する。レビュー結論、停止結果、B′の人間採否は別々に記録する。誤検知の場合も当初の記録を消さず、訂正を関連づける。人間の名前や承認欄の入力だけで認証・承認が成立したとは扱わない。
+
+### 保存・取得の注意
+
+入力全文や秘密情報を無制限に複製しない。ハッシュ対象のバイト列と正規化の有無、根拠位置・版を識別する。参照先の取得可否、保存上限・期間、閲覧権限を確認する。ハッシュや仮名化だけで機密性が確保されたとは扱わない。
+
+ログに含まれる入力・検知対象の文章は証拠であり、実行指示や次のCanonical Aへ昇格させない。ログ保存と有効コンテキストへの再投入を分ける。停止後の取得は既存の独立・事前許可された監査処理に限り、停止を遅らせたり旧runを再開したりしない。保存失敗や根拠参照の欠落は留保として記録する。
+
+[仕様上の境界](CIP_PAL_v0.8_Alpha_Specification_Scope_Boundaries_2026-10-16.md#付録検知停止に関する監査ログ記録例非規範的2026-10-21)／[確認候補](CIP_PAL_v0.8_Alpha_Verification_Audit_Tasks_2026-10-16.md#付録検知停止に関する監査ログ記録例非規範的2026-10-21)。
