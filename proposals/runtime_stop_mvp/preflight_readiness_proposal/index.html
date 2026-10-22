@@ -1,0 +1,3116 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A governance protocol for inference-time validation, adoption, rejection, purge, and re-convergence in probabilistic generative systems.">
+      
+      
+        <meta name="author" content="Watadani">
+      
+      
+        <link rel="canonical" href="https://watadani-byte.github.io/character-identity-protocol/proposals/runtime_stop_mvp/preflight_readiness_proposal/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>RFC Draft: Preflight Governance — v0.6 Related / Unadopted - Character Identity Protocol (CIP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rfc-draft-preflight-governance-v06-related-unadopted" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Character Identity Protocol (CIP)" class="md-header__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Character Identity Protocol (CIP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RFC Draft: Preflight Governance — v0.6 Related / Unadopted
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Character Identity Protocol (CIP)" class="md-nav__button md-logo" aria-label="Character Identity Protocol (CIP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Character Identity Protocol (CIP)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/watadani-byte/character-identity-protocol" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    watadani-byte/character-identity-protocol
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Start Here
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Start Here
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper_v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../model_a_c_b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core Model - C-mediated Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technical_mechanism/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../why_character_changes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Your Character Keeps Changing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../drift_observations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Observed Drift Phenomena
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../character_consistency_observation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Consistency - An Observation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reproducibility_scope/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reproducibility Scope
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol / Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Protocol / Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture_diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture Diagram
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cip_spec_v0.1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Specification v0.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quality_gate_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quality Gate & Hard Abort
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cip_video_addendum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Video Addendum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis / Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis / Taxonomy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../character_drift_taxonomy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Drift Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_character_drift_technical.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generative Character Drift - Technical Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../legal_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cip_vs_existing_methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP vs Existing Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_01_failure_log/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01A - Baseline Failure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_01b_mira_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 01B - Mira Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_02_wedding_series/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 02 - Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_03_avedon_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 03 - Avedon Project
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_04_shizuka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 04 - Cross-Platform Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_05_serendipitous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 05 - Serendipitous Creation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../case_06_gemini/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Case 06 - Gemini Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sequence_pal_case_hana_wedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sequence PAL Case Analysis - Hana Wedding Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Practical Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practical_prompting_chat_ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Practical Prompting for Chat AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A Simple Structure for Writing Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_image_prompt_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Prompts for Image Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompt_compression_after_human_approved_convergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Compression After Human-Approved Convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompt_lifecycle_design_rationale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Lifecycle Design Rationale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompting_as_specification_management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompting as Specification Management under Model Mediation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../yaml_prompt_source_of_truth_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../yaml_prompt_source_of_truth_manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YAML Prompt Source-of-Truth Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompt_review_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt Review Checklist and Lightweight Manifest Use
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../structured_prompting_as_a_practical_specification_pattern/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Structured Prompting as a Practical Specification Pattern
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../decision_pack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Decision Pack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Re-Convergence - Identity Recovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../protocol_template/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Columns
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Columns
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_before_consistent_characters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Before Consistent Characters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_how_generative_ai_behaves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Generative AI Actually Behaves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_identity_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Character Identity Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_identity_drift_practical/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Identity Drift in Generative Image Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_miracle_image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Miracle Image
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_production/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_translation_loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Translation Loss and the YAML-First Principle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prompt-engineering-as-intent-preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Is Prompt Engineering Over
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_creative_prompting_and_intent_preservation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creative Prompting and Intent Preservation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_pal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistent Anchor Layer (PAL)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pal_hypothesis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Hypothesis Technical
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../column_reconstruction_durability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reconstruction Durability and Identity Longevity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../artifact_state_governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Artifact-State Governance in AI-Assisted Document Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../explicit_instruction_fidelity_and_user_responsibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Explicit Instruction Fidelity and Artifact-State User Responsibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../context_contamination_and_controlled_reconvergence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Contamination and Controlled Re-convergence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../context_carryover_across_review_transitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context Carryover Across Iterative Review Transitions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimental Hypotheses
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Experimental Hypotheses
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pal_prompt_and_conformance_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt & Conformance Layers (Hypothesis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pal_prompt_layer_experiment_protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PAL Prompt Layer Experiment Protocol
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../multi_agent_verification_and_intent_adherence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Verification and Intent Adherence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../human_checkpointed_multi_model_workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Checkpointed Multi-Model Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../multi_ai_mediation_and_cumulative_a_drift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-AI Mediation and Cumulative A-Drift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../autonomous_ml_research_loops_as_bounded_mediation_systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous ML Research Loops as Bounded Mediation Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cip_terminology_mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CIP Terminology Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../whitepaper_appendices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    White Paper Appendices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Stop MVP Proposal Versions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Stop MVP Version Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-and-background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose and background
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sequence-authority-and-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sequence, authority and terminology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-proposed-readiness-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Proposed readiness rule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Proposed readiness rule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proposed-checking-and-holding-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proposed checking and holding boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-ready_h-through-procedure-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Ready_H through procedure review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-relationship-to-the-3-chat-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Relationship to the 3 Chat Method
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-dilemma-of-exploratory-tasks-and-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The dilemma of exploratory tasks and B
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-optional-strict-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Optional Strict Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-relationship-to-published-v06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Relationship to published v0.6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-proposed-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Proposed evaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-questions-for-comment-and-adoption-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Questions for comment and adoption decisions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-record-and-publication-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Record and publication boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="rfc-draft-preflight-governance-v06-related-unadopted">RFC Draft: Preflight Governance — v0.6 Related / Unadopted</h1>
+<blockquote>
+<p>Working Japanese name: 事前確認統制プロセス.
+Status: <strong>Under Review — Unadopted RFC Draft</strong>. Publication for comment does not adopt its requirements.
+Draft prepared: 2026-10-04. Repository review baseline: <code>2268ce23b5675dd4a665ef4262ed669231ef6167</code>.
+The published v0.6 remains <strong>Proposal v0.6 — Producer Approved — Audit Approval and Final ADOPT Pending</strong>. “Draft” describes this RFC only.
+Ready_H / 3 Chat Method clarification prepared: 2026-10-05, against repository commit <code>1154dd2c3ebe2504bc6fb90e9ff68f7e6974ce6f</code>. This clarification remains an unadopted review proposal.
+RFC, CHG, AC and PD identifiers: unassigned. No document version or release number is allocated here.</p>
+</blockquote>
+<h2 id="1-purpose-and-background">1. Purpose and background</h2>
+<p>This RFC develops the existing Preflight Readiness proposal into a request for comments. The problem is progression of a task when the supplied input A or intended/expected output B is missing or cannot be established, or supplied inputs or requirements contain an unresolved contradiction. A model may fill the gap, produce a plausible plan, and then treat that inferred plan as if the human had supplied or approved it.</p>
+<p>That is a failure scenario to examine, not a verified account of any named incident. This RFC includes no incident attribution, empirical frequency estimate, or claim that this problem is the first or largest of its kind. Prior-work comparison and evidence of any distinctive contribution remain future work.</p>
+<p>The proposal concerns readiness before the target task's generation, exploration or execution. It is distinct from checking whether a generated result should be adopted, and from checking faithful transmission of an already established Canonical A. Its proposed scope is not limited to high-risk execution. Its location beside Runtime Stop MVP documents does not activate the Safety Profile for ordinary Core use.</p>
+<h2 id="2-sequence-authority-and-terminology">2. Sequence, authority and terminology</h2>
+<pre><code class="language-text">A → (A + C) → A′ → B′ ≠ B
+</code></pre>
+<p>Canonical A is the context and intent selected, organized and approved by the human. The model or execution system must not silently alter it. A′ and B′ do not automatically inherit Canonical A's authority, approval or legitimacy. B′ is the actual result, not the human's intended target by default. The sequence is not replaced by a readiness or acceptance formula; its inequality is not redefined as a generic failure verdict.</p>
+<p>Preflight itself involves interpretation, comparison and possibly transformed representations. Mediation C can therefore occur during Preflight. Its extracted requirements, readiness judgments and clarification suggestions are derived review outputs, not Canonical A or authenticated human approval. Preserve the source and distinguish any extraction, interpretation or suggested change from it. Record observable differences and uncertainty without claiming access to all internal mediation. Explaining C does not excuse drift; continue efforts to reduce or eliminate unwanted mediation without guaranteeing complete elimination.</p>
+<p>In this RFC's v0.6 proposal context, PAL means <strong>Conformance Assessment Layer</strong>. The existing repository's separate use of Persistent Anchor Layer remains recorded in the <a href="../">version index</a>; this RFC does not rename or harmonize those historical usages. A governance decision itself is not redefined as C merely because its preparation involved mediation.</p>
+<h2 id="3-proposed-readiness-rule">3. Proposed readiness rule</h2>
+<p>The original proposal paragraph is retained verbatim as the starting point for review. Its normative wording remains proposed, not adopted:</p>
+<blockquote>
+<p>Before further exploration or processing, the AI must check whether the human-provided Canonical A and the human-specified intended/expected output B are present and can be identified, and whether the supplied inputs and requirements contain an unresolved contradiction. If A or B is absent or cannot be established, or an unresolved contradiction is detected, the AI must stop further exploration or processing, identify the missing or conflicting information, and request human clarification. The AI must not silently supply missing content, select between conflicting requirements, or revise Canonical A or B. The human decides how to resolve the issue.</p>
+</blockquote>
+<p>The process boundaries below are additional proposals for review. The 2026-10-05 clarification proposes that readiness work may include a bounded, review-only expansion of A into a detailed procedure. This explicitly qualifies the original paragraph's broad reference to processing; it is not a silent permission to begin the downstream task. The original wording is preserved above to make the difference reviewable.</p>
+<h3 id="proposed-checking-and-holding-boundaries">Proposed checking and holding boundaries</h3>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Proposed treatment before readiness is established</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inspect the supplied request and human-designated source material within the authorized access scope</td>
+<td>Permitted only to identify the source, target, authority and concrete missing/conflicting requirements; no automatic expansion of access or search scope.</td>
+</tr>
+<tr>
+<td>Quote relevant clauses, identify missing information and prepare a focused clarification request</td>
+<td>Permitted as readiness work. Keep source text separate from derived findings; do not invent the missing answer or choose which conflicting requirement prevails.</td>
+</tr>
+<tr>
+<td>Draft a detailed, bullet-point procedure solely for readiness review</td>
+<td>Proposed allowance within the human-authorized planning scope. Trace steps to A or evidence and expose gaps rather than filling them. Do not execute the steps or treat the draft as an approved work order. See §3.1.</td>
+</tr>
+<tr>
+<td>Generate the downstream target deliverable, perform substantive solution exploration beyond the authorized readiness review, or execute the target operation</td>
+<td>Hold while blocking readiness issues remain or the human has not authorized progression. A review-only procedure is the specific proposed allowance above, not a general exception for doing the task under a planning label.</td>
+</tr>
+<tr>
+<td>Search for a missing human intention, invent an approval, redefine A/B, or expand credentials/destinations</td>
+<td>Not a permitted resolution of failed readiness. Ask the human.</td>
+</tr>
+<tr>
+<td>Deny an operation or perform already authorized protective action under an applicable policy</td>
+<td>Do not delay it while awaiting clarification. This does not grant new authority, authorize arbitrary external reporting, or activate a Safety Profile.</td>
+</tr>
+</tbody>
+</table>
+<p>A suspected contradiction should be reported with its source clauses and the reason they appear incompatible. An explicit applicable priority or exception already supplied by the human can be cited; the model must not manufacture one. If applicability or precedence remains uncertain, report that uncertainty for human resolution. Complete automated contradiction detection is not claimed.</p>
+<p>Clarification should identify the issue once, together with the decision needed. No answer means no assumed consent and no automatic target-task progression. Repeated identical requests, automatic reopening of closed assessments and unbounded readiness checking are not proposed. The human should determine a finite checking scope and, where relevant, a budget; this RFC supplies no universal count or timeout.</p>
+<p>After a human response, check the changed information and record the decision's actual scope. Clarification is not automatically permission to execute, permission to resume an old run, or adoption of B′. Any further authority required by the applicable workflow remains necessary.</p>
+<p>“Hold” in this RFC describes withholding task progression. It does not introduce a new formal PAL result, Runtime Gate state, Tₖ event or stop guarantee.</p>
+<h3 id="31-ready_h-through-procedure-review">3.1 Ready_H through procedure review</h3>
+<p>Ready_H is proposed here as the pre-execution review gate at which the AI and human inspect a detailed, bullet-point procedure expanded from A. Its scope is the sufficiency and consistency of A for that procedure, unsupported additions in the procedure, and the clarity and feasibility of the human's intended B. It is not the act of drafting the procedure, an AI-issued approval, or a guarantee of safe or successful execution.</p>
+<p>The practical purpose of expansion is to make hidden dependencies inspectable before execution: required inputs, ordering, tools, capabilities, permissions, assumptions and the expected connection between each step and B. An apparently coherent procedure is not evidence that these dependencies exist or can be satisfied.</p>
+<p>The generated procedure is treated operationally as an A′ candidate: a derived, mediated representation of A, never Canonical A merely because the AI wrote it. Consistent with the <a href="../../../model_a_c_b/">core model</a>, the visible procedure is reviewable evidence of reconstruction; it is not proof that the whole internal A′ is observable. This working label does not redefine A′ or the basic sequence.</p>
+<p>For each relevant requirement or procedure step, distinguish at least the following sources and states. These are proposed review annotations, not a new C taxonomy or a mandatory adopted machine schema; a step may have more than one annotation.</p>
+<table>
+<thead>
+<tr>
+<th>Review annotation</th>
+<th>What to record</th>
+<th>Authority boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Explicit in A</td>
+<td>The source clause or human instruction, with its applicable scope/version.</td>
+<td>Preserve the instruction; an extraction or paraphrase does not replace its source.</td>
+</tr>
+<tr>
+<td>Confirmed fact</td>
+<td>The observation or source, verification scope and limits.</td>
+<td>A verified fact supports feasibility; it is not human intent or permission.</td>
+</tr>
+<tr>
+<td>Unresolved gap or conflict</td>
+<td>Missing input/dependency or incompatible requirements and the decision needed.</td>
+<td>Do not substitute a guessed value or silently select a preferred requirement.</td>
+</tr>
+<tr>
+<td>AI inference or assumption</td>
+<td>The proposed addition, its basis or lack of basis, and its unapproved status.</td>
+<td>Do not present it as a confirmed fact, human instruction or authorization.</td>
+</tr>
+</tbody>
+</table>
+<p>The review asks whether the procedure can plausibly achieve the identified B with the stated inputs, capabilities, dependencies, limits and authority. A known infeasible step or unresolved feasibility dependency is a blocking issue for the affected task; the model must not invent a tool, artifact, permission or successful outcome to make the plan appear executable. Unsupported completion claims are not feasibility evidence. Where checking requires access or activity beyond the authorized planning scope, request human direction instead of expanding that scope.</p>
+<p>Feasibility is a bounded, evidence-based pre-execution judgment, not a proof of eventual B′ or of universal attainability. B remains the intended reference defined by the existing documents. For exploratory tasks, assess whether the approved bounded inquiry and intended deliverable can be pursued; an unknown substantive answer alone is not proof that the task is infeasible. Do not promise a positive research result as a prerequisite for exploration.</p>
+<p>If missing information, contradictions, unsupported additions or blocking feasibility issues remain unresolved, stop further substantive elaboration of the affected plan and withhold downstream execution. Present the incomplete procedure and concrete questions to the human; do not fabricate a complete plan as a condition for asking. Producing the minimum evidence needed to explain the blocker does not authorize unrelated task progress.</p>
+<p>The human may have supplied an incomplete A or inadequately explained B. That possibility is relevant to correction, but never licenses the AI to fill the gap silently. Preserve the source, identify the omission and obtain the human's clarification. If the human changes A or B, record the new decision and review the affected procedure against it rather than rewriting the earlier source retrospectively.</p>
+<p>Record what procedure version was reviewed, its source A, the relevant evidence and unresolved items, and the human's actual decision and permitted scope. Do not infer a positive Ready_H decision from model confidence, a completed checklist, silence or merely the existence of a readable plan. Ready_H is a proposed operational review interpretation, not an adopted executable predicate, new PAL terminal value or Runtime Gate result. It does not require inspection of later B′ to decide initial readiness.</p>
+<h3 id="32-relationship-to-the-3-chat-method">3.2 Relationship to the 3 Chat Method</h3>
+<p>The proposed 3 Chat Method separates planning, execution and verification so that changes in intent can be detected at their boundaries. Merely assigning roles or opening three chats does not establish conformance or technical isolation.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Reviewable work</th>
+<th>Boundary to preserve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Planning chat</td>
+<td>Expand A into the review-only procedure; identify missing/conflicting information, assumptions and feasibility dependencies; assist Ready_H review.</td>
+<td>The AI provides candidates and evidence. The human resolves intent, selects/organizes/approves material and decides whether and within what scope work may progress.</td>
+</tr>
+<tr>
+<td>Execution chat</td>
+<td>Receive the identified Canonical A and the specific human-approved procedure/scope; perform only authorized work.</td>
+<td>Compare the received package to the approved version. Do not silently repair missing instructions, broaden scope or treat new execution state as Canonical A. Stop affected work for human clarification if the binding is inconsistent.</td>
+</tr>
+<tr>
+<td>Separate verification chat</td>
+<td>Compare execution records and actual B′ with Canonical A, the approved procedure, intended B and stated acceptance conditions.</td>
+<td>Report deviations, missing evidence and result quality. Verification output is not itself human adoption of B′.</td>
+</tr>
+</tbody>
+</table>
+<p>The handoff should distinguish the Canonical A source/version, the selected procedure/version, evidence, open items and the human's approval scope. The human may explicitly select, organize and approve particular derived content into a new Canonical A; approving use of a procedure does not silently canonicalize every assumption or replace the original A. Preserve the derivation and the recorded human decision. Approval for planning, approval to execute and final adoption of the result remain distinguishable.</p>
+<p>No human approval of a procedure certifies its perfection or the truth of every supporting fact. Rewriting, compression or interpretation at handoff and execution can introduce further C. Check the package at transfer and examine the observed result afterward; do not assume that earlier Ready_H review removes later mediation.</p>
+<p>This operational pattern is not a renaming of v0.6's Chat 1 / Chat 2 / Chat 3. Those Safety Profile roles are candidate generation, PAL investigation and Action Proposer; Chat 3 does not execute, and Runtime Gate controls dispatch. An execution chat in the 3 Chat Method receives no authority to bypass that Gate when the Profile applies. A separate verification chat is not automatically an independently privileged watchdog or audit system.</p>
+<p>Related existing notes already describe A′ candidate formation, human A-adherence checks, prompt review packages and handoff drift. This proposal makes the procedure-based readiness review explicit; it does not retrospectively claim those documents had adopted Ready_H or establish novelty by renaming their concepts:</p>
+<ul>
+<li><a href="../../../human_checkpointed_multi_model_workflow/">Human-Checkpointed Multi-Model Workflow</a>, particularly §§3–5 and §14.</li>
+<li><a href="../../../prompt_review_checklist/">Prompt Review Checklist</a>, for task-specific execution-package review.</li>
+<li><a href="../../../prompting_as_specification_management/">Prompting as Specification Management</a>, for explicit requirements and risks from underspecified A.</li>
+<li><a href="../../../multi_ai_mediation_and_cumulative_a_drift/">Multi-AI Mediation and Cumulative A-Drift</a>, for drift across successive stages.</li>
+</ul>
+<h2 id="4-the-dilemma-of-exploratory-tasks-and-b">4. The dilemma of exploratory tasks and B</h2>
+<p>The preserved v0.6 §2 defines B as an ideal/intended reference under the counterfactual absence of mediation, which need not be directly observable. This RFC does not replace that definition with a checklist, an exact expected answer, or an observed B′. The proposed readiness rule refers to identifying the human-specified intended/expected target; how that operational requirement relates to §2 remains open for Producer judgment.</p>
+<table>
+<thead>
+<tr>
+<th>Task type</th>
+<th>Hypothetical illustration</th>
+<th>Readiness question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Determinate task</td>
+<td>Produce an identified artifact from specified inputs under stated constraints.</td>
+<td>Are the source, intended target and governing constraints identifiable, without assuming the actual result is already known?</td>
+</tr>
+<tr>
+<td>Exploratory task</td>
+<td>Investigate a bounded question and report findings, including uncertainty or no supported answer.</td>
+<td>Can the human define the purpose and boundaries while leaving the substantive answer open? What level of target specification is sufficient?</td>
+</tr>
+<tr>
+<td>Incomplete task</td>
+<td>“Find something useful” with no identifiable objective or authorized search scope.</td>
+<td>Is there enough human direction to begin, or would beginning require the model to invent the task?</td>
+</tr>
+<tr>
+<td>Contradictory task</td>
+<td>Require both public disclosure and confidentiality of the same material without an applicable exception.</td>
+<td>Which requirement must be clarified by the human before the target task proceeds?</td>
+</tr>
+</tbody>
+</table>
+<p>All examples are constructed scenarios, not incident findings.</p>
+<p>An exploratory-task operating option is for the human to specify:</p>
+<ul>
+<li>The research purpose or question and the intended kind of deliverable.</li>
+<li>Which matters may remain unknown or be revised through exploration, and which constraints remain fixed.</li>
+<li>The permitted evidence/search scope, stopping bounds and restrictions on external effects.</li>
+<li>How the human will assess and adopt, reject or request revision of the resulting B′.</li>
+</ul>
+<p>This is an option for evaluation, not a new definition of B or a mandatory adopted schema. An unknown answer is not automatically an absent target. Conversely, calling a task “exploratory” must not authorize invented objectives or unbounded activity. Whether this option adequately establishes readiness is a central RFC question.</p>
+<h2 id="5-optional-strict-mode">5. Optional Strict Mode</h2>
+<p>Strict Mode is a proposed, human-selected option for more detailed predefinition checks. Candidate checks include explicit source/version identification, traceability of requirements to supplied material, documented output characteristics, allowable unknowns, constraint compatibility and explicit review criteria. No fixed mandatory field set is adopted here. Under the proposed Ready_H clarification, the basic human review of procedure assumptions and blocking feasibility issues is not waived when Strict Mode is off; Strict Mode concerns additional checking depth and documentation detail.</p>
+<p>Disabling Strict Mode would not waive Canonical A protection, authentication, authorization, applicable execution controls or the proposed baseline response to a genuinely missing/unidentifiable A/B or unresolved contradiction. The model must not switch the mode off to make a failed task pass. A mode selection is not Profile Activation or execution permission.</p>
+<p>The proposed distinction is additional checking depth, not permission to invent human intent. Human judgment is needed on which checks are baseline obligations and which are optional detail. In particular, a missing Strict Mode field must not silently be equated with a missing B across every task type. Any alternative that makes the original stop condition optional must be presented as an explicit substantive change, not hidden in a mode setting.</p>
+<h2 id="6-relationship-to-published-v06">6. Relationship to published v0.6</h2>
+<table>
+<thead>
+<tr>
+<th>Location</th>
+<th>Existing treatment</th>
+<th>RFC impact to review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§2</td>
+<td>B is an ideal/intended reference and is not necessarily directly observable.</td>
+<td>Resolve the relationship between an identifiable human target and that reference without redefining B.</td>
+</tr>
+<tr>
+<td>§4</td>
+<td>Canonical A is fixed before generation/processing begins.</td>
+<td>Ready_H procedure review is proposed before downstream execution. Distinguish authorized review-only drafting from task progression before selecting a future insertion point. No v0.6 insertion or renumbering is made now.</td>
+</tr>
+<tr>
+<td>§5.1</td>
+<td>Finite evidence acquisition and one new assessment may be allowed.</td>
+<td>Distinguish initial readiness from later evidentiary insufficiency. Neither invent missing human intent nor silently prohibit authorized evidence acquisition.</td>
+</tr>
+<tr>
+<td>§5.2</td>
+<td>Human Checkpoint has limited reserved-authority triggers.</td>
+<td>A clarification request is not an automatic recurring PAL checkpoint. Specify finite checking/waiting behavior before normative adoption.</td>
+</tr>
+<tr>
+<td>§12.1 / AC-19</td>
+<td>Transmission preflight compares delivered inputs with an established Canonical A and policy.</td>
+<td>Preserve this separate check; an initial readiness finding does not replace it.</td>
+</tr>
+<tr>
+<td>§20.1</td>
+<td>Material and uncertain changes require human determination.</td>
+<td>Adoption of readiness obligations, processing exceptions or mode boundaries may be Material. Publishing an unadopted RFC does not adopt those obligations.</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="../claude_code_mods_review/">Claude Code Mods review</a> remains a separate threat/test review. It is not merged into this RFC or used as proof that readiness controls work. The earlier Ready_H notation remains discussion-only. Sections 3.1–3.2 now propose its operational interpretation through procedure review and the 3 Chat Method; no mathematical decision procedure, executable predicate or error-state definition is supplied or adopted.</p>
+<h2 id="7-proposed-evaluation">7. Proposed evaluation</h2>
+<p>Begin with simulated tasks, isolated environments and evaluations without external effects. This RFC authorizes no test execution and reports no test results. Before testing, the human should approve the task set, relevant baseline and Strict Mode checks, adjudication criteria, scope, evidence handling and stopping conditions.</p>
+<p>Candidate scenarios include a clearly specified task; missing A; missing target; conflicting requirements; a bounded exploratory task with an unknown answer; a human-resolved priority; supplied material containing a fabricated approval; and a case where Preflight's own paraphrase changes a constraint. Compare the baseline candidate with Strict Mode while retaining the same authority protections. Additional candidate cases for Ready_H include a fabricated dependency in an otherwise polished procedure, contradictory prerequisites, a known unattainable step, a feasibility condition that cannot be checked within the authorized scope, unapproved assumptions presented as confirmed facts, and a changed procedure at handoff. Include positive controls with a feasible well-specified procedure and a bounded exploratory task whose answer remains unknown. These are test candidates, not executed results or allocated test identifiers.</p>
+<table>
+<thead>
+<tr>
+<th>Evaluation dimension</th>
+<th>Proposed observation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>False stops</td>
+<td>Human-adjudicated ready tasks that are held; report task type and denominator.</td>
+</tr>
+<tr>
+<td>Missed problems</td>
+<td>Human-adjudicated missing/conflicting conditions followed by target-task progression; record what progressed and why.</td>
+</tr>
+<tr>
+<td>Exploratory usefulness</td>
+<td>Human assessment of useful findings, preserved uncertainty and unnecessary narrowing relative to the task's approved purpose.</td>
+</tr>
+<tr>
+<td>Authority preservation</td>
+<td>Whether inferred requirements or readiness findings are wrongly treated as human intent, approval or execution permission.</td>
+</tr>
+<tr>
+<td>Finite operation</td>
+<td>Clarification repetitions, checking effort, unresolved terminal cases and automatic continuation attempts.</td>
+</tr>
+<tr>
+<td>Preflight mediation</td>
+<td>Source-to-extraction differences and whether they are disclosed and corrected without overwriting Canonical A.</td>
+</tr>
+<tr>
+<td>Procedure traceability and feasibility</td>
+<td>Unsupported steps detected/missed, evidence for dependencies, incorrect claims of attainability and unnecessary rejection of feasible or exploratory tasks, with human adjudication.</td>
+</tr>
+<tr>
+<td>Handoff fidelity</td>
+<td>Differences between the reviewed and received procedure, retained source references, approval scope and unapproved changes before execution.</td>
+</tr>
+</tbody>
+</table>
+<p>Report disagreements, undetected cases and limitations rather than declaring a perfect readiness detector. Do not report a warning as enforced prevention or a later stop as prevention of an earlier effect. Passing simulated evaluations is not sufficient for real-environment Go. The human decides any subsequent transition based on evidence, residual risks and the applicable activation/authorization requirements.</p>
+<h2 id="8-questions-for-comment-and-adoption-decisions">8. Questions for comment and adoption decisions</h2>
+<ol>
+<li>How much specification of the intended target is sufficient for determinate and exploratory tasks, consistent with the existing definition of B?</li>
+<li>Where is the boundary between inspecting readiness and doing the held task? Which source-access and checking limits keep this boundary observable?</li>
+<li>How should suspected contradictions and already explicit priority rules be distinguished without granting the model authority to choose human intent?</li>
+<li>Which detailed checks belong only to Strict Mode, and how is the human's mode selection recorded without weakening baseline protections?</li>
+<li>How should clarification and unresolved termination coexist with §§5.1–5.2 without recurring checkpoints?</li>
+<li>What evidence would justify normative adoption, and which findings would require revision or rejection?</li>
+<li>Which prior approaches address requirements validation, clarification, abstention, authorization and exploratory planning? What, if anything, is distinctive about this proposed integration?</li>
+<li>Does the procedure-based interpretation of Ready_H make A sufficiency, consistency and B feasibility reviewable without mistaking procedure generation for readiness approval?</li>
+<li>What evidence and human decision are sufficient for the planning-to-execution handoff, and how are changes to the reviewed procedure detected?</li>
+</ol>
+<p>Comments should identify the relevant section, task assumptions, counterexample or evidence, and suggested change. Comments and external reviews remain review inputs. No comment, publication timestamp or repository tag establishes adoption, worldwide priority or validated effectiveness.</p>
+<p>Canonical A changes and final adoption of B′ remain human decisions. The Producer determines whether any proposed normative change proceeds, its classification and the applicable version/identifier process. No future v0.6 amendment or subsequent version is presumed.</p>
+<h2 id="9-record-and-publication-boundary">9. Record and publication boundary</h2>
+<p>The initial Preflight proposal was published in commit <code>8e605608c56dfb41f3d1b1e0ab3deb78dd562a56</code>; the checked README state is commit <code>2268ce23b5675dd4a665ef4262ed669231ef6167</code>. This RFC expansion was prepared on 2026-10-04. The RFC expansion was subsequently published in commit <code>1154dd2c3ebe2504bc6fb90e9ff68f7e6974ce6f</code>. The Ready_H / 3 Chat Method clarification was prepared on 2026-10-05 against that commit; its own publication is not established by preparing this candidate. No date is backdated into v0.6 or the development history.</p>
+<p>Review inputs are the supplied Preflight Handover, the human's subsequent RFC drafting request, and the 2026-10-05 Ready_H / 3 Chat Method clarification request. The original rule is preserved above; operational boundaries, the exploratory-task option, Strict Mode, procedure-based Ready_H, the 3 Chat Method mapping and evaluation details are draft proposals for review. They are not silently incorporated into v0.6.</p>
+<p>Publication of this RFC does not grant requirement adoption, audit approval, final ADOPT, Safety Profile Activation, Approved P_A effectiveness, individual execution permission, Go, or B′ adoption. The v0.4, v0.5 and v0.6 originals and their recorded status remain unchanged.</p>
+<p>References: <a href="../">version index</a>, <a href="../v0.6/runtime_stop_mvp_v0.6_producer_approved_audit_pending.docx">preserved v0.6 DOCX</a>, <a href="../changelog/">version change record</a>. The earlier impact review inspected the DOCX; this RFC preparation does not establish DOCX/PDF equivalence or reopen format precedence. No external incident or prior-work comparison has been independently established in this RFC.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
