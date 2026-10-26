@@ -24,13 +24,17 @@ A → (A + C) → A′ → B′ ≠ B
 
 Where:
 
-|Symbol|Meaning                                                                                                                                                                                                                                                                  |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|A     |User input (prompt, instruction, request)                                                                                                                                                                                                                                |
-|C     |Model-side or execution-structure mediation that transforms A into A′. It may include interpretation, compression, weighting, optimization, constraint handling, sampling, stylization, reconstruction, or other mediation when these participate in that transformation.|
-|A′    |Reconstructed task state: A as transformed through C-mediated processing                                                                                                                                                                                                 |
-|B     |Intended output (what the user expects)                                                                                                                                                                                                                                  |
-|B′    |Actual output (what the system produces)                                                                                                                                                                                                                                 |
+| Symbol | Meaning |
+|---|---|
+| A | User input or reference condition. In the governance context, Canonical A is context and intent, including reference conditions, selected, organized, and approved by a human. |
+| C | Model-side or execution-structure mediation that transforms A into A′ by mediating how A is interpreted, represented, or applied in producing B′. |
+| A′ | Reconstructed task state: A as transformed through C-mediated processing. It does not inherit Canonical A's authority or approval. |
+| B | The human-intended outcome used as the reference concept; the rules and constraints used to assess an outcome are specified separately. |
+| B′ | The actual output, action, or execution result. Its observed aspects provide evidence for assessment; they do not automatically establish equivalence to B. |
+
+Only a human may authorize a change to Canonical A. A model or execution system must not redefine it. Neither A′ nor B′ automatically inherits its authority, approval, or legitimacy; the human retains final adoption authority over B′.
+
+In the Runtime Stop MVP v0.7 context, B is the ideal or intended result under the counterfactual absence of mediation and may not be directly observable. Task goals and success criteria are operational assessment descriptions, not a replacement definition of B. An assessment must identify the applicable human-defined rules, constraints, invariants and permitted variation, the observed aspects of B′, and the evidence and uncertainties. A criterion is not itself the intended result, and compliance evidence is not automatic adoption.
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, generated prompts, rewritten instructions, execution traces, intermediate representations, anchor comparisons, and generated candidates may provide operational evidence about aspects of the path from A toward A′. The CIP-governed process can use this evidence for validation, recovery, and adoption decisions, but these artifacts are not necessarily identical to A′.
 
@@ -38,13 +42,11 @@ The system does not execute A as a fixed specification.
 
 A is mediated through C — through processes that may include interpretation, inference, optimization, compression, stylistic transformation, creative contribution, or execution-structure transformation — producing A′, from which B′ is generated.
 
-B′ ≠ B does not mean that every difference is a failure. It marks the structural possibility of deviation; drift occurs only when the intended identity of A is no longer preserved. B′ ≠ B is not necessarily a malfunction — it is often the expected behavior of a system operating through mediation from A to A′. However, when B′ no longer preserves the intended identity of A, the deviation becomes drift and requires governance.
+B′ ≠ B means that B′ must not automatically be identified with B; it does not by itself establish failure or drift. Differences must be assessed against human-defined criteria using available evidence. Creative variation permitted by those criteria is not drift merely because it differs from an anticipated form. Drift is a failure to preserve A's intended identity, as specified by human-defined constraints or invariants. Where evidence is insufficient, drift remains unconfirmed rather than being declared absent or established.
 
-> **Note on notation:** The two notations describe the same phenomenon at different levels of abstraction: A → (A + C) → A′ → B′ explains *why* the transformation occurs and where drift enters; the simplified sequence A → A′ → B′, used in earlier versions of this document, describes only the structural sequence without showing where mediation enters. The simplified notation is retained here for historical reference only and is not a current equivalent of the primary model.
-> 
-> The expression A + C is not meant as linear addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, expanded, constrained, and reconstructed. More formally, A′ may be represented as T_C(A): the result of transforming A under the conditions of C. This is a secondary formal representation; the primary model remains A → (A + C) → A′ → B′ ≠ B.
-> 
-> In this document, the primary model remains A → (A + C) → A′ → B′ ≠ B. The expression A′ ≈ T_C(A) is used only as a secondary formal shorthand for the transformation of A under C.
+> **Note on notation:** The primary model remains A → (A + C) → A′ → B′ ≠ B. Earlier shortened sequences are not current equivalents of this model.
+>
+> A + C is shorthand for mediation, which may be nonlinear; it is not simple arithmetic addition. A′ ≈ T_C(A) is a secondary conceptual shorthand for the transformation of A under C, not a quantitative equation or an independently validated causal model. The symbol ≈ specifies neither a distance metric nor an error bound. The transformation may be only partly observable or explainable.
 
 -----
 
@@ -70,7 +72,7 @@ Within this reconstruction model, drift occurs when C-mediated transformation fr
 
 C is not necessarily fully or directly observable by the user. In some workflows, exposed prompts, rewritten instructions, execution traces, or intermediate artifacts may provide partial evidence of C-mediated transformation.
 
-C explains why drift occurs. It does not excuse unmanaged drift.
+Analysis of C can identify evidence about, or hypotheses concerning, mediation along the path to drift. It does not by itself establish the specific cause or mechanism. Describing C does not excuse unmanaged drift. Uncertainty must remain explicit rather than being replaced with a complete causal explanation.
 The existence of C does not remove the need for human judgment, validation gates, recovery procedures, or adoption control.
 
 A′ is not fully or directly observable under ordinary conditions. CIP therefore governs validation, rejection, purge, re-binding, re-convergence, and adoption using available evidence from anchors, gates, exposed artifacts, execution traces, and generated candidates. CIP does not directly control A′.
@@ -82,6 +84,8 @@ C is broad by design, but not unlimited: it refers to model-side or execution-st
 In agentic AI systems, C does not only emerge from the model’s generative behavior. It can also be introduced by the execution structure around the model: scaffolding, harnesses, context engineering, tool routing, memory injection, evaluation loops, retry behavior, and stop conditions.
 
 These structures are not C merely because they exist. They become relevant to C only when they mediate, transform, redirect, expand, constrain, or replace A before B′ is produced.
+
+Tools, external information and environmental conditions follow the same boundary: they are relevant to C when they mediate how A is interpreted, represented, or applied in producing B′. Their mere presence does not make them C. Human-approved reference information may belong to Canonical A; its selection, compression or reinterpretation by the model or execution structure is distinguished from that approved source. Human approval and governance decisions themselves are not C.
 
 CIP does not treat output drift as a model-only issue. It treats drift as a system-level continuity problem: where, how, and under whose authority A is transformed into A′ before producing B′.
 

@@ -141,34 +141,33 @@ Reference-based generation, improved resemblance, or human approval alone do not
 
 -----
 
-## Reconstruction (A → A′ → B′)
+## Reconstruction
 
-The reconstruction model describes the process by which a probabilistic system transforms user input or reference condition A into an internally reconstructed state A′ before producing the actual output B′.
+The reconstruction model describes the transformation of A under mediation C into a reconstructed state A′, followed by an actual output or execution result B′.
 
 ```
 A → (A + C) → A′ → B′ ≠ B
-A → A′ → B′
-A′ ≈ T_C(A)
 ```
 
-Where:
+- **A** is user input or a reference condition. In the governance context, **Canonical A** is context and intent, including reference conditions, selected, organized, and approved by a human. Only a human may authorize its change; a model or execution system must not redefine it.
+- **C** is model-side or execution-structure mediation that transforms A into A′. Tools, external information, environmental conditions, scaffolding, memory, routing, evaluation loops and retries are relevant when they mediate how A is interpreted, represented, or applied in producing B′. Mere presence is insufficient; human approval and governance decisions themselves are not C.
+- **A′** is the reconstructed task state produced through C-mediated processing.
+- **B** is the human-intended outcome used as the reference concept. In Runtime Stop MVP v0.7, it is the ideal or intended result under the counterfactual absence of mediation and may not be directly observable. Assessment rules, constraints, task goals and success criteria are identified separately and do not redefine B.
+- **B′** is the actual output, action or execution result. Neither A′ nor B′ automatically inherits Canonical A's authority, approval or legitimacy. Final adoption remains a human decision.
 
-- A = user input or reference condition
-- C = mediation that transforms A into A′, including model-side mediation and execution-structure mediation
-- A′ = internally reconstructed state: A as transformed by C
-- B′ = actual output
+B′ ≠ B prevents automatic identification of the actual result with the intended result; it does not alone establish failure or drift. Assess observed aspects of B′ against explicit human-defined criteria and distinguish compliance, confirmed deviation and insufficient evidence. Drift is failure to preserve A's intended identity under human-defined constraints or invariants; permitted creative variation is not automatically drift.
 
-The expression A + C is not simple addition. It is shorthand for a non-linear mediation process in which A is interpreted, compressed, weighted, constrained, sampled, optimized, stylized, or reconstructed into A′.
+A + C is shorthand for mediation, which may be nonlinear, not simple arithmetic addition. A′ ≈ T_C(A) is a secondary conceptual shorthand, not a quantitative equation or an independently validated causal model. The symbol ≈ specifies neither a distance metric nor an error bound.
 
-A′ is not fully or directly observable under ordinary conditions. However, parts of A′ may be externalized, inferred, or tested through prompt disclosure, execution traces, anchor comparison, gate evaluation, validation decisions, and adoption controls.
+A′ may not be fully observable. Exposed prompts, rewritten instructions, execution traces and intermediate artifacts provide partial evidence about transformation, but are not necessarily identical to A′ and do not by themselves prove internal model state. Observations, inferences and uncertainty must remain distinguishable.
 
-C explains why drift occurs. It does not excuse unmanaged drift.
+Analysis of C supports evidence-based hypotheses about mediation along the path to drift, not automatic identification of its specific causes. Describing C does not excuse deviation or remove the obligation to continue efforts to eliminate C; that obligation is distinct from a guarantee of complete elimination.
 
-CIP does not directly control C or A′. It governs the workflow conditions around C → A′ and validates reconstructed states before adoption.
+CIP does not directly control C or A′. It governs transformation conditions and validation, rejection, purge, re-binding, re-convergence and adoption using available evidence. This entry does not change PAL's version-specific role or the preserved v0.7 text.
 
-“C → A′” is shorthand for the governed transformation of A into A′ under C. It does not mean that C independently produces A′ without A.
+*See: [The Reconstruction Model](model_a_c_b.md#the-reconstruction-model) — [Scope of C](model_a_c_b.md#scope-of-c) — [C Taxonomy](c_taxonomy.md)*
 
-*Formerly listed as “Reconstruction (A→A’)”*
+*Formerly listed under a shortened reconstruction-sequence heading.*
 
 -----
 
@@ -675,7 +674,7 @@ Caused by:
 - Insufficient anchoring frequency
 - Model-side or execution-structure mediation that transforms A before B′ is produced
 
-C — mediation that transforms A into A′, including model-side and execution-structure mediation — explains why drift occurs. It does not excuse unmanaged drift.
+C — mediation that transforms A into A′, including model-side and execution-structure mediation — provides a basis for investigating likely mediation along the path to drift. Its specific causal role requires evidence; uncertainty must remain explicit. Describing C does not excuse unmanaged drift.
 
 -----
 
