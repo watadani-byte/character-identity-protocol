@@ -16,6 +16,8 @@ This model is incomplete for generative or agentic systems.
 
 ## The Reconstruction Model
 
+This section provides detailed definitions and assessment clarification alongside the README overview. This revision does not modify README.md or the preserved version-specific documents.
+
 What actually happens is:
 
 ```
@@ -29,12 +31,14 @@ Where:
 | A | User input or reference condition. In the governance context, Canonical A is context and intent, including reference conditions, selected, organized, and approved by a human. |
 | C | Model-side or execution-structure mediation that transforms A into A′ by mediating how A is interpreted, represented, or applied in producing B′. |
 | A′ | Reconstructed task state: A as transformed through C-mediated processing. It does not inherit Canonical A's authority or approval. |
-| B | The human-intended outcome used as the reference concept; the rules and constraints used to assess an outcome are specified separately. |
+| B | The ideal or intended outcome under the counterfactual assumption that mediation C were absent. B is the reference outcome, not the rules or constraints used to assess B′. |
 | B′ | The actual output, action, or execution result. Its observed aspects provide evidence for assessment; they do not automatically establish equivalence to B. |
 
 Only a human may authorize a change to Canonical A. A model or execution system must not redefine it. Neither A′ nor B′ automatically inherits its authority, approval, or legitimacy; the human retains final adoption authority over B′.
 
-In the Runtime Stop MVP v0.7 context, B is the ideal or intended result under the counterfactual absence of mediation and may not be directly observable. Task goals and success criteria are operational assessment descriptions, not a replacement definition of B. An assessment must identify the applicable human-defined rules, constraints, invariants and permitted variation, the observed aspects of B′, and the evidence and uncertainties. A criterion is not itself the intended result, and compliance evidence is not automatic adoption.
+B may not be directly observable. Task goals and success criteria provide operational descriptions for assessment; they do not replace the counterfactual definition of B.
+
+An assessment must identify the applicable human-defined rules, constraints, invariants and permitted variation, the observed aspects of B′, and the available evidence and uncertainties. B′ ≠ B does not by itself establish failure or determine adoption. Adoption remains subject to the applicable assessment and human decision.
 
 A′ is not fully or directly observable by the user under ordinary conditions. However, generated prompts, rewritten instructions, execution traces, intermediate representations, anchor comparisons, and generated candidates may provide operational evidence about aspects of the path from A toward A′. The CIP-governed process can use this evidence for validation, recovery, and adoption decisions, but these artifacts are not necessarily identical to A′.
 

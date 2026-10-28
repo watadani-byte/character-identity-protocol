@@ -143,6 +143,8 @@ Reference-based generation, improved resemblance, or human approval alone do not
 
 ## Reconstruction
 
+This section provides detailed definitions and assessment clarification alongside the README overview. This revision does not modify README.md or the preserved version-specific documents.
+
 The reconstruction model describes the transformation of A under mediation C into a reconstructed state A′, followed by an actual output or execution result B′.
 
 ```
@@ -152,10 +154,10 @@ A → (A + C) → A′ → B′ ≠ B
 - **A** is user input or a reference condition. In the governance context, **Canonical A** is context and intent, including reference conditions, selected, organized, and approved by a human. Only a human may authorize its change; a model or execution system must not redefine it.
 - **C** is model-side or execution-structure mediation that transforms A into A′. Tools, external information, environmental conditions, scaffolding, memory, routing, evaluation loops and retries are relevant when they mediate how A is interpreted, represented, or applied in producing B′. Mere presence is insufficient; human approval and governance decisions themselves are not C.
 - **A′** is the reconstructed task state produced through C-mediated processing.
-- **B** is the human-intended outcome used as the reference concept. In Runtime Stop MVP v0.7, it is the ideal or intended result under the counterfactual absence of mediation and may not be directly observable. Assessment rules, constraints, task goals and success criteria are identified separately and do not redefine B.
+- **B** is the ideal or intended outcome under the counterfactual assumption that mediation C were absent. B may not be directly observable. Assessment rules, constraints, task goals and success criteria are specified separately and do not replace this definition.
 - **B′** is the actual output, action or execution result. Neither A′ nor B′ automatically inherits Canonical A's authority, approval or legitimacy. Final adoption remains a human decision.
 
-B′ ≠ B prevents automatic identification of the actual result with the intended result; it does not alone establish failure or drift. Assess observed aspects of B′ against explicit human-defined criteria and distinguish compliance, confirmed deviation and insufficient evidence. Drift is failure to preserve A's intended identity under human-defined constraints or invariants; permitted creative variation is not automatically drift.
+B′ ≠ B prevents automatic identification of the actual result with the intended result. B′ ≠ B does not by itself establish failure or determine adoption. Adoption remains subject to the applicable assessment and human decision. Assess observed aspects of B′ against explicit human-defined criteria and distinguish compliance, confirmed deviation and insufficient evidence. Drift is failure to preserve A's intended identity under human-defined constraints or invariants; permitted creative variation is not automatically drift.
 
 A + C is shorthand for mediation, which may be nonlinear, not simple arithmetic addition. A′ ≈ T_C(A) is a secondary conceptual shorthand, not a quantitative equation or an independently validated causal model. The symbol ≈ specifies neither a distance metric nor an error bound.
 
@@ -163,7 +165,7 @@ A′ may not be fully observable. Exposed prompts, rewritten instructions, execu
 
 Analysis of C supports evidence-based hypotheses about mediation along the path to drift, not automatic identification of its specific causes. Describing C does not excuse deviation or remove the obligation to continue efforts to eliminate C; that obligation is distinct from a guarantee of complete elimination.
 
-CIP does not directly control C or A′. It governs transformation conditions and validation, rejection, purge, re-binding, re-convergence and adoption using available evidence. This entry does not change PAL's version-specific role or the preserved v0.7 text.
+CIP does not directly control C or A′. It governs transformation conditions and validation, rejection, purge, re-binding, re-convergence, and adoption using available evidence. This entry does not change PAL's version-specific role or the preserved v0.7 text.
 
 *See: [The Reconstruction Model](model_a_c_b.md#the-reconstruction-model) — [Scope of C](model_a_c_b.md#scope-of-c) — [C Taxonomy](c_taxonomy.md)*
 
