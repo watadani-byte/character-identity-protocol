@@ -69,6 +69,7 @@ The basic sequence remains **A → (A + C) → A′ → B′ ≠ B**. Canonical 
 
 ### Supplementary pending-item records — human review only
 
+- [Ready_H と v0.8 α の対応づけ提案（提案・未採用）](v0.8/ready_h_alpha_correspondence_proposal.md): 記録するのは対応づけの提案のみ。v0.8 α の基準版・F-01〜F-06 の設計・TBD の値は変更しない。
 - [Observation Review — unresolved items and five-condition proposals](v0.8/observation_review_unresolved_items_2026-10-07.md): preserves U01–U13 and the unadopted elaborations with their original evidence limits. Later source acquisition is recorded separately, not as retrospective resolution.
 - [Escalation States and Bounded Safety Measures — preserved detailed discussion](v0.8/escalation_and_bounded_continuation_detailed_discussion.md): separately preserves all 35 sections and §20.1, including E0–E4, RV-01–RV-12, evidence requirements and human-review procedures. It does not replace the existing 12-section discussion.
 
